@@ -9,7 +9,7 @@ export default function Header() {
     <>
       <header className={`relative flex justify-between items-center h-[84px] px-4 z-[1000]`}>
         <Link href="/">
-          <div className="flex justify-center items-center hover:text-orange-600 hover:opacity-75 hover:cursor-pointer group">
+          <div className="flex justify-center items-center hover:text-primary hover:cursor-pointer group">
             <Image
               src={"./tuna.svg"}
               alt="Logo"
@@ -21,13 +21,15 @@ export default function Header() {
           </div>
         </Link>
 
-        <ModeToggle />
-        <Avatar>
-          <AvatarImage src="fake" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <nav className="flex justify-between gap-3 items-center">
+          <Avatar>
+            <AvatarImage src="fake" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <ModeToggle />
+        </nav>
         {/* Bottom Line */}
-        <div className="absolute bottom-0 left-0 right-0 divider" />
+        <div className="absolute bottom-0 left-0 right-0 divider z-0" />
       </header>
     </>
   );
