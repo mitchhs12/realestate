@@ -3,21 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ModeToggle } from "@/components/ThemeButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { montserrat } from "@/app/fonts";
 
 export default function Header() {
   return (
     <>
-      <header className={`relative flex justify-between items-center h-[84px] px-4 z-[1000]`}>
+      <header className={`relative flex justify-between items-center h-[80px] px-4 z-[10]`}>
         <Link href="/">
           <div className="flex justify-center items-center hover:text-primary hover:cursor-pointer group">
             <Image
               src={"./tuna.svg"}
               alt="Logo"
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               className="transition-transform duration-300 group-hover:rotate-6"
             />
-            <h1 className="flex pl-6 text-4xl font-seriff bold">Propertuna</h1>
+            <h1 className={`${montserrat.className} flex pl-6 text-3xl font-[500]`}>Propertuna</h1>
           </div>
         </Link>
 
