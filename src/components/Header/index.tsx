@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ModeToggle } from "@/components/ThemeButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 export default function Header() {
   return (
     <>
@@ -10,7 +11,7 @@ export default function Header() {
         <Link href="/">
           <div className="flex justify-center items-center hover:text-orange-600 hover:opacity-75 hover:cursor-pointer group">
             <Image
-              src={"./fox.svg"}
+              src={"./tuna.svg"}
               alt="Logo"
               width={60}
               height={60}
