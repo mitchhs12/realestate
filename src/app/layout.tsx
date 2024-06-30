@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        {/* <SessionProvider session={session}> */}
         {children}
         <Header />
         {children}
         <SpeedInsights />
         <Analytics />
+        {/* </SessionProvider> */}
       </body>
     </html>
   );
