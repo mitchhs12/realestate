@@ -54,7 +54,7 @@ export function ProfileButton({ user }: Props) {
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
         {user ? (
           <DropdownMenuGroup>
-            <DropdownMenuItem>{user.name.split(" ")[0]}'s Profile</DropdownMenuItem>
+            <DropdownMenuItem>{user.name.split(" ")[0]}&apos;s Profile</DropdownMenuItem>
           </DropdownMenuGroup>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
