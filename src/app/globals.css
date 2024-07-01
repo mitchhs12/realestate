@@ -57,6 +57,22 @@
   @apply w-full h-[2px] min-h-[2px] max-h-[2px] bg-gradient-to-r from-primary from-10% via-primary-foreground via-50% to-primary to-90%;
 }
 
+/* globals.css or a CSS module */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
 @layer base {
   * {
     @apply border-border;

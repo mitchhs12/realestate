@@ -5,7 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export function LoginForm() {
+interface Props {
+  switchModals: () => void;
+}
+
+export function SignUp({ switchModals }: Props) {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
@@ -41,9 +45,9 @@ export function LoginForm() {
         </div>
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
-          <Link href="#" className="underline">
-            Sign in
-          </Link>
+          <Button variant="link" onClick={switchModals}>
+            Log in
+          </Button>
         </div>
       </CardContent>
     </Card>

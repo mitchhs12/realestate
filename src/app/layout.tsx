@@ -25,7 +25,6 @@ export default function RootLayout({
           <Header />
           {children}
         </ThemeProvider>
-
         <SpeedInsights />
         <Analytics />
         {/* </SessionProvider> */}
