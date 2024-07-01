@@ -1,4 +1,7 @@
+"use client";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { signIn, signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,30 +21,51 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useTheme } from "next-themes";
 
 interface Props {
-  setSignUpModalOpen: (open: boolean) => void;
-  setLoginModalOpen: (open: boolean) => void;
+  user: any;
 }
 
-export function ProfileButton({ setSignUpModalOpen, setLoginModalOpen }: Props) {
+export function ProfileButton({ user }: Props) {
   const { setTheme } = useTheme();
+
+  // Function to get initials from username
+  const getInitials = (username: string) => {
+    const parts = username.split(".");
+    return parts
+      .map((part) => part.charAt(0))
+      .join("")
+      .toUpperCase();
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
-          <HamburgerMenuIcon className="mr-2 h-5 w-5" />
-          <PersonIcon className="h-5 w-5" />
+          <HamburgerMenuIcon className="mr-3 ml-1 h-4 w-4" />
+          {user ? (
+            <Avatar className="h-8 w-8">
+              <AvatarImage src={user.image} alt={user.name} />
+              <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+            </Avatar>
+          ) : (
+            <PersonIcon className="ml-1 h-7 w-7" />
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
-        <DropdownMenuGroup className="cursor-pointer gap-y-2">
-          <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => setLoginModalOpen(true)}>
-            Log in
-          </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer" onClick={() => setSignUpModalOpen(true)}>
-            Sign up
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
+        {user ? (
+          <DropdownMenuGroup>
+            <DropdownMenuItem>{user.name.split(" ")[0]}'s Profile</DropdownMenuItem>
+          </DropdownMenuGroup>
+        ) : (
+          <DropdownMenuGroup className="cursor-pointer gap-y-2">
+            <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => signIn()}>
+              Log in
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer" onClick={() => signIn()}>
+              Sign up
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
@@ -65,6 +89,13 @@ export function ProfileButton({ setSignUpModalOpen, setLoginModalOpen }: Props) 
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem disabled>Support (coming soon)</DropdownMenuItem>
+        {user ? (
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <Button onClick={() => signOut()}>Log out</Button>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        ) : null}
       </DropdownMenuContent>
     </DropdownMenu>
   );

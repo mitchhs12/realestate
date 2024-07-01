@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SignIn } from "@/components/sign-in-server";
 
 interface Props {
   switchModals: () => void;
@@ -31,6 +32,8 @@ export function LogIn({ switchModals }: Props) {
             </div>
             <Input id="password" type="password" required />
           </div>
+          TEST
+          <SignIn />
           <Button type="submit" className="w-full">
             Login
           </Button>

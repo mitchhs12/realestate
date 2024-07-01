@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 
@@ -7,8 +8,8 @@ interface Props {
   onClose: () => void;
 }
 
-export const Modal = ({ children, isOpen, onClose }: Props) => {
-  const modalRootRef = useRef<HTMLElement | null>(null);
+export const Modals = ({ children, isOpen, onClose }: Props) => {
+  const modalRootRef = useRef<HTMLDivElement | null>(null);
   const createdModalRoot = useRef(false);
   const modalContentRef = useRef<HTMLDivElement | null>(null);
 
@@ -20,10 +21,10 @@ export const Modal = ({ children, isOpen, onClose }: Props) => {
       document.body.appendChild(modalRoot);
       createdModalRoot.current = true; // Mark that we created the modal root
     }
-    modalRootRef.current = modalRoot;
+    modalRootRef.current = modalRoot as HTMLDivElement; // Asserting type to HTMLDivElement
 
     return () => {
-      if (createdModalRoot.current && modalRootRef.current) {
+      if (modalRootRef.current && modalRootRef.current.parentNode === document.body) {
         document.body.removeChild(modalRootRef.current);
       }
     };
@@ -61,4 +62,4 @@ export const Modal = ({ children, isOpen, onClose }: Props) => {
   );
 };
 
-export default Modal;
+export default Modals;

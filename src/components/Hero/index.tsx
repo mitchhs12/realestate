@@ -8,7 +8,7 @@ export default function Hero() {
       <Image
         src="/house.jpg"
         alt="background"
-        layout="fill"
+        fill={true}
         objectFit="cover"
         quality={100}
         className="-z-10 opacity-30"

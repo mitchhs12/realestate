@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -40,7 +38,7 @@ export function SignUp({ switchModals }: Props) {
             Create an account
           </Button>
           <Button variant="outline" className="w-full">
-            Sign up with GitHub
+            Sign up with Google
           </Button>
         </div>
         <div className="mt-4 text-center text-sm">

@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Card from "@/components/Card";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { getUserSession } from "@/lib/session";
 
 export default async function Home() {
