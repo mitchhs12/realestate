@@ -124,7 +124,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer" onClick={() => signOut({ callbackUrl: "/" })}>
-              LogOut
+              Log out
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}

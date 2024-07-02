@@ -92,14 +92,16 @@ export function Modal({ isLogin, setIsLogin }: Props) {
           <div className="flex flex-col w-full justify-center items-center gap-4">
             <Button
               variant="secondary"
-              className="w-80 h-15"
+              className="w-80 h-16"
               onClick={() => handleSocialSignIn("google")}
               disabled={isLoading !== null}
             >
               {isLoading === "google" ? (
-                <div className="flex items-center justify-center">
-                  <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-                  Loading...
+                <div className="flex justify-center items-center w-40 gap-1">
+                  <div className="flex justify-end w-20 mr-1">
+                    <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
+                  </div>
+                  <div className="flex justify-start w-20 mr-12">Loading...</div>
                 </div>
               ) : (
                 <div className="flex justify-center items-center w-40 gap-2">
@@ -112,14 +114,16 @@ export function Modal({ isLogin, setIsLogin }: Props) {
             </Button>
             <Button
               variant="secondary"
-              className="w-80 h-15"
+              className="w-80 h-16"
               onClick={() => handleSocialSignIn("facebook")}
               disabled={isLoading !== null}
             >
               {isLoading === "facebook" ? (
-                <div className="flex items-center justify-center">
-                  <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-                  Loading...
+                <div className="flex justify-center items-center w-40 gap-1">
+                  <div className="flex justify-end w-20 mr-1">
+                    <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
+                  </div>
+                  <div className="flex justify-start w-20 mr-12">Loading...</div>
                 </div>
               ) : (
                 <div className="flex justify-center items-center w-40 gap-2">
