@@ -41,7 +41,7 @@ export default function SettingsPage({ user }: Props) {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Change your profile's name</FormLabel>
+                <FormLabel>Change your profile&apos;s name</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter a username" {...field} />
                 </FormControl>

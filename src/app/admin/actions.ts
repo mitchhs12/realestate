@@ -16,6 +16,7 @@ export async function createListing(values: CreateListingValues) {
     throw new Error("User not found");
   }
   const {
+    ownerId,
     title,
     description,
     address,
@@ -37,7 +38,7 @@ export async function createListing(values: CreateListingValues) {
 
   await prisma.home.create({
     data: {
-      ownerId: userId,
+      ownerId,
       title,
       description,
       address: address || null,

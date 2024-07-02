@@ -29,7 +29,7 @@ export default function AdminPage({ user }: Props) {
       country: "Country Placeholder",
       latitude: 0,
       longitude: 0,
-      type: "Type Placeholder",
+      type: ["Type Placeholder"],
       features: ["Feature Placeholder"],
       bedrooms: 1,
       bathrooms: 1,

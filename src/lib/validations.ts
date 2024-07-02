@@ -5,6 +5,7 @@ export const updateProfileSchema = z.object({
 });
 
 export const createListingSchema = z.object({
+  ownerId: z.string().trim().min(1, "Cannot be empty"),
   title: z.string().trim().min(1, "Cannot be empty"),
   description: z.string().trim().min(1, "Cannot be empty"),
   address: z.string().optional().nullable(),
@@ -14,7 +15,7 @@ export const createListingSchema = z.object({
   country: z.string().min(1, "Cannot be empty"),
   latitude: z.number().optional().nullable(),
   longitude: z.number().optional().nullable(),
-  type: z.string().min(1, "Cannot be empty"),
+  type: z.array(z.string()).min(1, "Cannot be empty"),
   features: z.array(z.string()).min(1, "Cannot be empty"),
   bedrooms: z.number().int().min(1, "Cannot be empty"),
   bathrooms: z.number().int().min(1, "Cannot be empty"),
