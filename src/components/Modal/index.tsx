@@ -104,7 +104,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
                   <div className="flex justify-start w-20 mr-12">Loading...</div>
                 </div>
               ) : (
-                <div className="flex justify-center items-center w-40 gap-2">
+                <div className="flex justify-center items-center w-40 gap-2 mr-2">
                   <div className="flex justify-end w-20 mr-1">
                     {theme === "light" ? <Icons.google /> : <Icons.google_dark />}
                   </div>
@@ -126,7 +126,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
                   <div className="flex justify-start w-20 mr-12">Loading...</div>
                 </div>
               ) : (
-                <div className="flex justify-center items-center w-40 gap-2">
+                <div className="flex justify-center items-center w-40 gap-2 mr-2">
                   <div className="flex justify-end w-20 mr-1">
                     {theme === "light" ? <Icons.facebook /> : <Icons.facebook_dark />}
                   </div>
