@@ -97,7 +97,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
               disabled={isLoading !== null}
             >
               {isLoading === "google" ? (
-                <div className="flex justify-center items-center w-40 gap-1">
+                <div className="flex justify-center items-center w-40 gap-1 mr-2">
                   <div className="flex justify-end w-20 mr-1">
                     <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
                   </div>
@@ -119,7 +119,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
               disabled={isLoading !== null}
             >
               {isLoading === "facebook" ? (
-                <div className="flex justify-center items-center w-40 gap-1">
+                <div className="flex justify-center items-center w-40 gap-1 mr-2">
                   <div className="flex justify-end w-20 mr-1">
                     <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
                   </div>
