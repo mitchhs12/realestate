@@ -20,14 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        {/* <SessionProvider session={session}> */}
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
-          <Header />
-          {children}
-        </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
-        {/* </SessionProvider> */}
+        <SessionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
+            <Header />
+            {children}
+          </ThemeProvider>
+          <SpeedInsights />
+          <Analytics />
+        </SessionProvider>
       </body>
     </html>
   );

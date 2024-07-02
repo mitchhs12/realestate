@@ -1,12 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { signIn, signOut } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuSub,
@@ -18,13 +18,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { PersonIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 
 interface Props {
-  user: any;
+  openSignUpModal: () => void;
+  openLogInModal: () => void;
 }
 
-export function ProfileButton({ user }: Props) {
+export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
+  const session = useSession();
+  const user = session.data?.user;
+
+  const router = useRouter();
   const { setTheme } = useTheme();
 
   // Function to get initials from username
@@ -41,32 +48,46 @@ export function ProfileButton({ user }: Props) {
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <HamburgerMenuIcon className="mr-3 ml-1 h-4 w-4" />
-          {user ? (
-            <Avatar className="h-8 w-8">
+          {user && user.name && user.image ? (
+            <Avatar className="ml-1 h-8 w-8">
               <AvatarImage src={user.image} alt={user.name} />
               <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
             </Avatar>
+          ) : session.status !== "loading" ? (
+            <PersonIcon className="ml-2 h-7 w-7" />
           ) : (
-            <PersonIcon className="ml-1 h-7 w-7" />
+            <Skeleton className="ml-1 h-8 w-8 rounded-full" />
           )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
-        {user ? (
-          <DropdownMenuGroup>
-            <DropdownMenuItem>{user.name.split(" ")[0]}&apos;s Profile</DropdownMenuItem>
-          </DropdownMenuGroup>
+        {user && user.name ? (
+          <DropdownMenuLabel>{user.name.split(" ")[0]}&apos;s Profile</DropdownMenuLabel>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
-            <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => signIn()}>
+            <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => openLogInModal()}>
               Log in
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" onClick={() => signIn()}>
+            <DropdownMenuItem className="cursor-pointer" onClick={() => openSignUpModal()}>
               Sign up
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}
         <DropdownMenuSeparator />
+        {/* Admin Menu */}
+        {user?.role === "admin" && (
+          <DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              className="cursor-pointer"
+              onClick={() => {
+                router.push("/admin");
+              }}
+            >
+              Admin
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        )}
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Theme</DropdownMenuSubTrigger>
@@ -89,13 +110,24 @@ export function ProfileButton({ user }: Props) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem disabled>Support (coming soon)</DropdownMenuItem>
-        {user ? (
+
+        {user && (
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Button onClick={() => signOut()}>Log out</Button>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              className="cursor-pointer"
+              onClick={() => {
+                router.push("/settings");
+              }}
+            >
+              Settings
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="cursor-pointer" onClick={() => signOut({ callbackUrl: "/" })}>
+              LogOut
             </DropdownMenuItem>
           </DropdownMenuGroup>
-        ) : null}
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

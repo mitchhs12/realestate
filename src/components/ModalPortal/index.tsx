@@ -8,7 +8,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const Modals = ({ children, isOpen, onClose }: Props) => {
+export function ModalPortal({ children, isOpen, onClose }: Props) {
   const modalRootRef = useRef<HTMLDivElement | null>(null);
   const createdModalRoot = useRef(false);
   const modalContentRef = useRef<HTMLDivElement | null>(null);
@@ -60,6 +60,4 @@ export const Modals = ({ children, isOpen, onClose }: Props) => {
     </div>,
     modalRootRef.current
   );
-};
-
-export default Modals;
+}

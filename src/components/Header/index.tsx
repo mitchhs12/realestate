@@ -1,12 +1,29 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ProfileButton } from "@/components/ProfileButton";
 import { montserrat } from "@/app/fonts";
-import { auth } from "@/auth";
+import { ModalPortal } from "@/components/ModalPortal";
+import { Modal } from "@/components/Modal";
+import { useState } from "react";
 
-export default async function Header() {
-  const session = await auth();
-  const user = session?.user;
+export default function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openSignUpModal = () => {
+    setIsLogin(false);
+    setIsModalOpen(true);
+  };
+
+  const openLogInModal = () => {
+    setIsLogin(true);
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -25,11 +42,17 @@ export default async function Header() {
         </Link>
 
         <nav className="flex justify-between gap-3 items-center">
-          <ProfileButton user={user} />
+          <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
         </nav>
         {/* Bottom Line */}
         <div className="absolute bottom-0 left-0 right-0 divider z-0" />
       </header>
+
+      <div className="flex relative z-100">
+        <ModalPortal isOpen={isModalOpen} onClose={closeModal}>
+          <Modal isLogin={isLogin} setIsLogin={setIsLogin} />
+        </ModalPortal>
+      </div>
     </>
   );
 }

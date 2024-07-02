@@ -1,25 +1,60 @@
 "use server";
 
-import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { UpdateProfileValues, updateProfileSchema } from "@/lib/validations";
+import { CreateListingValues, createListingSchema } from "@/lib/validations";
+import { auth } from "@/auth";
 
-export async function updateProfile(values: UpdateProfileValues) {
+// Admin Page Actions
+
+export async function createListing(values: CreateListingValues) {
   const session = await auth();
+  const user = session?.user;
   const userId = session?.user?.id;
 
   if (!userId) {
     throw new Error("User not found");
   }
-  const { name } = updateProfileSchema.parse(values);
+  const {
+    title,
+    description,
+    address,
+    district,
+    city,
+    state,
+    country,
+    latitude,
+    longitude,
+    type,
+    features,
+    bedrooms,
+    bathrooms,
+    capacity,
+    photos,
+    price,
+    areaSqm,
+  } = createListingSchema.parse(values);
 
-  await prisma.user.update({
-    where: {
-      id: userId,
-    },
+  await prisma.home.create({
     data: {
-      name,
+      ownerId: userId,
+      title,
+      description,
+      address: address || null,
+      district: district || null,
+      city: city || null,
+      state: state || null,
+      country,
+      latitude: latitude || null,
+      longitude: longitude || null,
+      type,
+      features,
+      bedrooms,
+      bathrooms,
+      capacity,
+      photos,
+      price,
+      areaSqm,
     },
   });
 

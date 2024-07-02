@@ -1,9 +1,11 @@
 "use server";
 
-import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { UpdateProfileValues, updateProfileSchema } from "@/lib/validations";
+import { auth } from "@/auth";
+
+// Settings Page Actions
 
 export async function updateProfile(values: UpdateProfileValues) {
   const session = await auth();
