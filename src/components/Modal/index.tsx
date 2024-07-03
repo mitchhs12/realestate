@@ -33,7 +33,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
   const handleEmailSignIn = () => {
     if (validateEmail(email)) {
       setIsLoading("email");
-      signIn("resend", { email, redirectTo: "/" }).finally(() => setIsLoading(null));
+      signIn("resend", { email }).finally(() => setIsLoading(null));
     } else {
       setEmailError("Please enter a valid email address.");
     }
@@ -41,7 +41,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
 
   const handleSocialSignIn = (provider: string) => {
     setIsLoading(provider);
-    signIn(provider, { redirectTo: "/" }).finally(() => setIsLoading(null));
+    signIn(provider).finally(() => setIsLoading(null));
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
