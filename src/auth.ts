@@ -11,7 +11,6 @@ const providers: Provider[] = [
   Google,
   Facebook,
   Resend({
-    apiKey: process.env.RESEND_API_KEY,
     from: "no-reply@propertuna.com",
   }),
 ];
