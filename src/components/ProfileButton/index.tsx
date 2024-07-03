@@ -48,10 +48,13 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <HamburgerMenuIcon className="mr-3 ml-1 h-4 w-4" />
-          {user && user.name && user.image ? (
+          {user && user.name ? (
             <Avatar className="ml-1 h-8 w-8">
-              <AvatarImage src={user.image} alt={user.name} />
-              <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+              {user.image ? (
+                <AvatarImage src={user.image} alt={user.name} />
+              ) : (
+                <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+              )}
             </Avatar>
           ) : session.status !== "loading" ? (
             <PersonIcon className="ml-2 h-7 w-7" />
