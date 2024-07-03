@@ -47,25 +47,25 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
-          <HamburgerMenuIcon className="mr-3 ml-1 h-4 w-4" />
-          {user && user.name ? (
-            <Avatar className="ml-1 h-8 w-8">
+          <HamburgerMenuIcon className="mr-2 ml-1 h-4 w-4" />
+          {user && user.email ? (
+            <Avatar className="ml-1 h-6 w-6">
               {user.image ? (
-                <AvatarImage src={user.image} alt={user.name} />
+                <AvatarImage src={user.image} alt={user.name ? user.name : user.email} />
               ) : (
-                <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+                <AvatarFallback>{user.name ? getInitials(user.name) : user.email[0]}</AvatarFallback>
               )}
             </Avatar>
           ) : session.status !== "loading" ? (
-            <PersonIcon className="ml-2 h-7 w-7" />
+            <PersonIcon className="ml-1 h-6 w-6" />
           ) : (
-            <Skeleton className="ml-1 h-8 w-8 rounded-full" />
+            <Skeleton className="h-7 w-7 rounded-full" />
           )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
-        {user && user.name ? (
-          <DropdownMenuLabel>{user.name.split(" ")[0]}&apos;s Profile</DropdownMenuLabel>
+        {user ? (
+          <DropdownMenuLabel>{user.name ? user.name.split(" ")[0] : user.email}</DropdownMenuLabel>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
             <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => openLogInModal()}>

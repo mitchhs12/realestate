@@ -1,7 +1,11 @@
 import { z } from "zod";
 
-export const updateProfileSchema = z.object({
+export const updateNameSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
+});
+
+export const updateEmailSchema = z.object({
+  email: z.string().email("Invalid email").min(1, "Cannot be empty"),
 });
 
 export const createListingSchema = z.object({
@@ -25,5 +29,6 @@ export const createListingSchema = z.object({
   areaSqm: z.number().min(1, "Cannot be empty"),
 });
 
-export type UpdateProfileValues = z.infer<typeof updateProfileSchema>;
+export type UpdateNameValues = z.infer<typeof updateNameSchema>;
+export type UpdateEmailValues = z.infer<typeof updateEmailSchema>;
 export type CreateListingValues = z.infer<typeof createListingSchema>;

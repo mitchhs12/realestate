@@ -1,10 +1,10 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { updateProfile } from "./actions";
+import { updateName } from "./actions";
 import { useForm } from "react-hook-form";
 import { User } from "next-auth";
-import { UpdateProfileValues, updateProfileSchema } from "@/lib/validations";
+import { UpdateNameValues, updateNameSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormField, FormControl, FormItem, FormLabel, FormDescription, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -17,14 +17,14 @@ interface Props {
 export default function SettingsPage({ user }: Props) {
   const session = useSession();
 
-  const form = useForm<UpdateProfileValues>({
-    resolver: zodResolver(updateProfileSchema),
+  const form = useForm<UpdateNameValues>({
+    resolver: zodResolver(updateNameSchema),
     defaultValues: { name: user.name || "" },
   });
 
-  async function onSubmit(data: UpdateProfileValues) {
+  async function onSubmit(data: UpdateNameValues) {
     try {
-      await updateProfile(data);
+      await updateName(data);
       session.update();
     } catch (error) {
       console.log("error", error);
