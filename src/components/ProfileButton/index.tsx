@@ -65,7 +65,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
         {user ? (
-          <DropdownMenuLabel>{user.name ? user.name.split(" ")[0] : user.email}</DropdownMenuLabel>
+          <DropdownMenuLabel>{user.name ? `Hi ${user.name.split(" ")[0]}!` : user.email}</DropdownMenuLabel>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
             <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => openLogInModal()}>
