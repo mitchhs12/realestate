@@ -3,14 +3,15 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useState, useRef } from "react";
+import { useState, useRef, Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default function SearchBox() {
-  const [query, setQuery] = useState("");
+function SearchBoxContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("query");
+  const [query, setQuery] = useState(searchQuery || "");
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (e: any) => {
@@ -35,5 +36,13 @@ export default function SearchBox() {
       />
       <Button type="submit">Search</Button>
     </form>
+  );
+}
+
+export default function SearchBox() {
+  return (
+    <Suspense fallback={<Skeleton />}>
+      <SearchBoxContent />
+    </Suspense>
   );
 }
