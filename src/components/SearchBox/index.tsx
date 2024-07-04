@@ -127,13 +127,13 @@ export default function SearchBox() {
                   }}
                 />
               </PopoverTrigger>
-              <Button type="submit" disabled={loading} size="default">
+              <Button type="submit" disabled={loading} size="default" className="hidden md:flex">
                 <div className="flex items-center justify-center w-[50px]">
                   {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : "Search"}
                 </div>
               </Button>
             </div>
-            <div className="flex w-full h-[300px]">
+            <div className="flex w-full">
               <PopoverContent
                 ref={popoverRef}
                 onOpenAutoFocus={(e) => e.preventDefault()}

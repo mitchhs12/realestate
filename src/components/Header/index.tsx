@@ -41,7 +41,7 @@ export default function Header() {
               height={50}
               className="transition-transform duration-300 group-hover:rotate-6"
             />
-            <h1 className={`${montserrat.className} flex pl-4 text-3xl font-[500] `}>Propertuna</h1>
+            <h1 className={`${montserrat.className} hidden pl-4 text-3xl font-[500]`}>Propertuna</h1>
           </div>
         </Link>
 
