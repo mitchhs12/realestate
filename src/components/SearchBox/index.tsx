@@ -28,14 +28,14 @@ export default function SearchBox() {
   const [popoverOpen, setPopoverOpen] = useState(false); // State to control Popover open
   const debounceTimeout = useRef<number | null>(null); // Ref for debounce timeout
   const sessionTokenRef = useRef<string>(uuidv4()); // Ref for session token
-  const { query, updateQuery } = useContext(QueryContext);
+  const { query, setQuery } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
 
   const handleSearch = (searchParam: string | undefined) => {
     if (searchParam) {
-      console.log("queryb4navigation", query);
       router.push(`search?query=${encodeURIComponent(searchParam)}`);
       setPopoverOpen(false); // Close Popover on search
+      setQuery(searchParam);
     }
   };
 
@@ -100,58 +100,65 @@ export default function SearchBox() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <form
-        className="flex max-w-full items-top space-x-2"
+        className="flex w-full justify-center space-x-2 px-4"
         onSubmit={() => handleSearch(results[0].placePrediction.text.text)}
       >
-        <Popover open={popoverOpen}>
-          <PopoverTrigger asChild>
-            <div className="relative flex w-full">
-              <Input
-                ref={inputRef}
-                type="search"
-                placeholder={"Search Locations"}
-                className="bg-muted w-96"
-                value={query}
-                onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)} // Open Popover on mouse down if there are results
-                onChange={(e) => {
-                  updateQuery(e.target.value);
-                }}
-                onKeyDown={(e) => {
-                  !loading && e.key === "Enter" && handleSearch(query);
-                }}
-              />
+        <div className="flex flex-col w-full justify-center items-center">
+          <Popover open={popoverOpen}>
+            <div className="flex justify-center items-center w-[300px] sm:w-[400px] md:w-[600px] lg:w-[1000px] gap-x-2">
+              <PopoverTrigger asChild>
+                <Input
+                  ref={inputRef}
+                  type="search"
+                  placeholder={"Search Locations"}
+                  className="z-100 bg-popover"
+                  value={query}
+                  onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)} // Open Popover on mouse down if there are results
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                  }}
+                  onKeyDown={(e) => {
+                    if (!loading && e.key === "Enter") {
+                      e.preventDefault();
+                      handleSearch(results[0].placePrediction.text.text);
+                    }
+                  }}
+                />
+              </PopoverTrigger>
+              <Button type="submit" disabled={loading} size="default">
+                <div className="flex items-center justify-center w-[50px]">
+                  {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : "Search"}
+                </div>
+              </Button>
             </div>
-          </PopoverTrigger>
-          <PopoverContent ref={popoverRef} className="w-96 p-2" onOpenAutoFocus={(e) => e.preventDefault()}>
-            {loading && <div className="px-4 py-2">Loading...</div>}
-            {!loading && results.length === 0 && <div className="px-4 py-2">No results found.</div>}
-            {!loading && results.length > 0 && (
-              <div className="flex flex-col gap-2">
-                {results.map((entry: any, index) => (
-                  <div
-                    key={index}
-                    className="px-4 py-2 cursor-pointer hover:bg-muted rounded-md"
-                    onClick={() => {
-                      console.log("queryb4", query);
-                      router.push(`search?query=${encodeURIComponent(entry.placePrediction.text.text)}`);
-                      setPopoverOpen(false);
-                    }}
-                  >
-                    <span>{entry.placePrediction.text.text}</span>
+            <div className="flex w-full h-[300px]">
+              <PopoverContent
+                ref={popoverRef}
+                onOpenAutoFocus={(e) => e.preventDefault()}
+                className="flex w-[206px] sm:w-[306px] md:w-[506px] lg:w-[906px]"
+              >
+                {loading && <div>Loading...</div>}
+                {!loading && results.length === 0 && <div>No results found.</div>}
+                {!loading && results.length > 0 && (
+                  <div>
+                    {results.map((entry: any, index) => (
+                      <div
+                        key={index}
+                        className="px-2 py-2 cursor-pointer hover:bg-muted rounded-md"
+                        onClick={() => {
+                          handleSearch(entry.placePrediction.text.text);
+                        }}
+                      >
+                        <span>{entry.placePrediction.text.text}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
-          </PopoverContent>
-        </Popover>
-        <div>
-          <Button type="submit" disabled={loading} size="default">
-            <div className="flex items-center justify-center w-[50px]">
-              {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : "Search"}
+                )}
+              </PopoverContent>
             </div>
-          </Button>
+          </Popover>
         </div>
       </form>
     </div>

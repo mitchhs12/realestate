@@ -3,7 +3,7 @@ import SearchBox from "@/components/SearchBox";
 
 export default function Hero() {
   return (
-    <div className="relative flex w-full h-[30vh]">
+    <div className="relative h-[30vh] flex w-full">
       <Image
         src="/house.jpg"
         alt="background"
@@ -12,9 +12,11 @@ export default function Hero() {
         quality={100}
         className="-z-10 opacity-30"
       />
-      <div className="z-10 flex space-y-10 flex-col justify-center items-center h-full w-full">
-        <h1 className="text-3xl font-bold">Welcome to Propertuna!!</h1>
-        <SearchBox />
+      <div className="z-10 flex flex-col w-full justify-center items-center space-y-10">
+        <h1 className="text-3xl font-bold whitespace-nowrap">Welcome to Propertuna</h1>
+        <div className="flex justify-center items-center w-full">
+          <SearchBox />
+        </div>
       </div>
     </div>
   );
