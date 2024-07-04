@@ -8,6 +8,8 @@ import { Modal } from "@/components/Modal";
 import { useState } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
+import Logo from "@/components/ui/logo";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const pathname = usePathname();
@@ -40,24 +42,31 @@ export default function Header() {
       >
         <div className={`${isSearchPage ? "hidden xs:flex" : "flex md:flex"}`}>
           <Link href="/">
-            <div
-              className={`flex justify-center items-center gap-3 text-primary/90 hover:text-primary/80 dark:text-foreground/90 dark:hover:text-foreground/80 hover:cursor-pointer group`}
+            <Button
+              size={"largeIcon"}
+              variant="outline"
+              className={`flex text-[#2dac5c] hover:text-primary/80 dark:text-foreground/90 dark:hover:text-foreground/80 hover:cursor-pointer group`}
             >
-              <Image
-                src={"./tuna.svg"}
+              <div className="flex justify-center items-center gap-1">
+                <div className="flex justify-center items-center">
+                  <Logo width={"38"} height={"38"} />
+                </div>
+                {/* <Image
+                src={Logo}
                 alt="Logo"
                 width={50}
                 height={50}
                 className={`transition-transform duration-300 group-hover:rotate-6`}
-              />
-              <h1
-                className={`${poppins.className} ${
-                  isSearchPage ? "hidden 2xl:flex" : "flex"
-                } text-3xl font-extralight text-center`}
-              >
-                viva ideal
-              </h1>
-            </div>
+              /> */}
+                <h1
+                  className={`${poppins.className} ${
+                    isSearchPage ? "hidden 2xl:flex" : "flex"
+                  } text-2xl font-light pr-2`}
+                >
+                  viva ideal
+                </h1>
+              </div>
+            </Button>
           </Link>
         </div>
 

@@ -107,7 +107,7 @@ export default function SearchBox() {
       >
         <div className="flex flex-col w-full justify-center items-center">
           <Popover open={popoverOpen}>
-            <div className="flex justify-center items-center w-[300px] sm:w-[400px] md:w-[540px] lg:w-[800px] xl:w-[1000px] gap-x-2">
+            <div className="flex justify-center items-center w-[286px] sm:w-[400px] md:w-[540px] lg:w-[800px] xl:w-[1000px] gap-x-2">
               <PopoverTrigger asChild>
                 <Input
                   ref={inputRef}
@@ -137,7 +137,7 @@ export default function SearchBox() {
               <PopoverContent
                 ref={popoverRef}
                 onOpenAutoFocus={(e) => e.preventDefault()}
-                className="w-[300px] sm:w-[400px] md:w-[540px] lg:w-[710px] xl:w-[910px]"
+                className="w-[286px] sm:w-[400px] md:w-[540px] lg:w-[710px] xl:w-[910px]"
               >
                 {loading && <div>Loading...</div>}
                 {!loading && results.length === 0 && <div>No results found.</div>}
