@@ -137,7 +137,7 @@ export default function SearchBox() {
               <PopoverContent
                 ref={popoverRef}
                 onOpenAutoFocus={(e) => e.preventDefault()}
-                className="flex w-[206px] sm:w-[306px] md:w-[506px] lg:w-[906px]"
+                className="w-[300px] sm:w-[400px] md:w-[510px] lg:w-[910px]"
               >
                 {loading && <div>Loading...</div>}
                 {!loading && results.length === 0 && <div>No results found.</div>}
