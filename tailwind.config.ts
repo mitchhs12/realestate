@@ -15,6 +15,11 @@ const config = {
     extend: {
       fontFamily: {
         montserrat: ["montserrat"],
+        comfortaa: ["comfortaa"],
+        poppins: ["poppins"],
+      },
+      screens: {
+        xs: "510px",
       },
       colors: {
         border: "hsl(var(--border))",

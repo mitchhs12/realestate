@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ProfileButton } from "@/components/ProfileButton";
-import { montserrat } from "@/app/fonts";
+import { montserrat, poppins } from "@/app/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
 import { useState } from "react";
@@ -14,6 +14,8 @@ export default function Header() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+
+  const isSearchPage = pathname === "/search";
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -31,31 +33,41 @@ export default function Header() {
 
   return (
     <>
-      <header className={`relative flex justify-between items-center h-[80px] px-4 z-[10]`}>
-        <Link href="/">
-          <div className="flex justify-center items-center hover:text-primary text-secondary-foreground hover:cursor-pointer group">
-            <Image
-              src={"./tuna.svg"}
-              alt="Logo"
-              width={50}
-              height={50}
-              className="transition-transform duration-300 group-hover:rotate-6"
-            />
-            <h1 className={`${montserrat.className} hidden md:flex pl-4 text-3xl font-[500]`}>Viva Ideal</h1>
-          </div>
-        </Link>
+      <header className={`relative flex justify-center xs:justify-between items-center h-[80px] px-6 z-[10]`}>
+        <div className={`${isSearchPage ? "hidden xs:flex" : "flex md:flex"}`}>
+          <Link href="/">
+            <div
+              className={`flex justify-center items-center gap-3 text-primary/90 hover:text-primary/80 hover:cursor-pointer group`}
+            >
+              <Image
+                src={"./tuna.svg"}
+                alt="Logo"
+                width={50}
+                height={50}
+                className={`transition-transform duration-300 group-hover:rotate-6`}
+              />
+              <h1
+                className={`${poppins.className} ${
+                  isSearchPage ? "hidden 2xl:flex" : "flex"
+                } text-3xl font-extralight text-center`}
+              >
+                viva ideal
+              </h1>
+            </div>
+          </Link>
+        </div>
 
-        {pathname === "/search" && (
-          <div className="flex">
-            <SearchBox />
-          </div>
-        )}
+        <div className="flex justify-center">
+          {isSearchPage && (
+            <div className="flex">
+              <SearchBox />
+            </div>
+          )}
+        </div>
 
-        <div className="flex justify-between gap-3 items-center">
+        <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
           <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
         </div>
-        {/* Bottom Line */}
-        <div className="absolute bottom-0 left-0 right-0 divider z-0" />
       </header>
 
       <div className="flex relative z-100">

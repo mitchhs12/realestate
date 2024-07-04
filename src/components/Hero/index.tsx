@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
-import { montserrat } from "@/app/fonts";
+import { poppins, montserrat } from "@/app/fonts";
 
 export default function Hero() {
   return (
@@ -14,7 +14,9 @@ export default function Hero() {
         className="-z-10 opacity-30"
       />
       <div className="z-10 flex flex-col w-full justify-center items-center space-y-10">
-        <h1 className={`${montserrat.className} text-3xl font-bold whitespace-nowrap`}>Viva Ideal</h1>
+        <h1 className={`${poppins.className} text-center text-2xl md:text-3xl lg:text-3xl font-light tracking-wider`}>
+          Find your dream home.
+        </h1>
         <div className="flex justify-center items-center w-full">
           <SearchBox />
         </div>

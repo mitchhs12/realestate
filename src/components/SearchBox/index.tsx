@@ -107,7 +107,7 @@ export default function SearchBox() {
       >
         <div className="flex flex-col w-full justify-center items-center">
           <Popover open={popoverOpen}>
-            <div className="flex justify-center items-center w-[300px] sm:w-[400px] md:w-[600px] lg:w-[1000px] gap-x-2">
+            <div className="flex justify-center items-center w-[300px] sm:w-[400px] md:w-[540px] lg:w-[800px] xl:w-[1000px] gap-x-2">
               <PopoverTrigger asChild>
                 <Input
                   ref={inputRef}
@@ -127,8 +127,8 @@ export default function SearchBox() {
                   }}
                 />
               </PopoverTrigger>
-              <Button type="submit" disabled={loading} size="default" className="hidden md:flex">
-                <div className="flex items-center justify-center w-[50px]">
+              <Button variant="default" type="submit" disabled={loading} size="default" className="hidden lg:flex">
+                <div className="hidden sm:flex items-center justify-center w-[50px]">
                   {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : "Search"}
                 </div>
               </Button>
@@ -137,7 +137,7 @@ export default function SearchBox() {
               <PopoverContent
                 ref={popoverRef}
                 onOpenAutoFocus={(e) => e.preventDefault()}
-                className="w-[300px] sm:w-[400px] md:w-[510px] lg:w-[910px]"
+                className="w-[300px] sm:w-[400px] md:w-[540px] lg:w-[710px] xl:w-[910px]"
               >
                 {loading && <div>Loading...</div>}
                 {!loading && results.length === 0 && <div>No results found.</div>}
