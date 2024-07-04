@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
+import { QueryContextProvider } from "@/context/QueryContext";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
@@ -22,8 +23,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
-            <Header />
-            {children}
+            <QueryContextProvider>
+              <Header />
+              {children}
+            </QueryContextProvider>
           </ThemeProvider>
           <SpeedInsights />
           <Analytics />
