@@ -11,7 +11,7 @@ export default function Hero() {
         fill={true}
         objectFit="cover"
         quality={100}
-        className="-z-10 opacity-30"
+        className="-z-10 opacity-30 dark:opacity-20"
       />
       <div className="z-10 flex flex-col w-full justify-center items-center space-y-10">
         <h1 className={`${poppins.className} text-center text-2xl md:text-3xl lg:text-3xl font-light tracking-wider`}>

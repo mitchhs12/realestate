@@ -33,11 +33,15 @@ export default function Header() {
 
   return (
     <>
-      <header className={`relative flex justify-center xs:justify-between items-center h-[80px] px-6 z-[10]`}>
+      <header
+        className={`relative flex ${
+          isSearchPage ? "justify-center" : "justify-between"
+        } xs:justify-between items-center h-[80px] px-6 z-[10]`}
+      >
         <div className={`${isSearchPage ? "hidden xs:flex" : "flex md:flex"}`}>
           <Link href="/">
             <div
-              className={`flex justify-center items-center gap-3 text-primary/90 hover:text-primary/80 hover:cursor-pointer group`}
+              className={`flex justify-center items-center gap-3 text-primary/90 hover:text-primary/80 dark:text-foreground/90 dark:hover:text-foreground/80 hover:cursor-pointer group`}
             >
               <Image
                 src={"./tuna.svg"}
