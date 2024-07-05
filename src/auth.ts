@@ -11,7 +11,7 @@ const providers: Provider[] = [
   Google,
   Facebook,
   Resend({
-    from: "mitchell@vivaideal.com",
+    from: "alicia@vivaideal.com",
   }),
 ];
 
@@ -26,7 +26,7 @@ export const providerMap = providers.map((provider) => {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   theme: {
-    logo: "/tuna.svg",
+    logo: "/logo-background.svg",
     colorScheme: "auto",
   },
   adapter: PrismaAdapter(prisma) as Adapter,
