@@ -10,9 +10,12 @@ import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 export default function Header() {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
+  const themeBool = resolvedTheme === "dark" ? true : false;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -49,7 +52,7 @@ export default function Header() {
             >
               <div className="flex justify-center items-center gap-1">
                 <div className="flex justify-center items-center">
-                  <Logo width={"38"} height={"38"} />
+                  <Logo width={"38"} height={"38"} dark={themeBool} />
                 </div>
                 {/* <Image
                 src={Logo}
