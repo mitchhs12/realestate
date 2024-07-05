@@ -26,7 +26,7 @@ export const providerMap = providers.map((provider) => {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   theme: {
-    logo: "/logo-background.svg",
+    logo: "/logo-text.svg",
     colorScheme: "auto",
   },
   adapter: PrismaAdapter(prisma) as Adapter,
