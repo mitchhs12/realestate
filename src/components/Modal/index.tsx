@@ -4,21 +4,41 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Icons } from "@/components/icons";
 import { useTheme } from "next-themes";
 
 interface Props {
-  isLogin: boolean;
-  setIsLogin: (value: boolean) => void;
+  handleLogin?: boolean;
+  setHandleLogin?: (value: boolean) => void;
 }
 
-export function Modal({ isLogin, setIsLogin }: Props) {
+export function Modal({ handleLogin, setHandleLogin }: Props) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const { resolvedTheme: theme } = useTheme();
+  const [isLogin, setIsLogin] = useState(handleLogin);
+
+  useEffect(() => {
+    if (!handleLogin) {
+      setIsLogin(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isLogin !== handleLogin) {
+      setIsLogin(handleLogin);
+    }
+  }, [handleLogin]);
+
+  useEffect(() => {
+    // Update the parent `handleLogin` state only if it differs
+    if (setHandleLogin && isLogin && handleLogin !== isLogin) {
+      setHandleLogin(isLogin);
+    }
+  }, [isLogin]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -54,7 +74,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
     <Card className="mx-auto max-w-sm" onKeyDown={handleKeyPress}>
       <CardHeader>
         <CardTitle className="text-2xl font-semibold">{isLogin ? "Welcome back" : "Sign up"}</CardTitle>
-        <CardDescription>Enter your email below to {isLogin ? "log in to your account." : "sign up!"}</CardDescription>
+        <CardDescription>Enter your email below to {isLogin ? "log in." : "sign up!"}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
@@ -108,7 +128,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
                   <div className="flex justify-end w-20 mr-1">
                     {theme === "light" ? <Icons.google /> : <Icons.google_dark />}
                   </div>
-                  <div className="flex justify-start w-20 mr-10">{isLogin ? "Log in" : "Sign up"} with Google</div>
+                  <div className="flex justify-start w-20 mr-16">{isLogin ? "Log in" : "Sign up"} with Google</div>
                 </div>
               )}
             </Button>
@@ -130,7 +150,7 @@ export function Modal({ isLogin, setIsLogin }: Props) {
                   <div className="flex justify-end w-20 mr-1">
                     {theme === "light" ? <Icons.facebook /> : <Icons.facebook_dark />}
                   </div>
-                  <div className="flex justify-start w-20 mr-10">
+                  <div className="flex justify-start w-20 mr-16">
                     {isLogin ? "Log in with Facebook" : "Sign up with Facebook"}
                   </div>
                 </div>
@@ -139,9 +159,9 @@ export function Modal({ isLogin, setIsLogin }: Props) {
           </div>
         </div>
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
+          {isLogin ? "Don't have an account?" : "Already have an account?"}
           <Button variant="link" onClick={() => setIsLogin(!isLogin)}>
-            Sign up
+            {isLogin ? "Sign up" : "Log in"}
           </Button>
         </div>
       </CardContent>

@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 interface Props {
   children: React.ReactNode;
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export function ModalPortal({ children, isOpen, onClose }: Props) {
@@ -24,7 +24,7 @@ export function ModalPortal({ children, isOpen, onClose }: Props) {
     modalRootRef.current = modalRoot as HTMLDivElement; // Asserting type to HTMLDivElement
 
     return () => {
-      if (modalRootRef.current && modalRootRef.current.parentNode === document.body) {
+      if (createdModalRoot.current && modalRootRef.current) {
         document.body.removeChild(modalRootRef.current);
       }
     };
@@ -32,7 +32,7 @@ export function ModalPortal({ children, isOpen, onClose }: Props) {
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (modalContentRef.current && !modalContentRef.current.contains(event.target as Node)) {
+      if (modalContentRef.current && !modalContentRef.current.contains(event.target as Node) && onClose) {
         onClose();
       }
     },

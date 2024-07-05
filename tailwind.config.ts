@@ -18,6 +18,9 @@ const config = {
         comfortaa: ["comfortaa"],
         poppins: ["poppins"],
       },
+      height: {
+        "screen-minus-header": "calc(100vh - 86px)",
+      },
       screens: {
         xs: "510px",
       },

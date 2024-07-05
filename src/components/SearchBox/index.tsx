@@ -42,12 +42,13 @@ export default function SearchBox() {
   useEffect(() => {
     if (query === initialQueryRef.current) return;
 
-    console.log("after navigation", query);
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
     }
 
     if (query) {
+      setLoading(true);
+
       debounceTimeout.current = window.setTimeout(() => {
         fetchPlaces(query, sessionTokenRef.current);
       }, 300); // Debounce fetching places
@@ -82,7 +83,6 @@ export default function SearchBox() {
   }, []);
 
   const fetchPlaces = async (query: string, sessionToken: string) => {
-    setLoading(true);
     try {
       const response = await fetch(`/api/places?query=${encodeURIComponent(query)}&sessionToken=${sessionToken}`);
       const results = await response.json();
