@@ -1,4 +1,5 @@
 "use client";
+
 import { User } from "next-auth";
 import { useContext, useEffect } from "react";
 import { SellContext } from "@/context/SellContext";
@@ -10,7 +11,7 @@ interface Props {
   stepPercentage: number[];
 }
 
-export default function Categories({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function BreakPage({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
 
   useEffect(() => {
@@ -18,6 +19,5 @@ export default function Categories({ user, sellFlatIndex, sellFlowIndices, stepP
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
   }, []);
-
-  return <div>Categories</div>;
+  return <div>Step {sellFlowIndices.outerIndex + 1}.</div>;
 }

@@ -3,6 +3,7 @@ import SellFlowPage from "./SellFlowPage";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
+import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
   title: "Sell",
@@ -19,5 +20,15 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  return <SellFlowPage user={user} />;
+  const { array, innerIndex, outerIndex } = await getStepData("/sell");
+  const sellFlatIndex = await getSellFlowIndex("/sell");
+
+  return (
+    <SellFlowPage
+      user={user}
+      sellFlowIndices={{ innerIndex, outerIndex }}
+      sellFlatIndex={sellFlatIndex}
+      stepPercentage={array}
+    />
+  );
 }

@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import Rooms from "./Rooms";
+import BreakPage from "./BreakPage";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
-  title: "Rooms",
+  title: "BreakPage",
 };
 
 export default async function Page() {
@@ -20,11 +20,11 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  const { array, innerIndex, outerIndex } = await getStepData("/sell/rooms");
-  const sellFlatIndex = await getSellFlowIndex("/sell/rooms");
+  const { array, innerIndex, outerIndex } = await getStepData("/sell/breakpage");
+  const sellFlatIndex = await getSellFlowIndex("/sell/breakpage");
 
   return (
-    <Rooms
+    <BreakPage
       user={user}
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
