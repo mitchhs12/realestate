@@ -27,6 +27,7 @@ export const createListingSchema = z.object({
   photos: z.array(z.string()).min(1, "Cannot be empty"),
   price: z.number().min(1, "Cannot be empty"),
   areaSqm: z.number().min(1, "Cannot be empty"),
+  listingFlowStep: z.number().min(0, "Cannot be empty"),
 });
 
 export type UpdateNameValues = z.infer<typeof updateNameSchema>;

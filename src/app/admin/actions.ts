@@ -34,6 +34,7 @@ export async function createListing(values: CreateListingValues) {
     photos,
     price,
     areaSqm,
+    listingFlowStep,
   } = createListingSchema.parse(values);
 
   await prisma.home.create({
@@ -56,6 +57,7 @@ export async function createListing(values: CreateListingValues) {
       photos,
       price,
       areaSqm,
+      listingFlowStep,
     },
   });
 
