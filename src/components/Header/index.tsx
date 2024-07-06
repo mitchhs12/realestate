@@ -43,7 +43,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`relative flex ${
+        className={`sticky top-0 flex ${
           isSellPage ? "justify-end" : "justify-center shadow-lg xs:justify-between"
         } items-center h-[86px] z-[10] px-6`}
       >
