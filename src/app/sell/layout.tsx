@@ -12,13 +12,9 @@ export default function SellFlowLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <div className="flex flex-col min-h-screen-minus-header-footer">
-        <main className="flex-grow overflow-auto">{children}</main>
-      </div>
-      <section className="progress-section w-full">
-        <ProgressBar steps={sellSteps} />
-      </section>
-    </>
+    <div className="flex flex-col h-screen-minus-header justify-between w-full">
+      <main className="flex-grow border-2 border-green-500 overflow-auto">{children}</main>
+      <ProgressBar steps={sellSteps} />
+    </div>
   );
 }
