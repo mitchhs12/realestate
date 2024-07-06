@@ -12,10 +12,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 export default function Header() {
-  const session = useSession();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -26,7 +24,7 @@ export default function Header() {
   const [handleLogin, setHandleLogin] = useState(false);
 
   const isSearchPage = pathname === "/search";
-  const isSellPage = pathname === "/sell";
+  const isSellPage = pathname.includes("/sell");
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -46,10 +44,10 @@ export default function Header() {
     <>
       <header
         className={`relative flex ${
-          !isSellPage && "justify-center"
-        } xs:justify-between items-center h-[86px] px-6 z-[10]`}
+          isSellPage ? "justify-end" : "justify-center shadow-lg xs:justify-between"
+        } items-center h-[86px] z-[10] px-6`}
       >
-        {!isSellPage ? (
+        {!isSellPage && (
           <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex"}`}>
             <Link href="/">
               <Button
@@ -72,17 +70,6 @@ export default function Header() {
               </Button>
             </Link>
           </div>
-        ) : (
-          <div className="lg:hidden gap-6 justify-end">
-            <Button
-              variant="outline"
-              onClick={() => {
-                router.push("/");
-              }}
-            >
-              Exit
-            </Button>
-          </div>
         )}
 
         {isSearchPage && (
@@ -100,7 +87,7 @@ export default function Header() {
           </div>
         )}
 
-        {!isSellPage ? (
+        {!isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3"} gap-6 justify-end`}>
             {!isSearchPage && (
               <Button className="hidden xs:flex gap-2 items-center" onClick={() => router.push("/sell")}>
@@ -113,10 +100,18 @@ export default function Header() {
               <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
             </div>
           </div>
-        ) : (
-          <div className="hidden lg:flex gap-6 justify-end">
-            <Button variant="outline">Exit</Button>
-          </div>
+        )}
+
+        {isSellPage && (
+          <Button
+            variant="outline"
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            <span className="sm:hidden">Exit</span>
+            <span className="hidden sm:flex">Save and exit</span>
+          </Button>
         )}
       </header>
 

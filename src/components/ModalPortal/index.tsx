@@ -24,7 +24,7 @@ export function ModalPortal({ children, isOpen, onClose }: Props) {
     modalRootRef.current = modalRoot as HTMLDivElement; // Asserting type to HTMLDivElement
 
     return () => {
-      if (createdModalRoot.current && modalRootRef.current) {
+      if (modalRootRef.current && modalRootRef.current.parentNode === document.body) {
         document.body.removeChild(modalRootRef.current);
       }
     };

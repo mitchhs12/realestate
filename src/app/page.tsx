@@ -1,11 +1,15 @@
 import Hero from "@/components/Hero";
-import Card from "@/components/Card";
+import Footer from "@/components/Footer";
 
 export default async function Home() {
   return (
-    <main className="flex flex-col items-center justify-between">
-      <Hero />
-      <Card />
-    </main>
+    <div className="flex flex-col justify-between h-screen-minus-header items-center">
+      <main className="w-full">
+        <Hero />
+      </main>
+      <footer className="flex justify-center items-center p-6 w-full bg-muted">
+        <Footer />
+      </footer>
+    </div>
   );
 }
