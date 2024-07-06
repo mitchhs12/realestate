@@ -22,6 +22,10 @@ const config = {
         "screen-minus-header": "calc(100vh - 86px)",
         "screen-minus-header-footer": "calc(100vh - 86px - 100px)",
       },
+      minHeight: {
+        "screen-minus-header": "calc(100vh - 86px)",
+        "screen-minus-header-footer": "calc(100vh - 86px - 100px)",
+      },
       screens: {
         xs: "510px",
       },

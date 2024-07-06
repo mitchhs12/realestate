@@ -13,10 +13,10 @@ export default function SellFlowLayout({
 }>) {
   return (
     <>
-      <div className="flex flex-col h-screen-minus-header-footer border-2 border-blue-500">
-        <main className="flex h-screen-minus-header-footer overflow-auto">{children}</main>
+      <div className="flex flex-col min-h-screen-minus-header-footer">
+        <main className="flex-grow overflow-auto">{children}</main>
       </div>
-      <section className="w-full border-2 border-green-500">
+      <section className="progress-section w-full">
         <ProgressBar steps={sellSteps} />
       </section>
     </>

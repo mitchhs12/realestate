@@ -73,6 +73,10 @@
   animation: fadeInUp 0.3s ease-out;
 }
 
+section.progress-section {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 @layer base {
   * {
     @apply border-border;
