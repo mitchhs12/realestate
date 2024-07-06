@@ -14,63 +14,72 @@ export default function ProgressBar({ steps }: ProgressBarProps) {
   const [outerIndex, setOuterIndex] = useState(0);
   const [innerIndex, setInnerIndex] = useState(0);
   const [nextStep, setNextStep] = useState(steps[0][0]);
-  const [progress, setProgress] = useState(30);
+  const [progress, setProgress] = useState(0);
 
   // Initialize progress for each outer index
   const [progressArray, setProgressArray] = useState(() => Array(steps.length).fill(0));
 
-  console.log("progress", progress);
-
   useEffect(() => {
-    // Calculate progress for the current step group
-    const currentProgress = ((innerIndex + 1) / steps[outerIndex].length) * 100;
-
-    // Update the progress array for the current outer index
-    setProgressArray((prevProgressArray) => {
-      const newProgressArray = [...prevProgressArray];
-      newProgressArray[outerIndex] = currentProgress;
-      return newProgressArray;
-    });
-
-    // Calculate the next step
-    const nextStep = steps[outerIndex][innerIndex];
-    if (nextStep) {
-      router.prefetch(nextStep);
+    try {
+      if (outerIndex !== 0 || innerIndex !== 0) {
+        setProgress((innerIndex / steps[outerIndex].length) * 100);
+      }
+      const nextStep = steps[outerIndex][innerIndex];
+      setNextStep(nextStep);
+    } catch (error) {
+      setProgress(0);
+      setNextStep("/");
     }
+    router.prefetch(nextStep);
   }, [innerIndex, outerIndex]);
 
-  const handleNext = () => {
-    if (innerIndex < steps[outerIndex].length - 1) {
-      setInnerIndex(innerIndex + 1);
-      console.log("trying to push to", nextStep);
-      router.push(nextStep);
-    } else if (outerIndex < steps.length - 1) {
-      setOuterIndex(outerIndex + 1);
-      setInnerIndex(0);
-      console.log("trying to push to", nextStep);
-      router.push(nextStep);
+  useEffect(() => {
+    const newProgressArray = [...progressArray];
+    if (progress === 0 && outerIndex > 0) {
+      newProgressArray[outerIndex - 1] = 100;
+    } else {
+      newProgressArray[outerIndex] = progress;
     }
+    setProgressArray(newProgressArray);
+  }, [progress]);
+
+  const handleNext = () => {
+    const newInnerIndex = innerIndex + 1;
+    let nextPage = nextStep;
+    try {
+      if (newInnerIndex <= steps[outerIndex].length - 1) {
+        setInnerIndex(innerIndex + 1);
+      } else if (outerIndex <= steps.length - 1) {
+        setOuterIndex(outerIndex + 1);
+        setInnerIndex(0);
+      }
+    } catch (error) {
+      // we're done
+      nextPage = "/";
+    }
+    router.push(nextPage);
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full gap-y-4 h-[100px]">
-      <div className="flex gap-1 w-full items-center">
-        {steps.map(() => {
-          return (
-            <div className="flex items-center w-full">
-              <Progress value={progress} />
-            </div>
-          );
-        })}
+    <div className="flex flex-col justify-start gap-6 items-center w-full h-[100px]">
+      <div className="flex justify-between items-center gap-1 w-full">
+        {steps.map((_, idx) => (
+          <div key={idx} className="flex justify-center items-center w-full">
+            <Progress value={progressArray[idx]} />
+          </div>
+        ))}
       </div>
-      <div className="flex px-4 w-full">
-        <Button className="flex justify-start" variant="outline" onClick={() => router.back()}>
-          Back
-        </Button>
-
-        <Button className="flex justify-end" onClick={handleNext}>
-          Next
-        </Button>
+      <div className="flex justify-between w-full px-8">
+        <div className="flex justify-start">
+          <Button variant="outline" size="lg" onClick={() => router.back()}>
+            Back
+          </Button>
+        </div>
+        <div className="flex justify-end">
+          <Button variant="default" size="lg" onClick={handleNext}>
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

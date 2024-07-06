@@ -62,7 +62,7 @@ export const Icons = {
   facebook: (props: IconProps) => (
     <svg
       clip-rule="evenodd"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       width="39"
       height="39"
       image-rendering="optimizeQuality"
@@ -72,8 +72,8 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="9983.6" x2="9983.6" y1="18249.39" y2="25150.62">
-        <stop offset="0" stop-color="#00b2ff" />
-        <stop offset="1" stop-color="#006aff" />
+        <stop offset="0" stopColor="#00b2ff" />
+        <stop offset="1" stopColor="#006aff" />
       </linearGradient>
       <path
         d="M9983.6 18309.17c1811.95 0 3280.83 1468.88 3280.83 3280.83s-1468.88 3280.83-3280.83 3280.83S6702.77 23401.95 6702.77 21590s1468.88-3280.83 3280.83-3280.83z"
@@ -82,14 +82,14 @@ export const Icons = {
       <path
         d="M10409.89 24843.29v-2534.17h714.43l94.7-891.91h-809.13l1.2-446.44c0-232.63 22.1-357.22 356.24-357.22h446.68v-892.06h-714.59c-858.35 0-1160.42 432.65-1160.42 1160.34v535.45h-535.07v891.99H9339v2498.09c208.45 41.53 423.95 63.47 644.6 63.47a3310.9 3310.9 0 0 0 426.29-27.54z"
         fill="#fff"
-        fill-rule="nonzero"
+        fillRule="nonzero"
       />
     </svg>
   ),
   facebook_dark: (props: IconProps) => (
     <svg
       clip-rule="evenodd"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       width="39"
       height="39"
       image-rendering="optimizeQuality"
@@ -105,7 +105,7 @@ export const Icons = {
       <path
         d="M10409.89 24843.29v-2534.17h714.43l94.7-891.91h-809.13l1.2-446.44c0-232.63 22.1-357.22 356.24-357.22h446.68v-892.06h-714.59c-858.35 0-1160.42 432.65-1160.42 1160.34v535.45h-535.07v891.99H9339v2498.09c208.45 41.53 423.95 63.47 644.6 63.47a3310.9 3310.9 0 0 0 426.29-27.54z"
         fill="#006aff"
-        fill-rule="nonzero"
+        fillRule="nonzero"
       />
     </svg>
   ),
@@ -118,7 +118,7 @@ export const Icons = {
       <path
         d="M13.734 0.684168C13.2611 0.240904 12.6404 0 12 0C11.3596 0 10.7389 0.240904 10.266 0.674532L0 10.7251L1.36946 12.0549L2.10837 11.3321V19.9661C2.10837 20.4094 2.29557 20.8334 2.61084 21.1418C2.92611 21.4501 3.35961 21.6332 3.81281 21.6332H20.1773C20.6305 21.6332 21.064 21.4598 21.3892 21.1418C21.7143 20.8238 21.8916 20.3998 21.8916 19.9565V11.3032L22.6305 12.0259L24 10.7251L13.734 0.684168ZM4.03941 19.7542V9.4049L11.6355 1.97542C11.6847 1.92723 11.734 1.88869 11.803 1.86942C11.8621 1.84051 11.931 1.83087 12 1.83087H12.0099C12.0788 1.83087 12.1478 1.84051 12.2069 1.86942C12.266 1.89833 12.3251 1.92723 12.3744 1.97542L19.9704 9.4049V19.7542H4.03941Z"
         fill="currentColor"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       ></path>
     </svg>
   ),

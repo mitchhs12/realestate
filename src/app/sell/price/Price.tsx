@@ -4,6 +4,6 @@ interface Props {
   user: User;
 }
 
-export default function Categories({ user }: Props) {
-  return <div>Categories</div>;
+export default function Price({ user }: Props) {
+  return <div>Price</div>;
 }

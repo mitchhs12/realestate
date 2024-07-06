@@ -51,8 +51,8 @@ const Logo = ({
         x2="509.065"
         y2="400.91287"
       >
-        <stop offset="0" stop-color={dark ? darkGradientStartColor : gradientStartColor} />
-        <stop offset="1" stop-color={dark ? darkGradientEndColor : gradientEndColor} />
+        <stop offset="0" stopColor={dark ? darkGradientStartColor : gradientStartColor} />
+        <stop offset="1" stopColor={dark ? darkGradientEndColor : gradientEndColor} />
       </linearGradient>
     </defs>
     <path
