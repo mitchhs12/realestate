@@ -79,7 +79,12 @@ export default function Header() {
         )}
         {!isSearchPage && !isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3"} xs:hidden justify-center`}>
-            <Button className="gap-2 items-center">
+            <Button
+              className="gap-2 items-center"
+              onClick={() => {
+                router.push("/sell");
+              }}
+            >
               <Icons.sell_home />
               <span className="xs:hidden lg:hidden">Sell</span>
               <span className="hidden xs:inline">Sell your home</span>
@@ -90,7 +95,12 @@ export default function Header() {
         {!isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3"} gap-6 justify-end`}>
             {!isSearchPage && (
-              <Button className="hidden xs:flex gap-2 items-center" onClick={() => router.push("/sell")}>
+              <Button
+                className="hidden xs:flex gap-2 items-center"
+                onClick={() => {
+                  router.push("/sell");
+                }}
+              >
                 <Icons.sell_home />
                 <span className="xs:hidden lg:hidden">Sell</span>
                 <span className="hidden xs:inline">Sell your home</span>
