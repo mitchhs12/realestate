@@ -20,7 +20,7 @@ const config = {
       },
       height: {
         "screen-minus-header": "calc(100vh - 86px)",
-        "screen-minus-header-footer": "calc(100vh - 86px - 60px)",
+        "screen-minus-header-footer": "calc(100vh - 86px - 100px)",
       },
       screens: {
         xs: "510px",
