@@ -1,7 +1,23 @@
 export const sellSteps = [
-  ["/sell/step1", "/sell/categories", "/sell/location", "/sell/rooms", "/sell/capacity"],
+  ["/sell/step1", "/sell/type", "/sell/location", "/sell/rooms", "/sell/capacity"],
   ["/sell/step2", "/sell/features", "/sell/photos", "/sell/title", "/sell/description"],
   ["/sell/step3", "/sell/contact", "/sell/price", "/sell/checkout", "/sell/review"],
+];
+
+export const types = [
+  "House",
+  "Apartment",
+  "Cabin",
+  "Casa particular",
+  "Castle",
+  "Container",
+  "Cycladic Home",
+  "Earth Home",
+  "Farm",
+  "Houseboat",
+  "Tiny Home",
+  "Tower",
+  "Windmill",
 ];
 
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);

@@ -8,7 +8,7 @@ export const updateEmailSchema = z.object({
   email: z.string().email("Invalid email").min(1, "Cannot be empty"),
 });
 
-export const createListingSchema = z.object({
+export const updateListingSchema = z.object({
   ownerId: z.string().trim().min(1, "Cannot be empty"),
   title: z.string().trim().min(1, "Cannot be empty"),
   description: z.string().trim().min(1, "Cannot be empty"),
@@ -27,9 +27,10 @@ export const createListingSchema = z.object({
   photos: z.array(z.string()).min(1, "Cannot be empty"),
   price: z.number().min(1, "Cannot be empty"),
   areaSqm: z.number().min(1, "Cannot be empty"),
+  isActive: z.boolean(),
   listingFlowStep: z.number().min(0, "Cannot be empty"),
 });
 
 export type UpdateNameValues = z.infer<typeof updateNameSchema>;
 export type UpdateEmailValues = z.infer<typeof updateEmailSchema>;
-export type CreateListingValues = z.infer<typeof createListingSchema>;
+export type UpdateListingValues = z.infer<typeof updateListingSchema>;

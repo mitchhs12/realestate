@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
-
+import { getHomes } from "./actions";
 export const metadata: Metadata = {
   title: "Sell",
 };
@@ -20,8 +20,13 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
+
+  console.log(user);
+
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");
+  const homes = await getHomes();
+  console.log("This user's homes:", homes);
 
   return (
     <SellFlowPage
