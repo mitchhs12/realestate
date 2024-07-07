@@ -37,15 +37,28 @@ interface QueryProviderProps {
 const SellContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [prevStep, setPrevStep] = useState("");
   const [nextStep, setNextStep] = useState("");
-  const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(0);
-  const [sellFlowIndices, setSellFlowIndices] = useState({ outerIndex: 0, innerIndex: 0 });
+  const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(-1);
+  const [sellFlowIndices, setSellFlowIndices] = useState({ outerIndex: -1, innerIndex: -1 });
   const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
 
   useEffect(() => {
     console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+    console.log(sellFlowIndices);
     console.log("current step", stepsFlattened[sellFlowFlatIndex]);
-    setNextStep(sellFlowFlatIndex ? stepsFlattened[sellFlowFlatIndex + 1] : "/");
-    setPrevStep(sellFlowFlatIndex ? stepsFlattened[sellFlowFlatIndex - 1] : "/");
+    setNextStep(
+      sellFlowFlatIndex !== -1
+        ? sellFlowFlatIndex === stepsFlattened.length - 1
+          ? "/"
+          : stepsFlattened[sellFlowFlatIndex + 1]
+        : stepsFlattened[0]
+    );
+    setPrevStep(
+      sellFlowFlatIndex !== -1
+        ? sellFlowIndices.outerIndex === 0 && sellFlowIndices.innerIndex === 0
+          ? "/sell"
+          : stepsFlattened[sellFlowFlatIndex - 1]
+        : ""
+    );
   }, [sellFlowFlatIndex]);
 
   useEffect(() => {

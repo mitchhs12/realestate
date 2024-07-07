@@ -3,6 +3,7 @@ import Price from "./Price";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
+import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
   title: "Price",
@@ -19,5 +20,15 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  return <Price user={user} />;
+  const { array, innerIndex, outerIndex } = await getStepData("/sell/price");
+  const sellFlatIndex = await getSellFlowIndex("/sell/price");
+
+  return (
+    <Price
+      user={user}
+      sellFlowIndices={{ innerIndex, outerIndex }}
+      sellFlatIndex={sellFlatIndex}
+      stepPercentage={array}
+    />
+  );
 }

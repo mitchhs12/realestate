@@ -11,7 +11,7 @@ interface Props {
   stepPercentage: number[];
 }
 
-export default function BreakPage({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Step1({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
 
   useEffect(() => {
@@ -19,5 +19,5 @@ export default function BreakPage({ user, sellFlatIndex, sellFlowIndices, stepPe
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
   }, []);
-  return <div>Step {sellFlowIndices.outerIndex + 1}.</div>;
+  return <div>Step 1</div>;
 }

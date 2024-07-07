@@ -3,6 +3,7 @@ import Contact from "./Contact";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
+import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -19,5 +20,15 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  return <Contact user={user} />;
+  const { array, innerIndex, outerIndex } = await getStepData("/sell/contact");
+  const sellFlatIndex = await getSellFlowIndex("/sell/contact");
+
+  return (
+    <Contact
+      user={user}
+      sellFlowIndices={{ innerIndex, outerIndex }}
+      sellFlatIndex={sellFlatIndex}
+      stepPercentage={array}
+    />
+  );
 }

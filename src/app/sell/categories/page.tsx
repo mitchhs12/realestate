@@ -6,7 +6,7 @@ import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
-  title: "Rooms",
+  title: "Categories",
 };
 
 export default async function Page() {

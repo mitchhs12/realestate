@@ -5,6 +5,8 @@ import { User } from "next-auth";
 import { UpdateNameValues, updateNameSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Separator } from "@/components/ui/separator";
+import { useEffect, useContext } from "react";
+import { SellContext } from "@/context/SellContext";
 
 interface Props {
   user: User;
@@ -12,8 +14,15 @@ interface Props {
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
 }
+export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
 
-export default function SellFlowPage({ user }: Props) {
+  useEffect(() => {
+    setSellFlowIndices(sellFlowIndices);
+    setSellFlowFlatIndex(sellFlatIndex);
+    setStepPercentage(stepPercentage);
+  }, []);
+
   const form = useForm<UpdateNameValues>({
     resolver: zodResolver(updateNameSchema),
     defaultValues: { name: user.name || "" },

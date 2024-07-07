@@ -3,6 +3,7 @@ import Review from "./Review";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
+import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
   title: "Review",
@@ -19,5 +20,15 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  return <Review user={user} />;
+  const { array, innerIndex, outerIndex } = await getStepData("/sell/review");
+  const sellFlatIndex = await getSellFlowIndex("/sell/review");
+
+  return (
+    <Review
+      user={user}
+      sellFlowIndices={{ innerIndex, outerIndex }}
+      sellFlatIndex={sellFlatIndex}
+      stepPercentage={array}
+    />
+  );
 }

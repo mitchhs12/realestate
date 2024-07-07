@@ -118,11 +118,13 @@ export default function ProgressBar() {
         ))}
       </div>
       <div className="flex flex-row-reverse justify-between w-full px-8">
-        <div className="flex">
-          <Button variant="default" size="lg" onClick={() => router.push(nextStep)}>
-            Next
-          </Button>
-        </div>
+        {nextStep !== "" && (
+          <div className="flex">
+            <Button variant="default" size="lg" onClick={() => router.push(nextStep)}>
+              Next
+            </Button>
+          </div>
+        )}
         {prevStep !== "" && (
           <div className="flex justify-start">
             <Button variant="outline" size="lg" onClick={() => router.push(prevStep)}>
