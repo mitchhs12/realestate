@@ -35,18 +35,18 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
           <h1 className="flex items-center text-3xl">Sell your home</h1>
         </div>
         <div className="flex h-full justify-center items-center flex-col md:items-start gap-8 md:gap-20 w-1/2 md:mr-8 text-wrap">
-          <div className="flex flex-col gap-y-20 justify-center">
-            <div className="flex flex-col w-[40vw] items-start">
+          <div className="flex flex-col gap-y-12 justify-center w-[52vw] md:w-[40vw]">
+            <div className="flex flex-col items-start">
               <h3 className="text-xl font-semibold"> 1. Tell us about your place</h3>
               <div>Location, size, and details.</div>
             </div>
             <Separator />
-            <div className="flex flex-col w-[40vw] items-start">
+            <div className="flex flex-col items-start">
               <h3 className="text-xl font-semibold">2. Make it stand out</h3>
               <div>Upload 5 or more photos, a title, and a description.</div>
             </div>
             <Separator />
-            <div className="flex flex-col w-[40vw] items-start">
+            <div className="flex flex-col items-start">
               <h3 className="text-xl font-semibold">3. Finish up and publish</h3>
               <div>Add contact details, your price, and publish.</div>
             </div>

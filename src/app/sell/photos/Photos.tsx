@@ -19,5 +19,18 @@ export default function Photos({ user, sellFlatIndex, sellFlowIndices, stepPerce
     setStepPercentage(stepPercentage);
   }, []);
 
-  return <div>Photos</div>;
+  return (
+    <div className="flex flex-col h-full w-full items-center gap-y-20">
+      <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
+        <div className="flex flex-col">
+          <div className="flex items-center justify-center py-3">
+            <h1 className="flex items-center text-3xl">Photos</h1>
+          </div>
+          <div className="flex flex-col px-8 mt-5">
+            <h3 className="text-lg w-full">Upload at least 5 photos</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
