@@ -3,9 +3,30 @@
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
-import { UpdateListingValues, updateListingSchema } from "@/lib/validations";
+import { HomeType, homeSchema } from "@/lib/validations";
 
 // Sell Flow Page Actions
+
+export async function getUnfinishedHome() {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    throw new Error("User not found");
+  }
+
+  const homes = await prisma.home.findFirst({
+    where: {
+      ownerId: userId,
+      listingFlowStep: {
+        not: 12,
+        gt: 0,
+      },
+    },
+  });
+  console.log("homes here:", homes);
+  return homes;
+}
 
 export async function getHomes() {
   const session = await auth();
@@ -15,18 +36,16 @@ export async function getHomes() {
     throw new Error("User not found");
   }
 
-  await prisma.user.findUnique({
+  const homes = await prisma.home.findMany({
     where: {
-      id: userId,
-    },
-    include: {
-      homes: true,
+      ownerId: userId,
     },
   });
-  revalidatePath("/");
+  console.log("homes here:", homes);
+  return homes;
 }
 
-export async function updateHome(homeData: UpdateListingValues) {
+export async function updateHome(homeValues: HomeType | null) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -34,42 +53,26 @@ export async function updateHome(homeData: UpdateListingValues) {
     throw new Error("User not found");
   }
 
-  // Validate the home data
-  const parsedData = updateListingSchema.safeParse(homeData);
+  let updatedHome;
 
-  if (!parsedData.success) {
-    throw new Error("Invalid data");
+  if (homeValues === null) {
+    // Create new home
+    updatedHome = await prisma.home.create({
+      data: {
+        ownerId: userId,
+        isActive: false, // Example default value, adjust as needed
+        listingFlowStep: 1, // Example default value, adjust as needed
+      },
+    });
+  } else {
+    // Update existing home
+    const { id, ...homeData } = homeSchema.parse(homeValues);
+
+    updatedHome = await prisma.home.update({
+      where: { id: id },
+      data: homeData,
+    });
   }
-
-  const data = parsedData.data;
-
-  const updatedHome = await prisma.home.update({
-    where: {
-      id: data.id, // Ensure you have an id field in your schema
-    },
-    data: {
-      ownerId: data.ownerId,
-      title: data.title,
-      description: data.description,
-      address: data.address,
-      district: data.district,
-      city: data.city,
-      state: data.state,
-      country: data.country,
-      latitude: data.latitude,
-      longitude: data.longitude,
-      type: data.type,
-      features: data.features,
-      bedrooms: data.bedrooms,
-      bathrooms: data.bathrooms,
-      capacity: data.capacity,
-      photos: data.photos,
-      price: data.price,
-      areaSqm: data.areaSqm,
-      isActive: data.isActive,
-      listingFlowStep: data.listingFlowStep,
-    },
-  });
 
   revalidatePath("/"); // Revalidate the path if necessary
 

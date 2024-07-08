@@ -3,6 +3,7 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
+import { HomeType } from "@/lib/validations";
 
 interface SellContextProps {
   nextStep: string;
@@ -15,6 +16,10 @@ interface SellContextProps {
   setSellFlowFlatIndex: (value: number) => void;
   stepPercentage: number[];
   setStepPercentage: (value: number[]) => void;
+  currentHome: HomeType | null;
+  setCurrentHome: (value: HomeType | null) => void;
+  canSubmit: boolean;
+  setCanSubmit: (value: boolean) => void;
 }
 
 const SellContext = createContext<SellContextProps>({
@@ -28,6 +33,10 @@ const SellContext = createContext<SellContextProps>({
   setSellFlowFlatIndex: () => {},
   stepPercentage: [],
   setStepPercentage: () => {},
+  currentHome: null,
+  setCurrentHome: () => {},
+  canSubmit: false,
+  setCanSubmit: () => {},
 });
 
 interface QueryProviderProps {
@@ -40,6 +49,8 @@ const SellContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(-1);
   const [sellFlowIndices, setSellFlowIndices] = useState({ outerIndex: -1, innerIndex: -1 });
   const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
+  const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
+  const [canSubmit, setCanSubmit] = useState<boolean>(false);
 
   useEffect(() => {
     console.log("sellFlowFlatIndex", sellFlowFlatIndex);
@@ -79,6 +90,10 @@ const SellContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setSellFlowFlatIndex,
         stepPercentage,
         setStepPercentage,
+        currentHome,
+        setCurrentHome,
+        canSubmit,
+        setCanSubmit,
       }}
     >
       {children}

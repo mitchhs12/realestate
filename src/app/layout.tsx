@@ -9,7 +9,7 @@ import { QueryContextProvider } from "@/context/QueryContext";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "Home Market",
+  title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
   description: "A marketplace for buying and renting houses, apartments, land and property",
 };
 

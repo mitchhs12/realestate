@@ -22,6 +22,7 @@ export const types = [
 
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);
 export const stepLengths = sellSteps.map((step) => step.length);
+export const stepLengthsWithoutStepPages = stepLengths.map((step) => step - 1);
 export const stepsFlattened = sellSteps.flat();
 
 export const getSellFlowIndex = (string: string) => {
