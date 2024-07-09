@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { createListing } from "./actions";
 import { useForm } from "react-hook-form";
 import { User } from "next-auth";
-import { CreateListingValues, createListingSchema } from "@/lib/validations";
+import { HomeType, homeSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormField, FormControl, FormItem, FormLabel, FormDescription, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -17,8 +17,8 @@ interface Props {
 export default function AdminPage({ user }: Props) {
   const session = useSession();
 
-  const form = useForm<CreateListingValues>({
-    resolver: zodResolver(createListingSchema),
+  const form = useForm<HomeType>({
+    resolver: zodResolver(homeSchema),
     // defaultValues: {
     //   title: "Title",
     //   description: "Description",
@@ -40,7 +40,7 @@ export default function AdminPage({ user }: Props) {
     // },
   });
 
-  async function onSubmit(data: CreateListingValues) {
+  async function onSubmit(data: HomeType) {
     try {
       await createListing(data);
       session.update();
@@ -53,7 +53,7 @@ export default function AdminPage({ user }: Props) {
     <main className="flex flex-col px-3 py-10 items-start mx-8">
       <h1 className="max-w-7xl space-y-6 text-3xl font-bold">Admin Control</h1>
       <h3 className="max-w-5xl space-y-6 text-xl font-semibold">Create a new listing</h3>
-      <Form {...form}>
+      {/* <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="py-10 max-w-sm space-y-2.5">
           <FormField
             control={form.control}
@@ -101,7 +101,7 @@ export default function AdminPage({ user }: Props) {
             Submit
           </Button>
         </form>
-      </Form>
+      </Form> */}
     </main>
   );
 }

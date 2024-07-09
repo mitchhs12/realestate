@@ -75,16 +75,18 @@ model Home {
   city            String?
   state           String?
   country         String?
-  latitude        Float?
-  longitude       Float?
+  latitude        Float           @default(0)
+  longitude       Float           @default(0)
   type            String[]
   features        String[]
-  bedrooms        Int?
-  bathrooms       Int?
-  capacity        Int?
+  bedrooms        Int             @default(0)
+  bathrooms       Int             @default(0)
+  livingrooms     Int             @default(0)
+  kitchens        Int             @default(0)
+  capacity        Int             @default(0)
   photos          String[]
-  price           Float?
-  areaSqm         Float?
+  price           Float           @default(0)
+  areaSqm         Float           @default(0)
   isActive        Boolean         @default(false)
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt

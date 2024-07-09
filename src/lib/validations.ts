@@ -18,25 +18,22 @@ export const homeSchema = z.object({
   city: z.string().optional().nullable(),
   state: z.string().optional().nullable(),
   country: z.string().min(1).nullable(),
-  latitude: z.number().optional().nullable(),
-  longitude: z.number().optional().nullable(),
+  latitude: z.number(),
+  longitude: z.number(),
   type: z.array(z.string()),
   features: z.array(z.string()),
-  bedrooms: z.number().int().min(1, "Cannot be empty").nullable(),
-  bathrooms: z.number().int().min(1, "Cannot be empty").nullable(),
-  capacity: z.number().int().min(1, "Cannot be empty").nullable(),
+  bedrooms: z.number().int(),
+  bathrooms: z.number().int(),
+  livingrooms: z.number().int(),
+  kitchens: z.number().int(),
+  capacity: z.number().int(),
   photos: z.array(z.string()),
-  price: z.number().min(1, "Cannot be empty").nullable(),
-  areaSqm: z.number().min(1, "Cannot be empty").nullable(),
+  price: z.number().min(1, "Cannot be empty"),
+  areaSqm: z.number().min(1, "Cannot be empty"),
   isActive: z.boolean(),
   listingFlowStep: z.number().min(0, "Cannot be empty"),
-});
-
-export const updateTypeSchema = z.object({
-  type: z.array(z.string()).min(1, "Cannot be empty"),
 });
 
 export type UpdateNameValues = z.infer<typeof updateNameSchema>;
 export type UpdateEmailValues = z.infer<typeof updateEmailSchema>;
 export type HomeType = z.infer<typeof homeSchema>;
-export type UpdateTypeValues = z.infer<typeof updateTypeSchema>;

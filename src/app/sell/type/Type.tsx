@@ -13,15 +13,8 @@ interface Props {
 }
 
 export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const {
-    setSellFlowFlatIndex,
-    setSellFlowIndices,
-    setStepPercentage,
-    currentHome,
-    newHome,
-    setNewHome,
-    setIsLoading,
-  } = useContext(SellContext);
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
+    useContext(SellContext);
 
   const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 

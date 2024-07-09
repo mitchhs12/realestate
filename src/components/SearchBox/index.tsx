@@ -48,7 +48,6 @@ export default function SearchBox() {
 
     if (query) {
       setLoading(true);
-
       debounceTimeout.current = window.setTimeout(() => {
         fetchPlaces(query, sessionTokenRef.current);
       }, 300); // Debounce fetching places

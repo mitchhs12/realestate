@@ -2,12 +2,12 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { CreateListingValues, createListingSchema } from "@/lib/validations";
+import { HomeType, homeSchema } from "@/lib/validations";
 import { auth } from "@/auth";
 
 // Admin Page Actions
 
-export async function createListing(values: CreateListingValues) {
+export async function createListing(values: HomeType) {
   const session = await auth();
   const user = session?.user;
   const userId = session?.user?.id;
@@ -30,12 +30,14 @@ export async function createListing(values: CreateListingValues) {
     features,
     bedrooms,
     bathrooms,
+    livingrooms,
+    kitchens,
     capacity,
     photos,
     price,
     areaSqm,
     listingFlowStep,
-  } = createListingSchema.parse(values);
+  } = homeSchema.parse(values);
 
   await prisma.home.create({
     data: {
@@ -47,12 +49,14 @@ export async function createListing(values: CreateListingValues) {
       city: city || null,
       state: state || null,
       country,
-      latitude: latitude || null,
-      longitude: longitude || null,
+      latitude,
+      longitude,
       type,
       features,
       bedrooms,
       bathrooms,
+      livingrooms,
+      kitchens,
       capacity,
       photos,
       price,
