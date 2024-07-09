@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Goog-Api-Key": process.env.MAPS_API_KEY!,
+        "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY!,
       },
       body: JSON.stringify({
         input: query,
