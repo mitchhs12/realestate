@@ -1,6 +1,6 @@
 "use client";
 import { User } from "next-auth";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 
 interface Props {
@@ -11,12 +11,14 @@ interface Props {
 }
 
 export default function Location({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
+    useContext(SellContext);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
+    setIsLoading(false);
   }, []);
 
   return (

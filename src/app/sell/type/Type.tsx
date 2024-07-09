@@ -1,6 +1,6 @@
 "use client";
 import { User } from "next-auth";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { types } from "@/lib/sellFlowData";
@@ -13,13 +13,34 @@ interface Props {
 }
 
 export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    currentHome,
+    newHome,
+    setNewHome,
+    setIsLoading,
+  } = useContext(SellContext);
+
+  const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+  const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
+
+  console.log(selection);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
+    setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    if (selection.length && currentHome) {
+      setNewHome({ ...currentHome, type: selection });
+    }
+  }, [selection]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -32,13 +53,26 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
             <h3 className="text-lg w-full">Which best describes your place?</h3>
           </div>
         </div>
-        <div className="w-full px-8">
-          <ToggleGroup type="multiple">
-            {types.map((type, index) => (
-              <ToggleGroupItem key={index} value={type}>
-                {type}
-              </ToggleGroupItem>
-            ))}
+        <div className="grid w-full h-full px-8 justify-center items-center pt-8">
+          <ToggleGroup
+            type="multiple"
+            value={selection}
+            defaultValue={selection}
+            onValueChange={(value) => {
+              if (value) setSelection(value.map(capitalizeFirstLetter));
+            }}
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 xl:gap-8 items-center justify-center">
+              {types.map((type, index) => (
+                <ToggleGroupItem
+                  key={index}
+                  value={type}
+                  className="h-[50px] md:h-[80px] xl:h-[120px] border-2 text-sm md:text-lg"
+                >
+                  {type}
+                </ToggleGroupItem>
+              ))}
+            </div>
           </ToggleGroup>
         </div>
       </div>

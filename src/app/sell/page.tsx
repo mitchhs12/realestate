@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
-import { getUnfinishedHome } from "./actions";
 export const metadata: Metadata = {
   title: "Sell",
 };
@@ -23,7 +22,6 @@ export default async function Page() {
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");
-  const unfinishedHome = await getUnfinishedHome();
 
   return (
     <SellFlowPage
@@ -31,7 +29,6 @@ export default async function Page() {
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
-      unfinishedHome={unfinishedHome}
     />
   );
 }

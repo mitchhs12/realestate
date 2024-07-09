@@ -1,9 +1,9 @@
 "use client";
 
 import React, { createContext, useState, ReactNode, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
 import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
 import { HomeType } from "@/lib/validations";
+import { getUnfinishedHome } from "@/app/sell/actions";
 
 interface SellContextProps {
   nextStep: string;
@@ -18,8 +18,10 @@ interface SellContextProps {
   setStepPercentage: (value: number[]) => void;
   currentHome: HomeType | null;
   setCurrentHome: (value: HomeType | null) => void;
-  canSubmit: boolean;
-  setCanSubmit: (value: boolean) => void;
+  newHome: HomeType | null;
+  setNewHome: (value: HomeType | null) => void;
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
 }
 
 const SellContext = createContext<SellContextProps>({
@@ -35,27 +37,28 @@ const SellContext = createContext<SellContextProps>({
   setStepPercentage: () => {},
   currentHome: null,
   setCurrentHome: () => {},
-  canSubmit: false,
-  setCanSubmit: () => {},
+  newHome: null,
+  setNewHome: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 });
 
-interface QueryProviderProps {
+interface SellProviderProps {
   children: ReactNode;
+  unfinishedHome: HomeType | null;
 }
 
-const SellContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
+const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinishedHome }) => {
   const [prevStep, setPrevStep] = useState("");
   const [nextStep, setNextStep] = useState("");
   const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(-1);
   const [sellFlowIndices, setSellFlowIndices] = useState({ outerIndex: -1, innerIndex: -1 });
   const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
-  const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
-  const [canSubmit, setCanSubmit] = useState<boolean>(false);
+  const [currentHome, setCurrentHome] = useState<HomeType | null>(unfinishedHome);
+  const [newHome, setNewHome] = useState<HomeType | null>(unfinishedHome);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log("sellFlowFlatIndex", sellFlowFlatIndex);
-    console.log(sellFlowIndices);
-    console.log("current step", stepsFlattened[sellFlowFlatIndex]);
     setNextStep(
       sellFlowFlatIndex !== -1
         ? sellFlowFlatIndex === stepsFlattened.length - 1
@@ -72,11 +75,6 @@ const SellContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
     );
   }, [sellFlowFlatIndex]);
 
-  useEffect(() => {
-    console.log(nextStep);
-    console.log(prevStep);
-  }, [nextStep]);
-
   return (
     <SellContext.Provider
       value={{
@@ -92,8 +90,10 @@ const SellContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setStepPercentage,
         currentHome,
         setCurrentHome,
-        canSubmit,
-        setCanSubmit,
+        newHome,
+        setNewHome,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

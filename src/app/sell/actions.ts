@@ -24,7 +24,6 @@ export async function getUnfinishedHome() {
       },
     },
   });
-  console.log("homes here:", homes);
   return homes;
 }
 
@@ -45,7 +44,11 @@ export async function getHomes() {
   return homes;
 }
 
-export async function updateHome(homeValues: HomeType | null) {
+export async function updateHome(
+  homeValues: HomeType | null,
+  currentPage: string,
+  shouldIncreaseListingFlowStep: boolean
+) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -60,21 +63,24 @@ export async function updateHome(homeValues: HomeType | null) {
     updatedHome = await prisma.home.create({
       data: {
         ownerId: userId,
-        isActive: false, // Example default value, adjust as needed
         listingFlowStep: 1, // Example default value, adjust as needed
       },
     });
   } else {
     // Update existing home
-    const { id, ...homeData } = homeSchema.parse(homeValues);
+    const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
+
+    const newData = shouldIncreaseListingFlowStep
+      ? { ...homeData, listingFlowStep: listingFlowStep + 1 }
+      : { ...homeData };
 
     updatedHome = await prisma.home.update({
       where: { id: id },
-      data: homeData,
+      data: newData,
     });
   }
 
-  revalidatePath("/"); // Revalidate the path if necessary
+  revalidatePath(currentPage); // Revalidate the path if necessary
 
   return updatedHome;
 }
