@@ -104,7 +104,7 @@ export default function SearchBox() {
         className="flex w-full justify-center space-x-2 px-4"
         onSubmit={() => handleSearch(results[0].placePrediction.text.text)}
       >
-        <div className="flex flex-col w-full justify-center items-center">
+        <div className="flex flex-col w-full items-center">
           <Popover open={popoverOpen}>
             <div className="flex justify-center items-center w-[286px] sm:w-[400px] md:w-[540px] lg:w-[800px] xl:w-[1000px] gap-x-2">
               <PopoverTrigger asChild>
