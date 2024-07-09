@@ -9,7 +9,7 @@ export default function Hero() {
         src="/house.jpg"
         alt="background"
         fill={true}
-        objectFit="cover"
+        style={{ objectFit: "cover" }}
         quality={100}
         priority={true}
         className="-z-10 opacity-30 dark:opacity-20"
