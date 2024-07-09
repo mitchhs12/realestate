@@ -28,6 +28,7 @@ export default function ProgressBar() {
   const checkStepPositionForNextNavigation = () => {
     if (currentHome) {
       const step = currentHome.listingFlowStep;
+      console.log("currentSTep", step);
       if (step <= stepLengths[0] - 1) {
         return step;
       } else if (step <= stepLengths[0] - 1 + stepLengths[1] - 1) {
@@ -42,9 +43,12 @@ export default function ProgressBar() {
 
   const shouldNavigate = () => {
     const nextStepUpTo = currentHome ? checkStepPositionForNextNavigation() : 0;
-    if (sellFlowFlatIndex <= nextStepUpTo - 1) {
+    if (sellFlowFlatIndex <= nextStepUpTo) {
       return false; // Button not disabled if sellFlowFlatIndex <= stepPosition-1
     } else {
+      console.log("LISTING FLOW STEP IS TRUEEE");
+      console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+      console.log("nextStepUpTo-1", nextStepUpTo);
       return true;
     }
   };
