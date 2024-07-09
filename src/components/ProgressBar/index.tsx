@@ -28,7 +28,6 @@ export default function ProgressBar() {
   const checkStepPositionForNextNavigation = () => {
     if (currentHome) {
       const step = currentHome.listingFlowStep;
-      console.log("currentSTep", step);
       if (step <= stepLengths[0] - 1) {
         return step;
       } else if (step <= stepLengths[0] - 1 + stepLengths[1] - 1) {
@@ -46,9 +45,6 @@ export default function ProgressBar() {
     if (sellFlowFlatIndex <= nextStepUpTo) {
       return false; // Button not disabled if sellFlowFlatIndex <= stepPosition-1
     } else {
-      console.log("LISTING FLOW STEP IS TRUEEE");
-      console.log("sellFlowFlatIndex", sellFlowFlatIndex);
-      console.log("nextStepUpTo-1", nextStepUpTo);
       return true;
     }
   };
@@ -76,15 +72,10 @@ export default function ProgressBar() {
       // we are on the first page of the sell flow so we are redirected to where we are up too
       router.push(stepsFlattened[checkStepPositionForNextNavigation()]);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-      console.log("running thisNOWOWOWOWOWOWOWO!!!!");
-      console.log("different current home", JSON.stringify(currentHome));
-      console.log("different new home", JSON.stringify(newHome));
       const _newHome = await updateHome(newHome, pathname, shouldIncreaseListingFlowStep);
-      console.log("updatedHome", _newHome);
       setCurrentHome(_newHome);
       router.push(nextStep);
     } else {
-      console.log("running this!!!");
       router.push(nextStep);
     }
   }
@@ -94,15 +85,9 @@ export default function ProgressBar() {
       setIsLoading(true);
       const _newHome = await updateHome(newHome, pathname, shouldIncreaseListingFlowStep);
       setCurrentHome(_newHome);
-    } else {
-      console.log("run this shit!");
     }
     router.push(prevStep);
   }
-
-  console.log("current", JSON.stringify(currentHome, null, 2));
-  console.log("new", JSON.stringify(newHome, null, 2));
-  console.log("state", JSON.stringify(currentHome) === JSON.stringify(newHome));
 
   return (
     <div className="flex flex-col justify-start gap-6 items-center w-full h-[100px]">
