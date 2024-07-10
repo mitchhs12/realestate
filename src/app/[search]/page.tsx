@@ -7,10 +7,6 @@ export default async function Page({ params }: { params: { search: string } }) {
   const API_KEY = process.env.AWS_MAPS_API_KEY; // Replace with your API key
   const language = "en";
 
-  console.log("aws location", AWS_LOCATION_SERVICE_ENDPOINT);
-  console.log("index name", INDEX_NAME);
-  console.log("api key", API_KEY);
-
   const response = await fetch(
     `${AWS_LOCATION_SERVICE_ENDPOINT}/places/v0/indexes/${INDEX_NAME}/places/${params.search}?key=${API_KEY}&language=${language}`
   );
