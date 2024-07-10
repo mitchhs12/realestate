@@ -59,9 +59,6 @@ export default function ProgressBar() {
     }
   };
 
-  const shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
-  console.log("test123123");
-
   const isButtonDisabled = (): boolean => {
     if (isLoading) {
       return true; // Button disabled if loading
@@ -78,29 +75,33 @@ export default function ProgressBar() {
         console.log("button should be disabled");
         return true;
       }
+    } else if (prevStep === "" || pathname.startsWith("/sell/step")) {
+      console.log("running this");
+      return false;
     } else {
       console.log("button should be disabled because we should not increment the flow step");
       return true;
     }
   };
 
-  const [nextButtonDisabled, setNextButtonDisabled] = useState(isButtonDisabled());
-
-  useEffect(() => {
-    console.log("newHome", newHome);
-  }, [newHome]);
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(isButtonDisabled);
 
   useEffect(() => {
     console.log("nextButtonDisabled", nextButtonDisabled);
   }, [nextButtonDisabled]);
 
   useEffect(() => {
+    console.log("useEffect triggered by pathname change:", pathname);
+  }, [pathname]);
+
+  useEffect(() => {
     console.log("running the next button use Effect");
+    console.log("pathname", pathname);
     const newButton = isButtonDisabled();
     console.log("NEW BUTTON HOORAY", newButton);
     setNextButtonDisabled(newButton);
     console.log("finished running effect with new button", newButton);
-  }, [currentHome, newHome, isLoading]);
+  }, [currentHome, newHome, isLoading, pathname]);
 
   async function handleNext() {
     setIsLoading(true);
@@ -113,7 +114,7 @@ export default function ProgressBar() {
       setCurrentHome(_newHome);
       router.push(nextStep);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-      const _newHome = await updateHome(newHome, pathname, shouldIncreaseListingFlowStep);
+      const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep());
       setCurrentHome(_newHome);
       router.push(nextStep);
     } else {
@@ -124,7 +125,7 @@ export default function ProgressBar() {
   async function handlePrev() {
     if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       setIsLoading(true);
-      const _newHome = await updateHome(newHome, pathname, shouldIncreaseListingFlowStep);
+      const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep());
       setCurrentHome(_newHome);
     }
     router.push(prevStep);

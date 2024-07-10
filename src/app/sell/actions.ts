@@ -48,7 +48,7 @@ export async function updateHome(
   homeValues: HomeType | null,
   currentPage: string,
   shouldIncreaseListingFlowStep: boolean
-) {
+): Promise<HomeType> {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -63,24 +63,30 @@ export async function updateHome(
     updatedHome = await prisma.home.create({
       data: {
         ownerId: userId,
-        listingFlowStep: 1, // Example default value, adjust as needed
+        listingFlowStep: 1, // Default value
       },
     });
   } else {
-    if (!shouldIncreaseListingFlowStep) {
-      return updatedHome;
+    if (shouldIncreaseListingFlowStep) {
+      // Update existing home
+      const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
+
+      const newData = shouldIncreaseListingFlowStep
+        ? { ...homeData, listingFlowStep: listingFlowStep + 1 }
+        : { ...homeData };
+
+      updatedHome = await prisma.home.update({
+        where: { id: id },
+        data: newData,
+      });
+    } else {
+      const { id, ...homeData } = homeSchema.parse(homeValues);
+
+      updatedHome = await prisma.home.update({
+        where: { id: id },
+        data: homeData,
+      });
     }
-    // Update existing home
-    const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
-
-    const newData = shouldIncreaseListingFlowStep
-      ? { ...homeData, listingFlowStep: listingFlowStep + 1 }
-      : { ...homeData };
-
-    updatedHome = await prisma.home.update({
-      where: { id: id },
-      data: newData,
-    });
   }
 
   revalidatePath(currentPage); // Revalidate the path if necessary
