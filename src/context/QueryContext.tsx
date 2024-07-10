@@ -8,8 +8,6 @@ interface QueryContextProps {
   setQuery: (value: string) => void;
   mapFocused: boolean;
   setMapFocused: (value: boolean) => void;
-  coordinates: CoordinatesType;
-  setCoordinates: (value: CoordinatesType) => void;
 }
 
 const QueryContext = createContext<QueryContextProps>({
@@ -17,8 +15,6 @@ const QueryContext = createContext<QueryContextProps>({
   setQuery: () => {},
   mapFocused: false,
   setMapFocused: () => {},
-  coordinates: { lat: 0, long: 0 },
-  setCoordinates: () => {},
 });
 
 interface QueryProviderProps {
@@ -28,12 +24,9 @@ interface QueryProviderProps {
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [query, setQuery] = useState("");
   const [mapFocused, setMapFocused] = useState(false);
-  const [coordinates, setCoordinates] = useState<CoordinatesType>({ lat: 0, long: 0 });
 
   return (
-    <QueryContext.Provider value={{ query, setQuery, mapFocused, setMapFocused, coordinates, setCoordinates }}>
-      {children}
-    </QueryContext.Provider>
+    <QueryContext.Provider value={{ query, setQuery, mapFocused, setMapFocused }}>{children}</QueryContext.Provider>
   );
 };
 

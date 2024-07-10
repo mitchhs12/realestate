@@ -22,13 +22,13 @@ export default function SearchBox() {
   const [popoverOpen, setPopoverOpen] = useState(false); // State to control Popover open
   const { query, setQuery } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
-  const [latLongArray, setLatLongArray] = useState<number[]>([]); // State for latLongArray
+  const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setLatLongArray([position.coords.longitude, position.coords.latitude]);
+          setLongLatArray([position.coords.longitude, position.coords.latitude]);
         },
         (error) => {
           console.error("Error getting geolocation: ", error);
@@ -80,7 +80,7 @@ export default function SearchBox() {
   const fetchPlaces = async (query: string) => {
     try {
       const body =
-        latLongArray.length > 0 ? { query: { text: query, latLongArray: latLongArray } } : { query: { text: query } };
+        longLatArray.length > 0 ? { query: { text: query, longLatArray: longLatArray } } : { query: { text: query } };
       const response = await fetch("/api/autocomplete", {
         method: "POST",
         headers: {
@@ -106,7 +106,13 @@ export default function SearchBox() {
     <div className="flex w-full">
       <form
         className="flex w-full justify-center space-x-2 px-4"
-        onSubmit={() => handleSearch(results[0].Text, results[0].PlaceId)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log("test");
+          {
+            results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
+          }
+        }}
       >
         <div className="flex flex-col w-full items-center">
           <Popover open={popoverOpen}>
@@ -115,7 +121,7 @@ export default function SearchBox() {
                 <Input
                   ref={inputRef}
                   type="search"
-                  placeholder={"Search for a place..."}
+                  placeholder={"Search for any address or place..."}
                   className="z-100 bg-popover"
                   value={query}
                   onFocus={getGeolocation}
@@ -126,7 +132,7 @@ export default function SearchBox() {
                   onKeyDown={(e) => {
                     if (!loading && e.key === "Enter") {
                       e.preventDefault();
-                      handleSearch(results[0].Text, results[0].PlaceId);
+                      results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
                     }
                   }}
                 />

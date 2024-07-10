@@ -6,8 +6,7 @@ const API_KEY = process.env.AWS_MAPS_API_KEY; // Replace with your API key
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const payload = await req.json();
-  const { text, latLongArray } = payload.query;
-  console.log("latLongArray", latLongArray);
+  const { text, longLatArray } = payload.query;
 
   try {
     const response = await fetch(
@@ -17,13 +16,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ Text: text, BiasPosition: latLongArray, MaxResults: 5 }),
+        body: JSON.stringify({ Text: text, BiasPosition: longLatArray, MaxResults: 5 }),
       }
     );
 
     const fixedResponse = await response.json();
     const suggestions = fixedResponse.Results;
-    console.log("suggestions", suggestions);
     return NextResponse.json({ suggestions }, { status: 200 });
   } catch (error) {
     console.error(error);

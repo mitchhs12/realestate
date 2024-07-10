@@ -1,8 +1,9 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { CoordinatesType } from "@/lib/validations";
 
-export default function SearchResults() {
+export default function SearchResults({ coordinates }: { coordinates: CoordinatesType }) {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 

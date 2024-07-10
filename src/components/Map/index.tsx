@@ -6,10 +6,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
-
-interface Props {
-  searchLocation: { lat: number; lng: number };
-}
+import { CoordinatesType } from "@/lib/validations";
 
 export type MapConfig = {
   id: string;
@@ -26,7 +23,7 @@ const MapTypeId = {
   TERRAIN: "terrain",
 };
 
-export default function MapComponent() {
+export default function MapComponent({ coordinates }: { coordinates: CoordinatesType }) {
   const MAP_CONFIGS: MapConfig[] = [
     {
       id: "light",
@@ -78,8 +75,8 @@ export default function MapComponent() {
           </div>
         ) : (
           <Map
-            defaultZoom={5}
-            defaultCenter={{ lat: 22.54992, lng: 0 }}
+            defaultZoom={16}
+            defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             disableDefaultUI={true}
             mapId={mapConfig.mapId || null}
             mapTypeId={mapConfig.mapTypeId}
