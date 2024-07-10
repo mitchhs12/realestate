@@ -28,8 +28,8 @@ export const homeSchema = z.object({
   kitchens: z.number().int(),
   capacity: z.number().int(),
   photos: z.array(z.string()),
-  price: z.number().min(1, "Cannot be empty"),
-  areaSqm: z.number().min(1, "Cannot be empty"),
+  price: z.number(),
+  areaSqm: z.number(),
   isActive: z.boolean(),
   listingFlowStep: z.number().min(0, "Cannot be empty"),
 });

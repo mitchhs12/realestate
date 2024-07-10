@@ -8,6 +8,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover
 import { v4 as uuidv4 } from "uuid"; // Import UUID for session token
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { QueryContext } from "@/context/QueryContext";
+import { User } from "next-auth";
 
 interface PlacePrediction {
   text: {
@@ -30,6 +31,28 @@ export default function SearchBox() {
   const sessionTokenRef = useRef<string>(uuidv4()); // Ref for session token
   const { query, setQuery } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
+  const [latitude, setLatitude] = useState<number | null>(null); // State for latitude
+  const [longitude, setLongitude] = useState<number | null>(null); // State for longitude
+
+  useEffect(() => {
+    console.log("latitude", latitude, "longitude", longitude);
+  }, [latitude, longitude]);
+
+  const getGeolocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          console.error("Error getting geolocation: ", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
 
   const handleSearch = (searchParam: string | undefined) => {
     if (searchParam) {
@@ -111,9 +134,10 @@ export default function SearchBox() {
                 <Input
                   ref={inputRef}
                   type="search"
-                  placeholder={"Search Locations"}
+                  placeholder={"Search for a place..."}
                   className="z-100 bg-popover"
                   value={query}
+                  onFocus={getGeolocation}
                   onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)} // Open Popover on mouse down if there are results
                   onChange={(e) => {
                     setQuery(e.target.value);

@@ -67,6 +67,9 @@ export async function updateHome(
       },
     });
   } else {
+    if (!shouldIncreaseListingFlowStep) {
+      return updatedHome;
+    }
     // Update existing home
     const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
 

@@ -30,7 +30,9 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
   }, []);
 
   useEffect(() => {
-    if (selection.length && currentHome) {
+    console.log("running this effect");
+    if (currentHome) {
+      console.log("updating new home :)");
       setNewHome({ ...currentHome, type: selection });
     }
   }, [selection]);
