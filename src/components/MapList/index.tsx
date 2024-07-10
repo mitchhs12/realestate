@@ -1,7 +1,7 @@
 "use client";
 
 import SearchResults from "@/components/SearchResults";
-import Map from "@/components/Map";
+import MapComponent from "@/components/Map";
 import FloatingButton from "@/components/FloatingButton";
 import { useContext } from "react";
 import { QueryContext } from "@/context/QueryContext";
@@ -23,7 +23,7 @@ export default function MapList() {
           mapFocused ? "md:hidden" : "md:h-full"
         } lg:flex lg:w-1/2 lg:h-screen-minus-header border border-red-400`}
       >
-        <Map />
+        <MapComponent />
       </section>
       <FloatingButton />
     </>

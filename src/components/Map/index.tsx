@@ -26,7 +26,7 @@ const MapTypeId = {
   TERRAIN: "terrain",
 };
 
-export default function MyMap({ searchLocation }: Props) {
+export default function MapComponent() {
   const MAP_CONFIGS: MapConfig[] = [
     {
       id: "light",
