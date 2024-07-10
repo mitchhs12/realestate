@@ -3,11 +3,15 @@
 import SearchResults from "@/components/SearchResults";
 import MapComponent from "@/components/Map";
 import FloatingButton from "@/components/FloatingButton";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { QueryContext } from "@/context/QueryContext";
+import { CoordinatesType } from "@/lib/validations";
 
-export default function MapList() {
-  const { mapFocused, setMapFocused } = useContext(QueryContext);
+export default function CombinedSearchPage({ coordinates }: { coordinates: CoordinatesType }) {
+  const { mapFocused, setMapFocused, setCoordinates } = useContext(QueryContext);
+  useEffect(() => {
+    setCoordinates(coordinates);
+  }, [coordinates]);
 
   return (
     <>

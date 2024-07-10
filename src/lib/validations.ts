@@ -37,3 +37,7 @@ export const homeSchema = z.object({
 export type UpdateNameValues = z.infer<typeof updateNameSchema>;
 export type UpdateEmailValues = z.infer<typeof updateEmailSchema>;
 export type HomeType = z.infer<typeof homeSchema>;
+export type CoordinatesType = {
+  lat: number;
+  long: number;
+};

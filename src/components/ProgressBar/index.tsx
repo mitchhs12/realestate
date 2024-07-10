@@ -69,39 +69,31 @@ export default function ProgressBar() {
 
     if (_shouldIncreaseListingFlowStep) {
       if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-        console.log("button should not be disabled");
+        console.log("button should not be disabled because new home is different from current home");
         return false;
       } else {
-        console.log("button should be disabled");
+        console.log("button should be disabled because new home is the same as current home");
         return true;
       }
-    } else if (prevStep === "" || pathname.startsWith("/sell/step")) {
-      console.log("running this");
-      return false;
     } else {
-      console.log("button should be disabled because we should not increment the flow step");
-      return true;
+      return false;
     }
   };
 
-  const [nextButtonDisabled, setNextButtonDisabled] = useState(isButtonDisabled);
+  // useEffect(() => {
+  //   console.log("running the next button use Effect");
+  //   console.log("pathname", pathname);
+  //   const newButton = isButtonDisabled();
+  //   console.log("NEW BUTTON HOORAY", newButton);
+  //   setNextButtonDisabled(newButton);
+  //   console.log("finished running effect with new button", newButton);
+  // }, [currentHome, newHome, isLoading, pathname]);
+
+  const nextButtonDisabled = isButtonDisabled();
 
   useEffect(() => {
-    console.log("nextButtonDisabled", nextButtonDisabled);
+    console.log("NEXTBUTTONDISABLED", nextButtonDisabled);
   }, [nextButtonDisabled]);
-
-  useEffect(() => {
-    console.log("useEffect triggered by pathname change:", pathname);
-  }, [pathname]);
-
-  useEffect(() => {
-    console.log("running the next button use Effect");
-    console.log("pathname", pathname);
-    const newButton = isButtonDisabled();
-    console.log("NEW BUTTON HOORAY", newButton);
-    setNextButtonDisabled(newButton);
-    console.log("finished running effect with new button", newButton);
-  }, [currentHome, newHome, isLoading, pathname]);
 
   async function handleNext() {
     setIsLoading(true);
@@ -125,7 +117,7 @@ export default function ProgressBar() {
   async function handlePrev() {
     if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       setIsLoading(true);
-      const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep());
+      const _newHome = await updateHome(newHome, pathname, false);
       setCurrentHome(_newHome);
     }
     router.push(prevStep);

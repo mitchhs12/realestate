@@ -5,19 +5,12 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect, useContext } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { v4 as uuidv4 } from "uuid"; // Import UUID for session token
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { QueryContext } from "@/context/QueryContext";
-import { User } from "next-auth";
-
-interface PlacePrediction {
-  text: {
-    text: string;
-  };
-}
 
 interface Result {
-  placePrediction: PlacePrediction;
+  Text: string;
+  PlaceId: string;
 }
 
 export default function SearchBox() {
@@ -27,23 +20,15 @@ export default function SearchBox() {
   const inputRef = useRef<HTMLInputElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
   const [popoverOpen, setPopoverOpen] = useState(false); // State to control Popover open
-  const debounceTimeout = useRef<number | null>(null); // Ref for debounce timeout
-  const sessionTokenRef = useRef<string>(uuidv4()); // Ref for session token
   const { query, setQuery } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
-  const [latitude, setLatitude] = useState<number | null>(null); // State for latitude
-  const [longitude, setLongitude] = useState<number | null>(null); // State for longitude
-
-  useEffect(() => {
-    console.log("latitude", latitude, "longitude", longitude);
-  }, [latitude, longitude]);
+  const [latLongArray, setLatLongArray] = useState<number[]>([]); // State for latLongArray
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
+          setLatLongArray([position.coords.longitude, position.coords.latitude]);
         },
         (error) => {
           console.error("Error getting geolocation: ", error);
@@ -54,35 +39,23 @@ export default function SearchBox() {
     }
   };
 
-  const handleSearch = (searchParam: string | undefined) => {
-    if (searchParam) {
-      router.push(`search?query=${encodeURIComponent(searchParam)}`);
+  const handleSearch = (text: string, placeId: string) => {
+    if (placeId) {
+      router.push(`/${placeId}`);
       setPopoverOpen(false); // Close Popover on search
-      setQuery(searchParam);
+      setQuery(text);
     }
   };
 
   useEffect(() => {
     if (query === initialQueryRef.current) return;
 
-    if (debounceTimeout.current) {
-      clearTimeout(debounceTimeout.current);
-    }
-
     if (query) {
       setLoading(true);
-      debounceTimeout.current = window.setTimeout(() => {
-        fetchPlaces(query, sessionTokenRef.current);
-      }, 300); // Debounce fetching places
+      fetchPlaces(query);
     } else {
       setPopoverOpen(false); // Close Popover if query is empty
     }
-
-    return () => {
-      if (debounceTimeout.current) {
-        clearTimeout(debounceTimeout.current);
-      }
-    };
   }, [query]);
 
   useEffect(() => {
@@ -104,12 +77,20 @@ export default function SearchBox() {
     };
   }, []);
 
-  const fetchPlaces = async (query: string, sessionToken: string) => {
+  const fetchPlaces = async (query: string) => {
     try {
-      const response = await fetch(`/api/places?query=${encodeURIComponent(query)}&sessionToken=${sessionToken}`);
+      const body =
+        latLongArray.length > 0 ? { query: { text: query, latLongArray: latLongArray } } : { query: { text: query } };
+      const response = await fetch("/api/autocomplete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
       const results = await response.json();
-      if (results.data) {
-        setResults(results.data);
+      if (results.suggestions) {
+        setResults(results.suggestions);
       } else {
         setResults([]);
       }
@@ -125,7 +106,7 @@ export default function SearchBox() {
     <div className="flex w-full">
       <form
         className="flex w-full justify-center space-x-2 px-4"
-        onSubmit={() => handleSearch(results[0].placePrediction.text.text)}
+        onSubmit={() => handleSearch(results[0].Text, results[0].PlaceId)}
       >
         <div className="flex flex-col w-full items-center">
           <Popover open={popoverOpen}>
@@ -145,7 +126,7 @@ export default function SearchBox() {
                   onKeyDown={(e) => {
                     if (!loading && e.key === "Enter") {
                       e.preventDefault();
-                      handleSearch(results[0].placePrediction.text.text);
+                      handleSearch(results[0].Text, results[0].PlaceId);
                     }
                   }}
                 />
@@ -156,31 +137,32 @@ export default function SearchBox() {
                 </div>
               </Button>
             </div>
-            <div className="flex w-full">
-              <PopoverContent
-                ref={popoverRef}
-                onOpenAutoFocus={(e) => e.preventDefault()}
-                className="w-[286px] sm:w-[400px] md:w-[540px] lg:w-[710px] xl:w-[910px]"
-              >
-                {loading && <div>Loading...</div>}
-                {!loading && results.length === 0 && <div>No results found.</div>}
-                {!loading && results.length > 0 && (
-                  <div>
-                    {results.map((entry: any, index) => (
-                      <div
-                        key={index}
-                        className="px-2 py-2 cursor-pointer hover:bg-muted rounded-md"
-                        onClick={() => {
-                          handleSearch(entry.placePrediction.text.text);
-                        }}
-                      >
-                        <span>{entry.placePrediction.text.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </PopoverContent>
-            </div>
+            {(!loading || results.length > 0) && (
+              <div className="flex w-full">
+                <PopoverContent
+                  ref={popoverRef}
+                  onOpenAutoFocus={(e) => e.preventDefault()}
+                  className="w-[286px] sm:w-[400px] md:w-[540px] lg:w-[710px] xl:w-[910px]"
+                >
+                  {results.length === 0 && <div>No results found.</div>}
+                  {results.length > 0 && (
+                    <div>
+                      {results.map((entry: any, index) => (
+                        <div
+                          key={index}
+                          className="px-2 py-2 cursor-pointer hover:bg-muted rounded-md"
+                          onClick={() => {
+                            handleSearch(entry.Text, entry.PlaceId);
+                          }}
+                        >
+                          <span>{entry.Text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </PopoverContent>
+              </div>
+            )}
           </Popover>
         </div>
       </form>
