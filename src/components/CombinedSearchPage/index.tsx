@@ -8,7 +8,13 @@ import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType } from "@/lib/validations";
 
 export default function CombinedSearchPage({ coordinates }: { coordinates: CoordinatesType }) {
-  const { mapFocused, setMapFocused } = useContext(QueryContext);
+  const { mapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
+
+  useEffect(() => {
+    if (currentCoords) {
+      setCurrentCoords(coordinates);
+    }
+  }, [coordinates]);
 
   return (
     <>

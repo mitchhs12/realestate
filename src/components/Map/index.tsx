@@ -1,20 +1,18 @@
 "use client";
-import { useEffect, useCallback } from "react";
-import { APIProvider, Map, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
+import { useEffect, useCallback, useContext } from "react";
+import { APIProvider, Map, InfoWindow } from "@vis.gl/react-google-maps";
+import { InfoWindowContent } from "@/components/InfoWindowContent";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
 import { CoordinatesType } from "@/lib/validations";
-import DeckGL from "@deck.gl/react";
+import { loadCastlesGeojson, CastlesGeojson } from "./castles";
+import { Feature, Point } from "geojson";
+import { ClusteredMarkers } from "@/components/ClusteredMarkers";
 
-import { IconLayer } from "@deck.gl/layers";
-import { MapView } from "@deck.gl/core";
-import IconClusterLayer from "@/components/Map/icon-cluster-layer";
-import type { IconClusterLayerPickingInfo } from "@/components/Map/icon-cluster-layer";
-import type { PickingInfo, MapViewState } from "@deck.gl/core";
-import type { IconLayerProps } from "@deck.gl/layers";
+import { QueryContext } from "@/context/QueryContext";
 
 export type MapConfig = {
   id: string;
@@ -35,6 +33,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
   const MAP_CONFIGS: MapConfig[] = [
     {
       id: "light",
+      mapId: "7707a4d5591d6f35",
       label: "Light",
       mapTypeId: MapTypeId.ROADMAP,
       styles: lightMap,
@@ -42,32 +41,28 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
     {
       id: "dark",
       label: "Dark",
+      mapId: "66e8c712a9e09ae1",
       mapTypeId: MapTypeId.ROADMAP,
       styles: darkMap,
     },
   ];
-  const showCluster = true;
-  const iconAtlas = "/data/icons.png";
-  const iconMapping = "/data/data.json";
-  const data = "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/icon/meteorites.json";
+
   const { resolvedTheme: theme } = useTheme();
+  const { newZoom, setNewZoom } = useContext(QueryContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
+  const [numClusters, setNumClusters] = useState(0);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
-  const [hoverInfo, setHoverInfo] = useState<IconClusterLayerPickingInfo<Meterite> | null>(null);
-  const hideToolTip = useCallback(() => {
-    setHoverInfo(null);
+  const [geojson, setGeojson] = useState<CastlesGeojson | null>(null);
+  useEffect(() => {
+    void loadCastlesGeojson().then((data) => setGeojson(data));
   }, []);
 
-  const expandTooltip = useCallback(
-    (info: PickingInfo) => {
-      if (info.picked && showCluster) {
-        setHoverInfo(info);
-      } else {
-        setHoverInfo(null);
-      }
-    },
-    [showCluster]
-  );
+  const [infowindowData, setInfowindowData] = useState<{
+    anchor: google.maps.marker.AdvancedMarkerElement;
+    features: Feature<Point>[];
+  } | null>(null);
+
+  const hamdleInfoWindowClose = useCallback(() => setInfowindowData(null), [setInfowindowData]);
 
   useEffect(() => {
     if (theme) {
@@ -75,17 +70,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
       console.log("theme", theme);
       setMapConfig(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
     }
-  }, [MAP_CONFIGS, theme]);
-
-  const MAP_VIEW = new MapView({ repeat: false });
-  const INITIAL_VIEW_STATE: MapViewState = {
-    longitude: coordinates.long,
-    latitude: coordinates.lat,
-    zoom: 16,
-    maxZoom: 20,
-    pitch: 0,
-    bearing: 0,
-  };
+  }, [theme]);
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -97,42 +82,8 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
     setIsMapLoading(false);
   };
 
-  type Meterite = {
-    coordinates: [longitude: number, latitude: number];
-    name: string;
-    class: string;
-    mass: number;
-    year: number;
-  };
-
-  const layerProps: IconLayerProps<Meterite> = {
-    id: "icon",
-    data,
-    pickable: true,
-    getPosition: (d) => d.coordinates,
-    iconAtlas,
-    iconMapping,
-  };
-
-  if (hoverInfo === null || !hoverInfo.objects) {
-    layerProps.onHover = setHoverInfo;
-  }
-
-  const layer = showCluster
-    ? new IconClusterLayer({ ...layerProps, id: "icon-cluster", sizeScale: 40 })
-    : new IconLayer({
-        ...layerProps,
-        id: "icon",
-        getIcon: (d) => "marker",
-        sizeUnits: "meters",
-        sizeScale: 2000,
-        sizeMinPixels: 6,
-      });
-
-  console.log("layer", layer);
-
   return (
-    <div className="flex flex-col w-full h-full items-center justify-center">
+    <div className="flex flex-col w-full items-center justify-center">
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
         {isMapLoading ? (
           <div className="flex items-center justify-center text-lg lg:text-3xl">
@@ -140,25 +91,35 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
             Loading...
           </div>
         ) : (
-          <div className="relative w-full h-full">
-            <DeckGL
-              initialViewState={INITIAL_VIEW_STATE}
-              views={MAP_VIEW}
-              layers={[layer]}
-              controller={{ dragRotate: false }}
-              onViewStateChange={hideToolTip}
-              onClick={expandTooltip}
+          <div className="flex w-full h-full border-2 border-green-500">
+            <Map
+              defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
+              zoom={newZoom !== 16 ? newZoom : 16}
+              maxZoom={20}
+              minZoom={2}
+              onZoomChanged={(num) => {
+                setNewZoom(num.detail.zoom);
+              }}
+              disableDefaultUI={true}
+              mapId={mapConfig.mapId || null}
+              mapTypeId={mapConfig.mapTypeId}
+              reuseMaps={true}
+              className={"custom-marker-clustering-map"}
+              //styles={mapConfig.styles}
             >
-              <Map
-                defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
-                defaultZoom={16}
-                disableDefaultUI={true}
-                mapId={mapConfig.mapId || null}
-                mapTypeId={mapConfig.mapTypeId}
-                styles={mapConfig.styles}
-                reuseMaps={true}
-              ></Map>
-            </DeckGL>
+              {geojson && (
+                <ClusteredMarkers
+                  geojson={geojson}
+                  setNumClusters={setNumClusters}
+                  setInfowindowData={setInfowindowData}
+                />
+              )}
+              {infowindowData && (
+                <InfoWindow onClose={hamdleInfoWindowClose} anchor={infowindowData.anchor}>
+                  <InfoWindowContent features={infowindowData.features} />
+                </InfoWindow>
+              )}
+            </Map>
           </div>
         )}
       </APIProvider>

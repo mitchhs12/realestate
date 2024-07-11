@@ -4,7 +4,7 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { poppins } from "@/app/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -23,7 +23,7 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [handleLogin, setHandleLogin] = useState(false);
 
-  const isSearchPage = pathname === "/search";
+  const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
 
   const closeModal = () => {

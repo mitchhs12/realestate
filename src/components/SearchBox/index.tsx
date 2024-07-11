@@ -41,7 +41,7 @@ export default function SearchBox() {
 
   const handleSearch = (text: string, placeId: string) => {
     if (placeId) {
-      router.push(`/${placeId}`);
+      router.push(`/search/${placeId}`);
       setPopoverOpen(false); // Close Popover on search
       setQuery(text);
     }

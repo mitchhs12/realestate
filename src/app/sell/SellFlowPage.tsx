@@ -27,6 +27,7 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setIsLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const step = currentHome?.listingFlowStep;
