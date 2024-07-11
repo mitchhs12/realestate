@@ -28,7 +28,7 @@ export default function CombinedSearchPage({ coordinates }: { coordinates: Coord
       <section
         className={`flex w-full h-1/2 ${
           mapFocused ? "md:hidden" : "md:h-full"
-        } lg:flex lg:w-1/2 lg:h-screen-minus-header border border-red-400 flex-grow`}
+        } lg:flex lg:w-1/2 lg:h-screen-minus-header border border-red-400`}
       >
         <MapComponent coordinates={coordinates} />
       </section>

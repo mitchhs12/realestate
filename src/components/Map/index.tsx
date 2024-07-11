@@ -91,36 +91,34 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
             Loading...
           </div>
         ) : (
-          <div className="flex w-full h-full border-2 border-green-500">
-            <Map
-              defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
-              zoom={newZoom !== 16 ? newZoom : 16}
-              maxZoom={20}
-              minZoom={2}
-              onZoomChanged={(num) => {
-                setNewZoom(num.detail.zoom);
-              }}
-              disableDefaultUI={true}
-              mapId={mapConfig.mapId || null}
-              mapTypeId={mapConfig.mapTypeId}
-              reuseMaps={true}
-              className={"custom-marker-clustering-map"}
-              //styles={mapConfig.styles}
-            >
-              {geojson && (
-                <ClusteredMarkers
-                  geojson={geojson}
-                  setNumClusters={setNumClusters}
-                  setInfowindowData={setInfowindowData}
-                />
-              )}
-              {infowindowData && (
-                <InfoWindow onClose={hamdleInfoWindowClose} anchor={infowindowData.anchor}>
-                  <InfoWindowContent features={infowindowData.features} />
-                </InfoWindow>
-              )}
-            </Map>
-          </div>
+          <Map
+            defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
+            zoom={newZoom !== 16 ? newZoom : 16}
+            maxZoom={20}
+            minZoom={2}
+            onZoomChanged={(num) => {
+              setNewZoom(num.detail.zoom);
+            }}
+            disableDefaultUI={true}
+            mapId={mapConfig.mapId || null}
+            mapTypeId={mapConfig.mapTypeId}
+            reuseMaps={true}
+            className={"custom-marker-clustering-map"}
+            //styles={mapConfig.styles}
+          >
+            {geojson && (
+              <ClusteredMarkers
+                geojson={geojson}
+                setNumClusters={setNumClusters}
+                setInfowindowData={setInfowindowData}
+              />
+            )}
+            {infowindowData && (
+              <InfoWindow onClose={hamdleInfoWindowClose} anchor={infowindowData.anchor}>
+                <InfoWindowContent features={infowindowData.features} />
+              </InfoWindow>
+            )}
+          </Map>
         )}
       </APIProvider>
     </div>
