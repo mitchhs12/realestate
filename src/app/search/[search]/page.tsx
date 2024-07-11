@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: { search: string } }) {
 
   if (response.status === 200) {
     return (
-      <main className="flex flex-col-reverse h-screen-minus-header lg:flex-row justify-end ">
+      <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end ">
         <CombinedSearchPage coordinates={coordinates} />
       </main>
     );
