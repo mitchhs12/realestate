@@ -14,13 +14,19 @@ export default function Hero() {
         priority={true}
         className="-z-10 opacity-30 dark:opacity-20"
       />
-      <div className="z-10 flex flex-col w-full justify-center items-center space-y-10">
-        <h1 className={`${poppins.className} text-center text-2xl md:text-3xl lg:text-3xl font-light tracking-wider`}>
-          Find your dream home.
-        </h1>
-        <div className="flex justify-center items-center w-full">
-          <SearchBox />
+      <div className="flex flex-col w-full justify-center items-center gap-y-10">
+        <div className="z-10 flex flex-col w-full justify-center items-center space-y-10">
+          <h1 className={`${poppins.className} text-center text-2xl md:text-3xl lg:text-3xl font-light tracking-wider`}>
+            Find your dream home.
+          </h1>
+          <div className="flex justify-center items-center w-full">
+            <SearchBox />
+          </div>
         </div>
+        <h1 className="flex flex-col justify-center items-center gap-y-3">
+          <span className="text-2xl">This site is under construction.</span>
+          <span className="text-lg">Please create an account, and we'll email you when it's ready.</span>
+        </h1>
       </div>
     </div>
   );
