@@ -38,7 +38,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
   }, [selection]);
 
   return (
-    <div className="flex flex-col h-full w-full items-center gap-y-20">
+    <div className="flex flex-col h-screen-minus-header-dvh w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
