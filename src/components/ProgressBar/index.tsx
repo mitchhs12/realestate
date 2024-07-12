@@ -20,6 +20,7 @@ export default function ProgressBar() {
     setIsLoading,
     newHome,
     sellFlowFlatIndex,
+    setNewHome,
   } = useContext(SellContext);
 
   router.prefetch(nextStep);
@@ -31,19 +32,19 @@ export default function ProgressBar() {
   const checkStepPositionForNextNavigation = () => {
     if (currentHome) {
       console.log("stepLengths", stepLengths);
-      const step = currentHome.listingFlowStep;
-      console.log("current step as recorded in currentHome", step);
-      // NOT SURE IF I NEED THIS CODE!!!!!@@@@@@@@@@@@@@
-      if (step <= stepLengths[0] - 1) {
-        console.log("returning a");
-        return step;
-      } else if (step <= stepLengths[0] - 1 + stepLengths[1] - 1) {
-        console.log("returning b");
-        return step - 1;
-      } else {
-        console.log("returning c");
-        return step - 2;
-      }
+      const databaseStep = currentHome.listingFlowStep;
+      return databaseStep;
+      // console.log("current databaseStep as recorded in currentHome", databaseStep);
+      // if (databaseStep <= stepLengths[0] - 1) {
+      //   console.log("IN 1st STEP CONDITIONAL");
+      //   return databaseStep;
+      // } else if (databaseStep <= stepLengths[0] - 1 + stepLengths[1] - 1) {
+      //   console.log("IN 2nd STEP CONDITIONAL");
+      //   return databaseStep + 1;
+      // } else {
+      //   console.log("IN 3rd STEP CONDITIONAL");
+      //   return databaseStep + 2;
+      // }
     } else {
       return 1;
     }
@@ -59,9 +60,6 @@ export default function ProgressBar() {
     } else if (sellFlowFlatIndex === nextStepUpTo) {
       console.log("running this XXX");
       return true;
-    } else if (pathname.startsWith("/sell/step")) {
-      console.log("returning that we should increment step");
-      return true;
     } else {
       return false;
     }
@@ -73,7 +71,7 @@ export default function ProgressBar() {
     }
 
     const _shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
-    console.log("shouldIncreaseListingFlowStep HEHEH", _shouldIncreaseListingFlowStep);
+    console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
 
     if (_shouldIncreaseListingFlowStep) {
       if (pathname.startsWith("/sell/step")) {
@@ -92,15 +90,6 @@ export default function ProgressBar() {
     }
   };
 
-  // useEffect(() => {
-  //   console.log("running the next button use Effect");
-  //   console.log("pathname", pathname);
-  //   const newButton = isButtonDisabled();
-  //   console.log("NEW BUTTON HOORAY", newButton);
-  //   setNextButtonDisabled(newButton);
-  //   console.log("finished running effect with new button", newButton);
-  // }, [currentHome, newHome, isLoading, pathname]);
-
   const nextButtonDisabled = isButtonDisabled();
 
   useEffect(() => {
@@ -109,17 +98,29 @@ export default function ProgressBar() {
 
   async function handleNext() {
     setIsLoading(true);
+    console.log("running handle next");
     if (prevStep === "" && currentHome) {
       // we are on the first page of the sell flow so we are redirected to where we are up too
       router.push(stepsFlattened[checkStepPositionForNextNavigation()]);
     } else if (prevStep === "" && !currentHome) {
+      console.log("creating a new home now!!@@@@@");
       // we are on the first page of the sell flow and we need to create a new home
       const _newHome = await updateHome(newHome, pathname, true);
       setCurrentHome(_newHome);
       router.push(nextStep);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
+      console.log("running this YYY");
       const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep());
       setCurrentHome(_newHome);
+      setNewHome(_newHome);
+      console.log("newHome AFTER", JSON.stringify(newHome, null, 2));
+      console.log("currentHome AFTER", JSON.stringify(currentHome, null, 2));
+      router.push(nextStep);
+    } else if (shouldIncrementFlowStep()) {
+      console.log("running this ZZZ");
+      const _newHome = await updateHome(newHome, pathname, true);
+      setCurrentHome(_newHome);
+      setNewHome(_newHome);
       router.push(nextStep);
     } else {
       router.push(nextStep);

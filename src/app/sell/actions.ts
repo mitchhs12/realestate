@@ -70,6 +70,7 @@ export async function updateHome(
     if (shouldIncreaseListingFlowStep) {
       // Update existing home
       const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
+      console.log("INCREMENTING LISTING FLOW STEP FROM", listingFlowStep, "to", listingFlowStep + 1);
 
       const newData = shouldIncreaseListingFlowStep
         ? { ...homeData, listingFlowStep: listingFlowStep + 1 }
@@ -81,6 +82,7 @@ export async function updateHome(
       });
     } else {
       const { id, ...homeData } = homeSchema.parse(homeValues);
+      console.log("NOT INCREMENTING LISTING FLOW STEP");
 
       updatedHome = await prisma.home.update({
         where: { id: id },
