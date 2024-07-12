@@ -20,13 +20,9 @@ export default function Hero() {
             Find your dream home.
           </h1>
           <div className="flex justify-center items-center w-full">
-            <SearchBox />
+            <SearchBox isSmallMap={false} />
           </div>
         </div>
-        <h1 className="flex flex-col justify-center items-center gap-y-3">
-          <span className="text-2xl">This site is under construction.</span>
-          <span className="text-lg">Please create an account, and we'll email you when it's ready.</span>
-        </h1>
       </div>
     </div>
   );

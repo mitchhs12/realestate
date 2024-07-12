@@ -28,6 +28,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const { query, setQuery } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
+  const [finishedSearch, setFinishedSearch] = useState<boolean>(false);
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
@@ -47,18 +48,19 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const handleSearch = (text: string, placeId: string) => {
     if (placeId && !isSmallMap) {
       router.push(`/search/${placeId}`);
-      setPopoverOpen(false); // Close Popover on search
-      setQuery(text);
     } else if (setSearchResult) {
       // assuring setSearchResult is defined
       setSearchResult(text, placeId);
     }
+    setQuery(text);
+    setPopoverOpen(false);
+    setFinishedSearch(true);
   };
 
   useEffect(() => {
     if (query === initialQueryRef.current) return;
 
-    if (query) {
+    if (query && !finishedSearch) {
       setLoading(true);
       fetchPlaces(query);
     } else {
