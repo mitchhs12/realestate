@@ -74,7 +74,7 @@ export default function Header() {
 
         {isSearchPage && (
           <div className="justify-center">
-            <SearchBox />
+            <SearchBox isSmallMap={false} />
           </div>
         )}
         {!isSearchPage && !isSellPage && (

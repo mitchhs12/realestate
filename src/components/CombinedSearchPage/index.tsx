@@ -1,7 +1,7 @@
 "use client";
 
 import SearchResults from "@/components/SearchResults";
-import MapComponent from "@/components/Map";
+import MapComponent from "@/components/MainMap";
 import FloatingButton from "@/components/FloatingButton";
 import { useContext, useEffect } from "react";
 import { QueryContext } from "@/context/QueryContext";

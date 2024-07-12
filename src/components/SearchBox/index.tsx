@@ -13,7 +13,12 @@ interface Result {
   PlaceId: string;
 }
 
-export default function SearchBox() {
+interface Props {
+  isSmallMap: boolean;
+  setSearchResult?: (text: string, placeId: string) => void;
+}
+
+export default function SearchBox({ isSmallMap = false, setSearchResult }: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
@@ -40,10 +45,13 @@ export default function SearchBox() {
   };
 
   const handleSearch = (text: string, placeId: string) => {
-    if (placeId) {
+    if (placeId && !isSmallMap) {
       router.push(`/search/${placeId}`);
       setPopoverOpen(false); // Close Popover on search
       setQuery(text);
+    } else if (setSearchResult) {
+      // assuring setSearchResult is defined
+      setSearchResult(text, placeId);
     }
   };
 
@@ -152,16 +160,16 @@ export default function SearchBox() {
                 >
                   {results.length === 0 && <div>No results found.</div>}
                   {results.length > 0 && (
-                    <div>
+                    <div className="w-full h-full">
                       {results.map((entry: any, index) => (
                         <div
                           key={index}
-                          className="px-2 py-2 cursor-pointer hover:bg-muted rounded-md"
+                          className="py-2 cursor-pointer hover:bg-muted rounded-md"
                           onClick={() => {
                             handleSearch(entry.Text, entry.PlaceId);
                           }}
                         >
-                          <span>{entry.Text}</span>
+                          <span className="block truncate">{entry.Text}</span>
                         </div>
                       ))}
                     </div>

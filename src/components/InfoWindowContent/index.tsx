@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Feature, Point } from "geojson";
-import { CastleFeatureProps } from "@/components/Map/castles";
+import { CastleFeatureProps } from "@/components/MainMap/castles";
 
 type InfowindowContentProps = {
   features: Feature<Point>[];

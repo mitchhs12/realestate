@@ -2,6 +2,7 @@
 import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
+import SearchBox from "@/components/SearchBox";
 
 interface Props {
   user: User;
@@ -10,9 +11,15 @@ interface Props {
   stepPercentage: number[];
 }
 
+interface SearchResult {
+  text: string;
+  placeId: string;
+}
+
 export default function Location({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
     useContext(SellContext);
+  const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -30,6 +37,14 @@ export default function Location({ user, sellFlatIndex, sellFlowIndices, stepPer
           </div>
           <div className="flex flex-col px-8 mt-5">
             <h3 className="text-lg w-full">Where is your place located?</h3>
+          </div>
+          <div className="flex flex-col h-full items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl py-8">
+            <div>
+              <SearchBox
+                isSmallMap={true}
+                setSearchResult={(text, placeId) => setSearchResult({ text: text, placeId: placeId })}
+              />
+            </div>
           </div>
         </div>
       </div>
