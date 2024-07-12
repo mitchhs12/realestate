@@ -30,13 +30,18 @@ export default function ProgressBar() {
 
   const checkStepPositionForNextNavigation = () => {
     if (currentHome) {
+      console.log("stepLengths", stepLengths);
       const step = currentHome.listingFlowStep;
-      console.log("current step", step);
+      console.log("current step as recorded in currentHome", step);
+      // NOT SURE IF I NEED THIS CODE!!!!!@@@@@@@@@@@@@@
       if (step <= stepLengths[0] - 1) {
+        console.log("returning a");
         return step;
       } else if (step <= stepLengths[0] - 1 + stepLengths[1] - 1) {
+        console.log("returning b");
         return step - 1;
       } else {
+        console.log("returning c");
         return step - 2;
       }
     } else {
@@ -54,6 +59,9 @@ export default function ProgressBar() {
     } else if (sellFlowFlatIndex === nextStepUpTo) {
       console.log("running this XXX");
       return true;
+    } else if (pathname.startsWith("/sell/step")) {
+      console.log("returning that we should increment step");
+      return true;
     } else {
       return false;
     }
@@ -68,7 +76,10 @@ export default function ProgressBar() {
     console.log("shouldIncreaseListingFlowStep HEHEH", _shouldIncreaseListingFlowStep);
 
     if (_shouldIncreaseListingFlowStep) {
-      if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
+      if (pathname.startsWith("/sell/step")) {
+        console.log("button should not be disabled because we are on a intro step page");
+        return false;
+      } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
         console.log("button should not be disabled because new home is different from current home");
         return false;
       } else {
@@ -76,6 +87,7 @@ export default function ProgressBar() {
         return true;
       }
     } else {
+      console.log("button should not be disabled because we are not incrementing the flow step");
       return false;
     }
   };

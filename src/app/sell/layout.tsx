@@ -12,8 +12,8 @@ export default async function SellFlowLayout({
   return (
     <>
       <SellContextProvider unfinishedHome={unfinishedHome}>
-        <div className="flex flex-col h-screen-minus-header-svh justify-between w-full">
-          <main className="flex-grow overflow-auto">{children}</main>
+        <div className="flex flex-col h-screen-minus-header-dvh w-full">
+          <main className="flex-grow overflow-auto h-full">{children}</main>
           <ProgressBar />
         </div>
       </SellContextProvider>

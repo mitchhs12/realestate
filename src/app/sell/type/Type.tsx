@@ -38,7 +38,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
   }, [selection]);
 
   return (
-    <div className="flex flex-col h-screen-minus-header-dvh w-full items-center gap-y-20">
+    <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
@@ -48,7 +48,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
             <h3 className="text-lg w-full">Which best describes your place?</h3>
           </div>
         </div>
-        <div className="grid w-full h-full px-8 justify-center items-center pt-8">
+        <div className="grid w-full h-full px-8 justify-center items-center py-8 overflow-auto">
           <ToggleGroup
             type="multiple"
             value={selection}

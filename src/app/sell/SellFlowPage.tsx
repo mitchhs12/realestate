@@ -22,6 +22,8 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setIsLoading } =
     useContext(SellContext);
 
+  console.log("stepLengthsWithout", stepLengthsWithoutStepPages);
+
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
@@ -45,7 +47,8 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
                 1. Tell us about your place
                 {step && (
                   <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {step}/{getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
+                    {step > stepLengthsWithoutStepPages[0] ? stepLengthsWithoutStepPages[0] : step}/
+                    {getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
                     <span className="hidden 2xl:flex">Completed</span>
                     <Checkbox
                       id="state"
@@ -63,13 +66,13 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
                 2. Make it stand out
                 {step && (
                   <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {step - stepLengthsWithoutStepPages[0] > 0 ? step - stepLengthsWithoutStepPages[0] : 0}/
+                    {step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0}/
                     {getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
                     <span className="hidden 2xl:flex">Completed</span>
                     <Checkbox
                       id="state"
                       disabled={true}
-                      checked={step > stepLengthsWithoutStepPages[1] ? true : false}
+                      checked={step > stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] ? true : false}
                     />
                   </label>
                 )}
@@ -82,15 +85,20 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
                 3. Finish up and publish
                 {step && (
                   <label className="hidden lg:flex text-md items-center gap-3 text-sm">
-                    {step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] > 0
-                      ? step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1]
+                    {step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2 > 0
+                      ? step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2
                       : 0}
                     /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[1])}
                     <span className="hidden 2xl:flex">Completed</span>
                     <Checkbox
                       id="state"
                       disabled={true}
-                      checked={step > stepLengthsWithoutStepPages[2] ? true : false}
+                      checked={
+                        step >
+                        stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] + stepLengthsWithoutStepPages[2]
+                          ? true
+                          : false
+                      }
                     />
                   </label>
                 )}
