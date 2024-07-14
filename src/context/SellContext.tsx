@@ -3,7 +3,6 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
 import { HomeType } from "@/lib/validations";
-import { getUnfinishedHome } from "@/app/sell/actions";
 
 interface SellContextProps {
   nextStep: string;

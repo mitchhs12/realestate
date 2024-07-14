@@ -1,6 +1,6 @@
 import { CoordinatesType } from "@/lib/validations";
 import { NextRequest, NextResponse } from "next/server";
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const params = await req.json();
 
   const AWS_LOCATION_SERVICE_ENDPOINT = process.env.AWS_LOCATION_SERVICE_ENDPOINT;

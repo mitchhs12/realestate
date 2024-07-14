@@ -4,7 +4,7 @@ const AWS_LOCATION_SERVICE_ENDPOINT = "https://places.geo.us-west-2.amazonaws.co
 const INDEX_NAME = "TestIndex";
 const API_KEY = process.env.AWS_MAPS_API_KEY; // Replace with your API key
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const payload = await req.json();
   const { text, longLatArray } = payload.query;
 
@@ -25,6 +25,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json({ suggestions }, { status: 200 });
   } catch (error) {
     console.error(error);
-    return res;
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }

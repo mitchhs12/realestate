@@ -20,8 +20,6 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
 
   const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
 
-  console.log(selection);
-
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);

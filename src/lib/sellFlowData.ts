@@ -46,6 +46,7 @@ export const features = [
   "Solar panels",
   "Terrace",
   "Walk-in closet",
+  "None",
 ];
 
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);

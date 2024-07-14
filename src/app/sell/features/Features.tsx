@@ -30,7 +30,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
     console.log("running this effect");
     if (currentHome) {
       console.log("updating new home :)");
-      setNewHome({ ...currentHome, type: selection });
+      setNewHome({ ...currentHome, features: selection });
     }
   }, [selection]);
 
