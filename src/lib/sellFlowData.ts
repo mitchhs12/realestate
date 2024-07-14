@@ -20,6 +20,34 @@ export const types = [
   "Windmill",
 ];
 
+export const features = [
+  "Air-conditioning",
+  "Attic",
+  "Balcony",
+  "Basement",
+  "BBQ",
+  "Beach access",
+  "Car parking",
+  "Exercise Equipment",
+  "Fire Pit",
+  "Garage",
+  "Garden/Yard",
+  "Heating system",
+  "Home office",
+  "Hot Tub",
+  "Indoor Fireplace",
+  "Lake access",
+  "Laundry room",
+  "Outdoor Dining Area",
+  "Patio",
+  "Pool",
+  "Security system",
+  "Ski-in/Ski-out",
+  "Solar panels",
+  "Terrace",
+  "Walk-in closet",
+];
+
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);
 export const stepLengths = sellSteps.map((step) => step.length);
 export const stepLengthsWithoutStepPages = stepLengths.map((step) => step - 1);
