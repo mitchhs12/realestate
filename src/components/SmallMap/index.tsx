@@ -1,15 +1,13 @@
 "use client";
-import { useEffect, useCallback, useContext } from "react";
-import { APIProvider, Map, InfoWindow } from "@vis.gl/react-google-maps";
-import { InfoWindowContent } from "@/components/InfoWindowContent";
-import { useState } from "react";
+import { useEffect, useCallback, useState, useContext } from "react";
+import { APIProvider, Map, Marker, MapCameraChangedEvent, MapCameraProps } from "@vis.gl/react-google-maps";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "@/components/MainMap/map-styles/dark-map";
 import lightMap from "@/components/MainMap/map-styles/light-map";
 import { CoordinatesType } from "@/lib/validations";
-
 import { QueryContext } from "@/context/QueryContext";
+import { SellContext } from "@/context/SellContext";
 
 export type MapConfig = {
   id: string;
@@ -46,9 +44,27 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
 
   const { resolvedTheme: theme } = useTheme();
   const { newZoom, setNewZoom } = useContext(QueryContext);
+  const { setNewHome, currentHome } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
-  const [numClusters, setNumClusters] = useState(0);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
+  const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
+
+  const INITIAL_CAMERA = {
+    center: { lat: coordinates.lat, lng: coordinates.long },
+    zoom: newZoom !== 17 ? newZoom : 17,
+  };
+
+  const [cameraProps, setCameraProps] = useState<MapCameraProps>(INITIAL_CAMERA);
+
+  useEffect(() => {
+    setCameraProps({ center: { lat: coordinates.lat, lng: coordinates.long }, zoom: newZoom });
+  }, [coordinates]);
+
+  const handleCameraChanged = useCallback((ev: MapCameraChangedEvent) => {
+    setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
+    setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
+    currentHome && setNewHome({ ...currentHome, latitude: ev.detail.center.lat, longitude: ev.detail.center.lng });
+  }, []);
 
   useEffect(() => {
     if (theme) {
@@ -79,18 +95,21 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
         ) : (
           <Map
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
-            zoom={newZoom !== 16 ? newZoom : 16}
             maxZoom={20}
-            minZoom={2}
+            minZoom={17}
             onZoomChanged={(num) => {
               setNewZoom(num.detail.zoom);
             }}
+            {...cameraProps}
             disableDefaultUI={true}
             mapId={mapConfig.mapId || null}
             mapTypeId={mapConfig.mapTypeId}
             reuseMaps={true}
             className={"custom-marker-clustering-map"}
-          ></Map>
+            onCameraChanged={handleCameraChanged}
+          >
+            <Marker position={{ lat: cameraPos.lat, lng: cameraPos.long }} />
+          </Map>
         )}
       </APIProvider>
     </div>

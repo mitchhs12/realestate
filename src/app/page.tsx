@@ -10,7 +10,7 @@ export default async function Home() {
       <h1 className="flex flex-col justify-center items-center gap-y-3 text-center">
         <span className="text-md md:text-2xl">This site is under construction.</span>
         <span className="text-md md:text-lg">
-          Please create an account, and we`&apos;`ll email you when it`&apos;`s ready.
+          Please create an account, and we&apos;ll email you when it&apos;s ready.
         </span>
       </h1>
       <footer className="flex justify-center items-center p-6 w-full bg-muted">

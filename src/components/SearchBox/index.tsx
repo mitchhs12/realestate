@@ -48,13 +48,12 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const handleSearch = (text: string, placeId: string) => {
     if (placeId && !isSmallMap) {
       router.push(`/search/${placeId}`);
-    } else if (setSearchResult) {
-      // assuring setSearchResult is defined
-      setSearchResult(text, placeId);
+      setFinishedSearch(true);
+    } else {
+      setSearchResult!(text, placeId);
     }
     setQuery(text);
     setPopoverOpen(false);
-    setFinishedSearch(true);
   };
 
   useEffect(() => {

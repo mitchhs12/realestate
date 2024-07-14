@@ -87,7 +87,7 @@ export default function Header() {
             >
               <Icons.sell_home />
               <span className="xs:hidden lg:hidden">Sell</span>
-              <span className="hidden xs:inline">Sell your home</span>
+              <span className="hidden xs:inline">Sell your property</span>
             </Button>
           </div>
         )}
@@ -103,7 +103,7 @@ export default function Header() {
               >
                 <Icons.sell_home />
                 <span className="xs:hidden lg:hidden">Sell</span>
-                <span className="hidden xs:inline">Sell your home</span>
+                <span className="hidden xs:inline">Sell your property</span>
               </Button>
             )}
             <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
