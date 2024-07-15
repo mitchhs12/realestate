@@ -9,10 +9,10 @@ const s3Client = new S3Client({
   },
 });
 
-async function uploadFileToS3(file: Buffer, fileName: string) {
+async function uploadFileToS3(file: Buffer, homeId: string, fileName: string) {
   const params = {
     Bucket: "vivaidealfinalbucket",
-    Key: `${fileName}-${Date.now()}`,
+    Key: `${homeId}/${fileName}`,
     Body: file,
     ContentType: "image/jpg",
   };
@@ -23,10 +23,14 @@ async function uploadFileToS3(file: Buffer, fileName: string) {
 }
 
 export async function POST(req: NextRequest) {
-  console.log("running route!");
   try {
     const formData = await req.formData();
     const files = formData.getAll("files");
+    const homeId = formData.get("homeId") as string;
+
+    if (!homeId) {
+      return NextResponse.json({ error: "Home ID is required" }, { status: 400 });
+    }
 
     if (files.length === 0) {
       return NextResponse.json({ error: "You forgot to attach photos!" }, { status: 400 });
@@ -38,12 +42,12 @@ export async function POST(req: NextRequest) {
       }
 
       const buffer = Buffer.from(await file.arrayBuffer());
-      return uploadFileToS3(buffer, file.name);
+      return uploadFileToS3(buffer, homeId, file.name);
     });
 
-    await Promise.all(uploadPromises);
+    const result = await Promise.all(uploadPromises);
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true, files: result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });
   }

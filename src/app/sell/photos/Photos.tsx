@@ -1,14 +1,14 @@
 "use client";
 import { User } from "next-auth";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Form, FormItem, FormField, FormControl, FormDescription, FormMessage } from "@/components/ui/form";
-import { z } from "zod";
+import { Form, FormItem, FormField, FormControl, FormMessage, FormLabel, FormDescription } from "@/components/ui/form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, useFieldArray } from "react-hook-form";
-import { Button } from "@/components/ui/button";
+import { z } from "zod";
+import { Icons } from "@/components/icons";
 
 interface Props {
   user: User;
@@ -17,67 +17,51 @@ interface Props {
   stepPercentage: number[];
 }
 
-const formSchema = z.object({
-  photos: z.array(z.instanceof(File)).min(5, { message: "You must upload at least 5 photos" }),
+const FormSchema = z.object({
+  username: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
 });
 
-export default function Photos({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading } = useContext(SellContext);
+export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+  const placeholderFiles = Array.from({ length: 5 }, (_, index) => ({
+    id: index,
+    name: `Placeholder ${index + 1}`,
+  }));
+
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
+    useContext(SellContext);
+  // initialize array with 5 files
+  const [selectedFiles, setSelectedFiles] = useState(placeholderFiles);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setIsLoading(false);
+    console.log(JSON.stringify(currentHome, null, 2));
   }, []);
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
     defaultValues: {
-      photos: Array(5).fill(null), // Ensure at least 5 fields are available initially
+      username: "",
     },
   });
 
-  const { fields, append, replace } = useFieldArray({
-    control: form.control,
-    name: "photos",
-  });
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const formData = new FormData();
-    values.photos.forEach((photo) => {
-      if (photo) {
-        formData.append("files", photo);
-      }
-    });
-
-    try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        console.log("Files uploaded successfully");
-      } else {
-        const errorData = await response.json();
-        console.error("Upload failed:", errorData.error);
-      }
-    } catch (error) {
-      console.error("Error uploading files:", error);
-    }
+  const handleFileChange = (index: any, files: any) => {
+    const newSelectedFiles = [...selectedFiles];
+    newSelectedFiles[index] = files[0];
+    setSelectedFiles(newSelectedFiles);
   };
 
-  const handleFileChange = (index: number, fileList: FileList) => {
-    const files = Array.from(fileList);
-    const newPhotos = [...form.getValues("photos")];
-    newPhotos[index] = files[0];
-    replace(newPhotos);
+  const onSubmit = async (data: any) => {
+    console.log("Form submitted with data:", data);
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col w-full h-full justify-start items-center text-center gap-y-20">
+    <div className="flex flex-col h-full w-full items-center gap-y-10">
+      <div className="flex flex-col w-full h-full justify-start items-center text-center gap-y-10">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">Photos</h1>
@@ -86,53 +70,30 @@ export default function Photos({ user, sellFlatIndex, sellFlowIndices, stepPerce
             <h3 className="text-lg w-full">What does your property look like?</h3>
           </div>
         </div>
-        <div className="flex flex-col w-1/8 gap-y-2">
+        <div className="flex gap-4 p-4 w-full h-full justify-center">
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit((data) => {
-                const transformedData = {
-                  ...data,
-                  photos: data.photos.filter(Boolean), // Filter out null values
-                };
-                onSubmit(transformedData);
-              })}
-              className="space-y-8"
-            >
-              {fields.map((field, index) => (
-                <FormField
-                  key={field.id}
-                  control={form.control}
-                  name={`photos.${index}`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <Label htmlFor={`photo-${index}`} className="flex justify-start px-4">
-                        Photo {index + 1}
-                      </Label>
-                      <FormControl>
-                        <Input
-                          id={`photo-${index}`}
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex justify-start space-y-6">
+              <FormField
+                control={form.control}
+                name="username"
+                render={() => (
+                  <FormItem className="flex flex-col justify-start items-start">
+                    <FormControl>
+                      <div className="relative flex w-full h-[300px] justify-center items-center bg-card hover:bg-muted border-2">
+                        <div className="absolute flex justify-center items-center w-full h-full">
+                          <Icons.image_icon />
+                        </div>
+                        <input
+                          className="relative flex w-full h-full opacity-0 cursor-pointer"
+                          accept="images/*"
                           type="file"
-                          onChange={(e) => handleFileChange(index, e.target.files)}
+                          multiple
                         />
-                      </FormControl>
-                      <FormDescription>
-                        {field.value && (
-                          <img
-                            src={URL.createObjectURL(field.value)}
-                            alt={`Photo ${index + 1}`}
-                            className="w-32 h-32"
-                          />
-                        )}
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              ))}
-              <Button type="button" onClick={() => append(null)}>
-                Add More Photos
-              </Button>
-              <Button type="submit">Submit</Button>
+                      </div>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
             </form>
           </Form>
         </div>
