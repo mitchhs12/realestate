@@ -2,19 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const s3Client = new S3Client({
-  region: "us-west-2",
+  region: process.env.aws_region,
   credentials: {
     accessKeyId: process.env.aws_access_key_id!,
     secretAccessKey: process.env.aws_secret_access_key!,
   },
 });
 
-async function uploadFileToS3(file: Buffer, homeId: string, fileName: string) {
+async function uploadFileToS3(file: Buffer, homeId: string, fileName: string, fileType: string) {
+  console.log("Running this...");
   const params = {
     Bucket: "vivaidealfinalbucket",
     Key: `${homeId}/${fileName}`,
     Body: file,
-    ContentType: "image/jpg",
+    ContentType: fileType,
   };
 
   const command = new PutObjectCommand(params);
@@ -37,18 +38,23 @@ export async function POST(req: NextRequest) {
     }
 
     const uploadPromises = files.map(async (file) => {
-      if (!(file instanceof File)) {
+      if (typeof file !== "object" || !("arrayBuffer" in file)) {
         throw new Error("Invalid file");
       }
 
+      if (!file.type.startsWith("image/")) {
+        throw new Error("File is not an image!");
+      }
+
       const buffer = Buffer.from(await file.arrayBuffer());
-      return uploadFileToS3(buffer, homeId, file.name);
+      return uploadFileToS3(buffer, homeId, file.name, file.type);
     });
 
     const result = await Promise.all(uploadPromises);
 
     return NextResponse.json({ success: true, files: result }, { status: 200 });
   } catch (error) {
+    console.log("Error:", error);
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }

@@ -4,11 +4,32 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Form, FormItem, FormField, FormControl, FormMessage, FormLabel, FormDescription } from "@/components/ui/form";
-import { useForm, useFieldArray, Controller } from "react-hook-form";
+import { Form, FormItem, FormField, FormControl } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Icons } from "@/components/icons";
+import { uploadFiles, getPhotoUrls, deletePhoto } from "@/app/sell/actions";
+import { ReloadIcon, TrashIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragOverlay,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  rectSortingStrategy,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   user: User;
@@ -23,24 +44,79 @@ const FormSchema = z.object({
   }),
 });
 
-export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const placeholderFiles = Array.from({ length: 5 }, (_, index) => ({
-    id: index,
-    name: `Placeholder ${index + 1}`,
-  }));
+function SortableItem({ id, url }: { id: string; url: string }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
+  const handleDelete = async (id: string) => {
+    setIsDeleting(true);
+    try {
+      await deletePhoto(id);
+      console.log("Photo deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting photo:", error);
+    }
+    setIsDeleting(false);
+  };
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="relative flex items-center justify-center border-2"
+    >
+      <Image src={url} alt={`Uploaded ${id}`} fill={true} className="object-cover" />
+      <Button
+        size={"icon"}
+        variant={"destructive"}
+        onClick={() => handleDelete(id)}
+        className="absolute top-1 right-1 justify-center items-center"
+      >
+        <TrashIcon className="w-6 h-6" />
+      </Button>
+    </div>
+  );
+}
+
+export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
     useContext(SellContext);
-  // initialize array with 5 files
-  const [selectedFiles, setSelectedFiles] = useState(placeholderFiles);
+
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setIsLoading(false);
-    console.log(JSON.stringify(currentHome, null, 2));
+    retrievePhotos();
   }, []);
+
+  useEffect(() => {
+    if (currentHome && uploadedImageUrls.length >= 5) {
+      setNewHome({ ...currentHome, photos: uploadedImageUrls });
+    }
+  }, [uploadedImageUrls]);
+
+  const retrievePhotos = async () => {
+    if (currentHome) {
+      const photoUrls = await getPhotoUrls(currentHome.id);
+      if (photoUrls) {
+        setUploadedImageUrls(photoUrls);
+      } else {
+        setUploadedImageUrls([]);
+      }
+    }
+  };
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -49,15 +125,90 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     },
   });
 
-  const handleFileChange = (index: any, files: any) => {
-    const newSelectedFiles = [...selectedFiles];
-    newSelectedFiles[index] = files[0];
-    setSelectedFiles(newSelectedFiles);
+  const checkImageDimensions = (file: File): Promise<boolean> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new (window as any).Image();
+        img.onload = () => {
+          const isValid = img.width >= 800 && img.height >= 600; // Example dimensions check
+          resolve(isValid);
+        };
+        img.onerror = () => resolve(false);
+        img.src = e.target!.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   const onSubmit = async (data: any) => {
     console.log("Form submitted with data:", data);
   };
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsUploading(true);
+    const files = event.target.files;
+    if (files && currentHome) {
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        if (!file.type.startsWith("image/")) {
+          alert("Only image files are allowed!");
+          setIsUploading(false);
+          return;
+        }
+        const validDimensions = await checkImageDimensions(file);
+        if (!validDimensions) {
+          alert("One of your images is too small. Please upload a larger image.");
+          setIsUploading(false);
+          return;
+        }
+        formData.append("files", file);
+      }
+
+      formData.append("homeId", currentHome.id.toString());
+
+      try {
+        await uploadFiles(formData);
+        console.log("Files uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading files:", error);
+      }
+    }
+    setIsUploading(false);
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragStart = (event: any) => {
+    const { active } = event;
+    setActiveId(active.id);
+  };
+
+  const handleDragEnd = (event: any) => {
+    const { active, over } = event;
+    setActiveId(null);
+
+    if (active.id !== over.id) {
+      setUploadedImageUrls((items) => {
+        const oldIndex = items.findIndex((item) => item === active.id);
+        const newIndex = items.findIndex((item) => item === over.id);
+
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
+
+  const handleDragCancel = () => setActiveId(null);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-10">
@@ -70,32 +221,64 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
             <h3 className="text-lg w-full">What does your property look like?</h3>
           </div>
         </div>
-        <div className="flex gap-4 p-4 w-full h-full justify-center">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex justify-start space-y-6">
-              <FormField
-                control={form.control}
-                name="username"
-                render={() => (
-                  <FormItem className="flex flex-col justify-start items-start">
-                    <FormControl>
-                      <div className="relative flex w-full h-[300px] justify-center items-center bg-card hover:bg-muted border-2">
-                        <div className="absolute flex justify-center items-center w-full h-full">
-                          <Icons.image_icon />
-                        </div>
-                        <input
-                          className="relative flex w-full h-full opacity-0 cursor-pointer"
-                          accept="images/*"
-                          type="file"
-                          multiple
-                        />
-                      </div>
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            </form>
-          </Form>
+        <div className="flex gap-4 p-8 w-full h-full justify-center">
+          <div className="flex overflow-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
+              <DndContext
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
+                onDragCancel={handleDragCancel}
+              >
+                <SortableContext items={uploadedImageUrls} strategy={rectSortingStrategy}>
+                  {uploadedImageUrls.map((url) => (
+                    <SortableItem key={url} id={url} url={url} />
+                  ))}
+                </SortableContext>
+                <DragOverlay>
+                  {activeId && (
+                    <div className="relative flex w-full h-full items-center justify-center border-2">
+                      <Image src={activeId} alt={`Dragged ${activeId}`} fill={true} className="object-cover" />
+                    </div>
+                  )}
+                </DragOverlay>
+              </DndContext>
+              <div className="flex items-center justify-center border-2">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="flex justify-start space-y-6 w-full h-full">
+                    <FormField
+                      control={form.control}
+                      name="username"
+                      render={() => (
+                        <FormItem className="flex flex-col justify-start items-start w-full h-full">
+                          <FormControl className="w-full h-full">
+                            <div
+                              className={`relative flex w-full h-full justify-center items-center bg-card ${
+                                !isUploading && "hover:bg-muted"
+                              } border-2`}
+                            >
+                              <div className="absolute flex justify-center items-center w-full h-full">
+                                {isUploading ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Icons.image_icon />}
+                              </div>
+                              <input
+                                className={`relative flex w-full h-full opacity-0 ${!isUploading && "cursor-pointer"}`}
+                                accept="images/*"
+                                type="file"
+                                multiple
+                                onChange={handleFileChange}
+                                disabled={isUploading}
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </form>
+                </Form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
