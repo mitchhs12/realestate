@@ -4,7 +4,7 @@ import { User } from "next-auth";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useContext } from "react";
 import { SellContext } from "@/context/SellContext";
-import { stepsFlattened, stepLengthsWithoutStepPages } from "@/lib/sellFlowData";
+import { stepsFlattened, stepLengthsWithoutStepPages, stepLengths } from "@/lib/sellFlowData";
 import { Checkbox } from "@/components/ui/checkbox";
 
 interface Props {
@@ -66,8 +66,11 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
                 2. Make it stand out
                 {step && (
                   <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0}/
-                    {getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
+                    {Math.min(
+                      step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0,
+                      stepLengthsWithoutStepPages[1]
+                    )}
+                    /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
                     <span className="hidden 2xl:flex">Completed</span>
                     <Checkbox
                       id="state"

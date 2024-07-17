@@ -16,9 +16,9 @@ interface Props {
 export default function Capacity({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, setNewHome, currentHome } =
     useContext(SellContext);
-  const [sqSize, setSqSize] = useState(0);
+  const [sqSize, setSqSize] = useState(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
   const [metresOn, setMetresOn] = useState(true);
-  const [humanCapacity, setHumanCapacity] = useState<number>(0);
+  const [humanCapacity, setHumanCapacity] = useState<number>(currentHome?.capacity ? currentHome?.capacity : 0);
 
   useEffect(() => {
     if (currentHome && sqSize > 0 && humanCapacity > 0) {

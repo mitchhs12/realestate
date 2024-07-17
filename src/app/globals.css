@@ -130,6 +130,20 @@ section.progress-section {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.custom-phone-input .PhoneInputInput {
+  padding-left: 0.5rem; /* Adjust this value to increase/decrease padding */
+}
+
+.custom-phone-input .PhoneInputCountryIcon {
+  margin-right: 0.25rem; /* Adjust this value to increase/decrease space */
+}
+
+.custom-phone-input .PhoneInputInput:focus {
+  outline: var(--primary) !important;
+  border-color: var(--primary) !important; /* Ensure it uses the primary color */
+  box-shadow: 0 0 0 2px var(--primary) !important; /* Ensure it uses the primary color */
+}
+
 @layer base {
   * {
     @apply border-border;

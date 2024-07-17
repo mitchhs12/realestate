@@ -14,7 +14,7 @@ interface Props {
 export default function Description({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
     useContext(SellContext);
-  const [description, setDescription] = useState<string>("");
+  const [description, setDescription] = useState<string>(currentHome?.description ? currentHome?.description : "");
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);

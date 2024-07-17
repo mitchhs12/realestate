@@ -15,9 +15,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
     useContext(SellContext);
 
-  const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-
-  const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
+  const [selection, setSelection] = useState<string[]>(currentHome?.features ? currentHome?.features : []);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -34,6 +32,14 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
     }
   }, [selection]);
 
+  const handleValueChange = (value: string[]) => {
+    if (value.includes("None")) {
+      setSelection(["None"]);
+    } else {
+      setSelection(value.filter((v) => v !== "None"));
+    }
+  };
+
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
@@ -46,14 +52,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
           </div>
         </div>
         <div className="grid w-full h-full px-8 justify-center items-center py-8 overflow-auto">
-          <ToggleGroup
-            type="multiple"
-            value={selection}
-            defaultValue={selection}
-            onValueChange={(value) => {
-              if (value) setSelection(value.map(capitalizeFirstLetter));
-            }}
-          >
+          <ToggleGroup type="multiple" value={selection} defaultValue={selection} onValueChange={handleValueChange}>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-8 xl:gap-8 items-center justify-center">
               {features.map((feature, index) => (
                 <ToggleGroupItem

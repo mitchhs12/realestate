@@ -33,6 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     session({ session, user }) {
       session.user.role = user.role;
+      session.user.phoneNumber = user.phoneNumber as string | null;
       return session;
     },
   },

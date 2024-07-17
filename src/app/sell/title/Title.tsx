@@ -14,7 +14,7 @@ interface Props {
 export default function Title({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
     useContext(SellContext);
-  const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>(currentHome?.title ? currentHome?.title : "");
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);

@@ -12,6 +12,7 @@ model User {
   id            String          @id @default(cuid())
   name          String?
   email         String?         @unique
+  phoneNumber   String?         @unique
   emailVerified DateTime?       @map("email_verified")
   image         String?
   favorites     UserFavorites[]
@@ -87,6 +88,9 @@ model Home {
   photos          String[]
   price           Float           @default(0.0)
   areaSqm         Float           @default(0.0)
+  contactName     String?
+  contactEmail    String?
+  contactPhone    String?
   isActive        Boolean         @default(false)
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt

@@ -12,12 +12,13 @@ interface Props {
 }
 
 export default function Step3({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading } = useContext(SellContext);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
+    setIsLoading(false);
   }, []);
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20 md:gap-y-0 md:flex-row">
