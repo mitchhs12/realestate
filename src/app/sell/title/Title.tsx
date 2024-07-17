@@ -1,7 +1,8 @@
 "use client";
 import { User } from "next-auth";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
+import { Input } from "@/components/ui/input";
 
 interface Props {
   user: User;
@@ -11,23 +12,55 @@ interface Props {
 }
 
 export default function Title({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage } = useContext(SellContext);
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
+    useContext(SellContext);
+  const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
+    setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    if (currentHome && title.length > 0 && title.length < 32) {
+      setNewHome({ ...currentHome, title: title });
+    }
+  }, [title]);
+
+  const handleChange = (e: any) => {
+    const newValue = e.target.value;
+    if (newValue.length <= 32) {
+      setTitle(newValue);
+    }
+  };
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full h-full justify-center items-center">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">Title</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">Enter a title for your property</h3>
+            <h3 className="text-lg w-full">What should we call your property?</h3>
+          </div>
+          <div className="flex flex-col px-8 justify-center w-full h-full">
+            <div className="flex h-1/4 justify-center items-end">
+              <Input
+                type="text"
+                value={title}
+                placeholder="Enter your property title..."
+                className={`w-full sm:w-[70%] md:w-[60%] lg:w-[50%] text-center resize-y overflow-y-auto ${
+                  title.length === 32 && "border-red-500"
+                }`}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex h-3/4 justify-center text-sm">
+              {title.length === 32 && <span className="text-red-500">Please choose a smaller title.</span>}
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Icons } from "@/components/icons";
-import { uploadFiles, getPhotoUrls, deletePhoto } from "@/app/sell/actions";
+import { getPhotoUrls, deletePhoto } from "@/app/sell/actions";
+import { uploadPhotos } from "@/app/sell/sell-actions";
 import { ReloadIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import {
@@ -44,20 +45,18 @@ const FormSchema = z.object({
   }),
 });
 
-function SortableItem({ id, url }: { id: string; url: string }) {
+function SortableItem({
+  id,
+  url,
+  onDelete,
+  isLoading,
+}: {
+  id: string;
+  url: string;
+  onDelete: (id: string) => void;
+  isLoading: boolean;
+}) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const handleDelete = async (id: string) => {
-    setIsDeleting(true);
-    try {
-      await deletePhoto(id);
-      console.log("Photo deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting photo:", error);
-    }
-    setIsDeleting(false);
-  };
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -73,11 +72,17 @@ function SortableItem({ id, url }: { id: string; url: string }) {
       className="relative flex items-center justify-center border-2"
     >
       <Image src={url} alt={`Uploaded ${id}`} fill={true} className="object-cover" />
+      {isLoading && (
+        <div className="absolute flex items-center justify-center inset-0 bg-black bg-opacity-50 rounded">
+          <ReloadIcon className="animate-spin w-6 h-6" />
+        </div>
+      )}
       <Button
         size={"icon"}
         variant={"destructive"}
-        onClick={() => handleDelete(id)}
+        onClick={() => onDelete(url)}
         className="absolute top-1 right-1 justify-center items-center"
+        disabled={isLoading}
       >
         <TrashIcon className="w-6 h-6" />
       </Button>
@@ -92,6 +97,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -106,6 +112,26 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
       setNewHome({ ...currentHome, photos: uploadedImageUrls });
     }
   }, [uploadedImageUrls]);
+
+  const handleDelete = async (url: string) => {
+    setPhotoLoading((prev) => ({ ...prev, [url]: true })); // Set loading for this photo
+    const urlParts = url.split("/");
+    const photoKey = urlParts[urlParts.length - 1]; // Extract the photo key from the URL
+    const homeId = currentHome?.id;
+
+    if (!homeId) {
+      console.error("Home ID not found");
+      return;
+    }
+
+    try {
+      await deletePhoto(homeId, photoKey); // Call the delete function from your actions
+      setUploadedImageUrls((prevUrls) => prevUrls.filter((existingUrl) => existingUrl !== url)); // Update state
+    } catch (error) {
+      console.error("Error deleting photo from S3:", error);
+    }
+    setPhotoLoading((prev) => ({ ...prev, [url]: false })); // Set loading for this photo
+  };
 
   const retrievePhotos = async () => {
     if (currentHome) {
@@ -141,10 +167,6 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     });
   };
 
-  const onSubmit = async (data: any) => {
-    console.log("Form submitted with data:", data);
-  };
-
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsUploading(true);
     const files = event.target.files;
@@ -169,7 +191,8 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
       formData.append("homeId", currentHome.id.toString());
 
       try {
-        await uploadFiles(formData);
+        await uploadPhotos(formData);
+        await retrievePhotos(); // Refresh the photo URLs
         console.log("Files uploaded successfully!");
       } catch (error) {
         console.error("Error uploading files:", error);
@@ -223,7 +246,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
         </div>
         <div className="flex gap-4 p-8 w-full h-full justify-center">
           <div className="flex overflow-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 gap-4 w-full h-[1/2] border-2 border-green-500">
               <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -233,7 +256,13 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
               >
                 <SortableContext items={uploadedImageUrls} strategy={rectSortingStrategy}>
                   {uploadedImageUrls.map((url) => (
-                    <SortableItem key={url} id={url} url={url} />
+                    <SortableItem
+                      key={url}
+                      id={url}
+                      url={url}
+                      onDelete={handleDelete}
+                      isLoading={photoLoading[url] || false}
+                    />
                   ))}
                 </SortableContext>
                 <DragOverlay>
@@ -246,7 +275,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
               </DndContext>
               <div className="flex items-center justify-center border-2">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="flex justify-start space-y-6 w-full h-full">
+                  <form className="flex justify-start space-y-6 w-full h-full">
                     <FormField
                       control={form.control}
                       name="username"
