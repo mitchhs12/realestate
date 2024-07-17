@@ -87,6 +87,7 @@ model Home {
   capacity        Int             @default(0)
   photos          String[]
   price           Float           @default(0.0)
+  priceNegotiable Boolean         @default(false)
   areaSqm         Float           @default(0.0)
   contactName     String?
   contactEmail    String?

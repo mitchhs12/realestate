@@ -37,7 +37,7 @@ export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPerc
       propertyOwnerName &&
       isValidPhoneNumber(propertyOwnerPhone)
     ) {
-      ({
+      setNewHome({
         ...currentHome,
         contactName: propertyOwnerName,
         contactEmail: propertyOwnerEmail,

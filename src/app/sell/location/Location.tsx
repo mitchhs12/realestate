@@ -18,13 +18,14 @@ interface SearchResult {
 }
 
 export default function Location({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading } = useContext(SellContext);
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
+    useContext(SellContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
-  const [currentCoords, setCurrentCoords] = useState({ lat: 0, long: 0 });
-
-  useEffect(() => {
-    console.log(currentCoords);
-  }, [currentCoords]);
+  const [currentCoords, setCurrentCoords] = useState(
+    currentHome?.latitude && currentHome?.longitude
+      ? { lat: currentHome.latitude, long: currentHome.longitude }
+      : { lat: 0, long: 0 }
+  );
 
   useEffect(() => {
     const fetchCoordinates = async () => {

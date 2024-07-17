@@ -29,6 +29,7 @@ export const homeSchema = z.object({
   capacity: z.number().int(),
   photos: z.array(z.string()),
   price: z.number(),
+  priceNegotiable: z.boolean(),
   contactName: z.string().nullable(),
   contactEmail: z.string().nullable(),
   contactPhone: z.string().nullable(),
