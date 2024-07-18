@@ -4,7 +4,17 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
+import { cn } from "@/lib/utils";
+
+const currencyOptions: ReadonlyArray<CurrencyInputProps["intlConfig"]> = [
+  { locale: "en-US", currency: "USD" },
+  { locale: "de-DE", currency: "EUR" },
+  { locale: "en-GB", currency: "GBP" },
+  { locale: "en-AU", currency: "AUD" },
+  { locale: "ja-JP", currency: "JPY" },
+  { locale: "en-IN", currency: "INR" },
+];
 
 interface Props {
   user: User;
@@ -16,17 +26,19 @@ interface Props {
 export default function Price({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
     useContext(SellContext);
-  const [price, setPrice] = useState<number | undefined>(currentHome?.price || 0);
+  const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
+  const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(currencyOptions[0]);
 
   useEffect(() => {
-    if (currentHome) {
+    if (currentHome && price !== null) {
       setNewHome({
         ...currentHome,
-        listingFlowStep: sellFlatIndex,
+        price: price,
+        priceNegotiable: isNegotiable,
       });
     }
-  }, [price]);
+  }, [price, isNegotiable]);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -35,24 +47,20 @@ export default function Price({ user, sellFlatIndex, sellFlowIndices, stepPercen
     setIsLoading(false);
   }, []);
 
-  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(event.target.value);
-    if (!isNaN(value)) {
-      setPrice(value);
-    } else {
-      setPrice(undefined);
-    }
+  const handlePriceChange = (value: string | undefined) => {
+    const numericValue = value ? parseFloat(value) : null;
+    setPrice(numericValue);
   };
 
-  const handleNegotiableChange = (checked: boolean) => {
-    setIsNegotiable(checked);
-    if (currentHome) {
-      setNewHome({ ...currentHome, priceNegotiable: checked });
+  const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const config = currencyOptions[Number(event.target.value)];
+    if (config) {
+      setIntlConfig(config);
     }
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center gap-y-20">
+    <div className="flex flex-col h-full w-full items-center">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
@@ -62,21 +70,43 @@ export default function Price({ user, sellFlatIndex, sellFlowIndices, stepPercen
             <h3 className="text-lg w-full">Set your price</h3>
           </div>
         </div>
-        <div className="flex h-full w-full ">
-          <div>
-            <Input
-              type="number"
-              placeholder="Please enter your desired price..."
-              value={price !== undefined ? price.toString() : ""}
-              onChange={handlePriceChange}
-              prefix="$"
-            />
-          </div>
-          <div className="ml-4 flex items-center">
-            <Label htmlFor="price-negotiable" className="mr-2">
-              Price Negotiable?
-            </Label>
-            <Switch id="price-negotiable" checked={isNegotiable} onCheckedChange={handleNegotiableChange} />
+        <div className="flex flex-col h-full w-full pt-20">
+          <div className="flex flex-col justify-center items-center gap-y-8">
+            <div className="flex w-[80vw] max-w-[400px] gap-x-2">
+              <select
+                className={cn(
+                  "flex h-9 rounded-md border border-input px-3 py-1 text-base shadow-sm shadow-secondary transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                )}
+                onChange={handleCurrencyChange}
+              >
+                {currencyOptions.map((config, i) => (
+                  <option key={`${config?.locale}${config?.currency}`} value={i}>
+                    {config?.currency}
+                  </option>
+                ))}
+              </select>
+              <CurrencyInput
+                key={intlConfig?.currency} // Force re-render when currency changes
+                placeholder="Please enter your desired price..."
+                intlConfig={intlConfig}
+                decimalsLimit={2}
+                value={price !== null ? price.toString() : ""}
+                onValueChange={handlePriceChange}
+                className={cn(
+                  "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm shadow-secondary transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                )}
+              />
+            </div>
+            <div className="flex justify-center items-end gap-x-4">
+              <Label htmlFor="price-negotiable">Price Negotiable?</Label>
+              <Switch
+                id="price-negotiable"
+                checked={isNegotiable}
+                onCheckedChange={() => {
+                  setIsNegotiable(!isNegotiable);
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

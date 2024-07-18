@@ -44,7 +44,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
 
   const { resolvedTheme: theme } = useTheme();
   const { newZoom, setNewZoom } = useContext(QueryContext);
-  const { setNewHome, currentHome } = useContext(SellContext);
+  const { setNewHome, currentHome, setIsLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
@@ -60,10 +60,37 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
     setCameraProps({ center: { lat: coordinates.lat, lng: coordinates.long }, zoom: newZoom });
   }, [coordinates]);
 
+  const getAddress = async (lat: number, lng: number) => {
+    const result = await fetch("/api/getAddress", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        longLatArray: [lng, lat],
+      }),
+    });
+    const data = await result.json();
+    console.log("Data Response", data);
+    currentHome &&
+      setNewHome({
+        ...currentHome,
+        address: data.results.Label,
+        municipality: data.results.Municipality,
+        subRegion: data.results.SubRegion,
+        region: data.results.Region,
+        country: data.results.Country,
+        longitude: data.location[0],
+        latitude: data.location[1],
+      });
+    setIsLoading(false);
+  };
+
   const handleCameraChanged = useCallback((ev: MapCameraChangedEvent) => {
+    setIsLoading(true);
     setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
     setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
-    currentHome && setNewHome({ ...currentHome, latitude: ev.detail.center.lat, longitude: ev.detail.center.lng });
+    getAddress(ev.detail.center.lat, ev.detail.center.lng);
   }, []);
 
   useEffect(() => {

@@ -72,9 +72,9 @@ model Home {
   title           String?
   description     String?
   address         String?
-  district        String?
-  city            String?
-  state           String?
+  municipality    String?
+  subRegion       String?
+  region          String?
   country         String?
   latitude        Float           @default(0)
   longitude       Float           @default(0)
