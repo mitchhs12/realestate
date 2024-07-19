@@ -89,6 +89,7 @@ model Home {
   price           Float           @default(0.0)
   priceNegotiable Boolean         @default(false)
   areaSqm         Float           @default(0.0)
+  listingType     String?
   contactName     String?
   contactEmail    String?
   contactPhone    String?
@@ -111,4 +112,14 @@ model UserFavorites {
 
   @@id([userId, homeId])
   @@map("userFavorites")
+}
+
+model Currencies {
+  id        Int      @id @default(autoincrement())
+  symbol    String?
+  usdPrice  Float?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("currencies")
 }

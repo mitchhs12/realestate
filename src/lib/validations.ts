@@ -33,6 +33,7 @@ export const homeSchema = z.object({
   contactName: z.string().nullable(),
   contactEmail: z.string().nullable(),
   contactPhone: z.string().nullable(),
+  listingType: z.string().nullable(),
   areaSqm: z.number(),
   isActive: z.boolean(),
   listingFlowStep: z.number().min(0, "Cannot be empty"),
