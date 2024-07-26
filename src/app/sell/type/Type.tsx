@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { types } from "@/lib/sellFlowData";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 interface Props {
   user: User;
@@ -15,8 +16,6 @@ interface Props {
 export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
     useContext(SellContext);
-
-  const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
   const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
 

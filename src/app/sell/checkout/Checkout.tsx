@@ -13,10 +13,12 @@ interface Props {
 }
 
 export default function Checkout({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setCurrentHome } =
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
     useContext(SellContext);
 
-  const [selected, setSelected] = useState<"Standard" | "Premium" | null>(null);
+  const [selected, setSelected] = useState<string>(currentHome?.listingType ? currentHome?.listingType : "");
+
+  console.log("selected", selected);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -27,7 +29,7 @@ export default function Checkout({ user, sellFlatIndex, sellFlowIndices, stepPer
 
   useEffect(() => {
     if (currentHome) {
-      setCurrentHome({
+      setNewHome({
         ...currentHome,
         listingType: selected,
       });
@@ -83,7 +85,7 @@ export default function Checkout({ user, sellFlatIndex, sellFlowIndices, stepPer
             button={"Free!"}
             buttonDisabled={false}
             originalPrice="$49.99"
-            buttonFunction={() => setSelected("Premium")}
+            buttonFunction={() => setSelected("premium")}
             selected={selected}
           />
           <CheckoutCard
@@ -92,7 +94,7 @@ export default function Checkout({ user, sellFlatIndex, sellFlowIndices, stepPer
             description={"Standard perks"}
             button={"Free forever!"}
             buttonDisabled={false}
-            buttonFunction={() => setSelected("Standard")}
+            buttonFunction={() => setSelected("standard")}
             selected={selected}
           />
         </div>

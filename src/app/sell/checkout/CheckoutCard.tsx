@@ -14,7 +14,7 @@ interface Props {
   buttonDisabled: boolean;
   originalPrice?: string;
   buttonFunction: () => void;
-  selected: "Standard" | "Premium" | null;
+  selected: string;
 }
 
 export default function CheckoutCard({
@@ -28,7 +28,11 @@ export default function CheckoutCard({
   selected,
 }: Props) {
   return (
-    <div className={`flex justify-center items-center ${selected === title && "border border-primary rounded-lg"}`}>
+    <div
+      className={`flex justify-center items-center ${
+        selected.toLowerCase() === title.toLowerCase() && "border border-primary rounded-lg"
+      }`}
+    >
       <Card className="w-[350px] md:[400px] h-[440px] flex flex-col">
         <CardHeader>
           <CardTitle className="flex justify-center items-center text-bold">{title}</CardTitle>

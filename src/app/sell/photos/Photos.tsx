@@ -2,8 +2,6 @@
 import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Form, FormItem, FormField, FormControl } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,6 +11,7 @@ import { getPhotoUrls, deletePhoto } from "@/app/sell/actions";
 import { uploadPhotos } from "@/app/sell/sell-actions";
 import { ReloadIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 import {
   DndContext,
   closestCenter,
@@ -48,11 +47,13 @@ const FormSchema = z.object({
 function SortableItem({
   id,
   url,
+  index,
   onDelete,
   isLoading,
 }: {
   id: string;
   url: string;
+  index: number;
   onDelete: (id: string) => void;
   isLoading: boolean;
 }) {
@@ -86,13 +87,23 @@ function SortableItem({
       >
         <TrashIcon className="w-6 h-6" />
       </Button>
+      <div className="absolute top-2 left-2 flex items-center justify-center">
+        <Badge variant="secondary">{index + 1}</Badge>
+      </div>
     </div>
   );
 }
 
 export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setIsLoading,
+    currentHome,
+    setNewHome,
+    setNextDisabled,
+  } = useContext(SellContext);
 
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
@@ -103,13 +114,16 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
     retrievePhotos();
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
     if (currentHome && uploadedImageUrls.length >= 5) {
+      setNextDisabled(false);
       setNewHome({ ...currentHome, photos: uploadedImageUrls });
+    } else {
+      setNextDisabled(true);
     }
   }, [uploadedImageUrls]);
 
@@ -241,12 +255,12 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
             <h1 className="flex items-center text-3xl">Photos</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">What does your property look like?</h3>
+            <h3 className="text-lg w-full">Upload at least 5 photos.</h3>
           </div>
         </div>
         <div className="flex gap-4 p-8 w-full h-full justify-center">
           <div className="flex overflow-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 gap-4 w-full h-[1/2] border-2 border-green-500">
+            <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 gap-4 w-full h-[1/2]">
               <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -255,11 +269,12 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
                 onDragCancel={handleDragCancel}
               >
                 <SortableContext items={uploadedImageUrls} strategy={rectSortingStrategy}>
-                  {uploadedImageUrls.map((url) => (
+                  {uploadedImageUrls.map((url, index) => (
                     <SortableItem
                       key={url}
                       id={url}
                       url={url}
+                      index={index}
                       onDelete={handleDelete}
                       isLoading={photoLoading[url] || false}
                     />

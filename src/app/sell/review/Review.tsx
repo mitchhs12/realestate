@@ -1,8 +1,13 @@
 "use client";
 import { User } from "next-auth";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import Image from "next/image";
+import { ReloadIcon, CrossCircledIcon, CheckCircledIcon } from "@radix-ui/react-icons";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 interface Props {
   user: User;
@@ -22,6 +27,8 @@ export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPerce
     setIsLoading(false);
   }, []);
 
+  const [feet, setFeet] = useState(false);
+
   const title = currentHome?.title || "";
   const description = currentHome?.description || "";
   const address = currentHome?.address || "";
@@ -39,6 +46,23 @@ export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPerce
   const contactName = currentHome?.contactName || "";
   const contactEmail = currentHome?.contactEmail || "";
   const contactPhone = currentHome?.contactPhone || "";
+  const listingType = currentHome?.listingType || "";
+
+  const [loadingStates, setLoadingStates] = useState(photos.map(() => true));
+  const [sqSize, setSqSize] = useState(areaSqm);
+
+  useEffect(() => {
+    const ftConversion = 10.76391042;
+    setSqSize(!feet ? areaSqm : Math.round(areaSqm * ftConversion));
+  }, [feet]);
+
+  const handleImageLoad = (index: number) => {
+    setLoadingStates((prevStates) => {
+      const newStates = [...prevStates];
+      newStates[index] = false;
+      return newStates;
+    });
+  };
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -51,8 +75,8 @@ export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPerce
             <h3 className="text-lg w-full">Review your property details</h3>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-center py-8 px-8 gap-8">
-          <Card className="w-full md:w-[600px] h-auto flex flex-col p-4">
+        <div className="flex flex-col md:flex-row justify-center py-8 px-6 gap-8">
+          <Card className="w-full h-auto flex flex-col xs:p-4">
             <CardHeader>
               <CardTitle className="text-2xl font-bold">{title}</CardTitle>
               <CardDescription>{description}</CardDescription>
@@ -60,35 +84,79 @@ export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPerce
             <CardContent className="grid gap-4">
               <div className="flex flex-col text-left gap-y-8">
                 <p className="flex flex-col text-center">{address}</p>
-                <div className="flex w-full justify-center items-center">
-                  <div className="flex justify-center w-2/3">
-                    <div className="flex flex-col w-1/2">
-                      <p>
-                        <strong>Type:</strong> {type}
-                      </p>
-                      <p>
-                        <strong>Capacity:</strong> {capacity}
-                      </p>
-                      <p>
-                        <strong>Area (sqm):</strong> {areaSqm}
-                      </p>
+                <div className="grid grid-cols-2 xs:grid-cols-3 gap-4 justify-center items-center">
+                  {photos.map((photo, index) => (
+                    <div key={index} className="relative flex items-center justify-center h-[100px]">
+                      <Image
+                        src={photo}
+                        alt={`Uploaded ${index}`}
+                        fill={true}
+                        className="object-cover"
+                        onLoad={() => handleImageLoad(index)}
+                      />
+                      {loadingStates[index] && (
+                        <div className="absolute flex items-center justify-center inset-0 bg-black bg-opacity-50 rounded">
+                          <ReloadIcon className="animate-spin w-6 h-6" />
+                        </div>
+                      )}
+                      <div className="absolute bottom-2 right-2 flex items-center justify-center">
+                        <Badge variant="secondary">{index + 1}</Badge>
+                      </div>
                     </div>
-                    <div className="flex flex-col w-1/2 items-end">
-                      <p>
-                        <strong>Bedrooms:</strong> {bedrooms}
-                      </p>
-                      <p>
-                        <strong>Bathrooms:</strong> {bathrooms}
-                      </p>
-                      <p>
-                        <strong>Living Rooms:</strong> {livingRooms}
-                      </p>
-                      <p>
-                        <strong>Kitchens:</strong> {kitchens}
-                      </p>
+                  ))}
+                </div>
+                <Separator />
+
+                <div className="flex w-full justify-center items-center">
+                  <div className="flex justify-center w-full gap-12">
+                    <div className="flex flex-col w-1/2 justify-center items-center overflow-auto">
+                      <div className="flex justify-between w-full">
+                        <strong>Bedrooms: </strong>
+                        <span>{bedrooms}</span>
+                      </div>
+                      <div className="flex justify-between w-full">
+                        <strong className="justify-start">Bathrooms:</strong> <span>{bathrooms}</span>
+                      </div>
+                      <div className="flex justify-between w-full">
+                        <strong>Living rooms:</strong> <span>{livingRooms}</span>
+                      </div>
+                      <div className="flex justify-between w-full">
+                        <strong>Kitchens:</strong> <span>{kitchens}</span>
+                      </div>
+                    </div>
+                    <div className="flex w-1/3"></div>
+                    <div className="flex flex-col w-1/2">
+                      <div className="flex justify-between w-full">
+                        <strong>Listing: </strong>
+                        <span>{capitalizeFirstLetter(listingType)}</span>
+                      </div>
+                      <div className="flex justify-between w-full">
+                        <strong>Type: </strong>
+                        <span>{type}</span>
+                      </div>
+                      <div className="flex justify-between w-full">
+                        <strong>Capacity: </strong>
+                        <span>{capacity}</span>
+                      </div>
+                      <div className="flex justify-between w-full">
+                        <strong>
+                          Area{" "}
+                          <button
+                            className="hover:bg-accent hover:text-accent-foreground underline"
+                            onClick={() => {
+                              setFeet(!feet);
+                            }}
+                          >
+                            {!feet ? "(sqm)" : "(sqft)"}
+                          </button>
+                          :{" "}
+                        </strong>
+                        <span>{sqSize}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="flex flex-col w-2/3 text-left">
                   <p>
                     <strong>Features:</strong>
@@ -99,6 +167,7 @@ export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPerce
                     ))}
                   </ul>
                 </div>
+
                 <div className="flex flex-col">
                   <p>
                     <strong>Contact Name:</strong> {contactName}
@@ -112,11 +181,15 @@ export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPerce
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="flex flex-row justify-center items-center align-middle h-[90px] gap-x-4 border-2">
-              <strong className="flex justify-center items-center align-middle">Price: {price}</strong>
-              <span className="flex justify-center items-center align-middle">
-                {priceNegotiable ? "Negotiable" : "Unnegotiable"}
-              </span>
+
+            <CardFooter>
+              <div className="flex items-center justify-center w-full h-[90px] text-lg">
+                <div className="flex w-1/2 justify-center items-center">Price: {price}</div>
+                <div className="flex w-1/2 justify-center items-center gap-x-2">
+                  {priceNegotiable ? "Non-negotiable" : "Negotiable"}
+                  {priceNegotiable ? <CrossCircledIcon /> : <CheckCircledIcon />}
+                </div>
+              </div>
             </CardFooter>
           </Card>
         </div>

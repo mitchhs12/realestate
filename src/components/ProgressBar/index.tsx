@@ -1,11 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
 import { useRouter, usePathname } from "next/navigation";
 import { SellContext } from "@/context/SellContext";
 import { sellSteps, stepsFlattened, stepLengths } from "@/lib/sellFlowData";
-import { updateHome } from "@/app/sell/actions";
+import { updateHome, sellHome } from "@/app/sell/actions";
 
 export default function ProgressBar() {
   const router = useRouter();
@@ -21,6 +21,7 @@ export default function ProgressBar() {
     newHome,
     sellFlowFlatIndex,
     setNewHome,
+    nextDisabled,
   } = useContext(SellContext);
 
   router.prefetch(nextStep);
@@ -80,6 +81,9 @@ export default function ProgressBar() {
       } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
         console.log("button should not be disabled because new home is different from current home");
         return false;
+      } else if (pathname.startsWith("/sell/review")) {
+        console.log("button should not be disabled because we are on the final page");
+        return false;
       } else {
         console.log("button should be disabled because new home is the same as current home");
         return true;
@@ -117,11 +121,20 @@ export default function ProgressBar() {
       console.log("currentHome AFTER", JSON.stringify(currentHome, null, 2));
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
-      console.log("running this ZZZ");
-      const _newHome = await updateHome(newHome, pathname, true);
-      setCurrentHome(_newHome);
-      setNewHome(_newHome);
-      router.push(nextStep);
+      if (pathname.startsWith("/sell/review")) {
+        const result = await sellHome();
+        if (result.error) {
+          alert(result.error);
+          setIsLoading(false);
+        } else {
+          router.push(nextStep);
+        }
+      } else {
+        const _newHome = await updateHome(newHome, pathname, true);
+        setCurrentHome(_newHome);
+        setNewHome(_newHome);
+        router.push(nextStep);
+      }
     } else {
       router.push(nextStep);
     }
@@ -148,8 +161,16 @@ export default function ProgressBar() {
       <div className="flex flex-row-reverse justify-between w-full px-8">
         {nextStep !== "" && (
           <div className="flex">
-            <Button variant="default" size="lg" onClick={handleNext} disabled={nextButtonDisabled}>
-              {!isLoading ? (prevStep !== "" ? "Next" : currentHome ? "Continue listing" : "Start") : "Loading..."}
+            <Button variant="default" size="lg" onClick={handleNext} disabled={nextButtonDisabled || nextDisabled}>
+              {!isLoading
+                ? prevStep !== ""
+                  ? pathname.startsWith("/sell/review")
+                    ? "Sell!"
+                    : "Next"
+                  : currentHome
+                  ? "Continue listing"
+                  : "Start"
+                : "Loading..."}
             </Button>
           </div>
         )}

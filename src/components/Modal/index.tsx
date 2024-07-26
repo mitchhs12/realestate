@@ -121,7 +121,7 @@ export function Modal({ handleLogin, setHandleLogin }: Props) {
                   <div className="flex justify-end w-20 mr-1">
                     <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
                   </div>
-                  <div className="flex justify-start w-20 mr-12">Loading...</div>
+                  <div className="flex justify-start w-20 mr-16">Loading...</div>
                 </div>
               ) : (
                 <div className="flex justify-center items-center w-40 gap-2 mr-2">
@@ -143,7 +143,7 @@ export function Modal({ handleLogin, setHandleLogin }: Props) {
                   <div className="flex justify-end w-20 mr-1">
                     <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
                   </div>
-                  <div className="flex justify-start w-20 mr-12">Loading...</div>
+                  <div className="flex justify-start w-20 mr-16">Loading...</div>
                 </div>
               ) : (
                 <div className="flex justify-center items-center w-40 gap-2 mr-2">

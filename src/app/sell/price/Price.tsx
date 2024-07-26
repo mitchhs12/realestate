@@ -55,7 +55,7 @@ export default function Price({ user, sellFlatIndex, sellFlowIndices, stepPercen
       setNewHome({
         ...currentHome,
         price: price,
-        priceNegotiable: isNegotiable,
+        priceNegotiable: !isNegotiable,
       });
     }
   }, [price, isNegotiable]);

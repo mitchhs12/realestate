@@ -7,6 +7,48 @@ import { HomeType, homeSchema } from "@/lib/validations";
 import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
 
+interface ResponseObj {
+  success: boolean;
+  error: string;
+}
+
+const validateHome = (homeData: any) => {
+  if (homeData.title && homeData.title.length > 32) {
+    return { success: false, error: "Title cannot be longer than 32 characters long" };
+  }
+  if (homeData.description && homeData.description.length > 500) {
+    return { success: false, error: "Description cannot be longer than 500 characters long" };
+  }
+  if (homeData.capacity === 0) {
+    return { success: false, error: "Capacity cannot be 0" };
+  }
+  if (homeData.areaSqm === 0) {
+    return { success: false, error: "Area cannot be 0" };
+  }
+  if (homeData.price === 0) {
+    return { success: false, error: "Price cannot be 0" };
+  }
+  if (homeData.contactName === "") {
+    return { success: false, error: "Contact name cannot be empty" };
+  }
+  if (homeData.contactEmail === "") {
+    return { success: false, error: "Contact email cannot be empty" };
+  }
+  if (homeData.contactPhone === "") {
+    return { success: false, error: "Contact phone cannot be empty" };
+  }
+  console.log(homeData);
+  if (homeData.photos.length < 5) {
+    ("You need at least 5 photos");
+  }
+  if (homeData.listingType === "standard") {
+    if (homeData.photos.length > 5) {
+      return { success: false, error: "You can only upload 5 photos with a standard listing" };
+    }
+  }
+  return { success: true, error: "" };
+};
+
 export async function getUnfinishedHome() {
   const session = await auth();
   const userId = session?.user?.id;
@@ -22,6 +64,7 @@ export async function getUnfinishedHome() {
         not: 12,
         gt: 0,
       },
+      isActive: { not: true },
     },
   });
   return homes;
@@ -42,6 +85,31 @@ export async function getHomes() {
   });
   console.log("homes here:", homes);
   return homes;
+}
+
+export async function sellHome(): Promise<ResponseObj> {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) {
+    throw new Error("User not found");
+  }
+  const home = await getUnfinishedHome();
+  const result = validateHome(home);
+
+  if (result.success === false) {
+    return result;
+  }
+
+  const { id, ...homeData } = homeSchema.parse(home);
+
+  const newData = { ...homeData, isActive: true };
+
+  await prisma.home.update({
+    where: { id: id },
+    data: newData,
+  });
+
+  return { success: true, error: "" };
 }
 
 export async function updateHome(
@@ -72,9 +140,7 @@ export async function updateHome(
       const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
       console.log("INCREMENTING LISTING FLOW STEP FROM", listingFlowStep, "to", listingFlowStep + 1);
 
-      const newData = shouldIncreaseListingFlowStep
-        ? { ...homeData, listingFlowStep: listingFlowStep + 1 }
-        : { ...homeData };
+      const newData = { ...homeData, listingFlowStep: listingFlowStep + 1 };
 
       updatedHome = await prisma.home.update({
         where: { id: id },

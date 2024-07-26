@@ -21,6 +21,8 @@ interface SellContextProps {
   setNewHome: (value: HomeType | null) => void;
   isLoading: boolean;
   setIsLoading: (value: boolean) => void;
+  nextDisabled: boolean;
+  setNextDisabled: (value: boolean) => void;
 }
 
 const SellContext = createContext<SellContextProps>({
@@ -40,6 +42,8 @@ const SellContext = createContext<SellContextProps>({
   setNewHome: () => {},
   isLoading: false,
   setIsLoading: () => {},
+  nextDisabled: false,
+  setNextDisabled: () => {},
 });
 
 interface SellProviderProps {
@@ -56,6 +60,7 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinished
   const [currentHome, setCurrentHome] = useState<HomeType | null>(unfinishedHome);
   const [newHome, setNewHome] = useState<HomeType | null>(unfinishedHome);
   const [isLoading, setIsLoading] = useState(false);
+  const [nextDisabled, setNextDisabled] = useState(false);
 
   useEffect(() => {
     setNextStep(
@@ -93,6 +98,8 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinished
         setNewHome,
         isLoading,
         setIsLoading,
+        nextDisabled,
+        setNextDisabled,
       }}
     >
       {children}
