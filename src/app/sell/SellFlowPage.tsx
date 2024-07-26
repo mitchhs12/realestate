@@ -22,14 +22,11 @@ export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, ste
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setIsLoading } =
     useContext(SellContext);
 
-  console.log("stepLengthsWithout", stepLengthsWithoutStepPages);
-
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const step = currentHome?.listingFlowStep;

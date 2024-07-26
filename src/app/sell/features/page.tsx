@@ -22,7 +22,6 @@ export default async function Page() {
   }
   const { array, innerIndex, outerIndex } = await getStepData("/sell/features");
   const sellFlatIndex = await getSellFlowIndex("/sell/features");
-  console.log("sellFlatIndex", sellFlatIndex);
 
   return (
     <Features

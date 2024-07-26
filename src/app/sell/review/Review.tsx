@@ -16,7 +16,7 @@ interface Props {
   stepPercentage: number[];
 }
 
-export default function Review({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
     useContext(SellContext);
 

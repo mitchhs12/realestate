@@ -37,7 +37,6 @@ const validateHome = (homeData: any) => {
   if (homeData.contactPhone === "") {
     return { success: false, error: "Contact phone cannot be empty" };
   }
-  console.log(homeData);
   if (homeData.photos.length < 5) {
     ("You need at least 5 photos");
   }
@@ -83,7 +82,6 @@ export async function getHomes() {
       ownerId: userId,
     },
   });
-  console.log("homes here:", homes);
   return homes;
 }
 
@@ -138,7 +136,6 @@ export async function updateHome(
     if (shouldIncreaseListingFlowStep) {
       // Update existing home
       const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
-      console.log("INCREMENTING LISTING FLOW STEP FROM", listingFlowStep, "to", listingFlowStep + 1);
 
       const newData = { ...homeData, listingFlowStep: listingFlowStep + 1 };
 
@@ -148,7 +145,6 @@ export async function updateHome(
       });
     } else {
       const { id, ...homeData } = homeSchema.parse(homeValues);
-      console.log("NOT INCREMENTING LISTING FLOW STEP");
 
       updatedHome = await prisma.home.update({
         where: { id: id },
