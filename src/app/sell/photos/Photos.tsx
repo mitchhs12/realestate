@@ -171,7 +171,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
       reader.onload = (e) => {
         const img = new (window as any).Image();
         img.onload = () => {
-          const isValid = img.width >= 800 && img.height >= 600; // Example dimensions check
+          const isValid = img.width >= 480 && img.height >= 320; // Example dimensions check
           resolve(isValid);
         };
         img.onerror = () => resolve(false);
