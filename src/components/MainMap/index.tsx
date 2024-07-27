@@ -95,7 +95,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             zoom={newZoom !== 16 ? newZoom : 16}
             maxZoom={20}
-            minZoom={2}
+            minZoom={3}
             onZoomChanged={(num) => {
               setNewZoom(num.detail.zoom);
             }}
@@ -103,7 +103,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
             mapId={mapConfig.mapId || null}
             mapTypeId={mapConfig.mapTypeId}
             reuseMaps={true}
-            className={"custom-marker-clustering-map"}
+            className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
             //styles={mapConfig.styles}
           >
             {geojson && (
