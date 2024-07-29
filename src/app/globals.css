@@ -152,6 +152,14 @@ section.progress-section {
   background-color: #000000; /* dark mode color */
 }
 
+.light-mode .marker.feature {
+  background-color: #ffffff; /* light mode color */
+}
+
+.dark-mode .marker.feature {
+  background-color: #000000; /* dark mode color */
+}
+
 @layer base {
   * {
     @apply border-border;

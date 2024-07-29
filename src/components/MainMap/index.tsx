@@ -10,7 +10,7 @@ import lightMap from "./map-styles/light-map";
 import { CoordinatesType } from "@/lib/validations";
 import { loadCastlesGeojson, CastlesGeojson } from "./castles";
 import { Feature, Point } from "geojson";
-import { ClusteredMarkers } from "@/components/ClusteredMarkers";
+import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
 
 import { QueryContext } from "@/context/QueryContext";
 
@@ -111,6 +111,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
                 geojson={geojson}
                 setNumClusters={setNumClusters}
                 setInfowindowData={setInfowindowData}
+                theme={theme}
               />
             )}
             {infowindowData && (

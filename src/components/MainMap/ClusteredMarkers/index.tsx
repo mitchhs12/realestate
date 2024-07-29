@@ -1,7 +1,7 @@
 import React, { Ref, useCallback, useEffect } from "react";
 import Supercluster, { ClusterProperties } from "supercluster";
-import { FeaturesClusterMarker } from "@/components/FeaturesClusterMarker";
-import { FeatureMarker } from "@/components/FeatureMarker";
+import { FeaturesClusterMarker } from "@/components/MainMap/FeaturesClusterMarker";
+import { FeatureMarker } from "@/components/MainMap/FeatureMarker";
 import { useSupercluster } from "@/app/hooks/use-supercluster";
 import { Feature, FeatureCollection, GeoJsonProperties, Point } from "geojson";
 
@@ -14,6 +14,7 @@ type ClusteredMarkersProps = {
       features: Feature<Point>[];
     } | null
   ) => void;
+  theme?: string;
 };
 
 const superclusterOptions: Supercluster.Options<GeoJsonProperties, ClusterProperties> = {
@@ -22,7 +23,7 @@ const superclusterOptions: Supercluster.Options<GeoJsonProperties, ClusterProper
   maxZoom: 12,
 };
 
-export const ClusteredMarkers = ({ geojson, setNumClusters, setInfowindowData }: ClusteredMarkersProps) => {
+export const ClusteredMarkers = ({ geojson, setNumClusters, setInfowindowData, theme }: ClusteredMarkersProps) => {
   const { clusters, getLeaves } = useSupercluster(geojson, superclusterOptions);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ export const ClusteredMarkers = ({ geojson, setNumClusters, setInfowindowData }:
             size={clusterProperties.point_count}
             sizeAsText={String(clusterProperties.point_count_abbreviated)}
             onMarkerClick={handleClusterClick}
+            theme={theme}
           />
         ) : (
           <FeatureMarker

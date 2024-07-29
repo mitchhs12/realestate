@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { AdvancedMarker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
-import { CastleSvg } from "@/components/CastleSvg";
+import { LogoSvg } from "@/components/MainMap/LogoSvg";
 
 type TreeMarkerProps = {
   position: google.maps.LatLngLiteral;
@@ -17,7 +17,7 @@ export const FeatureMarker = ({ position, featureId, onMarkerClick }: TreeMarker
 
   return (
     <AdvancedMarker ref={markerRef} position={position} onClick={handleClick} className={"marker feature"}>
-      <CastleSvg />
+      <LogoSvg />
     </AdvancedMarker>
   );
 };

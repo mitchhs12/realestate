@@ -60,11 +60,11 @@ export default function Header() {
               <Button
                 size={"largeIcon"}
                 variant="outline"
-                className={`flex text-[#2dac5c] hover:text-primary/80 dark:text-foreground/90 dark:hover:text-foreground/80 hover:cursor-pointer group`}
+                className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
               >
                 <div className="flex justify-center items-center gap-1">
                   <div className="flex justify-center items-center">
-                    <Logo width={"40"} height={"40"} dark={themeBool} />
+                    <Logo width={"40"} height={"40"} />
                   </div>
                   <h1
                     className={`${poppins.className} ${

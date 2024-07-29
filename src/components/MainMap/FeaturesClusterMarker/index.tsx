@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { AdvancedMarker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
-import { CastleSvg } from "@/components/CastleSvg";
+import { LogoSvg } from "@/components/MainMap/LogoSvg";
+import { LogoOriginal } from "@/components/MainMap/LogoOriginal";
 
 type TreeClusterMarkerProps = {
   clusterId: number;
@@ -8,6 +9,7 @@ type TreeClusterMarkerProps = {
   position: google.maps.LatLngLiteral;
   size: number;
   sizeAsText: string;
+  theme?: string;
 };
 
 export const FeaturesClusterMarker = ({
@@ -16,6 +18,7 @@ export const FeaturesClusterMarker = ({
   sizeAsText,
   onMarkerClick,
   clusterId,
+  theme,
 }: TreeClusterMarkerProps) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const handleClick = useCallback(
@@ -32,8 +35,8 @@ export const FeaturesClusterMarker = ({
       className={"marker cluster"}
       style={{ width: markerSize, height: markerSize }}
     >
-      <CastleSvg />
-      <span>{sizeAsText}</span>
+      <LogoSvg />
+      <div className={`text-xs ${theme === "dark" ? "text-white" : "text-black"} pb-1`}>{sizeAsText}</div>
     </AdvancedMarker>
   );
 };
