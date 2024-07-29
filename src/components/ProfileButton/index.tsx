@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,10 +25,10 @@ import { useTheme } from "next-themes";
 interface Props {
   openSignUpModal: () => void;
   openLogInModal: () => void;
+  session: ReturnType<typeof useSession>;
 }
 
-export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
-  const session = useSession();
+export function ProfileButton({ openSignUpModal, openLogInModal, session }: Props) {
   const user = session.data?.user;
 
   const router = useRouter();

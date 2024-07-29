@@ -4,7 +4,7 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { poppins } from "@/app/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -12,16 +12,23 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
+  const session = useSession();
+  const user = session.data?.user;
 
   const { resolvedTheme } = useTheme();
   const themeBool = resolvedTheme === "dark" ? true : false;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [handleLogin, setHandleLogin] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  useEffect(() => {
+    console.log("current isLoginOpen", isLoginOpen);
+  }, [isLoginOpen]);
 
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
@@ -31,12 +38,12 @@ export default function Header() {
   };
 
   const openSignUpModal = () => {
-    setHandleLogin(false);
+    setIsLoginOpen(false);
     setIsModalOpen(true);
   };
 
   const openLogInModal = () => {
-    setHandleLogin(true);
+    setIsLoginOpen(true);
     setIsModalOpen(true);
   };
 
@@ -82,7 +89,7 @@ export default function Header() {
             <Button
               className="gap-2 items-center"
               onClick={() => {
-                router.push("/sell");
+                user ? router.push("/sell") : openSignUpModal();
               }}
             >
               <Icons.sell_home />
@@ -98,7 +105,7 @@ export default function Header() {
               <Button
                 className="hidden xs:flex gap-2 items-center"
                 onClick={() => {
-                  router.push("/sell");
+                  user ? router.push("/sell") : openSignUpModal();
                 }}
               >
                 <Icons.sell_home />
@@ -107,7 +114,7 @@ export default function Header() {
               </Button>
             )}
             <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
-              <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
+              <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} session={session} />
             </div>
           </div>
         )}
@@ -127,7 +134,7 @@ export default function Header() {
 
       <div className="flex relative z-100">
         <ModalPortal isOpen={isModalOpen} onClose={closeModal}>
-          <Modal handleLogin={handleLogin} setHandleLogin={setHandleLogin} />
+          <Modal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />
         </ModalPortal>
       </div>
     </>

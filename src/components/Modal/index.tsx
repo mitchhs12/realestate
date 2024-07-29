@@ -10,33 +10,27 @@ import { Icons } from "@/components/icons";
 import { useTheme } from "next-themes";
 
 interface Props {
-  handleLogin?: boolean;
-  setHandleLogin?: (value: boolean) => void;
+  isLoginOpen?: boolean;
+  setIsLoginOpen?: (value: boolean) => void;
 }
 
-export function Modal({ handleLogin, setHandleLogin }: Props) {
+export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const { resolvedTheme: theme } = useTheme();
-  const [isLogin, setIsLogin] = useState(handleLogin);
+  const [isLogin, setIsLogin] = useState(isLoginOpen);
 
   useEffect(() => {
-    if (!handleLogin) {
-      setIsLogin(true);
+    if (isLogin !== isLoginOpen) {
+      setIsLogin(isLoginOpen);
     }
-  }, []);
-
-  useEffect(() => {
-    if (isLogin !== handleLogin) {
-      setIsLogin(handleLogin);
-    }
-  }, [handleLogin]);
+  }, [isLoginOpen]);
 
   useEffect(() => {
     // Update the parent `handleLogin` state only if it differs
-    if (setHandleLogin && isLogin && handleLogin !== isLogin) {
-      setHandleLogin(isLogin);
+    if (setIsLoginOpen && isLogin && isLoginOpen !== isLogin) {
+      setIsLoginOpen(isLogin);
     }
   }, [isLogin]);
 
