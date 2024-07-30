@@ -1,13 +1,13 @@
 "use client";
-import { useEffect, useCallback, useContext } from "react";
+import React, { useEffect, useCallback, useContext } from "react";
 import { APIProvider, Map, InfoWindow } from "@vis.gl/react-google-maps";
-import { InfoWindowContent } from "@/components/InfoWindowContent";
+import { InfoWindowContent } from "@/components/MainMap/InfoWindowContent";
 import { useState } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
-import { CoordinatesType } from "@/lib/validations";
+import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { loadCastlesGeojson, CastlesGeojson } from "./castles";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
@@ -29,7 +29,23 @@ const MapTypeId = {
   TERRAIN: "terrain",
 };
 
-export default function MapComponent({ coordinates }: { coordinates: CoordinatesType }) {
+interface Props {
+  coordinates: CoordinatesType;
+  setBounds: React.Dispatch<React.SetStateAction<BoundsType>>;
+  allHomes: HomeType[];
+  setIsSearchLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isMapLoading: boolean;
+  setIsMapLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function MapComponent({
+  coordinates,
+  setBounds,
+  allHomes,
+  setIsSearchLoading,
+  isMapLoading,
+  setIsMapLoading,
+}: Props) {
   const MAP_CONFIGS: MapConfig[] = [
     {
       id: "light",
@@ -49,10 +65,24 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
 
   const { resolvedTheme: theme } = useTheme();
   const { newZoom, setNewZoom } = useContext(QueryContext);
-  const [isMapLoading, setIsMapLoading] = useState(true);
   const [numClusters, setNumClusters] = useState(0);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [geojson, setGeojson] = useState<CastlesGeojson | null>(null);
+  const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const handleBoundsChanged = (bounds: { detail: { bounds: React.SetStateAction<BoundsType> } }) => {
+    if (boundsTimeout) {
+      clearTimeout(boundsTimeout);
+    }
+
+    const timeoutId = setTimeout(() => {
+      setIsSearchLoading(true);
+      setBounds(bounds.detail.bounds);
+    }, 200);
+
+    setBoundsTimeout(timeoutId);
+  };
+
   useEffect(() => {
     void loadCastlesGeojson().then((data) => setGeojson(data));
   }, []);
@@ -92,6 +122,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
           </div>
         ) : (
           <Map
+            onBoundsChanged={handleBoundsChanged}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             zoom={newZoom !== 16 ? newZoom : 16}
             maxZoom={20}
@@ -104,7 +135,6 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
             mapTypeId={mapConfig.mapTypeId}
             reuseMaps={true}
             className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
-            //styles={mapConfig.styles}
           >
             {geojson && (
               <ClusteredMarkers
@@ -114,9 +144,18 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
                 theme={theme}
               />
             )}
+
             {infowindowData && (
-              <InfoWindow onClose={hamdleInfoWindowClose} anchor={infowindowData.anchor}>
-                <InfoWindowContent features={infowindowData.features} />
+              <InfoWindow
+                headerContent={`${
+                  infowindowData.features.length === 1
+                    ? infowindowData.features[0].properties?.name
+                    : `${new Intl.NumberFormat().format(infowindowData.features.length)} Properties`
+                }`}
+                onClose={hamdleInfoWindowClose}
+                anchor={infowindowData.anchor}
+              >
+                <InfoWindowContent features={infowindowData.features} theme={theme} />
               </InfoWindow>
             )}
           </Map>

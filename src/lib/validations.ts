@@ -46,3 +46,9 @@ export type CoordinatesType = {
   long: number; // x coordinate
   lat: number; // y coordinate
 };
+export type BoundsType = {
+  south: number;
+  west: number;
+  north: number;
+  east: number;
+};

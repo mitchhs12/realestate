@@ -160,6 +160,83 @@ section.progress-section {
   background-color: #000000; /* dark mode color */
 }
 
+.light-mode .gm-style-iw {
+  background-color: #ffffff !important; /* Override background color */
+}
+
+.dark-mode .gm-style-iw {
+  background-color: #000000 !important; /* Override background color */
+}
+
+.light-mode .gm-style-iw-d {
+  background-color: #ffffff !important; /* Override background color */
+}
+
+.dark-mode .view-link {
+  background-color: #000000 !important; /* Override background color */
+}
+
+.light-mode .view-link {
+  background-color: #ffffff !important; /* Override background color */
+}
+
+.light-mode .view-link a span {
+  background-color: #ffffff; /* Your desired span text color */
+  text-color: #000000;
+}
+
+.dark-mode .view-link a span {
+  background-color: #000000; /* Your desired span text color */
+  text-color: #ffffff;
+}
+
+.light-mode .gm-title.gm-full-width {
+  background-color: #ffffff !important; /* Override text color */
+}
+
+.dark-mode .gm-title.gm-full-width {
+  background-color: #000000 !important; /* Override text color */
+}
+
+.dark-mode .gm-style-iw-c {
+  background-color: #000000 !important; /* Override background color */
+}
+
+.light-mode .gm-style-iw-tc::after {
+  background-color: #ffffff !important; /* Override background color */
+}
+
+.dark-mode .gm-style-iw-tc::after {
+  background-color: #000000 !important; /* Override background color */
+}
+
+.gm-style-iw-d {
+  overflow: hidden !important;
+  max-height: none !important;
+}
+
+.light-mode .gm-ui-hover-effect span {
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  pointer-events: none;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 12px;
+  background-color: #000000; /* Your desired color */
+}
+
+.dark-mode .gm-ui-hover-effect span {
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  pointer-events: none;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 12px;
+  background-color: #ffffff; /* Your desired color */
+}
+
 @layer base {
   * {
     @apply border-border;

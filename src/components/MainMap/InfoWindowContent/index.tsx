@@ -4,21 +4,21 @@ import { CastleFeatureProps } from "@/components/MainMap/castles";
 
 type InfowindowContentProps = {
   features: Feature<Point>[];
+  theme?: string;
 };
 
 const numFmt = new Intl.NumberFormat();
 
-const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
+const InfoWindowContent = memo(({ features, theme }: InfowindowContentProps) => {
   if (features.length === 1) {
     const f = features[0];
     const props = f.properties! as CastleFeatureProps;
 
     return (
-      <div>
-        <h4>{props.name}</h4>
+      <div className="flex flex-col text-xs p-5">
         <p>
           <a href={getDetailsUrl(props)} target="_blank">
-            more information
+            View details
           </a>
         </p>
       </div>
@@ -26,9 +26,7 @@ const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
   }
 
   return (
-    <div>
-      <h4>{numFmt.format(features.length)} features. Zoom in to explore.</h4>
-
+    <div className={`text-xs flex flex-col mr-2 pb-2`}>
       <ul>
         {features.slice(0, 5).map((feature) => {
           const props = feature.properties! as CastleFeatureProps;
@@ -42,7 +40,7 @@ const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
           );
         })}
 
-        {features.length > 5 && <li>and {numFmt.format(features.length - 5)} more.</li>}
+        {features.length > 5 && <li>and {numFmt.format(features.length - 5)} more...</li>}
       </ul>
     </div>
   );

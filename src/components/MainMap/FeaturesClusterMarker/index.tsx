@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { AdvancedMarker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
 import { LogoSvg } from "@/components/MainMap/LogoSvg";
-import { LogoOriginal } from "@/components/MainMap/LogoOriginal";
 
 type TreeClusterMarkerProps = {
   clusterId: number;
