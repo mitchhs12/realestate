@@ -7,8 +7,8 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
-import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
-import { loadCastlesGeojson, CastlesGeojson } from "./castles";
+import { CoordinatesType, BoundsType } from "@/lib/validations";
+import { HomesGeoJson } from "./homes";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
 
@@ -31,8 +31,8 @@ const MapTypeId = {
 
 interface Props {
   coordinates: CoordinatesType;
-  setBounds: React.Dispatch<React.SetStateAction<BoundsType>>;
-  allHomes: HomeType[];
+  setBounds: React.Dispatch<React.SetStateAction<BoundsType | null>>;
+  homesGeoJson: HomesGeoJson | null;
   setIsSearchLoading: React.Dispatch<React.SetStateAction<boolean>>;
   isMapLoading: boolean;
   setIsMapLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,7 +41,7 @@ interface Props {
 export default function MapComponent({
   coordinates,
   setBounds,
-  allHomes,
+  homesGeoJson,
   setIsSearchLoading,
   isMapLoading,
   setIsMapLoading,
@@ -67,10 +67,9 @@ export default function MapComponent({
   const { newZoom, setNewZoom } = useContext(QueryContext);
   const [numClusters, setNumClusters] = useState(0);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
-  const [geojson, setGeojson] = useState<CastlesGeojson | null>(null);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const handleBoundsChanged = (bounds: { detail: { bounds: React.SetStateAction<BoundsType> } }) => {
+  const handleBoundsChanged = (bounds: { detail: { bounds: React.SetStateAction<BoundsType | null> } }) => {
     if (boundsTimeout) {
       clearTimeout(boundsTimeout);
     }
@@ -82,10 +81,6 @@ export default function MapComponent({
 
     setBoundsTimeout(timeoutId);
   };
-
-  useEffect(() => {
-    void loadCastlesGeojson().then((data) => setGeojson(data));
-  }, []);
 
   const [infowindowData, setInfowindowData] = useState<{
     anchor: google.maps.marker.AdvancedMarkerElement;
@@ -136,9 +131,9 @@ export default function MapComponent({
             reuseMaps={true}
             className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
           >
-            {geojson && (
+            {homesGeoJson && (
               <ClusteredMarkers
-                geojson={geojson}
+                geojson={homesGeoJson}
                 setNumClusters={setNumClusters}
                 setInfowindowData={setInfowindowData}
                 theme={theme}

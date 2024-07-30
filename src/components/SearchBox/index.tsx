@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useRef, useEffect, useContext } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { ReloadIcon } from "@radix-ui/react-icons";
@@ -28,7 +28,8 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const { query, setQuery } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
-  const [finishedSearch, setFinishedSearch] = useState<boolean>(false);
+  const isNavigating = useRef(false); // Flag to track if navigation is occurring
+  const pathname = usePathname();
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
@@ -47,8 +48,8 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
 
   const handleSearch = (text: string, placeId: string) => {
     if (placeId && !isSmallMap) {
+      isNavigating.current = true;
       router.push(`/search/${placeId}`);
-      setFinishedSearch(true);
     } else {
       setSearchResult!(text, placeId);
     }
@@ -59,7 +60,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   useEffect(() => {
     if (query === initialQueryRef.current) return;
 
-    if (query && !finishedSearch) {
+    if (query && !isNavigating.current) {
       setLoading(true);
       fetchPlaces(query);
     } else {
@@ -108,8 +109,15 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
       setResults([]);
     }
     setLoading(false);
-    setPopoverOpen(true);
+    if (!isNavigating.current) {
+      setPopoverOpen(true); // Only open popover if not navigating
+    }
   };
+
+  // Reset isNavigating on component mount
+  useEffect(() => {
+    isNavigating.current = false;
+  }, [pathname]);
 
   return (
     <div className="flex w-full">

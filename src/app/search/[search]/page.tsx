@@ -12,14 +12,14 @@ export default async function Page({ params }: { params: { search: string } }) {
   );
 
   const fullResponse = await response.json();
-  console.log("fullResponse", fullResponse);
   const longLatArray = fullResponse.Place.Geometry.Point;
+  const label = fullResponse.Place.Label;
   const coordinates: CoordinatesType = { lat: longLatArray[1], long: longLatArray[0] };
 
   if (response.status === 200) {
     return (
       <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end ">
-        <CombinedSearchPage coordinates={coordinates} />
+        <CombinedSearchPage coordinates={coordinates} label={label} />
       </main>
     );
   } else {

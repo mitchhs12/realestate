@@ -33,8 +33,8 @@ export const LogoSvg = () => (
         x2="509.065"
         y2="400.91287"
       >
-        <stop offset="0" stop-color="#06602C" />
-        <stop offset="1" stop-color="#13943B" />
+        <stop offset="0" stopColor="#06602C" />
+        <stop offset="1" stopColor="#13943B" />
       </linearGradient>
     </defs>
     <path

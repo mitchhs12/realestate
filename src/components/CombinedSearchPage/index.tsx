@@ -7,24 +7,23 @@ import FloatingButton from "@/components/FloatingButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
-import { ReloadIcon } from "@radix-ui/react-icons";
+import { HomesGeoJson } from "@/components/MainMap/homes";
+interface Props {
+  coordinates: CoordinatesType;
+  label: string;
+}
 
-export default function CombinedSearchPage({ coordinates }: { coordinates: CoordinatesType }) {
+export default function CombinedSearchPage({ coordinates, label }: Props) {
   const { mapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
-  const [bounds, setBounds] = useState<BoundsType>({
-    south: 0,
-    west: 0,
-    north: 0,
-    east: 0,
-  });
+  const [bounds, setBounds] = useState<BoundsType | null>(null);
   const [homes, setHomes] = useState<HomeType[]>([]);
-  const [allHomes, setAllHomes] = useState<HomeType[]>([]);
+  const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
   const [isSearchLoading, setIsSearchLoading] = useState(true);
   const [isMapLoading, setIsMapLoading] = useState(true);
 
   useEffect(() => {
     getAllHomes().then((allHomes) => {
-      setAllHomes(allHomes);
+      setHomesGeoJson(allHomes);
       setIsSearchLoading(false);
       console.log("allHomes", allHomes);
     });
@@ -37,7 +36,7 @@ export default function CombinedSearchPage({ coordinates }: { coordinates: Coord
   }, [coordinates]);
 
   useEffect(() => {
-    if (bounds.south && bounds.west && bounds.north && bounds.east) {
+    if (bounds) {
       getSearchResults("search", bounds).then((data) => {
         setHomes(data);
         setIsSearchLoading(false);
@@ -48,19 +47,13 @@ export default function CombinedSearchPage({ coordinates }: { coordinates: Coord
   return (
     <>
       <section className={`flex w-full h-1/2 ${!mapFocused ? "md:hidden" : "md:h-full"} lg:flex lg:w-1/2 lg:h-full`}>
-        {isSearchLoading ? (
-          <div className="flex items-center justify-center text-lg lg:text-3xl">
-            <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
-          </div>
-        ) : (
-          <SearchResults homes={homes} />
-        )}
+        <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
       </section>
       <section className={`flex w-full h-1/2 ${mapFocused ? "md:hidden" : "md:h-full"} lg:flex lg:w-1/2 lg:h-full`}>
         <MapComponent
           coordinates={coordinates}
           setBounds={setBounds}
-          allHomes={allHomes}
+          homesGeoJson={homesGeoJson}
           setIsSearchLoading={setIsSearchLoading}
           isMapLoading={isMapLoading}
           setIsMapLoading={setIsMapLoading}
