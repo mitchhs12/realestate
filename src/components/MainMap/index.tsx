@@ -31,18 +31,18 @@ const MapTypeId = {
 
 interface Props {
   coordinates: CoordinatesType;
+  existingBounds: BoundsType | null;
   setBounds: React.Dispatch<React.SetStateAction<BoundsType | null>>;
   homesGeoJson: HomesGeoJson | null;
-  setIsSearchLoading: React.Dispatch<React.SetStateAction<boolean>>;
   isMapLoading: boolean;
   setIsMapLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function MapComponent({
   coordinates,
+  existingBounds,
   setBounds,
   homesGeoJson,
-  setIsSearchLoading,
   isMapLoading,
   setIsMapLoading,
 }: Props) {
@@ -69,14 +69,27 @@ export default function MapComponent({
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const handleBoundsChanged = (bounds: { detail: { bounds: React.SetStateAction<BoundsType | null> } }) => {
+  const areBoundsEqual = (bounds1: BoundsType | null, bounds2: BoundsType | null): boolean => {
+    if (bounds1 === bounds2) return true;
+    if (!bounds1 || !bounds2) return false;
+
+    return (
+      bounds1.south === bounds2.south &&
+      bounds1.west === bounds2.west &&
+      bounds1.north === bounds2.north &&
+      bounds1.east === bounds2.east
+    );
+  };
+
+  const handleBoundsChanged = (bounds: { detail: { bounds: BoundsType | null } }) => {
     if (boundsTimeout) {
       clearTimeout(boundsTimeout);
     }
 
     const timeoutId = setTimeout(() => {
-      setIsSearchLoading(true);
-      setBounds(bounds.detail.bounds);
+      if (!areBoundsEqual(existingBounds, bounds.detail.bounds)) {
+        setBounds(bounds.detail.bounds);
+      }
     }, 200);
 
     setBoundsTimeout(timeoutId);

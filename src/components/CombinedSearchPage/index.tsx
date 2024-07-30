@@ -24,8 +24,6 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
   useEffect(() => {
     getAllHomes().then((allHomes) => {
       setHomesGeoJson(allHomes);
-      setIsSearchLoading(false);
-      console.log("allHomes", allHomes);
     });
   }, []);
 
@@ -37,6 +35,7 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
 
   useEffect(() => {
     if (bounds) {
+      setIsSearchLoading(true);
       getSearchResults("search", bounds).then((data) => {
         setHomes(data);
         setIsSearchLoading(false);
@@ -52,9 +51,9 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
       <section className={`flex w-full h-1/2 ${mapFocused ? "md:hidden" : "md:h-full"} lg:flex lg:w-1/2 lg:h-full`}>
         <MapComponent
           coordinates={coordinates}
+          existingBounds={bounds}
           setBounds={setBounds}
           homesGeoJson={homesGeoJson}
-          setIsSearchLoading={setIsSearchLoading}
           isMapLoading={isMapLoading}
           setIsMapLoading={setIsMapLoading}
         />
