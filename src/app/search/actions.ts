@@ -4,19 +4,10 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { BoundsType } from "@/lib/validations";
-import { HomesGeoJson, HomeFeatureProps } from "@/components/MainMap/homes";
+import { HomesGeoJson, HomeFeatureProps } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 
 export async function getSearchResults(page: string, bounds: BoundsType) {
-  const session = await auth();
-  const userId = session?.user?.id;
-
-  if (!userId) {
-    throw new Error("User not found");
-  }
-
-  console.log("bounds", bounds);
-
   let homes = [];
 
   // Case 1: Longitude wrap-around (crossing the International Date Line)
@@ -77,13 +68,6 @@ export async function getSearchResults(page: string, bounds: BoundsType) {
 }
 
 export async function getAllHomes(): Promise<HomesGeoJson> {
-  const session = await auth();
-  const userId = session?.user?.id;
-
-  if (!userId) {
-    throw new Error("User not found");
-  }
-
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,

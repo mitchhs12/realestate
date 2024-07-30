@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
 import { CoordinatesType, BoundsType } from "@/lib/validations";
-import { HomesGeoJson } from "./homes";
+import { HomesGeoJson } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
 

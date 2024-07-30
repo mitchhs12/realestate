@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { FeatureCollection, Point } from "geojson";
 
 export const updateNameSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
@@ -52,3 +53,23 @@ export type BoundsType = {
   north: number;
   east: number;
 };
+
+export type HomeFeatureProps = {
+  name: string | null;
+  address: string | null;
+  description: string | null;
+  type: string[];
+  features: string[];
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  livingrooms: number;
+  kitchens: number;
+  capacity: number;
+  photos: string[];
+  contactName: string | null;
+  contactEmail: string | null;
+  contactPhone: string | null;
+};
+
+export type HomesGeoJson = FeatureCollection<Point, HomeFeatureProps>;

@@ -7,7 +7,7 @@ import FloatingButton from "@/components/FloatingButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
-import { HomesGeoJson } from "@/components/MainMap/homes";
+import { HomesGeoJson } from "@/lib/validations";
 interface Props {
   coordinates: CoordinatesType;
   label: string;
