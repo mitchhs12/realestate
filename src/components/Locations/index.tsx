@@ -88,8 +88,11 @@ export default function Locations() {
   ];
 
   return (
-    <div className="flex flex-row justify-start items-center h-full w-full gap-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
+    <div className="flex flex-col items-center h-full w-full gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 w-full">
+        <Card className="relative w-full h-96 col-span-2 row-span-2">
+          <Image src={hoveredImage} alt="Location Image" fill={true} className="object-cover" />
+        </Card>
         {locations.map((location, index) => (
           <Card
             key={index}
@@ -108,6 +111,7 @@ export default function Locations() {
             <CardContent className="flex flex-col items-start w-full h-full p-2 pt-0">
               {location.neighborhoods.map((neighborhood) => (
                 <Button
+                  key={neighborhood}
                   variant={"ghost"}
                   onMouseEnter={() => {
                     setHoveredImage(imageMap[location.city][neighborhood]);
@@ -121,9 +125,6 @@ export default function Locations() {
           </Card>
         ))}
       </div>
-      <Card className="relative w-[400px] h-[400px] overflow-hidden">
-        <Image src={hoveredImage} alt="Location Image" fill={true} className="object-cover" />
-      </Card>
     </div>
   );
 }
