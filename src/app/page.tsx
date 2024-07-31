@@ -1,18 +1,41 @@
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import Listings from "@/components/Listings";
+import Locations from "@/components/Locations";
 
 export default async function Home() {
   return (
-    <div className="flex flex-col justify-between h-screen-minus-header-svh items-center">
+    <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
       <main className="w-full">
         <Hero />
       </main>
-      <h1 className="flex flex-col justify-center items-center gap-y-3 text-center">
-        <span className="text-md md:text-2xl">This site is under construction.</span>
-        <span className="text-md md:text-lg">
-          Please create an account, and we&apos;ll email you when it&apos;s ready.
-        </span>
-      </h1>
+      <div className="flex flex-col justify-start h-full w-full">
+        <section className="flex flex-col justify-center items-center w-full h-full bg-white dark:bg-black">
+          <div className="flex flex-col space-y-8 pt-8 pb-16 justify-start h-full">
+            <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
+              {"Recommended Locations"}
+            </h2>
+            <Locations />
+          </div>
+        </section>
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-zinc-950">
+          <div className="flex flex-col space-y-8 pt-8 pb-16 justify-start h-full">
+            <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
+              {"Featured Listings"}
+            </h2>
+            <Listings type={"featured"} />
+          </div>
+        </section>
+        <section className="flex flex-col justify-center items-center w-full h-full bg-white dark:bg-black">
+          <div className="flex flex-col space-y-8 pt-8 pb-16 justify-start h-full">
+            <h2 className="flex justify-center text-sm md:text-md lg:text-lg xl:text-lg font-light">
+              {"Recent Listings"}
+            </h2>
+            <Listings type={"new"} />
+          </div>
+        </section>
+      </div>
+
       <footer className="flex justify-center items-center p-6 w-full bg-muted">
         <Footer />
       </footer>
