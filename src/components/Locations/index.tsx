@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 interface CityImages {
   image: string;
@@ -22,6 +23,12 @@ const imageMap: { [city: string]: CityImages } = {
     image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina.webp",
     "Chacras de Coria": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina.webp",
     "City Center": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina.webp",
+  },
+  "Mexico City, Mexico": {
+    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico.webp",
+    Polanco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico.webp",
+    Condesa: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico.webp",
+    "Roma Norte": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico.webp",
   },
   "São Paulo, Brazil": {
     image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.webp",
@@ -73,11 +80,13 @@ const imageMap: { [city: string]: CityImages } = {
 
 export default function Locations() {
   const [hoveredImage, setHoveredImage] = useState(imageMap["Buenos Aires, Argentina"].image);
+  const { resolvedTheme } = useTheme();
 
   const locations: { city: string; neighborhoods: string[] }[] = [
     { city: "Buenos Aires, Argentina", neighborhoods: ["Palermo", "Recoleta", "Belgrano"] },
     // { city: "Mendoza, Argentina", neighborhoods: ["Chacras de Coria", "City Center"] },
-    { city: "São Paulo, Brazil", neighborhoods: ["Jardins", "Vila Madalena", "Moema"] },
+    // { city: "São Paulo, Brazil", neighborhoods: ["Jardins", "Vila Madalena", "Moema"] },
+    { city: "Mexico City, Mexico", neighborhoods: ["Polanco", "Condesa", "Roma Norte"] },
     { city: "Rio de Janeiro, Brazil", neighborhoods: ["Ipanema", "Leblon", "Barra da Tijuca"] },
     // { city: "Florianópolis, Brazil", neighborhoods: ["Jurerê Internacional", "Lagoa da Conceição"] },
     { city: "Medellín, Colombia", neighborhoods: ["El Poblado", "Laureles"] },
@@ -88,28 +97,37 @@ export default function Locations() {
   ];
 
   return (
-    <div className="flex flex-col items-center h-full w-full gap-8">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+    <div className="flex flex-col items-center w-full gap-8">
+      <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {locations.map((location, index) => (
           <Card
             key={index}
-            className="flex flex-col h-40 w-full"
+            className="flex flex-col h-42 w-full border-primary shadow-lg"
+            style={{
+              backgroundImage: `${
+                resolvedTheme === "dark"
+                  ? "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),"
+                  : "linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),"
+              } url(${imageMap[location.city].image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
             onMouseEnter={() => {
               setHoveredImage(imageMap[location.city]["image"]);
             }}
           >
             <CardHeader className="w-full p-2 px-2">
               <CardTitle className="flex justify-center">
-                <Button variant={"secondary"} size={"sm"} className="md:h-9 md:px-4 md:py-2 md:text-sm">
+                <Button variant={"outline"} size={"sm"} className="md:h-9 md:px-4 md:py-2 md:text-sm">
                   {location.city}
                 </Button>
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-start w-full h-full p-2 pt-0">
+            <CardContent className="flex flex-col items-start w-full h-full p-2 gap-y-1 pt-0">
               {location.neighborhoods.map((neighborhood) => (
                 <Button
                   key={neighborhood}
-                  variant={"ghost"}
+                  variant={"outline"}
                   onMouseEnter={() => {
                     setHoveredImage(imageMap[location.city][neighborhood]);
                   }}
@@ -121,8 +139,8 @@ export default function Locations() {
             </CardContent>
           </Card>
         ))}
-        <Card className="relative col-span-2 row-span-2 row-start-1 row-end-3 md:col-start-2 md:col-end-4 md:row-start-1 md:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 min-h-[300px]">
-          <Image src={hoveredImage} alt="Location Image" fill={true} className="object-cover" />
+        <Card className="hidden md:relative md:block col-span-2 row-span-2 row-start-1 row-end-3 md:col-start-2 md:col-end-4 md:row-start-1 md:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border border-primary">
+          <Image src={hoveredImage} alt="Location Image" fill={true} className="object-cover rounded-xl opacity-60" />
         </Card>
       </div>
     </div>
