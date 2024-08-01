@@ -76,10 +76,10 @@ export default function Locations() {
 
   const locations: { city: string; neighborhoods: string[] }[] = [
     { city: "Buenos Aires, Argentina", neighborhoods: ["Palermo", "Recoleta", "Belgrano"] },
-    { city: "Mendoza, Argentina", neighborhoods: ["Chacras de Coria", "City Center"] },
+    // { city: "Mendoza, Argentina", neighborhoods: ["Chacras de Coria", "City Center"] },
     { city: "São Paulo, Brazil", neighborhoods: ["Jardins", "Vila Madalena", "Moema"] },
     { city: "Rio de Janeiro, Brazil", neighborhoods: ["Ipanema", "Leblon", "Barra da Tijuca"] },
-    { city: "Florianópolis, Brazil", neighborhoods: ["Jurerê Internacional", "Lagoa da Conceição"] },
+    // { city: "Florianópolis, Brazil", neighborhoods: ["Jurerê Internacional", "Lagoa da Conceição"] },
     { city: "Medellín, Colombia", neighborhoods: ["El Poblado", "Laureles"] },
     { city: "Santiago, Chile", neighborhoods: ["Providencia", "Las Condes", "Vitacura"] },
     { city: "Quito, Ecuador", neighborhoods: ["La Floresta", "Cumbayá", "González Suárez"] },
@@ -89,21 +89,18 @@ export default function Locations() {
 
   return (
     <div className="flex flex-col items-center h-full w-full gap-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 w-full">
-        <Card className="relative w-full h-96 col-span-2 row-span-2">
-          <Image src={hoveredImage} alt="Location Image" fill={true} className="object-cover" />
-        </Card>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {locations.map((location, index) => (
           <Card
             key={index}
-            className="flex flex-col h-full w-full"
+            className="flex flex-col h-40 w-full"
             onMouseEnter={() => {
               setHoveredImage(imageMap[location.city]["image"]);
             }}
           >
-            <CardHeader className="w-full p-4">
+            <CardHeader className="w-full p-2 px-2">
               <CardTitle className="flex justify-center">
-                <Button variant={"secondary"} size={"default"}>
+                <Button variant={"secondary"} size={"sm"} className="md:h-9 md:px-4 md:py-2 md:text-sm">
                   {location.city}
                 </Button>
               </CardTitle>
@@ -124,6 +121,9 @@ export default function Locations() {
             </CardContent>
           </Card>
         ))}
+        <Card className="relative col-span-2 row-span-2 row-start-1 row-end-3 md:col-start-2 md:col-end-4 md:row-start-1 md:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 min-h-[300px]">
+          <Image src={hoveredImage} alt="Location Image" fill={true} className="object-cover" />
+        </Card>
       </div>
     </div>
   );
