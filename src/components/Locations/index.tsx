@@ -52,28 +52,28 @@ const imageMap: { [city: string]: CityImages } = {
     Laureles: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/laureles.avif",
   },
   "Santiago, Chile": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile.avif",
-    Providencia: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile.avif",
-    "Las Condes": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile.avif",
-    Vitacura: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile.avif",
+    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/chile.avif",
+    Providencia: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/providencia.avif",
+    "Las Condes": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/las+condes.avif",
+    Vitacura: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/vitacura.avif",
   },
   "Quito, Ecuador": {
     image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador.avif",
-    "La Floresta": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador.avif",
-    Cumbayá: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador.avif",
-    "González Suárez": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador.avif",
+    "La Floresta": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador/la+floresta.avif",
+    Cumbayá: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador/cumbaya.avif",
+    "González Suárez": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador/gonzalez+suarez.avif",
   },
   "Lima, Peru": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru.avif",
-    Miraflores: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru.avif",
-    "San Isidro": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru.avif",
-    Barranco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru.avif",
+    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/peru.avif",
+    Miraflores: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/miraflores.avif",
+    "San Isidro": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/san+isidro.avif",
+    Barranco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/barranco.avif",
   },
   "Montevideo, Uruguay": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay.avif",
-    "Punta Carretas": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay.avif",
-    Pocitos: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay.avif",
-    Carrasco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay.avif",
+    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/uruguay.avif",
+    "Punta Carretas": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/punta+carretas.avif",
+    Pocitos: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/pocitos.avif",
+    Carrasco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/carrasco.avif",
   },
 };
 
@@ -108,7 +108,7 @@ export default function Locations() {
             }}
           >
             <Image
-              className="object-cover opacity-60"
+              className="object-cover opacity-65 dark:opacity-60"
               src={imageMap[location.city].image}
               alt="Location Image"
               fill={true}
@@ -153,9 +153,9 @@ export default function Locations() {
             src={hoveredImage}
             alt="Location Image"
             fill={true}
-            className="object-cover rounded-xl opacity-60 absolute inset-0 z-0"
+            className="object-cover rounded-xl opacity-65 dark:opacity-60 absolute inset-0 z-0"
           />
-          <CardTitle className="relative z-1 flex flex-col justify-center items-center h-full w-full text-2xl">
+          <CardTitle className="relative z-1 flex flex-col pt-4 justify-start items-center h-full w-full text-4xl font-thin shadow-lg">
             {key}
           </CardTitle>
         </Card>
