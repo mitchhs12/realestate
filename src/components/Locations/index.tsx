@@ -5,8 +5,7 @@ import Image from "next/image";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { QueryContext } from "@/context/QueryContext";
 
 interface CityImage {
@@ -154,20 +153,6 @@ export default function Locations() {
   const [hoveredImage, setHoveredImage] = useState(urlMap["Buenos Aires, Argentina"]);
   const [key, setKey] = useState("Buenos Aires");
   const { setQuery, setClickedLocation } = useContext(QueryContext);
-  const router = useRouter();
-
-  async function getPlaceId(query: string) {
-    const response = await fetch("/api/autocomplete", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query: { text: query } }),
-    });
-    const results = await response.json();
-    const topResult = results.suggestions[0];
-    return topResult;
-  }
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
@@ -187,6 +172,7 @@ export default function Locations() {
               src={urlMap[city.name]}
               alt="Location Image"
               fill={true}
+              priority={true}
             />
             <div className="relative z-10">
               <CardHeader className="w-full p-2 px-2">
@@ -238,6 +224,7 @@ export default function Locations() {
             alt="Location Image"
             fill={true}
             className="object-cover rounded-xl opacity-65 dark:opacity-60 absolute inset-0 z-0"
+            priority={true}
           />
           <CardTitle className="relative z-1 flex flex-col pt-4 justify-start items-center h-full w-full text-4xl font-thin shadow-lg">
             {key}
