@@ -5,8 +5,9 @@ import Image from "next/image";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { QueryContext } from "@/context/QueryContext";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CityImage {
   name: string;
@@ -153,6 +154,16 @@ export default function Locations() {
   const [hoveredImage, setHoveredImage] = useState(urlMap["Buenos Aires, Argentina"]);
   const [key, setKey] = useState("Buenos Aires");
   const { setQuery, setClickedLocation } = useContext(QueryContext);
+  const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
+
+  const handleImageLoad = (imageUrl: string) => {
+    console.log("loaded", imageUrl);
+    setLoadingImages((prevLoadingImages) => {
+      const newLoadingImages = new Set(prevLoadingImages);
+      newLoadingImages.delete(imageUrl);
+      return newLoadingImages;
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
@@ -167,12 +178,15 @@ export default function Locations() {
               setKey(place);
             }}
           >
+            {loadingImages.has(urlMap[city.name]) && <Skeleton className="absolute inset-0" />}
             <Image
               className="object-cover opacity-65 dark:opacity-60"
               src={urlMap[city.name]}
               alt="Location Image"
+              sizes={"(max-width: 200px), (max-height: 200px)"}
               fill={true}
               priority={true}
+              onLoad={() => handleImageLoad(urlMap[city.name])}
             />
             <div className="relative z-10">
               <CardHeader className="w-full p-2 px-2">
@@ -219,12 +233,15 @@ export default function Locations() {
           </Card>
         ))}
         <Card className="hidden md:relative md:block col-span-2 row-span-2 row-start-1 row-end-3 md:col-start-2 md:col-end-4 md:row-start-1 md:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border">
+          {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
           <Image
             src={hoveredImage}
             alt="Location Image"
             fill={true}
-            className="object-cover rounded-xl opacity-65 dark:opacity-60 absolute inset-0 z-0"
+            className={`object-cover rounded-xl opacity-65 dark:opacity-60 absolute inset-0 z-0`}
             priority={true}
+            sizes={"(max-width: 500px), (max-height: 500px)"}
+            onLoad={() => handleImageLoad(hoveredImage)}
           />
           <CardTitle className="relative z-1 flex flex-col pt-4 justify-start items-center h-full w-full text-4xl font-thin shadow-lg">
             {key}
