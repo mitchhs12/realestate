@@ -47,7 +47,7 @@ const imageMap: { [city: string]: CityImages } = {
   //   "Lagoa da Conceição": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
   // },
   "Medellín, Colombia": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia.avif",
+    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/colombia.avif",
     "El Poblado": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/el+poblado.avif",
     Laureles: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/laureles.avif",
   },
