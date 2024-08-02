@@ -25,7 +25,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const inputRef = useRef<HTMLInputElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
   const [popoverOpen, setPopoverOpen] = useState(false); // State to control Popover open
-  const { query, setQuery } = useContext(QueryContext);
+  const { query, setQuery, clickedLocation, setClickedLocation } = useContext(QueryContext);
   const initialQueryRef = useRef(query);
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
@@ -109,10 +109,18 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
       setResults([]);
     }
     setLoading(false);
-    if (!isNavigating.current) {
-      setPopoverOpen(true); // Only open popover if not navigating
-    }
   };
+
+  useEffect(() => {
+    if (clickedLocation) {
+      setClickedLocation(false);
+      handleSearch(results[0].Text, results[0].PlaceId);
+      return;
+    }
+    if (results.length > 0 && !loading && !isNavigating.current) {
+      setPopoverOpen(true);
+    }
+  }, [results]);
 
   // Reset isNavigating on component mount
   useEffect(() => {

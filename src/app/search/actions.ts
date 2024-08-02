@@ -61,8 +61,6 @@ export async function getSearchResults(page: string, bounds: BoundsType) {
     });
   }
 
-  console.log("homes", homes);
-
   revalidatePath(page); // Revalidate the path if necessary
   return homes;
 }

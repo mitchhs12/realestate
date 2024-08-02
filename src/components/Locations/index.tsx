@@ -5,111 +5,186 @@ import Image from "next/image";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { QueryContext } from "@/context/QueryContext";
 
-interface CityImages {
-  image: string;
-  [key: string]: string;
+interface CityImage {
+  name: string;
+  neighborhoods: Neighborhood[];
 }
 
-const imageMap: { [city: string]: CityImages } = {
-  "Buenos Aires, Argentina": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina/argentina.avif",
-    Palermo: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina/palermo.avif",
-    Recoleta: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina/recoleta.avif",
-    Belgrano: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina/belgrano.avif",
+interface Neighborhood {
+  name: string;
+}
+
+const imageMap: CityImage[] = [
+  {
+    name: "Buenos Aires, Argentina",
+    neighborhoods: [
+      {
+        name: "Palermo",
+      },
+      {
+        name: "Recoleta",
+      },
+      {
+        name: "Belgrano",
+      },
+    ],
   },
-  // "Mendoza, Argentina": {
-  //   image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina.avif",
-  //   "Chacras de Coria": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina.avif",
-  //   "City Center": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/argentina.avif",
-  // },
-  "Mexico City, Mexico": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico/mexico.avif",
-    Polanco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico/polanco.avif",
-    Condesa: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico/condesa.avif",
-    "Roma Norte": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/mexico/roma+norte.avif",
+  {
+    name: "Mexico City, Mexico",
+    neighborhoods: [
+      {
+        name: "Polanco",
+      },
+      {
+        name: "Condesa",
+      },
+      {
+        name: "Roma Norte",
+      },
+    ],
   },
-  // "São Paulo, Brazil": {
-  //   image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  //   Jardins: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  //   "Vila Madalena": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  //   Moema: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  // },
-  "Rio de Janeiro, Brazil": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil/brazil.avif",
-    Ipanema: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil/ipanema.avif",
-    Leblon: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil/leblon.avif",
-    "Barra da Tijuca": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil/barra+da+tijuca.avif",
+  {
+    name: "Rio de Janeiro, Brazil",
+    neighborhoods: [
+      {
+        name: "Ipanema",
+      },
+      {
+        name: "Leblon",
+      },
+      {
+        name: "Barra da Tijuca",
+      },
+    ],
   },
-  // "Florianópolis, Brazil": {
-  //   image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  //   "Jurerê Internacional": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  //   "Lagoa da Conceição": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/brazil.avif",
-  // },
-  "Medellín, Colombia": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/colombia.avif",
-    "El Poblado": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/el+poblado.avif",
-    Laureles: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/colombia/laureles.avif",
+  {
+    name: "Medellín, Colombia",
+    neighborhoods: [
+      {
+        name: "El Poblado",
+      },
+      {
+        name: "Laureles",
+      },
+    ],
   },
-  "Santiago, Chile": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/chile.avif",
-    Providencia: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/providencia.avif",
-    "Las Condes": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/las+condes.avif",
-    Vitacura: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/chile/vitacura.avif",
+  {
+    name: "Santiago, Chile",
+    neighborhoods: [
+      {
+        name: "Providencia",
+      },
+      {
+        name: "Las Condes",
+      },
+      {
+        name: "Vitacura",
+      },
+    ],
   },
-  "Quito, Ecuador": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador.avif",
-    "La Floresta": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador/la+floresta.avif",
-    Cumbayá: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador/cumbaya.avif",
-    "González Suárez": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/ecuador/gonzalez+suarez.avif",
+  {
+    name: "Quito, Ecuador",
+    neighborhoods: [
+      {
+        name: "La Floresta",
+      },
+      {
+        name: "Cumbayá",
+      },
+      {
+        name: "González Suárez",
+      },
+    ],
   },
-  "Lima, Peru": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/peru.avif",
-    Miraflores: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/miraflores.avif",
-    "San Isidro": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/san+isidro.avif",
-    Barranco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/peru/barranco.avif",
+  {
+    name: "Lima, Peru",
+    neighborhoods: [
+      {
+        name: "Miraflores",
+      },
+      {
+        name: "San Isidro",
+      },
+      {
+        name: "Barranco",
+      },
+    ],
   },
-  "Montevideo, Uruguay": {
-    image: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/uruguay.avif",
-    "Punta Carretas": "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/punta+carretas.avif",
-    Pocitos: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/pocitos.avif",
-    Carrasco: "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/uruguay/carrasco.avif",
+  {
+    name: "Montevideo, Uruguay",
+    neighborhoods: [
+      {
+        name: "Punta Carretas",
+      },
+      {
+        name: "Pocitos",
+      },
+      {
+        name: "Carrasco",
+      },
+    ],
   },
-};
+];
 
 export default function Locations() {
-  const [hoveredImage, setHoveredImage] = useState(imageMap["Buenos Aires, Argentina"].image);
-  const [key, setKey] = useState("Buenos Aires");
+  function generateUrl(placeName: string, countryName: string) {
+    const baseUrl = "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home";
+    const formattedPlace = placeName.toLowerCase().replace(/, /g, "/").replace(/ /g, "+").replace(/\./g, "");
+    return `${baseUrl}/${countryName.toLowerCase().trim()}/${formattedPlace}.avif`;
+  }
 
-  const locations: { city: string; neighborhoods: string[] }[] = [
-    { city: "Buenos Aires, Argentina", neighborhoods: ["Palermo", "Recoleta", "Belgrano"] },
-    // { city: "Mendoza, Argentina", neighborhoods: ["Chacras de Coria", "City Center"] },
-    // { city: "São Paulo, Brazil", neighborhoods: ["Jardins", "Vila Madalena", "Moema"] },
-    { city: "Mexico City, Mexico", neighborhoods: ["Polanco", "Condesa", "Roma Norte"] },
-    { city: "Rio de Janeiro, Brazil", neighborhoods: ["Ipanema", "Leblon", "Barra da Tijuca"] },
-    // { city: "Florianópolis, Brazil", neighborhoods: ["Jurerê Internacional", "Lagoa da Conceição"] },
-    { city: "Medellín, Colombia", neighborhoods: ["El Poblado", "Laureles"] },
-    { city: "Santiago, Chile", neighborhoods: ["Providencia", "Las Condes", "Vitacura"] },
-    { city: "Quito, Ecuador", neighborhoods: ["La Floresta", "Cumbayá", "González Suárez"] },
-    { city: "Lima, Peru", neighborhoods: ["Miraflores", "San Isidro", "Barranco"] },
-    { city: "Montevideo, Uruguay", neighborhoods: ["Punta Carretas", "Pocitos", "Carrasco"] },
-  ];
+  const urlMap = imageMap.reduce(
+    (acc, city) => {
+      const [place, country] = city.name.split(",");
+      acc[city.name] = generateUrl(place, country);
+
+      city.neighborhoods.forEach((neighborhood) => {
+        acc[`${neighborhood.name}, ${city.name}`] = generateUrl(neighborhood.name, country);
+      });
+
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+
+  const [hoveredImage, setHoveredImage] = useState(urlMap["Buenos Aires, Argentina"]);
+  const [key, setKey] = useState("Buenos Aires");
+  const { setQuery, setClickedLocation } = useContext(QueryContext);
+  const router = useRouter();
+
+  async function getPlaceId(query: string) {
+    const response = await fetch("/api/autocomplete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query: { text: query } }),
+    });
+    const results = await response.json();
+    const topResult = results.suggestions[0];
+    return topResult;
+  }
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
       <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
-        {locations.map((location, index) => (
+        {imageMap.map((city, index) => (
           <Card
             key={index}
             className="flex flex-col h-42 w-full shadow-lg relative overflow-hidden"
             onMouseEnter={() => {
-              setHoveredImage(imageMap[location.city]["image"]);
-              setKey(location.city.split(",")[0]);
+              const [place, country] = city.name.split(",");
+              setHoveredImage(urlMap[city.name]);
+              setKey(place);
             }}
           >
             <Image
               className="object-cover opacity-65 dark:opacity-60"
-              src={imageMap[location.city].image}
+              src={urlMap[city.name]}
               alt="Location Image"
               fill={true}
             />
@@ -121,27 +196,36 @@ export default function Locations() {
                     size={"sm"}
                     className="md:h-9 md:px-4 md:py-2 md:text-sm w-full"
                     onMouseEnter={() => {
-                      setHoveredImage(imageMap[location.city].image);
-                      setKey(location.city.split(",")[0]);
+                      const [place, country] = city.name.split(",");
+                      setHoveredImage(urlMap[city.name]);
+                      setKey(place);
+                    }}
+                    onClick={() => {
+                      setClickedLocation(true);
+                      setQuery(city.name);
                     }}
                   >
-                    {location.city}
+                    {city.name}
                   </Button>
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col items-center w-full h-full p-2 gap-y-1 pt-0">
-                {location.neighborhoods.map((neighborhood) => (
+                {city.neighborhoods.map((neighborhood) => (
                   <Button
-                    key={neighborhood}
+                    key={neighborhood.name}
                     variant={"secondary"}
                     onMouseEnter={() => {
-                      setHoveredImage(imageMap[location.city][neighborhood]);
-                      setKey(neighborhood);
+                      setHoveredImage(urlMap[`${neighborhood.name}, ${city.name}`]);
+                      setKey(neighborhood.name);
                     }}
                     className="w-2/3 justify-center"
                     size={"sm"}
+                    onClick={() => {
+                      setClickedLocation(true);
+                      setQuery(`${neighborhood.name}, ${city.name}`);
+                    }}
                   >
-                    {neighborhood}
+                    {neighborhood.name}
                   </Button>
                 ))}
               </CardContent>

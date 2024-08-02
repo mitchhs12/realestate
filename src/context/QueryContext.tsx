@@ -1,7 +1,8 @@
 "use client";
 
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode, useEffect, useRef } from "react";
 import { CoordinatesType } from "@/lib/validations";
+import { usePathname } from "next/navigation";
 
 interface QueryContextProps {
   query: string;
@@ -12,6 +13,8 @@ interface QueryContextProps {
   setNewZoom: (value: number) => void;
   currentCoords: CoordinatesType | null;
   setCurrentCoords: (value: CoordinatesType | null) => void;
+  clickedLocation: boolean;
+  setClickedLocation: (value: boolean) => void;
 }
 
 const QueryContext = createContext<QueryContextProps>({
@@ -23,6 +26,8 @@ const QueryContext = createContext<QueryContextProps>({
   setNewZoom: () => {},
   currentCoords: null,
   setCurrentCoords: () => {},
+  clickedLocation: false,
+  setClickedLocation: () => {},
 });
 
 interface QueryProviderProps {
@@ -34,6 +39,14 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [mapFocused, setMapFocused] = useState(false);
   const [newZoom, setNewZoom] = useState(16);
   const [currentCoords, setCurrentCoords] = useState<CoordinatesType | null>(null);
+  const [clickedLocation, setClickedLocation] = useState<boolean>(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      setQuery("");
+    }
+  }, [pathname]);
 
   return (
     <QueryContext.Provider
@@ -46,6 +59,8 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setNewZoom,
         currentCoords,
         setCurrentCoords,
+        clickedLocation,
+        setClickedLocation,
       }}
     >
       {children}
