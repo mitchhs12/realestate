@@ -79,7 +79,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
         municipality: data.results.Municipality,
         subRegion: data.results.SubRegion,
         region: data.results.Region,
-        country: data.results.Country,
+        country: data.results.Country, // ISO 3166 Alpha 3 Code
         longitude: data.location[0],
         latitude: data.location[1],
       });

@@ -1,19 +1,33 @@
 "use client";
 
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import SkeletonCard from "@/components/SkeletonCard";
+import { Skeleton } from "@/components/ui/skeleton";
 import { getFeatured, getNew } from "@/app/actions";
 import { useState, useEffect } from "react";
 import { HomeType } from "@/lib/validations";
+import { iso31661, iso31663 } from "iso-3166";
 import Image from "next/image";
 
 interface Props {
   type: string;
 }
 
+const getDefaultHomesArray = () => {
+  if (window.matchMedia("(min-width: 1280px)").matches) {
+    // Large screens: 5 columns
+    return new Array(5).fill(null);
+  } else if (window.matchMedia("(min-width: 768px)").matches) {
+    // Medium screens: 3 columns
+    return new Array(3).fill(null);
+  } else {
+    // Small screens: 2 columns
+    return new Array(2).fill(null);
+  }
+};
+
 export default function Listings({ type }: Props) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [homes, setHomes] = useState<HomeType[]>([]);
+  const [homes, setHomes] = useState<(HomeType | null)[]>(getDefaultHomesArray());
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -25,7 +39,8 @@ export default function Listings({ type }: Props) {
           // type === 'new'
           data = await getNew();
         }
-        setHomes(data);
+        // Update the homes state with the fetched data
+        setHomes(data.map((home: HomeType, index: number) => home || null));
       } catch (error) {
         console.error(`Error fetching ${type} properties:`, error);
       }
@@ -34,36 +49,50 @@ export default function Listings({ type }: Props) {
     fetchProperties();
   }, [type]);
 
-  return isLoading ? (
-    <div className="flex flex-row w-full gap-2 xs:gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 justify-center items-center">
-      <SkeletonCard />
-      <SkeletonCard />
-      <SkeletonCard />
-      <SkeletonCard />
-      <SkeletonCard />
-    </div>
-  ) : (
-    <div className="flex flex-row space-x-4">
+  return (
+    <div className="grid grid-cols-2 grid-rows-2 sm:grid-rows-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 justify-center items-center">
       {homes.map((home, index) => (
-        <div key={index} className="border rounded-lg">
-          <Carousel>
-            <CarouselContent>
-              {home.photos.map((photo: string, index) => (
-                <CarouselItem key={index}>
-                  <div className="flex justify-center items-center h-64">
-                    <Image src={photo} alt={home.title!} width={300} height={300} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-3" />
-            <CarouselNext className="absolute right-3" />
-          </Carousel>
-          <div className="flex flex-col border-2 overflow-auto p-4">
-            <h2 className="text-2xl font-semibold mb-2">{home.title}</h2>
-            <p className="text-gray-700 mb-4">{home.description}</p>
-            <p className="text-lg font-bold">{home.price}</p>
-          </div>
+        <div key={index} className="flex flex-col rounded-xl h-full w-40 lg:w-44 xl:w-52 2xl:w-64 space-y-2 shadow-lg">
+          {!home || isLoading ? (
+            <>
+              <Skeleton className="rounded-xl h-12 xs:h-16 sm:h-20 md:h-24 lg:h-32 xl:h-40 2xl:h-48 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+            </>
+          ) : (
+            <>
+              <Carousel>
+                <CarouselContent>
+                  {home.photos.map((photo: string, index) => (
+                    <CarouselItem key={index} className="flex justify-center items-center">
+                      <div className="relative flex justify-center items-center h-32 w-40 md:h-32 lg:h-32 lg:w-44 xl:h-40 xl:w-52 2xl:h-48 2xl:w-64">
+                        <Image
+                          src={photo}
+                          className="rounded-t-xl object-cover object-center"
+                          alt={home.title!}
+                          fill={true}
+                          sizes={"(max-width: 500px), (max-height: 500px)"}
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-4 size-4 md:size-6 lg:size-8" />
+                <CarouselNext className="absolute right-4 size-4 md:size-6 lg:size-8" />
+              </Carousel>
+              <div className="flex flex-col justify-center items-center w-full h-full gap-2">
+                <h2 className="flex text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl font-semibold">
+                  {home.title}
+                </h2>
+                <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.municipality},</div>
+                <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.region}</div>
+                <div className="flex text-center text-sm sm:text-sm lg:text-md">
+                  {iso31661.find((country) => country.alpha3 === home.country)?.name}
+                </div>
+                <div className="flex text-center text-sm md:text-md lg:text-lg font-bold mb-2">{home.price}</div>
+              </div>
+            </>
+          )}
         </div>
       ))}
     </div>
