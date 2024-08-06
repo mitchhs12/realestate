@@ -30,8 +30,13 @@ const getDefaultHomesArray = () => {
 };
 
 export default function Listings({ type }: Props) {
-  const [homes, setHomes] = useState<(HomeType | null)[]>(getDefaultHomesArray());
-  const [isLoading, setIsLoading] = useState(false);
+  const [homes, setHomes] = useState<(HomeType | null)[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHomes(getDefaultHomesArray());
+    }
+  }, []);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -61,7 +66,7 @@ export default function Listings({ type }: Props) {
             key={index}
             className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card"
           >
-            {!home || isLoading ? (
+            {!home ? (
               <>
                 <Skeleton className="rounded-xl h-32 w-full" />
                 <Skeleton className="h-4 w-full" />
