@@ -167,11 +167,11 @@ export default function Locations() {
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
-      <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+      <div className="grid grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {imageMap.map((city, index) => (
           <Card
             key={index}
-            className="flex flex-col h-42 w-full shadow-lg relative overflow-hidden"
+            className="flex flex-col w-full shadow-lg shadow-card relative overflow-hidden"
             onMouseEnter={() => {
               const [place, country] = city.name.split(",");
               setHoveredImage(urlMap[city.name]);
@@ -180,7 +180,7 @@ export default function Locations() {
           >
             {loadingImages.has(urlMap[city.name]) && <Skeleton className="absolute inset-0" />}
             <Image
-              className="object-cover opacity-65 dark:opacity-60"
+              className="object-cover" //opacity-65 dark:opacity-60"
               src={urlMap[city.name]}
               alt="Location Image"
               sizes={"(max-width: 200px), (max-height: 200px)"}
@@ -232,18 +232,18 @@ export default function Locations() {
             </div>
           </Card>
         ))}
-        <Card className="hidden md:relative md:block col-span-2 row-span-2 row-start-1 row-end-3 md:col-start-2 md:col-end-4 md:row-start-1 md:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border">
+        <Card className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border">
           {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
           <Image
             src={hoveredImage}
             alt="Location Image"
             fill={true}
-            className={`object-cover rounded-xl opacity-65 dark:opacity-60 absolute inset-0 z-0`}
+            className="object-cover rounded-xl absolute inset-0 z-0" // opacity-65 dark:opacity-60"
             priority={true}
             sizes={"(max-width: 500px), (max-height: 500px)"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
-          <CardTitle className="relative z-1 flex flex-col pt-4 justify-start items-center h-full w-full text-4xl font-thin shadow-lg">
+          <CardTitle className="relative z-1 flex flex-col pt-4 justify-start items-center h-full w-full font-medium text-4xl">
             {key}
           </CardTitle>
         </Card>
