@@ -99,12 +99,14 @@ export default function Header() {
           </div>
         )}
 
-        <h1 className="hidden lg:flex flex-col justify-center items-center text-center pb-8 pt-8">
-          <span className="text-md md:text-2xl">This site is under construction.</span>
-          <span className="text-sm md:text-lg">
-            Please create an account, and we&apos;ll email you when it&apos;s ready.
-          </span>
-        </h1>
+        {!isSearchPage && !isSellPage && (
+          <h1 className="hidden lg:flex flex-col justify-center items-center text-center pb-8 pt-8">
+            <span className="text-md md:text-2xl">This site is under construction.</span>
+            <span className="text-sm md:text-lg">
+              Please create an account, and we&apos;ll email you when it&apos;s ready.
+            </span>
+          </h1>
+        )}
 
         {!isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3"} gap-6 justify-end`}>
