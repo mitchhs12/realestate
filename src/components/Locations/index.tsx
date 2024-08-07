@@ -204,7 +204,10 @@ export default function Locations() {
     <div className="flex flex-col items-center w-full gap-8">
       <div className="grid grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {imageMap.map((city, cityIndex) => (
-          <div className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card">
+          <div
+            key={city.name}
+            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card"
+          >
             <Carousel>
               <CarouselContent>
                 <CarouselItem
