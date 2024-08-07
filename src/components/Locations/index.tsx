@@ -1,13 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useContext } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 interface CityImage {
   name: string;
@@ -155,6 +156,7 @@ export default function Locations() {
   const [key, setKey] = useState("Buenos Aires");
   const { setQuery, setClickedLocation } = useContext(QueryContext);
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
+  const [currentIndexes, setCurrentIndexes] = useState(imageMap.map(() => 0));
 
   const handleImageLoad = (imageUrl: string) => {
     console.log("loaded", imageUrl);
@@ -165,72 +167,101 @@ export default function Locations() {
     });
   };
 
+  const handleHover = (imageUrl: string, key: string) => {
+    setHoveredImage(imageUrl);
+    setKey(key);
+  };
+
+  const handlePreviousClick = (cityIndex: number) => {
+    setCurrentIndexes((prevIndexes) => {
+      const newIndexes = [...prevIndexes];
+      newIndexes[cityIndex] = Math.max(newIndexes[cityIndex] - 1, 0);
+
+      const city = imageMap[cityIndex];
+      const imageKey =
+        newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
+      handleHover(urlMap[imageKey], imageKey.split(",")[0]);
+
+      return newIndexes;
+    });
+  };
+
+  const handleNextClick = (cityIndex: number) => {
+    setCurrentIndexes((prevIndexes) => {
+      const newIndexes = [...prevIndexes];
+      const city = imageMap[cityIndex];
+      newIndexes[cityIndex] = Math.min(newIndexes[cityIndex] + 1, city.neighborhoods.length);
+
+      const imageKey =
+        newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
+      handleHover(urlMap[imageKey], imageKey.split(",")[0]);
+
+      return newIndexes;
+    });
+  };
+
   return (
     <div className="flex flex-col items-center w-full gap-8">
       <div className="grid grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
-        {imageMap.map((city, index) => (
-          <Card
-            key={index}
-            className="flex flex-col w-full shadow-lg shadow-card relative overflow-hidden"
-            onMouseEnter={() => {
-              const [place, country] = city.name.split(",");
-              setHoveredImage(urlMap[city.name]);
-              setKey(place);
-            }}
-          >
-            {loadingImages.has(urlMap[city.name]) && <Skeleton className="absolute inset-0" />}
-            <Image
-              className="object-cover" //opacity-65 dark:opacity-60"
-              src={urlMap[city.name]}
-              alt="Location Image"
-              sizes={"(max-width: 200px), (max-height: 200px)"}
-              fill={true}
-              priority={true}
-              onLoad={() => handleImageLoad(urlMap[city.name])}
-            />
-            <div className="relative z-10">
-              <CardHeader className="w-full p-2 px-2">
-                <CardTitle className="flex justify-center">
-                  <Button
-                    variant={"secondary"}
-                    size={"sm"}
-                    className="md:h-9 md:px-4 md:py-2 md:text-sm w-full"
-                    onMouseEnter={() => {
-                      const [place, country] = city.name.split(",");
-                      setHoveredImage(urlMap[city.name]);
-                      setKey(place);
-                    }}
-                    onClick={() => {
-                      setClickedLocation(true);
-                      setQuery(city.name);
-                    }}
-                  >
-                    {city.name}
-                  </Button>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center w-full h-full p-2 gap-y-1 pt-0">
+        {imageMap.map((city, cityIndex) => (
+          <div className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card">
+            <Carousel>
+              <CarouselContent>
+                <CarouselItem
+                  key={city.name}
+                  className="flex justify-center items-center"
+                  onMouseEnter={() => handleHover(urlMap[city.name], city.name.split(",")[0])}
+                >
+                  <div className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52">
+                    <Image
+                      className="object-cover object-center rounded-xl"
+                      src={urlMap[city.name]}
+                      alt="City Image"
+                      sizes={"(max-width: 200px), (max-height: 200px)"}
+                      fill={true}
+                      priority={true}
+                      onLoad={() => handleImageLoad(urlMap[city.name])}
+                    />
+                    <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
+                      <p className="">{city.name.split(",")[0]}</p>
+                      <p className="text-sm md:text-sm">{city.name.split(",")[1]}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
                 {city.neighborhoods.map((neighborhood) => (
-                  <Button
+                  <CarouselItem
                     key={neighborhood.name}
-                    variant={"secondary"}
-                    onMouseEnter={() => {
-                      setHoveredImage(urlMap[`${neighborhood.name}, ${city.name}`]);
-                      setKey(neighborhood.name);
-                    }}
-                    className="w-2/3 justify-center"
-                    size={"sm"}
-                    onClick={() => {
-                      setClickedLocation(true);
-                      setQuery(`${neighborhood.name}, ${city.name}`);
-                    }}
+                    className="flex justify-center items-center"
+                    onMouseEnter={() => handleHover(urlMap[`${neighborhood.name}, ${city.name}`], neighborhood.name)}
                   >
-                    {neighborhood.name}
-                  </Button>
+                    <div className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52">
+                      <Image
+                        className="object-cover object-center rounded-xl" //opacity-65 dark:opacity-60"
+                        src={urlMap[`${neighborhood.name}, ${city.name}`]}
+                        alt="Location Image"
+                        sizes={"(max-width: 200px), (max-height: 200px)"}
+                        fill={true}
+                        priority={true}
+                        onLoad={() => handleImageLoad(urlMap[`${neighborhood.name}, ${city.name}`])}
+                      />
+
+                      <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
+                        {neighborhood.name}
+                      </div>
+                    </div>
+                  </CarouselItem>
                 ))}
-              </CardContent>
-            </div>
-          </Card>
+              </CarouselContent>
+              <CarouselPrevious
+                className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
+                onCustomClick={() => handlePreviousClick(cityIndex)}
+              />
+              <CarouselNext
+                className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
+                onCustomClick={() => handleNextClick(cityIndex)}
+              />
+            </Carousel>
+          </div>
         ))}
         <Card className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border">
           {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
@@ -243,7 +274,7 @@ export default function Locations() {
             sizes={"(max-width: 500px), (max-height: 500px)"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
-          <CardTitle className="relative z-1 flex flex-col pt-4 justify-start items-center h-full w-full font-medium text-4xl">
+          <CardTitle className="relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white">
             {key}
           </CardTitle>
         </Card>

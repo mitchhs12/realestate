@@ -147,7 +147,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
                   ref={inputRef}
                   type="search"
                   placeholder={"Search for any address or place..."}
-                  className="z-100 bg-popover"
+                  className="z-100 bg-popover text-sm"
                   value={query}
                   onFocus={getGeolocation}
                   onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)} // Open Popover on mouse down if there are results
