@@ -153,13 +153,13 @@ export default function Locations() {
   );
 
   const [hoveredImage, setHoveredImage] = useState(urlMap["Buenos Aires, Argentina"]);
+  const [hoveredImageSearch, setHoveredImageSearch] = useState("");
   const [key, setKey] = useState("Buenos Aires");
   const { setQuery, setClickedLocation } = useContext(QueryContext);
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
   const [currentIndexes, setCurrentIndexes] = useState(imageMap.map(() => 0));
 
   const handleImageLoad = (imageUrl: string) => {
-    console.log("loaded", imageUrl);
     setLoadingImages((prevLoadingImages) => {
       const newLoadingImages = new Set(prevLoadingImages);
       newLoadingImages.delete(imageUrl);
@@ -167,8 +167,13 @@ export default function Locations() {
     });
   };
 
-  const handleHover = (imageUrl: string, key: string) => {
+  useEffect(() => {
+    console.log("key", key);
+  }, [key]);
+
+  const handleHover = (imageUrl: string, key: string, searchString: string) => {
     setHoveredImage(imageUrl);
+    setHoveredImageSearch(searchString);
     setKey(key);
   };
 
@@ -180,7 +185,7 @@ export default function Locations() {
       const city = imageMap[cityIndex];
       const imageKey =
         newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
-      handleHover(urlMap[imageKey], imageKey.split(",")[0]);
+      handleHover(urlMap[imageKey], imageKey.split(",")[0], imageKey);
 
       return newIndexes;
     });
@@ -194,10 +199,11 @@ export default function Locations() {
 
       const imageKey =
         newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
-      handleHover(urlMap[imageKey], imageKey.split(",")[0]);
+      handleHover(urlMap[imageKey], imageKey.split(",")[0], imageKey);
 
       return newIndexes;
     });
+    console.log("city index", cityIndex);
   };
 
   return (
@@ -206,16 +212,23 @@ export default function Locations() {
         {imageMap.map((city, cityIndex) => (
           <div
             key={city.name}
-            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card"
+            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card hover:cursor-pointer"
+            onClick={() => {}}
           >
             <Carousel>
               <CarouselContent>
                 <CarouselItem
                   key={city.name}
                   className="flex justify-center items-center"
-                  onMouseEnter={() => handleHover(urlMap[city.name], city.name.split(",")[0])}
+                  onMouseEnter={() => handleHover(urlMap[city.name], city.name.split(",")[0], city.name)}
                 >
-                  <div className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52">
+                  <div
+                    className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
+                    onClick={() => {
+                      setClickedLocation(true);
+                      setQuery(hoveredImageSearch);
+                    }}
+                  >
                     <Image
                       className="object-cover object-center rounded-xl"
                       src={urlMap[city.name]}
@@ -235,9 +248,21 @@ export default function Locations() {
                   <CarouselItem
                     key={neighborhood.name}
                     className="flex justify-center items-center"
-                    onMouseEnter={() => handleHover(urlMap[`${neighborhood.name}, ${city.name}`], neighborhood.name)}
+                    onMouseEnter={() =>
+                      handleHover(
+                        urlMap[`${neighborhood.name}, ${city.name}`],
+                        neighborhood.name,
+                        `${neighborhood.name}, ${city.name}`
+                      )
+                    }
                   >
-                    <div className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52">
+                    <div
+                      className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
+                      onClick={() => {
+                        setClickedLocation(true);
+                        setQuery(hoveredImageSearch);
+                      }}
+                    >
                       <Image
                         className="object-cover object-center rounded-xl" //opacity-65 dark:opacity-60"
                         src={urlMap[`${neighborhood.name}, ${city.name}`]}
@@ -266,7 +291,13 @@ export default function Locations() {
             </Carousel>
           </div>
         ))}
-        <Card className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border">
+        <Card
+          onClick={() => {
+            setClickedLocation(true);
+            setQuery(hoveredImageSearch);
+          }}
+          className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border hover:cursor-pointer"
+        >
           {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
           <Image
             src={hoveredImage}
