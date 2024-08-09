@@ -153,11 +153,27 @@ export default function Locations() {
   );
 
   const [hoveredImage, setHoveredImage] = useState(urlMap["Buenos Aires, Argentina"]);
-  const [hoveredImageSearch, setHoveredImageSearch] = useState("");
+  const [hoveredImageSearch, setHoveredImageSearch] = useState("Buenos Aires, Argentina");
   const [key, setKey] = useState("Buenos Aires");
   const { setQuery, setClickedLocation } = useContext(QueryContext);
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
   const [currentIndexes, setCurrentIndexes] = useState(imageMap.map(() => 0));
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const checkIfTouchDevice = () => {
+      setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+    };
+
+    checkIfTouchDevice();
+
+    // Optionally add event listener for future touch detection
+    window.addEventListener("touchstart", checkIfTouchDevice);
+
+    return () => {
+      window.removeEventListener("touchstart", checkIfTouchDevice);
+    };
+  }, []);
 
   const handleImageLoad = (imageUrl: string) => {
     setLoadingImages((prevLoadingImages) => {
@@ -220,13 +236,13 @@ export default function Locations() {
                 <CarouselItem
                   key={city.name}
                   className="flex justify-center items-center"
-                  onMouseEnter={() => handleHover(urlMap[city.name], city.name.split(",")[0], city.name)}
+                  onMouseOver={() => handleHover(urlMap[city.name], city.name.split(",")[0], city.name)}
                 >
                   <div
                     className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
                     onClick={() => {
                       setClickedLocation(true);
-                      setQuery(hoveredImageSearch);
+                      setQuery(city.name);
                     }}
                   >
                     <Image
@@ -248,7 +264,7 @@ export default function Locations() {
                   <CarouselItem
                     key={neighborhood.name}
                     className="flex justify-center items-center"
-                    onMouseEnter={() =>
+                    onMouseOver={() =>
                       handleHover(
                         urlMap[`${neighborhood.name}, ${city.name}`],
                         neighborhood.name,
@@ -260,7 +276,7 @@ export default function Locations() {
                       className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
                       onClick={() => {
                         setClickedLocation(true);
-                        setQuery(hoveredImageSearch);
+                        setQuery(`${neighborhood.name}, ${city.name}`);
                       }}
                     >
                       <Image
@@ -273,7 +289,7 @@ export default function Locations() {
                         onLoad={() => handleImageLoad(urlMap[`${neighborhood.name}, ${city.name}`])}
                       />
 
-                      <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
+                      <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1">
                         {neighborhood.name}
                       </div>
                     </div>
@@ -308,7 +324,7 @@ export default function Locations() {
             sizes={"(max-width: 500px), (max-height: 500px)"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
-          <CardTitle className="relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white">
+          <CardTitle className="relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white rounded-t-xl">
             {key}
           </CardTitle>
         </Card>
