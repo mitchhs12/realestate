@@ -188,6 +188,7 @@ export default function Locations() {
   }, [key]);
 
   const handleHover = (imageUrl: string, key: string, searchString: string) => {
+    console.log("running handle hover");
     setHoveredImage(imageUrl);
     setHoveredImageSearch(searchString);
     setKey(key);
@@ -215,11 +216,12 @@ export default function Locations() {
 
       const imageKey =
         newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
+      console.log("image key", imageKey);
+      console.log("url map", urlMap[imageKey]);
       handleHover(urlMap[imageKey], imageKey.split(",")[0], imageKey);
 
       return newIndexes;
     });
-    console.log("city index", cityIndex);
   };
 
   return (
