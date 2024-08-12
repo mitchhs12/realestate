@@ -115,11 +115,11 @@ model UserFavorites {
 }
 
 model Currencies {
-  id        Int      @id @default(autoincrement())
-  symbol    String?
+  symbol    String  @id
   usdPrice  Float?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("currencies")
 }
+

@@ -235,13 +235,13 @@ CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button> & { onCustomClick?: () => void }
+  React.ComponentProps<typeof Button> & { onCustomClick?: (canScrollPrev: boolean) => void }
 >(({ className, variant = "outline", size = "icon", onCustomClick, ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
   const handleClick = () => {
     scrollPrev();
-    if (onCustomClick) onCustomClick();
+    if (onCustomClick) onCustomClick(canScrollPrev);
   };
 
   return (
@@ -250,7 +250,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute  h-8 w-8 rounded-full  disabled:pointer-events-auto",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -269,13 +269,13 @@ CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button> & { onCustomClick?: () => void }
+  React.ComponentProps<typeof Button> & { onCustomClick?: (canScrollNext: boolean) => void }
 >(({ className, variant = "outline", size = "icon", onCustomClick, ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
 
   const handleClick = () => {
     scrollNext();
-    if (onCustomClick) onCustomClick();
+    if (onCustomClick) onCustomClick(canScrollNext);
   };
 
   return (
@@ -284,7 +284,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute h-8 w-8 rounded-full disabled:pointer-events-auto",
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

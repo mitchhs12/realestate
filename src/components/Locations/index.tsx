@@ -1,11 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
 import Image from "next/image";
 import { Card, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
@@ -158,22 +155,6 @@ export default function Locations() {
   const { setQuery, setClickedLocation } = useContext(QueryContext);
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
   const [currentIndexes, setCurrentIndexes] = useState(imageMap.map(() => 0));
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-
-  useEffect(() => {
-    const checkIfTouchDevice = () => {
-      setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
-    };
-
-    checkIfTouchDevice();
-
-    // Optionally add event listener for future touch detection
-    window.addEventListener("touchstart", checkIfTouchDevice);
-
-    return () => {
-      window.removeEventListener("touchstart", checkIfTouchDevice);
-    };
-  }, []);
 
   const handleImageLoad = (imageUrl: string) => {
     setLoadingImages((prevLoadingImages) => {
@@ -183,18 +164,13 @@ export default function Locations() {
     });
   };
 
-  useEffect(() => {
-    console.log("key", key);
-  }, [key]);
-
   const handleHover = (imageUrl: string, key: string, searchString: string) => {
-    console.log("running handle hover");
     setHoveredImage(imageUrl);
     setHoveredImageSearch(searchString);
     setKey(key);
   };
 
-  const handlePreviousClick = (cityIndex: number) => {
+  const handlePreviousClick = (canScrollPrev: boolean, cityIndex: number) => {
     setCurrentIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
       newIndexes[cityIndex] = Math.max(newIndexes[cityIndex] - 1, 0);
@@ -208,7 +184,7 @@ export default function Locations() {
     });
   };
 
-  const handleNextClick = (cityIndex: number) => {
+  const handleNextClick = (canScrollNext: boolean, cityIndex: number) => {
     setCurrentIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
       const city = imageMap[cityIndex];
@@ -216,8 +192,6 @@ export default function Locations() {
 
       const imageKey =
         newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
-      console.log("image key", imageKey);
-      console.log("url map", urlMap[imageKey]);
       handleHover(urlMap[imageKey], imageKey.split(",")[0], imageKey);
 
       return newIndexes;
@@ -238,7 +212,9 @@ export default function Locations() {
                 <CarouselItem
                   key={city.name}
                   className="flex justify-center items-center"
-                  onMouseOver={() => handleHover(urlMap[city.name], city.name.split(",")[0], city.name)}
+                  onMouseOver={() => {
+                    handleHover(urlMap[city.name], city.name.split(",")[0], city.name);
+                  }}
                 >
                   <div
                     className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
@@ -257,8 +233,10 @@ export default function Locations() {
                       onLoad={() => handleImageLoad(urlMap[city.name])}
                     />
                     <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
-                      <p className="">{city.name.split(",")[0]}</p>
-                      <p className="text-sm md:text-sm">{city.name.split(",")[1]}</p>
+                      <p className={`${hoveredImageSearch === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
+                      <p className={`text-sm md:text-sm ${hoveredImageSearch === city.name && "underline"}`}>
+                        {city.name.split(",")[1]}
+                      </p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -266,13 +244,13 @@ export default function Locations() {
                   <CarouselItem
                     key={neighborhood.name}
                     className="flex justify-center items-center"
-                    onMouseOver={() =>
+                    onMouseOver={() => {
                       handleHover(
                         urlMap[`${neighborhood.name}, ${city.name}`],
                         neighborhood.name,
                         `${neighborhood.name}, ${city.name}`
-                      )
-                    }
+                      );
+                    }}
                   >
                     <div
                       className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
@@ -291,21 +269,29 @@ export default function Locations() {
                         onLoad={() => handleImageLoad(urlMap[`${neighborhood.name}, ${city.name}`])}
                       />
 
-                      <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1">
+                      <div
+                        className={`absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 ${
+                          hoveredImageSearch === `${neighborhood.name}, ${city.name}` && "underline"
+                        }`}
+                      >
                         {neighborhood.name}
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious
-                className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
-                onCustomClick={() => handlePreviousClick(cityIndex)}
-              />
-              <CarouselNext
-                className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
-                onCustomClick={() => handleNextClick(cityIndex)}
-              />
+              {
+                <CarouselPrevious
+                  className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
+                  onCustomClick={(canScrollPrev: boolean) => handlePreviousClick(canScrollPrev, cityIndex)}
+                />
+              }
+              {
+                <CarouselNext
+                  className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
+                  onCustomClick={(canScrollNext: boolean) => handleNextClick(canScrollNext, cityIndex)}
+                />
+              }
             </Carousel>
           </div>
         ))}
@@ -326,7 +312,7 @@ export default function Locations() {
             sizes={"(max-width: 500px), (max-height: 500px)"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
-          <CardTitle className="relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white rounded-t-xl">
+          <CardTitle className="relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white rounded-t-xl underline">
             {key}
           </CardTitle>
         </Card>
