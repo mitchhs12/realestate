@@ -151,6 +151,7 @@ export default function Locations() {
 
   const [hoveredImage, setHoveredImage] = useState(urlMap["Buenos Aires, Argentina"]);
   const [hoveredImageSearch, setHoveredImageSearch] = useState("Buenos Aires, Argentina");
+  const [underlinedImage, setUnderlinedImage] = useState("");
   const [key, setKey] = useState("Buenos Aires");
   const { setQuery, setClickedLocation } = useContext(QueryContext);
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
@@ -167,6 +168,7 @@ export default function Locations() {
   const handleHover = (imageUrl: string, key: string, searchString: string) => {
     setHoveredImage(imageUrl);
     setHoveredImageSearch(searchString);
+    setUnderlinedImage(searchString);
     setKey(key);
   };
 
@@ -233,8 +235,8 @@ export default function Locations() {
                       onLoad={() => handleImageLoad(urlMap[city.name])}
                     />
                     <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
-                      <p className={`${hoveredImageSearch === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
-                      <p className={`text-sm md:text-sm ${hoveredImageSearch === city.name && "underline"}`}>
+                      <p className={`${underlinedImage === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
+                      <p className={`text-sm md:text-sm ${underlinedImage === city.name && "underline"}`}>
                         {city.name.split(",")[1]}
                       </p>
                     </div>
@@ -271,7 +273,7 @@ export default function Locations() {
 
                       <div
                         className={`absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 ${
-                          hoveredImageSearch === `${neighborhood.name}, ${city.name}` && "underline"
+                          underlinedImage === `${neighborhood.name}, ${city.name}` && "underline"
                         }`}
                       >
                         {neighborhood.name}
@@ -300,6 +302,10 @@ export default function Locations() {
             setClickedLocation(true);
             setQuery(hoveredImageSearch);
           }}
+          onMouseOver={() => {
+            setUnderlinedImage(key);
+          }}
+          onMouseLeave={() => setUnderlinedImage("")}
           className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border hover:cursor-pointer"
         >
           {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
@@ -312,7 +318,11 @@ export default function Locations() {
             sizes={"(max-width: 500px), (max-height: 500px)"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
-          <CardTitle className="relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white rounded-t-xl underline">
+          <CardTitle
+            className={`relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white rounded-t-xl ${
+              underlinedImage === key && "underline"
+            }`}
+          >
             {key}
           </CardTitle>
         </Card>
