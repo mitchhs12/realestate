@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 import { HomeType, homeSchema } from "@/lib/validations";
 import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
+import { currencyOptions } from "@/lib/sellFlowData";
 
 interface ResponseObj {
   success: boolean;
@@ -59,14 +60,28 @@ export async function getUnfinishedHome() {
   const homes = await prisma.home.findFirst({
     where: {
       ownerId: userId,
-      listingFlowStep: {
-        not: 12,
-        gt: 0,
-      },
       isActive: { not: true },
     },
   });
   return homes;
+}
+
+export async function getCurrencies() {
+  const currencySymbols = currencyOptions.map((option) => option.currency);
+
+  const prices = await prisma.currencies.findMany({
+    where: {
+      symbol: {
+        in: currencySymbols,
+      },
+    },
+    select: {
+      symbol: true,
+      usdPrice: true,
+    },
+  });
+
+  return prices;
 }
 
 export async function getHomes() {

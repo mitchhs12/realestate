@@ -5,36 +5,8 @@ import { SellContext } from "@/context/SellContext";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
+import { currencyOptions } from "@/lib/sellFlowData";
 import { cn } from "@/lib/utils";
-
-const currencyOptions: ReadonlyArray<CurrencyInputProps["intlConfig"]> = [
-  { locale: "en-US", currency: "USD" },
-  { locale: "de-DE", currency: "EUR" },
-  { locale: "en-GB", currency: "GBP" },
-  { locale: "en-AU", currency: "AUD" },
-  { locale: "ja-JP", currency: "JPY" },
-  { locale: "fr-CH", currency: "CHF" },
-  { locale: "en-IN", currency: "INR" },
-  { locale: "es-CO", currency: "COP" },
-  { locale: "es-MX", currency: "MXN" },
-  { locale: "es-PE", currency: "PEN" },
-  { locale: "en-CA", currency: "CAD" },
-  { locale: "zh-CN", currency: "CNY" },
-  { locale: "en-SG", currency: "SGD" },
-  { locale: "ar-AE", currency: "AED" },
-  { locale: "pt-BR", currency: "BRL" },
-  { locale: "zh-HK", currency: "HKD" },
-  { locale: "af-ZA", currency: "ZAR" },
-  { locale: "ko-KR", currency: "KRW" },
-  { locale: "en-NZ", currency: "NZD" },
-  { locale: "tr-TR", currency: "TRY" },
-  { locale: "th-TH", currency: "THB" },
-  { locale: "id-ID", currency: "IDR" },
-  { locale: "vi-VN", currency: "VND" },
-  { locale: "es-CR", currency: "CRC" },
-  { locale: "hr-HR", currency: "HRK" },
-  { locale: "ka-GE", currency: "GEL" },
-];
 
 interface Props {
   user: User;
@@ -43,22 +15,35 @@ interface Props {
   stepPercentage: number[];
 }
 
-export default function Price({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
-    useContext(SellContext);
+export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setIsLoading,
+    currentHome,
+    setNewHome,
+    currencies,
+  } = useContext(SellContext);
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(currencyOptions[0]);
 
   useEffect(() => {
     if (currentHome && price !== null) {
-      setNewHome({
-        ...currentHome,
-        price: price,
-        priceNegotiable: !isNegotiable,
-      });
+      const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
+
+      if (currentCurrency && currentCurrency.usdPrice !== null) {
+        const priceInUsd = price / currentCurrency.usdPrice;
+
+        setNewHome({
+          ...currentHome,
+          price: priceInUsd, // Save price in USD
+          priceNegotiable: !isNegotiable,
+        });
+      }
     }
-  }, [price, isNegotiable]);
+  }, [price, isNegotiable, intlConfig, currencies]);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -67,15 +52,32 @@ export default function Price({ user, sellFlatIndex, sellFlowIndices, stepPercen
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    console.log("currencies", currencies);
+  }, [currencies]);
+
   const handlePriceChange = (value: string | undefined) => {
     const numericValue = value ? parseFloat(value) : null;
     setPrice(numericValue);
   };
 
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const config = currencyOptions[Number(event.target.value)];
-    if (config) {
-      setIntlConfig(config);
+    const selectedConfig = currencyOptions[Number(event.target.value)];
+    if (selectedConfig) {
+      const selectedCurrency = currencies.find((currency) => currency.symbol === selectedConfig.currency);
+
+      if (selectedCurrency && selectedCurrency.usdPrice !== null && price !== null) {
+        const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
+
+        if (currentCurrency && currentCurrency.usdPrice !== null) {
+          // Convert the price from the current currency to USD, then to the new selected currency
+          const priceInUsd = price / currentCurrency.usdPrice;
+          const newPrice = priceInUsd * selectedCurrency.usdPrice;
+          setPrice(newPrice);
+        }
+      }
+
+      setIntlConfig(selectedConfig);
     }
   };
 

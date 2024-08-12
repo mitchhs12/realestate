@@ -8,6 +8,8 @@ import { ReloadIcon, CrossCircledIcon, CheckCircledIcon } from "@radix-ui/react-
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { capitalizeFirstLetter } from "@/lib/utils";
+import { currencyOptions } from "@/lib/sellFlowData";
+import { CurrencyInputProps } from "react-currency-input-field";
 
 interface Props {
   user: User;
@@ -16,8 +18,13 @@ interface Props {
   stepPercentage: number[];
 }
 
+interface Currency {
+  symbol: string;
+  usdPrice: number | null;
+}
+
 export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, currencies } =
     useContext(SellContext);
 
   useEffect(() => {
@@ -26,8 +33,6 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
     setStepPercentage(stepPercentage);
     setIsLoading(false);
   }, []);
-
-  const [feet, setFeet] = useState(false);
 
   const title = currentHome?.title || "";
   const description = currentHome?.description || "";
@@ -48,13 +53,58 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
   const contactPhone = currentHome?.contactPhone || "";
   const listingType = currentHome?.listingType || "";
 
+  const [feet, setFeet] = useState(false);
   const [loadingStates, setLoadingStates] = useState(photos.map(() => true));
   const [sqSize, setSqSize] = useState(areaSqm);
+  const [convertedPrice, setConvertedPrice] = useState<number>(price);
+  const [intlConfig, setIntlConfig] = useState({
+    locale: "en-US",
+    currency: "USD",
+  });
 
   useEffect(() => {
     const ftConversion = 10.76391042;
     setSqSize(!feet ? areaSqm : Math.round(areaSqm * ftConversion));
   }, [feet]);
+
+  const getCurrencySymbol = (locale: string, currency: string): string => {
+    const parts = new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+    }).formatToParts(1.0);
+
+    const currencyPart = parts.find((part) => part.type === "currency");
+
+    return currencyPart ? currencyPart.value : "";
+  };
+
+  const formatPrice = (locale: string, currency: string, value: number): string => {
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  };
+
+  const handleCurrencyChange = (event: any) => {
+    const selectedConfig = currencyOptions[Number(event.target.value)];
+    if (selectedConfig) {
+      setIntlConfig(selectedConfig);
+    }
+  };
+
+  useEffect(() => {
+    const convertPrice = () => {
+      const selectedCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
+      if (selectedCurrency && selectedCurrency.usdPrice !== null) {
+        const newPrice = price * selectedCurrency.usdPrice;
+        setConvertedPrice(newPrice);
+      }
+    };
+
+    convertPrice();
+  }, [intlConfig, price, currencies]);
 
   const handleImageLoad = (index: number) => {
     setLoadingStates((prevStates) => {
@@ -108,8 +158,8 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
                 <Separator />
 
                 <div className="flex w-full justify-center items-center">
-                  <div className="flex justify-center w-full gap-12">
-                    <div className="flex flex-col w-1/2 justify-center items-center overflow-auto">
+                  <div className="flex justify-center w-full">
+                    <div className="flex flex-col w-full justify-center items-center overflow-auto border-2 text-sm md:text-md gap-y-4">
                       <div className="flex justify-between w-full">
                         <strong>Bedrooms: </strong>
                         <span>{bedrooms}</span>
@@ -124,8 +174,7 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
                         <strong>Kitchens:</strong> <span>{kitchens}</span>
                       </div>
                     </div>
-                    <div className="flex w-1/3"></div>
-                    <div className="flex flex-col w-1/2">
+                    <div className="flex flex-col w-full border-2 text-end text-sm md:text-md gap-y-4">
                       <div className="flex justify-between w-full">
                         <strong>Listing: </strong>
                         <span>{capitalizeFirstLetter(listingType)}</span>
@@ -183,11 +232,33 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
             </CardContent>
 
             <CardFooter>
-              <div className="flex items-center justify-center w-full h-[90px] text-lg">
-                <div className="flex w-1/2 justify-center items-center">Price: {price}</div>
-                <div className="flex w-1/2 justify-center items-center gap-x-2">
-                  {priceNegotiable ? "Non-negotiable" : "Negotiable"}
-                  {priceNegotiable ? <CrossCircledIcon /> : <CheckCircledIcon />}
+              <div className="flex w-full justify-between items-center gap-4">
+                <div className="flex justify-center items-center gap-4 text-sm sm:text-lg overflow-auto">
+                  <div className="flex justify-center items-center">
+                    <select
+                      id="currency-select"
+                      value={currencyOptions.findIndex((option) => option.currency === intlConfig.currency)}
+                      onChange={handleCurrencyChange}
+                      className="border rounded px-2 py-1"
+                    >
+                      {currencyOptions.map((option, index) => (
+                        <option key={index} value={index}>
+                          {option.currency}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <strong>{formatPrice(intlConfig.locale, intlConfig.currency, convertedPrice)}</strong>
+                </div>
+                <div>
+                  <p className="flex items-center gap-2 text-start text-sm sm:text-lg">
+                    <strong>Negotiable:</strong>
+                    {priceNegotiable ? (
+                      <CheckCircledIcon className="text-green-500 w-4 h-4 sm:w-6 sm:h-6" />
+                    ) : (
+                      <CrossCircledIcon className="text-red-500 w-4 h-4 sm:w-6 sm:h-6" />
+                    )}
+                  </p>
                 </div>
               </div>
             </CardFooter>

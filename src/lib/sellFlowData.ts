@@ -49,6 +49,35 @@ export const features = [
   "None",
 ];
 
+export const currencyOptions: ReadonlyArray<{ locale: string; currency: string }> = [
+  { locale: "en-US", currency: "USD" },
+  { locale: "de-DE", currency: "EUR" },
+  { locale: "en-GB", currency: "GBP" },
+  { locale: "en-AU", currency: "AUD" },
+  { locale: "ja-JP", currency: "JPY" },
+  { locale: "fr-CH", currency: "CHF" },
+  { locale: "en-IN", currency: "INR" },
+  { locale: "es-CO", currency: "COP" },
+  { locale: "es-MX", currency: "MXN" },
+  { locale: "es-PE", currency: "PEN" },
+  { locale: "en-CA", currency: "CAD" },
+  { locale: "zh-CN", currency: "CNY" },
+  { locale: "en-SG", currency: "SGD" },
+  { locale: "ar-AE", currency: "AED" },
+  { locale: "pt-BR", currency: "BRL" },
+  { locale: "zh-HK", currency: "HKD" },
+  { locale: "af-ZA", currency: "ZAR" },
+  { locale: "ko-KR", currency: "KRW" },
+  { locale: "en-NZ", currency: "NZD" },
+  { locale: "tr-TR", currency: "TRY" },
+  { locale: "th-TH", currency: "THB" },
+  { locale: "id-ID", currency: "IDR" },
+  { locale: "vi-VN", currency: "VND" },
+  { locale: "es-CR", currency: "CRC" },
+  { locale: "hr-HR", currency: "HRK" },
+  { locale: "ka-GE", currency: "GEL" },
+];
+
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);
 export const stepLengths = sellSteps.map((step) => step.length);
 export const stepLengthsWithoutStepPages = stepLengths.map((step) => step - 1);
