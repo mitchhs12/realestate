@@ -8,6 +8,10 @@ export async function getFeatured(): Promise<HomeType[]> {
     where: {
       isActive: true,
     },
+    orderBy: {
+      createdAt: "asc", // or any other criteria for "featured"
+    },
+    take: 6, // Limit the number of results to 4
   });
 
   return homes;
@@ -18,6 +22,10 @@ export async function getNew(): Promise<HomeType[]> {
     where: {
       isActive: true,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 6, // Limit the number of results to 4
   });
 
   return homes;

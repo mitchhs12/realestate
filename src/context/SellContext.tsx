@@ -4,11 +4,6 @@ import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
 import { HomeType } from "@/lib/validations";
 
-interface Currency {
-  symbol: string;
-  usdPrice: number | null;
-}
-
 interface SellContextProps {
   nextStep: string;
   setNextStep: (value: string) => void;

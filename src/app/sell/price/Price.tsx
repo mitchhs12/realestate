@@ -19,27 +19,30 @@ interface Props {
 export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
     useContext(SellContext);
-  const { currencies } = useContext(CurrencyContext);
-
-  const { defaultCurrency } = useContext(CurrencyContext);
+  const { defaultCurrency, currencies } = useContext(CurrencyContext);
 
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
-  const initialIntlConfig =
-    currencyOptions.find((option) => option.currency === currentHome?.currency) ||
-    currencyOptions.find((option) => option.currency === defaultCurrency);
-
+  const initialIntlConfig = currentHome?.currency
+    ? currencyOptions.find((option) => option.currency === currentHome.currency)
+    : currencyOptions.find((option) => option.currency === defaultCurrency);
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {
-    console.log("setting home");
+    console.log("defaultCurrency updated:", defaultCurrency);
+  }, [defaultCurrency]);
 
+  console.log("initialIntlConfig", initialIntlConfig);
+  console.log("currentHomecurrency", currentHome?.currency);
+  console.log("defaultCurrency", defaultCurrency);
+  console.log("intlConfig", intlConfig);
+
+  useEffect(() => {
     if (currentHome && price !== null && intlConfig && intlConfig.currency) {
       const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
 
       if (currentCurrency && currentCurrency.usdPrice !== null) {
         const priceInUsd = price / currentCurrency.usdPrice;
-
         const roundedPriceInUsd = Math.round(priceInUsd * 100) / 100;
         setNewHome({
           ...currentHome,
@@ -57,22 +60,28 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setIsLoading(false);
-    if (currentHome && currentHome.price) {
-      setPrice(currentHome.price);
-    }
-    console.log("running this");
   }, []);
 
   const handlePriceChange = (value: string | undefined) => {
     const numericValue = value ? parseFloat(value) : null;
-    setPrice(numericValue);
+
+    if (numericValue !== null) {
+      const decimals = intlConfig?.currency
+        ? currencyOptions.find((option) => option.currency === intlConfig.currency)?.decimalsLimit
+        : 2; // Default to 2 decimals if not specified
+
+      const roundedValue = decimals !== undefined ? parseFloat(numericValue.toFixed(decimals)) : numericValue;
+      setPrice(roundedValue);
+    } else {
+      setPrice(numericValue);
+    }
   };
 
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedConfig = currencyOptions[Number(event.target.value)];
     setIntlConfig(selectedConfig);
 
-    if (selectedConfig) {
+    if (selectedConfig && selectedConfig.currency) {
       const selectedCurrency = currencies.find((currency) => currency.symbol === selectedConfig.currency);
 
       if (selectedCurrency && selectedCurrency.usdPrice !== null && price !== null) {
@@ -80,7 +89,11 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
 
         if (currentCurrency && currentCurrency.usdPrice !== null) {
           const priceInUsd = price / currentCurrency.usdPrice;
-          const newPrice = priceInUsd * selectedCurrency.usdPrice;
+          let newPrice = priceInUsd * selectedCurrency.usdPrice;
+          // Apply decimals limit
+          const decimals = selectedConfig.decimalsLimit !== undefined ? selectedConfig.decimalsLimit : 2;
+          newPrice = parseFloat(newPrice.toFixed(decimals));
+
           setPrice(newPrice);
         }
       }
@@ -120,7 +133,11 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
                 key={intlConfig?.currency} // Force re-render when currency changes
                 placeholder="Please enter your desired price..."
                 intlConfig={intlConfig}
-                decimalsLimit={2}
+                decimalsLimit={
+                  intlConfig
+                    ? currencyOptions.find((option) => option.currency === intlConfig.currency)?.decimalsLimit
+                    : 2
+                }
                 value={price !== null ? price.toString() : ""}
                 onValueChange={handlePriceChange}
                 className={cn(

@@ -58,12 +58,14 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
   }, [feet]);
 
   const formatPrice = (currency: string, value: number): string => {
-    const locale = currencyOptions.find((option) => option.currency === currency)?.locale;
+    const option = currencyOptions.find((option) => option.currency === currency);
+    const locale = option?.locale || "en-US";
+    const decimals = option?.decimalsLimit || 2;
+
     return new Intl.NumberFormat(locale, {
       style: "currency",
       currency: currency,
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+      maximumFractionDigits: decimals,
     }).format(value);
   };
 

@@ -16,7 +16,7 @@ interface CurrencyContextProps {
 const CurrencyContext = createContext<CurrencyContextProps>({
   currencies: [],
   setCurrencies: () => {},
-  defaultCurrency: "USD",
+  defaultCurrency: "",
   setDefaultCurrency: () => {},
 });
 
@@ -26,19 +26,13 @@ interface CurrencyProviderProps {
 
 const CurrencyContextProvider: React.FC<CurrencyProviderProps> = ({ children }) => {
   const session = useSession();
+  const userLocale = navigator.language || navigator.languages[0];
+  const matchedCurrency = currencyOptions.find((option) => option.locale === userLocale)?.currency;
+
   const [currencies, setCurrencies] = useState<CurrencyType[]>([]);
-  const [defaultCurrency, setDefaultCurrency] = useState<string>(session.data?.user.currency || "USD");
-
-  useEffect(() => {
-    const userLocale = navigator.language || navigator.languages[0];
-    console.log("userLocale", userLocale);
-
-    const matchedCurrency = currencyOptions.find((option) => option.locale === userLocale)?.currency;
-
-    if (matchedCurrency) {
-      setDefaultCurrency(matchedCurrency);
-    }
-  }, []);
+  const [defaultCurrency, setDefaultCurrency] = useState<string>(
+    session.data?.user.currency || matchedCurrency || "USD"
+  );
 
   useEffect(() => {
     const fetchCurrencies = async () => {

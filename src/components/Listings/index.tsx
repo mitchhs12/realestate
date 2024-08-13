@@ -3,10 +3,12 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getFeatured, getNew } from "@/app/actions";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { HomeType } from "@/lib/validations";
 import { iso31661 } from "iso-3166";
 import Image from "next/image";
+import { currencyOptions } from "@/lib/validations";
+import { CurrencyContext } from "@/context/CurrencyContext";
 
 interface Props {
   type: string;
@@ -25,18 +27,31 @@ const getDefaultHomesArray = () => {
     return new Array(3).fill(null);
   } else {
     // Small screens: 2 columns
-    return new Array(2).fill(null);
+    return new Array(4).fill(null);
   }
 };
 
 export default function Listings({ type }: Props) {
   const [homes, setHomes] = useState<(HomeType | null)[]>([]);
+  const { defaultCurrency, currencies } = useContext(CurrencyContext);
+  const currencyRate = currencies.find((currency) => currency.symbol === defaultCurrency)?.usdPrice || 1;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setHomes(getDefaultHomesArray());
     }
   }, []);
+
+  const formatPrice = (currency: string, value: number): string => {
+    const option = currencyOptions.find((option) => option.currency === currency);
+    const locale = option?.locale || "en-US";
+
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -64,7 +79,7 @@ export default function Listings({ type }: Props) {
         {homes.map((home, index) => (
           <div
             key={index}
-            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card"
+            className={`flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card`}
           >
             {!home ? (
               <>
@@ -111,7 +126,9 @@ export default function Listings({ type }: Props) {
                   <div className="flex text-center text-sm sm:text-sm lg:text-md">
                     {iso31661.find((country) => country.alpha3 === home.country)?.name}
                   </div>
-                  <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">{home.price}</div>
+                  <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
+                    {formatPrice(defaultCurrency, home.priceUsd * currencyRate)}
+                  </div>
                 </div>
               </>
             )}

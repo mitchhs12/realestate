@@ -54,7 +54,8 @@ export async function getUnfinishedHome() {
   const userId = session?.user?.id;
 
   if (!userId) {
-    throw new Error("User not found");
+    console.log("User not found");
+    return null;
   }
 
   const homes = await prisma.home.findFirst({
