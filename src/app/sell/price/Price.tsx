@@ -17,15 +17,9 @@ interface Props {
 }
 
 export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const {
-    setSellFlowFlatIndex,
-    setSellFlowIndices,
-    setStepPercentage,
-    setIsLoading,
-    currentHome,
-    setNewHome,
-    currencies,
-  } = useContext(SellContext);
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
+    useContext(SellContext);
+  const { currencies } = useContext(CurrencyContext);
 
   const { defaultCurrency } = useContext(CurrencyContext);
 
