@@ -34,11 +34,15 @@ export default function Listings({ type }: Props) {
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
-      <div className="grid grid-cols-2 grid-rows-2 sm:grid-rows-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+      <div className="grid grid-cols-2 grid-rows-2 sm:grid-cols-3 sm:grid-rows-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-6 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {homes.map((home, index) => (
           <div
             key={index}
-            className={`flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card`}
+            className={`flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card
+              ${index >= 4 && "hidden sm:block"}
+              ${index >= 3 && "sm:hidden lg:block"}
+              ${index >= 4 && "lg:hidden xl:block"}
+            `}
           >
             <Card home={home} />
           </div>
