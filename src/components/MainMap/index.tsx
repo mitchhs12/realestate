@@ -90,7 +90,7 @@ export default function MapComponent({
       if (!areBoundsEqual(existingBounds, bounds.detail.bounds)) {
         setBounds(bounds.detail.bounds);
       }
-    }, 200);
+    }, 600);
 
     setBoundsTimeout(timeoutId);
   };
@@ -104,8 +104,6 @@ export default function MapComponent({
 
   useEffect(() => {
     if (theme) {
-      console.log("running use Effect!");
-      console.log("theme", theme);
       setMapConfig(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
     }
   }, [theme]);

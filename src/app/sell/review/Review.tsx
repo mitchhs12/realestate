@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { currencyOptions } from "@/lib/validations";
+import { formatPrice } from "@/lib/utils";
 
 interface Props {
   user: User;
@@ -56,18 +57,6 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
     const ftConversion = 10.76391042;
     setSqSize(!feet ? areaSqm : Math.round(areaSqm * ftConversion));
   }, [feet]);
-
-  const formatPrice = (currency: string, value: number): string => {
-    const option = currencyOptions.find((option) => option.currency === currency);
-    const locale = option?.locale || "en-US";
-    const decimals = option?.decimalsLimit || 2;
-
-    return new Intl.NumberFormat(locale, {
-      style: "currency",
-      currency: currency,
-      maximumFractionDigits: decimals,
-    }).format(value);
-  };
 
   const handleImageLoad = (index: number) => {
     setLoadingStates((prevStates) => {

@@ -11,6 +11,7 @@ interface CurrencyContextProps {
   setCurrencies: (value: CurrencyType[]) => void;
   defaultCurrency: string;
   setDefaultCurrency: (value: string) => void;
+  currencyRate: number;
 }
 
 const CurrencyContext = createContext<CurrencyContextProps>({
@@ -18,6 +19,7 @@ const CurrencyContext = createContext<CurrencyContextProps>({
   setCurrencies: () => {},
   defaultCurrency: "",
   setDefaultCurrency: () => {},
+  currencyRate: 1,
 });
 
 interface CurrencyProviderProps {
@@ -28,6 +30,7 @@ const CurrencyContextProvider: React.FC<CurrencyProviderProps> = ({ children }) 
   const session = useSession();
   const [currencies, setCurrencies] = useState<CurrencyType[]>([]);
   const [defaultCurrency, setDefaultCurrency] = useState<string>("USD");
+  const currencyRate = currencies.find((currency) => currency.symbol === defaultCurrency)?.usdPrice || 1;
 
   useEffect(() => {
     const userLocale = navigator.language || navigator.languages[0];
@@ -56,6 +59,7 @@ const CurrencyContextProvider: React.FC<CurrencyProviderProps> = ({ children }) 
         setCurrencies,
         defaultCurrency,
         setDefaultCurrency,
+        currencyRate,
       }}
     >
       {children}

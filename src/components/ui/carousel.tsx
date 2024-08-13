@@ -92,9 +92,9 @@ const CarouselDots = ({ className }: any) => {
       return (
         <button
           key={index}
-          className={`mx-1 h-2 w-2 rounded-full transition-all duration-1000 ${
-            isSelected ? "bg-primary" : "bg-white"
-          } ${visible ? "opacity-100" : "opacity-0"} ${visible ? "block" : "hidden"}`}
+          className={`mx-1 h-2 w-2 rounded-full transition-all ${isSelected ? "bg-primary" : "bg-white"} ${
+            visible ? "opacity-100" : "opacity-0"
+          } ${visible ? "block" : "hidden"}`}
           onClick={() => api?.scrollTo(index)}
           aria-label={`Slide ${index + 1}`}
         />
