@@ -32,7 +32,6 @@ export default function ProgressBar() {
 
   const checkStepPositionForNextNavigation = () => {
     if (currentHome) {
-      console.log("stepLengths", stepLengths);
       const databaseStep = currentHome.listingFlowStep;
       return databaseStep;
       // console.log("current databaseStep as recorded in currentHome", databaseStep);
@@ -53,9 +52,9 @@ export default function ProgressBar() {
 
   const shouldIncrementFlowStep = () => {
     const nextStepUpTo = checkStepPositionForNextNavigation();
-    console.log("nextStepUpTo", nextStepUpTo);
-    console.log("sellFlowFlatIndex", sellFlowFlatIndex);
-    console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
+    // console.log("nextStepUpTo", nextStepUpTo);
+    // console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+    // console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
     if (sellFlowFlatIndex < nextStepUpTo) {
       return false;
     } else if (sellFlowFlatIndex === nextStepUpTo) {
@@ -72,53 +71,44 @@ export default function ProgressBar() {
     }
 
     const _shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
-    console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
+    // console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
 
     if (_shouldIncreaseListingFlowStep) {
       if (pathname.startsWith("/sell/step")) {
-        console.log("button should not be disabled because we are on a intro step page");
+        // console.log("button should not be disabled because we are on a intro step page");
         return false;
       } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-        console.log("button should not be disabled because new home is different from current home");
+        // console.log("button should not be disabled because new home is different from current home");
         return false;
       } else if (pathname.startsWith("/sell/review")) {
-        console.log("button should not be disabled because we are on the final page");
+        // console.log("button should not be disabled because we are on the final page");
         return false;
       } else {
-        console.log("button should be disabled because new home is the same as current home");
+        // console.log("button should be disabled because new home is the same as current home");
         return true;
       }
     } else {
-      console.log("button should not be disabled because we are not incrementing the flow step");
+      // console.log("button should not be disabled because we are not incrementing the flow step");
       return false;
     }
   };
 
   const nextButtonDisabled = isButtonDisabled();
 
-  useEffect(() => {
-    console.log("NEXTBUTTONDISABLED", nextButtonDisabled);
-  }, [nextButtonDisabled]);
-
   async function handleNext() {
     setIsLoading(true);
-    console.log("running handle next");
     if (prevStep === "" && currentHome) {
       // we are on the first page of the sell flow so we are redirected to where we are up too
       router.push(stepsFlattened[checkStepPositionForNextNavigation()]);
     } else if (prevStep === "" && !currentHome) {
-      console.log("creating a new home now!!@@@@@");
       // we are on the first page of the sell flow and we need to create a new home
       const _newHome = await updateHome(newHome, pathname, true);
       setCurrentHome(_newHome);
       router.push(nextStep);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-      console.log("running this YYY");
       const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep());
       setCurrentHome(_newHome);
       setNewHome(_newHome);
-      console.log("newHome AFTER", JSON.stringify(newHome, null, 2));
-      console.log("currentHome AFTER", JSON.stringify(currentHome, null, 2));
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
       if (pathname.startsWith("/sell/review")) {

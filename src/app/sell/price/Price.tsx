@@ -2,10 +2,11 @@
 import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
+import { CurrencyContext } from "@/context/CurrencyContext";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
-import { currencyOptions } from "@/lib/sellFlowData";
+import { currencyOptions } from "@/lib/validations";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -25,21 +26,33 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
     setNewHome,
     currencies,
   } = useContext(SellContext);
+
+  const { defaultCurrency } = useContext(CurrencyContext);
+
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
-  const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(currencyOptions[0]);
+  const initialIntlConfig =
+    currencyOptions.find((option) => option.currency === currentHome?.currency) ||
+    currencyOptions.find((option) => option.currency === defaultCurrency);
+
+  const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {
-    if (currentHome && price !== null) {
+    console.log("setting home");
+
+    if (currentHome && price !== null && intlConfig && intlConfig.currency) {
       const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
 
       if (currentCurrency && currentCurrency.usdPrice !== null) {
         const priceInUsd = price / currentCurrency.usdPrice;
 
+        const roundedPriceInUsd = Math.round(priceInUsd * 100) / 100;
         setNewHome({
           ...currentHome,
-          price: priceInUsd, // Save price in USD
-          priceNegotiable: !isNegotiable,
+          price: price, // Save price in USD
+          currency: intlConfig.currency,
+          priceUsd: roundedPriceInUsd,
+          priceNegotiable: isNegotiable,
         });
       }
     }
@@ -50,11 +63,11 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setIsLoading(false);
+    if (currentHome && currentHome.price) {
+      setPrice(currentHome.price);
+    }
+    console.log("running this");
   }, []);
-
-  useEffect(() => {
-    console.log("currencies", currencies);
-  }, [currencies]);
 
   const handlePriceChange = (value: string | undefined) => {
     const numericValue = value ? parseFloat(value) : null;
@@ -63,6 +76,8 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
 
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedConfig = currencyOptions[Number(event.target.value)];
+    setIntlConfig(selectedConfig);
+
     if (selectedConfig) {
       const selectedCurrency = currencies.find((currency) => currency.symbol === selectedConfig.currency);
 
@@ -70,14 +85,11 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
         const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
 
         if (currentCurrency && currentCurrency.usdPrice !== null) {
-          // Convert the price from the current currency to USD, then to the new selected currency
           const priceInUsd = price / currentCurrency.usdPrice;
           const newPrice = priceInUsd * selectedCurrency.usdPrice;
           setPrice(newPrice);
         }
       }
-
-      setIntlConfig(selectedConfig);
     }
   };
 
@@ -99,11 +111,14 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
                 className={cn(
                   "flex h-9 rounded-md border border-input px-3 py-1 text-base shadow-sm shadow-secondary transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 )}
+                value={currencyOptions.findIndex(
+                  (option) => option.currency === (intlConfig ? intlConfig.currency : defaultCurrency)
+                )}
                 onChange={handleCurrencyChange}
               >
-                {currencyOptions.map((config, i) => (
-                  <option key={`${config?.locale}${config?.currency}`} value={i}>
-                    {config?.currency}
+                {currencyOptions.map((option, index) => (
+                  <option key={index} value={index}>
+                    {option.currency}
                   </option>
                 ))}
               </select>

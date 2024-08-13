@@ -6,7 +6,7 @@ import { auth } from "@/auth";
 import { HomeType, homeSchema } from "@/lib/validations";
 import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
-import { currencyOptions } from "@/lib/sellFlowData";
+import { currencyOptions } from "@/lib/validations";
 
 interface ResponseObj {
   success: boolean;

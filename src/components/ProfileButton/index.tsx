@@ -21,6 +21,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { currencyOptions } from "@/lib/validations";
+import { useContext } from "react";
+import { CurrencyContext } from "@/context/CurrencyContext";
 
 interface Props {
   openSignUpModal: () => void;
@@ -30,7 +33,7 @@ interface Props {
 
 export function ProfileButton({ openSignUpModal, openLogInModal, session }: Props) {
   const user = session.data?.user;
-
+  const { defaultCurrency, setDefaultCurrency } = useContext(CurrencyContext);
   const router = useRouter();
   const { setTheme } = useTheme();
 
@@ -93,6 +96,23 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
         )}
         <DropdownMenuGroup>
           <DropdownMenuSub>
+            <DropdownMenuSubTrigger>Currency</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent className="p-2">
+                <DropdownMenuRadioGroup value={defaultCurrency} onValueChange={setDefaultCurrency}>
+                  {currencyOptions.map((config) => (
+                    <DropdownMenuRadioItem className="cursor-pointer" value={config.currency}>
+                      {config.currency} {config.symbol}
+                    </DropdownMenuRadioItem>
+                  ))}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuSub>
             <DropdownMenuSubTrigger>Theme</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2">
@@ -112,8 +132,8 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>Support (coming soon)</DropdownMenuItem>
 
+        <DropdownMenuItem disabled>Support (coming soon)</DropdownMenuItem>
         {user && (
           <DropdownMenuGroup>
             <DropdownMenuSeparator />

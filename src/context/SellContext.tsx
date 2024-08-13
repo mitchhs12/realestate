@@ -28,7 +28,6 @@ interface SellContextProps {
   setIsLoading: (value: boolean) => void;
   nextDisabled: boolean;
   setNextDisabled: (value: boolean) => void;
-  currencies: Currency[];
 }
 
 const SellContext = createContext<SellContextProps>({
@@ -50,16 +49,14 @@ const SellContext = createContext<SellContextProps>({
   setIsLoading: () => {},
   nextDisabled: false,
   setNextDisabled: () => {},
-  currencies: [],
 });
 
 interface SellProviderProps {
   children: ReactNode;
   unfinishedHome: HomeType | null;
-  currencies: Currency[];
 }
 
-const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinishedHome, currencies }) => {
+const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinishedHome }) => {
   const [prevStep, setPrevStep] = useState("");
   const [nextStep, setNextStep] = useState("");
   const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(-1);
@@ -108,7 +105,6 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinished
         setIsLoading,
         nextDisabled,
         setNextDisabled,
-        currencies,
       }}
     >
       {children}

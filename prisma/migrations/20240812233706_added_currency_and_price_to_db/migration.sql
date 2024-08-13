@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "homes" ADD COLUMN     "currency" TEXT DEFAULT 'USD',
+ADD COLUMN     "priceUsd" DOUBLE PRECISION NOT NULL DEFAULT 0.0;

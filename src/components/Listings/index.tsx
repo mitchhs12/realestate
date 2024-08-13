@@ -93,8 +93,19 @@ export default function Listings({ type }: Props) {
                   <CarouselPrevious className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8" />
                   <CarouselNext className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8" />
                 </Carousel>
-                <div className="flex flex-col justify-center items-center w-full h-full gap-2">
-                  <h2 className="flex text-sm md:text-md lg:text-lg xl:text-xl font-semibold">{home.title}</h2>
+                <div className="flex flex-col justify-center items-center w-full h-full gap-2 px-2">
+                  <div
+                    className={`w-full flex ${
+                      home.title && home.title.length > 20 ? "justify-start" : "justify-center"
+                    }`}
+                  >
+                    <h2
+                      className={`text-sm md:text-md lg:text-lg xl:text-xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis`}
+                    >
+                      {home.title}
+                    </h2>
+                  </div>
+
                   <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.municipality}</div>
                   <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.region}</div>
                   <div className="flex text-center text-sm sm:text-sm lg:text-md">

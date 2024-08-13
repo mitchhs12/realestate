@@ -2,12 +2,12 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { UpdateNameValues, updateNameSchema, updateEmailSchema, UpdateEmailValues } from "@/lib/validations";
+import { updateSettingsSchema, UpdateSettingsValues, updateEmailSchema, UpdateEmailValues } from "@/lib/validations";
 import { auth } from "@/auth";
 
 // Settings Page Actions
 
-export async function updateName(values: UpdateNameValues) {
+export async function updateSettings(values: UpdateSettingsValues) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -15,7 +15,7 @@ export async function updateName(values: UpdateNameValues) {
     throw new Error("User not found");
   }
   console.log("values", values);
-  const { name } = updateNameSchema.parse(values);
+  const { name, currency } = updateSettingsSchema.parse(values);
 
   await prisma.user.update({
     where: {
@@ -23,6 +23,7 @@ export async function updateName(values: UpdateNameValues) {
     },
     data: {
       name,
+      currency,
     },
   });
   revalidatePath("/");
