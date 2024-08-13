@@ -24,7 +24,6 @@ import { useTheme } from "next-themes";
 import { currencyOptions } from "@/lib/validations";
 import { useContext } from "react";
 import { CurrencyContext } from "@/context/CurrencyContext";
-import countryCodeToFlagEmoji from "country-code-to-flag-emoji";
 
 interface Props {
   openSignUpModal: () => void;
@@ -107,7 +106,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
                 <DropdownMenuRadioGroup value={defaultCurrency} onValueChange={setDefaultCurrency}>
                   {currencyOptions.map((config) => (
                     <DropdownMenuRadioItem key={config.currency} className="cursor-pointer" value={config.currency}>
-                      {config.currency} {countryCodeToFlagEmoji(config.locale)}
+                      {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>
