@@ -26,13 +26,15 @@ interface CurrencyProviderProps {
 
 const CurrencyContextProvider: React.FC<CurrencyProviderProps> = ({ children }) => {
   const session = useSession();
-  const userLocale = navigator.language || navigator.languages[0];
-  const matchedCurrency = currencyOptions.find((option) => option.locale === userLocale)?.currency;
-
   const [currencies, setCurrencies] = useState<CurrencyType[]>([]);
-  const [defaultCurrency, setDefaultCurrency] = useState<string>(
-    session.data?.user.currency || matchedCurrency || "USD"
-  );
+  const [defaultCurrency, setDefaultCurrency] = useState<string>("USD");
+
+  useEffect(() => {
+    const userLocale = navigator.language || navigator.languages[0];
+    const matchedCurrency = currencyOptions.find((option) => option.locale === userLocale)?.currency;
+
+    setDefaultCurrency(session.data?.user.currency || matchedCurrency || "USD");
+  }, [session.data]);
 
   useEffect(() => {
     const fetchCurrencies = async () => {
