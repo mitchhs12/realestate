@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState, ReactNode, useEffect, useRef } from "react";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { getCurrencies } from "@/app/sell/actions";
 import { CurrencyType } from "@/lib/validations";
 import { currencyOptions } from "@/lib/validations";
