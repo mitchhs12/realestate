@@ -21,3 +21,7 @@ export const formatPrice = (currency: string, value: number): string => {
     maximumFractionDigits: decimals,
   }).format(value);
 };
+
+export const getFlagEmoji = (countryCode: string) => {
+  return countryCode.replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127365));
+};

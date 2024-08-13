@@ -24,6 +24,7 @@ import { useTheme } from "next-themes";
 import { currencyOptions } from "@/lib/validations";
 import { useContext } from "react";
 import { CurrencyContext } from "@/context/CurrencyContext";
+import { getFlagEmoji } from "@/lib/utils";
 
 interface Props {
   openSignUpModal: () => void;
@@ -45,10 +46,6 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
       .join("")
       .toUpperCase();
   };
-
-  function getFlagEmoji(countryCode: string) {
-    return countryCode.replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127365));
-  }
 
   return (
     <DropdownMenu>

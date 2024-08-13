@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { currencyOptions } from "@/lib/validations";
 import { CurrencyContext } from "@/context/CurrencyContext";
 import { useContext } from "react";
+import { getFlagEmoji } from "@/lib/utils";
 
 interface Props {
   user: User;
@@ -64,8 +65,8 @@ export default function SettingsPage({ user }: Props) {
                 <FormControl>
                   <select className="block w-full mt-1" {...field}>
                     {currencyOptions.map((config) => (
-                      <option key={`${config?.locale}${config?.currency}`} value={config?.currency}>
-                        {config?.currency}
+                      <option key={`${config.locale}${config.currency}`} value={config.currency}>
+                        {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
                       </option>
                     ))}
                   </select>
