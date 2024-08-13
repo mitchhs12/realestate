@@ -102,7 +102,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Currency</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent className="p-2">
+              <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
                 <DropdownMenuRadioGroup value={defaultCurrency} onValueChange={setDefaultCurrency}>
                   {currencyOptions.map((config) => (
                     <DropdownMenuRadioItem key={config.currency} className="cursor-pointer" value={config.currency}>
