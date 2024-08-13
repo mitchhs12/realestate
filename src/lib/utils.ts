@@ -13,7 +13,7 @@ export function capitalizeFirstLetter(string: string) {
 export const formatPrice = (currency: string, value: number): string => {
   const option = currencyOptions.find((option) => option.currency === currency);
   const locale = option?.locale || "en-US";
-  const decimals = option?.decimalsLimit || 2;
+  const decimals = 0;
 
   return new Intl.NumberFormat(locale, {
     style: "currency",

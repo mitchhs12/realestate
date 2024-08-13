@@ -18,11 +18,11 @@ export default function Card({ home }: Props) {
     <>
       <Skeleton className="rounded-t-xl h-40 w-44 md:w-52" />
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
-        <Skeleton className="h-6 w-32" />
-        <Skeleton className="h-4 w-24" />
-        <Skeleton className="h-4 w-24" />
-        <Skeleton className="h-4 w-28" />
-        <Skeleton className="h-6 w-36 font-semibold" />
+        <Skeleton className="h-4 sm:h-5 lg:h-6 w-32" />
+        <Skeleton className="h-4 sm:h-4 lg:h-4 w-24" />
+        <Skeleton className="h-3 sm:h-3 lg:h-4 w-24" />
+        <Skeleton className="h-3 sm:h-3 lg:h-4 w-28" />
+        <Skeleton className="h-4 sm:h-5 lg:h-6 w-36 font-semibold" />
       </div>
     </>
   ) : (
