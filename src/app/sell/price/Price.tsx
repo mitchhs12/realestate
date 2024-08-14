@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
 import { currencyOptions } from "@/lib/validations";
 import { cn } from "@/lib/utils";
+import { getFlagEmoji } from "@/lib/utils";
 
 interface Props {
   user: User;
@@ -125,7 +126,7 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
               >
                 {currencyOptions.map((option, index) => (
                   <option key={index} value={index}>
-                    {option.currency}
+                    {option.currency} {getFlagEmoji(option.locale.split("-")[1])}
                   </option>
                 ))}
               </select>

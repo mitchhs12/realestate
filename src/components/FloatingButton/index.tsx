@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { Button } from "@/components/ui/button";
 
