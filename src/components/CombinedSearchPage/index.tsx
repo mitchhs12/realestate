@@ -97,12 +97,13 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.2, 0.6, 1]}
+          snapPoints={[0.1, 0.6, 0.9]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
           onClose={() => setIsOpen(false)}
+          closeThreshold={100}
         >
           <DrawerOverlay className="fixed inset-0 bg-black/5" style={{ zIndex: 50 }} />
           <DrawerContent style={{ zIndex: 50 }}>
