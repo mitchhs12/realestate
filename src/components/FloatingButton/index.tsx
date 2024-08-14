@@ -13,7 +13,7 @@ const FloatingButton = () => {
       onClick={() => setMapFocused(!mapFocused)}
       className={`hidden md:flex fixed lg:hidden bottom-20 left-1/2 transform -translate-x-1/2 shadow-lg`}
     >
-      Show {mapFocused ? "Map" : "List"}
+      Show {mapFocused ? "List" : "Map"}
     </Button>
   );
 };

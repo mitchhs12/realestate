@@ -36,7 +36,7 @@ interface QueryProviderProps {
 
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [query, setQuery] = useState("");
-  const [mapFocused, setMapFocused] = useState(false);
+  const [mapFocused, setMapFocused] = useState(true);
   const [newZoom, setNewZoom] = useState(16);
   const [currentCoords, setCurrentCoords] = useState<CoordinatesType | null>(null);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);

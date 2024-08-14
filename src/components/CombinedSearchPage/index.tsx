@@ -27,9 +27,9 @@ interface Props {
 }
 
 export default function CombinedSearchPage({ coordinates, label }: Props) {
-  const { mapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
+  const { mapFocused, setMapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
-  const [homes, setHomes] = useState<HomeType[]>([]);
+  const [homes, setHomes] = useState<(HomeType | null)[]>(Array(15).fill(null));
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
   const [isSearchLoading, setIsSearchLoading] = useState(true);
   const [isMapLoading, setIsMapLoading] = useState(true);
@@ -52,6 +52,7 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setIsOpen(false);
+        setMapFocused(true);
       } else if (homes.length > 0) {
         setIsOpen(true);
       }
@@ -84,31 +85,32 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
       setIsOpen(true);
     } else {
       console.log("drawer closing!");
-      setIsOpen(false);
+      // setIsOpen(false);
     }
   }, [homes]);
 
+  useEffect(() => {
+    console.log("mapFocused", mapFocused);
+  }, [mapFocused]);
+
   return (
     <>
-      <section
-        className={`hidden md:flex w-full h-1/2 ${!mapFocused ? "md:hidden" : "md:h-full"} lg:flex lg:w-1/2 lg:h-full`}
-      >
+      <section className={`hidden md:flex w-full h-full ${mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
         <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.1, 0.6, 0.9]}
+          snapPoints={[0.2, 0.6, 0.9]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
           onClose={() => setIsOpen(false)}
-          closeThreshold={100}
         >
-          <DrawerOverlay className="fixed inset-0" style={{ zIndex: 50 }} />
-          <DrawerContent style={{ zIndex: 50 }}>
+          <DrawerOverlay className="fixed inset-0" style={{ zIndex: 60 }} />
+          <DrawerContent style={{ zIndex: 60 }}>
             <div
-              className={`flex flex-col justify-center items-center max-w-2xl mx-auto pt-4 gap-y-2 ${
+              className={`flex flex-col justify-center items-center max-w-xl mx-auto pt-4 gap-y-2 ${
                 snap === 1 ? "overflow-y-auto" : "overflow-hidden"
               }`}
             >
@@ -116,12 +118,13 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
               <DrawerDescription>
                 {homes.length} properties in {bounds ? "Map Area" : label}
               </DrawerDescription>
+
               <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
             </div>
           </DrawerContent>
         </Drawer>
       </div>
-      <section className={`flex w-full h-full ${mapFocused ? "md:hidden" : "md:h-full"} lg:flex lg:w-1/2 lg:h-full`}>
+      <section className={`flex w-full h-full ${!mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
         <MapComponent
           coordinates={coordinates}
           existingBounds={bounds}
