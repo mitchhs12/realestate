@@ -105,7 +105,7 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
           onClose={() => setIsOpen(false)}
           closeThreshold={100}
         >
-          <DrawerOverlay className="fixed inset-0 bg-black/5" style={{ zIndex: 50 }} />
+          <DrawerOverlay className="fixed inset-0" style={{ zIndex: 50 }} />
           <DrawerContent style={{ zIndex: 50 }}>
             <div
               className={`flex flex-col justify-center items-center max-w-2xl mx-auto pt-4 gap-y-2 ${
