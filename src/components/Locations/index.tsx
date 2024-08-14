@@ -6,9 +6,11 @@ import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { getFlagEmoji } from "@/lib/utils";
 
 interface CityImage {
   name: string;
+  countryCode: string;
   neighborhoods: Neighborhood[];
 }
 
@@ -19,6 +21,7 @@ interface Neighborhood {
 const imageMap: CityImage[] = [
   {
     name: "Buenos Aires, Argentina",
+    countryCode: "AR",
     neighborhoods: [
       {
         name: "Palermo",
@@ -33,6 +36,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Mexico City, Mexico",
+    countryCode: "MX",
     neighborhoods: [
       {
         name: "Polanco",
@@ -47,6 +51,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Rio de Janeiro, Brazil",
+    countryCode: "BR",
     neighborhoods: [
       {
         name: "Ipanema",
@@ -61,6 +66,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Medellín, Colombia",
+    countryCode: "CO",
     neighborhoods: [
       {
         name: "El Poblado",
@@ -72,6 +78,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Santiago, Chile",
+    countryCode: "CL",
     neighborhoods: [
       {
         name: "Providencia",
@@ -86,6 +93,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Quito, Ecuador",
+    countryCode: "EC",
     neighborhoods: [
       {
         name: "La Floresta",
@@ -100,6 +108,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Lima, Peru",
+    countryCode: "PE",
     neighborhoods: [
       {
         name: "Miraflores",
@@ -114,6 +123,7 @@ const imageMap: CityImage[] = [
   },
   {
     name: "Montevideo, Uruguay",
+    countryCode: "UY",
     neighborhoods: [
       {
         name: "Punta Carretas",
@@ -237,7 +247,7 @@ export default function Locations() {
                     <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
                       <p className={`${underlinedImage === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
                       <p className={`text-sm md:text-sm ${underlinedImage === city.name && "underline"}`}>
-                        {city.name.split(",")[1]}
+                        {city.name.split(",")[1]} {getFlagEmoji(city.countryCode)}
                       </p>
                     </div>
                   </div>

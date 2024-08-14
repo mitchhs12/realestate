@@ -3,7 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
 import { iso31661 } from "iso-3166";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext } from "react";
 import { CurrencyContext } from "@/context/CurrencyContext";
 
@@ -58,7 +58,8 @@ export default function Card({ home }: Props) {
         <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.municipality}</div>
         <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.region}</div>
         <div className="flex text-center text-sm sm:text-sm lg:text-md">
-          {iso31661.find((country) => country.alpha3 === home.country)?.name}
+          {iso31661.find((country) => country.alpha3 === home.country)?.name}{" "}
+          {home.country && getFlagEmoji(home.country)}
         </div>
         <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
           {formatPrice(defaultCurrency, home.priceUsd * currencyRate)}

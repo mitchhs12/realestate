@@ -241,7 +241,7 @@ const CarouselPrevious = React.forwardRef<
 
   const handleClick = () => {
     scrollPrev();
-    if (onCustomClick) onCustomClick(canScrollPrev);
+    if (onCustomClick) onCustomClick();
   };
 
   return (
