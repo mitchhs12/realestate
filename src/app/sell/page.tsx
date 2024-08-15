@@ -24,11 +24,6 @@ export default async function Page() {
   const sellFlatIndex = await getSellFlowIndex("/sell");
 
   return (
-    <SellFlowPage
-      user={user}
-      sellFlowIndices={{ innerIndex, outerIndex }}
-      sellFlatIndex={sellFlatIndex}
-      stepPercentage={array}
-    />
+    <SellFlowPage sellFlowIndices={{ innerIndex, outerIndex }} sellFlatIndex={sellFlatIndex} stepPercentage={array} />
   );
 }

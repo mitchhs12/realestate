@@ -87,7 +87,7 @@ export default function Header() {
             <Button
               className="gap-2 items-center"
               onClick={() => {
-                user ? router.push(`/sell?_ts=${timestamp}`) : openSignUpModal();
+                user ? router.push("/sell") : openSignUpModal();
               }}
             >
               <Icons.sell_home />
@@ -112,8 +112,7 @@ export default function Header() {
               <Button
                 className="hidden xs:flex gap-2 items-center"
                 onClick={() => {
-                  const timestamp = new Date().getTime();
-                  user ? router.push(`/sell?_ts=${timestamp}`) : openSignUpModal();
+                  user ? router.push("/sell") : openSignUpModal();
                 }}
               >
                 <Icons.sell_home />

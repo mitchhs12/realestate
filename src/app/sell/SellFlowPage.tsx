@@ -8,7 +8,6 @@ import { stepsFlattened, stepLengthsWithoutStepPages, stepLengths } from "@/lib/
 import { Checkbox } from "@/components/ui/checkbox";
 
 interface Props {
-  user: User;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -18,7 +17,7 @@ const getTotalSteps = (step1: number, step2: number) => {
   return stepsFlattened.length - 3 - step1 - step2;
 };
 
-export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function SellFlowPage({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNextLoading, setPrevLoading } =
     useContext(SellContext);
 

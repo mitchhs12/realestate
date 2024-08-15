@@ -8,6 +8,7 @@ import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
 import { currencyOptions } from "@/lib/validations";
 import { updatePhone } from "@/app/settings/actions";
+import { cookies } from "next/headers";
 
 interface ResponseObj {
   success: boolean;
@@ -51,6 +52,7 @@ const validateHome = (homeData: any) => {
 };
 
 export async function getUnfinishedHome() {
+  const _cookies = cookies();
   const session = await auth();
   const userId = session?.user?.id;
 
