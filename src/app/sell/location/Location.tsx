@@ -18,7 +18,7 @@ interface SearchResult {
 }
 
 export default function Location({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading, currentHome } =
     useContext(SellContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
   const [currentCoords, setCurrentCoords] = useState(
@@ -51,7 +51,8 @@ export default function Location({ sellFlatIndex, sellFlowIndices, stepPercentag
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   return (

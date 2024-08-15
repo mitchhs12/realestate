@@ -21,7 +21,8 @@ export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPerc
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
-    setIsLoading,
+    setNextLoading,
+    setPrevLoading,
     currentHome,
     setNewHome,
     setIsMyPhone,
@@ -59,7 +60,8 @@ export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPerc
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   return (

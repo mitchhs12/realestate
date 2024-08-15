@@ -14,8 +14,15 @@ interface Props {
 }
 
 export default function Capacity({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, setNewHome, currentHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNewHome,
+    currentHome,
+  } = useContext(SellContext);
   const [sqSize, setSqSize] = useState(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
   const [metresOn, setMetresOn] = useState(true);
   const [humanCapacity, setHumanCapacity] = useState<number>(currentHome?.capacity ? currentHome?.capacity : 0);
@@ -36,7 +43,8 @@ export default function Capacity({ user, sellFlatIndex, sellFlowIndices, stepPer
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   const handleUnitSwitch = () => {

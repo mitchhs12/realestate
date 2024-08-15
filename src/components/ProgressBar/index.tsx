@@ -17,8 +17,10 @@ export default function ProgressBar() {
     stepPercentage,
     currentHome,
     setCurrentHome,
-    isLoading,
-    setIsLoading,
+    nextLoading,
+    prevLoading,
+    setNextLoading,
+    setPrevLoading,
     newHome,
     sellFlowFlatIndex,
     setNewHome,
@@ -68,7 +70,7 @@ export default function ProgressBar() {
   };
 
   const isButtonDisabled = (): boolean => {
-    if (isLoading) {
+    if (nextLoading) {
       return true; // Button disabled if loading
     }
 
@@ -98,7 +100,7 @@ export default function ProgressBar() {
   const nextButtonDisabled = isButtonDisabled();
 
   async function handleNext() {
-    setIsLoading(true);
+    setNextLoading(true);
     if (prevStep === "" && currentHome) {
       // we are on the first page of the sell flow so we are redirected to where we are up too
       router.push(stepsFlattened[checkStepPositionForNextNavigation()]);
@@ -117,7 +119,7 @@ export default function ProgressBar() {
         const result = await sellHome();
         if (result.error) {
           alert(result.error);
-          setIsLoading(false);
+          setNextLoading(false);
         } else {
           router.push(nextStep);
         }
@@ -134,7 +136,7 @@ export default function ProgressBar() {
 
   async function handlePrev() {
     if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-      setIsLoading(true);
+      setPrevLoading(true);
       const _newHome = await updateHome(newHome, pathname, false);
       setCurrentHome(_newHome);
     }
@@ -153,8 +155,13 @@ export default function ProgressBar() {
       <div className="flex flex-row-reverse justify-between w-full px-8">
         {nextStep !== "" && (
           <div className="flex">
-            <Button variant="default" size="lg" onClick={handleNext} disabled={nextButtonDisabled || nextDisabled}>
-              {!isLoading
+            <Button
+              variant="default"
+              size="lg"
+              onClick={handleNext}
+              disabled={nextButtonDisabled || nextDisabled || prevLoading}
+            >
+              {!nextLoading
                 ? prevStep !== ""
                   ? pathname.startsWith("/sell/review")
                     ? "Finish!"
@@ -168,8 +175,8 @@ export default function ProgressBar() {
         )}
         {prevStep !== "" && (
           <div className="flex justify-start">
-            <Button variant="outline" size="lg" onClick={handlePrev} disabled={isLoading}>
-              {!isLoading ? "Back" : "Loading..."}
+            <Button variant="outline" size="lg" onClick={handlePrev} disabled={prevLoading || nextLoading}>
+              {!prevLoading ? "Back" : "Loading..."}
             </Button>
           </div>
         )}

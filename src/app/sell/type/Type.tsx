@@ -14,8 +14,15 @@ interface Props {
 }
 
 export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNewHome, setIsLoading } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    currentHome,
+    setNewHome,
+    setNextLoading,
+    setPrevLoading,
+  } = useContext(SellContext);
 
   const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
 
@@ -23,7 +30,8 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   useEffect(() => {

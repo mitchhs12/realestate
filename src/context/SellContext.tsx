@@ -19,8 +19,10 @@ interface SellContextProps {
   setCurrentHome: (value: HomeType | null) => void;
   newHome: HomeType | null;
   setNewHome: (value: HomeType | null) => void;
-  isLoading: boolean;
-  setIsLoading: (value: boolean) => void;
+  nextLoading: boolean;
+  setNextLoading: (value: boolean) => void;
+  prevLoading: boolean;
+  setPrevLoading: (value: boolean) => void;
   nextDisabled: boolean;
   setNextDisabled: (value: boolean) => void;
   isMyPhone: boolean;
@@ -42,8 +44,10 @@ const SellContext = createContext<SellContextProps>({
   setCurrentHome: () => {},
   newHome: null,
   setNewHome: () => {},
-  isLoading: false,
-  setIsLoading: () => {},
+  nextLoading: false,
+  setNextLoading: () => {},
+  prevLoading: false,
+  setPrevLoading: () => {},
   nextDisabled: false,
   setNextDisabled: () => {},
   isMyPhone: false,
@@ -63,7 +67,9 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinished
   const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
   const [currentHome, setCurrentHome] = useState<HomeType | null>(unfinishedHome);
   const [newHome, setNewHome] = useState<HomeType | null>(unfinishedHome);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  const [nextLoading, setNextLoading] = useState(false);
+  const [prevLoading, setPrevLoading] = useState(false);
   const [nextDisabled, setNextDisabled] = useState(false);
   const [isMyPhone, setIsMyPhone] = useState(false);
 
@@ -101,8 +107,10 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinished
         setCurrentHome,
         newHome,
         setNewHome,
-        isLoading,
-        setIsLoading,
+        nextLoading,
+        setNextLoading,
+        prevLoading,
+        setPrevLoading,
         nextDisabled,
         setNextDisabled,
         isMyPhone,

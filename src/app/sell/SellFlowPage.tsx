@@ -19,14 +19,15 @@ const getTotalSteps = (step1: number, step2: number) => {
 };
 
 export default function SellFlowPage({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setIsLoading } =
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNextLoading, setPrevLoading } =
     useContext(SellContext);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   const step = currentHome?.listingFlowStep;

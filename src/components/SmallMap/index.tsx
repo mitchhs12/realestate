@@ -44,7 +44,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
 
   const { resolvedTheme: theme } = useTheme();
   const { newZoom, setNewZoom } = useContext(QueryContext);
-  const { setNewHome, currentHome, setIsLoading } = useContext(SellContext);
+  const { setNewHome, currentHome, setNextLoading, setPrevLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
@@ -83,15 +83,32 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
         longitude: data.location[0],
         latitude: data.location[1],
       });
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   };
 
-  const handleCameraChanged = useCallback((ev: MapCameraChangedEvent) => {
-    setIsLoading(true);
-    setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
-    setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
-    getAddress(ev.detail.center.lat, ev.detail.center.lng);
-  }, []);
+  const debounce = (func: (...args: any[]) => void, delay: number) => {
+    let timer: NodeJS.Timeout;
+    return (...args: any[]) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const debouncedGetAddress = useCallback(debounce(getAddress, 200), []);
+
+  const handleCameraChanged = useCallback(
+    (ev: MapCameraChangedEvent) => {
+      setNextLoading(true);
+      setPrevLoading(true);
+      setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
+      setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
+      debouncedGetAddress(ev.detail.center.lat, ev.detail.center.lng);
+    },
+    [debouncedGetAddress]
+  );
 
   useEffect(() => {
     if (theme) {

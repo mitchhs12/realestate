@@ -18,7 +18,8 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
     setStepPercentage,
     currentHome,
     setNewHome,
-    setIsLoading,
+    setNextLoading,
+    setPrevLoading,
     setNextDisabled,
   } = useContext(SellContext);
 
@@ -28,7 +29,8 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
     setNextDisabled(false);
   }, []);
 

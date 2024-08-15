@@ -18,8 +18,15 @@ interface Props {
 }
 
 export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    currentHome,
+    setNewHome,
+  } = useContext(SellContext);
   const { defaultCurrency, currencies } = useContext(CurrencyContext);
 
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
@@ -60,7 +67,8 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   const handlePriceChange = (value: string | undefined) => {

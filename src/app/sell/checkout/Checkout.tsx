@@ -13,8 +13,15 @@ interface Props {
 }
 
 export default function Checkout({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    currentHome,
+    setNewHome,
+  } = useContext(SellContext);
 
   const [selected, setSelected] = useState<string>(currentHome?.listingType ? currentHome?.listingType : "");
 
@@ -24,7 +31,8 @@ export default function Checkout({ user, sellFlatIndex, sellFlowIndices, stepPer
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   useEffect(() => {

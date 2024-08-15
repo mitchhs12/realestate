@@ -9,7 +9,6 @@ import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -20,8 +19,7 @@ export default function Header() {
   const session = useSession();
   const user = session.data?.user;
 
-  const { resolvedTheme } = useTheme();
-  const themeBool = resolvedTheme === "dark" ? true : false;
+  const timestamp = new Date().getTime();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -89,7 +87,7 @@ export default function Header() {
             <Button
               className="gap-2 items-center"
               onClick={() => {
-                user ? router.replace("/sell") : openSignUpModal();
+                user ? router.push(`/sell?_ts=${timestamp}`) : openSignUpModal();
               }}
             >
               <Icons.sell_home />
@@ -114,7 +112,8 @@ export default function Header() {
               <Button
                 className="hidden xs:flex gap-2 items-center"
                 onClick={() => {
-                  user ? router.replace("/sell") : openSignUpModal();
+                  const timestamp = new Date().getTime();
+                  user ? router.push(`/sell?_ts=${timestamp}`) : openSignUpModal();
                 }}
               >
                 <Icons.sell_home />

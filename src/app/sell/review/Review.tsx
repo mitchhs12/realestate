@@ -18,14 +18,15 @@ interface Props {
 }
 
 export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading, currentHome } =
     useContext(SellContext);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   const title = currentHome?.title || "";

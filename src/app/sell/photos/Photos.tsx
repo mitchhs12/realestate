@@ -99,7 +99,8 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
-    setIsLoading,
+    setNextLoading,
+    setPrevLoading,
     currentHome,
     setNewHome,
     setNextDisabled,
@@ -115,7 +116,8 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     retrievePhotos();
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   useEffect(() => {
@@ -308,7 +310,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
                               </div>
                               <input
                                 className={`relative flex w-full h-full opacity-0 ${!isUploading && "cursor-pointer"}`}
-                                accept="images/*"
+                                accept="image/*"
                                 type="file"
                                 multiple
                                 onChange={handleFileChange}

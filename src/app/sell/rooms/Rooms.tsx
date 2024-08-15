@@ -16,8 +16,15 @@ interface Props {
 }
 
 export default function Rooms({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    currentHome,
+    setNewHome,
+  } = useContext(SellContext);
 
   const [bedrooms, setBedrooms] = useState(currentHome?.bedrooms || 0);
   const [bathrooms, setBathrooms] = useState(currentHome?.bathrooms || 0);
@@ -28,7 +35,8 @@ export default function Rooms({ user, sellFlatIndex, sellFlowIndices, stepPercen
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    setIsLoading(false);
+    setNextLoading(false);
+    setPrevLoading(false);
   }, []);
 
   useEffect(() => {
