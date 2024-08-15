@@ -5,7 +5,14 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  CarouselDots,
+} from "@/components/ui/carousel";
 import { getFlagEmoji } from "@/lib/utils";
 
 interface CityImage {
@@ -219,7 +226,7 @@ export default function Locations() {
             className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card hover:cursor-pointer"
             onClick={() => {}}
           >
-            <Carousel>
+            <Carousel onMouseLeave={() => setUnderlinedImage("")}>
               <CarouselContent>
                 <CarouselItem
                   key={city.name}
@@ -292,16 +299,23 @@ export default function Locations() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              {/* <CarouselDots className="absolute w-full justify-center items-center bottom-4" /> */}
               {
                 <CarouselPrevious
                   className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
                   onCustomClick={(canScrollPrev: boolean) => handlePreviousClick(canScrollPrev, cityIndex)}
+                  onMouseOver={() => {
+                    setUnderlinedImage(hoveredImageSearch);
+                  }}
                 />
               }
               {
                 <CarouselNext
                   className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
                   onCustomClick={(canScrollNext: boolean) => handleNextClick(canScrollNext, cityIndex)}
+                  onMouseOver={() => {
+                    setUnderlinedImage(hoveredImageSearch);
+                  }}
                 />
               }
             </Carousel>

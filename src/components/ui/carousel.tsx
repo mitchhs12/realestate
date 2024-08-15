@@ -40,7 +40,7 @@ function useCarousel() {
   return context;
 }
 
-const CarouselDots = ({ className }: any) => {
+export const CarouselDots = ({ className }: any) => {
   const { api } = useCarousel();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [slidesCount, setSlidesCount] = React.useState(0);
@@ -191,7 +191,6 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
           {...props}
         >
           {children}
-          <CarouselDots className="absolute w-full justify-center items-center bottom-4" />
         </div>
       </CarouselContext.Provider>
     );
@@ -210,6 +209,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
           className={cn("flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", className)}
           {...props}
         />
+        <CarouselDots className="absolute w-full justify-center items-center bottom-4" />
       </div>
     );
   }

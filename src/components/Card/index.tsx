@@ -6,6 +6,7 @@ import { iso31661, iso31661Alpha3ToAlpha2 } from "iso-3166";
 import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext } from "react";
 import { CurrencyContext } from "@/context/CurrencyContext";
+import { useState } from "react";
 
 interface Props {
   home: HomeType | null;
@@ -13,9 +14,10 @@ interface Props {
 
 export default function Card({ home }: Props) {
   const { defaultCurrency, currencyRate } = useContext(CurrencyContext);
+  const [titleUnderlined, setTitleUnderlined] = useState(false);
 
   return !home ? (
-    <>
+    <div className="flex flex-col h-84 w-44 md:w-52 space-y-2">
       <Skeleton className="rounded-t-xl h-40 w-44 md:w-52" />
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-32" />
@@ -24,9 +26,17 @@ export default function Card({ home }: Props) {
         <Skeleton className="h-3 sm:h-3 lg:h-4 w-28" />
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-36 font-semibold" />
       </div>
-    </>
+    </div>
   ) : (
-    <>
+    <div
+      className="flex flex-col h-84 w-44 md:w-52 space-y-2"
+      onMouseOver={() => {
+        setTitleUnderlined(true);
+      }}
+      onMouseLeave={() => {
+        setTitleUnderlined(false);
+      }}
+    >
       <Carousel>
         <CarouselContent>
           {home.photos.map((photo: string, index) => (
@@ -49,7 +59,9 @@ export default function Card({ home }: Props) {
       <div className="flex flex-col justify-center items-center w-full gap-2 px-2">
         <div className={`w-full flex ${home.title && home.title.length > 20 ? "justify-start" : "justify-center"}`}>
           <h2
-            className={`text-sm md:text-md lg:text-lg xl:text-xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis`}
+            className={`text-sm md:text-md lg:text-lg xl:text-xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis ${
+              titleUnderlined && "underline"
+            }`}
           >
             {home.title}
           </h2>
@@ -65,6 +77,6 @@ export default function Card({ home }: Props) {
           {formatPrice(defaultCurrency, home.priceUsd * currencyRate)}
         </div>
       </div>
-    </>
+    </div>
   );
 }
