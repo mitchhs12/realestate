@@ -187,6 +187,11 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     setIsUploading(true);
     const files = event.target.files;
     if (files && currentHome) {
+      if (files.length + uploadedImageUrls.length > 12) {
+        alert("You can only upload up to 12 photos!");
+        setIsUploading(false);
+        return;
+      }
       const formData = new FormData();
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -257,13 +262,20 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
             <h1 className="flex items-center text-3xl">Photos</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">Upload at least 5 photos.</h3>
+            <h3 className="text-lg w-full">
+              {uploadedImageUrls.length < 5
+                ? "Upload at least 5 photos."
+                : uploadedImageUrls.length < 12
+                ? "Upload up to 12 photos."
+                : "You have uploaded the maximum amount of photos."}
+            </h3>
             {uploadedImageUrls.length > 0 && <h4>Drag photos to rearrange their order.</h4>}
+            {uploadedImageUrls.length < 5 && <h4>Upload up to 12 photos.</h4>}
           </div>
         </div>
         <div className="flex gap-4 p-8 w-full h-full justify-center">
-          <div className="flex overflow-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 gap-4 w-full h-[1/2]">
+          <div className="flex overflow-y-auto w-full h-full max-w-7xl">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 md:grid-rows-4 lg:grid-cols-4 gap-4 w-full">
               <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -291,39 +303,43 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
                   )}
                 </DragOverlay>
               </DndContext>
-              <div className="flex items-center justify-center border-2">
-                <Form {...form}>
-                  <form className="flex justify-start space-y-6 w-full h-full">
-                    <FormField
-                      control={form.control}
-                      name="username"
-                      render={() => (
-                        <FormItem className="flex flex-col justify-start items-start w-full h-full">
-                          <FormControl className="w-full h-full">
-                            <div
-                              className={`relative flex w-full h-full justify-center items-center bg-card ${
-                                !isUploading && "hover:bg-muted"
-                              } border-2`}
-                            >
-                              <div className="absolute flex justify-center items-center w-full h-full">
-                                {isUploading ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Icons.image_icon />}
+              {uploadedImageUrls.length < 12 && (
+                <div className="flex items-center justify-center border-2">
+                  <Form {...form}>
+                    <form className="flex justify-start space-y-6 w-full h-full">
+                      <FormField
+                        control={form.control}
+                        name="username"
+                        render={() => (
+                          <FormItem className="flex flex-col justify-start items-start w-full h-full">
+                            <FormControl className="w-full h-full">
+                              <div
+                                className={`relative flex w-full h-full justify-center items-center bg-card ${
+                                  !isUploading && "hover:bg-muted"
+                                } border-2`}
+                              >
+                                <div className="absolute flex justify-center items-center w-full h-full">
+                                  {isUploading ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Icons.image_icon />}
+                                </div>
+                                <input
+                                  className={`relative flex w-full h-full opacity-0 ${
+                                    !isUploading && "cursor-pointer"
+                                  }`}
+                                  accept="image/*"
+                                  type="file"
+                                  multiple
+                                  onChange={handleFileChange}
+                                  disabled={isUploading}
+                                />
                               </div>
-                              <input
-                                className={`relative flex w-full h-full opacity-0 ${!isUploading && "cursor-pointer"}`}
-                                accept="image/*"
-                                type="file"
-                                multiple
-                                onChange={handleFileChange}
-                                disabled={isUploading}
-                              />
-                            </div>
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                  </form>
-                </Form>
-              </div>
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </form>
+                  </Form>
+                </div>
+              )}
             </div>
           </div>
         </div>
