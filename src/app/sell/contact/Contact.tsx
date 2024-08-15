@@ -5,6 +5,7 @@ import { SellContext } from "@/context/SellContext";
 import { Input } from "@/components/ui/input";
 import CustomPhoneInput from "@/components/CustomPhoneComponent";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { Switch } from "@/components/ui/switch";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
@@ -16,8 +17,16 @@ interface Props {
 }
 
 export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome, setNewHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setIsLoading,
+    currentHome,
+    setNewHome,
+    setIsMyPhone,
+    isMyPhone,
+  } = useContext(SellContext);
 
   const [propertyOwnerName, setPropertyOwnerName] = useState<string>(
     currentHome?.contactName ? currentHome.contactName : user.name || ""
@@ -65,9 +74,9 @@ export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPerc
           </div>
         </div>
         <div className="flex h-full w-2/3 justify-center pt-12 gap-8">
-          <div className="flex flex-col items-start gap-4 w-full">
+          <div className="flex flex-col items-start gap-6 md:gap-12 w-full">
             <div className="flex flex-col md:flex-row items-center gap-3 w-full">
-              <h2 className="flex font-medium text-right w-1/12 justify-end">Name:</h2>
+              <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">Name:</h2>
               <div className="flex w-full">
                 <Input
                   value={propertyOwnerName}
@@ -77,7 +86,7 @@ export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPerc
               </div>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-3 w-full">
-              <h2 className="flex font-medium text-right w-1/12 justify-end">Email:</h2>
+              <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">Email:</h2>
               <div className="flex w-full">
                 <Input
                   value={propertyOwnerEmail}
@@ -86,15 +95,27 @@ export default function Contact({ user, sellFlatIndex, sellFlowIndices, stepPerc
                 />
               </div>
             </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 w-full">
-              <h2 className="flex font-medium text-right w-1/12 justify-end">Mobile:</h2>
-              <div className="flex w-full">
-                <CustomPhoneInput
-                  value={propertyOwnerPhone}
-                  onChange={setPropertyOwnerPhone}
-                  placeholder="Enter the property owner's mobile number..."
-                />
+            <div className="flex-col w-full h-full">
+              <div className="flex flex-col md:flex-row items-center gap-3 w-full">
+                <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">Mobile:</h2>
+                <div className="flex w-full items-center">
+                  <CustomPhoneInput
+                    value={propertyOwnerPhone}
+                    onChange={setPropertyOwnerPhone}
+                    placeholder="Enter the property owner's mobile..."
+                  />
+                </div>
               </div>
+              {currentHome?.contactPhone !== propertyOwnerPhone && (
+                <div className="flex flex-row justify-center md:justify-end items-center gap-2 w-full pt-3">
+                  <h2 className="flex font-light text-sm xs:text-base text-right text-nowrap">
+                    Set as my phone number
+                  </h2>
+                  <div className="flex items-center">
+                    <Switch checked={isMyPhone} onCheckedChange={() => setIsMyPhone(!isMyPhone)} />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -171,7 +171,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
       reader.onload = (e) => {
         const img = new (window as any).Image();
         img.onload = () => {
-          const isValid = img.width >= 480 && img.height >= 320; // Example dimensions check
+          const isValid = img.width >= 500; // Example dimensions check
           resolve(isValid);
         };
         img.onerror = () => resolve(false);
@@ -256,6 +256,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
           </div>
           <div className="flex flex-col px-8 mt-5">
             <h3 className="text-lg w-full">Upload at least 5 photos.</h3>
+            {uploadedImageUrls.length > 0 && <h4>Drag photos to rearrange their order.</h4>}
           </div>
         </div>
         <div className="flex gap-4 p-8 w-full h-full justify-center">

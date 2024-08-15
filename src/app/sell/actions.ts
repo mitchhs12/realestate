@@ -7,6 +7,7 @@ import { HomeType, homeSchema } from "@/lib/validations";
 import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
 import { currencyOptions } from "@/lib/validations";
+import { updatePhone } from "@/app/settings/actions";
 
 interface ResponseObj {
   success: boolean;
@@ -129,7 +130,8 @@ export async function sellHome(): Promise<ResponseObj> {
 export async function updateHome(
   homeValues: HomeType | null,
   currentPage: string,
-  shouldIncreaseListingFlowStep: boolean
+  shouldIncreaseListingFlowStep: boolean,
+  isMyPhone = false
 ): Promise<HomeType> {
   const session = await auth();
   const userId = session?.user?.id;
@@ -150,15 +152,29 @@ export async function updateHome(
     });
   } else {
     if (shouldIncreaseListingFlowStep) {
-      // Update existing home
+      const promises: Promise<any>[] = [];
+
+      // Check for updating phone number and add the promise to the array
+      if (homeValues.contactPhone && session.user.phoneNumber !== homeValues?.contactPhone && isMyPhone) {
+        promises.push(updatePhone({ phoneNumber: homeValues.contactPhone }));
+      }
+
+      // Update existing home and add the promise to the array
       const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
 
       const newData = { ...homeData, listingFlowStep: listingFlowStep + 1 };
 
-      updatedHome = await prisma.home.update({
-        where: { id: id },
-        data: newData,
-      });
+      promises.push(
+        prisma.home.update({
+          where: { id: id },
+          data: newData,
+        })
+      );
+
+      // Wait for all promises to resolve
+      const [, homeUpdateResult] = await Promise.all(promises);
+
+      updatedHome = homeUpdateResult;
     } else {
       const { id, ...homeData } = homeSchema.parse(homeValues);
 

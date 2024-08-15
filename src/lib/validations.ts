@@ -9,6 +9,10 @@ export const updateEmailSchema = z.object({
   email: z.string().email("Invalid email").min(1, "Cannot be empty"),
 });
 
+export const updatePhoneSchema = z.object({
+  phoneNumber: z.string().min(1, "Cannot be empty"),
+});
+
 export const updateCurrencySchema = z.object({
   currency: z.string().min(1, "Cannot be empty"),
 });
@@ -53,6 +57,7 @@ export const homeSchema = z.object({
 
 export type UpdateNameValues = z.infer<typeof updateNameSchema>;
 export type UpdateEmailValues = z.infer<typeof updateEmailSchema>;
+export type UpdatePhoneValues = z.infer<typeof updatePhoneSchema>;
 export type UpdateCurrencyValues = z.infer<typeof updateCurrencySchema>;
 export type UpdateSettingsValues = z.infer<typeof updateSettingsSchema>;
 

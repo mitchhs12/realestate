@@ -8,7 +8,6 @@ import { ReloadIcon, CrossCircledIcon, CheckCircledIcon } from "@radix-ui/react-
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { capitalizeFirstLetter } from "@/lib/utils";
-import { currencyOptions } from "@/lib/validations";
 import { formatPrice } from "@/lib/utils";
 
 interface Props {
@@ -66,9 +65,11 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
     });
   };
 
+  console.log("currency", currency, "price", price);
+
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-20 w-full max-w-5xl h-full justify-start items-center text-center">
+      <div className="flex flex-col mb-20 w-full max-w-3xl h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">Review</h1>
@@ -140,7 +141,7 @@ export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage 
                         <span>{capacity}</span>
                       </div>
                       <div className="flex justify-between w-full">
-                        <strong>
+                        <strong className="flex justify-start">
                           Area{" "}
                           <button
                             className="hover:bg-accent hover:text-accent-foreground underline"

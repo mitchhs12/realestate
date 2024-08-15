@@ -21,16 +21,14 @@ export default async function Home() {
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-zinc-950">
           <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full px-2">
             <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light ">
-              {"Featured Listings"}
+              {"Popular"}
             </h2>
             <Listings type={"featured"} />
           </div>
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full bg-white dark:bg-black">
           <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full px-2">
-            <h2 className="flex justify-center text-sm md:text-md lg:text-lg xl:text-lg font-light">
-              {"Recent Listings"}
-            </h2>
+            <h2 className="flex justify-center text-sm md:text-md lg:text-lg xl:text-lg font-light">{"Newest"}</h2>
             <Listings type={"new"} />
           </div>
         </section>

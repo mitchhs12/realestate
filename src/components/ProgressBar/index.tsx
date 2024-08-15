@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { SellContext } from "@/context/SellContext";
 import { sellSteps, stepsFlattened, stepLengths } from "@/lib/sellFlowData";
 import { updateHome, sellHome } from "@/app/sell/actions";
+import { updatePhone } from "@/app/settings/actions";
 
 export default function ProgressBar() {
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function ProgressBar() {
     sellFlowFlatIndex,
     setNewHome,
     nextDisabled,
+    isMyPhone,
   } = useContext(SellContext);
 
   router.prefetch(nextStep);
@@ -106,7 +108,7 @@ export default function ProgressBar() {
       setCurrentHome(_newHome);
       router.push(nextStep);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-      const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep());
+      const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
       setCurrentHome(_newHome);
       setNewHome(_newHome);
       router.push(nextStep);
@@ -155,7 +157,7 @@ export default function ProgressBar() {
               {!isLoading
                 ? prevStep !== ""
                   ? pathname.startsWith("/sell/review")
-                    ? "Sell!"
+                    ? "Finish!"
                     : "Next"
                   : currentHome
                   ? "Continue listing"

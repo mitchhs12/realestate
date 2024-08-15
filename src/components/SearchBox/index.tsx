@@ -118,7 +118,9 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
       return;
     }
     if (results.length > 0 && !loading && !isNavigating.current) {
-      setPopoverOpen(true);
+      if (results.length !== 1 && query !== results[0].Text) {
+        setPopoverOpen(true);
+      }
     }
   }, [results]);
 

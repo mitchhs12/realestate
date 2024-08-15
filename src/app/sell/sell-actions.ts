@@ -3,6 +3,7 @@
 import { auth } from "@/auth";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
+import sharp from "sharp";
 
 async function uploadToS3(file: Buffer, homeId: string, fileName: string, fileType: string) {
   const params = {
@@ -47,7 +48,16 @@ export async function uploadPhotos(formData: FormData) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    return uploadToS3(buffer, homeId, file.name, file.type);
+
+    // Compress and convert to AVIF format using sharp
+    const avifBuffer = await sharp(buffer)
+      .resize({ width: 500, height: 500, fit: "outside" }) // Resize while maintaining aspect ratio
+      .avif({ quality: 80 }) // Adjust quality as needed { quality: 80 }
+      .toBuffer();
+
+    const avifFileName = file.name.replace(/\.[^/.]+$/, ".avif"); // Change file extension to .avif
+
+    return uploadToS3(avifBuffer, homeId, avifFileName, "image/avif");
   });
 
   const fileUrls = await Promise.all(uploadPromises);

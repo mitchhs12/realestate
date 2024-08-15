@@ -17,7 +17,7 @@ interface SearchResult {
   placeId: string;
 }
 
-export default function Location({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Location({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setIsLoading, currentHome } =
     useContext(SellContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });

@@ -2,7 +2,14 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { updateSettingsSchema, UpdateSettingsValues, updateEmailSchema, UpdateEmailValues } from "@/lib/validations";
+import {
+  updateSettingsSchema,
+  UpdateSettingsValues,
+  updateEmailSchema,
+  UpdateEmailValues,
+  updatePhoneSchema,
+  UpdatePhoneValues,
+} from "@/lib/validations";
 import { auth } from "@/auth";
 
 // Settings Page Actions
@@ -48,4 +55,23 @@ export async function updateEmail(values: UpdateEmailValues) {
   });
 
   revalidatePath("/");
+}
+
+export async function updatePhone(values: UpdatePhoneValues) {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    throw new Error("User not found");
+  }
+  const { phoneNumber } = updatePhoneSchema.parse(values);
+
+  await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      phoneNumber,
+    },
+  });
 }
