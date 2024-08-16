@@ -1,5 +1,10 @@
 import CombinedSearchPage from "@/components/CombinedSearchPage";
 import { CoordinatesType } from "@/lib/validations";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Search",
+};
 
 export default async function Page({ params }: { params: { search: string } }) {
   const AWS_LOCATION_SERVICE_ENDPOINT = process.env.AWS_LOCATION_SERVICE_ENDPOINT;

@@ -2,7 +2,6 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { BoundsType } from "@/lib/validations";
 import { HomesGeoJson, HomeFeatureProps } from "@/lib/validations";
 import { Feature, Point } from "geojson";

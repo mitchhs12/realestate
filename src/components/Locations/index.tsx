@@ -299,7 +299,6 @@ export default function Locations() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              {/* <CarouselDots className="absolute w-full justify-center items-center bottom-4" /> */}
               {
                 <CarouselPrevious
                   className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"

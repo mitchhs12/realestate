@@ -29,7 +29,7 @@ interface Props {
 export default function CombinedSearchPage({ coordinates, label }: Props) {
   const { mapFocused, setMapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
-  const [homes, setHomes] = useState<(HomeType | null)[]>(Array(15).fill(null));
+  const [homes, setHomes] = useState<(HomeType | null)[]>(Array(12).fill(null));
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
   const [isSearchLoading, setIsSearchLoading] = useState(true);
   const [isMapLoading, setIsMapLoading] = useState(true);
