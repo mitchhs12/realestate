@@ -126,7 +126,7 @@
   height: 30px;
 }
 
-// THIS IS FOR THE GOOGLE MAPS OUTLINE BORDER
+/* THIS IS FOR THE GOOGLE MAPS OUTLINE BORDER*/
 .gm-style iframe + div {
   border: none !important;
 }
