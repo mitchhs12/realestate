@@ -41,7 +41,7 @@ export default function Card({ home }: Props) {
       <Carousel>
         <CarouselContent>
           {home.photos.map((photo: string, index) => (
-            <Link href={`/homes/${home.id}`}>
+            <Link key={index} href={`/homes/${home.id}`}>
               <CarouselItem key={index} className="flex justify-center items-center">
                 <div className="relative flex justify-center items-center h-40 w-44 md:w-52">
                   <Image
