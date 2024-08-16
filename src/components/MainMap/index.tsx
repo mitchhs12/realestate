@@ -128,6 +128,7 @@ export default function MapComponent({
           </div>
         ) : (
           <Map
+            gestureHandling={"greedy"}
             onBoundsChanged={handleBoundsChanged}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             zoom={newZoom !== 16 ? newZoom : 16}
