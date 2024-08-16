@@ -223,7 +223,7 @@ export default function Locations() {
         {imageMap.map((city, cityIndex) => (
           <div
             key={city.name}
-            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card hover:cursor-pointer"
+            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-48 2xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card hover:cursor-pointer"
             onClick={() => {}}
           >
             <Carousel onMouseLeave={() => setUnderlinedImage("")}>
@@ -236,7 +236,7 @@ export default function Locations() {
                   }}
                 >
                   <div
-                    className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
+                    className="relative flex justify-center items-center h-40 w-44 md:w-52 lg:w-52 xl:w-48 2xl:w-52"
                     onClick={() => {
                       setClickedLocation(true);
                       setQuery(city.name);

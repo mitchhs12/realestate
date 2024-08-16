@@ -41,7 +41,7 @@ export default function SearchResults({ homes, isSearchLoading, label, bounds }:
           homes.map((home, index) => (
             <div key={index} className="flex p-6 justify-center items-start h-full w-full">
               <div
-                className={`rounded-xl h-78 w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card  ${
+                className={`flex justify-center rounded-xl h-78 w-44 md:w-52 xl:w-48 2xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card  ${
                   isSearchLoading && index >= 4 && "hidden sm:block"
                 }
               ${isSearchLoading && index >= 9 && "sm:hidden lg:block"}

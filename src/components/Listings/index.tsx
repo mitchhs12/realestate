@@ -38,7 +38,7 @@ export default function Listings({ type }: Props) {
         {homes.map((home, index) => (
           <div
             key={index}
-            className={`flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card
+            className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-card bg-card rounded-xl
               ${index >= 4 && "hidden sm:block"}
               ${index >= 3 && "sm:hidden lg:block"}
               ${index >= 4 && "lg:hidden xl:block"}

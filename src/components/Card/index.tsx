@@ -7,6 +7,7 @@ import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext } from "react";
 import { CurrencyContext } from "@/context/CurrencyContext";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 
 interface Props {
@@ -19,8 +20,8 @@ export default function Card({ home, isLoading }: Props) {
   const [titleUnderlined, setTitleUnderlined] = useState(false);
 
   return !home || isLoading ? (
-    <div className="flex flex-col h-84 w-44 md:w-52 space-y-2">
-      <Skeleton className="rounded-t-xl h-40 w-44 md:w-52" />
+    <div className="flex flex-col h-84 w-44 md:w-52 xl:w-48 2xl:w-52 space-y-2">
+      <Skeleton className="rounded-none rounded-t-xl h-40 w-full" />
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-4 w-24" />
@@ -31,7 +32,7 @@ export default function Card({ home, isLoading }: Props) {
     </div>
   ) : (
     <div
-      className="flex flex-col h-84 w-44 md:w-52 space-y-2"
+      className="flex flex-col h-84 w-44 md:w-52 xl:w-48 2xl:w-52 space-y-2"
       onMouseOver={() => {
         setTitleUnderlined(true);
       }}
@@ -40,14 +41,14 @@ export default function Card({ home, isLoading }: Props) {
       }}
     >
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="rounded-t-xl">
           {home.photos.map((photo: string, index) => (
             <Link key={index} href={`/homes/${home.id}`}>
-              <CarouselItem key={index} className="flex justify-center items-center">
-                <div className="relative flex justify-center items-center h-40 w-44 md:w-52">
+              <CarouselItem key={index} className={`flex relative justify-center items-center rounded-t-xl`}>
+                <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
                   <Image
                     src={photo}
-                    className="rounded-t-xl object-cover object-center"
+                    className="object-cover object-center rounded-t-lg"
                     alt={home.title!}
                     fill={true}
                     sizes={"(max-width: 500px), (max-height: 500px)"}
