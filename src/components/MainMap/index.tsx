@@ -128,6 +128,7 @@ export default function MapComponent({
           </div>
         ) : (
           <Map
+            clickableIcons={false}
             gestureHandling={"greedy"}
             onBoundsChanged={handleBoundsChanged}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}

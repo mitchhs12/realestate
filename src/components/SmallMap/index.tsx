@@ -138,6 +138,8 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
           </div>
         ) : (
           <Map
+            clickableIcons={false}
+            gestureHandling={"greedy"}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             maxZoom={20}
             minZoom={17}

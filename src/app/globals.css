@@ -126,6 +126,11 @@
   height: 30px;
 }
 
+// THIS IS FOR THE GOOGLE MAPS OUTLINE BORDER
+.gm-style iframe + div {
+  border: none !important;
+}
+
 section.progress-section {
   padding-bottom: env(safe-area-inset-bottom);
 }
