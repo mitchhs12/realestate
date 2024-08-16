@@ -144,14 +144,14 @@ export default function MapComponent({
             reuseMaps={true}
             className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
           >
-            {/* {homesGeoJson && (
+            {homesGeoJson && (
               <ClusteredMarkers
                 geojson={homesGeoJson}
                 setNumClusters={setNumClusters}
                 setInfowindowData={setInfowindowData}
                 theme={theme}
               />
-            )} */}
+            )}
 
             {infowindowData && (
               <InfoWindow
