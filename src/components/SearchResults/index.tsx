@@ -48,7 +48,7 @@ export default function SearchResults({ homes, isSearchLoading, label, bounds }:
               ${isSearchLoading && index >= 6 && "lg:hidden xl:block"}
               ${isSearchLoading && index >= 9 && "xl:hidden 2xl:block"}`}
               >
-                <Card home={home} />
+                <Card home={home} isLoading={isSearchLoading} />
               </div>
             </div>
           ))

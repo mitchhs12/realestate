@@ -11,13 +11,14 @@ import Link from "next/link";
 
 interface Props {
   home: HomeType | null;
+  isLoading?: boolean;
 }
 
-export default function Card({ home }: Props) {
+export default function Card({ home, isLoading }: Props) {
   const { defaultCurrency, currencyRate } = useContext(CurrencyContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
 
-  return !home ? (
+  return !home || isLoading ? (
     <div className="flex flex-col h-84 w-44 md:w-52 space-y-2">
       <Skeleton className="rounded-t-xl h-40 w-44 md:w-52" />
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">

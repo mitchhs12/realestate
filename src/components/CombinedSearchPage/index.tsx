@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Drawer,
   DrawerPortal,
@@ -100,14 +101,14 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.2, 0.6, 0.9]}
+          snapPoints={[0.2, 0.5, 0.8]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
           onClose={() => setIsOpen(false)}
         >
-          <DrawerOverlay className="fixed inset-0" style={{ zIndex: 60 }} />
+          {/* <DrawerOverlay className="fixed inset-0" style={{ zIndex: 60 }} /> */}
           <DrawerContent style={{ zIndex: 60 }}>
             <div
               className={`flex flex-col justify-center items-center max-w-xl mx-auto pt-4 gap-y-2 ${
@@ -116,7 +117,11 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
             >
               <DrawerTitle>Results</DrawerTitle>
               <DrawerDescription>
-                {homes.length} properties in {bounds ? "Map Area" : label}
+                {isSearchLoading ? (
+                  <Skeleton className="w-48 h-5" />
+                ) : (
+                  `${homes.length} properties in ${bounds ? "Map Area" : label}`
+                )}
               </DrawerDescription>
 
               <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
