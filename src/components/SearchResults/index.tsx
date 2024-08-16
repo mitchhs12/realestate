@@ -35,7 +35,7 @@ export default function SearchResults({ homes, isSearchLoading, label, bounds }:
   }, [bounds]);
 
   return (
-    <div className="flex flex-col h-[90vh] md:h-full justify-start items-start w-full overflow-y-auto">
+    <div className="flex flex-col h-[90vh] md:h-full justify-start items-start w-full overflow-y-auto px-8 md:pt-8 lg:pt-4">
       <div className="w-full grid grid-cols-1 grid-rows-3 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 lg:grid-rows-3 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
         {homes ? (
           homes.map((home, index) => (
