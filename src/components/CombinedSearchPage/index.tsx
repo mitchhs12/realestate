@@ -108,8 +108,7 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
           modal={false}
           onClose={() => setIsOpen(false)}
         >
-          {/* <DrawerOverlay className="fixed inset-0" style={{ zIndex: 60 }} /> */}
-          <DrawerContent style={{ zIndex: 60 }} tabIndex={-1}>
+          <DrawerContent className="outline-none">
             <div
               className={`flex flex-col justify-center items-center max-w-xl mx-auto pt-4 min-w-72 md:px-0 gap-y-2 ${
                 snap === 1 ? "overflow-y-auto" : "overflow-hidden"
