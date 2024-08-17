@@ -19,8 +19,6 @@ export default function Header() {
   const session = useSession();
   const user = session.data?.user;
 
-  const timestamp = new Date().getTime();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
@@ -30,6 +28,7 @@ export default function Header() {
 
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
+  const isGuidesPage = pathname.includes("/guides");
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -53,7 +52,7 @@ export default function Header() {
         } items-center h-[86px] z-[40] px-6 bg-background`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex"}`}>
+          <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-3 lg:gap-6"}`}>
             <Link href="/">
               <Button
                 size={"largeIcon"}
@@ -69,19 +68,36 @@ export default function Header() {
                       isSearchPage ? "hidden 2xl:flex" : "hidden sm:flex"
                     } text-lg pr-2 font-normal align-middle`}
                   >
-                    VIVA IDEAL
+                    Viva Ideal
                   </h1>
                 </div>
               </Button>
             </Link>
+            {!isSearchPage && !isSellPage && !isGuidesPage && (
+              <Link href="/guides">
+                <Button
+                  size={"largeIcon"}
+                  variant="outline"
+                  className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                >
+                  <div className="flex justify-center text-center items-center gap-2 p-1">
+                    <div className="flex justify-center items-center">
+                      <Icons.book_icon width={"22"} height={"22"} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden xs:flex xs:text-inline pr-1 align-middle`}>Guides</h1>
+                  </div>
+                </Button>
+              </Link>
+            )}
           </div>
         )}
-
         {isSearchPage && (
           <div className="justify-center">
             <SearchBox isSmallMap={false} />
           </div>
         )}
+
+        {/* This is the home page specific
         {!isSearchPage && !isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3"} xs:hidden justify-center`}>
             <Button
@@ -95,22 +111,21 @@ export default function Header() {
               <span className="hidden xs:inline">Sell your property</span>
             </Button>
           </div>
-        )}
+        )} */}
 
         {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center items-center text-center pb-8 pt-8">
-            <span className="text-md md:text-2xl">This site is under construction.</span>
-            <span className="text-sm md:text-lg">
+            <span className="text-sm md:text-lg">This site is under construction.</span>
+            <span className="text-xs md:text-md">
               Please create an account, and we&apos;ll email you when it&apos;s ready.
             </span>
           </h1>
         )}
-
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3"} gap-6 justify-end`}>
+          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow"} gap-3 lg:gap-6 justify-end`}>
             {!isSearchPage && (
               <Button
-                className="hidden xs:flex gap-2 items-center"
+                className="flex gap-2 items-center"
                 onClick={() => {
                   user ? router.push("/sell") : openSignUpModal();
                 }}
@@ -125,7 +140,6 @@ export default function Header() {
             </div>
           </div>
         )}
-
         {isSellPage && (
           <Button
             variant="outline"

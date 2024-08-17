@@ -2,13 +2,12 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
-import { iso31661, iso31661Alpha3ToAlpha2 } from "iso-3166";
 import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext } from "react";
 import { CurrencyContext } from "@/context/CurrencyContext";
 import { useState } from "react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
+import lookup from "country-code-lookup";
 
 interface Props {
   home: HomeType | null;
@@ -76,8 +75,8 @@ export default function Card({ home, isLoading }: Props) {
           <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.municipality}</div>
           <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.region}</div>
           <div className="flex text-center text-sm sm:text-sm lg:text-md">
-            {iso31661.find((country) => country.alpha3 === home.country)?.name}{" "}
-            {home.country && getFlagEmoji(iso31661Alpha3ToAlpha2[home.country])}
+            {home.country && lookup.byIso(home.country)?.country}{" "}
+            {home.country && getFlagEmoji(lookup.byIso(home.country)?.iso2 || "")}
           </div>
           <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
             {formatPrice(defaultCurrency, home.priceUsd * currencyRate)}

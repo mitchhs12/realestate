@@ -6,11 +6,11 @@ export default function Hero() {
   return (
     <div className="relative h-[20vh] flex w-full">
       <Image
-        src="/house.jpg"
+        src="https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/banners/banner.avif"
         alt="background"
         fill={true}
         style={{ objectFit: "cover" }}
-        quality={100}
+        quality={80}
         priority={true}
         className="-z-10 opacity-30 dark:opacity-20"
       />

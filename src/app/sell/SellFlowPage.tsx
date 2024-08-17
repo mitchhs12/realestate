@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "next-auth";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useContext } from "react";
 import { SellContext } from "@/context/SellContext";

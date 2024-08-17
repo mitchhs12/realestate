@@ -126,4 +126,28 @@ export const currencyOptions: ReadonlyArray<{ locale: string; currency: string; 
   { locale: "ka-GE", currency: "GEL", decimalsLimit: 2 },
 ];
 
+export const sellGuides: string[] = [
+  "United States",
+  "Canada",
+  "Australia",
+  "United Kingdom",
+  "Germany",
+  "France",
+  "Japan",
+  "Brazil",
+];
+
+export const buyGuides: string[] = [
+  "India",
+  "South Korea",
+  "Argentina",
+  "Peru",
+  "Colombia",
+  "Venezuela",
+  "Vietnam",
+  "Indonesia",
+  "New Zealand",
+  "Cayman Islands",
+];
+
 export type HomesGeoJson = FeatureCollection<Point, HomeFeatureProps>;
