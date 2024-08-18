@@ -84,7 +84,7 @@ export default function Header() {
                     <div className="flex justify-center items-center">
                       <Icons.book_icon width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden 2xs:flex xs:text-inline pr-1 align-middle`}>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>
                       {t("guides")}
                     </h1>
                   </div>
@@ -122,7 +122,7 @@ export default function Header() {
           </h1>
         )}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3"} gap-3 lg:gap-6 justify-end`}>
+          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-3 lg:gap-6 justify-end`}>
             {!isSearchPage && (
               <Button
                 className="flex gap-2 items-center"
@@ -131,8 +131,8 @@ export default function Header() {
                 }}
               >
                 <Icons.sell_home />
-                <span className="xs:hidden lg:hidden">{t("sell-button-small")}</span>
-                <span className="hidden xs:inline">{t("sell-button-big")}</span>
+                <span className="flex md:hidden">{t("sell-button-small")}</span>
+                <span className="hidden md:inline">{t("sell-button-big")}</span>
               </Button>
             )}
             <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
