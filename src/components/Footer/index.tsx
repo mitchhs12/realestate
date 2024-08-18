@@ -1,3 +1,6 @@
-export default function Footer() {
-  return <p>© {new Date().getFullYear()} Viva Ideal. All rights reserved.</p>;
+import { getScopedI18n } from "@/locales/server";
+
+export default async function Footer() {
+  const scopedT = await getScopedI18n("home.footer");
+  return <p>{scopedT("allRightsReserved")}</p>;
 }

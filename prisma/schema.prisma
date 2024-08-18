@@ -12,6 +12,7 @@ model User {
   id            String          @id @default(cuid())
   name          String?
   currency      String?
+  language      String?
   email         String?         @unique
   phoneNumber   String?         @unique
   emailVerified DateTime?       @map("email_verified")
@@ -89,6 +90,7 @@ model Home {
   photos          String[]
   price           Float           @default(0.0)
   currency        String?
+  language        String?
   priceUsd        Float           @default(0.0)
   priceNegotiable Boolean         @default(false)
   areaSqm         Float           @default(0.0)
@@ -119,7 +121,7 @@ model UserFavorites {
 
 model Currencies {
   symbol    String  @id
-  usdPrice  Float?
+  usdPrice  Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

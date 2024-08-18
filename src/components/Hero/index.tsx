@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
-import { poppins } from "@/app/fonts";
+import { poppins } from "@/app/[locale]/fonts";
 
 export default function Hero() {
   return (

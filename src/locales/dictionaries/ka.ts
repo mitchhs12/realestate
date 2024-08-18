@@ -1,0 +1,14 @@
+export default {
+  "home": {
+    "header": {
+      "guide": "გიდები"
+    },
+    "hero": "იპოვე შენი ოცნების სახლი.",
+    "Recommended": "რეკომენდებული ქალაქის უბნები",
+    "Popular": "პოპულარული",
+    "Newest": "უახლესი",
+    "footer": {
+      "allRightsReserved": "© 2024 Viva Ideal. ყველა უფლება დაცულია."
+    }
+  }
+} as const;

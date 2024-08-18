@@ -1,0 +1,14 @@
+export default {
+  "home": {
+    "header": {
+      "guide": "Hướng dẫn"
+    },
+    "hero": "Tìm ngôi nhà mơ ước của bạn.",
+    "Recommended": "Các quận thành phố được đề xuất",
+    "Popular": "Phổ biến",
+    "Newest": "Mới nhất",
+    "footer": {
+      "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền."
+    }
+  }
+} as const;

@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
 import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext } from "react";
-import { CurrencyContext } from "@/context/CurrencyContext";
+import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
 import Link from "next/link";
 import lookup from "country-code-lookup";
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function Card({ home, isLoading }: Props) {
-  const { defaultCurrency, currencyRate } = useContext(CurrencyContext);
+  const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
 
   return !home || isLoading ? (
@@ -79,7 +79,7 @@ export default function Card({ home, isLoading }: Props) {
             {home.country && getFlagEmoji(lookup.byIso(home.country)?.iso2 || "")}
           </div>
           <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
-            {formatPrice(defaultCurrency, home.priceUsd * currencyRate)}
+            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice)}
           </div>
         </div>
       </Link>

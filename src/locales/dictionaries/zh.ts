@@ -1,0 +1,14 @@
+export default {
+  "home": {
+    "header": {
+      "guide": "指南"
+    },
+    "hero": "找到您梦想的家。",
+    "Recommended": "推荐城市区域",
+    "Popular": "受欢迎的",
+    "Newest": "最新",
+    "footer": {
+      "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。"
+    }
+  }
+} as const;

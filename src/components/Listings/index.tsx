@@ -1,6 +1,6 @@
 "use client";
 
-import { getFeatured, getNew } from "@/app/actions";
+import { getFeatured, getNew } from "@/app/[locale]/actions";
 import { useState, useEffect } from "react";
 import { HomeType } from "@/lib/validations";
 import Card from "@/components/Card";

@@ -20,6 +20,7 @@ export const updateCurrencySchema = z.object({
 export const updateSettingsSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
   currency: z.string().min(1, "Cannot be empty"),
+  language: z.string().min(1, "Cannot be empty"),
 });
 
 export const homeSchema = z.object({
@@ -94,37 +95,59 @@ export type HomeFeatureProps = {
 
 export type CurrencyType = {
   symbol: string;
-  usdPrice: number | null;
+  usdPrice: number;
 };
 
-export const currencyOptions: ReadonlyArray<{ locale: string; currency: string; decimalsLimit: number }> = [
-  { locale: "en-US", currency: "USD", decimalsLimit: 2 },
-  { locale: "de-DE", currency: "EUR", decimalsLimit: 2 },
-  { locale: "en-GB", currency: "GBP", decimalsLimit: 2 },
-  { locale: "en-AU", currency: "AUD", decimalsLimit: 2 },
-  { locale: "ja-JP", currency: "JPY", decimalsLimit: 0 }, // Japanese Yen has no decimal places
-  { locale: "fr-CH", currency: "CHF", decimalsLimit: 2 },
-  { locale: "en-IN", currency: "INR", decimalsLimit: 2 },
-  { locale: "es-CO", currency: "COP", decimalsLimit: 2 },
-  { locale: "es-MX", currency: "MXN", decimalsLimit: 2 },
-  { locale: "es-PE", currency: "PEN", decimalsLimit: 2 },
-  { locale: "en-CA", currency: "CAD", decimalsLimit: 2 },
-  { locale: "zh-CN", currency: "CNY", decimalsLimit: 2 },
-  { locale: "en-SG", currency: "SGD", decimalsLimit: 2 },
-  { locale: "ar-AE", currency: "AED", decimalsLimit: 2 },
-  { locale: "pt-BR", currency: "BRL", decimalsLimit: 2 },
-  { locale: "zh-HK", currency: "HKD", decimalsLimit: 2 },
-  { locale: "af-ZA", currency: "ZAR", decimalsLimit: 2 },
-  { locale: "ko-KR", currency: "KRW", decimalsLimit: 0 }, // South Korean Won has no decimal places
-  { locale: "en-NZ", currency: "NZD", decimalsLimit: 2 },
-  { locale: "tr-TR", currency: "TRY", decimalsLimit: 2 },
-  { locale: "th-TH", currency: "THB", decimalsLimit: 2 },
-  { locale: "id-ID", currency: "IDR", decimalsLimit: 0 }, // Indonesian Rupiah has no decimal places
-  { locale: "vi-VN", currency: "VND", decimalsLimit: 0 }, // Vietnamese Dong has no decimal places
-  { locale: "es-CR", currency: "CRC", decimalsLimit: 2 },
-  { locale: "hr-HR", currency: "HRK", decimalsLimit: 2 },
-  { locale: "ka-GE", currency: "GEL", decimalsLimit: 2 },
+export const locales: ReadonlyArray<{ locale: string; currency: string; decimalsLimit: number; language: string }> = [
+  { locale: "en-US", currency: "USD", decimalsLimit: 2, language: "en" },
+  { locale: "de-DE", currency: "EUR", decimalsLimit: 2, language: "de" },
+  { locale: "en-GB", currency: "GBP", decimalsLimit: 2, language: "en" },
+  { locale: "en-AU", currency: "AUD", decimalsLimit: 2, language: "en" },
+  { locale: "ja-JP", currency: "JPY", decimalsLimit: 0, language: "ja" }, // Japanese Yen has no decimal places
+  { locale: "fr-CH", currency: "CHF", decimalsLimit: 2, language: "fr" },
+  { locale: "en-IN", currency: "INR", decimalsLimit: 2, language: "en" },
+  { locale: "es-CO", currency: "COP", decimalsLimit: 2, language: "es" },
+  { locale: "es-MX", currency: "MXN", decimalsLimit: 2, language: "es" },
+  { locale: "es-PE", currency: "PEN", decimalsLimit: 2, language: "es" },
+  { locale: "en-CA", currency: "CAD", decimalsLimit: 2, language: "en" },
+  { locale: "zh-CN", currency: "CNY", decimalsLimit: 2, language: "zh" },
+  { locale: "en-SG", currency: "SGD", decimalsLimit: 2, language: "en" },
+  { locale: "ar-AE", currency: "AED", decimalsLimit: 2, language: "ar" },
+  { locale: "pt-BR", currency: "BRL", decimalsLimit: 2, language: "pt" },
+  { locale: "zh-HK", currency: "HKD", decimalsLimit: 2, language: "zh" },
+  { locale: "af-ZA", currency: "ZAR", decimalsLimit: 2, language: "af" },
+  { locale: "ko-KR", currency: "KRW", decimalsLimit: 0, language: "ko" }, // South Korean Won has no decimal places
+  { locale: "en-NZ", currency: "NZD", decimalsLimit: 2, language: "en" },
+  { locale: "tr-TR", currency: "TRY", decimalsLimit: 2, language: "tr" },
+  { locale: "th-TH", currency: "THB", decimalsLimit: 2, language: "th" },
+  { locale: "id-ID", currency: "IDR", decimalsLimit: 0, language: "id" }, // Indonesian Rupiah has no decimal places
+  { locale: "vi-VN", currency: "VND", decimalsLimit: 0, language: "vi" }, // Vietnamese Dong has no decimal places
+  { locale: "es-CR", currency: "CRC", decimalsLimit: 2, language: "es" },
+  { locale: "hr-HR", currency: "HRK", decimalsLimit: 2, language: "hr" },
+  { locale: "ka-GE", currency: "GEL", decimalsLimit: 2, language: "ka" },
 ];
+
+export const languages: LanguageType[] = [
+  "af",
+  "ar",
+  "de",
+  "en",
+  "es",
+  "fr",
+  "hr",
+  "id",
+  "ja",
+  "ka",
+  "ko",
+  "pt",
+  "th",
+  "tr",
+  "vi",
+  "zh",
+];
+
+export const defaultLanguage = "en";
+export const defaultCurrency = "USD";
 
 export const sellGuides: string[] = [
   "United States",
@@ -150,4 +173,21 @@ export const buyGuides: string[] = [
   "Cayman Islands",
 ];
 
+export type LanguageType =
+  | "af"
+  | "ar"
+  | "de"
+  | "en"
+  | "es"
+  | "fr"
+  | "hr"
+  | "id"
+  | "ja"
+  | "ka"
+  | "ko"
+  | "pt"
+  | "th"
+  | "tr"
+  | "vi"
+  | "zh";
 export type HomesGeoJson = FeatureCollection<Point, HomeFeatureProps>;

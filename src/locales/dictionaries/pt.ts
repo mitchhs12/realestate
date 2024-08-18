@@ -1,0 +1,14 @@
+export default {
+  "home": {
+    "header": {
+      "guide": "Guias"
+    },
+    "hero": "Encontre a casa dos seus sonhos.",
+    "Recommended": "Distritos da cidade recomendados",
+    "Popular": "Popular",
+    "Newest": "Mais novo",
+    "footer": {
+      "allRightsReserved": "© 2024 Viva Ideal. Todos os direitos reservados."
+    }
+  }
+} as const;

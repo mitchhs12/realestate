@@ -1,0 +1,82 @@
+import type { Metadata } from "next";
+import { poppins } from "./fonts";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@/providers/theme";
+import { QueryContextProvider } from "@/context/QueryContext";
+import { LocaleContextProvider } from "@/context/LocaleContext";
+import { getCurrencies } from "@/app/[locale]/sell/actions";
+import { LanguageType } from "@/lib/validations";
+import { locales } from "@/lib/validations";
+import Header from "@/components/Header";
+import { headers } from "next/headers";
+import { getCurrency } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
+  description: "A marketplace for buying and renting houses, apartments, land and property",
+};
+
+// // NOT SURE IF I NEED THIS!!!
+// export async function generateStaticParams() {
+//   return [
+//     // { locale: "af" }, // Afrikaans
+//     // { locale: "ar" }, // Arabic
+//     // { locale: "de" }, // German
+//     { locale: "en" }, // English
+//     { locale: "es" }, // Spanish
+//     // { locale: "fr" }, // French
+//     // { locale: "hr" }, // Croatian
+//     // { locale: "id" }, // Indonesian
+//     // { locale: "ja" }, // Japanese
+//     // { locale: "ka" }, // Georgian
+//     // { locale: "ko" }, // Korean
+//     // { locale: "pt" }, // Portuguese
+//     // { locale: "th" }, // Thai
+//     // { locale: "tr" }, // Turkish
+//     // { locale: "vi" }, // Vietnamese
+//     // { locale: "zh" }, // Chinese
+//   ];
+// }
+
+type Props = {
+  children: React.ReactNode;
+  params: { locale: LanguageType };
+};
+
+export default async function RootLayout({ children, params: { locale } }: Readonly<Props>) {
+  const currencies = await getCurrencies();
+  const acceptLanguage = headers().get("Accept-Language");
+  let currency = { symbol: "USD", usdPrice: 1 };
+  if (acceptLanguage) {
+    const language = acceptLanguage.split(",");
+    const primaryLanguage = language[0];
+    const matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
+    currency = getCurrency(currencies, matchedCurrency);
+  }
+
+  // // const userLocale = navigator.language || navigator.languages[0];
+  // // const matchedCurrency = locales.find((option) => option.locale === userLocale)?.currency;
+  // const matchedCurrency: CurrencyType = { symbol: "USD", usdPrice: 1 };
+
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${poppins.className}`}>
+        <SessionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
+            <LocaleContextProvider currencies={currencies} lang={locale} currency={currency}>
+              <QueryContextProvider>
+                <Header />
+                {children}
+              </QueryContextProvider>
+            </LocaleContextProvider>
+          </ThemeProvider>
+          <SpeedInsights />
+          <Analytics />
+        </SessionProvider>
+      </body>
+    </html>
+  );
+}

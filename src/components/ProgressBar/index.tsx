@@ -5,8 +5,8 @@ import { Progress } from "@/components/ui/progress";
 import { useRouter, usePathname } from "next/navigation";
 import { SellContext } from "@/context/SellContext";
 import { sellSteps, stepsFlattened, stepLengths } from "@/lib/sellFlowData";
-import { updateHome, sellHome } from "@/app/sell/actions";
-import { updatePhone } from "@/app/settings/actions";
+import { updateHome, sellHome } from "@/app/[locale]/sell/actions";
+import { updatePhone } from "@/app/[locale]/settings/actions";
 
 export default function ProgressBar() {
   const router = useRouter();

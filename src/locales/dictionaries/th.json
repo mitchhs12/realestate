@@ -1,0 +1,14 @@
+{
+  "home": {
+    "header": {
+      "guide": "คำแนะนำ"
+    },
+    "hero": "ค้นหาบ้านในฝันของคุณ",
+    "Recommended": "เขตพื้นที่เมืองที่แนะนำ",
+    "Popular": "เป็นที่นิยม",
+    "Newest": "ใหม่ล่าสุด",
+    "footer": {
+      "allRightsReserved": "© 2024 Viva Ideal. สงวนลิขสิทธิ์"
+    }
+  }
+}

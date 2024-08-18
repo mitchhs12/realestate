@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { ProfileButton } from "@/components/ProfileButton";
-import { poppins } from "@/app/fonts";
+import { poppins } from "@/app/[locale]/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -12,19 +12,19 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { useCurrentLocale, useI18n } from "@/locales/client";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const session = useSession();
+  const lang = useCurrentLocale();
+  const t = useI18n();
+
   const user = session.data?.user;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-
-  useEffect(() => {
-    console.log("current isLoginOpen", isLoginOpen);
-  }, [isLoginOpen]);
 
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
@@ -53,7 +53,7 @@ export default function Header() {
       >
         {!isSellPage && (
           <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-3 lg:gap-6"}`}>
-            <Link href="/">
+            <Link href={`/${lang}`}>
               <Button
                 size={"largeIcon"}
                 variant="outline"
@@ -84,7 +84,9 @@ export default function Header() {
                     <div className="flex justify-center items-center">
                       <Icons.book_icon width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden xs:flex xs:text-inline pr-1 align-middle`}>Guides</h1>
+                    <h1 className={`${poppins.className} hidden 2xs:flex xs:text-inline pr-1 align-middle`}>
+                      {"Guide"}
+                    </h1>
                   </div>
                 </Button>
               </Link>

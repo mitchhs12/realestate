@@ -31,6 +31,7 @@ const config = {
         "screen-minus-header-svh": "calc(100svh - 86px)",
       },
       screens: {
+        "2xs": "400px",
         xs: "510px",
         "3xl": "1920px",
       },

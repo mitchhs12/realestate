@@ -2,7 +2,7 @@
 
 import SearchResults from "@/components/SearchResults";
 import MapComponent from "@/components/MainMap";
-import { getAllHomes, getSearchResults } from "@/app/search/actions";
+import { getAllHomes, getSearchResults } from "@/app/[locale]/search/actions";
 import FloatingButton from "@/components/FloatingButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";

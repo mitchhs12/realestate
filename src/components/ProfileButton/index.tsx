@@ -21,10 +21,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { currencyOptions } from "@/lib/validations";
+import { languages, locales } from "@/lib/validations";
 import { useContext } from "react";
-import { CurrencyContext } from "@/context/CurrencyContext";
-import { getFlagEmoji } from "@/lib/utils";
+import { LocaleContext } from "@/context/LocaleContext";
+import { getFlagEmoji, getFullLanguageName } from "@/lib/utils";
+import { useChangeLocale, useCurrentLocale, useI18n } from "@/locales/client";
+import { getCurrency } from "@/lib/utils";
 
 interface Props {
   openSignUpModal: () => void;
@@ -34,9 +36,12 @@ interface Props {
 
 export function ProfileButton({ openSignUpModal, openLogInModal, session }: Props) {
   const user = session.data?.user;
-  const { defaultCurrency, setDefaultCurrency } = useContext(CurrencyContext);
+  const { defaultCurrency, setDefaultCurrency, currencies } = useContext(LocaleContext);
   const router = useRouter();
   const { setTheme } = useTheme();
+  const changeLang = useChangeLocale();
+  const lang = useCurrentLocale();
+  const t = useI18n();
 
   // Function to get initials from username
   const getInitials = (username: string) => {
@@ -100,10 +105,35 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
             <DropdownMenuSubTrigger>Currency</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
-                <DropdownMenuRadioGroup value={defaultCurrency} onValueChange={setDefaultCurrency}>
-                  {currencyOptions.map((config) => (
+                <DropdownMenuRadioGroup
+                  value={defaultCurrency.symbol}
+                  onValueChange={(symbol) => setDefaultCurrency(getCurrency(currencies, symbol))}
+                >
+                  {locales.map((config) => (
                     <DropdownMenuRadioItem key={config.currency} className="cursor-pointer" value={config.currency}>
                       {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
+                    </DropdownMenuRadioItem>
+                  ))}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>Language</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
+                <DropdownMenuRadioGroup
+                  value={lang}
+                  onValueChange={(newLanguage) => {
+                    changeLang(newLanguage as any);
+                  }}
+                >
+                  {languages.map((lang) => (
+                    <DropdownMenuRadioItem key={lang} className="cursor-pointer" value={lang}>
+                      {getFullLanguageName(lang)}
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>
