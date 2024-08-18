@@ -1,10 +1,10 @@
 "use client";
 
 import React, { createContext, useState, ReactNode, useEffect } from "react";
-import { CurrencyType, LanguageType, locales } from "@/lib/validations";
+import { CurrencyType, LanguageType } from "@/lib/validations";
 import { useSession } from "next-auth/react";
-import { useChangeLocale, I18nProviderClient } from "@/locales/client";
 import { getCurrency } from "@/lib/utils";
+
 interface LocaleContextProps {
   defaultCurrency: CurrencyType;
   setDefaultCurrency: (value: CurrencyType) => void;
@@ -33,37 +33,35 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   currency,
 }: LocaleProviderProps) => {
   const session = useSession();
-  const changeLocale = useChangeLocale();
 
   const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(currency);
   const defaultLanguage = lang || "en";
 
   useEffect(() => {
     // useEffect that runs when the user has successfully authenticated and changes the default currency and language if it exists
+    console.log("running use effect");
     if (session.data?.user.currency || session.data?.user.language) {
       if (session.data?.user.currency && session.data?.user.currency !== defaultCurrency.symbol) {
         setDefaultCurrency(getCurrency(currencies, session.data?.user.currency));
       }
-      if (session.data?.user.language && session.data?.user.language !== lang) {
-        console.log("changing locale! because" + session.data?.user.language + " is not equal to " + lang);
-        changeLocale(session.data?.user.language || lang || "en");
-      }
+      // if (session.data?.user.language && session.data?.user.language !== lang) {
+      //   console.log("changing locale! because" + session.data?.user.language + " is not equal to " + lang);
+      //   changeLocale(session.data?.user.language || lang || "en");
+      // }
     }
   }, [session.data]);
 
   return (
-    <I18nProviderClient locale={defaultLanguage}>
-      <LocaleContext.Provider
-        value={{
-          defaultCurrency,
-          setDefaultCurrency,
-          defaultLanguage,
-          currencies,
-        }}
-      >
-        {children}
-      </LocaleContext.Provider>
-    </I18nProviderClient>
+    <LocaleContext.Provider
+      value={{
+        defaultCurrency,
+        setDefaultCurrency,
+        defaultLanguage,
+        currencies,
+      }}
+    >
+      {children}
+    </LocaleContext.Provider>
   );
 };
 

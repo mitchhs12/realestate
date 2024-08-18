@@ -1,9 +1,11 @@
 "use client";
+
 import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import SearchBox from "@/components/SearchBox";
 import SmallMap from "@/components/SmallMap";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   user: User;
@@ -21,6 +23,7 @@ export default function Location({ sellFlatIndex, sellFlowIndices, stepPercentag
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading, currentHome } =
     useContext(SellContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
+  const t = useScopedI18n("home.header.search");
   const [currentCoords, setCurrentCoords] = useState(
     currentHome?.latitude && currentHome?.longitude
       ? { lat: currentHome.latitude, long: currentHome.longitude }
@@ -69,6 +72,8 @@ export default function Location({ sellFlatIndex, sellFlowIndices, stepPercentag
             <SearchBox
               isSmallMap={true}
               setSearchResult={(text, placeId) => setSearchResult({ text: text, placeId: placeId })}
+              placeholder={t("placeholder")}
+              text={t("search-button")}
             />
           </div>
         </div>

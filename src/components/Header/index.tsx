@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { ProfileButton } from "@/components/ProfileButton";
 import { poppins } from "@/app/[locale]/fonts";
@@ -95,7 +96,7 @@ export default function Header() {
         )}
         {isSearchPage && (
           <div className="justify-center">
-            <SearchBox isSmallMap={false} />
+            <SearchBox isSmallMap={false} placeholder={t("search.placeholder")} text={t("search.search-button")} />
           </div>
         )}
 

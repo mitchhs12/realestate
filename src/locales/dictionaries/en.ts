@@ -1,6 +1,10 @@
 export default {
   "home": {
     "header": {
+      "search": {
+        "placeholder": "Search for any address or place...",
+        "search-button": "Search"
+      },
       "guides": "Guides",
       "construction": "This site is under construction.",
       "construction-sub": "Please create an account, and we'll email you when it's ready.",

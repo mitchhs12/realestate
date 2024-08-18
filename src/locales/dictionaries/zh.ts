@@ -1,6 +1,10 @@
 export default {
   "home": {
     "header": {
+      "search": {
+        "placeholder": "搜索任何地址或地点...",
+        "search-button": "搜索"
+      },
       "guides": "指南",
       "construction": "该网站正在建设中。",
       "construction-sub": "请创建一个帐户，准备就绪后我们会给您发送电子邮件。",

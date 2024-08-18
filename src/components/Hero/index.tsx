@@ -25,7 +25,11 @@ export default async function Hero() {
             {scopedT("title")}
           </h1>
           <div className="flex justify-center items-center">
-            <SearchBox isSmallMap={false} />
+            <SearchBox
+              isSmallMap={false}
+              text={scopedT("search.search-button")}
+              placeholder={scopedT("search.placeholder")}
+            />
           </div>
         </div>
       </div>

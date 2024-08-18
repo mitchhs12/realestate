@@ -1,6 +1,10 @@
 {
   "home": {
     "header": {
+      "search": {
+        "placeholder": "Search for any address or place...",
+        "search-button": "Search"
+      },
       "guides": "Guides",
       "construction": "This site is under construction.",
       "construction-sub": "Please create an account, and we'll email you when it's ready.",
@@ -65,5 +69,23 @@
         "br": "How to sell in Brazil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
   }
 }

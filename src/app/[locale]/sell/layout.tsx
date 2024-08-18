@@ -1,12 +1,14 @@
 import ProgressBar from "@/components/ProgressBar";
 import { SellContextProvider } from "@/context/SellContext";
 import { getUnfinishedHome } from "./actions";
+import { LanguageType } from "@/lib/validations";
 
-export default async function SellFlowLayout({
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: { locale: LanguageType };
+};
+
+export default async function SellFlowLayout({ children, params: { locale } }: Readonly<Props>) {
   const unfinishedHome = await getUnfinishedHome();
 
   return (

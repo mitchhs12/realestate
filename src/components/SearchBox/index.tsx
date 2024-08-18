@@ -17,9 +17,11 @@ interface Result {
 interface Props {
   isSmallMap: boolean;
   setSearchResult?: (text: string, placeId: string) => void;
+  text: string;
+  placeholder: string;
 }
 
-export default function SearchBox({ isSmallMap = false, setSearchResult }: Props) {
+export default function SearchBox({ isSmallMap = false, setSearchResult, text, placeholder }: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
@@ -31,7 +33,6 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
   const pathname = usePathname();
-  const t = useScopedI18n("home.hero.search");
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
@@ -150,7 +151,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
                 <Input
                   ref={inputRef}
                   type="search"
-                  placeholder={t("placeholder")}
+                  placeholder={placeholder}
                   className="z-100 bg-popover text-sm"
                   value={query}
                   onFocus={getGeolocation}
@@ -168,7 +169,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
               </PopoverTrigger>
               <Button variant="default" type="submit" disabled={loading} size="default" className="hidden lg:flex">
                 <div className="hidden sm:flex items-center justify-center w-[50px]">
-                  {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : t("search-button")}
+                  {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : text}
                 </div>
               </Button>
             </div>

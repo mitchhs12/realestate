@@ -1,6 +1,10 @@
 {
   "home": {
     "header": {
+      "search": {
+        "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",
+        "search-button": "Tìm kiếm"
+      },
       "guides": "Hướng dẫn",
       "construction": "Trang web này đang được xây dựng.",
       "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi email cho bạn khi tài khoản đã sẵn sàng.",

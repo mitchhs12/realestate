@@ -1,6 +1,10 @@
 export default {
   "home": {
     "header": {
+      "search": {
+        "placeholder": "Potražite bilo koju adresu ili mjesto...",
+        "search-button": "Pretraživanje"
+      },
       "guides": "Vodiči",
       "construction": "Ova stranica je u izradi.",
       "construction-sub": "Izradite račun, a mi ćemo vam poslati e-poštu kada bude spreman.",
