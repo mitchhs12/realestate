@@ -31,8 +31,8 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center items-center border-2 w-full flex-grow">
-        <div className="flex flex-row w-full h-full justify-between p-8 items-center border-2 max-w-7xl">
+      <div className="flex flex-col justify-center items-center w-full flex-grow">
+        <div className="flex flex-row w-full h-full justify-between p-8 items-center max-w-7xl">
           <GuideSelection type={"buy"} guides={buyGuides} />
           <GuideSelection type={"sell"} guides={sellGuides} />
         </div>
