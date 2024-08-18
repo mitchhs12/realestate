@@ -10,11 +10,10 @@ import { LocaleContextProvider } from "@/context/LocaleContext";
 import { getCurrencies } from "@/app/[locale]/sell/actions";
 import { LanguageType } from "@/lib/validations";
 import { locales } from "@/lib/validations";
-import Header from "@/components/Header";
 import { headers } from "next/headers";
 import { getCurrency } from "@/lib/utils";
 import Locale from "intl-locale-textinfo-polyfill";
-import SubLayout from "./client/layout";
+import MainLayout from "@/components/MainLayout";
 
 export const metadata: Metadata = {
   title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
@@ -22,26 +21,26 @@ export const metadata: Metadata = {
 };
 
 // // NOT SURE IF I NEED THIS!!!
-// export async function generateStaticParams() {
-//   return [
-//     { locale: "af" }, // Afrikaans
-//     { locale: "ar" }, // Arabic
-//     { locale: "de" }, // German
-//     { locale: "en" }, // English
-//     { locale: "es" }, // Spanish
-//     { locale: "fr" }, // French
-//     { locale: "hr" }, // Croatian
-//     { locale: "id" }, // Indonesian
-//     { locale: "ja" }, // Japanese
-//     { locale: "ka" }, // Georgian
-//     { locale: "ko" }, // Korean
-//     { locale: "pt" }, // Portuguese
-//     { locale: "th" }, // Thai
-//     { locale: "tr" }, // Turkish
-//     { locale: "vi" }, // Vietnamese
-//     { locale: "zh" }, // Chinese
-//   ];
-// }
+export async function generateStaticParams() {
+  return [
+    { locale: "af" }, // Afrikaans
+    { locale: "ar" }, // Arabic
+    { locale: "de" }, // German
+    { locale: "en" }, // English
+    { locale: "es" }, // Spanish
+    { locale: "fr" }, // French
+    { locale: "hr" }, // Croatian
+    { locale: "id" }, // Indonesian
+    { locale: "ja" }, // Japanese
+    { locale: "ka" }, // Georgian
+    { locale: "ko" }, // Korean
+    { locale: "pt" }, // Portuguese
+    { locale: "th" }, // Thai
+    { locale: "tr" }, // Turkish
+    { locale: "vi" }, // Vietnamese
+    { locale: "zh" }, // Chinese
+  ];
+}
 
 type Props = {
   children: React.ReactNode;
@@ -62,15 +61,12 @@ export default async function RootLayout({ children, params: { locale } }: Reado
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`${poppins.className}`}>
+      <body className={`${poppins.className} h-full`}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
             <LocaleContextProvider currencies={currencies} lang={locale} currency={currency}>
               <QueryContextProvider>
-                <SubLayout params={{ locale }}>
-                  <Header />
-                </SubLayout>
-                {children}
+                <MainLayout locale={locale}>{children}</MainLayout>
               </QueryContextProvider>
             </LocaleContextProvider>
           </ThemeProvider>

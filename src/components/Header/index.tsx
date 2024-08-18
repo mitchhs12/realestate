@@ -13,16 +13,33 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useCurrentLocale, useScopedI18n } from "@/locales/client";
+import { useCurrentLocale } from "@/locales/client";
+import SubLayout from "@/app/[locale]/client/layout";
 
-export default function Header() {
+interface Props {
+  guides: string;
+  searchPlaceholder: string;
+  searchText: string;
+  construction: string;
+  construction_sub: string;
+  sellButtonBig: string;
+  sellButtonSmall: string;
+}
+
+export default function Header({
+  guides,
+  searchPlaceholder,
+  searchText,
+  construction,
+  construction_sub,
+  sellButtonBig,
+  sellButtonSmall,
+}: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const session = useSession();
-  const lang = useCurrentLocale();
-  const t = useScopedI18n("home.header");
-
   const user = session.data?.user;
+  const locale = useCurrentLocale();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -85,9 +102,7 @@ export default function Header() {
                     <div className="flex justify-center items-center">
                       <Icons.book_icon width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>
-                      {t("guides")}
-                    </h1>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>{guides}</h1>
                   </div>
                 </Button>
               </Link>
@@ -96,7 +111,7 @@ export default function Header() {
         )}
         {isSearchPage && (
           <div className="justify-center">
-            <SearchBox isSmallMap={false} placeholder={t("search.placeholder")} text={t("search.search-button")} />
+            <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
           </div>
         )}
 
@@ -118,8 +133,8 @@ export default function Header() {
 
         {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8">
-            <span className="text-sm md:text-lg">{t("construction")}</span>
-            <span className="text-xs md:text-md">{t("construction-sub")}</span>
+            <span className="text-sm md:text-lg">{construction}</span>
+            <span className="text-xs md:text-md">{construction_sub}</span>
           </h1>
         )}
         {!isSellPage && (
@@ -132,12 +147,16 @@ export default function Header() {
                 }}
               >
                 <Icons.sell_home />
-                <span className="flex md:hidden">{t("sell-button-small")}</span>
-                <span className="hidden md:inline">{t("sell-button-big")}</span>
+                <span className="flex md:hidden">{sellButtonSmall}</span>
+                <span className="hidden md:inline">{sellButtonBig}</span>
               </Button>
             )}
             <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
-              <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} session={session} />
+              {locale && (
+                <SubLayout params={{ locale }}>
+                  <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} session={session} />
+                </SubLayout>
+              )}
             </div>
           </div>
         )}
