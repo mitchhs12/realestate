@@ -1,14 +1,72 @@
 {
   "home": {
     "header": {
-      "guide": "指南"
+      "guides": "指南",
+      "construction": "该网站正在建设中。",
+      "construction-sub": "请创建一个帐户，准备就绪后我们会给您发送电子邮件。",
+      "sell-button-big": "出售您的房产",
+      "sell-button-small": "卖",
+      "profile-button": {
+        "greeting": "你好",
+        "log-in": "登录",
+        "sign-up": "报名",
+        "log-out": "登出",
+        "theme": {
+          "theme": "主题",
+          "light": "光",
+          "dark": "黑暗的",
+          "system": "系统"
+        },
+        "language": "语言",
+        "currency": "货币",
+        "settings": "设置"
+      }
     },
-    "hero": "找到您梦想的家。",
+    "hero": {
+      "title": "找到您梦想的家。",
+      "search": {
+        "placeholder": "搜索任何地址或地点...",
+        "search-button": "搜索"
+      }
+    },
     "Recommended": "推荐城市区域",
     "Popular": "受欢迎的",
     "Newest": "最新",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。"
+    }
+  },
+  "guides": {
+    "title": "如何购买和出售",
+    "buy": {
+      "title": "我不知道如何购买",
+      "title-short": "如何购买",
+      "countries": {
+        "in": "如何在印度购物",
+        "kr": "如何在韩国买东西",
+        "ar": "如何在阿根廷购物",
+        "pe": "如何在秘鲁购物",
+        "co": "如何在哥伦比亚购物",
+        "ve": "如何在委内瑞拉购物",
+        "vn": "如何在越南购物",
+        "id": "如何在印度尼西亚购物",
+        "nz": "如何在新西兰购物",
+        "ky": "如何在开曼群岛买房"
+      }
+    },
+    "sell": {
+      "title": "我不知道如何销售",
+      "title-short": "如何销售",
+      "countries": {
+        "us": "如何在美国销售",
+        "ca": "如何在加拿大销售",
+        "au": "如何在澳大利亚销售",
+        "gb": "如何在英国销售",
+        "de": "如何在德国销售",
+        "fr": "如何在法国销售",
+        "jp": "如何在日本销售",
+        "br": "如何在巴西销售"
+      }
     }
   }
 }

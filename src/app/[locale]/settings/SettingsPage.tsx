@@ -14,6 +14,7 @@ import { locales, languages } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useContext } from "react";
 import { getFlagEmoji, getFullLanguageName } from "@/lib/utils";
+import { useChangeLocale } from "@/locales/client";
 
 interface Props {
   user: User;
@@ -22,6 +23,7 @@ interface Props {
 export default function SettingsPage({ user }: Props) {
   const session = useSession();
   const router = useRouter();
+  const changeLocale = useChangeLocale();
   const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencies } = useContext(LocaleContext);
 
   const form = useForm<UpdateSettingsValues>({
@@ -43,7 +45,7 @@ export default function SettingsPage({ user }: Props) {
         setDefaultCurrency({ symbol: "USD", usdPrice: 1 });
       }
       session.update();
-      router.push(`/${data.language}/settings`);
+      changeLocale(data.language);
     } catch (error) {
       console.log("error", error);
     }
@@ -99,7 +101,7 @@ export default function SettingsPage({ user }: Props) {
                     <FormControl>
                       <select className="block w-full mt-1" {...field}>
                         {languages.map((lang) => (
-                          <option key={`${lang}${lang}`} value={lang}>
+                          <option key={`${lang}`} value={lang}>
                             {getFullLanguageName(lang)}
                           </option>
                         ))}

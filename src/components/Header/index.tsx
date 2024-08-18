@@ -4,7 +4,7 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { poppins } from "@/app/[locale]/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useState, useEffect, use } from "react";
+import { useState } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -12,14 +12,14 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useCurrentLocale, useI18n } from "@/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const session = useSession();
   const lang = useCurrentLocale();
-  const t = useI18n();
+  const t = useScopedI18n("home.header");
 
   const user = session.data?.user;
 
@@ -53,7 +53,7 @@ export default function Header() {
       >
         {!isSellPage && (
           <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-3 lg:gap-6"}`}>
-            <Link href={`/${lang}`}>
+            <Link href={`/`}>
               <Button
                 size={"largeIcon"}
                 variant="outline"
@@ -85,7 +85,7 @@ export default function Header() {
                       <Icons.book_icon width={"22"} height={"22"} />
                     </div>
                     <h1 className={`${poppins.className} hidden 2xs:flex xs:text-inline pr-1 align-middle`}>
-                      {"Guide"}
+                      {t("guides")}
                     </h1>
                   </div>
                 </Button>
@@ -116,15 +116,13 @@ export default function Header() {
         )} */}
 
         {!isSearchPage && !isSellPage && (
-          <h1 className="hidden lg:flex flex-col justify-center items-center text-center pb-8 pt-8">
-            <span className="text-sm md:text-lg">This site is under construction.</span>
-            <span className="text-xs md:text-md">
-              Please create an account, and we&apos;ll email you when it&apos;s ready.
-            </span>
+          <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8">
+            <span className="text-sm md:text-lg">{t("construction")}</span>
+            <span className="text-xs md:text-md">{t("construction-sub")}</span>
           </h1>
         )}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow"} gap-3 lg:gap-6 justify-end`}>
+          <div className={`flex ${!isSearchPage && "w-1/3"} gap-3 lg:gap-6 justify-end`}>
             {!isSearchPage && (
               <Button
                 className="flex gap-2 items-center"
@@ -133,8 +131,8 @@ export default function Header() {
                 }}
               >
                 <Icons.sell_home />
-                <span className="xs:hidden lg:hidden">Sell</span>
-                <span className="hidden xs:inline">Sell your property</span>
+                <span className="xs:hidden lg:hidden">{t("sell-button-small")}</span>
+                <span className="hidden xs:inline">{t("sell-button-big")}</span>
               </Button>
             )}
             <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>

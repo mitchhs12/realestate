@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { QueryContext } from "@/context/QueryContext";
+import { useScopedI18n } from "@/locales/client";
 
 interface Result {
   Text: string;
@@ -30,6 +31,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
   const pathname = usePathname();
+  const t = useScopedI18n("home.hero.search");
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
@@ -148,7 +150,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
                 <Input
                   ref={inputRef}
                   type="search"
-                  placeholder={"Search for any address or place..."}
+                  placeholder={t("placeholder")}
                   className="z-100 bg-popover text-sm"
                   value={query}
                   onFocus={getGeolocation}
@@ -166,7 +168,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult }: Props
               </PopoverTrigger>
               <Button variant="default" type="submit" disabled={loading} size="default" className="hidden lg:flex">
                 <div className="hidden sm:flex items-center justify-center w-[50px]">
-                  {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : "Search"}
+                  {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : t("search-button")}
                 </div>
               </Button>
             </div>

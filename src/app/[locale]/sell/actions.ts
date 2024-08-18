@@ -102,7 +102,7 @@ export async function getHomes() {
   return homes;
 }
 
-export async function sellHome(): Promise<ResponseObj> {
+export async function sellHome(currentLocale: string): Promise<ResponseObj> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -117,7 +117,7 @@ export async function sellHome(): Promise<ResponseObj> {
 
   const { id, ...homeData } = homeSchema.parse(home);
 
-  const newData = { ...homeData, isActive: true };
+  const newData = { ...homeData, language: currentLocale, isActive: true };
 
   await prisma.home.update({
     where: { id: id },

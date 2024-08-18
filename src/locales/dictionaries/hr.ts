@@ -1,14 +1,72 @@
 export default {
   "home": {
     "header": {
-      "guide": "Vodiči"
+      "guides": "Vodiči",
+      "construction": "Ova stranica je u izradi.",
+      "construction-sub": "Izradite račun, a mi ćemo vam poslati e-poštu kada bude spreman.",
+      "sell-button-big": "Prodaj svoju nekretninu",
+      "sell-button-small": "Prodavati",
+      "profile-button": {
+        "greeting": "Bok",
+        "log-in": "Prijavite se",
+        "sign-up": "Prijavite se",
+        "log-out": "Odjavi se",
+        "theme": {
+          "theme": "Tema",
+          "light": "Svjetlo",
+          "dark": "tamno",
+          "system": "sustav"
+        },
+        "language": "Jezik",
+        "currency": "Valuta",
+        "settings": "postavke"
+      }
     },
-    "hero": "Pronađite svoj dom iz snova.",
+    "hero": {
+      "title": "Pronađite svoj dom iz snova.",
+      "search": {
+        "placeholder": "Potražite bilo koju adresu ili mjesto...",
+        "search-button": "Pretraživanje"
+      }
+    },
     "Recommended": "Preporučene gradske četvrti",
     "Popular": "Popularan",
     "Newest": "Najnoviji",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana."
+    }
+  },
+  "guides": {
+    "title": "Kako kupiti i prodati",
+    "buy": {
+      "title": "Ne znam kako kupiti",
+      "title-short": "Kako kupiti",
+      "countries": {
+        "in": "Kako kupiti u Indiji",
+        "kr": "Kako kupiti u Južnoj Koreji",
+        "ar": "Kako kupiti u Argentini",
+        "pe": "Kako kupiti u Peruu",
+        "co": "Kako kupiti u Kolumbiji",
+        "ve": "Kako kupovati u Venezueli",
+        "vn": "Kako kupovati u Vijetnamu",
+        "id": "Kako kupiti u Indoneziji",
+        "nz": "Kako kupiti na Novom Zelandu",
+        "ky": "Kako kupiti na Kajmanskim otocima"
+      }
+    },
+    "sell": {
+      "title": "Ne znam kako prodati",
+      "title-short": "Kako prodati",
+      "countries": {
+        "us": "Kako prodavati u Sjedinjenim Državama",
+        "ca": "Kako prodati u Kanadi",
+        "au": "Kako prodati u Australiji",
+        "gb": "Kako prodavati u Velikoj Britaniji",
+        "de": "Kako prodati u Njemačkoj",
+        "fr": "Kako prodati u Francuskoj",
+        "jp": "Kako prodati u Japanu",
+        "br": "Kako prodavati u Brazilu"
+      }
     }
   }
 } as const;

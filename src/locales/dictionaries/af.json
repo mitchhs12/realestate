@@ -1,4 +1,4 @@
-export default {
+{
   "home": {
     "header": {
       "guides": "Gidse",
@@ -69,4 +69,4 @@ export default {
       }
     }
   }
-} as const;
+}

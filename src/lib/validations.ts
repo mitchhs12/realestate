@@ -1,6 +1,25 @@
 import { z } from "zod";
 import { FeatureCollection, Point } from "geojson";
 
+export const languages: LanguageType[] = [
+  "af",
+  "ar",
+  "de",
+  "en",
+  "es",
+  "fr",
+  "hr",
+  "id",
+  "ja",
+  "ka",
+  "ko",
+  "pt",
+  "th",
+  "tr",
+  "vi",
+  "zh",
+];
+
 export const updateNameSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
 });
@@ -20,7 +39,7 @@ export const updateCurrencySchema = z.object({
 export const updateSettingsSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
   currency: z.string().min(1, "Cannot be empty"),
-  language: z.string().min(1, "Cannot be empty"),
+  language: z.enum(["af", "ar", "de", "en", "es", "fr", "hr", "id", "ja", "ka", "ko", "pt", "th", "tr", "vi", "zh"]),
 });
 
 export const homeSchema = z.object({
@@ -45,6 +64,7 @@ export const homeSchema = z.object({
   photos: z.array(z.string()),
   price: z.number(),
   currency: z.string().nullable(),
+  language: z.string().nullable(),
   priceUsd: z.number(),
   priceNegotiable: z.boolean(),
   contactName: z.string().nullable(),
@@ -125,25 +145,6 @@ export const locales: ReadonlyArray<{ locale: string; currency: string; decimals
   { locale: "es-CR", currency: "CRC", decimalsLimit: 2, language: "es" },
   { locale: "hr-HR", currency: "HRK", decimalsLimit: 2, language: "hr" },
   { locale: "ka-GE", currency: "GEL", decimalsLimit: 2, language: "ka" },
-];
-
-export const languages: LanguageType[] = [
-  "af",
-  "ar",
-  "de",
-  "en",
-  "es",
-  "fr",
-  "hr",
-  "id",
-  "ja",
-  "ka",
-  "ko",
-  "pt",
-  "th",
-  "tr",
-  "vi",
-  "zh",
 ];
 
 export const defaultLanguage = "en";

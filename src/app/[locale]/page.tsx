@@ -3,11 +3,9 @@ import Footer from "@/components/Footer";
 import Listings from "@/components/Listings";
 import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
-import { setStaticParamsLocale } from "next-international/server";
 
-export default async function Home({ params: { locale } }: { params: { locale: string } }) {
+export default async function Home() {
   const scopedT = await getScopedI18n("home");
-  setStaticParamsLocale(locale);
 
   return (
     <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">

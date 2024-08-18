@@ -3,10 +3,10 @@ import Image from "next/image";
 import { poppins } from "@/app/[locale]/fonts";
 import { sellGuides } from "@/lib/validations";
 import { buyGuides } from "@/lib/validations";
-import { setStaticParamsLocale } from "next-international/server";
+import { getScopedI18n } from "@/locales/server";
 
-export default function Page({ params: { locale } }: { params: { locale: string } }) {
-  setStaticParamsLocale(locale);
+export default async function Page() {
+  const scopedT = await getScopedI18n("guides");
 
   return (
     <div className="flex flex-col h-full w-full border-2 items-center">
@@ -25,7 +25,7 @@ export default function Page({ params: { locale } }: { params: { locale: string 
             <h1
               className={`${poppins.className} flex text-center justify-center text-xl sm:text-2xl md:text-2xl lg:text-3xl font-light tracking-wider`}
             >
-              How to Buy and Sell
+              {scopedT("title")}
             </h1>
           </div>
         </div>

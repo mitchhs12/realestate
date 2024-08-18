@@ -3,7 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
 import { formatPrice, getFlagEmoji } from "@/lib/utils";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
 import Link from "next/link";
@@ -17,6 +17,13 @@ interface Props {
 export default function Card({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
+  const [lang, setLang] = useState("");
+
+  useEffect(() => {
+    if (home && home.language) {
+      setLang(home.language);
+    }
+  }, [home]);
 
   return !home || isLoading ? (
     <div className="flex flex-col h-84 w-44 md:w-52 xl:w-48 2xl:w-52 space-y-2">
@@ -67,13 +74,18 @@ export default function Card({ home, isLoading }: Props) {
               className={`text-sm md:text-md lg:text-lg xl:text-xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis ${
                 titleUnderlined && "underline"
               }`}
+              lang={lang}
             >
               {home.title}
             </h2>
           </div>
 
-          <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.municipality}</div>
-          <div className="flex text-center text-xs sm:text-sm lg:text-md">{home.region}</div>
+          <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
+            {home.municipality}
+          </div>
+          <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
+            {home.region}
+          </div>
           <div className="flex text-center text-sm sm:text-sm lg:text-md">
             {home.country && lookup.byIso(home.country)?.country}{" "}
             {home.country && getFlagEmoji(lookup.byIso(home.country)?.iso2 || "")}

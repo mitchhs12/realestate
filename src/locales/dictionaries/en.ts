@@ -1,14 +1,72 @@
 export default {
   "home": {
     "header": {
-      "guide": "Guides"
+      "guides": "Guides",
+      "construction": "This site is under construction.",
+      "construction-sub": "Please create an account, and we'll email you when it's ready.",
+      "sell-button-big": "Sell your property",
+      "sell-button-small": "Sell",
+      "profile-button": {
+        "greeting": "Hi",
+        "log-in": "Log in",
+        "sign-up": "Sign up",
+        "log-out": "Log out",
+        "theme": {
+          "theme": "Theme",
+          "light": "Light",
+          "dark": "Dark",
+          "system": "System"
+        },
+        "language": "Language",
+        "currency": "Currency",
+        "settings": "Settings"
+      }
     },
-    "hero": "Find your dream home.",
+    "hero": {
+      "title": "Find your dream home.",
+      "search": {
+        "placeholder": "Search for any address or place...",
+        "search-button": "Search"
+      }
+    },
     "Recommended": "Recommended City Destricts",
     "Popular": "Popular",
     "Newest": "Newest",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. All rights reserved."
+    }
+  },
+  "guides": {
+    "title": "How to Buy and Sell",
+    "buy": {
+      "title": "I don't know how to Buy",
+      "title-short": "How to Buy",
+      "countries": {
+        "in": "How to buy in India",
+        "kr": "How to buy in South Korea",
+        "ar": "How to buy in Argentina",
+        "pe": "How to buy in Peru",
+        "co": "How to buy in Colombia",
+        "ve": "How to buy in Venezuela",
+        "vn": "How to buy in Vietnam",
+        "id": "How to buy in Indonesia",
+        "nz": "How to buy in New Zealand",
+        "ky": "How to buy in Cayman Islands"
+      }
+    },
+    "sell": {
+      "title": "I don't know how to Sell",
+      "title-short": "How to Sell",
+      "countries": {
+        "us": "How to sell in United State",
+        "ca": "How to sell in Canada",
+        "au": "How to sell in Australia",
+        "gb": "How to sell in United Kingdom",
+        "de": "How to sell in Germany",
+        "fr": "How to sell in France",
+        "jp": "How to sell in Japan",
+        "br": "How to sell in Brazil"
+      }
     }
   }
 } as const;

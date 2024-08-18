@@ -1,8 +1,11 @@
 import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
 import { poppins } from "@/app/[locale]/fonts";
+import { getScopedI18n } from "@/locales/server";
 
-export default function Hero() {
+export default async function Hero() {
+  const scopedT = await getScopedI18n("home.hero");
+
   return (
     <div className="relative h-[20vh] flex w-full">
       <Image
@@ -19,7 +22,7 @@ export default function Hero() {
           <h1
             className={`${poppins.className} flex text-center justify-center text-xl md:text-3xl font-light tracking-wider`}
           >
-            Find your dream home.
+            {scopedT("title")}
           </h1>
           <div className="flex justify-center items-center">
             <SearchBox isSmallMap={false} />

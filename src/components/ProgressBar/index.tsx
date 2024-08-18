@@ -7,10 +7,12 @@ import { SellContext } from "@/context/SellContext";
 import { sellSteps, stepsFlattened, stepLengths } from "@/lib/sellFlowData";
 import { updateHome, sellHome } from "@/app/[locale]/sell/actions";
 import { updatePhone } from "@/app/[locale]/settings/actions";
+import { useCurrentLocale } from "@/locales/client";
 
 export default function ProgressBar() {
   const router = useRouter();
   const pathname = usePathname();
+  const currentLocale = useCurrentLocale();
   const {
     nextStep,
     prevStep,
@@ -116,7 +118,7 @@ export default function ProgressBar() {
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
       if (pathname.startsWith("/sell/review")) {
-        const result = await sellHome();
+        const result = await sellHome(currentLocale);
         if (result.error) {
           alert(result.error);
           setNextLoading(false);

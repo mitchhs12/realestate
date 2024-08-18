@@ -1,14 +1,72 @@
 {
   "home": {
     "header": {
-      "guide": "Panduan"
+      "guides": "Panduan",
+      "construction": "Situs ini sedang dalam pembangunan.",
+      "construction-sub": "Silakan buat akun, dan kami akan mengirimkan email kepada Anda ketika akun sudah siap.",
+      "sell-button-big": "Jual properti Anda",
+      "sell-button-small": "Menjual",
+      "profile-button": {
+        "greeting": "Hai",
+        "log-in": "Masuk",
+        "sign-up": "Mendaftar",
+        "log-out": "Keluar",
+        "theme": {
+          "theme": "Tema",
+          "light": "Lampu",
+          "dark": "Gelap",
+          "system": "Sistem"
+        },
+        "language": "Bahasa",
+        "currency": "Mata uang",
+        "settings": "Pengaturan"
+      }
     },
-    "hero": "Temukan rumah impian Anda.",
+    "hero": {
+      "title": "Temukan rumah impian Anda.",
+      "search": {
+        "placeholder": "Cari alamat atau tempat apa pun...",
+        "search-button": "Mencari"
+      }
+    },
     "Recommended": "Destinasi Kota yang Direkomendasikan",
     "Popular": "Populer",
     "Newest": "Terbaru",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Semua hak dilindungi undang-undang."
+    }
+  },
+  "guides": {
+    "title": "Cara Membeli dan Menjual",
+    "buy": {
+      "title": "Saya tidak tahu cara membeli",
+      "title-short": "Cara Membeli",
+      "countries": {
+        "in": "Cara membeli di India",
+        "kr": "Cara membeli di Korea Selatan",
+        "ar": "Cara membeli di Argentina",
+        "pe": "Cara membeli di Peru",
+        "co": "Cara membeli di Kolombia",
+        "ve": "Cara membeli di Venezuela",
+        "vn": "Cara membeli di Vietnam",
+        "id": "Cara membeli di Indonesia",
+        "nz": "Cara membeli di Selandia Baru",
+        "ky": "Cara membeli di Kepulauan Cayman"
+      }
+    },
+    "sell": {
+      "title": "Saya tidak tahu cara menjual",
+      "title-short": "Cara Menjual",
+      "countries": {
+        "us": "Cara berjualan di Amerika Serikat",
+        "ca": "Cara berjualan di Kanada",
+        "au": "Cara berjualan di Australia",
+        "gb": "Cara berjualan di Inggris Raya",
+        "de": "Cara berjualan di Jerman",
+        "fr": "Cara berjualan di Prancis",
+        "jp": "Cara berjualan di Jepang",
+        "br": "Cara berjualan di Brasil"
+      }
     }
   }
 }

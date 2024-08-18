@@ -1,14 +1,72 @@
 export default {
   "home": {
     "header": {
-      "guide": "Hướng dẫn"
+      "guides": "Hướng dẫn",
+      "construction": "Trang web này đang được xây dựng.",
+      "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi email cho bạn khi tài khoản đã sẵn sàng.",
+      "sell-button-big": "Bán tài sản của bạn",
+      "sell-button-small": "Bán",
+      "profile-button": {
+        "greeting": "CHÀO",
+        "log-in": "Đăng nhập",
+        "sign-up": "Đăng ký",
+        "log-out": "Đăng xuất",
+        "theme": {
+          "theme": "Chủ đề",
+          "light": "Ánh sáng",
+          "dark": "Tối tăm",
+          "system": "Hệ thống"
+        },
+        "language": "Ngôn ngữ",
+        "currency": "Tiền tệ",
+        "settings": "Cài đặt"
+      }
     },
-    "hero": "Tìm ngôi nhà mơ ước của bạn.",
+    "hero": {
+      "title": "Tìm ngôi nhà mơ ước của bạn.",
+      "search": {
+        "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",
+        "search-button": "Tìm kiếm"
+      }
+    },
     "Recommended": "Các quận thành phố được đề xuất",
     "Popular": "Phổ biến",
     "Newest": "Mới nhất",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền."
+    }
+  },
+  "guides": {
+    "title": "Cách mua và bán",
+    "buy": {
+      "title": "Tôi không biết cách mua",
+      "title-short": "Cách mua",
+      "countries": {
+        "in": "Làm thế nào để mua ở Ấn Độ",
+        "kr": "Cách mua hàng ở Hàn Quốc",
+        "ar": "Làm thế nào để mua ở Argentina",
+        "pe": "Làm thế nào để mua ở Peru",
+        "co": "Làm thế nào để mua ở Colombia",
+        "ve": "Làm thế nào để mua ở Venezuela",
+        "vn": "Cách mua hàng tại Việt Nam",
+        "id": "Cách mua hàng tại Indonesia",
+        "nz": "Cách mua hàng ở New Zealand",
+        "ky": "Cách mua hàng ở Quần đảo Cayman"
+      }
+    },
+    "sell": {
+      "title": "Tôi không biết cách bán",
+      "title-short": "Làm thế nào để bán",
+      "countries": {
+        "us": "Làm thế nào để bán ở Hoa Kỳ",
+        "ca": "Làm thế nào để bán ở Canada",
+        "au": "Làm thế nào để bán ở Úc",
+        "gb": "Làm thế nào để bán ở Vương quốc Anh",
+        "de": "Làm thế nào để bán ở Đức",
+        "fr": "Làm thế nào để bán ở Pháp",
+        "jp": "Cách bán hàng ở Nhật Bản",
+        "br": "Làm thế nào để bán ở Brazil"
+      }
     }
   }
 } as const;
