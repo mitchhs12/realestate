@@ -166,7 +166,11 @@
       "requirement": "En az 5 adet fotoğraf yükleyin.",
       "restriction": "En fazla 12 fotoğraf yükleyin.",
       "drag": "Fotoğraflarınızı sürükleyerek sıralarını değiştirebilirsiniz.",
-      "maximum": "Maksimum sayıda fotoğraf yüklediniz."
+      "maximum": "Maksimum sayıda fotoğraf yüklediniz.",
+      "onlyImages": "Sadece resim yükleyebilirsiniz.",
+      "tooNarrow": "Resimlerinizden biri çok dar. Lütfen daha geniş bir genişliğe sahip bir resim yükleyin.",
+      "tooShort": "Resimlerinizden biri çok kısa. Lütfen daha büyük yükseklikte bir resim yükleyin.",
+      "fileSize": "Resimlerinizden biri 5MB boyut sınırını aşıyor. Lütfen daha küçük bir dosya yükleyin."
     },
     "price": {},
     "review": {},

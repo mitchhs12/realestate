@@ -166,7 +166,11 @@
       "requirement": "Laai ten minste 5 foto's op.",
       "restriction": "Laai tot 12 foto's op.",
       "drag": "Sleep jou foto's om hul volgorde te herrangskik.",
-      "maximum": "Jy het die maksimum aantal foto's opgelaai."
+      "maximum": "Jy het die maksimum aantal foto's opgelaai.",
+      "onlyImages": "Jy kan net beelde oplaai.",
+      "tooNarrow": "Een van jou beelde is te smal. Laai asseblief 'n prent met 'n groter breedte op.",
+      "tooShort": "Een van jou beelde is te kort. Laai asseblief 'n prent met 'n groter hoogte op.",
+      "fileSize": "Een van jou prente oorskry die 5MB-groottelimiet. Laai asseblief 'n kleiner lêer op."
     },
     "price": {},
     "review": {},

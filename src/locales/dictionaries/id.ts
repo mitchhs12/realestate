@@ -166,7 +166,11 @@ export default {
       "requirement": "Unggah setidaknya 5 foto.",
       "restriction": "Unggah hingga 12 foto.",
       "drag": "Tarik foto Anda untuk mengatur ulang urutannya.",
-      "maximum": "Anda telah mengunggah foto dalam jumlah maksimum."
+      "maximum": "Anda telah mengunggah foto dalam jumlah maksimum.",
+      "onlyImages": "Anda hanya dapat mengunggah gambar.",
+      "tooNarrow": "Salah satu gambar Anda terlalu sempit. Harap unggah gambar dengan lebar yang lebih besar.",
+      "tooShort": "Salah satu gambar Anda terlalu pendek. Harap unggah gambar dengan tinggi yang lebih besar.",
+      "fileSize": "Salah satu gambar Anda melebihi batas ukuran 5MB. Harap unggah file yang lebih kecil."
     },
     "price": {},
     "review": {},

@@ -166,7 +166,11 @@ export default {
       "requirement": "Téléchargez au moins 5 photos.",
       "restriction": "Téléchargez jusqu'à 12 photos.",
       "drag": "Faites glisser vos photos pour réorganiser leur ordre.",
-      "maximum": "Vous avez téléchargé le nombre maximum de photos."
+      "maximum": "Vous avez téléchargé le nombre maximum de photos.",
+      "onlyImages": "Vous ne pouvez télécharger que des images.",
+      "tooNarrow": "L'une de vos images est trop étroite. Veuillez télécharger une image avec une largeur plus grande.",
+      "tooShort": "L'une de vos images est trop courte. Veuillez télécharger une image avec une hauteur plus grande.",
+      "fileSize": "L'une de vos images dépasse la limite de taille de 5 Mo. Veuillez télécharger un fichier plus petit."
     },
     "price": {},
     "review": {},

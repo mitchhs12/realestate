@@ -29,6 +29,10 @@ export default async function Page() {
   const restriction = t("restriction");
   const drag = t("drag");
   const maximum = t("maximum");
+  const onlyImages = t("onlyImages");
+  const tooNarrow = t("tooNarrow");
+  const tooShort = t("tooShort");
+  const fileSize = t("fileSize");
 
   return (
     <Photos
@@ -41,6 +45,10 @@ export default async function Page() {
       restriction={restriction}
       drag={drag}
       maximum={maximum}
+      onlyImages={onlyImages}
+      tooNarrow={tooNarrow}
+      tooShort={tooShort}
+      fileSize={fileSize}
     />
   );
 }

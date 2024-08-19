@@ -163,7 +163,11 @@
       "requirement": "Upload at least 5 photos.",
       "restriction": "Upload up to 12 photos.",
       "drag": "Drag your photos to rearrange their order.",
-      "maximum": "You have uploaded the maximum amount of photos."
+      "maximum": "You have uploaded the maximum amount of photos.",
+      "onlyImages": "You can only upload images.",
+      "tooNarrow": "One of your images is too narrow. Please upload an image with a larger width.",
+      "tooShort": "One of your images is too short. Please upload an image with a larger height.",
+      "fileSize": "One of your images exceeds the 5MB size limit. Please upload a smaller file."
     },
     "price": {},
     "review": {},

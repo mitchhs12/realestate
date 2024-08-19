@@ -41,6 +41,10 @@ interface Props {
   restriction: string;
   drag: string;
   maximum: string;
+  onlyImages: string;
+  tooNarrow: string;
+  tooShort: string;
+  fileSize: string;
 }
 
 const FormSchema = z.object({
@@ -108,6 +112,10 @@ export default function Photos({
   restriction,
   drag,
   maximum,
+  onlyImages,
+  tooNarrow,
+  tooShort,
+  fileSize,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -181,16 +189,21 @@ export default function Photos({
     },
   });
 
-  const checkImageDimensions = (file: File): Promise<boolean> => {
+  const checkImageDimensions = (file: File): Promise<{ isValid: boolean; reason?: string }> => {
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         const img = new (window as any).Image();
         img.onload = () => {
-          const isValid = img.width >= 500 && img.height >= 500; // Example dimensions check
-          resolve(isValid);
+          if (img.width < 500) {
+            resolve({ isValid: false, reason: "width" });
+          } else if (img.height < 500) {
+            resolve({ isValid: false, reason: "height" });
+          } else {
+            resolve({ isValid: true });
+          }
         };
-        img.onerror = () => resolve(false);
+        img.onerror = () => resolve({ isValid: false });
         img.src = e.target!.result as string;
       };
       reader.readAsDataURL(file);
@@ -210,13 +223,19 @@ export default function Photos({
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         if (!file.type.startsWith("image/")) {
-          alert("Only image files are allowed!");
+          alert(onlyImages);
           setIsUploading(false);
           return;
         }
-        const validDimensions = await checkImageDimensions(file);
-        if (!validDimensions) {
-          alert("One of your images is too small. Please upload a larger image.");
+        const { isValid, reason } = await checkImageDimensions(file);
+        if (!isValid) {
+          alert(reason === "width" ? { tooNarrow } : { tooShort });
+          setIsUploading(false);
+          return;
+        }
+        // check file size
+        if (file.size > 5000000) {
+          alert(fileSize);
           setIsUploading(false);
           return;
         }

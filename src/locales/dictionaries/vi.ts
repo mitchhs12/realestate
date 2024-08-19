@@ -166,7 +166,11 @@ export default {
       "requirement": "Tải lên ít nhất 5 ảnh.",
       "restriction": "Tải lên tối đa 12 ảnh.",
       "drag": "Kéo ảnh để sắp xếp lại thứ tự.",
-      "maximum": "Bạn đã tải lên số lượng ảnh tối đa."
+      "maximum": "Bạn đã tải lên số lượng ảnh tối đa.",
+      "onlyImages": "Bạn chỉ có thể tải lên hình ảnh.",
+      "tooNarrow": "Một trong những hình ảnh của bạn quá hẹp. Vui lòng tải lên hình ảnh có chiều rộng lớn hơn.",
+      "tooShort": "Một trong những hình ảnh của bạn quá ngắn. Vui lòng tải lên hình ảnh có chiều cao lớn hơn.",
+      "fileSize": "Một trong những hình ảnh của bạn vượt quá giới hạn kích thước 5MB. Vui lòng tải lên tệp nhỏ hơn."
     },
     "price": {},
     "review": {},

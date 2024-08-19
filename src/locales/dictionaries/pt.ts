@@ -166,7 +166,11 @@ export default {
       "requirement": "Envie pelo menos 5 fotos.",
       "restriction": "Carregue até 12 fotos.",
       "drag": "Arraste suas fotos para reorganizá-las.",
-      "maximum": "Você carregou a quantidade máxima de fotos."
+      "maximum": "Você carregou a quantidade máxima de fotos.",
+      "onlyImages": "Você só pode carregar imagens.",
+      "tooNarrow": "Uma das suas imagens é muito estreita. Por favor, carregue uma imagem com uma largura maior.",
+      "tooShort": "Uma das suas imagens é muito curta. Por favor, carregue uma imagem com uma altura maior.",
+      "fileSize": "Uma das suas imagens excede o limite de tamanho de 5 MB. Por favor, carregue um arquivo menor."
     },
     "price": {},
     "review": {},

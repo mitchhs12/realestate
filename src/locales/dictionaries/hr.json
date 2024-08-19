@@ -166,7 +166,11 @@
       "requirement": "Učitajte najmanje 5 fotografija.",
       "restriction": "Učitajte do 12 fotografija.",
       "drag": "Povucite fotografije da biste promijenili redoslijed.",
-      "maximum": "Učitali ste maksimalan broj fotografija."
+      "maximum": "Učitali ste maksimalan broj fotografija.",
+      "onlyImages": "Možete učitavati samo slike.",
+      "tooNarrow": "Jedna od vaših slika je preuska. Učitajte sliku veće širine.",
+      "tooShort": "Jedna od vaših slika je prekratka. Molimo prenesite sliku veće visine.",
+      "fileSize": "Jedna od vaših slika premašuje ograničenje veličine od 5 MB. Molimo prenesite manju datoteku."
     },
     "price": {},
     "review": {},

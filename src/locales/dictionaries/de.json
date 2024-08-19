@@ -166,7 +166,11 @@
       "requirement": "Laden Sie mindestens 5 Fotos hoch.",
       "restriction": "Laden Sie bis zu 12 Fotos hoch.",
       "drag": "Ziehen Sie Ihre Fotos, um ihre Reihenfolge zu ändern.",
-      "maximum": "Sie haben die maximale Anzahl an Fotos hochgeladen."
+      "maximum": "Sie haben die maximale Anzahl an Fotos hochgeladen.",
+      "onlyImages": "Sie können nur Bilder hochladen.",
+      "tooNarrow": "Eines Ihrer Bilder ist zu schmal. Bitte laden Sie ein Bild mit einer größeren Breite hoch.",
+      "tooShort": "Eines Ihrer Bilder ist zu kurz. Bitte laden Sie ein Bild mit einer größeren Höhe hoch.",
+      "fileSize": "Eines Ihrer Bilder überschreitet die Größenbeschränkung von 5 MB. Bitte laden Sie eine kleinere Datei hoch."
     },
     "price": {},
     "review": {},

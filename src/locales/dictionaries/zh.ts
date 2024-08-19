@@ -166,7 +166,11 @@ export default {
       "requirement": "上传至少 5 张照片。",
       "restriction": "最多上传 12 张照片。",
       "drag": "拖动照片以重新排列其顺序。",
-      "maximum": "您上传的照片数量已达到上限。"
+      "maximum": "您上传的照片数量已达到上限。",
+      "onlyImages": "您只能上传图像。",
+      "tooNarrow": "您的其中一张图片太窄。请上传宽度更大的图片。",
+      "tooShort": "您的其中一张图片太短。请上传一张高度更大的图片。",
+      "fileSize": "您的其中一张图片超出了 5MB 的大小限制。请上传较小的文件。"
     },
     "price": {},
     "review": {},

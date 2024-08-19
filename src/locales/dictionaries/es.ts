@@ -166,7 +166,11 @@ export default {
       "requirement": "Sube al menos 5 fotos.",
       "restriction": "Sube hasta 12 fotos.",
       "drag": "Arrastre sus fotos para reorganizar su orden.",
-      "maximum": "Has subido la cantidad máxima de fotos."
+      "maximum": "Has subido la cantidad máxima de fotos.",
+      "onlyImages": "Sólo puedes subir imágenes.",
+      "tooNarrow": "Una de tus imágenes es demasiado angosta. Sube una imagen con un ancho mayor.",
+      "tooShort": "Una de tus imágenes es demasiado corta. Sube una imagen con una altura mayor.",
+      "fileSize": "Una de tus imágenes supera el límite de tamaño de 5 MB. Sube un archivo más pequeño."
     },
     "price": {},
     "review": {},
