@@ -125,12 +125,49 @@ export default {
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Đặc trưng",
+      "subtitle": "Bất động sản của bạn có những đặc điểm nào sau đây?",
+      "options": {
+        "0": "Không có",
+        "1": "Điều hòa không khí",
+        "2": "gác xép",
+        "3": "Ban công",
+        "4": "Tầng hầm",
+        "5": "Thịt nướng",
+        "6": "Tiếp cận bãi biển",
+        "7": "Bãi đậu xe",
+        "8": "Thiết bị tập thể dục",
+        "9": "Hố lửa",
+        "10": "Ga-ra",
+        "11": "Vườn/Sân",
+        "12": "Hệ thống sưởi ấm",
+        "13": "Văn phòng tại nhà",
+        "14": "Bồn tắm nước nóng",
+        "15": "Lò sưởi trong nhà",
+        "16": "Tiếp cận hồ",
+        "17": "Phòng giặt ủi",
+        "18": "Khu vực ăn uống ngoài trời",
+        "19": "Sân trong",
+        "20": "Hồ bơi",
+        "21": "Hệ thống an ninh",
+        "22": "Trượt tuyết vào/ra",
+        "23": "Tấm pin mặt trời",
+        "24": "Sân thượng",
+        "25": "Tủ quần áo đi bộ"
+      }
+    },
     "location": {
       "title": "Vị trí",
       "subtitle": "Bất động sản của bạn ở đâu?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Hình ảnh",
+      "requirement": "Tải lên ít nhất 5 ảnh.",
+      "restriction": "Tải lên tối đa 12 ảnh.",
+      "drag": "Kéo ảnh để sắp xếp lại thứ tự.",
+      "maximum": "Bạn đã tải lên số lượng ảnh tối đa."
+    },
     "price": {},
     "review": {},
     "rooms": {

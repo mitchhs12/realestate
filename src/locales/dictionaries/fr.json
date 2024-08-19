@@ -125,12 +125,49 @@
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Caractéristiques",
+      "subtitle": "Lequel de ces éléments votre propriété possède-t-elle ?",
+      "options": {
+        "0": "Aucun",
+        "1": "Climatisation",
+        "2": "Grenier",
+        "3": "Balcon",
+        "4": "Sous-sol",
+        "5": "Barbecue",
+        "6": "Accès à la plage",
+        "7": "Parking",
+        "8": "Équipement d'exercice",
+        "9": "Foyer",
+        "10": "Garage",
+        "11": "Jardin/Cour",
+        "12": "Système de chauffage",
+        "13": "Bureau à domicile",
+        "14": "Bain à remous",
+        "15": "Cheminée d'intérieur",
+        "16": "Accès au lac",
+        "17": "Buanderie",
+        "18": "Espace repas extérieur",
+        "19": "Patio",
+        "20": "Piscine",
+        "21": "Système de sécurité",
+        "22": "Accès skis aux pieds",
+        "23": "Panneaux solaires",
+        "24": "Terrasse",
+        "25": "Dressing"
+      }
+    },
     "location": {
       "title": "Emplacement",
       "subtitle": "Où est votre propriété?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Photos",
+      "requirement": "Téléchargez au moins 5 photos.",
+      "restriction": "Téléchargez jusqu'à 12 photos.",
+      "drag": "Faites glisser vos photos pour réorganiser leur ordre.",
+      "maximum": "Vous avez téléchargé le nombre maximum de photos."
+    },
     "price": {},
     "review": {},
     "rooms": {

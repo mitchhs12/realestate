@@ -125,12 +125,49 @@ export default {
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Features",
+      "subtitle": "Which of these does your property have?",
+      "options": {
+        "0": "None",
+        "1": "Air-conditioning",
+        "2": "Attic",
+        "3": "Balcony",
+        "4": "Basement",
+        "5": "BBQ",
+        "6": "Beach access",
+        "7": "Car parking",
+        "8": "Exercise Equipment",
+        "9": "Fire Pit",
+        "10": "Garage",
+        "11": "Garden/Yard",
+        "12": "Heating system",
+        "13": "Home office",
+        "14": "Hot Tub",
+        "15": "Indoor Fireplace",
+        "16": "Lake access",
+        "17": "Laundry room",
+        "18": "Outdoor Dining Area",
+        "19": "Patio",
+        "20": "Pool",
+        "21": "Security system",
+        "22": "Ski-in/Ski-out",
+        "23": "Solar panels",
+        "24": "Terrace",
+        "25": "Walk-in closet"
+      }
+    },
     "location": {
       "title": "Location",
       "subtitle": "Where is your property?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Photos",
+      "requirement": "Upload at least 5 photos.",
+      "restriction": "Upload up to 12 photos.",
+      "drag": "Drag your photos to rearrange their order.",
+      "maximum": "You have uploaded the maximum amount of photos."
+    },
     "price": {},
     "review": {},
     "rooms": {

@@ -125,12 +125,49 @@
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Özellikler",
+      "subtitle": "Bunlardan hangisi sizin mülkünüzde var?",
+      "options": {
+        "0": "Hiçbiri",
+        "1": "Klima",
+        "2": "Tavan arası",
+        "3": "Balkon",
+        "4": "Bodrum",
+        "5": "barbekü",
+        "6": "Plaja erişim",
+        "7": "Araba park yeri",
+        "8": "Egzersiz Ekipmanları",
+        "9": "Ateş çukuru",
+        "10": "Garaj",
+        "11": "Bahçe/Bahçe",
+        "12": "Isıtma sistemi",
+        "13": "Ev ofisi",
+        "14": "Sıcak Küvet",
+        "15": "Kapalı Şömine",
+        "16": "Göle erişim",
+        "17": "Çamaşır odası",
+        "18": "Açık Hava Yemek Alanı",
+        "19": "Veranda",
+        "20": "Havuz",
+        "21": "Güvenlik sistemi",
+        "22": "Kayakla giriş/çıkış",
+        "23": "Güneş panelleri",
+        "24": "Teras",
+        "25": "Giyinme odası"
+      }
+    },
     "location": {
       "title": "Konum",
       "subtitle": "Eşyanız nerede?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Fotoğraflar",
+      "requirement": "En az 5 adet fotoğraf yükleyin.",
+      "restriction": "En fazla 12 fotoğraf yükleyin.",
+      "drag": "Fotoğraflarınızı sürükleyerek sıralarını değiştirebilirsiniz.",
+      "maximum": "Maksimum sayıda fotoğraf yüklediniz."
+    },
     "price": {},
     "review": {},
     "rooms": {

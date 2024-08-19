@@ -125,12 +125,49 @@ export default {
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Merkmale",
+      "subtitle": "Welche davon verfügt Ihre Immobilie?",
+      "options": {
+        "0": "Keiner",
+        "1": "Klimaanlage",
+        "2": "Dachboden",
+        "3": "Balkon",
+        "4": "Keller",
+        "5": "Grill",
+        "6": "Zugang zum Strand",
+        "7": "Parkplatz",
+        "8": "Trainingsgeräte",
+        "9": "Feuerstelle",
+        "10": "Garage",
+        "11": "Garten/Hof",
+        "12": "Heizungssystem",
+        "13": "Innenministerium",
+        "14": "Whirlpool",
+        "15": "Innenkamin",
+        "16": "Zugang zum See",
+        "17": "Waschküche",
+        "18": "Essbereich im Freien",
+        "19": "Terrasse",
+        "20": "Pool",
+        "21": "Sicherheitssystem",
+        "22": "Ski-in/Ski-out",
+        "23": "Sonnenkollektoren",
+        "24": "Terrasse",
+        "25": "Begehbarer Kleiderschrank"
+      }
+    },
     "location": {
       "title": "Standort",
       "subtitle": "Wo befindet sich Ihr Eigentum?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Fotos",
+      "requirement": "Laden Sie mindestens 5 Fotos hoch.",
+      "restriction": "Laden Sie bis zu 12 Fotos hoch.",
+      "drag": "Ziehen Sie Ihre Fotos, um ihre Reihenfolge zu ändern.",
+      "maximum": "Sie haben die maximale Anzahl an Fotos hochgeladen."
+    },
     "price": {},
     "review": {},
     "rooms": {

@@ -125,12 +125,49 @@
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Značajke",
+      "subtitle": "Što od ovoga ima vaša nekretnina?",
+      "options": {
+        "0": "Nijedan",
+        "1": "Klima uređaj",
+        "2": "Potkrovlje",
+        "3": "Balkon",
+        "4": "Podrum",
+        "5": "roštilj",
+        "6": "Pristup plaži",
+        "7": "Parking za auto",
+        "8": "Oprema za vježbanje",
+        "9": "Fire Pit",
+        "10": "Garaža",
+        "11": "Vrt/Dvorište",
+        "12": "Sustav grijanja",
+        "13": "Kućni ured",
+        "14": "Vruća kada",
+        "15": "Unutarnji kamin",
+        "16": "Pristup jezeru",
+        "17": "Praonica rublja",
+        "18": "Vanjska blagovaonica",
+        "19": "terasa",
+        "20": "Bazen",
+        "21": "Sigurnosni sustav",
+        "22": "Ski-in/Ski-out",
+        "23": "Solarni paneli",
+        "24": "Terasa",
+        "25": "Walk-in ormar"
+      }
+    },
     "location": {
       "title": "Mjesto",
       "subtitle": "Gdje je vaša imovina?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Fotografije",
+      "requirement": "Učitajte najmanje 5 fotografija.",
+      "restriction": "Učitajte do 12 fotografija.",
+      "drag": "Povucite fotografije da biste promijenili redoslijed.",
+      "maximum": "Učitali ste maksimalan broj fotografija."
+    },
     "price": {},
     "review": {},
     "rooms": {

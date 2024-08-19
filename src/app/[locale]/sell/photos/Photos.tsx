@@ -36,6 +36,11 @@ interface Props {
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
+  title: string;
+  requirement: string;
+  restriction: string;
+  drag: string;
+  maximum: string;
 }
 
 const FormSchema = z.object({
@@ -94,7 +99,16 @@ function SortableItem({
   );
 }
 
-export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Photos({
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title,
+  requirement,
+  restriction,
+  drag,
+  maximum,
+}: Props) {
   const {
     setSellFlowFlatIndex,
     setSellFlowIndices,
@@ -173,7 +187,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
       reader.onload = (e) => {
         const img = new (window as any).Image();
         img.onload = () => {
-          const isValid = img.width >= 500; // Example dimensions check
+          const isValid = img.width >= 500 && img.height >= 500; // Example dimensions check
           resolve(isValid);
         };
         img.onerror = () => resolve(false);
@@ -188,7 +202,7 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
     const files = event.target.files;
     if (files && currentHome) {
       if (files.length + uploadedImageUrls.length > 12) {
-        alert("You can only upload up to 12 photos!");
+        alert(restriction);
         setIsUploading(false);
         return;
       }
@@ -259,18 +273,14 @@ export default function Photos({ sellFlatIndex, sellFlowIndices, stepPercentage 
       <div className="flex flex-col w-full h-full justify-start items-center text-center gap-y-10">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">Photos</h1>
+            <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
             <h3 className="text-lg w-full">
-              {uploadedImageUrls.length < 5
-                ? "Upload at least 5 photos."
-                : uploadedImageUrls.length < 12
-                ? "Upload up to 12 photos."
-                : "You have uploaded the maximum amount of photos."}
+              {uploadedImageUrls.length < 5 ? requirement : uploadedImageUrls.length < 12 ? restriction : maximum}
             </h3>
-            {uploadedImageUrls.length > 0 && <h4>Drag photos to rearrange their order.</h4>}
-            {uploadedImageUrls.length < 5 && <h4>Upload up to 12 photos.</h4>}
+            {uploadedImageUrls.length > 0 && <h4>{drag}</h4>}
+            {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}
           </div>
         </div>
         <div className="flex gap-4 p-8 w-full h-full justify-center">

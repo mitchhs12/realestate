@@ -125,12 +125,49 @@ export default {
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Características",
+      "subtitle": "Qual destes itens sua propriedade possui?",
+      "options": {
+        "0": "Nenhum",
+        "1": "Ar condicionado",
+        "2": "Sótão",
+        "3": "Sacada",
+        "4": "Porão",
+        "5": "Churrasco",
+        "6": "Acesso à praia",
+        "7": "Estacionamento",
+        "8": "Equipamento de exercício",
+        "9": "Fogueira",
+        "10": "Garagem",
+        "11": "Jardim/Quintal",
+        "12": "Sistema de aquecimento",
+        "13": "Escritório em casa",
+        "14": "Banheira de hidromassagem",
+        "15": "Lareira interna",
+        "16": "Acesso ao lago",
+        "17": "Lavanderia",
+        "18": "Área de jantar ao ar livre",
+        "19": "Pátio",
+        "20": "Piscina",
+        "21": "Sistema de segurança",
+        "22": "Entrada/saída de esqui",
+        "23": "Painéis solares",
+        "24": "Terraço",
+        "25": "Closet"
+      }
+    },
     "location": {
       "title": "Localização",
       "subtitle": "Onde fica sua propriedade?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Fotos",
+      "requirement": "Envie pelo menos 5 fotos.",
+      "restriction": "Carregue até 12 fotos.",
+      "drag": "Arraste suas fotos para reorganizá-las.",
+      "maximum": "Você carregou a quantidade máxima de fotos."
+    },
     "price": {},
     "review": {},
     "rooms": {

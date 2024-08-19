@@ -125,12 +125,49 @@ export default {
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Características",
+      "subtitle": "¿Cuál de estos tiene tu propiedad?",
+      "options": {
+        "0": "Ninguno",
+        "1": "Aire acondicionado",
+        "2": "Ático",
+        "3": "Balcón",
+        "4": "Sótano",
+        "5": "Barbacoa",
+        "6": "Acceso a la playa",
+        "7": "Estacionamiento de coches",
+        "8": "Equipo de ejercicio",
+        "9": "Pozo de fuego",
+        "10": "Cochera",
+        "11": "Jardín/Patio",
+        "12": "Sistema de calefacción",
+        "13": "Oficina en casa",
+        "14": "Bañera de hidromasaje",
+        "15": "Chimenea de interior",
+        "16": "Acceso al lago",
+        "17": "Cuarto de lavado",
+        "18": "Área de comedor al aire libre",
+        "19": "Patio",
+        "20": "Piscina",
+        "21": "Sistema de seguridad",
+        "22": "Acceso directo a pistas de esquí",
+        "23": "Paneles solares",
+        "24": "Terraza",
+        "25": "Vestidor"
+      }
+    },
     "location": {
       "title": "Ubicación",
       "subtitle": "¿Dónde está tu propiedad?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Fotos",
+      "requirement": "Sube al menos 5 fotos.",
+      "restriction": "Sube hasta 12 fotos.",
+      "drag": "Arrastre sus fotos para reorganizar su orden.",
+      "maximum": "Has subido la cantidad máxima de fotos."
+    },
     "price": {},
     "review": {},
     "rooms": {

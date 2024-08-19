@@ -53,7 +53,7 @@ export default function Rooms({
   }, []);
 
   useEffect(() => {
-    if (currentHome && (bedrooms > 0 || bathrooms > 0 || livingrooms > 0 || kitchens > 0)) {
+    if (currentHome) {
       setNewHome({
         ...currentHome,
         bedrooms: bedrooms,

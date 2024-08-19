@@ -14,8 +14,14 @@ interface Props {
 }
 
 export default function Step3({ sellFlatIndex, sellFlowIndices, stepPercentage, step, title, subtitle }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNextDisabled,
+  } = useContext(SellContext);
 
   useEffect(() => {
     setSellFlowIndices(sellFlowIndices);
@@ -23,6 +29,7 @@ export default function Step3({ sellFlatIndex, sellFlowIndices, stepPercentage, 
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
+    setNextDisabled(false);
   }, []);
 
   return (

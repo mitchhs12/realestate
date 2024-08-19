@@ -69,7 +69,9 @@ export default function Capacity({
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setNextLoading(false);
-    if (sqSize === 0 || humanCapacity === 0) {
+    if (sqSize > 0 || humanCapacity > 0) {
+      setNextDisabled(false);
+    } else {
       setNextDisabled(true);
     }
     setPrevLoading(false);

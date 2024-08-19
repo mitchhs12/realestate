@@ -125,12 +125,49 @@ export default {
     "checkout": {},
     "contact": {},
     "description": {},
-    "features": {},
+    "features": {
+      "title": "Fitur",
+      "subtitle": "Yang mana yang dimiliki properti Anda?",
+      "options": {
+        "0": "Tidak ada",
+        "1": "Pendingin udara",
+        "2": "Loteng",
+        "3": "Balkon",
+        "4": "Ruang bawah tanah",
+        "5": "panggang",
+        "6": "Akses pantai",
+        "7": "Tempat parkir mobil",
+        "8": "Peralatan Olahraga",
+        "9": "Perapian",
+        "10": "Garasi",
+        "11": "Taman/Halaman",
+        "12": "Sistem pemanas",
+        "13": "Kantor pusat",
+        "14": "Bak Mandi Air Panas",
+        "15": "Perapian Dalam Ruangan",
+        "16": "Akses danau",
+        "17": "Ruang cuci",
+        "18": "Area Makan Luar Ruangan",
+        "19": "Teras",
+        "20": "Kolam",
+        "21": "Sistem keamanan",
+        "22": "Akses masuk/keluar ski",
+        "23": "Panel surya",
+        "24": "Teras",
+        "25": "Lemari pakaian"
+      }
+    },
     "location": {
       "title": "Lokasi",
       "subtitle": "Di mana properti Anda?"
     },
-    "photos": {},
+    "photos": {
+      "title": "Foto",
+      "requirement": "Unggah setidaknya 5 foto.",
+      "restriction": "Unggah hingga 12 foto.",
+      "drag": "Tarik foto Anda untuk mengatur ulang urutannya.",
+      "maximum": "Anda telah mengunggah foto dalam jumlah maksimum."
+    },
     "price": {},
     "review": {},
     "rooms": {
