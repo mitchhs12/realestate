@@ -23,7 +23,9 @@ export default {
         },
         "language": "Jezik",
         "currency": "Valuta",
-        "settings": "postavke"
+        "settings": "postavke",
+        "exit": "Spremi i izađi",
+        "exit-short": "Izlaz "
       }
     },
     "modal": {
@@ -97,36 +99,109 @@ export default {
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Prodaj svoju nekretninu",
+      "title-continue": "Završite svoj unos",
+      "step-1": "1. Recite nam nešto o svom mjestu",
+      "step-1-sub": "Lokacija, veličina i detalji.",
+      "step-2": "2. Istaknite ga",
+      "step-2-sub": "Učitajte 5 ili više fotografija, naslov i opis.",
+      "step-3": "3. Dovršite i objavite",
+      "step-3-sub": "Dodajte kontakt podatke, svoju cijenu i objavite.",
+      "completed": "Završeno"
+    },
+    "capacity": {
+      "title": "Kapacitet",
+      "subtitle": "Koliko je veliko vaše imanje?",
+      "size": "Ovdje unesite veličinu svoje nekretnine.",
+      "metres": "metara",
+      "units": {
+        "m": "m",
+        "ft": "ft"
+      },
+      "feet": "stopala",
+      "capacity": "Sada procijenite koliko bi ljudi moglo udobno živjeti u vašem posjedu."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Mjesto",
+      "subtitle": "Gdje je vaša imovina?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Sobe",
+      "subtitle": "Koliko soba ima vaš objekt?",
+      "bedrooms": "spavaće sobe",
+      "bathrooms": "Kupaonice",
+      "living-rooms": "Dnevne sobe",
+      "kitchens": "kuhinje"
+    },
+    "step1": {
+      "step": "Korak 1.",
+      "title": "Recite nam nešto o svom mjestu",
+      "subtitle": "Lokacija, veličina i detalji"
+    },
+    "step2": {
+      "step": "Korak 2.",
+      "title": "Istaknite ga",
+      "subtitle": "Učitajte 5 ili više fotografija, naslov i opis."
+    },
+    "step3": {
+      "step": "3. korak",
+      "title": "Dovršite i objavite",
+      "subtitle": "Dodajte kontakt podatke, svoju cijenu i objavite."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Tip",
+      "subtitle": "Što najbolje opisuje vašu nekretninu?",
+      "options": {
+        "0": "Kuća",
+        "1": "Apartman",
+        "2": "Kabina",
+        "3": "Posebna kuća",
+        "4": "Dvorac",
+        "5": "Poslovni objekt",
+        "6": "Kontejner",
+        "7": "Kikladski dom",
+        "8": "Zemaljski dom",
+        "9": "Farma",
+        "10": "Kućica na splavu",
+        "11": "Zemljište",
+        "12": "Ljetnikovac",
+        "13": "Mali dom",
+        "14": "Toranj",
+        "15": "Skladište",
+        "16": "Vjetrenjača"
+      }
+    },
+    "progress": {
+      "continue": "Nastavite popis",
+      "start": "Start",
+      "back": "Nazad",
+      "next": "Sljedeći",
+      "loading": "Učitavanje...",
+      "finish": "Završiti!"
+    }
   },
   "settings": {
     "title": "Postavke računa",
     "name": {
       "title": "Promijenite naziv profila",
-      "subtitle": "Ovako ćete se pojaviti u javnosti"
+      "subtitle": "Ovako ćete se javno pojaviti"
+    },
+    "language": {
+      "title": "Promijenite jezik",
+      "subtitle": "Ovo je jezik koji ćete vidjeti kada se prijavite"
     },
     "currency": {
       "title": "Promijenite zadanu valutu",
       "subtitle": "Cijene nekretnina bit će prikazane u ovoj valuti"
-    },
-    "language": {
-      "title": "Promijenite zadani jezik",
-      "subtitle": "Ovo je jezik koji ćete vidjeti kada se prijavite"
     },
     "submit": "Uštedjeti"
   }

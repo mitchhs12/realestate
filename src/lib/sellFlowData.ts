@@ -10,13 +10,17 @@ export const types = [
   "Cabin",
   "Casa particular",
   "Castle",
+  "Commercial building",
   "Container",
   "Cycladic home",
   "Earth home",
   "Farm",
   "Houseboat",
+  "Land",
+  "Mansion",
   "Tiny home",
   "Tower",
+  "Warehouse",
   "Windmill",
 ];
 

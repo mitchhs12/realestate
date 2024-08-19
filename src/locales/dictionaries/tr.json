@@ -23,7 +23,9 @@
         },
         "language": "Dil",
         "currency": "Para birimi",
-        "settings": "Ayarlar"
+        "settings": "Ayarlar",
+        "exit": "Kaydet ve çık",
+        "exit-short": "Çıkış"
       }
     },
     "modal": {
@@ -97,22 +99,95 @@
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Mülkünüzü satın",
+      "title-continue": "Listelemenizi tamamlayın",
+      "step-1": "1. Bize yerinizden bahsedin",
+      "step-1-sub": "Konum, büyüklük ve detaylar.",
+      "step-2": "2. Öne çıkarın",
+      "step-2-sub": "En az 5 fotoğraf, bir başlık ve bir açıklama yükleyin.",
+      "step-3": "3. Bitirin ve yayınlayın",
+      "step-3-sub": "İletişim bilgilerinizi ve fiyatınızı ekleyin ve yayınlayın.",
+      "completed": "Tamamlanmış"
+    },
+    "capacity": {
+      "title": "Kapasite",
+      "subtitle": "Mülkünüz ne kadar büyük?",
+      "size": "Mülkünüzün büyüklüğünü buraya girin.",
+      "metres": "metre",
+      "units": {
+        "m": "M",
+        "ft": "ft"
+      },
+      "feet": "ayak",
+      "capacity": "Şimdi mülkünüzde kaç kişinin rahatça yaşayabileceğini tahmin edin."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Konum",
+      "subtitle": "Eşyanız nerede?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Odalar",
+      "subtitle": "Tesisinizde kaç oda var?",
+      "bedrooms": "Yatak odaları",
+      "bathrooms": "Banyolar",
+      "living-rooms": "Oturma odaları",
+      "kitchens": "Mutfaklar"
+    },
+    "step1": {
+      "step": "Adım 1.",
+      "title": "Bize yerinizden bahsedin",
+      "subtitle": "Konum, boyut ve ayrıntılar"
+    },
+    "step2": {
+      "step": "Adım 2.",
+      "title": "Öne çıkmasını sağla",
+      "subtitle": "En az 5 fotoğraf, bir başlık ve bir açıklama yükleyin."
+    },
+    "step3": {
+      "step": "Adım 3.",
+      "title": "Bitir ve yayınla",
+      "subtitle": "İletişim bilgilerinizi ve fiyatınızı ekleyin ve yayınlayın."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Tip",
+      "subtitle": "Mülkünüzü en iyi tanımlayan hangisidir?",
+      "options": {
+        "0": "Ev",
+        "1": "Daire",
+        "2": "Kabin",
+        "3": "Özel ev",
+        "4": "Kale",
+        "5": "Ticari bina",
+        "6": "Konteyner",
+        "7": "Kiklad evi",
+        "8": "Dünya evi",
+        "9": "Çiftlik",
+        "10": "Ev teknesi",
+        "11": "Kara",
+        "12": "Konak",
+        "13": "Küçük ev",
+        "14": "Kule",
+        "15": "Depo",
+        "16": "Yel değirmeni"
+      }
+    },
+    "progress": {
+      "continue": "Listelemeye devam et",
+      "start": "Başlangıç",
+      "back": "Geri",
+      "next": "Sonraki",
+      "loading": "Yükleniyor...",
+      "finish": "Sona ermek!"
+    }
   },
   "settings": {
     "title": "Hesap Ayarları",
@@ -120,13 +195,13 @@
       "title": "Profil adınızı değiştirin",
       "subtitle": "Kamuoyunda böyle görüneceksiniz"
     },
+    "language": {
+      "title": "Dilinizi değiştirin",
+      "subtitle": "Bu, oturum açtığınızda göreceğiniz dildir"
+    },
     "currency": {
       "title": "Varsayılan para biriminizi değiştirin",
       "subtitle": "Emlak fiyatları bu para biriminde gösterilecek"
-    },
-    "language": {
-      "title": "Varsayılan dilinizi değiştirin",
-      "subtitle": "Bu, oturum açtığınızda göreceğiniz dildir"
     },
     "submit": "Kaydetmek"
   }

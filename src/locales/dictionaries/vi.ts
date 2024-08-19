@@ -23,7 +23,9 @@ export default {
         },
         "language": "Ngôn ngữ",
         "currency": "Tiền tệ",
-        "settings": "Cài đặt"
+        "settings": "Cài đặt",
+        "exit": "Lưu và thoát",
+        "exit-short": "Ra"
       }
     },
     "modal": {
@@ -97,22 +99,95 @@ export default {
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Bán tài sản của bạn",
+      "title-continue": "Hoàn thiện danh sách của bạn",
+      "step-1": "1. Hãy cho chúng tôi biết về nơi của bạn",
+      "step-1-sub": "Vị trí, kích thước và thông tin chi tiết.",
+      "step-2": "2. Làm cho nó nổi bật",
+      "step-2-sub": "Tải lên 5 ảnh trở lên, tiêu đề và mô tả.",
+      "step-3": "3. Hoàn thành và xuất bản",
+      "step-3-sub": "Thêm thông tin liên lạc, giá và đăng.",
+      "completed": "Hoàn thành"
+    },
+    "capacity": {
+      "title": "Dung tích",
+      "subtitle": "Bất động sản của bạn có diện tích bao nhiêu?",
+      "size": "Nhập kích thước bất động sản của bạn vào đây.",
+      "metres": "mét",
+      "units": {
+        "m": "tôi",
+        "ft": "ft"
+      },
+      "feet": "bàn chân",
+      "capacity": "Bây giờ hãy ước tính có bao nhiêu người có thể sống thoải mái trong ngôi nhà của bạn."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Vị trí",
+      "subtitle": "Bất động sản của bạn ở đâu?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Phòng",
+      "subtitle": "Bất động sản của bạn có bao nhiêu phòng?",
+      "bedrooms": "Phòng ngủ",
+      "bathrooms": "Phòng tắm",
+      "living-rooms": "Phòng khách",
+      "kitchens": "Nhà bếp"
+    },
+    "step1": {
+      "step": "Bước 1.",
+      "title": "Hãy cho chúng tôi biết về nơi của bạn",
+      "subtitle": "Vị trí, kích thước và chi tiết"
+    },
+    "step2": {
+      "step": "Bước 2.",
+      "title": "Làm cho nó nổi bật",
+      "subtitle": "Tải lên 5 ảnh trở lên, tiêu đề và mô tả."
+    },
+    "step3": {
+      "step": "Bước 3.",
+      "title": "Hoàn thành và xuất bản",
+      "subtitle": "Thêm thông tin liên lạc, giá và đăng."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Kiểu",
+      "subtitle": "Câu nào mô tả tốt nhất về bất động sản của bạn?",
+      "options": {
+        "0": "Căn nhà",
+        "1": "Căn hộ",
+        "2": "Nhà gỗ",
+        "3": "Nhà riêng",
+        "4": "Lâu đài",
+        "5": "Tòa nhà thương mại",
+        "6": "Thùng chứa",
+        "7": "Nhà Cycladic",
+        "8": "Nhà đất",
+        "9": "Nông trại",
+        "10": "Nhà thuyền",
+        "11": "Đất",
+        "12": "Biệt thự",
+        "13": "Ngôi nhà nhỏ",
+        "14": "Tháp",
+        "15": "Kho",
+        "16": "Cối xay gió"
+      }
+    },
+    "progress": {
+      "continue": "Tiếp tục niêm yết",
+      "start": "Bắt đầu",
+      "back": "Mặt sau",
+      "next": "Kế tiếp",
+      "loading": "Đang tải...",
+      "finish": "Hoàn thành!"
+    }
   },
   "settings": {
     "title": "Cài đặt tài khoản",
@@ -120,13 +195,13 @@ export default {
       "title": "Thay đổi tên hồ sơ của bạn",
       "subtitle": "Đây là cách bạn sẽ xuất hiện trước công chúng"
     },
+    "language": {
+      "title": "Thay đổi ngôn ngữ của bạn",
+      "subtitle": "Đây là ngôn ngữ bạn sẽ thấy khi đăng nhập"
+    },
     "currency": {
       "title": "Thay đổi tiền tệ mặc định của bạn",
       "subtitle": "Giá bất động sản sẽ được hiển thị bằng loại tiền tệ này"
-    },
-    "language": {
-      "title": "Thay đổi ngôn ngữ mặc định của bạn",
-      "subtitle": "Đây là ngôn ngữ bạn sẽ thấy khi đăng nhập"
     },
     "submit": "Cứu"
   }

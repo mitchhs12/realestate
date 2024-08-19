@@ -27,7 +27,7 @@ const translateText = async (text, targetLanguage) => {
   return response.translations[0].translatedText;
 };
 
-const translateJson = async (json, targetLanguage) => {
+const translateJson = async (json, targetLanguage, existingJson) => {
   const translatedJson = {};
 
   for (const key in json) {
@@ -35,10 +35,14 @@ const translateJson = async (json, targetLanguage) => {
       const value = json[key];
       if (typeof value === "object" && value !== null) {
         // Recursively translate nested objects
-        translatedJson[key] = await translateJson(value, targetLanguage);
+        translatedJson[key] = await translateJson(value, targetLanguage, existingJson[key] || {});
       } else {
-        // Translate the text value
-        translatedJson[key] = await translateText(value, targetLanguage);
+        // Only translate if the key doesn't exist in the existing translation JSON
+        if (!existingJson.hasOwnProperty(key)) {
+          translatedJson[key] = await translateText(value, targetLanguage);
+        } else {
+          translatedJson[key] = existingJson[key];
+        }
       }
     }
   }
@@ -58,12 +62,17 @@ const translateFiles = async () => {
       return;
     }
 
-    // Perform the translation
-    const translatedContent = await translateJson(enUS, language);
+    let existingTranslation = {};
+    if (fs.existsSync(outputFilename)) {
+      existingTranslation = JSON.parse(fs.readFileSync(outputFilename, "utf8"));
+    }
+
+    // Perform the translation, only translating missing keys
+    const translatedContent = await translateJson(enUS, language, existingTranslation);
 
     // Overwrite the translated content to the respective JSON file
     fs.writeFileSync(outputFilename, JSON.stringify(translatedContent, null, 2), "utf8");
-    console.log(`${language}.json file created successfully!`);
+    console.log(`${language}.json file updated successfully!`);
   });
 
   await Promise.all(translationPromises);

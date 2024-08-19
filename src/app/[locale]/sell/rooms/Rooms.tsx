@@ -1,21 +1,33 @@
 "use client";
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Separator } from "@/components/ui/separator";
-import { PlusIcon } from "@radix-ui/react-icons";
-import { MinusIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
 import CounterComponent from "@/components/CounterComponent";
+import { LocaleContext } from "@/context/LocaleContext";
 
 interface Props {
-  user: User;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
+  title: string;
+  subtitle: string;
+  bedrooms_text: string;
+  bathrooms_text: string;
+  livingrooms_text: string;
+  kitchens_text: string;
 }
 
-export default function Rooms({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Rooms({
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title,
+  subtitle,
+  bedrooms_text,
+  bathrooms_text,
+  livingrooms_text,
+  kitchens_text,
+}: Props) {
   const {
     setSellFlowFlatIndex,
     setSellFlowIndices,
@@ -25,6 +37,7 @@ export default function Rooms({ user, sellFlatIndex, sellFlowIndices, stepPercen
     currentHome,
     setNewHome,
   } = useContext(SellContext);
+  const { numerals } = useContext(LocaleContext);
 
   const [bedrooms, setBedrooms] = useState(currentHome?.bedrooms || 0);
   const [bathrooms, setBathrooms] = useState(currentHome?.bathrooms || 0);
@@ -56,38 +69,38 @@ export default function Rooms({ user, sellFlatIndex, sellFlowIndices, stepPercen
       <div className="flex flex-col w-full h-full justify-start items-center text-center">
         <div className="flex flex-col w-full h-full">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">Rooms</h1>
+            <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">How many does your property have?</h3>
+            <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
           <div className="flex h-full w-full justify-center">
             <div className="flex flex-col h-full justify-center items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl">
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">Bedrooms</div>
+                <div className="flex w-full h-full items-center justify-start">{bedrooms_text}</div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={bedrooms} setState={setBedrooms} />
+                  <CounterComponent state={bedrooms} setState={setBedrooms} numerals={numerals} />
                 </div>
               </div>
               <Separator />
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">Bathrooms</div>
+                <div className="flex w-full h-full items-center justify-start">{bathrooms_text}</div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={bathrooms} setState={setBathrooms} />
+                  <CounterComponent state={bathrooms} setState={setBathrooms} numerals={numerals} />
                 </div>
               </div>
               <Separator />
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">Living rooms</div>
+                <div className="flex w-full h-full items-center justify-start">{livingrooms_text}</div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={livingrooms} setState={setLivingrooms} />
+                  <CounterComponent state={livingrooms} setState={setLivingrooms} numerals={numerals} />
                 </div>
               </div>
               <Separator />
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">Kitchens</div>
+                <div className="flex w-full h-full items-center justify-start">{kitchens_text}</div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={kitchens} setState={setKitchens} />
+                  <CounterComponent state={kitchens} setState={setKitchens} numerals={numerals} />
                 </div>
               </div>
             </div>

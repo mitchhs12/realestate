@@ -77,26 +77,6 @@ export default function SettingsPage({ user, title, name, currency, language, su
               />
               <FormField
                 control={form.control}
-                name="currency"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{currency.title}</FormLabel>
-                    <FormControl>
-                      <select className="block w-full mt-1" {...field}>
-                        {locales.map((config) => (
-                          <option key={`${config.locale}${config.currency}`} value={config.currency}>
-                            {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
-                          </option>
-                        ))}
-                      </select>
-                    </FormControl>
-                    <FormDescription>{currency.subtitle}</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
                 name="language"
                 render={({ field }) => (
                   <FormItem>
@@ -111,6 +91,26 @@ export default function SettingsPage({ user, title, name, currency, language, su
                       </select>
                     </FormControl>
                     <FormDescription>{language.subtitle}</FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="currency"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{currency.title}</FormLabel>
+                    <FormControl>
+                      <select className="block w-full mt-1" {...field}>
+                        {locales.map((config) => (
+                          <option key={`${config.locale}${config.currency}`} value={config.currency}>
+                            {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
+                          </option>
+                        ))}
+                      </select>
+                    </FormControl>
+                    <FormDescription>{currency.subtitle}</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}

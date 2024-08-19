@@ -23,7 +23,9 @@
         },
         "language": "Sprache",
         "currency": "Währung",
-        "settings": "Einstellungen"
+        "settings": "Einstellungen",
+        "exit": "Speichern und beenden",
+        "exit-short": "Ausfahrt"
       }
     },
     "modal": {
@@ -97,22 +99,95 @@
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Verkaufen Sie Ihre Immobilie",
+      "title-continue": "Eintrag abschließen",
+      "step-1": "1. Erzähl uns von deinem Ort",
+      "step-1-sub": "Lage, Größe und Details.",
+      "step-2": "2. Heben Sie es hervor",
+      "step-2-sub": "Laden Sie 5 oder mehr Fotos, einen Titel und eine Beschreibung hoch.",
+      "step-3": "3. Fertigstellen und veröffentlichen",
+      "step-3-sub": "Fügen Sie Kontaktdaten und Ihren Preis hinzu und veröffentlichen Sie.",
+      "completed": "Vollendet"
+    },
+    "capacity": {
+      "title": "Kapazität",
+      "subtitle": "Wie groß ist Ihr Grundstück?",
+      "size": "Geben Sie hier die Größe Ihres Grundstückes ein.",
+      "metres": "Meter",
+      "units": {
+        "m": "M",
+        "ft": "Fuß"
+      },
+      "feet": "Füße",
+      "capacity": "Schätzen Sie nun, wie viele Personen bequem in Ihrer Immobilie leben könnten."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Standort",
+      "subtitle": "Wo befindet sich Ihr Eigentum?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Zimmer",
+      "subtitle": "Wie viele Zimmer hat Ihre Immobilie?",
+      "bedrooms": "Schlafzimmer",
+      "bathrooms": "Badezimmer",
+      "living-rooms": "Wohnzimmer",
+      "kitchens": "Küchen"
+    },
+    "step1": {
+      "step": "Schritt 1.",
+      "title": "Erzählen Sie uns von Ihrem Ort",
+      "subtitle": "Lage, Größe und Details"
+    },
+    "step2": {
+      "step": "Schritt 2.",
+      "title": "Machen Sie es zum Blickfang",
+      "subtitle": "Laden Sie 5 oder mehr Fotos, einen Titel und eine Beschreibung hoch."
+    },
+    "step3": {
+      "step": "Schritt 3.",
+      "title": "Fertigstellen und veröffentlichen",
+      "subtitle": "Fügen Sie Kontaktdaten und Ihren Preis hinzu und veröffentlichen Sie."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Typ",
+      "subtitle": "Was beschreibt Ihre Immobilie am besten?",
+      "options": {
+        "0": "Haus",
+        "1": "Wohnung",
+        "2": "Kabine",
+        "3": "Besonderes Haus",
+        "4": "Schloss",
+        "5": "Geschäftshaus",
+        "6": "Container",
+        "7": "Kykladenhaus",
+        "8": "Erde zu Hause",
+        "9": "Bauernhof",
+        "10": "Hausboot",
+        "11": "Land",
+        "12": "Villa",
+        "13": "Kleines Zuhause",
+        "14": "Turm",
+        "15": "Lager",
+        "16": "Windmühle"
+      }
+    },
+    "progress": {
+      "continue": "Auflistung fortsetzen",
+      "start": "Start",
+      "back": "Zurück",
+      "next": "Nächste",
+      "loading": "Laden...",
+      "finish": "Beenden!"
+    }
   },
   "settings": {
     "title": "Kontoeinstellungen",
@@ -120,13 +195,13 @@
       "title": "Ändern Sie Ihren Profilnamen",
       "subtitle": "So treten Sie in der Öffentlichkeit auf"
     },
+    "language": {
+      "title": "Ändern Sie Ihre Sprache",
+      "subtitle": "Dies ist die Sprache, die Ihnen bei der Anmeldung angezeigt wird"
+    },
     "currency": {
       "title": "Ändern Sie Ihre Standardwährung",
       "subtitle": "Immobilienpreise werden in dieser Währung angezeigt"
-    },
-    "language": {
-      "title": "Ändern Sie Ihre Standardsprache",
-      "subtitle": "Dies ist die Sprache, die Ihnen bei der Anmeldung angezeigt wird"
     },
     "submit": "Speichern"
   }

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
+import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
   title: "Location",
@@ -20,15 +21,27 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  const { array, innerIndex, outerIndex } = await getStepData("/sell/location");
-  const sellFlatIndex = await getSellFlowIndex("/sell/location");
+
+  const [stepData, sellFlatIndex, s, t] = await Promise.all([
+    getStepData("/sell/location"),
+    getSellFlowIndex("/sell/location"),
+    getScopedI18n("home.header.search"),
+    getScopedI18n("sell.location"),
+  ]);
+  const text = s("search-button");
+  const placeholder = s("placeholder");
+  const title = t("title");
+  const subtitle = t("subtitle");
 
   return (
     <Location
-      user={user}
-      sellFlowIndices={{ innerIndex, outerIndex }}
+      sellFlowIndices={{ innerIndex: stepData.innerIndex, outerIndex: stepData.outerIndex }}
       sellFlatIndex={sellFlatIndex}
-      stepPercentage={array}
+      stepPercentage={stepData.array}
+      text={text}
+      placeholder={placeholder}
+      title={title}
+      subtitle={subtitle}
     />
   );
 }

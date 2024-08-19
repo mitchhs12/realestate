@@ -23,13 +23,15 @@
         },
         "language": "Idioma",
         "currency": "Divisa",
-        "settings": "Ajustes"
+        "settings": "Ajustes",
+        "exit": "Guardar y salir",
+        "exit-short": "Salida"
       }
     },
     "modal": {
       "sign-up": {
         "title": "Inscribirse",
-        "subtitle": "¡Introduzca su correo electrónico a continuación para registrarse!",
+        "subtitle": "¡Introduce tu correo electrónico a continuación para registrarte!",
         "already": "¿Ya tienes una cuenta?",
         "change": "Acceso"
       },
@@ -97,22 +99,95 @@
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Vende tu propiedad",
+      "title-continue": "Termina tu listado",
+      "step-1": "1. Cuéntanos sobre tu lugar",
+      "step-1-sub": "Ubicación, tamaño y detalles.",
+      "step-2": "2. Haz que destaque",
+      "step-2-sub": "Sube 5 o más fotos, un título y una descripción.",
+      "step-3": "3. Terminar y publicar",
+      "step-3-sub": "Añade tus datos de contacto, tu precio y publica.",
+      "completed": "Terminado"
+    },
+    "capacity": {
+      "title": "Capacidad",
+      "subtitle": "¿Qué tan grande es su propiedad?",
+      "size": "Introduzca aquí el tamaño de su propiedad.",
+      "metres": "metros",
+      "units": {
+        "m": "metro",
+        "ft": "pie"
+      },
+      "feet": "pies",
+      "capacity": "Ahora calcule cuántas personas podrían vivir cómodamente en su propiedad."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Ubicación",
+      "subtitle": "¿Dónde está tu propiedad?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Alojamiento",
+      "subtitle": "¿Cuántas habitaciones tiene su propiedad?",
+      "bedrooms": "Dormitorios",
+      "bathrooms": "Baños",
+      "living-rooms": "Salas de estar",
+      "kitchens": "Cocinas"
+    },
+    "step1": {
+      "step": "Paso 1.",
+      "title": "Cuéntanos sobre tu lugar",
+      "subtitle": "Ubicación, tamaño y detalles"
+    },
+    "step2": {
+      "step": "Paso 2.",
+      "title": "Haz que destaque",
+      "subtitle": "Sube 5 o más fotos, un título y una descripción."
+    },
+    "step3": {
+      "step": "Paso 3.",
+      "title": "Terminar y publicar",
+      "subtitle": "Añade tus datos de contacto, tu precio y publica."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Tipo",
+      "subtitle": "¿Cuál describe mejor su propiedad?",
+      "options": {
+        "0": "Casa",
+        "1": "Departamento",
+        "2": "Cabina",
+        "3": "Casa particular",
+        "4": "Castillo",
+        "5": "Edificio comercial",
+        "6": "Recipiente",
+        "7": "Casa cicládica",
+        "8": "Hogar en la tierra",
+        "9": "Granja",
+        "10": "Casa flotante",
+        "11": "Tierra",
+        "12": "Palacio",
+        "13": "Casa pequeña",
+        "14": "Torre",
+        "15": "Depósito",
+        "16": "Molino"
+      }
+    },
+    "progress": {
+      "continue": "Continuar con el listado",
+      "start": "Comenzar",
+      "back": "Atrás",
+      "next": "Próximo",
+      "loading": "Cargando...",
+      "finish": "¡Finalizar!"
+    }
   },
   "settings": {
     "title": "Configuraciones de la cuenta",
@@ -120,13 +195,13 @@
       "title": "Cambia tu nombre de perfil",
       "subtitle": "Así es como aparecerás públicamente"
     },
+    "language": {
+      "title": "Cambia tu idioma",
+      "subtitle": "Este es el idioma que verás cuando inicies sesión"
+    },
     "currency": {
       "title": "Cambiar su moneda predeterminada",
       "subtitle": "Los precios de las propiedades se mostrarán en esta moneda."
-    },
-    "language": {
-      "title": "Cambiar el idioma predeterminado",
-      "subtitle": "Este es el idioma que verás cuando inicies sesión"
     },
     "submit": "Ahorrar"
   }

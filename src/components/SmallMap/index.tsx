@@ -43,15 +43,15 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
   ];
 
   const { resolvedTheme: theme } = useTheme();
-  const { newZoom, setNewZoom } = useContext(QueryContext);
   const { setNewHome, currentHome, setNextLoading, setPrevLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
+  const [newZoom, setNewZoom] = useState(17);
 
   const INITIAL_CAMERA = {
     center: { lat: coordinates.lat, lng: coordinates.long },
-    zoom: newZoom !== 17 ? newZoom : 17,
+    zoom: newZoom,
   };
 
   const [cameraProps, setCameraProps] = useState<MapCameraProps>(INITIAL_CAMERA);
@@ -142,7 +142,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
             gestureHandling={"greedy"}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             maxZoom={20}
-            minZoom={17}
+            minZoom={6}
             onZoomChanged={(num) => {
               setNewZoom(num.detail.zoom);
             }}

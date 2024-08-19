@@ -9,6 +9,8 @@ import {
   UpdateEmailValues,
   updatePhoneSchema,
   UpdatePhoneValues,
+  UpdateLanguageValues,
+  updateLanguageSchema,
 } from "@/lib/validations";
 import { auth } from "@/auth";
 
@@ -22,7 +24,7 @@ export async function updateSettings(values: UpdateSettingsValues) {
     throw new Error("User not found");
   }
   console.log("values", values);
-  const { name, currency } = updateSettingsSchema.parse(values);
+  const { name, currency, language } = updateSettingsSchema.parse(values);
 
   await prisma.user.update({
     where: {
@@ -31,6 +33,27 @@ export async function updateSettings(values: UpdateSettingsValues) {
     data: {
       name,
       currency,
+      language,
+    },
+  });
+  revalidatePath("/");
+}
+
+export async function updateLanguage(values: UpdateLanguageValues) {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    return;
+  }
+  const { language } = updateLanguageSchema.parse(values);
+
+  await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      language,
     },
   });
   revalidatePath("/");

@@ -21,12 +21,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { languages, locales } from "@/lib/validations";
+import { languages, LanguageType, locales } from "@/lib/validations";
 import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { getFlagEmoji, getFullLanguageName } from "@/lib/utils";
-import { useChangeLocale, useCurrentLocale, useScopedI18n } from "@/locales/client";
+import { useChangeLocale, useCurrentLocale } from "@/locales/client";
 import { getCurrency } from "@/lib/utils";
+import { updateLanguage } from "@/app/[locale]/settings/actions";
 
 interface Props {
   openSignUpModal: () => void;
@@ -61,6 +62,11 @@ export function ProfileButton({
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();
   const lang = useCurrentLocale();
+
+  const handleUpdateLanguage = async (newLang: LanguageType) => {
+    await updateLanguage({ language: newLang });
+    changeLang(newLang);
+  };
 
   // Function to get initials from username
   const getInitials = (username: string) => {
@@ -148,7 +154,7 @@ export function ProfileButton({
                 <DropdownMenuRadioGroup
                   value={lang}
                   onValueChange={(newLanguage) => {
-                    changeLang(newLanguage as any);
+                    handleUpdateLanguage(newLanguage as LanguageType);
                   }}
                 >
                   {languages.map((lang) => (

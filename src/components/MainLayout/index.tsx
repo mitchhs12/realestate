@@ -35,6 +35,8 @@ export default async function MainLayout({ children }: Props) {
         language={p("language")}
         currency={p("currency")}
         settings={p("settings")}
+        exit={p("exit")}
+        exit_short={p("exit-short")}
       />
       {children}
     </>

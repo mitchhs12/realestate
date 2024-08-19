@@ -23,7 +23,9 @@ export default {
         },
         "language": "Linguagem",
         "currency": "Moeda",
-        "settings": "Configurações"
+        "settings": "Configurações",
+        "exit": "Salvar e sair",
+        "exit-short": "Saída"
       }
     },
     "modal": {
@@ -97,22 +99,95 @@ export default {
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Venda seu imóvel",
+      "title-continue": "Conclua sua listagem",
+      "step-1": "1. Conte-nos sobre seu lugar",
+      "step-1-sub": "Localização, tamanho e detalhes.",
+      "step-2": "2. Faça com que se destaque",
+      "step-2-sub": "Carregue 5 ou mais fotos, um título e uma descrição.",
+      "step-3": "3. Finalizar e publicar",
+      "step-3-sub": "Adicione detalhes de contato, seu preço e publique.",
+      "completed": "Concluído"
+    },
+    "capacity": {
+      "title": "Capacidade",
+      "subtitle": "Qual é o tamanho da sua propriedade?",
+      "size": "Insira o tamanho da sua propriedade aqui.",
+      "metres": "metros",
+      "units": {
+        "m": "eu",
+        "ft": "pés"
+      },
+      "feet": "pés",
+      "capacity": "Agora estime quantas pessoas poderiam viver confortavelmente em sua propriedade."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Localização",
+      "subtitle": "Onde fica sua propriedade?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Quartos",
+      "subtitle": "Quantos cômodos sua propriedade tem?",
+      "bedrooms": "Quartos",
+      "bathrooms": "Banheiros",
+      "living-rooms": "Salas de estar",
+      "kitchens": "Cozinhas"
+    },
+    "step1": {
+      "step": "Passo 1.",
+      "title": "Conte-nos sobre seu lugar",
+      "subtitle": "Localização, tamanho e detalhes"
+    },
+    "step2": {
+      "step": "Passo 2.",
+      "title": "Faça com que se destaque",
+      "subtitle": "Carregue 5 ou mais fotos, um título e uma descrição."
+    },
+    "step3": {
+      "step": "Etapa 3.",
+      "title": "Finalizar e publicar",
+      "subtitle": "Adicione detalhes de contato, seu preço e publique."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Tipo",
+      "subtitle": "Qual opção melhor descreve sua propriedade?",
+      "options": {
+        "0": "Casa",
+        "1": "Apartamento",
+        "2": "Cabine",
+        "3": "Casa particular",
+        "4": "Castelo",
+        "5": "Edifício comercial",
+        "6": "Recipiente",
+        "7": "Casa das Cíclades",
+        "8": "casa da terra",
+        "9": "Fazenda",
+        "10": "Casa flutuante",
+        "11": "Terra",
+        "12": "Mansão",
+        "13": "Casa pequena",
+        "14": "Torre",
+        "15": "Armazém",
+        "16": "Moinho de vento"
+      }
+    },
+    "progress": {
+      "continue": "Continuar listando",
+      "start": "Começar",
+      "back": "Voltar",
+      "next": "Próximo",
+      "loading": "Carregando...",
+      "finish": "Terminar!"
+    }
   },
   "settings": {
     "title": "Configurações de Conta",
@@ -120,13 +195,13 @@ export default {
       "title": "Alterar o nome do seu perfil",
       "subtitle": "É assim que você aparecerá publicamente"
     },
+    "language": {
+      "title": "Alterar seu idioma",
+      "subtitle": "Este é o idioma que você verá ao fazer login"
+    },
     "currency": {
       "title": "Alterar sua moeda padrão",
       "subtitle": "Os preços dos imóveis serão exibidos nesta moeda"
-    },
-    "language": {
-      "title": "Alterar seu idioma padrão",
-      "subtitle": "Este é o idioma que você verá ao fazer login"
     },
     "submit": "Salvar"
   }

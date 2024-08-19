@@ -36,6 +36,10 @@ export const updateCurrencySchema = z.object({
   currency: z.string().min(1, "Cannot be empty"),
 });
 
+export const updateLanguageSchema = z.object({
+  language: z.enum(["af", "ar", "de", "en", "es", "fr", "hr", "id", "ja", "ka", "ko", "pt", "th", "tr", "vi", "zh"]),
+});
+
 export const updateSettingsSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
   currency: z.string().min(1, "Cannot be empty"),
@@ -81,7 +85,7 @@ export type UpdateEmailValues = z.infer<typeof updateEmailSchema>;
 export type UpdatePhoneValues = z.infer<typeof updatePhoneSchema>;
 export type UpdateCurrencyValues = z.infer<typeof updateCurrencySchema>;
 export type UpdateSettingsValues = z.infer<typeof updateSettingsSchema>;
-
+export type UpdateLanguageValues = z.infer<typeof updateLanguageSchema>;
 export type HomeType = z.infer<typeof homeSchema>;
 
 export type CoordinatesType = {
@@ -173,6 +177,25 @@ export const buyGuides: string[] = [
   "New Zealand",
   "Cayman Islands",
 ];
+
+export const numeralMap: { [key in LanguageType]: string } = {
+  af: "af", // Afrikaans uses Arabic numerals
+  ar: "ar-EG", // Arabic (Egypt) for Arabic numerals
+  de: "de", // German uses Arabic numerals
+  en: "en", // English uses Arabic numerals
+  es: "es", // Spanish uses Arabic numerals
+  fr: "fr", // French uses Arabic numerals
+  hr: "hr", // Croatian uses Arabic numerals
+  id: "id", // Indonesian uses Arabic numerals
+  ja: "ja-JP", // Japanese with traditional Japanese numerals
+  ka: "ka-GE", // Georgian numerals (though Arabic numerals are common)
+  ko: "ko-KR", // Korean with traditional numerals
+  pt: "pt", // Portuguese uses Arabic numerals
+  th: "th-TH", // Thai numerals
+  tr: "tr", // Turkish uses Arabic numerals
+  vi: "vi", // Vietnamese uses Arabic numerals
+  zh: "zh", // Chinese uses Arabic numerals
+};
 
 export type LanguageType =
   | "af"

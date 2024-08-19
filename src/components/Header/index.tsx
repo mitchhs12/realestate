@@ -33,6 +33,8 @@ interface Props {
   language: string;
   currency: string;
   settings: string;
+  exit: string;
+  exit_short: string;
 }
 
 export default function Header({
@@ -51,6 +53,8 @@ export default function Header({
   language,
   currency,
   settings,
+  exit,
+  exit_short,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
@@ -196,8 +200,8 @@ export default function Header({
               router.push("/");
             }}
           >
-            <span className="sm:hidden">Exit</span>
-            <span className="hidden sm:flex">Save and exit</span>
+            <span className="sm:hidden">{exit_short}</span>
+            <span className="hidden sm:flex">{exit}</span>
           </Button>
         )}
       </header>

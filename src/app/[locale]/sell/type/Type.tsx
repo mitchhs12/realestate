@@ -3,17 +3,18 @@ import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { types } from "@/lib/sellFlowData";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
 interface Props {
-  user: User;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
+  title: string;
+  subtitle: string;
+  options: { id: string; translation: string }[];
 }
 
-export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Type({ sellFlatIndex, sellFlowIndices, stepPercentage, title, subtitle, options }: Props) {
   const {
     setSellFlowFlatIndex,
     setSellFlowIndices,
@@ -35,9 +36,7 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
   }, []);
 
   useEffect(() => {
-    console.log("running this effect");
     if (currentHome) {
-      console.log("updating new home :)");
       setNewHome({ ...currentHome, type: selection });
     }
   }, [selection]);
@@ -47,10 +46,10 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">Type</h1>
+            <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">Which best describes your place?</h3>
+            <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
         </div>
         <div className="grid w-full h-full px-8 justify-center items-center py-8 overflow-auto">
@@ -63,13 +62,13 @@ export default function Type({ user, sellFlatIndex, sellFlowIndices, stepPercent
             }}
           >
             <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 xl:gap-8 items-center justify-center">
-              {types.map((type, index) => (
+              {options.map((type, index) => (
                 <ToggleGroupItem
                   key={index}
-                  value={type}
+                  value={type.id}
                   className="h-[50px] md:h-[80px] xl:h-[120px] border-2 text-sm md:text-lg"
                 >
-                  {type}
+                  {type.translation}
                 </ToggleGroupItem>
               ))}
             </div>

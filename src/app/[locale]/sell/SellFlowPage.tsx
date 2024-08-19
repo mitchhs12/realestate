@@ -3,20 +3,50 @@
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useContext } from "react";
 import { SellContext } from "@/context/SellContext";
-import { stepsFlattened, stepLengthsWithoutStepPages, stepLengths } from "@/lib/sellFlowData";
+import { stepsFlattened, stepLengthsWithoutStepPages } from "@/lib/sellFlowData";
 import { Checkbox } from "@/components/ui/checkbox";
+import { LanguageType } from "@/lib/validations";
+import { LocaleContext } from "@/context/LocaleContext";
+import { formatNumber } from "@/lib/utils";
 
 interface Props {
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
+  locale: LanguageType;
+  title: string;
+  titleContinue: string;
+  step1: string;
+  step1Sub: string;
+  step2: string;
+  step2Sub: string;
+  step3: string;
+  step3Sub: string;
+  completed: string;
 }
 
-const getTotalSteps = (step1: number, step2: number) => {
-  return stepsFlattened.length - 3 - step1 - step2;
-};
+export default function SellFlowPage({
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title,
+  titleContinue,
+  step1,
+  step1Sub,
+  step2,
+  step2Sub,
+  step3,
+  step3Sub,
+  completed,
+}: Props) {
+  const { numerals } = useContext(LocaleContext);
 
-export default function SellFlowPage({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+  const getTotalSteps = (step1: number, step2: number) => {
+    const totalStep = stepsFlattened.length - 3 - step1 - step2;
+    const newNum = formatNumber(totalStep, numerals);
+    return newNum;
+  };
+
   const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNextLoading, setPrevLoading } =
     useContext(SellContext);
 
@@ -34,18 +64,20 @@ export default function SellFlowPage({ sellFlatIndex, sellFlowIndices, stepPerce
     <div className="flex flex-col h-full justify-start md:justify-center items-center gap-y-20 md:gap-y-0 md:flex-row w-full">
       <div className="flex flex-col md:flex-row w-full h-full justify-start items-center">
         <div className="flex w-1/2 items-center md:items-center justify-center py-3 text-center text-nowrap">
-          <h1 className="flex items-center text-3xl">{currentHome ? "Finish your listing" : "Sell your property"}</h1>
+          <h1 className="flex items-center text-3xl">{currentHome ? titleContinue : title}</h1>
         </div>
         <div className="flex h-full justify-center items-center flex-col md:items-start gap-8 md:gap-20 w-1/2 md:mr-8 text-wrap">
           <div className="flex flex-col gap-y-12 justify-center w-[52vw] md:w-[40vw]">
             <div className="flex flex-col items-start">
               <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
-                1. Tell us about your place
+                {step1}
                 {step && (
                   <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {step > stepLengthsWithoutStepPages[0] ? stepLengthsWithoutStepPages[0] : step}/
-                    {getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
-                    <span className="hidden 2xl:flex">Completed</span>
+                    {step > stepLengthsWithoutStepPages[0]
+                      ? formatNumber(stepLengthsWithoutStepPages[0], numerals)
+                      : formatNumber(step, numerals)}
+                    /{getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
+                    <span className="hidden 2xl:flex">{completed}</span>
                     <Checkbox
                       id="state"
                       disabled={true}
@@ -54,20 +86,23 @@ export default function SellFlowPage({ sellFlatIndex, sellFlowIndices, stepPerce
                   </label>
                 )}
               </h3>
-              <div>Location, size, and details.</div>
+              <div>{step1Sub}</div>
             </div>
             <Separator />
             <div className="flex flex-col items-start">
               <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
-                2. Make it stand out
+                {step2}
                 {step && (
                   <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {Math.min(
-                      step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0,
-                      stepLengthsWithoutStepPages[1]
+                    {formatNumber(
+                      Math.min(
+                        step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0,
+                        stepLengthsWithoutStepPages[1]
+                      ),
+                      numerals
                     )}
                     /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
-                    <span className="hidden 2xl:flex">Completed</span>
+                    <span className="hidden 2xl:flex">{completed}</span>
                     <Checkbox
                       id="state"
                       disabled={true}
@@ -76,19 +111,22 @@ export default function SellFlowPage({ sellFlatIndex, sellFlowIndices, stepPerce
                   </label>
                 )}
               </h3>
-              <div>Upload 5 or more photos, a title, and a description.</div>
+              <div>{step2Sub}</div>
             </div>
             <Separator />
             <div className="flex flex-col items-start">
               <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
-                3. Finish up and publish
+                {step3}
                 {step && (
                   <label className="hidden lg:flex text-md items-center gap-3 text-sm">
                     {step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2 > 0
-                      ? step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2
-                      : 0}
+                      ? formatNumber(
+                          step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2,
+                          numerals
+                        )
+                      : formatNumber(0, numerals)}
                     /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[1])}
-                    <span className="hidden 2xl:flex">Completed</span>
+                    <span className="hidden 2xl:flex">{completed}</span>
                     <Checkbox
                       id="state"
                       disabled={true}
@@ -102,7 +140,7 @@ export default function SellFlowPage({ sellFlatIndex, sellFlowIndices, stepPerce
                   </label>
                 )}
               </h3>
-              <div>Add contact details, your price, and publish.</div>
+              <div>{step3Sub}</div>
             </div>
           </div>
         </div>

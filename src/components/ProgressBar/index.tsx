@@ -4,12 +4,20 @@ import { useContext, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
 import { useRouter, usePathname } from "next/navigation";
 import { SellContext } from "@/context/SellContext";
-import { sellSteps, stepsFlattened, stepLengths } from "@/lib/sellFlowData";
+import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
 import { updateHome, sellHome } from "@/app/[locale]/sell/actions";
-import { updatePhone } from "@/app/[locale]/settings/actions";
 import { useCurrentLocale } from "@/locales/client";
 
-export default function ProgressBar() {
+interface Props {
+  cont: string;
+  start: string;
+  back: string;
+  next: string;
+  loading: string;
+  finish: string;
+}
+
+export default function ProgressBar({ cont, start, back, next, finish, loading }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = useCurrentLocale();
@@ -32,7 +40,6 @@ export default function ProgressBar() {
 
   router.prefetch(nextStep);
   router.prefetch(prevStep);
-
   console.log("currentHome", JSON.stringify(currentHome));
   console.log("newHome", JSON.stringify(newHome));
 
@@ -166,19 +173,19 @@ export default function ProgressBar() {
               {!nextLoading
                 ? prevStep !== ""
                   ? pathname.startsWith("/sell/review")
-                    ? "Finish!"
-                    : "Next"
+                    ? finish
+                    : next
                   : currentHome
-                  ? "Continue listing"
-                  : "Start"
-                : "Loading..."}
+                  ? cont
+                  : start
+                : loading}
             </Button>
           </div>
         )}
         {prevStep !== "" && (
           <div className="flex justify-start">
             <Button variant="outline" size="lg" onClick={handlePrev} disabled={prevLoading || nextLoading}>
-              {!prevLoading ? "Back" : "Loading..."}
+              {!prevLoading ? back : loading}
             </Button>
           </div>
         )}

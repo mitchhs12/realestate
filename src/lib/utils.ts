@@ -39,3 +39,7 @@ export const getCurrency = (currencies: CurrencyType[], symbol: string): Currenc
   const price = currencies.find((currency) => currency.symbol === symbol)?.usdPrice || 1;
   return { symbol: symbol, usdPrice: price };
 };
+
+export const formatNumber = (num: number, numerals: any) => {
+  return new Intl.NumberFormat(numerals).format(num);
+};

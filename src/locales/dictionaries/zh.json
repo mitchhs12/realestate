@@ -23,7 +23,9 @@
         },
         "language": "语言",
         "currency": "货币",
-        "settings": "设置"
+        "settings": "设置",
+        "exit": "保存并退出",
+        "exit-short": "出口"
       }
     },
     "modal": {
@@ -76,7 +78,7 @@
         "co": "如何在哥伦比亚购物",
         "ve": "如何在委内瑞拉购物",
         "vn": "如何在越南购物",
-        "id": "如何在印度尼西亚购买",
+        "id": "如何在印度尼西亚购物",
         "nz": "如何在新西兰购物",
         "ky": "如何在开曼群岛买房"
       }
@@ -97,22 +99,95 @@
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "出售您的房产",
+      "title-continue": "完成您的列表",
+      "step-1": "1. 告诉我们您的住所",
+      "step-1-sub": "位置、大小和详细信息。",
+      "step-2": "2. 让它脱颖而出",
+      "step-2-sub": "上传 5 张或更多照片、标题和描述。",
+      "step-3": "3. 完成并发布",
+      "step-3-sub": "添加联系方式、价格并发布。",
+      "completed": "完全的"
+    },
+    "capacity": {
+      "title": "容量",
+      "subtitle": "您的房产面积有多大？",
+      "size": "在此输入您的房产面积。",
+      "metres": "米",
+      "units": {
+        "m": "米",
+        "ft": "英尺"
+      },
+      "feet": "脚",
+      "capacity": "现在估计一下有多少人可以舒适地住在您的房产中。"
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "地点",
+      "subtitle": "你的财产在哪里？"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "客房",
+      "subtitle": "您的房子有多少个房间？",
+      "bedrooms": "卧室",
+      "bathrooms": "浴室",
+      "living-rooms": "起居室",
+      "kitchens": "厨房"
+    },
+    "step1": {
+      "step": "步骤1.",
+      "title": "告诉我们您的住所",
+      "subtitle": "位置、大小和详细信息"
+    },
+    "step2": {
+      "step": "第 2 步。",
+      "title": "使其脱颖而出",
+      "subtitle": "上传 5 张或更多照片、标题和描述。"
+    },
+    "step3": {
+      "step": "步骤3.",
+      "title": "完成并发布",
+      "subtitle": "添加联系方式、价格并发布。"
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "类型",
+      "subtitle": "哪一个最能描述您的房产？",
+      "options": {
+        "0": "房子",
+        "1": "公寓",
+        "2": "舱",
+        "3": "特别住宅",
+        "4": "城堡",
+        "5": "商业建筑",
+        "6": "容器",
+        "7": "基克拉迪群岛之家",
+        "8": "地球家园",
+        "9": "农场",
+        "10": "船屋",
+        "11": "土地",
+        "12": "大厦",
+        "13": "小房子",
+        "14": "塔",
+        "15": "仓库",
+        "16": "风车"
+      }
+    },
+    "progress": {
+      "continue": "继续上市",
+      "start": "开始",
+      "back": "后退",
+      "next": "下一个",
+      "loading": "加载中...",
+      "finish": "结束！"
+    }
   },
   "settings": {
     "title": "帐户设置",
@@ -120,13 +195,13 @@
       "title": "更改您的个人资料名称",
       "subtitle": "这就是你在公众面前的形象"
     },
+    "language": {
+      "title": "更改语言",
+      "subtitle": "这是您登录时将看到的语言"
+    },
     "currency": {
       "title": "更改您的默认货币",
       "subtitle": "房产价格将以此货币显示"
-    },
-    "language": {
-      "title": "更改默认语言",
-      "subtitle": "这是您登录时将看到的语言"
     },
     "submit": "节省"
   }

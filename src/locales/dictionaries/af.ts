@@ -23,7 +23,9 @@ export default {
         },
         "language": "Taal",
         "currency": "Geldeenheid",
-        "settings": "Instellings"
+        "settings": "Instellings",
+        "exit": "Stoor en gaan uit",
+        "exit-short": "Verlaat"
       }
     },
     "modal": {
@@ -97,22 +99,95 @@ export default {
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Verkoop jou eiendom",
+      "title-continue": "Voltooi jou lysinskrywing",
+      "step-1": "1. Vertel ons van jou plek",
+      "step-1-sub": "Ligging, grootte en besonderhede.",
+      "step-2": "2. Laat dit uitstaan",
+      "step-2-sub": "Laai 5 of meer foto's, 'n titel en 'n beskrywing op.",
+      "step-3": "3. Voltooi en publiseer",
+      "step-3-sub": "Voeg kontakbesonderhede, jou prys by en publiseer.",
+      "completed": "Voltooi"
+    },
+    "capacity": {
+      "title": "Kapasiteit",
+      "subtitle": "Hoe groot is jou eiendom?",
+      "size": "Voer die grootte van jou eiendom hier in.",
+      "metres": "meter",
+      "units": {
+        "m": "m",
+        "ft": "ft"
+      },
+      "feet": "voete",
+      "capacity": "Skat nou hoeveel mense gemaklik in jou eiendom kan woon."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Ligging",
+      "subtitle": "Waar is jou eiendom?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Kamers",
+      "subtitle": "Hoeveel kamers het jou eiendom?",
+      "bedrooms": "Slaapkamers",
+      "bathrooms": "Badkamers",
+      "living-rooms": "Woonkamers",
+      "kitchens": "Kombuise"
+    },
+    "step1": {
+      "step": "Stap 1.",
+      "title": "Vertel ons van jou plek",
+      "subtitle": "Ligging, grootte en besonderhede"
+    },
+    "step2": {
+      "step": "Stap 2.",
+      "title": "Laat dit uitstaan",
+      "subtitle": "Laai 5 of meer foto's, 'n titel en 'n beskrywing op."
+    },
+    "step3": {
+      "step": "Stap 3.",
+      "title": "Voltooi en publiseer",
+      "subtitle": "Voeg kontakbesonderhede, jou prys by en publiseer."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Tik",
+      "subtitle": "Wat beskryf jou eiendom die beste?",
+      "options": {
+        "0": "Huis",
+        "1": "Woonstel",
+        "2": "Kajuit",
+        "3": "Casa besonders",
+        "4": "Kasteel",
+        "5": "Kommersiële gebou",
+        "6": "Houer",
+        "7": "Sikladiese huis",
+        "8": "Aarde huis",
+        "9": "Plaas",
+        "10": "Huisboot",
+        "11": "Grond",
+        "12": "Herehuis",
+        "13": "Klein huisie",
+        "14": "Toring",
+        "15": "Pakhuis",
+        "16": "Windpomp"
+      }
+    },
+    "progress": {
+      "continue": "Gaan voort met lys",
+      "start": "Begin",
+      "back": "Terug",
+      "next": "Volgende",
+      "loading": "Laai tans...",
+      "finish": "Voltooi!"
+    }
   },
   "settings": {
     "title": "Rekeninginstellings",
@@ -120,13 +195,13 @@ export default {
       "title": "Verander jou profielnaam",
       "subtitle": "Dit is hoe jy in die openbaar sal verskyn"
     },
+    "language": {
+      "title": "Verander jou taal",
+      "subtitle": "Dit is die taal wat jy sal sien wanneer jy aanmeld"
+    },
     "currency": {
       "title": "Verander jou verstek geldeenheid",
       "subtitle": "Eiendomspryse sal in hierdie geldeenheid vertoon word"
-    },
-    "language": {
-      "title": "Verander jou verstektaal",
-      "subtitle": "Dit is die taal wat jy sal sien wanneer jy aanmeld"
     },
     "submit": "Stoor"
   }

@@ -23,7 +23,9 @@
         },
         "language": "Bahasa",
         "currency": "Mata uang",
-        "settings": "Pengaturan"
+        "settings": "Pengaturan",
+        "exit": "Simpan dan keluar",
+        "exit-short": "KELUAR"
       }
     },
     "modal": {
@@ -97,22 +99,95 @@
     }
   },
   "sell": {
-    "sell-flow": {},
-    "capacity": {},
+    "sell-flow": {
+      "title": "Jual properti Anda",
+      "title-continue": "Selesaikan daftar Anda",
+      "step-1": "1. Ceritakan tentang tempatmu",
+      "step-1-sub": "Lokasi, ukuran dan detail.",
+      "step-2": "2. Buatlah menonjol",
+      "step-2-sub": "Unggah 5 foto atau lebih, judul, dan deskripsi.",
+      "step-3": "3. Selesaikan dan publikasikan",
+      "step-3-sub": "Tambahkan rincian kontak, harga Anda, dan publikasikan.",
+      "completed": "Selesai"
+    },
+    "capacity": {
+      "title": "Kapasitas",
+      "subtitle": "Seberapa besar properti Anda?",
+      "size": "Masukkan ukuran properti Anda di sini.",
+      "metres": "meter",
+      "units": {
+        "m": "M",
+        "ft": "kaki"
+      },
+      "feet": "kaki",
+      "capacity": "Sekarang perkirakan berapa banyak orang yang dapat tinggal dengan nyaman di properti Anda."
+    },
     "checkout": {},
     "contact": {},
     "description": {},
     "features": {},
-    "location": {},
+    "location": {
+      "title": "Lokasi",
+      "subtitle": "Di mana properti Anda?"
+    },
     "photos": {},
     "price": {},
     "review": {},
-    "rooms": {},
-    "step1": {},
-    "step2": {},
-    "step3": {},
+    "rooms": {
+      "title": "Kamar",
+      "subtitle": "Berapa banyak kamar yang dimiliki properti Anda?",
+      "bedrooms": "Kamar tidur",
+      "bathrooms": "Kamar mandi",
+      "living-rooms": "Ruang tamu",
+      "kitchens": "Dapur"
+    },
+    "step1": {
+      "step": "Langkah 1.",
+      "title": "Ceritakan pada kami tentang tempatmu",
+      "subtitle": "Lokasi, ukuran, dan detail"
+    },
+    "step2": {
+      "step": "Langkah 2.",
+      "title": "Buatlah itu menonjol",
+      "subtitle": "Unggah 5 foto atau lebih, judul, dan deskripsi."
+    },
+    "step3": {
+      "step": "Langkah 3.",
+      "title": "Selesaikan dan publikasikan",
+      "subtitle": "Tambahkan rincian kontak, harga Anda, dan publikasikan."
+    },
     "title": {},
-    "type": {}
+    "type": {
+      "title": "Jenis",
+      "subtitle": "Mana yang paling menggambarkan properti Anda?",
+      "options": {
+        "0": "Rumah",
+        "1": "Apartemen",
+        "2": "Kabin",
+        "3": "Rumah khusus",
+        "4": "Kastil",
+        "5": "Bangunan komersial",
+        "6": "Wadah",
+        "7": "Rumah Cycladic",
+        "8": "Rumah Bumi",
+        "9": "Peternakan",
+        "10": "Rumah perahu",
+        "11": "Tanah",
+        "12": "Rumah besar",
+        "13": "Rumah mungil",
+        "14": "Menara",
+        "15": "Gudang",
+        "16": "Kincir angin"
+      }
+    },
+    "progress": {
+      "continue": "Lanjutkan daftar",
+      "start": "Awal",
+      "back": "Kembali",
+      "next": "Berikutnya",
+      "loading": "Memuat...",
+      "finish": "Menyelesaikan!"
+    }
   },
   "settings": {
     "title": "Pengaturan Akun",
@@ -120,13 +195,13 @@
       "title": "Ubah nama profil Anda",
       "subtitle": "Beginilah cara Anda akan tampil di depan publik"
     },
+    "language": {
+      "title": "Ubah bahasa Anda",
+      "subtitle": "Ini adalah bahasa yang akan Anda lihat saat Anda masuk"
+    },
     "currency": {
       "title": "Ubah mata uang default Anda",
       "subtitle": "Harga properti akan ditampilkan dalam mata uang ini"
-    },
-    "language": {
-      "title": "Ubah bahasa default Anda",
-      "subtitle": "Ini adalah bahasa yang akan Anda lihat saat Anda masuk"
     },
     "submit": "Menyimpan"
   }
