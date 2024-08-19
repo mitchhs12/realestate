@@ -49,13 +49,13 @@ const translateJson = async (json, targetLanguage) => {
 const translateFiles = async () => {
   const enUS = JSON.parse(fs.readFileSync("./src/locales/dictionaries/en.json", "utf8"));
 
-  for (const language of languages) {
+  const translationPromises = languages.map(async (language) => {
     const outputFilename = path.join(__dirname, `./src/locales/dictionaries/${language}.json`);
 
     // Skip translation for English (en.json) as it is the source language
     if (language === sourceLanguage) {
       console.log(`Skipping translation for ${language} as it is the source language.`);
-      continue;
+      return;
     }
 
     // Perform the translation
@@ -64,7 +64,9 @@ const translateFiles = async () => {
     // Overwrite the translated content to the respective JSON file
     fs.writeFileSync(outputFilename, JSON.stringify(translatedContent, null, 2), "utf8");
     console.log(`${language}.json file created successfully!`);
-  }
+  });
+
+  await Promise.all(translationPromises);
 };
 
 translateFiles().catch(console.error);

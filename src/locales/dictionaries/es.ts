@@ -26,6 +26,29 @@ export default {
         "settings": "Ajustes"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Inscribirse",
+        "subtitle": "¡Introduzca su correo electrónico a continuación para registrarse!",
+        "already": "¿Ya tienes una cuenta?",
+        "change": "Acceso"
+      },
+      "log-in": {
+        "title": "Bienvenido de nuevo",
+        "subtitle": "Introduzca su correo electrónico a continuación para iniciar sesión.",
+        "already": "¿No tienes una cuenta?",
+        "change": "Inscribirse"
+      },
+      "general": {
+        "email": "Correo electrónico",
+        "email-placeholder": "ejemplo@mail.com",
+        "submit": "Regístrate con correo electrónico",
+        "or": "o",
+        "google": "Regístrate con Google",
+        "facebook": "Regístrate con Facebook",
+        "loading": "Cargando..."
+      }
+    },
     "hero": {
       "title": "Encuentra la casa de tus sueños.",
       "search": {
@@ -72,5 +95,39 @@ export default {
         "br": "Cómo vender en Brasil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Configuraciones de la cuenta",
+    "name": {
+      "title": "Cambia tu nombre de perfil",
+      "subtitle": "Así es como aparecerás públicamente"
+    },
+    "currency": {
+      "title": "Cambiar su moneda predeterminada",
+      "subtitle": "Los precios de las propiedades se mostrarán en esta moneda."
+    },
+    "language": {
+      "title": "Cambiar el idioma predeterminado",
+      "subtitle": "Este es el idioma que verás cuando inicies sesión"
+    },
+    "submit": "Ahorrar"
   }
 } as const;

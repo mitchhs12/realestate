@@ -32,16 +32,35 @@ interface Props {
   openSignUpModal: () => void;
   openLogInModal: () => void;
   session: ReturnType<typeof useSession>;
+  greeting: string;
+  log_in: string;
+  sign_up: string;
+  log_out: string;
+  theme: { theme: string; light: string; dark: string; system: string };
+  language: string;
+  currency: string;
+  settings: string;
 }
 
-export function ProfileButton({ openSignUpModal, openLogInModal, session }: Props) {
+export function ProfileButton({
+  openSignUpModal,
+  openLogInModal,
+  session,
+  greeting,
+  log_in,
+  sign_up,
+  log_out,
+  theme,
+  language,
+  currency,
+  settings,
+}: Props) {
   const user = session.data?.user;
   const { defaultCurrency, setDefaultCurrency, currencies } = useContext(LocaleContext);
   const router = useRouter();
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();
   const lang = useCurrentLocale();
-  const t = useScopedI18n("home.header.profile-button");
 
   // Function to get initials from username
   const getInitials = (username: string) => {
@@ -74,16 +93,14 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
         {user ? (
-          <DropdownMenuLabel>
-            {user.name ? `${t("greeting")} ${user.name.split(" ")[0]}!` : user.email}
-          </DropdownMenuLabel>
+          <DropdownMenuLabel>{user.name ? `${greeting} ${user.name.split(" ")[0]}!` : user.email}</DropdownMenuLabel>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
             <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => openLogInModal()}>
-              {t("log-in")}
+              {log_in}
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer" onClick={() => openSignUpModal()}>
-              {t("sign-up")}
+              {sign_up}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}
@@ -104,18 +121,18 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
         )}
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>{t("theme.theme")}</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>{theme.theme}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2">
                 <DropdownMenuRadioGroup value={useTheme().theme} onValueChange={setTheme}>
                   <DropdownMenuRadioItem className="cursor-pointer" value="light">
-                    {t("theme.light")}
+                    {theme.light}
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem className="cursor-pointer" value="dark">
-                    {t("theme.dark")}
+                    {theme.dark}
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem className="cursor-pointer" value="system">
-                    {t("theme.system")}
+                    {theme.system}
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubContent>
@@ -125,7 +142,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>{t("language")}</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>{language}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
                 <DropdownMenuRadioGroup
@@ -146,7 +163,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
         </DropdownMenuGroup>
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>{t("currency")}</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>{currency}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
                 <DropdownMenuRadioGroup
@@ -172,11 +189,11 @@ export function ProfileButton({ openSignUpModal, openLogInModal, session }: Prop
                 router.push("/settings");
               }}
             >
-              {t("settings")}
+              {settings}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer" onClick={() => signOut({ callbackUrl: "/" })}>
-              {t("log-out")}
+              {log_out}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}

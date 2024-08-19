@@ -26,6 +26,29 @@
         "settings": "설정"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "가입하기",
+        "subtitle": "아래에 이메일을 입력하여 등록하세요!",
+        "already": "이미 계정이 있으신가요?",
+        "change": "로그인"
+      },
+      "log-in": {
+        "title": "환영합니다",
+        "subtitle": "아래에 이메일을 입력하여 로그인하세요.",
+        "already": "계정이 없으신가요?",
+        "change": "가입하기"
+      },
+      "general": {
+        "email": "이메일",
+        "email-placeholder": "예:@mail.com",
+        "submit": "이메일로 가입하기",
+        "or": "또는",
+        "google": "구글로 가입하기",
+        "facebook": "페이스북으로 가입하기",
+        "loading": "로딩중..."
+      }
+    },
     "hero": {
       "title": "당신의 꿈의 집을 찾아보세요.",
       "search": {
@@ -72,5 +95,39 @@
         "br": "브라질에서 판매하는 방법"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "계정 설정",
+    "name": {
+      "title": "프로필 이름 변경",
+      "subtitle": "이렇게 공개적으로 나타납니다."
+    },
+    "currency": {
+      "title": "기본 통화 변경",
+      "subtitle": "부동산 가격은 이 통화로 표시됩니다."
+    },
+    "language": {
+      "title": "기본 언어 변경",
+      "subtitle": "로그인 시 표시되는 언어입니다."
+    },
+    "submit": "구하다"
   }
 }

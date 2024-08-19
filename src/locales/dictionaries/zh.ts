@@ -26,6 +26,29 @@ export default {
         "settings": "设置"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "报名",
+        "subtitle": "在下面输入您的电子邮件进行注册！",
+        "already": "已有账户？",
+        "change": "登录"
+      },
+      "log-in": {
+        "title": "欢迎回来",
+        "subtitle": "在下面输入您的电子邮件以登录。",
+        "already": "沒有帳戶？",
+        "change": "报名"
+      },
+      "general": {
+        "email": "电子邮件",
+        "email-placeholder": "例如@mail.com",
+        "submit": "使用电子邮件注册",
+        "or": "或者",
+        "google": "使用 Google 注册",
+        "facebook": "使用 Facebook 注册",
+        "loading": "加载中..."
+      }
+    },
     "hero": {
       "title": "找到您梦想的家。",
       "search": {
@@ -53,7 +76,7 @@ export default {
         "co": "如何在哥伦比亚购物",
         "ve": "如何在委内瑞拉购物",
         "vn": "如何在越南购物",
-        "id": "如何在印度尼西亚购物",
+        "id": "如何在印度尼西亚购买",
         "nz": "如何在新西兰购物",
         "ky": "如何在开曼群岛买房"
       }
@@ -72,5 +95,39 @@ export default {
         "br": "如何在巴西销售"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "帐户设置",
+    "name": {
+      "title": "更改您的个人资料名称",
+      "subtitle": "这就是你在公众面前的形象"
+    },
+    "currency": {
+      "title": "更改您的默认货币",
+      "subtitle": "房产价格将以此货币显示"
+    },
+    "language": {
+      "title": "更改默认语言",
+      "subtitle": "这是您登录时将看到的语言"
+    },
+    "submit": "节省"
   }
 } as const;

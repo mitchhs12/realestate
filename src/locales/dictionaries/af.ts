@@ -26,6 +26,29 @@ export default {
         "settings": "Instellings"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Teken in",
+        "subtitle": "Voer jou e-posadres hieronder in om aan te meld!",
+        "already": "Het jy reeds 'n rekening?",
+        "change": "Meld aan"
+      },
+      "log-in": {
+        "title": "Welkom terug",
+        "subtitle": "Voer jou e-posadres hieronder in om aan te meld.",
+        "already": "Het jy nie 'n rekening nie?",
+        "change": "Teken in"
+      },
+      "general": {
+        "email": "E-pos",
+        "email-placeholder": "voorbeeld@mail.com",
+        "submit": "Teken in met e-pos",
+        "or": "of",
+        "google": "Sluit aan by Google",
+        "facebook": "Sluit aan met Facebook",
+        "loading": "Laai tans..."
+      }
+    },
     "hero": {
       "title": "Vind jou droomhuis.",
       "search": {
@@ -72,5 +95,39 @@ export default {
         "br": "Hoe om te verkoop in Brasilië"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Rekeninginstellings",
+    "name": {
+      "title": "Verander jou profielnaam",
+      "subtitle": "Dit is hoe jy in die openbaar sal verskyn"
+    },
+    "currency": {
+      "title": "Verander jou verstek geldeenheid",
+      "subtitle": "Eiendomspryse sal in hierdie geldeenheid vertoon word"
+    },
+    "language": {
+      "title": "Verander jou verstektaal",
+      "subtitle": "Dit is die taal wat jy sal sien wanneer jy aanmeld"
+    },
+    "submit": "Stoor"
   }
 } as const;

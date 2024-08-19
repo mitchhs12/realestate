@@ -26,6 +26,29 @@ export default {
         "settings": "Einstellungen"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Melden Sie sich an",
+        "subtitle": "Geben Sie unten Ihre E-Mail-Adresse ein, um sich anzumelden!",
+        "already": "Hast du schon ein Konto?",
+        "change": "Einloggen"
+      },
+      "log-in": {
+        "title": "Willkommen zurück",
+        "subtitle": "Geben Sie unten Ihre E-Mail-Adresse ein, um sich anzumelden.",
+        "already": "Sie haben noch kein Konto?",
+        "change": "Melden Sie sich an"
+      },
+      "general": {
+        "email": "E-Mail",
+        "email-placeholder": "beispiel@mail.com",
+        "submit": "Mit E-Mail anmelden",
+        "or": "oder",
+        "google": "Mit Google anmelden",
+        "facebook": "Mit Facebook anmelden",
+        "loading": "Laden..."
+      }
+    },
     "hero": {
       "title": "Finden Sie Ihr Traumhaus.",
       "search": {
@@ -72,5 +95,39 @@ export default {
         "br": "So verkaufen Sie in Brasilien"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Kontoeinstellungen",
+    "name": {
+      "title": "Ändern Sie Ihren Profilnamen",
+      "subtitle": "So treten Sie in der Öffentlichkeit auf"
+    },
+    "currency": {
+      "title": "Ändern Sie Ihre Standardwährung",
+      "subtitle": "Immobilienpreise werden in dieser Währung angezeigt"
+    },
+    "language": {
+      "title": "Ändern Sie Ihre Standardsprache",
+      "subtitle": "Dies ist die Sprache, die Ihnen bei der Anmeldung angezeigt wird"
+    },
+    "submit": "Speichern"
   }
 } as const;

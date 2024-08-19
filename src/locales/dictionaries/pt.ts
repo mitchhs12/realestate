@@ -26,6 +26,29 @@ export default {
         "settings": "Configurações"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Inscrever-se",
+        "subtitle": "Insira seu e-mail abaixo para se inscrever!",
+        "already": "Já tem uma conta?",
+        "change": "Conecte-se"
+      },
+      "log-in": {
+        "title": "bem vindo de volta",
+        "subtitle": "Insira seu e-mail abaixo para efetuar login.",
+        "already": "Não tem uma conta?",
+        "change": "Inscrever-se"
+      },
+      "general": {
+        "email": "E-mail",
+        "email-placeholder": "exemplo@mail.com",
+        "submit": "Cadastre-se com e-mail",
+        "or": "ou",
+        "google": "Cadastre-se com o Google",
+        "facebook": "Cadastre-se com o Facebook",
+        "loading": "Carregando..."
+      }
+    },
     "hero": {
       "title": "Encontre a casa dos seus sonhos.",
       "search": {
@@ -72,5 +95,39 @@ export default {
         "br": "Como vender no Brasil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Configurações de Conta",
+    "name": {
+      "title": "Alterar o nome do seu perfil",
+      "subtitle": "É assim que você aparecerá publicamente"
+    },
+    "currency": {
+      "title": "Alterar sua moeda padrão",
+      "subtitle": "Os preços dos imóveis serão exibidos nesta moeda"
+    },
+    "language": {
+      "title": "Alterar seu idioma padrão",
+      "subtitle": "Este é o idioma que você verá ao fazer login"
+    },
+    "submit": "Salvar"
   }
 } as const;

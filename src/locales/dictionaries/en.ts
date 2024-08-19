@@ -26,6 +26,29 @@ export default {
         "settings": "Settings"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Sign up",
+        "subtitle": "Enter your email below to sign up!",
+        "already": "Already have an account?",
+        "change": "Log in"
+      },
+      "log-in": {
+        "title": "Welcome back",
+        "subtitle": "Enter your email below to log in.",
+        "already": "Don't have an account?",
+        "change": "Sign up"
+      },
+      "general": {
+        "email": "Email",
+        "email-placeholder": "example@mail.com",
+        "submit": "Sign up with Email",
+        "or": "or",
+        "google": "Sign up with Google",
+        "facebook": "Sign up with Facebook",
+        "loading": "Loading..."
+      }
+    },
     "hero": {
       "title": "Find your dream home.",
       "search": {
@@ -72,5 +95,39 @@ export default {
         "br": "How to sell in Brazil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Account Settings",
+    "name": {
+      "title": "Change your profile name",
+      "subtitle": "This is how you will appear publicly"
+    },
+    "currency": {
+      "title": "Change your default currency",
+      "subtitle": "Property prices will be displayed in this currency"
+    },
+    "language": {
+      "title": "Change your default language",
+      "subtitle": "This is the language you will see when you sign in"
+    },
+    "submit": "Save"
   }
 } as const;

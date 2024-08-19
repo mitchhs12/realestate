@@ -26,6 +26,29 @@
         "settings": "Pengaturan"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Mendaftar",
+        "subtitle": "Masukkan email Anda di bawah ini untuk mendaftar!",
+        "already": "Sudah punya akun?",
+        "change": "Masuk"
+      },
+      "log-in": {
+        "title": "Selamat Datang kembali",
+        "subtitle": "Masukkan email Anda di bawah ini untuk masuk.",
+        "already": "Belum punya akun?",
+        "change": "Mendaftar"
+      },
+      "general": {
+        "email": "E-mail",
+        "email-placeholder": "contoh@mail.com",
+        "submit": "Daftar dengan Email",
+        "or": "atau",
+        "google": "Daftar dengan Google",
+        "facebook": "Daftar dengan Facebook",
+        "loading": "Memuat..."
+      }
+    },
     "hero": {
       "title": "Temukan rumah impian Anda.",
       "search": {
@@ -72,5 +95,39 @@
         "br": "Cara berjualan di Brasil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Pengaturan Akun",
+    "name": {
+      "title": "Ubah nama profil Anda",
+      "subtitle": "Beginilah cara Anda akan tampil di depan publik"
+    },
+    "currency": {
+      "title": "Ubah mata uang default Anda",
+      "subtitle": "Harga properti akan ditampilkan dalam mata uang ini"
+    },
+    "language": {
+      "title": "Ubah bahasa default Anda",
+      "subtitle": "Ini adalah bahasa yang akan Anda lihat saat Anda masuk"
+    },
+    "submit": "Menyimpan"
   }
 }

@@ -66,7 +66,7 @@ export default async function RootLayout({ children, params: { locale } }: Reado
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
             <LocaleContextProvider currencies={currencies} lang={locale} currency={currency}>
               <QueryContextProvider>
-                <MainLayout locale={locale}>{children}</MainLayout>
+                <MainLayout>{children}</MainLayout>
               </QueryContextProvider>
             </LocaleContextProvider>
           </ThemeProvider>

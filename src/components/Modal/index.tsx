@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Icons } from "@/components/icons";
 import { useTheme } from "next-themes";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   isLoginOpen?: boolean;
@@ -20,6 +21,8 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const { resolvedTheme: theme } = useTheme();
   const [isLogin, setIsLogin] = useState(isLoginOpen);
+  const g = useScopedI18n("home.modal.general");
+  const t = useScopedI18n(`home.modal.${isLogin ? "log-in" : "sign-up"}`);
 
   useEffect(() => {
     if (isLogin !== isLoginOpen) {
@@ -67,17 +70,17 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
   return (
     <Card className="mx-auto max-w-sm" onKeyDown={handleKeyPress}>
       <CardHeader>
-        <CardTitle className="text-2xl font-semibold">{isLogin ? "Welcome back" : "Sign up"}</CardTitle>
-        <CardDescription>Enter your email below to {isLogin ? "log in." : "sign up!"}</CardDescription>
+        <CardTitle className="text-2xl font-semibold">{t("title")}</CardTitle>
+        <CardDescription>{t("subtitle")}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{g("email")}</Label>
             <Input
               id="email"
               type="email"
-              placeholder="example@mail.com"
+              placeholder={g("email-placeholder")}
               required
               value={email}
               onChange={handleEmailChange}
@@ -89,10 +92,10 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
             {isLoading === "email" ? (
               <div className="flex items-center justify-center">
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-                Loading...
+                {g("loading")}
               </div>
             ) : (
-              `${isLogin ? "Log in" : "Sign up"} with Email`
+              g("submit")
             )}
           </Button>
           <div className="relative my-2">
@@ -100,7 +103,7 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-card text-gray-500">or</span>
+              <span className="px-2 bg-card text-gray-500">{g("or")}</span>
             </div>
           </div>
           <div className="flex flex-col w-full justify-center items-center gap-4">
@@ -111,18 +114,16 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
               disabled={isLoading !== null}
             >
               {isLoading === "google" ? (
-                <div className="flex justify-center items-center w-40 gap-1 mr-2">
-                  <div className="flex justify-end w-20 mr-1">
+                <div className="flex justify-between items-center w-full gap-2">
+                  <div className="flex">
                     <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
                   </div>
-                  <div className="flex justify-start w-20 mr-16">Loading...</div>
+                  <div className="flex w-full">{g("loading")}</div>
                 </div>
               ) : (
-                <div className="flex justify-center items-center w-40 gap-2 mr-2">
-                  <div className="flex justify-end w-20 mr-1">
-                    {theme === "light" ? <Icons.google /> : <Icons.google_dark />}
-                  </div>
-                  <div className="flex justify-start w-20 mr-16">{isLogin ? "Log in" : "Sign up"} with Google</div>
+                <div className="flex justify-between items-center w-full gap-2">
+                  <div className="flex">{theme === "light" ? <Icons.google /> : <Icons.google_dark />}</div>
+                  <div className="flex flex-grow">{g("google")}</div>
                 </div>
               )}
             </Button>
@@ -133,29 +134,25 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
               disabled={isLoading !== null}
             >
               {isLoading === "facebook" ? (
-                <div className="flex justify-center items-center w-40 gap-1 mr-2">
-                  <div className="flex justify-end w-20 mr-1">
+                <div className="flex justify-between items-center w-full gap-2">
+                  <div className="flex">
                     <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
                   </div>
-                  <div className="flex justify-start w-20 mr-16">Loading...</div>
+                  <div className="flex w-full">{g("loading")}</div>
                 </div>
               ) : (
-                <div className="flex justify-center items-center w-40 gap-2 mr-2">
-                  <div className="flex justify-end w-20 mr-1">
-                    {theme === "light" ? <Icons.facebook /> : <Icons.facebook_dark />}
-                  </div>
-                  <div className="flex justify-start w-20 mr-16">
-                    {isLogin ? "Log in with Facebook" : "Sign up with Facebook"}
-                  </div>
+                <div className="flex justify-between items-center w-full gap-2">
+                  <div className="flex">{theme === "light" ? <Icons.facebook /> : <Icons.facebook_dark />}</div>
+                  <div className="flex flex-grow">{g("facebook")} </div>
                 </div>
               )}
             </Button>
           </div>
         </div>
         <div className="mt-4 text-center text-sm">
-          {isLogin ? "Don't have an account?" : "Already have an account?"}
+          {t("already")}
           <Button variant="link" onClick={() => setIsLogin(!isLogin)}>
-            {isLogin ? "Sign up" : "Log in"}
+            {t("change")}
           </Button>
         </div>
       </CardContent>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { updateSettings } from "./actions";
 import { useForm } from "react-hook-form";
 import { User } from "next-auth";
@@ -18,11 +17,15 @@ import { useChangeLocale } from "@/locales/client";
 
 interface Props {
   user: User;
+  title: string;
+  name: { title: string; subtitle: string };
+  currency: { title: string; subtitle: string };
+  language: { title: string; subtitle: string };
+  submit: string;
 }
 
-export default function SettingsPage({ user }: Props) {
+export default function SettingsPage({ user, title, name, currency, language, submit }: Props) {
   const session = useSession();
-  const router = useRouter();
   const changeLocale = useChangeLocale();
   const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencies } = useContext(LocaleContext);
 
@@ -54,7 +57,7 @@ export default function SettingsPage({ user }: Props) {
   return (
     <main className="flex flex-col px-10 py-10 w-full items-center">
       <div className="flex flex-col max-w-7xl w-full items-center mx-8">
-        <h1 className="flex text-xl lg:text-3xl w-full space-y-8 font-bold">Account Settings</h1>
+        <h1 className="flex text-xl lg:text-3xl w-full space-y-8 font-bold">{title}</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col py-10 w-full gap-8">
             <div className="justify-start space-y-8">
@@ -63,11 +66,11 @@ export default function SettingsPage({ user }: Props) {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Change your profile name</FormLabel>
+                    <FormLabel>{name.title}</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter a username" {...field} />
                     </FormControl>
-                    <FormDescription>This is how you will appear publicly</FormDescription>
+                    <FormDescription>{name.subtitle}</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -77,7 +80,7 @@ export default function SettingsPage({ user }: Props) {
                 name="currency"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Change your default currency</FormLabel>
+                    <FormLabel>{currency.title}</FormLabel>
                     <FormControl>
                       <select className="block w-full mt-1" {...field}>
                         {locales.map((config) => (
@@ -87,7 +90,7 @@ export default function SettingsPage({ user }: Props) {
                         ))}
                       </select>
                     </FormControl>
-                    <FormDescription>Select your default currency</FormDescription>
+                    <FormDescription>{currency.subtitle}</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -97,7 +100,7 @@ export default function SettingsPage({ user }: Props) {
                 name="language"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Change your default language</FormLabel>
+                    <FormLabel>{language.title}</FormLabel>
                     <FormControl>
                       <select className="block w-full mt-1" {...field}>
                         {languages.map((lang) => (
@@ -107,7 +110,7 @@ export default function SettingsPage({ user }: Props) {
                         ))}
                       </select>
                     </FormControl>
-                    <FormDescription>Select your default currency</FormDescription>
+                    <FormDescription>{language.subtitle}</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -116,7 +119,7 @@ export default function SettingsPage({ user }: Props) {
 
             <div className="flex justify-end">
               <Button type="submit" disabled={form.formState.isSubmitting}>
-                Submit
+                {submit}
               </Button>
             </div>
           </form>

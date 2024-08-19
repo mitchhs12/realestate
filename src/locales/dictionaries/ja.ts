@@ -26,6 +26,29 @@ export default {
         "settings": "設定"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "サインアップ",
+        "subtitle": "登録するには下記にメールアドレスを入力してください。",
+        "already": "すでにアカウントをお持ちですか?",
+        "change": "ログイン"
+      },
+      "log-in": {
+        "title": "おかえり",
+        "subtitle": "ログインするには、以下にメールアドレスを入力してください。",
+        "already": "アカウントをお持ちではありませんか?",
+        "change": "サインアップ"
+      },
+      "general": {
+        "email": "メール",
+        "email-placeholder": "例@mail.com",
+        "submit": "メールで登録",
+        "or": "または",
+        "google": "Googleでサインアップ",
+        "facebook": "Facebookでサインアップ",
+        "loading": "読み込み中..."
+      }
+    },
     "hero": {
       "title": "あなたの夢の家を見つけてください。",
       "search": {
@@ -72,5 +95,39 @@ export default {
         "br": "ブラジルでの販売方法"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "アカウント設定",
+    "name": {
+      "title": "プロフィール名を変更する",
+      "subtitle": "これが公の場でのあなたの姿です"
+    },
+    "currency": {
+      "title": "デフォルトの通貨を変更する",
+      "subtitle": "不動産価格はこの通貨で表示されます"
+    },
+    "language": {
+      "title": "デフォルトの言語を変更する",
+      "subtitle": "サインイン時に表示される言語です"
+    },
+    "submit": "保存"
   }
 } as const;

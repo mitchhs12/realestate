@@ -26,6 +26,29 @@
         "settings": "Cài đặt"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Đăng ký",
+        "subtitle": "Nhập email của bạn bên dưới để đăng ký!",
+        "already": "Bạn đã có tài khoản?",
+        "change": "Đăng nhập"
+      },
+      "log-in": {
+        "title": "Chào mừng trở lại",
+        "subtitle": "Nhập email của bạn bên dưới để đăng nhập.",
+        "already": "Bạn chưa có tài khoản?",
+        "change": "Đăng ký"
+      },
+      "general": {
+        "email": "E-mail",
+        "email-placeholder": "ví dụ@mail.com",
+        "submit": "Đăng ký bằng Email",
+        "or": "hoặc",
+        "google": "Đăng ký với Google",
+        "facebook": "Đăng ký bằng Facebook",
+        "loading": "Đang tải..."
+      }
+    },
     "hero": {
       "title": "Tìm ngôi nhà mơ ước của bạn.",
       "search": {
@@ -72,5 +95,39 @@
         "br": "Làm thế nào để bán ở Brazil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Cài đặt tài khoản",
+    "name": {
+      "title": "Thay đổi tên hồ sơ của bạn",
+      "subtitle": "Đây là cách bạn sẽ xuất hiện trước công chúng"
+    },
+    "currency": {
+      "title": "Thay đổi tiền tệ mặc định của bạn",
+      "subtitle": "Giá bất động sản sẽ được hiển thị bằng loại tiền tệ này"
+    },
+    "language": {
+      "title": "Thay đổi ngôn ngữ mặc định của bạn",
+      "subtitle": "Đây là ngôn ngữ bạn sẽ thấy khi đăng nhập"
+    },
+    "submit": "Cứu"
   }
 }

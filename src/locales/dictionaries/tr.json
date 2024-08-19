@@ -26,6 +26,29 @@
         "settings": "Ayarlar"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Üye olmak",
+        "subtitle": "Kaydolmak için aşağıya e-postanızı girin!",
+        "already": "Zaten bir hesabınız var mı?",
+        "change": "Giriş yapmak"
+      },
+      "log-in": {
+        "title": "tekrar hoşgeldiniz",
+        "subtitle": "Giriş yapmak için aşağıya e-postanızı girin.",
+        "already": "Hesabınız yok mu?",
+        "change": "Üye olmak"
+      },
+      "general": {
+        "email": "E-posta",
+        "email-placeholder": "ornek@posta.com",
+        "submit": "E-posta ile kaydolun",
+        "or": "veya",
+        "google": "Google ile kaydolun",
+        "facebook": "Facebook ile kaydolun",
+        "loading": "Yükleniyor..."
+      }
+    },
     "hero": {
       "title": "Hayalinizdeki evi bulun.",
       "search": {
@@ -72,5 +95,39 @@
         "br": "Brezilya'da nasıl satış yapılır"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Hesap Ayarları",
+    "name": {
+      "title": "Profil adınızı değiştirin",
+      "subtitle": "Kamuoyunda böyle görüneceksiniz"
+    },
+    "currency": {
+      "title": "Varsayılan para biriminizi değiştirin",
+      "subtitle": "Emlak fiyatları bu para biriminde gösterilecek"
+    },
+    "language": {
+      "title": "Varsayılan dilinizi değiştirin",
+      "subtitle": "Bu, oturum açtığınızda göreceğiniz dildir"
+    },
+    "submit": "Kaydetmek"
   }
 }

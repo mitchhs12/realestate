@@ -26,6 +26,29 @@
         "settings": "Paramètres"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "S'inscrire",
+        "subtitle": "Entrez votre email ci-dessous pour vous inscrire !",
+        "already": "Vous avez déjà un compte ?",
+        "change": "Se connecter"
+      },
+      "log-in": {
+        "title": "Content de te revoir",
+        "subtitle": "Entrez votre email ci-dessous pour vous connecter.",
+        "already": "Vous n'avez pas de compte ?",
+        "change": "S'inscrire"
+      },
+      "general": {
+        "email": "E-mail",
+        "email-placeholder": "exemple@mail.com",
+        "submit": "Inscrivez-vous avec e-mail",
+        "or": "ou",
+        "google": "Inscrivez-vous avec Google",
+        "facebook": "Inscrivez-vous avec Facebook",
+        "loading": "Chargement..."
+      }
+    },
     "hero": {
       "title": "Trouvez la maison de vos rêves.",
       "search": {
@@ -72,5 +95,39 @@
         "br": "Comment vendre au Brésil"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Paramètres du compte",
+    "name": {
+      "title": "Changer le nom de votre profil",
+      "subtitle": "Voici comment vous apparaîtrez publiquement"
+    },
+    "currency": {
+      "title": "Changer votre devise par défaut",
+      "subtitle": "Les prix des propriétés seront affichés dans cette devise"
+    },
+    "language": {
+      "title": "Changer votre langue par défaut",
+      "subtitle": "C'est la langue que vous verrez lorsque vous vous connecterez"
+    },
+    "submit": "Sauvegarder"
   }
 }

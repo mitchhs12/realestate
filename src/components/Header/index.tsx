@@ -14,7 +14,8 @@ import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useCurrentLocale } from "@/locales/client";
-import SubLayout from "@/app/[locale]/client/layout";
+import { I18nProviderClient } from "@/locales/client";
+import { useEffect } from "react";
 
 interface Props {
   guides: string;
@@ -24,6 +25,14 @@ interface Props {
   construction_sub: string;
   sellButtonBig: string;
   sellButtonSmall: string;
+  greeting: string;
+  log_in: string;
+  sign_up: string;
+  log_out: string;
+  theme: { theme: string; light: string; dark: string; system: string };
+  language: string;
+  currency: string;
+  settings: string;
 }
 
 export default function Header({
@@ -34,6 +43,14 @@ export default function Header({
   construction_sub,
   sellButtonBig,
   sellButtonSmall,
+  greeting,
+  log_in,
+  sign_up,
+  log_out,
+  theme,
+  language,
+  currency,
+  settings,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
@@ -47,6 +64,10 @@ export default function Header({
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
   const isGuidesPage = pathname.includes("/guides");
+
+  useEffect(() => {
+    console.log("Locale in Header:", locale);
+  }, [locale]);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -152,11 +173,19 @@ export default function Header({
               </Button>
             )}
             <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
-              {locale && (
-                <SubLayout params={{ locale }}>
-                  <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} session={session} />
-                </SubLayout>
-              )}
+              <ProfileButton
+                openSignUpModal={openSignUpModal}
+                openLogInModal={openLogInModal}
+                session={session}
+                greeting={greeting}
+                log_in={log_in}
+                sign_up={sign_up}
+                log_out={log_out}
+                theme={theme}
+                language={language}
+                currency={currency}
+                settings={settings}
+              />
             </div>
           </div>
         )}
@@ -174,9 +203,11 @@ export default function Header({
       </header>
 
       <div className="flex relative z-100">
-        <ModalPortal isOpen={isModalOpen} onClose={closeModal}>
-          <Modal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />
-        </ModalPortal>
+        <I18nProviderClient locale={locale}>
+          <ModalPortal isOpen={isModalOpen} onClose={closeModal}>
+            <Modal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />
+          </ModalPortal>
+        </I18nProviderClient>
       </div>
     </>
   );

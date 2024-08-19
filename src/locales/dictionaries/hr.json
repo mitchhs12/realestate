@@ -26,6 +26,29 @@
         "settings": "postavke"
       }
     },
+    "modal": {
+      "sign-up": {
+        "title": "Prijavite se",
+        "subtitle": "Unesite svoju e-poštu ispod da biste se prijavili!",
+        "already": "Već imate račun?",
+        "change": "Prijavite se"
+      },
+      "log-in": {
+        "title": "Dobro došao nazad",
+        "subtitle": "Unesite svoju e-poštu ispod kako biste se prijavili.",
+        "already": "Nemate račun?",
+        "change": "Prijavite se"
+      },
+      "general": {
+        "email": "E-mail",
+        "email-placeholder": "primjer@mail.com",
+        "submit": "Prijavite se putem e-pošte",
+        "or": "ili",
+        "google": "Prijavite se s Googleom",
+        "facebook": "Prijavite se putem Facebooka",
+        "loading": "Učitavanje..."
+      }
+    },
     "hero": {
       "title": "Pronađite svoj dom iz snova.",
       "search": {
@@ -72,5 +95,39 @@
         "br": "Kako prodavati u Brazilu"
       }
     }
+  },
+  "sell": {
+    "sell-flow": {},
+    "capacity": {},
+    "checkout": {},
+    "contact": {},
+    "description": {},
+    "features": {},
+    "location": {},
+    "photos": {},
+    "price": {},
+    "review": {},
+    "rooms": {},
+    "step1": {},
+    "step2": {},
+    "step3": {},
+    "title": {},
+    "type": {}
+  },
+  "settings": {
+    "title": "Postavke računa",
+    "name": {
+      "title": "Promijenite naziv profila",
+      "subtitle": "Ovako ćete se pojaviti u javnosti"
+    },
+    "currency": {
+      "title": "Promijenite zadanu valutu",
+      "subtitle": "Cijene nekretnina bit će prikazane u ovoj valuti"
+    },
+    "language": {
+      "title": "Promijenite zadani jezik",
+      "subtitle": "Ovo je jezik koji ćete vidjeti kada se prijavite"
+    },
+    "submit": "Uštedjeti"
   }
 }
