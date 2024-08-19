@@ -128,7 +128,7 @@ export default function Photos({
     setNextDisabled,
   } = useContext(SellContext);
 
-  const [isUploading, setIsUploading] = useState(false);
+  const [isUploading, setIsUploading] = useState(true);
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
@@ -137,7 +137,7 @@ export default function Photos({
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
-    retrievePhotos();
+    retrievePhotos().then(() => setIsUploading(false));
     setNextLoading(false);
     setPrevLoading(false);
   }, []);
@@ -302,9 +302,9 @@ export default function Photos({
             {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}
           </div>
         </div>
-        <div className="flex gap-4 p-8 w-full h-full justify-center">
-          <div className="flex overflow-y-auto w-full h-full max-w-7xl">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 md:grid-rows-4 lg:grid-cols-4 gap-4 w-full">
+        <div className="flex gap-4 p-8 w-full lg:h-full justify-center border-2 border-blue-500">
+          <div className="flex w-full max-w-7xl h-[800px] lg:h-full border-red-500 border">
+            <div className="grid grid-rows-6 grid-cols-2 sm:grid-cols-3 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-3 gap-4 w-full">
               <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -326,14 +326,14 @@ export default function Photos({
                 </SortableContext>
                 <DragOverlay>
                   {activeId && (
-                    <div className="relative flex w-full h-full items-center justify-center border-2">
+                    <div className="relative flex w-full items-center justify-center border-2">
                       <Image src={activeId} alt={`Dragged ${activeId}`} fill={true} className="object-cover" />
                     </div>
                   )}
                 </DragOverlay>
               </DndContext>
               {uploadedImageUrls.length < 12 && (
-                <div className="flex items-center justify-center border-2">
+                <div className="flex items-center justify-center border row-start-1 row-end-1">
                   <Form {...form}>
                     <form className="flex justify-start space-y-6 w-full h-full">
                       <FormField
