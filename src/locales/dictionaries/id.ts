@@ -123,8 +123,22 @@ export default {
       "capacity": "Sekarang perkirakan berapa banyak orang yang dapat tinggal dengan nyaman di properti Anda."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Kontak",
+      "subtitle": "Masukkan rincian kontak pemilik properti.",
+      "name": "Nama:",
+      "name-placeholder": "Masukkan nama pemilik properti...",
+      "email": "E-mail:",
+      "email-placeholder": "Masukkan email pemilik properti...",
+      "mobile": "Seluler:",
+      "mobile-check": "Tetapkan sebagai nomor telepon saya",
+      "mobile-placeholder": "Masukkan nomor ponsel pemilik properti..."
+    },
+    "description": {
+      "title": "Keterangan",
+      "subtitle": "Tulis deskripsi singkat tentang properti Anda.",
+      "warning": "Harap tulis deskripsi yang lebih singkat."
+    },
     "features": {
       "title": "Fitur",
       "subtitle": "Yang mana yang dimiliki properti Anda?",
@@ -197,7 +211,11 @@ export default {
       "title": "Selesaikan dan publikasikan",
       "subtitle": "Tambahkan rincian kontak, harga Anda, dan publikasikan."
     },
-    "title": {},
+    "title": {
+      "title": "Judul",
+      "subtitle": "Berikan judul pada daftar properti Anda.",
+      "warning": "Harap gunakan judul yang lebih kecil."
+    },
     "type": {
       "title": "Jenis",
       "subtitle": "Mana yang paling menggambarkan properti Anda?",

@@ -120,8 +120,22 @@
       "capacity": "Now estimate how many people could comfortably live in your property."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Enter the contact details of the property owner.",
+      "name": "Name:",
+      "name-placeholder": "Enter the property owner's name...",
+      "email": "Email:",
+      "email-placeholder": "Enter the property owner's email...",
+      "mobile": "Mobile:",
+      "mobile-check": "Set as my phone number",
+      "mobile-placeholder": "Enter the property owner's mobile..."
+    },
+    "description": {
+      "title": "Description",
+      "subtitle": "Write a brief description of your property.",
+      "warning": "Please write a shorter description."
+    },
     "features": {
       "title": "Features",
       "subtitle": "Which of these does your property have?",
@@ -194,7 +208,11 @@
       "title": "Finish up and publish",
       "subtitle": "Add contact details, your price, and publish."
     },
-    "title": {},
+    "title": {
+      "title": "Title",
+      "subtitle": "Give your property listing a title.",
+      "warning": "Please use a smaller title."
+    },
     "type": {
       "title": "Type",
       "subtitle": "What is your property?",

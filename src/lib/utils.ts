@@ -43,3 +43,65 @@ export const getCurrency = (currencies: CurrencyType[], symbol: string): Currenc
 export const formatNumber = (num: number, numerals: any) => {
   return new Intl.NumberFormat(numerals).format(num);
 };
+
+export const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+export async function getPhoneLocale(currentLocale: string) {
+  let localeModule;
+
+  switch (currentLocale) {
+    case "af":
+      localeModule = await import("@/locales/countries/af");
+      break;
+    case "ar":
+      localeModule = await import("@/locales/countries/ar");
+      break;
+    case "de":
+      localeModule = await import("@/locales/countries/de");
+      break;
+    case "es":
+      localeModule = await import("@/locales/countries/es");
+      break;
+    case "fr":
+      localeModule = await import("@/locales/countries/fr");
+      break;
+    case "hr":
+      localeModule = await import("@/locales/countries/hr");
+      break;
+    case "id":
+      localeModule = await import("@/locales/countries/id");
+      break;
+    case "ja":
+      localeModule = await import("@/locales/countries/ja");
+      break;
+    case "ka":
+      localeModule = await import("@/locales/countries/ka");
+      break;
+    case "ko":
+      localeModule = await import("@/locales/countries/ko");
+      break;
+    case "pt":
+      localeModule = await import("@/locales/countries/pt");
+      break;
+    case "th":
+      localeModule = await import("@/locales/countries/th");
+      break;
+    case "tr":
+      localeModule = await import("@/locales/countries/tr");
+      break;
+    case "vi":
+      localeModule = await import("@/locales/countries/vi");
+      break;
+    case "zh":
+      localeModule = await import("@/locales/countries/zh");
+      break;
+    default:
+      localeModule = await import("@/locales/countries/en"); // Default to English
+  }
+
+  // Return the object as it is, since it's already structured correctly.
+  return localeModule.default;
+}

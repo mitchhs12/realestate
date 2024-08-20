@@ -123,8 +123,22 @@ export default {
       "capacity": "이제 귀하의 부동산에서 얼마나 많은 사람이 편안하게 살 수 있을지 추정해 보세요."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "연락하다",
+      "subtitle": "부동산 소유자의 연락처 정보를 입력하세요.",
+      "name": "이름:",
+      "name-placeholder": "부동산 소유자의 이름을 입력하세요...",
+      "email": "이메일:",
+      "email-placeholder": "부동산 소유자의 이메일을 입력하세요...",
+      "mobile": "이동하는:",
+      "mobile-check": "내 전화번호로 설정",
+      "mobile-placeholder": "부동산 소유자의 휴대전화 번호를 입력하세요."
+    },
+    "description": {
+      "title": "설명",
+      "subtitle": "귀하의 부동산에 대한 간략한 설명을 작성하세요.",
+      "warning": "좀 더 짧은 설명을 적어주세요."
+    },
     "features": {
       "title": "특징",
       "subtitle": "귀하의 부동산에는 다음 중 어떤 것이 있나요?",
@@ -197,7 +211,11 @@ export default {
       "title": "완료하고 게시하세요",
       "subtitle": "연락처 정보와 가격을 추가하고 게시하세요."
     },
-    "title": {},
+    "title": {
+      "title": "제목",
+      "subtitle": "귀하의 부동산 매물에 제목을 붙이세요.",
+      "warning": "더 작은 제목을 사용하세요."
+    },
     "type": {
       "title": "유형",
       "subtitle": "귀하의 부동산을 가장 잘 설명하는 것은 무엇입니까?",

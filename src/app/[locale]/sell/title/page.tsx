@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
+import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
   title: "Title",
@@ -22,6 +23,10 @@ export default async function Page() {
   }
   const { array, innerIndex, outerIndex } = await getStepData("/sell/title");
   const sellFlatIndex = await getSellFlowIndex("/sell/title");
+  const t = await getScopedI18n("sell.title");
+  const title = t("title");
+  const subtitle = t("subtitle");
+  const warning = t("warning");
 
   return (
     <Title
@@ -29,6 +34,9 @@ export default async function Page() {
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
+      title_text={title}
+      subtitle={subtitle}
+      warning={warning}
     />
   );
 }

@@ -123,8 +123,22 @@
       "capacity": "Sada procijenite koliko bi ljudi moglo udobno živjeti u vašem posjedu."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Unesite kontakt podatke vlasnika nekretnine.",
+      "name": "Ime:",
+      "name-placeholder": "Unesite ime vlasnika nekretnine...",
+      "email": "Email:",
+      "email-placeholder": "Unesite e-mail vlasnika nekretnine...",
+      "mobile": "Mobitel:",
+      "mobile-check": "Postavi kao moj telefonski broj",
+      "mobile-placeholder": "Unesite mobitel vlasnika nekretnine..."
+    },
+    "description": {
+      "title": "Opis",
+      "subtitle": "Napišite kratak opis vaše nekretnine.",
+      "warning": "Molimo napišite kraći opis."
+    },
     "features": {
       "title": "Značajke",
       "subtitle": "Što od ovoga ima vaša nekretnina?",
@@ -197,7 +211,11 @@
       "title": "Dovršite i objavite",
       "subtitle": "Dodajte kontakt podatke, svoju cijenu i objavite."
     },
-    "title": {},
+    "title": {
+      "title": "Titula",
+      "subtitle": "Dodijelite naslov svom popisu nekretnina.",
+      "warning": "Molimo koristite manji naslov."
+    },
     "type": {
       "title": "Tip",
       "subtitle": "Što najbolje opisuje vašu nekretninu?",

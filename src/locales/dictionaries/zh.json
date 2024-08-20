@@ -123,8 +123,22 @@
       "capacity": "现在估计一下有多少人可以舒适地住在您的房产中。"
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "接触",
+      "subtitle": "输入房产所有者的联系方式。",
+      "name": "姓名：",
+      "name-placeholder": "输入业主姓名...",
+      "email": "电子邮件：",
+      "email-placeholder": "输入业主的电子邮件...",
+      "mobile": "移动的：",
+      "mobile-check": "设置为我的电话号码",
+      "mobile-placeholder": "输入业主手机号..."
+    },
+    "description": {
+      "title": "描述",
+      "subtitle": "简要描述一下您的财产。",
+      "warning": "请写一个更简短的描述。"
+    },
     "features": {
       "title": "特征",
       "subtitle": "您的房产拥有以下哪些内容？",
@@ -197,7 +211,11 @@
       "title": "完成并发布",
       "subtitle": "添加联系方式、价格并发布。"
     },
-    "title": {},
+    "title": {
+      "title": "标题",
+      "subtitle": "为您的房产列表添加标题。",
+      "warning": "请使用较小的标题。"
+    },
     "type": {
       "title": "类型",
       "subtitle": "哪一个最能描述您的房产？",

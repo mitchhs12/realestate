@@ -123,8 +123,22 @@ export default {
       "capacity": "Şimdi mülkünüzde kaç kişinin rahatça yaşayabileceğini tahmin edin."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Temas etmek",
+      "subtitle": "Emlak sahibinin iletişim bilgilerini giriniz.",
+      "name": "İsim:",
+      "name-placeholder": "Mülk sahibinin adını giriniz...",
+      "email": "E-posta:",
+      "email-placeholder": "Emlak sahibinin e-postasını girin...",
+      "mobile": "Mobil:",
+      "mobile-check": "Telefon numaram olarak ayarla",
+      "mobile-placeholder": "Emlak sahibinin cep telefonunu girin..."
+    },
+    "description": {
+      "title": "Tanım",
+      "subtitle": "Emlakınızın kısa bir açıklamasını yazın.",
+      "warning": "Lütfen daha kısa bir açıklama yazın."
+    },
     "features": {
       "title": "Özellikler",
       "subtitle": "Bunlardan hangisi sizin mülkünüzde var?",
@@ -197,7 +211,11 @@ export default {
       "title": "Bitir ve yayınla",
       "subtitle": "İletişim bilgilerinizi ve fiyatınızı ekleyin ve yayınlayın."
     },
-    "title": {},
+    "title": {
+      "title": "Başlık",
+      "subtitle": "Emlak ilanınıza bir başlık verin.",
+      "warning": "Lütfen daha küçük bir başlık kullanın."
+    },
     "type": {
       "title": "Tip",
       "subtitle": "Mülkünüzü en iyi tanımlayan hangisidir?",

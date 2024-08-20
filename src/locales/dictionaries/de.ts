@@ -123,8 +123,22 @@ export default {
       "capacity": "Schätzen Sie nun, wie viele Personen bequem in Ihrer Immobilie leben könnten."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Geben Sie die Kontaktdaten des Immobilieneigentümers ein.",
+      "name": "Name:",
+      "name-placeholder": "Geben Sie den Namen des Grundstückseigentümers ein …",
+      "email": "E-Mail:",
+      "email-placeholder": "Geben Sie die E-Mail des Immobilieneigentümers ein …",
+      "mobile": "Mobile:",
+      "mobile-check": "Als meine Telefonnummer festlegen",
+      "mobile-placeholder": "Geben Sie die Handynummer des Grundstückseigentümers ein..."
+    },
+    "description": {
+      "title": "Beschreibung",
+      "subtitle": "Schreiben Sie eine kurze Beschreibung Ihrer Immobilie.",
+      "warning": "Bitte schreiben Sie eine kürzere Beschreibung."
+    },
     "features": {
       "title": "Merkmale",
       "subtitle": "Welche davon verfügt Ihre Immobilie?",
@@ -197,7 +211,11 @@ export default {
       "title": "Fertigstellen und veröffentlichen",
       "subtitle": "Fügen Sie Kontaktdaten und Ihren Preis hinzu und veröffentlichen Sie."
     },
-    "title": {},
+    "title": {
+      "title": "Titel",
+      "subtitle": "Geben Sie Ihrem Immobilienangebot einen Titel.",
+      "warning": "Bitte verwenden Sie einen kleineren Titel."
+    },
     "type": {
       "title": "Typ",
       "subtitle": "Was beschreibt Ihre Immobilie am besten?",

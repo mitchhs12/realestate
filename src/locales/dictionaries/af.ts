@@ -123,8 +123,22 @@ export default {
       "capacity": "Skat nou hoeveel mense gemaklik in jou eiendom kan woon."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Kontak",
+      "subtitle": "Voer die kontakbesonderhede van die eienaar van die eiendom in.",
+      "name": "Naam:",
+      "name-placeholder": "Voer die eiendomseienaar se naam in...",
+      "email": "E-pos:",
+      "email-placeholder": "Voer die eienaar se e-posadres in...",
+      "mobile": "Selfoon:",
+      "mobile-check": "Stel as my foonnommer",
+      "mobile-placeholder": "Voer die eienaar se selfoon in..."
+    },
+    "description": {
+      "title": "Beskrywing",
+      "subtitle": "Skryf 'n kort beskrywing van jou eiendom.",
+      "warning": "Skryf asseblief 'n korter beskrywing."
+    },
     "features": {
       "title": "Kenmerke",
       "subtitle": "Watter van hierdie het jou eiendom?",
@@ -197,7 +211,11 @@ export default {
       "title": "Voltooi en publiseer",
       "subtitle": "Voeg kontakbesonderhede, jou prys by en publiseer."
     },
-    "title": {},
+    "title": {
+      "title": "Titel",
+      "subtitle": "Gee jou eiendomlys 'n titel.",
+      "warning": "Gebruik asseblief 'n kleiner titel."
+    },
     "type": {
       "title": "Tik",
       "subtitle": "Wat beskryf jou eiendom die beste?",

@@ -123,8 +123,22 @@
       "capacity": "Bây giờ hãy ước tính có bao nhiêu người có thể sống thoải mái trong ngôi nhà của bạn."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Liên hệ",
+      "subtitle": "Nhập thông tin liên lạc của chủ sở hữu bất động sản.",
+      "name": "Tên:",
+      "name-placeholder": "Nhập tên chủ sở hữu bất động sản...",
+      "email": "E-mail:",
+      "email-placeholder": "Nhập email của chủ sở hữu bất động sản...",
+      "mobile": "Di động:",
+      "mobile-check": "Đặt làm số điện thoại của tôi",
+      "mobile-placeholder": "Nhập số điện thoại di động của chủ sở hữu bất động sản..."
+    },
+    "description": {
+      "title": "Sự miêu tả",
+      "subtitle": "Viết mô tả ngắn gọn về bất động sản của bạn.",
+      "warning": "Vui lòng viết mô tả ngắn hơn."
+    },
     "features": {
       "title": "Đặc trưng",
       "subtitle": "Bất động sản của bạn có những đặc điểm nào sau đây?",
@@ -197,7 +211,11 @@
       "title": "Hoàn thành và xuất bản",
       "subtitle": "Thêm thông tin liên lạc, giá và đăng."
     },
-    "title": {},
+    "title": {
+      "title": "Tiêu đề",
+      "subtitle": "Đặt tên cho danh sách bất động sản của bạn.",
+      "warning": "Vui lòng sử dụng tiêu đề nhỏ hơn."
+    },
     "type": {
       "title": "Kiểu",
       "subtitle": "Câu nào mô tả tốt nhất về bất động sản của bạn?",

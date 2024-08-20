@@ -123,8 +123,22 @@ export default {
       "capacity": "Estimez maintenant combien de personnes pourraient vivre confortablement dans votre propriété."
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Saisissez les coordonnées du propriétaire du bien.",
+      "name": "Nom:",
+      "name-placeholder": "Entrez le nom du propriétaire du bien...",
+      "email": "E-mail:",
+      "email-placeholder": "Entrez l'email du propriétaire du bien...",
+      "mobile": "Mobile:",
+      "mobile-check": "Définir comme mon numéro de téléphone",
+      "mobile-placeholder": "Entrez le numéro de téléphone portable du propriétaire du bien..."
+    },
+    "description": {
+      "title": "Description",
+      "subtitle": "Rédigez une brève description de votre propriété.",
+      "warning": "Veuillez écrire une description plus courte."
+    },
     "features": {
       "title": "Caractéristiques",
       "subtitle": "Lequel de ces éléments votre propriété possède-t-elle ?",
@@ -197,7 +211,11 @@ export default {
       "title": "Terminer et publier",
       "subtitle": "Ajoutez vos coordonnées, votre prix et publiez."
     },
-    "title": {},
+    "title": {
+      "title": "Titre",
+      "subtitle": "Donnez un titre à votre annonce immobilière.",
+      "warning": "Veuillez utiliser un titre plus petit."
+    },
     "type": {
       "title": "Taper",
       "subtitle": "Qu'est-ce qui décrit le mieux votre propriété ?",

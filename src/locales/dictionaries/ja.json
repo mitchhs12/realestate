@@ -123,8 +123,22 @@
       "capacity": "次に、あなたの物件に何人の人が快適に住めるかを推定します。"
     },
     "checkout": {},
-    "contact": {},
-    "description": {},
+    "contact": {
+      "title": "接触",
+      "subtitle": "不動産所有者の連絡先の詳細を入力します。",
+      "name": "名前：",
+      "name-placeholder": "不動産所有者の名前を入力してください...",
+      "email": "メールアドレス:",
+      "email-placeholder": "物件所有者のメールアドレスを入力してください...",
+      "mobile": "携帯：",
+      "mobile-check": "私の電話番号として設定",
+      "mobile-placeholder": "不動産所有者の携帯電話番号を入力してください..."
+    },
+    "description": {
+      "title": "説明",
+      "subtitle": "あなたの物件の簡単な説明を書いてください。",
+      "warning": "もっと短い説明を書いてください。"
+    },
     "features": {
       "title": "特徴",
       "subtitle": "あなたの物件にはこれらのどれがありますか?",
@@ -197,7 +211,11 @@
       "title": "仕上げて公開する",
       "subtitle": "連絡先の詳細と価格を追加して公開します。"
     },
-    "title": {},
+    "title": {
+      "title": "タイトル",
+      "subtitle": "物件リストにタイトルを付けます。",
+      "warning": "もっと短いタイトルを使用してください。"
+    },
     "type": {
       "title": "タイプ",
       "subtitle": "あなたの物件を最もよく表すものはどれですか?",
