@@ -14,7 +14,7 @@ model User {
   currency      String?
   language      String?
   email         String?         @unique
-  phoneNumber   String?         @unique
+  phoneNumber   String?         
   emailVerified DateTime?       @map("email_verified")
   image         String?
   favorites     UserFavorites[]

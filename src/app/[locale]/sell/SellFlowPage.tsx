@@ -50,10 +50,17 @@ export default function SellFlowPage({
     return newNum;
   };
 
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setCurrentHome,
+    setPrevLoading,
+  } = useContext(SellContext);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

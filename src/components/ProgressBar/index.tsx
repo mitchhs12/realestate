@@ -38,6 +38,13 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     isMyPhone,
   } = useContext(SellContext);
 
+  useEffect(() => {
+    if (currentHome) {
+      // setLocalCurrentHome(currentHome);
+      console.log("CURRENT HOME", currentHome);
+    }
+  }, [currentHome]);
+
   router.prefetch(nextStep);
   router.prefetch(prevStep);
   console.log("currentHome", JSON.stringify(currentHome));
