@@ -25,7 +25,6 @@ export default async function Page() {
   const { array, innerIndex, outerIndex } = await getStepData("/sell/contact");
   const sellFlatIndex = await getSellFlowIndex("/sell/contact");
   const currentLocale = await getCurrentLocale();
-  console.log("currentLocale", currentLocale);
   const phoneLocale = await getPhoneLocale(currentLocale);
 
   const t = await getScopedI18n("sell.contact");
