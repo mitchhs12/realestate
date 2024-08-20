@@ -122,7 +122,47 @@
       "feet": "voete",
       "capacity": "Skat nou hoeveel mense gemaklik in jou eiendom kan woon."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Betaal",
+      "subtitle": "Kies jou lysinskrywing tipe",
+      "premium": {
+        "title": "Premie",
+        "subtitle": "Kry meer kyke en verkoop vinniger",
+        "perks": {
+          "0": {
+            "title": "Uitstallys",
+            "subtitle": "Jou eiendom sal uitgelig word en boaan gebruikersoektogte verskyn."
+          },
+          "1": {
+            "title": "30 Foto's",
+            "subtitle": "Laai 'n maksimum van 30 foto's op."
+          },
+          "2": {
+            "title": "Sosiale media promosie",
+            "subtitle": "Jou lysinskrywing sal op ons sosiale media-kanale bevorder word."
+          }
+        }
+      },
+      "standard": {
+        "title": "Standaard",
+        "subtitle": "Lys met basiese kenmerke",
+        "price": "Gratis!",
+        "perks": {
+          "0": {
+            "title": "Standaardlys",
+            "subtitle": "Jou eiendom sal met basiese sigbaarheid gelys word."
+          },
+          "1": {
+            "title": "Basiese ondersteuning",
+            "subtitle": "Kry ondersteuning binne 24-48 uur."
+          },
+          "2": {
+            "title": "Beperkte foto's",
+            "subtitle": "Laai tot 5 foto's op."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Kontak",
       "subtitle": "Voer die kontakbesonderhede van die eienaar van die eiendom in.",
@@ -186,7 +226,12 @@
       "tooShort": "Een van jou beelde is te kort. Laai asseblief 'n prent met 'n groter hoogte op.",
       "fileSize": "Een van jou prente oorskry die 5MB-groottelimiet. Laai asseblief 'n kleiner lêer op."
     },
-    "price": {},
+    "price": {
+      "title": "Pryse",
+      "subtitle": "Stel jou prys",
+      "negotiable": "Is jou prys onderhandelbaar?",
+      "price_placeholder": "Tik jou prys hier in..."
+    },
     "review": {},
     "rooms": {
       "title": "Kamers",

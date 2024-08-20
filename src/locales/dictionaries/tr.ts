@@ -122,7 +122,47 @@ export default {
       "feet": "ayak",
       "capacity": "Şimdi mülkünüzde kaç kişinin rahatça yaşayabileceğini tahmin edin."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Çıkış yapmak",
+      "subtitle": "Listeleme türünüzü seçin",
+      "premium": {
+        "title": "prim",
+        "subtitle": "Daha fazla görüntüleme alın ve daha hızlı satış yapın",
+        "perks": {
+          "0": {
+            "title": "Öne Çıkan Listeleme",
+            "subtitle": "Emlakınız vurgulanacak ve kullanıcı aramalarında en üstte görünecektir."
+          },
+          "1": {
+            "title": "30 Fotoğraf",
+            "subtitle": "En fazla 30 fotoğraf yükleyin."
+          },
+          "2": {
+            "title": "Sosyal Medya Tanıtımı",
+            "subtitle": "İlanınız sosyal medya kanallarımızda tanıtılacaktır."
+          }
+        }
+      },
+      "standard": {
+        "title": "Standart",
+        "subtitle": "Temel özelliklerin yer aldığı liste",
+        "price": "Özgür!",
+        "perks": {
+          "0": {
+            "title": "Standart Listeleme",
+            "subtitle": "Emlakınız temel görünürlükle listelenecektir."
+          },
+          "1": {
+            "title": "Temel Destek",
+            "subtitle": "24-48 saat içerisinde destek alın."
+          },
+          "2": {
+            "title": "Sınırlı Fotoğraflar",
+            "subtitle": "En fazla 5 fotoğraf yükleyin."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Temas etmek",
       "subtitle": "Emlak sahibinin iletişim bilgilerini giriniz.",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "Resimlerinizden biri çok kısa. Lütfen daha büyük yükseklikte bir resim yükleyin.",
       "fileSize": "Resimlerinizden biri 5MB boyut sınırını aşıyor. Lütfen daha küçük bir dosya yükleyin."
     },
-    "price": {},
+    "price": {
+      "title": "Fiyatlandırma",
+      "subtitle": "Fiyatınızı belirleyin",
+      "negotiable": "Fiyatınız pazarlığa açık mı?",
+      "price_placeholder": "Fiyatınızı buraya girin..."
+    },
     "review": {},
     "rooms": {
       "title": "Odalar",

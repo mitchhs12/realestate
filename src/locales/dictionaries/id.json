@@ -122,7 +122,47 @@
       "feet": "kaki",
       "capacity": "Sekarang perkirakan berapa banyak orang yang dapat tinggal dengan nyaman di properti Anda."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Check-out",
+      "subtitle": "Pilih jenis listing Anda",
+      "premium": {
+        "title": "Premi",
+        "subtitle": "Dapatkan lebih banyak tampilan dan jual lebih cepat",
+        "perks": {
+          "0": {
+            "title": "Daftar Unggulan",
+            "subtitle": "Properti Anda akan disorot dan muncul di bagian atas pencarian pengguna."
+          },
+          "1": {
+            "title": "30 Foto",
+            "subtitle": "Unggah maksimal 30 foto."
+          },
+          "2": {
+            "title": "Promosi Media Sosial",
+            "subtitle": "Daftar Anda akan dipromosikan di saluran media sosial kami."
+          }
+        }
+      },
+      "standard": {
+        "title": "Standar",
+        "subtitle": "Daftar dengan fitur dasar",
+        "price": "Bebas!",
+        "perks": {
+          "0": {
+            "title": "Daftar Standar",
+            "subtitle": "Properti Anda akan terdaftar dengan visibilitas dasar."
+          },
+          "1": {
+            "title": "Dukungan Dasar",
+            "subtitle": "Dapatkan dukungan dalam waktu 24-48 jam."
+          },
+          "2": {
+            "title": "Foto Terbatas",
+            "subtitle": "Unggah hingga 5 foto."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Kontak",
       "subtitle": "Masukkan rincian kontak pemilik properti.",
@@ -186,7 +226,12 @@
       "tooShort": "Salah satu gambar Anda terlalu pendek. Harap unggah gambar dengan tinggi yang lebih besar.",
       "fileSize": "Salah satu gambar Anda melebihi batas ukuran 5MB. Harap unggah file yang lebih kecil."
     },
-    "price": {},
+    "price": {
+      "title": "Harga",
+      "subtitle": "Tetapkan harga Anda",
+      "negotiable": "Apakah harga Anda bisa dinegosiasikan?",
+      "price_placeholder": "Masukkan harga Anda di sini..."
+    },
     "review": {},
     "rooms": {
       "title": "Kamar",

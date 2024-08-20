@@ -122,7 +122,47 @@
       "feet": "stopala",
       "capacity": "Sada procijenite koliko bi ljudi moglo udobno živjeti u vašem posjedu."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Odjava",
+      "subtitle": "Odaberite vrstu unosa",
+      "premium": {
+        "title": "Premija",
+        "subtitle": "Dobijte više pregleda i prodajte brže",
+        "perks": {
+          "0": {
+            "title": "Istaknuti popis",
+            "subtitle": "Vaša nekretnina bit će istaknuta i prikazana na vrhu korisničkih pretraživanja."
+          },
+          "1": {
+            "title": "30 fotografija",
+            "subtitle": "Učitajte najviše 30 fotografija."
+          },
+          "2": {
+            "title": "Promocija na društvenim mrežama",
+            "subtitle": "Vaš unos će biti promoviran na našim kanalima društvenih medija."
+          }
+        }
+      },
+      "standard": {
+        "title": "Standard",
+        "subtitle": "Popis s osnovnim značajkama",
+        "price": "Besplatno!",
+        "perks": {
+          "0": {
+            "title": "Standardni popis",
+            "subtitle": "Vaša nekretnina bit će navedena s osnovnom vidljivošću."
+          },
+          "1": {
+            "title": "Osnovna podrška",
+            "subtitle": "Dobijte podršku u roku od 24-48 sati."
+          },
+          "2": {
+            "title": "Ograničene fotografije",
+            "subtitle": "Učitajte do 5 fotografija."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Kontakt",
       "subtitle": "Unesite kontakt podatke vlasnika nekretnine.",
@@ -186,7 +226,12 @@
       "tooShort": "Jedna od vaših slika je prekratka. Molimo prenesite sliku veće visine.",
       "fileSize": "Jedna od vaših slika premašuje ograničenje veličine od 5 MB. Molimo prenesite manju datoteku."
     },
-    "price": {},
+    "price": {
+      "title": "Cijene",
+      "subtitle": "Postavite svoju cijenu",
+      "negotiable": "Može li se pregovarati o vašoj cijeni?",
+      "price_placeholder": "Unesite svoju cijenu ovdje..."
+    },
     "review": {},
     "rooms": {
       "title": "Sobe",

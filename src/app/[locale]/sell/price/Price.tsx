@@ -15,9 +15,21 @@ interface Props {
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
+  title: string;
+  subtitle: string;
+  negotiable: string;
+  price_placeholder: string;
 }
 
-export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Price({
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title,
+  subtitle,
+  negotiable,
+  price_placeholder,
+}: Props) {
   const {
     setSellFlowFlatIndex,
     setSellFlowIndices,
@@ -26,6 +38,7 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
     setPrevLoading,
     currentHome,
     setNewHome,
+    setNextDisabled,
   } = useContext(SellContext);
   const { defaultCurrency, currencies } = useContext(LocaleContext);
 
@@ -37,21 +50,14 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {
-    console.log("defaultCurrency updated:", defaultCurrency);
-  }, [defaultCurrency]);
-
-  console.log("initialIntlConfig", initialIntlConfig);
-  console.log("currentHomecurrency", currentHome?.currency);
-  console.log("defaultCurrency", defaultCurrency);
-  console.log("intlConfig", intlConfig);
-
-  useEffect(() => {
     if (currentHome && price !== null && intlConfig && intlConfig.currency) {
       const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
 
       if (currentCurrency && currentCurrency.usdPrice !== null) {
         const priceInUsd = price / currentCurrency.usdPrice;
         const roundedPriceInUsd = Math.round(priceInUsd * 100) / 100;
+
+        setNextDisabled(false);
         setNewHome({
           ...currentHome,
           price: price, // Save price in USD
@@ -60,6 +66,8 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
           priceNegotiable: isNegotiable,
         });
       }
+    } else {
+      setNextDisabled(true);
     }
   }, [price, isNegotiable, intlConfig, currencies]);
 
@@ -69,6 +77,11 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
+    if (price && price > 0) {
+      setNextDisabled(false);
+    } else {
+      setNextDisabled(true);
+    }
   }, []);
 
   const handlePriceChange = (value: string | undefined) => {
@@ -114,10 +127,10 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">Pricing</h1>
+            <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">Set your price</h3>
+            <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
         </div>
         <div className="flex flex-col h-full w-full pt-20">
@@ -140,7 +153,7 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
               </select>
               <CurrencyInput
                 key={intlConfig?.currency} // Force re-render when currency changes
-                placeholder="Please enter your desired price..."
+                placeholder={price_placeholder}
                 intlConfig={intlConfig}
                 decimalsLimit={
                   intlConfig ? locales.find((option) => option.currency === intlConfig.currency)?.decimalsLimit : 2
@@ -153,7 +166,7 @@ export default function Price({ sellFlatIndex, sellFlowIndices, stepPercentage }
               />
             </div>
             <div className="flex justify-center items-end gap-x-4">
-              <Label htmlFor="price-negotiable">Price Negotiable?</Label>
+              <Label htmlFor="price-negotiable">{negotiable}</Label>
               <Switch
                 id="price-negotiable"
                 checked={isNegotiable}

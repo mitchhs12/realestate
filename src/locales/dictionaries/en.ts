@@ -122,7 +122,47 @@ export default {
       "feet": "feet",
       "capacity": "Now estimate how many people could comfortably live in your property."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Checkout",
+      "subtitle": "Select your listing type",
+      "premium": {
+        "title": "Premium",
+        "subtitle": "Get more views and sell faster",
+        "perks": [
+          {
+            "title": "Featured Listing",
+            "subtitle": "Your property will be highlighted and appear at the top of user searches."
+          },
+          {
+            "title": "30 Photos",
+            "subtitle": "Upload a maximum of 30 photos."
+          },
+          {
+            "title": "Social Media Promotion",
+            "subtitle": "Your listing will be promoted on our social media channels."
+          }
+        ]
+      },
+      "standard": {
+        "title": "Standard",
+        "subtitle": "List with basic features",
+        "price": "Free!",
+        "perks": [
+          {
+            "title": "Standard Listing",
+            "subtitle": "Your property will be listed with basic visibility."
+          },
+          {
+            "title": "Basic Support",
+            "subtitle": "Get support within 24-48 hours."
+          },
+          {
+            "title": "Limited Photos",
+            "subtitle": "Upload up to 5 photos."
+          }
+        ]
+      }
+    },
     "contact": {
       "title": "Contact",
       "subtitle": "Enter the contact details of the property owner.",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "One of your images is too short. Please upload an image with a larger height.",
       "fileSize": "One of your images exceeds the 5MB size limit. Please upload a smaller file."
     },
-    "price": {},
+    "price": {
+      "title": "Pricing",
+      "subtitle": "Set your price",
+      "negotiable": "Is your price negotiable?",
+      "price_placeholder": "Enter your price here..."
+    },
     "review": {},
     "rooms": {
       "title": "Rooms",

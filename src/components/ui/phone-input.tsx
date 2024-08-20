@@ -26,7 +26,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwa
   return (
     <RPNInput.default
       ref={ref}
-      className={cn("flex", className)}
+      className={cn("flex w-full", className)}
       flagComponent={FlagComponent}
       countrySelectComponent={CountrySelect}
       inputComponent={InputComponent}
@@ -81,10 +81,10 @@ const CountrySelect = ({ disabled, value, onChange, options }: CountrySelectProp
           <ChevronsUpDown className={cn("-mr-2 h-4 w-4 opacity-50", disabled ? "hidden" : "opacity-100")} />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0">
+      <PopoverContent className="flex w-full p-0">
         <Command>
           <CommandList>
-            <ScrollArea className="h-72">
+            <ScrollArea className="flex h-72 w-full">
               <CommandInput placeholder="Search country..." />
               <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>

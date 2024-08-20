@@ -1,20 +1,23 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-interface ContentArray {
-  title: string;
-  description: string;
-}
+import { formatPrice } from "@/lib/utils";
 
 interface Props {
-  perks: ContentArray[];
+  perks: {
+    title: string;
+    subtitle: string;
+  }[];
   title: string;
   description: string;
-  button: string;
+  button: number | string;
   buttonDisabled: boolean;
-  originalPrice?: string;
+  originalPrice?: number;
   buttonFunction: () => void;
   selected: string;
+  defaultCurrency: {
+    symbol: string;
+    usdPrice: number;
+  };
 }
 
 export default function CheckoutCard({
@@ -26,7 +29,10 @@ export default function CheckoutCard({
   originalPrice,
   buttonFunction,
   selected,
+  defaultCurrency,
 }: Props) {
+  console.log("title", title);
+  console.log("selected", selected);
   return (
     <div
       className={`flex justify-center items-center ${
@@ -44,17 +50,21 @@ export default function CheckoutCard({
               <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary" />
               <div className="flex flex-col justify-start space-y-1 text-start">
                 <p className="flex justify-start text-md font-medium leading-none">{perk.title}</p>
-                <p className="flex justify-start text-sm text-muted-foreground">{perk.description}</p>
+                <p className="flex justify-start text-sm text-muted-foreground">{perk.subtitle}</p>
               </div>
             </div>
           ))}
         </CardContent>
         <CardFooter className="flex flex-col items-center h-[90px] justify-end">
           {originalPrice && (
-            <span className="text-md text-muted-foreground line-through">{originalPrice} per month</span>
+            <span className="text-md text-muted-foreground line-through">
+              {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * originalPrice, 2)} per month
+            </span>
           )}
           <Button variant={"default"} className="w-full text-lg" disabled={buttonDisabled} onClick={buttonFunction}>
-            {button}
+            {typeof button === "number"
+              ? formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * button, 2)
+              : button}
           </Button>
         </CardFooter>
       </Card>

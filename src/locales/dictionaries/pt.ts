@@ -122,7 +122,47 @@ export default {
       "feet": "pés",
       "capacity": "Agora estime quantas pessoas poderiam viver confortavelmente em sua propriedade."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Confira",
+      "subtitle": "Selecione o seu tipo de listagem",
+      "premium": {
+        "title": "Prêmio",
+        "subtitle": "Obtenha mais visualizações e venda mais rápido",
+        "perks": {
+          "0": {
+            "title": "Listagem em destaque",
+            "subtitle": "Sua propriedade será destacada e aparecerá no topo das pesquisas dos usuários."
+          },
+          "1": {
+            "title": "30 fotos",
+            "subtitle": "Envie no máximo 30 fotos."
+          },
+          "2": {
+            "title": "Promoção de mídia social",
+            "subtitle": "Seu anúncio será promovido em nossos canais de mídia social."
+          }
+        }
+      },
+      "standard": {
+        "title": "Padrão",
+        "subtitle": "Lista com características básicas",
+        "price": "Livre!",
+        "perks": {
+          "0": {
+            "title": "Listagem Padrão",
+            "subtitle": "Seu imóvel será listado com visibilidade básica."
+          },
+          "1": {
+            "title": "Suporte Básico",
+            "subtitle": "Obtenha suporte dentro de 24 a 48 horas."
+          },
+          "2": {
+            "title": "Fotos limitadas",
+            "subtitle": "Envie até 5 fotos."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Contato",
       "subtitle": "Insira os detalhes de contato do proprietário do imóvel.",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "Uma das suas imagens é muito curta. Por favor, carregue uma imagem com uma altura maior.",
       "fileSize": "Uma das suas imagens excede o limite de tamanho de 5 MB. Por favor, carregue um arquivo menor."
     },
-    "price": {},
+    "price": {
+      "title": "Preços",
+      "subtitle": "Defina seu preço",
+      "negotiable": "Seu preço é negociável?",
+      "price_placeholder": "Insira seu preço aqui..."
+    },
     "review": {},
     "rooms": {
       "title": "Quartos",

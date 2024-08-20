@@ -122,7 +122,47 @@
       "feet": "Füße",
       "capacity": "Schätzen Sie nun, wie viele Personen bequem in Ihrer Immobilie leben könnten."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Kasse",
+      "subtitle": "Wählen Sie Ihren Inseratstyp aus",
+      "premium": {
+        "title": "Prämie",
+        "subtitle": "Erhalten Sie mehr Aufrufe und verkaufen Sie schneller",
+        "perks": {
+          "0": {
+            "title": "Aktuelles Inserat",
+            "subtitle": "Ihre Immobilie wird hervorgehoben und erscheint ganz oben bei den Suchanfragen der Benutzer."
+          },
+          "1": {
+            "title": "30 Fotos",
+            "subtitle": "Laden Sie maximal 30 Fotos hoch."
+          },
+          "2": {
+            "title": "Social Media-Werbung",
+            "subtitle": "Ihr Eintrag wird auf unseren Social-Media-Kanälen beworben."
+          }
+        }
+      },
+      "standard": {
+        "title": "Standard",
+        "subtitle": "Liste mit Grundfunktionen",
+        "price": "Frei!",
+        "perks": {
+          "0": {
+            "title": "Standardauflistung",
+            "subtitle": "Ihre Immobilie wird mit grundlegender Sichtbarkeit gelistet."
+          },
+          "1": {
+            "title": "Grundlegende Unterstützung",
+            "subtitle": "Erhalten Sie innerhalb von 24–48 Stunden Unterstützung."
+          },
+          "2": {
+            "title": "Begrenzte Fotos",
+            "subtitle": "Laden Sie bis zu 5 Fotos hoch."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Kontakt",
       "subtitle": "Geben Sie die Kontaktdaten des Immobilieneigentümers ein.",
@@ -186,7 +226,12 @@
       "tooShort": "Eines Ihrer Bilder ist zu kurz. Bitte laden Sie ein Bild mit einer größeren Höhe hoch.",
       "fileSize": "Eines Ihrer Bilder überschreitet die Größenbeschränkung von 5 MB. Bitte laden Sie eine kleinere Datei hoch."
     },
-    "price": {},
+    "price": {
+      "title": "Preise",
+      "subtitle": "Legen Sie Ihren Preis fest",
+      "negotiable": "Ist Ihr Preis verhandelbar?",
+      "price_placeholder": "Geben Sie hier Ihren Preis ein..."
+    },
     "review": {},
     "rooms": {
       "title": "Zimmer",

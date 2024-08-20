@@ -10,15 +10,15 @@ export function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const formatPrice = (currency: string, value: number): string => {
+export const formatPrice = (currency: string, value: number, decimals: number = 0): string => {
   const option = locales.find((option) => option.currency === currency);
   const locale = option?.locale || "en-US";
-  const decimals = 0;
+  const decimalLimit = option?.decimalsLimit || 2;
 
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
-    maximumFractionDigits: decimals,
+    maximumFractionDigits: decimalLimit > 0 ? decimalLimit : 0,
   }).format(value);
 };
 

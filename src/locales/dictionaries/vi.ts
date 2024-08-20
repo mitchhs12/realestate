@@ -122,7 +122,47 @@ export default {
       "feet": "bàn chân",
       "capacity": "Bây giờ hãy ước tính có bao nhiêu người có thể sống thoải mái trong ngôi nhà của bạn."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Thanh toán",
+      "subtitle": "Chọn loại danh sách của bạn",
+      "premium": {
+        "title": "Phần thưởng",
+        "subtitle": "Có nhiều lượt xem hơn và bán nhanh hơn",
+        "perks": {
+          "0": {
+            "title": "Danh sách nổi bật",
+            "subtitle": "Bất động sản của bạn sẽ được đánh dấu và xuất hiện ở đầu kết quả tìm kiếm của người dùng."
+          },
+          "1": {
+            "title": "30 bức ảnh",
+            "subtitle": "Tải lên tối đa 30 ảnh."
+          },
+          "2": {
+            "title": "Quảng cáo trên mạng xã hội",
+            "subtitle": "Danh sách của bạn sẽ được quảng bá trên các kênh truyền thông xã hội của chúng tôi."
+          }
+        }
+      },
+      "standard": {
+        "title": "Tiêu chuẩn",
+        "subtitle": "Danh sách với các tính năng cơ bản",
+        "price": "Miễn phí!",
+        "perks": {
+          "0": {
+            "title": "Tiêu chuẩn niêm yết",
+            "subtitle": "Bất động sản của bạn sẽ được niêm yết với khả năng hiển thị cơ bản."
+          },
+          "1": {
+            "title": "Hỗ trợ cơ bản",
+            "subtitle": "Nhận hỗ trợ trong vòng 24-48 giờ."
+          },
+          "2": {
+            "title": "Ảnh có giới hạn",
+            "subtitle": "Tải lên tối đa 5 ảnh."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Liên hệ",
       "subtitle": "Nhập thông tin liên lạc của chủ sở hữu bất động sản.",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "Một trong những hình ảnh của bạn quá ngắn. Vui lòng tải lên hình ảnh có chiều cao lớn hơn.",
       "fileSize": "Một trong những hình ảnh của bạn vượt quá giới hạn kích thước 5MB. Vui lòng tải lên tệp nhỏ hơn."
     },
-    "price": {},
+    "price": {
+      "title": "Giá cả",
+      "subtitle": "Đặt giá của bạn",
+      "negotiable": "Giá của bạn có thể thương lượng được không?",
+      "price_placeholder": "Nhập giá của bạn vào đây..."
+    },
     "review": {},
     "rooms": {
       "title": "Phòng",

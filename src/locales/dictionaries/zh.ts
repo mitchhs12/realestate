@@ -122,7 +122,47 @@ export default {
       "feet": "脚",
       "capacity": "现在估计一下有多少人可以舒适地住在您的房产中。"
     },
-    "checkout": {},
+    "checkout": {
+      "title": "查看",
+      "subtitle": "选择您的列表类型",
+      "premium": {
+        "title": "优质的",
+        "subtitle": "获得更多浏览量并更快销售",
+        "perks": {
+          "0": {
+            "title": "精选清单",
+            "subtitle": "您的房产将会被突出显示并出现在用户搜索的顶部。"
+          },
+          "1": {
+            "title": "30 张照片",
+            "subtitle": "最多上传 30 张照片。"
+          },
+          "2": {
+            "title": "社交媒体推广",
+            "subtitle": "您的列表将在我们的社交媒体渠道上推广。"
+          }
+        }
+      },
+      "standard": {
+        "title": "标准",
+        "subtitle": "具有基本特征的列表",
+        "price": "自由的！",
+        "perks": {
+          "0": {
+            "title": "标准清单",
+            "subtitle": "您的财产将以基本可见性的形式列出。"
+          },
+          "1": {
+            "title": "基础支持",
+            "subtitle": "在 24-48 小时内获得支持。"
+          },
+          "2": {
+            "title": "有限的照片",
+            "subtitle": "最多上传 5 张照片。"
+          }
+        }
+      }
+    },
     "contact": {
       "title": "接触",
       "subtitle": "输入房产所有者的联系方式。",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "您的其中一张图片太短。请上传一张高度更大的图片。",
       "fileSize": "您的其中一张图片超出了 5MB 的大小限制。请上传较小的文件。"
     },
-    "price": {},
+    "price": {
+      "title": "价格",
+      "subtitle": "设定价格",
+      "negotiable": "你们的价格可以商量吗？",
+      "price_placeholder": "在此输入您的价格..."
+    },
     "review": {},
     "rooms": {
       "title": "客房",

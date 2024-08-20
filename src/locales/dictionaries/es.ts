@@ -122,7 +122,47 @@ export default {
       "feet": "pies",
       "capacity": "Ahora calcule cuántas personas podrían vivir cómodamente en su propiedad."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Verificar",
+      "subtitle": "Seleccione su tipo de anuncio",
+      "premium": {
+        "title": "De primera calidad",
+        "subtitle": "Obtenga más vistas y venda más rápido",
+        "perks": {
+          "0": {
+            "title": "Listado destacado",
+            "subtitle": "Su propiedad será resaltada y aparecerá en la parte superior de las búsquedas de los usuarios."
+          },
+          "1": {
+            "title": "30 fotos",
+            "subtitle": "Sube un máximo de 30 fotos."
+          },
+          "2": {
+            "title": "Promoción en redes sociales",
+            "subtitle": "Su anuncio se promocionará en nuestros canales de redes sociales."
+          }
+        }
+      },
+      "standard": {
+        "title": "Estándar",
+        "subtitle": "Lista con características básicas",
+        "price": "¡Gratis!",
+        "perks": {
+          "0": {
+            "title": "Listado estándar",
+            "subtitle": "Su propiedad aparecerá listada con visibilidad básica."
+          },
+          "1": {
+            "title": "Soporte básico",
+            "subtitle": "Obtenga asistencia en un plazo de 24 a 48 horas."
+          },
+          "2": {
+            "title": "Fotos limitadas",
+            "subtitle": "Sube hasta 5 fotos."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Contacto",
       "subtitle": "Introduzca los datos de contacto del propietario del inmueble.",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "Una de tus imágenes es demasiado corta. Sube una imagen con una altura mayor.",
       "fileSize": "Una de tus imágenes supera el límite de tamaño de 5 MB. Sube un archivo más pequeño."
     },
-    "price": {},
+    "price": {
+      "title": "Precios",
+      "subtitle": "Establezca su precio",
+      "negotiable": "¿Su precio es negociable?",
+      "price_placeholder": "Introduzca su precio aquí..."
+    },
     "review": {},
     "rooms": {
       "title": "Alojamiento",

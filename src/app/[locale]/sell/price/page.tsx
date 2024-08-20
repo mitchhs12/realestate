@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
+import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
   title: "Price",
@@ -22,6 +23,11 @@ export default async function Page() {
   }
   const { array, innerIndex, outerIndex } = await getStepData("/sell/price");
   const sellFlatIndex = await getSellFlowIndex("/sell/price");
+  const t = await getScopedI18n("sell.price");
+  const title = t("title");
+  const subtitle = t("subtitle");
+  const negotiable = t("negotiable");
+  const price_placeholder = t("price_placeholder");
 
   return (
     <Price
@@ -29,6 +35,10 @@ export default async function Page() {
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
+      title={title}
+      subtitle={subtitle}
+      negotiable={negotiable}
+      price_placeholder={price_placeholder}
     />
   );
 }

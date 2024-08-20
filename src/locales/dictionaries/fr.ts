@@ -122,7 +122,47 @@ export default {
       "feet": "pieds",
       "capacity": "Estimez maintenant combien de personnes pourraient vivre confortablement dans votre propriété."
     },
-    "checkout": {},
+    "checkout": {
+      "title": "Vérifier",
+      "subtitle": "Sélectionnez votre type d'annonce",
+      "premium": {
+        "title": "Prime",
+        "subtitle": "Obtenez plus de vues et vendez plus rapidement",
+        "perks": {
+          "0": {
+            "title": "Annonce en vedette",
+            "subtitle": "Votre propriété sera mise en valeur et apparaîtra en haut des recherches des utilisateurs."
+          },
+          "1": {
+            "title": "30 Photos",
+            "subtitle": "Téléchargez un maximum de 30 photos."
+          },
+          "2": {
+            "title": "Promotion des médias sociaux",
+            "subtitle": "Votre annonce sera promue sur nos réseaux sociaux."
+          }
+        }
+      },
+      "standard": {
+        "title": "Standard",
+        "subtitle": "Liste avec les fonctionnalités de base",
+        "price": "Gratuit!",
+        "perks": {
+          "0": {
+            "title": "Liste standard",
+            "subtitle": "Votre propriété sera répertoriée avec une visibilité de base."
+          },
+          "1": {
+            "title": "Assistance de base",
+            "subtitle": "Obtenez de l'aide dans les 24 à 48 heures."
+          },
+          "2": {
+            "title": "Photos limitées",
+            "subtitle": "Téléchargez jusqu'à 5 photos."
+          }
+        }
+      }
+    },
     "contact": {
       "title": "Contact",
       "subtitle": "Saisissez les coordonnées du propriétaire du bien.",
@@ -186,7 +226,12 @@ export default {
       "tooShort": "L'une de vos images est trop courte. Veuillez télécharger une image avec une hauteur plus grande.",
       "fileSize": "L'une de vos images dépasse la limite de taille de 5 Mo. Veuillez télécharger un fichier plus petit."
     },
-    "price": {},
+    "price": {
+      "title": "Tarifs",
+      "subtitle": "Fixez votre prix",
+      "negotiable": "Votre prix est-il négociable ?",
+      "price_placeholder": "Entrez votre prix ici..."
+    },
     "review": {},
     "rooms": {
       "title": "Chambres",
