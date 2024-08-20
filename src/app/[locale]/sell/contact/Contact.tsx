@@ -7,9 +7,11 @@ import { isValidPhoneNumber, formatPhoneNumberIntl } from "react-phone-number-in
 import { isValidEmail, formatNumber } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
 import { PhoneInput } from "@/components/ui/phone-input";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
   user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -27,6 +29,7 @@ interface Props {
 
 export default function Contact({
   user,
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -47,8 +50,8 @@ export default function Contact({
     setStepPercentage,
     setNextLoading,
     setPrevLoading,
-    currentHome,
     setNewHome,
+    setCurrentHome,
     setIsMyPhone,
     isMyPhone,
     setNextDisabled,
@@ -86,6 +89,7 @@ export default function Contact({
   }, [propertyOwnerName, propertyOwnerEmail, propertyOwnerPhone]);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

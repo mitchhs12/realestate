@@ -56,17 +56,16 @@ const SellContext = createContext<SellContextProps>({
 
 interface SellProviderProps {
   children: ReactNode;
-  unfinishedHome: HomeType | null;
 }
 
-const SellContextProvider: React.FC<SellProviderProps> = ({ children, unfinishedHome }) => {
+const SellContextProvider: React.FC<SellProviderProps> = ({ children }) => {
   const [prevStep, setPrevStep] = useState("");
   const [nextStep, setNextStep] = useState("");
   const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(-1);
   const [sellFlowIndices, setSellFlowIndices] = useState({ outerIndex: -1, innerIndex: -1 });
   const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
-  const [currentHome, setCurrentHome] = useState<HomeType | null>(unfinishedHome);
-  const [newHome, setNewHome] = useState<HomeType | null>(unfinishedHome);
+  const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
+  const [newHome, setNewHome] = useState<HomeType | null>(null);
   // const [isLoading, setIsLoading] = useState(false);
   const [nextLoading, setNextLoading] = useState(false);
   const [prevLoading, setPrevLoading] = useState(false);

@@ -4,8 +4,10 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { capitalizeFirstLetter } from "@/lib/utils";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -14,12 +16,20 @@ interface Props {
   options: { id: string; translation: string }[];
 }
 
-export default function Type({ sellFlatIndex, sellFlowIndices, stepPercentage, title, subtitle, options }: Props) {
+export default function Type({
+  currentHome,
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title,
+  subtitle,
+  options,
+}: Props) {
   const {
     setSellFlowFlatIndex,
+    setCurrentHome,
     setSellFlowIndices,
     setStepPercentage,
-    currentHome,
     setNewHome,
     setNextLoading,
     setPrevLoading,
@@ -28,6 +38,7 @@ export default function Type({ sellFlatIndex, sellFlowIndices, stepPercentage, t
   const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

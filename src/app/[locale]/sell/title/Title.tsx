@@ -3,9 +3,10 @@ import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Input } from "@/components/ui/input";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
-  user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export default function Title({
-  user,
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -28,14 +29,15 @@ export default function Title({
     setSellFlowIndices,
     setStepPercentage,
     setNextLoading,
+    setCurrentHome,
     setPrevLoading,
-    currentHome,
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
   const [title, setTitle] = useState<string>(currentHome?.title ? currentHome?.title : "");
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

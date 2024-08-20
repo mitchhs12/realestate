@@ -30,9 +30,10 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
-  user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -104,6 +105,7 @@ function SortableItem({
 }
 
 export default function Photos({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -123,7 +125,7 @@ export default function Photos({
     setStepPercentage,
     setNextLoading,
     setPrevLoading,
-    currentHome,
+    setCurrentHome,
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
@@ -132,8 +134,10 @@ export default function Photos({
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
@@ -143,6 +147,7 @@ export default function Photos({
   }, []);
 
   useEffect(() => {
+    setErrorMessage(null);
     if (currentHome && uploadedImageUrls.length >= 5) {
       setNextDisabled(false);
       setNewHome({ ...currentHome, photos: uploadedImageUrls });
@@ -173,6 +178,7 @@ export default function Photos({
 
   const retrievePhotos = async () => {
     if (currentHome) {
+      console.log("currentHomeId", currentHome.id);
       const photoUrls = await getPhotoUrls(currentHome.id);
       if (photoUrls) {
         setUploadedImageUrls(photoUrls);
@@ -215,7 +221,7 @@ export default function Photos({
     const files = event.target.files;
     if (files && currentHome) {
       if (files.length + uploadedImageUrls.length > 12) {
-        alert(restriction);
+        setErrorMessage(restriction);
         setIsUploading(false);
         return;
       }
@@ -223,19 +229,19 @@ export default function Photos({
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         if (!file.type.startsWith("image/")) {
-          alert(onlyImages);
+          setErrorMessage(onlyImages);
           setIsUploading(false);
           return;
         }
         const { isValid, reason } = await checkImageDimensions(file);
         if (!isValid) {
-          alert(reason === "width" ? { tooNarrow } : { tooShort });
+          setErrorMessage(reason === "width" ? tooNarrow : tooShort);
           setIsUploading(false);
           return;
         }
         // check file size
         if (file.size > 5000000) {
-          alert(fileSize);
+          setErrorMessage(fileSize);
           setIsUploading(false);
           return;
         }
@@ -245,6 +251,7 @@ export default function Photos({
       formData.append("homeId", currentHome.id.toString());
 
       try {
+        setErrorMessage(null);
         await uploadPhotos(formData);
         await retrievePhotos(); // Refresh the photo URLs
         console.log("Files uploaded successfully!");
@@ -289,21 +296,24 @@ export default function Photos({
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-10">
-      <div className="flex flex-col w-full h-full justify-start items-center text-center gap-y-10">
+      <div className="flex flex-col w-full h-full justify-start items-center text-center gap-y-5">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">
+            <h3 className={`text-lg w-full ${uploadedImageUrls.length === 12 && "text-green-500"}`}>
               {uploadedImageUrls.length < 5 ? requirement : uploadedImageUrls.length < 12 ? restriction : maximum}
             </h3>
             {uploadedImageUrls.length > 0 && <h4>{drag}</h4>}
             {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}
           </div>
         </div>
-        <div className="flex gap-4 p-8 w-full lg:h-full justify-center border-2 border-blue-500">
-          <div className="flex w-full max-w-7xl h-[800px] lg:h-full border-red-500 border">
+        <div className="flex flex-col px-8 pb-8 gap-4 w-full lg:h-full justify-center items-center">
+          <div className="flex justify-center text-center text-red-500 text-xs md:text-base lg:text-lg">
+            {errorMessage}
+          </div>
+          <div className="flex w-full max-w-7xl h-[800px] lg:h-full">
             <div className="grid grid-rows-6 grid-cols-2 sm:grid-cols-3 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-3 gap-4 w-full">
               <DndContext
                 sensors={sensors}
@@ -326,7 +336,7 @@ export default function Photos({
                 </SortableContext>
                 <DragOverlay>
                   {activeId && (
-                    <div className="relative flex w-full items-center justify-center border-2">
+                    <div className="relative flex w-full h-full items-center justify-center">
                       <Image src={activeId} alt={`Dragged ${activeId}`} fill={true} className="object-cover" />
                     </div>
                   )}

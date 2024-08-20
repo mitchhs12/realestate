@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import CheckoutCard from "./CheckoutCard";
 import { LocaleContext } from "@/context/LocaleContext";
+import { HomeType } from "@/lib/validations";
 
 interface Tier {
   title: string;
@@ -17,6 +18,7 @@ interface Tier {
 }
 
 interface Props {
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -27,6 +29,7 @@ interface Props {
 }
 
 export default function Checkout({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -41,7 +44,7 @@ export default function Checkout({
     setStepPercentage,
     setNextLoading,
     setPrevLoading,
-    currentHome,
+    setCurrentHome,
     setNewHome,
   } = useContext(SellContext);
 
@@ -49,6 +52,7 @@ export default function Checkout({
   const { defaultCurrency } = useContext(LocaleContext);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

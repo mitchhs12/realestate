@@ -6,8 +6,8 @@ import { useTheme } from "next-themes";
 import darkMap from "@/components/MainMap/map-styles/dark-map";
 import lightMap from "@/components/MainMap/map-styles/light-map";
 import { CoordinatesType } from "@/lib/validations";
-import { QueryContext } from "@/context/QueryContext";
 import { SellContext } from "@/context/SellContext";
+import { HomeType } from "@/lib/validations";
 
 export type MapConfig = {
   id: string;
@@ -24,7 +24,13 @@ const MapTypeId = {
   TERRAIN: "terrain",
 };
 
-export default function MapComponent({ coordinates }: { coordinates: CoordinatesType }) {
+export default function MapComponent({
+  coordinates,
+  currentHome,
+}: {
+  currentHome: HomeType | null;
+  coordinates: CoordinatesType;
+}) {
   const MAP_CONFIGS: MapConfig[] = [
     {
       id: "light",
@@ -43,7 +49,7 @@ export default function MapComponent({ coordinates }: { coordinates: Coordinates
   ];
 
   const { resolvedTheme: theme } = useTheme();
-  const { setNewHome, currentHome, setNextLoading, setPrevLoading } = useContext(SellContext);
+  const { setNewHome, setNextLoading, setPrevLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });

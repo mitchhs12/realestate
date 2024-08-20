@@ -1,12 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import { useRouter, usePathname } from "next/navigation";
 import { SellContext } from "@/context/SellContext";
 import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
 import { updateHome, sellHome } from "@/app/[locale]/sell/actions";
 import { useCurrentLocale } from "@/locales/client";
+import { getStepData } from "@/lib/sellFlowData";
 
 interface Props {
   cont: string;
@@ -26,7 +27,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     prevStep,
     stepPercentage,
     currentHome,
-    setCurrentHome,
     nextLoading,
     prevLoading,
     setNextLoading,
@@ -116,16 +116,14 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     } else if (prevStep === "" && !currentHome) {
       // we are on the first page of the sell flow and we need to create a new home
       const _newHome = await updateHome(newHome, pathname, true);
-      setCurrentHome(_newHome);
       router.push(nextStep);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
-      setCurrentHome(_newHome);
       setNewHome(_newHome);
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
       if (pathname.startsWith("/sell/review")) {
-        const result = await sellHome(currentLocale);
+        const result = await sellHome(currentLocale, pathname);
         if (result.error) {
           alert(result.error);
           setNextLoading(false);
@@ -134,7 +132,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
         }
       } else {
         const _newHome = await updateHome(newHome, pathname, true);
-        setCurrentHome(_newHome);
         setNewHome(_newHome);
         router.push(nextStep);
       }
@@ -146,18 +143,45 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   async function handlePrev() {
     if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       setPrevLoading(true);
-      const _newHome = await updateHome(newHome, pathname, false);
-      setCurrentHome(_newHome);
+      await updateHome(newHome, pathname, false);
     }
     router.push(prevStep);
   }
+
+  const [currentAnimationStep, setCurrentAnimationStep] = useState(0);
+
+  let currentArrayProgress: number[] = Array(sellSteps.length).fill(0);
+  if (prevStep === "" && currentHome) {
+    const { array } = getStepData(stepsFlattened[checkStepPositionForNextNavigation()]);
+    currentArrayProgress = array;
+  }
+
+  useEffect(() => {
+    if (currentAnimationStep < sellSteps.length - 1) {
+      const timer = setTimeout(() => {
+        setCurrentAnimationStep((prevStep) => prevStep + 1);
+      }, 150); // 1 second delay between each animation
+      return () => clearTimeout(timer);
+    }
+  }, [currentAnimationStep, sellSteps.length]);
 
   return (
     <div className="flex flex-col justify-start gap-6 items-center w-full h-[100px]">
       <div className="flex justify-between items-center gap-1 w-full">
         {sellSteps.map((_, idx) => (
           <div key={idx} className="flex justify-center items-center w-full">
-            <Progress value={stepPercentage[idx]} />
+            <Progress
+              style={{
+                opacity: prevStep === "" && currentHome ? 0.2 : 1, // Adjust opacity conditionally
+              }}
+              value={
+                prevStep === "" && currentHome
+                  ? currentArrayProgress[idx]
+                  : idx <= currentAnimationStep
+                  ? stepPercentage[idx]
+                  : 0
+              }
+            />
           </div>
         ))}
       </div>

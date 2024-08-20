@@ -9,19 +9,27 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
-  user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
 }
 
-export default function Review({ sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading, currentHome } =
-    useContext(SellContext);
+export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setCurrentHome,
+    setNextLoading,
+    setPrevLoading,
+  } = useContext(SellContext);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

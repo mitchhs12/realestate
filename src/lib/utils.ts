@@ -105,3 +105,13 @@ export async function getPhoneLocale(currentLocale: string) {
   // Return the object as it is, since it's already structured correctly.
   return localeModule.default;
 }
+
+export function getPath(headers: any) {
+  const referer = headers["referer"];
+  const host = headers["host"];
+
+  // Extract the path by removing the protocol and host part from the referer
+  if (referer.includes(host)) {
+    return referer.split(host)[1] || "/";
+  }
+}

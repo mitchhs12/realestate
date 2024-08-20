@@ -3,9 +3,10 @@ import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Textarea } from "@/components/ui/textarea";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
-  user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export default function Description({
-  user,
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -27,8 +28,8 @@ export default function Description({
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
-    currentHome,
     setNewHome,
+    setCurrentHome,
     setNextLoading,
     setPrevLoading,
     setNextDisabled,
@@ -36,6 +37,7 @@ export default function Description({
   const [description, setDescription] = useState<string>(currentHome?.description ? currentHome?.description : "");
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

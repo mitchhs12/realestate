@@ -3,6 +3,7 @@ import { SellContextProvider } from "@/context/SellContext";
 import { getUnfinishedHome } from "./actions";
 import { LanguageType } from "@/lib/validations";
 import { getScopedI18n } from "@/locales/server";
+import { headers } from "next/headers";
 
 type Props = {
   children: React.ReactNode;
@@ -10,7 +11,6 @@ type Props = {
 };
 
 export default async function SellFlowLayout({ children, params: { locale } }: Readonly<Props>) {
-  const unfinishedHome = await getUnfinishedHome();
   const t = await getScopedI18n("sell.progress");
   const cont = t("continue");
   const start = t("start");
@@ -21,7 +21,7 @@ export default async function SellFlowLayout({ children, params: { locale } }: R
 
   return (
     <>
-      <SellContextProvider unfinishedHome={unfinishedHome}>
+      <SellContextProvider>
         <div className="flex flex-col h-screen-minus-header-dvh w-full">
           <main className="flex-grow overflow-auto h-full">{children}</main>
           <ProgressBar cont={cont} start={start} back={back} next={next} finish={finish} loading={loading} />

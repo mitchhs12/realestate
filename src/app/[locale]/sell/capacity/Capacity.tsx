@@ -6,8 +6,10 @@ import { Switch } from "@/components/ui/switch";
 import CounterComponent from "@/components/CounterComponent";
 import { Input } from "@/components/ui/input";
 import { LocaleContext } from "@/context/LocaleContext";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -22,6 +24,7 @@ interface Props {
 }
 
 export default function Capacity({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -40,8 +43,8 @@ export default function Capacity({
     setStepPercentage,
     setNextLoading,
     setPrevLoading,
+    setCurrentHome,
     setNewHome,
-    currentHome,
     setNextDisabled,
   } = useContext(SellContext);
   const [sqSize, setSqSize] = useState(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
@@ -65,6 +68,7 @@ export default function Capacity({
   const ftConversion = 10.76391042;
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

@@ -8,8 +8,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { LanguageType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { formatNumber } from "@/lib/utils";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -26,6 +28,7 @@ interface Props {
 }
 
 export default function SellFlowPage({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -47,7 +50,7 @@ export default function SellFlowPage({
     return newNum;
   };
 
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, currentHome, setNextLoading, setPrevLoading } =
+  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading } =
     useContext(SellContext);
 
   useEffect(() => {

@@ -9,9 +9,10 @@ import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
 import { locales } from "@/lib/validations";
 import { cn } from "@/lib/utils";
 import { getFlagEmoji } from "@/lib/utils";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
-  user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export default function Price({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -35,8 +37,8 @@ export default function Price({
     setSellFlowIndices,
     setStepPercentage,
     setNextLoading,
+    setCurrentHome,
     setPrevLoading,
-    currentHome,
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
@@ -72,6 +74,7 @@ export default function Price({
   }, [price, isNegotiable, intlConfig, currencies]);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

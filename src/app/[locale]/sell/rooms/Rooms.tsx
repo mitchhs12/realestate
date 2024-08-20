@@ -4,8 +4,10 @@ import { SellContext } from "@/context/SellContext";
 import { Separator } from "@/components/ui/separator";
 import CounterComponent from "@/components/CounterComponent";
 import { LocaleContext } from "@/context/LocaleContext";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -18,6 +20,7 @@ interface Props {
 }
 
 export default function Rooms({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -30,11 +33,11 @@ export default function Rooms({
 }: Props) {
   const {
     setSellFlowFlatIndex,
+    setCurrentHome,
     setSellFlowIndices,
     setStepPercentage,
     setNextLoading,
     setPrevLoading,
-    currentHome,
     setNewHome,
   } = useContext(SellContext);
   const { numerals } = useContext(LocaleContext);
@@ -45,6 +48,7 @@ export default function Rooms({
   const [kitchens, setKitchens] = useState(currentHome?.kitchens || 0);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

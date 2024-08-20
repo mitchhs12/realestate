@@ -3,9 +3,10 @@ import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { features } from "@/lib/sellFlowData";
+import { HomeType } from "@/lib/validations";
+
 interface Props {
-  user: User;
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -14,13 +15,21 @@ interface Props {
   options: { id: string; translation: string }[];
 }
 
-export default function Type({ sellFlatIndex, sellFlowIndices, stepPercentage, title, subtitle, options }: Props) {
+export default function Type({
+  currentHome,
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title,
+  subtitle,
+  options,
+}: Props) {
   const {
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
-    currentHome,
     setNewHome,
+    setCurrentHome,
     setNextLoading,
     setPrevLoading,
     setNextDisabled,
@@ -29,6 +38,7 @@ export default function Type({ sellFlatIndex, sellFlowIndices, stepPercentage, t
   const [selection, setSelection] = useState<string[]>(currentHome?.features ? currentHome?.features : []);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

@@ -1,12 +1,13 @@
 "use client";
 
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import SearchBox from "@/components/SearchBox";
 import SmallMap from "@/components/SmallMap";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
+  currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
@@ -22,6 +23,7 @@ interface SearchResult {
 }
 
 export default function Location({
+  currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
@@ -30,8 +32,14 @@ export default function Location({
   title,
   subtitle,
 }: Props) {
-  const { setSellFlowFlatIndex, setSellFlowIndices, setStepPercentage, setNextLoading, setPrevLoading, currentHome } =
-    useContext(SellContext);
+  const {
+    setSellFlowFlatIndex,
+    setSellFlowIndices,
+    setStepPercentage,
+    setNextLoading,
+    setCurrentHome,
+    setPrevLoading,
+  } = useContext(SellContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
   const [currentCoords, setCurrentCoords] = useState(
     currentHome?.latitude && currentHome?.longitude
@@ -60,6 +68,7 @@ export default function Location({
   }, [searchResult]);
 
   useEffect(() => {
+    setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
@@ -88,7 +97,7 @@ export default function Location({
         </div>
         {currentCoords.lat !== 0 && currentCoords.long !== 0 ? (
           <div className="flex w-[80vw] h-full">
-            <SmallMap coordinates={currentCoords} />
+            <SmallMap coordinates={currentCoords} currentHome={currentHome} />
           </div>
         ) : null}
       </div>

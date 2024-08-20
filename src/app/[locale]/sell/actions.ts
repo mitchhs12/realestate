@@ -50,7 +50,7 @@ const validateHome = (homeData: any) => {
   return { success: true, error: "" };
 };
 
-export async function getUnfinishedHome() {
+export async function getUnfinishedHome(url: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -65,6 +65,8 @@ export async function getUnfinishedHome() {
       isActive: { not: true },
     },
   });
+  revalidatePath(url); // Revalidate the path if necessary
+
   return homes;
 }
 
@@ -102,13 +104,13 @@ export async function getHomes() {
   return homes;
 }
 
-export async function sellHome(currentLocale: string): Promise<ResponseObj> {
+export async function sellHome(currentLocale: string, url: string): Promise<ResponseObj> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
     throw new Error("User not found");
   }
-  const home = await getUnfinishedHome();
+  const home = await getUnfinishedHome(url);
   const result = validateHome(home);
 
   if (result.success === false) {
