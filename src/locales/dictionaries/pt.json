@@ -230,7 +230,10 @@
       "title": "Preços",
       "subtitle": "Defina seu preço",
       "negotiable": "Seu preço é negociável?",
-      "price_placeholder": "Insira seu preço aqui..."
+      "price_placeholder": "Insira seu preço aqui...",
+      "select_currency": "Selecione uma moeda...",
+      "no_currency": "Nenhuma moeda encontrada.",
+      "search_currency": "Pesquisar uma moeda..."
     },
     "review": {},
     "rooms": {

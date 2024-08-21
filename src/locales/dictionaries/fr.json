@@ -230,7 +230,10 @@
       "title": "Tarifs",
       "subtitle": "Fixez votre prix",
       "negotiable": "Votre prix est-il négociable ?",
-      "price_placeholder": "Entrez votre prix ici..."
+      "price_placeholder": "Entrez votre prix ici...",
+      "select_currency": "Sélectionnez une devise...",
+      "no_currency": "Aucune devise trouvée.",
+      "search_currency": "Rechercher une devise..."
     },
     "review": {},
     "rooms": {

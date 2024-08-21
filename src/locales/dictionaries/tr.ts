@@ -230,7 +230,10 @@ export default {
       "title": "Fiyatlandırma",
       "subtitle": "Fiyatınızı belirleyin",
       "negotiable": "Fiyatınız pazarlığa açık mı?",
-      "price_placeholder": "Fiyatınızı buraya girin..."
+      "price_placeholder": "Fiyatınızı buraya girin...",
+      "select_currency": "Bir para birimi seçin...",
+      "no_currency": "Hiçbir para birimi bulunamadı.",
+      "search_currency": "Bir para birimi arayın..."
     },
     "review": {},
     "rooms": {

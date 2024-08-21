@@ -1,5 +1,4 @@
 "use client";
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { LocaleContext } from "@/context/LocaleContext";
@@ -9,13 +8,11 @@ import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
 import { locales } from "@/lib/validations";
 import { cn } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
-import { localeToFlagMap } from "@/lib/validations";
 import React from "react";
-import { US } from "country-flag-icons/react/3x2";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
-import { Check, ChevronsUpDown, Currency } from "lucide-react";
+import { Check, ChevronsUpDown } from "lucide-react";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 
@@ -28,6 +25,9 @@ interface Props {
   subtitle: string;
   negotiable: string;
   price_placeholder: string;
+  searchCurrencies: string;
+  noCurrencies: string;
+  selectCurrency: string;
 }
 
 export default function Price({
@@ -39,6 +39,9 @@ export default function Price({
   subtitle,
   negotiable,
   price_placeholder,
+  searchCurrencies,
+  noCurrencies,
+  selectCurrency,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -165,15 +168,15 @@ export default function Price({
                       country={intlConfig?.locale.split("-")[1].toUpperCase() as Country}
                       countryName={intlConfig?.locale.split("-")[1].toUpperCase() as string}
                     />
-                    {intlConfig ? locales.find((locales) => locales === intlConfig)?.currency : "Select a currency..."}
+                    {intlConfig ? locales.find((locales) => locales === intlConfig)?.currency : selectCurrency}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search currencies..." />
+                    <CommandInput placeholder={searchCurrencies} />
                     <CommandList>
-                      <CommandEmpty>No currencies found.</CommandEmpty>
+                      <CommandEmpty>{noCurrencies}</CommandEmpty>
                       <CommandGroup>
                         {locales.map((option) => (
                           <CommandItem

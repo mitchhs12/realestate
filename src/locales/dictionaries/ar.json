@@ -230,7 +230,10 @@
       "title": "التسعير",
       "subtitle": "حدد السعر الخاص بك",
       "negotiable": "هل سعركم قابل للتفاوض؟",
-      "price_placeholder": "أدخل السعر هنا..."
+      "price_placeholder": "أدخل السعر هنا...",
+      "select_currency": "حدد العملة...",
+      "no_currency": "لم يتم العثور على العملات.",
+      "search_currency": "ابحث عن العملة..."
     },
     "review": {},
     "rooms": {

@@ -230,7 +230,10 @@
       "title": "ფასი",
       "subtitle": "დააყენეთ თქვენი ფასი",
       "negotiable": "თქვენი ფასი შეთანხმებით?",
-      "price_placeholder": "აქ ჩაწერეთ თქვენი ფასი..."
+      "price_placeholder": "აქ ჩაწერეთ თქვენი ფასი...",
+      "select_currency": "ვალუტის არჩევა...",
+      "no_currency": "ვალუტები ვერ მოიძებნა.",
+      "search_currency": "მოძებნეთ ვალუტა..."
     },
     "review": {},
     "rooms": {

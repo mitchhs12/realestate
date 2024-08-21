@@ -227,7 +227,10 @@
       "title": "Pricing",
       "subtitle": "Set your price",
       "negotiable": "Is your price negotiable?",
-      "price_placeholder": "Enter your price here..."
+      "price_placeholder": "Enter your price here...",
+      "select_currency": "Select a currency...",
+      "no_currency": "No currencies found.",
+      "search_currency": "Search for a currency..."
     },
     "review": {},
     "rooms": {

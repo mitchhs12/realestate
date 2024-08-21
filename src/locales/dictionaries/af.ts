@@ -230,7 +230,10 @@ export default {
       "title": "Pryse",
       "subtitle": "Stel jou prys",
       "negotiable": "Is jou prys onderhandelbaar?",
-      "price_placeholder": "Tik jou prys hier in..."
+      "price_placeholder": "Tik jou prys hier in...",
+      "select_currency": "Kies 'n geldeenheid...",
+      "no_currency": "Geen geldeenhede gevind nie.",
+      "search_currency": "Soek vir 'n geldeenheid..."
     },
     "review": {},
     "rooms": {

@@ -230,7 +230,10 @@ export default {
       "title": "Cijene",
       "subtitle": "Postavite svoju cijenu",
       "negotiable": "Može li se pregovarati o vašoj cijeni?",
-      "price_placeholder": "Unesite svoju cijenu ovdje..."
+      "price_placeholder": "Unesite svoju cijenu ovdje...",
+      "select_currency": "Odaberite valutu...",
+      "no_currency": "Nema pronađenih valuta.",
+      "search_currency": "Potražite valutu..."
     },
     "review": {},
     "rooms": {

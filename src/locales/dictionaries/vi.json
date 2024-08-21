@@ -230,7 +230,10 @@
       "title": "Giá cả",
       "subtitle": "Đặt giá của bạn",
       "negotiable": "Giá của bạn có thể thương lượng được không?",
-      "price_placeholder": "Nhập giá của bạn vào đây..."
+      "price_placeholder": "Nhập giá của bạn vào đây...",
+      "select_currency": "Chọn loại tiền tệ...",
+      "no_currency": "Không tìm thấy loại tiền tệ nào.",
+      "search_currency": "Tìm kiếm một loại tiền tệ..."
     },
     "review": {},
     "rooms": {

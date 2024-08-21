@@ -230,7 +230,10 @@ export default {
       "title": "価格",
       "subtitle": "価格を設定する",
       "negotiable": "価格は交渉可能ですか？",
-      "price_placeholder": "ここに価格を入力してください..."
+      "price_placeholder": "ここに価格を入力してください...",
+      "select_currency": "通貨を選択してください...",
+      "no_currency": "通貨が見つかりません。",
+      "search_currency": "通貨を検索..."
     },
     "review": {},
     "rooms": {

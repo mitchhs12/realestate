@@ -230,7 +230,10 @@ export default {
       "title": "การกำหนดราคา",
       "subtitle": "ตั้งราคาของคุณ",
       "negotiable": "ราคาของคุณต่อรองได้ไหม?",
-      "price_placeholder": "ใส่ราคาของคุณที่นี่..."
+      "price_placeholder": "ใส่ราคาของคุณที่นี่...",
+      "select_currency": "เลือกสกุลเงิน...",
+      "no_currency": "ไม่พบสกุลเงิน",
+      "search_currency": "ค้นหาสกุลเงิน..."
     },
     "review": {},
     "rooms": {

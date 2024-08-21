@@ -230,7 +230,10 @@ export default {
       "title": "Preise",
       "subtitle": "Legen Sie Ihren Preis fest",
       "negotiable": "Ist Ihr Preis verhandelbar?",
-      "price_placeholder": "Geben Sie hier Ihren Preis ein..."
+      "price_placeholder": "Geben Sie hier Ihren Preis ein...",
+      "select_currency": "Wählen Sie eine Währung...",
+      "no_currency": "Keine Währungen gefunden.",
+      "search_currency": "Suche nach einer Währung..."
     },
     "review": {},
     "rooms": {

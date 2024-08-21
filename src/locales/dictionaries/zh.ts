@@ -230,7 +230,10 @@ export default {
       "title": "价格",
       "subtitle": "设定价格",
       "negotiable": "你们的价格可以商量吗？",
-      "price_placeholder": "在此输入您的价格..."
+      "price_placeholder": "在此输入您的价格...",
+      "select_currency": "选择货币...",
+      "no_currency": "未找到任何货币。",
+      "search_currency": "搜索货币..."
     },
     "review": {},
     "rooms": {

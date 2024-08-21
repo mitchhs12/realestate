@@ -230,7 +230,10 @@
       "title": "Harga",
       "subtitle": "Tetapkan harga Anda",
       "negotiable": "Apakah harga Anda bisa dinegosiasikan?",
-      "price_placeholder": "Masukkan harga Anda di sini..."
+      "price_placeholder": "Masukkan harga Anda di sini...",
+      "select_currency": "Pilih mata uang...",
+      "no_currency": "Tidak ada mata uang yang ditemukan.",
+      "search_currency": "Cari mata uang..."
     },
     "review": {},
     "rooms": {
