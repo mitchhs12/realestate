@@ -113,7 +113,7 @@ const CountrySelect = ({ disabled, value, onChange, options }: CountrySelectProp
   );
 };
 
-const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
+export const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   const Flag = flags[country];
 
   return (

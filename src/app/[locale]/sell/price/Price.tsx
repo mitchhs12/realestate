@@ -8,8 +8,16 @@ import { Label } from "@/components/ui/label";
 import CurrencyInput, { CurrencyInputProps } from "react-currency-input-field";
 import { locales } from "@/lib/validations";
 import { cn } from "@/lib/utils";
-import { getFlagEmoji } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
+import { localeToFlagMap } from "@/lib/validations";
+import React from "react";
+import { US } from "country-flag-icons/react/3x2";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Button } from "@/components/ui/button";
+import { Check, ChevronsUpDown, Currency } from "lucide-react";
+import { FlagComponent } from "@/components/ui/phone-input";
+import { Country } from "react-phone-number-input";
 
 interface Props {
   currentHome: HomeType | null;
@@ -43,6 +51,13 @@ export default function Price({
     setNextDisabled,
   } = useContext(SellContext);
   const { defaultCurrency, currencies } = useContext(LocaleContext);
+
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState("");
+
+  useEffect(() => {
+    console.log("current value", value);
+  }, [value]);
 
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
@@ -102,8 +117,10 @@ export default function Price({
     }
   };
 
-  const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedConfig = locales[Number(event.target.value)];
+  const handleCurrencyChange = (localeString: string) => {
+    const selectedIndex = locales.findIndex((locale) => locale.currency === localeString);
+    const selectedConfig = locales[selectedIndex];
+
     setIntlConfig(selectedConfig);
 
     if (selectedConfig && selectedConfig.currency) {
@@ -125,6 +142,8 @@ export default function Price({
     }
   };
 
+  console.log(value);
+
   return (
     <div className="flex flex-col h-full w-full items-center">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
@@ -139,21 +158,53 @@ export default function Price({
         <div className="flex flex-col h-full w-full pt-20">
           <div className="flex flex-col justify-center items-center gap-y-8">
             <div className="flex w-[80vw] max-w-[400px] gap-x-2">
-              <select
-                className={cn(
-                  "flex h-9 rounded-md border border-input px-3 py-1 text-base shadow-sm shadow-secondary transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                )}
-                value={locales.findIndex(
-                  (option) => option.currency === (intlConfig ? intlConfig.currency : defaultCurrency)
-                )}
-                onChange={handleCurrencyChange}
-              >
-                {locales.map((option, index) => (
-                  <option key={index} value={index}>
-                    {option.currency} {getFlagEmoji(option.locale.split("-")[1])}
-                  </option>
-                ))}
-              </select>
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
+                    <FlagComponent
+                      country={intlConfig?.locale.split("-")[1].toUpperCase() as Country}
+                      countryName={intlConfig?.locale.split("-")[1].toUpperCase() as string}
+                    />
+                    {intlConfig ? locales.find((locales) => locales === intlConfig)?.currency : "Select a currency..."}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[200px] p-0">
+                  <Command>
+                    <CommandInput placeholder="Search currencies..." />
+                    <CommandList>
+                      <CommandEmpty>No currencies found.</CommandEmpty>
+                      <CommandGroup>
+                        {locales.map((option) => (
+                          <CommandItem
+                            className="gap-2"
+                            key={option.currency}
+                            value={option.currency}
+                            onSelect={(selection) => {
+                              handleCurrencyChange(selection);
+                              setOpen(false);
+                            }}
+                          >
+                            <span className="bg-foreground/20 flex h-4 w-6 overflow-hidden rounded-sm">
+                              <FlagComponent
+                                country={option.locale.split("-")[1].toUpperCase() as Country}
+                                countryName={option.currency}
+                              />
+                            </span>
+                            {option.currency}
+                            <Check
+                              className={cn(
+                                "ml-auto h-4 w-4",
+                                intlConfig?.currency === option.currency ? "opacity-100" : "opacity-0"
+                              )}
+                            />
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
               <CurrencyInput
                 key={intlConfig?.currency} // Force re-render when currency changes
                 placeholder={price_placeholder}
