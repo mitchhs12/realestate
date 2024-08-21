@@ -115,6 +115,8 @@ export default {
       "subtitle": "Hoe groot is jou eiendom?",
       "size": "Voer die grootte van jou eiendom hier in.",
       "metres": "meter",
+      "m-placeholder": "Grootte in m²...",
+      "ft-placeholder": "Grootte in ft²...",
       "units": {
         "m": "m",
         "ft": "ft"
@@ -172,7 +174,9 @@ export default {
       "email-placeholder": "Voer die eienaar se e-posadres in...",
       "mobile": "Selfoon:",
       "mobile-check": "Stel as my foonnommer",
-      "mobile-placeholder": "Voer die eienaar se selfoon in..."
+      "mobile-placeholder": "Voer die eienaar se selfoon in...",
+      "no-country": "Geen lande gevind nie.",
+      "search-country": "Soek vir 'n land..."
     },
     "description": {
       "title": "Beskrywing",
@@ -235,7 +239,34 @@ export default {
       "no_currency": "Geen geldeenhede gevind nie.",
       "search_currency": "Soek vir 'n geldeenheid..."
     },
-    "review": {},
+    "review": {
+      "title": "Hersien",
+      "subtitle": "Gaan jou eiendomsbesonderhede na",
+      "content": {
+        "bedrooms": "Slaapkamers:",
+        "bathrooms": "Badkamers:",
+        "living-rooms": "Woonkamers:",
+        "kitchens": "Kombuise:",
+        "listing": "Lysinskrywing:",
+        "type": "Eiendom:",
+        "capacity": "Kapasiteit:",
+        "area": "Area:",
+        "units": {
+          "m": "m",
+          "ft": "ft"
+        },
+        "features": "Kenmerke",
+        "contactName": "Kontak Naam:",
+        "contactEmail": "Kontak e-pos:",
+        "contactPhone": "Kontak foon:",
+        "price": "Prys:",
+        "negotiable": "Onderhandelbaar"
+      },
+      "listingType": {
+        "0": "Standaard",
+        "1": "Premie"
+      }
+    },
     "rooms": {
       "title": "Kamers",
       "subtitle": "Hoeveel kamers het jou eiendom?",

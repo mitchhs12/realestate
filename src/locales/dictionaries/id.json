@@ -115,6 +115,8 @@
       "subtitle": "Seberapa besar properti Anda?",
       "size": "Masukkan ukuran properti Anda di sini.",
       "metres": "meter",
+      "m-placeholder": "Ukuran dalam m²...",
+      "ft-placeholder": "Ukuran dalam ft²...",
       "units": {
         "m": "M",
         "ft": "kaki"
@@ -172,7 +174,9 @@
       "email-placeholder": "Masukkan email pemilik properti...",
       "mobile": "Seluler:",
       "mobile-check": "Tetapkan sebagai nomor telepon saya",
-      "mobile-placeholder": "Masukkan nomor ponsel pemilik properti..."
+      "mobile-placeholder": "Masukkan nomor ponsel pemilik properti...",
+      "no-country": "Tidak ada negara yang ditemukan.",
+      "search-country": "Cari negara..."
     },
     "description": {
       "title": "Keterangan",
@@ -235,7 +239,34 @@
       "no_currency": "Tidak ada mata uang yang ditemukan.",
       "search_currency": "Cari mata uang..."
     },
-    "review": {},
+    "review": {
+      "title": "Tinjauan",
+      "subtitle": "Tinjau detail properti Anda",
+      "content": {
+        "bedrooms": "Kamar tidur:",
+        "bathrooms": "Kamar mandi:",
+        "living-rooms": "Ruang tamu:",
+        "kitchens": "Dapur:",
+        "listing": "Daftar:",
+        "type": "Milik:",
+        "capacity": "Kapasitas:",
+        "area": "Daerah:",
+        "units": {
+          "m": "M",
+          "ft": "kaki"
+        },
+        "features": "Fitur",
+        "contactName": "Nama Kontak:",
+        "contactEmail": "Email Kontak:",
+        "contactPhone": "Kontak Telepon:",
+        "price": "Harga:",
+        "negotiable": "Bisa dinegosiasikan"
+      },
+      "listingType": {
+        "0": "Standar",
+        "1": "Premi"
+      }
+    },
     "rooms": {
       "title": "Kamar",
       "subtitle": "Berapa banyak kamar yang dimiliki properti Anda?",

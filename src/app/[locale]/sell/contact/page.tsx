@@ -44,6 +44,8 @@ export default async function Page() {
   const mobile_placeholder = t("mobile-placeholder");
   const mobile_text = t("mobile");
   const mobile_check = t("mobile-check");
+  const noCountry = t("no-country");
+  const searchCountry = t("search-country");
 
   return (
     <Contact
@@ -62,6 +64,8 @@ export default async function Page() {
       mobile_placeholder={mobile_placeholder}
       mobile_check={mobile_check}
       phoneList={phoneLocale}
+      noCountry={noCountry}
+      searchCountry={searchCountry}
     />
   );
 }

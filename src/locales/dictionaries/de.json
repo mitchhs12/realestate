@@ -115,6 +115,8 @@
       "subtitle": "Wie groß ist Ihr Grundstück?",
       "size": "Geben Sie hier die Größe Ihres Grundstückes ein.",
       "metres": "Meter",
+      "m-placeholder": "Größe in m²...",
+      "ft-placeholder": "Größe in ft²...",
       "units": {
         "m": "M",
         "ft": "Fuß"
@@ -172,7 +174,9 @@
       "email-placeholder": "Geben Sie die E-Mail des Immobilieneigentümers ein …",
       "mobile": "Mobile:",
       "mobile-check": "Als meine Telefonnummer festlegen",
-      "mobile-placeholder": "Geben Sie die Handynummer des Grundstückseigentümers ein..."
+      "mobile-placeholder": "Geben Sie die Handynummer des Grundstückseigentümers ein...",
+      "no-country": "Keine Länder gefunden.",
+      "search-country": "Suche nach einem Land..."
     },
     "description": {
       "title": "Beschreibung",
@@ -235,7 +239,34 @@
       "no_currency": "Keine Währungen gefunden.",
       "search_currency": "Suche nach einer Währung..."
     },
-    "review": {},
+    "review": {
+      "title": "Rezension",
+      "subtitle": "Überprüfen Sie die Details Ihrer Immobilie",
+      "content": {
+        "bedrooms": "Schlafzimmer:",
+        "bathrooms": "Badezimmer:",
+        "living-rooms": "Wohnzimmer:",
+        "kitchens": "Küchen:",
+        "listing": "Auflistung:",
+        "type": "Eigentum:",
+        "capacity": "Kapazität:",
+        "area": "Bereich:",
+        "units": {
+          "m": "M",
+          "ft": "Fuß"
+        },
+        "features": "Merkmale",
+        "contactName": "Kontaktname:",
+        "contactEmail": "Kontakt-E-Mail:",
+        "contactPhone": "Kontakttelefon:",
+        "price": "Preis:",
+        "negotiable": "Verhandelbar"
+      },
+      "listingType": {
+        "0": "Standard",
+        "1": "Prämie"
+      }
+    },
     "rooms": {
       "title": "Zimmer",
       "subtitle": "Wie viele Zimmer hat Ihre Immobilie?",

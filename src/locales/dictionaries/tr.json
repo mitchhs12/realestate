@@ -115,6 +115,8 @@
       "subtitle": "Mülkünüz ne kadar büyük?",
       "size": "Mülkünüzün büyüklüğünü buraya girin.",
       "metres": "metre",
+      "m-placeholder": "m² cinsinden büyüklük...",
+      "ft-placeholder": "Boyut ft² cinsinden...",
       "units": {
         "m": "M",
         "ft": "ft"
@@ -172,7 +174,9 @@
       "email-placeholder": "Emlak sahibinin e-postasını girin...",
       "mobile": "Mobil:",
       "mobile-check": "Telefon numaram olarak ayarla",
-      "mobile-placeholder": "Emlak sahibinin cep telefonunu girin..."
+      "mobile-placeholder": "Emlak sahibinin cep telefonunu girin...",
+      "no-country": "Ülke bulunamadı.",
+      "search-country": "Bir ülke arayın..."
     },
     "description": {
       "title": "Tanım",
@@ -235,7 +239,34 @@
       "no_currency": "Hiçbir para birimi bulunamadı.",
       "search_currency": "Bir para birimi arayın..."
     },
-    "review": {},
+    "review": {
+      "title": "Gözden geçirmek",
+      "subtitle": "Emlak bilgilerinizi inceleyin",
+      "content": {
+        "bedrooms": "Yatak odaları:",
+        "bathrooms": "Banyolar:",
+        "living-rooms": "Oturma odaları:",
+        "kitchens": "Mutfaklar:",
+        "listing": "Listeleme:",
+        "type": "Mülk:",
+        "capacity": "Kapasite:",
+        "area": "Alan:",
+        "units": {
+          "m": "M",
+          "ft": "ft"
+        },
+        "features": "Özellikler",
+        "contactName": "İletişim Adı:",
+        "contactEmail": "İletişim E-postası:",
+        "contactPhone": "İletişim Telefonu:",
+        "price": "Fiyat:",
+        "negotiable": "Pazarlık edilebilir"
+      },
+      "listingType": {
+        "0": "Standart",
+        "1": "prim"
+      }
+    },
     "rooms": {
       "title": "Odalar",
       "subtitle": "Tesisinizde kaç oda var?",

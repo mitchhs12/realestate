@@ -64,6 +64,9 @@ export async function getUnfinishedHome(url: string) {
       ownerId: userId,
       isActive: { not: true },
     },
+    orderBy: {
+      createdAt: "asc",
+    },
   });
   revalidatePath(url); // Revalidate the path if necessary
 

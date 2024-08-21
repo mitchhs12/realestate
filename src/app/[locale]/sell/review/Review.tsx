@@ -1,5 +1,4 @@
 "use client";
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
@@ -10,15 +9,64 @@ import { Separator } from "@/components/ui/separator";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
+import { LocaleContext } from "@/context/LocaleContext";
+import { formatNumber } from "@/lib/utils";
 
 interface Props {
   currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
+  title_text: string;
+  subtitle_text: string;
+  bedrooms_text: string;
+  bathrooms_text: string;
+  livingRooms_text: string;
+  kitchens_text: string;
+  listing_text: string;
+  type_text: string;
+  capacity_text: string;
+  area_text: string;
+  m_text: string;
+  ft_text: string;
+  features_text: string;
+  contactName_text: string;
+  contactEmail_text: string;
+  contactPhone_text: string;
+  price_text: string;
+  negotiable_text: string;
+  matchingFeatures: { id: string; translation: string }[];
+  matchingTypes: { id: string; translation: string }[];
+  matchingListingType: { id: string; translation: string } | undefined;
 }
 
-export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, stepPercentage }: Props) {
+export default function Review({
+  currentHome,
+  sellFlatIndex,
+  sellFlowIndices,
+  stepPercentage,
+  title_text,
+  subtitle_text,
+  bedrooms_text,
+  bathrooms_text,
+  livingRooms_text,
+  kitchens_text,
+  listing_text,
+  type_text,
+  capacity_text,
+  area_text,
+  m_text,
+  ft_text,
+  features_text,
+  contactName_text,
+  contactEmail_text,
+  contactPhone_text,
+  price_text,
+  negotiable_text,
+  matchingFeatures,
+  matchingTypes,
+  matchingListingType,
+}: Props) {
   const {
     setSellFlowFlatIndex,
     setSellFlowIndices,
@@ -37,10 +85,11 @@ export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, st
     setPrevLoading(false);
   }, []);
 
+  console.log("currentHome", JSON.stringify(currentHome, null, 2));
   const title = currentHome?.title || "";
   const description = currentHome?.description || "";
   const address = currentHome?.address || "";
-  const type = currentHome?.type || "";
+  const types = currentHome?.type || "";
   const features = currentHome?.features || [];
   const bedrooms = currentHome?.bedrooms || 0;
   const bathrooms = currentHome?.bathrooms || 0;
@@ -60,6 +109,7 @@ export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, st
   const [feet, setFeet] = useState(false);
   const [loadingStates, setLoadingStates] = useState(photos.map(() => true));
   const [sqSize, setSqSize] = useState(areaSqm);
+  const { numerals } = useContext(LocaleContext);
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -81,10 +131,10 @@ export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, st
       <div className="flex flex-col mb-20 w-full max-w-3xl h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">Review</h1>
+            <h1 className="flex items-center text-3xl">{title_text}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">Review your property details</h3>
+            <h3 className="text-lg w-full">{subtitle_text}</h3>
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-center py-8 px-6 gap-8">
@@ -120,49 +170,45 @@ export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, st
                 <Separator />
 
                 <div className="flex w-full justify-center items-center">
-                  <div className="flex justify-center w-full gap-x-2">
-                    <div className="flex flex-col w-full justify-center items-center overflow-auto text-sm md:text-md gap-y-4">
-                      <div className="flex justify-between w-full">
-                        <strong>Bedrooms: </strong>
-                        <span>{bedrooms}</span>
+                  <div className="flex flex-col w-full justify-center items-center overflow-auto text-sm md:text-md gap-y-4">
+                    <div className="flex justify-center w-full text-lg py-4">
+                      <strong>{listing_text}</strong>
+                      <span className="ml-2">{matchingListingType?.translation}</span>
+                    </div>
+                    <div className="flex justify-center w-full gap-x-2">
+                      <div className="flex flex-col justify-center text-center w-full">
+                        <strong>{bedrooms_text}</strong>
+                        <span>{formatNumber(bedrooms, numerals)}</span>
                       </div>
-                      <div className="flex justify-between w-full">
-                        <strong className="justify-start">Bathrooms:</strong> <span>{bathrooms}</span>
+                      <div className="flex flex-col justify-center text-center w-full">
+                        <strong className="justify-start">{bathrooms_text}</strong>
+                        <span>{formatNumber(bathrooms, numerals)}</span>
                       </div>
-                      <div className="flex justify-between w-full">
-                        <strong>Living rooms:</strong> <span>{livingRooms}</span>
+                      <div className="flex flex-col justify-center text-center w-full">
+                        <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
                       </div>
-                      <div className="flex justify-between w-full">
-                        <strong>Kitchens:</strong> <span>{kitchens}</span>
+                      <div className="flex flex-col justify-center text-center w-full">
+                        <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
                       </div>
                     </div>
-                    <div className="flex flex-col w-full text-end text-sm md:text-md gap-y-4">
-                      <div className="flex justify-between w-full">
-                        <strong>Listing: </strong>
-                        <span>{capitalizeFirstLetter(listingType)}</span>
+                    <div className="flex w-full text-end text-sm md:text-md gap-y-8">
+                      <div className="flex justify-start w-full">
+                        <strong>{capacity_text}</strong>
+                        <span className="ml-2">{formatNumber(capacity, numerals)}</span>
                       </div>
-                      <div className="flex justify-between w-full">
-                        <strong>Type: </strong>
-                        <span>{type}</span>
-                      </div>
-                      <div className="flex justify-between w-full">
-                        <strong>Capacity: </strong>
-                        <span>{capacity}</span>
-                      </div>
-                      <div className="flex justify-between w-full">
-                        <strong className="flex justify-start">
-                          Area{" "}
+                      <div className="flex justify-end w-full">
+                        <strong className="flex justify-start">{area_text} </strong>
+                        <span className="ml-2">
+                          {formatNumber(sqSize, numerals)}{" "}
                           <button
                             className="hover:bg-accent hover:text-accent-foreground underline"
                             onClick={() => {
                               setFeet(!feet);
                             }}
                           >
-                            {!feet ? "(sqm)" : "(sqft)"}
+                            {!feet ? `${m_text}²` : `${ft_text}²`}
                           </button>
-                          :{" "}
-                        </strong>
-                        <span>{sqSize}</span>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -170,24 +216,35 @@ export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, st
 
                 <div className="flex flex-col w-2/3 text-left">
                   <p>
-                    <strong>Features:</strong>
+                    <strong>{type_text}</strong>
                   </p>
                   <ul className="list-disc list-inside">
-                    {features.map((feature, index) => (
-                      <li key={index}>{feature}</li>
+                    {matchingTypes.map((type, index) => (
+                      <li key={index}>{type.translation}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-col w-2/3 text-left">
+                  <p>
+                    <strong>{features_text}</strong>
+                  </p>
+                  <ul className="list-disc list-inside">
+                    {matchingFeatures.map((feature, index) => (
+                      <li key={index}>{feature.translation}</li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="flex flex-col">
                   <p>
-                    <strong>Contact Name:</strong> {contactName}
+                    <strong>{contactName_text}</strong> {contactName}
                   </p>
                   <p>
-                    <strong>Contact Email:</strong> {contactEmail}
+                    <strong>{contactEmail_text}</strong> {contactEmail}
                   </p>
                   <p>
-                    <strong>Contact Phone:</strong> {contactPhone}
+                    <strong>{contactPhone_text}</strong> {contactPhone}
                   </p>
                 </div>
               </div>
@@ -196,12 +253,13 @@ export default function Review({ currentHome, sellFlatIndex, sellFlowIndices, st
             <CardFooter>
               <div className="flex w-full justify-between items-center gap-4">
                 <strong className="flex justify-center items-center gap-x-4 text-sm sm:text-lg overflow-auto">
+                  {price_text}
                   <p>{formatPrice(currency, price)}</p>
                   <p>{currency}</p>
                 </strong>
                 <div>
                   <p className="flex items-center gap-2 text-start text-sm sm:text-lg">
-                    <strong>Negotiable:</strong>
+                    <strong>{negotiable_text}</strong>
                     {priceNegotiable ? (
                       <CheckCircledIcon className="text-green-500 w-4 h-4 sm:w-6 sm:h-6" />
                     ) : (

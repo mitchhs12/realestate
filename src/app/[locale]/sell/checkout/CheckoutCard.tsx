@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
 interface Props {
+  id: string;
   perks: {
     title: string;
     subtitle: string;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export default function CheckoutCard({
+  id,
   perks,
   title,
   description,
@@ -31,14 +33,8 @@ export default function CheckoutCard({
   selected,
   defaultCurrency,
 }: Props) {
-  console.log("title", title);
-  console.log("selected", selected);
   return (
-    <div
-      className={`flex justify-center items-center ${
-        selected.toLowerCase() === title.toLowerCase() && "border border-primary rounded-lg"
-      }`}
-    >
+    <div className={`flex justify-center items-center ${selected === id && "border border-primary rounded-lg"}`}>
       <Card className="w-[350px] md:[400px] h-[440px] flex flex-col">
         <CardHeader>
           <CardTitle className="flex justify-center items-center text-bold">{title}</CardTitle>

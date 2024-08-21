@@ -115,6 +115,8 @@
       "subtitle": "Qual é o tamanho da sua propriedade?",
       "size": "Insira o tamanho da sua propriedade aqui.",
       "metres": "metros",
+      "m-placeholder": "Tamanho em m²...",
+      "ft-placeholder": "Tamanho em pés²...",
       "units": {
         "m": "eu",
         "ft": "pés"
@@ -172,7 +174,9 @@
       "email-placeholder": "Insira o e-mail do proprietário do imóvel...",
       "mobile": "Móvel:",
       "mobile-check": "Definir como meu número de telefone",
-      "mobile-placeholder": "Digite o celular do proprietário do imóvel..."
+      "mobile-placeholder": "Digite o celular do proprietário do imóvel...",
+      "no-country": "Nenhum país encontrado.",
+      "search-country": "Pesquisar por um país..."
     },
     "description": {
       "title": "Descrição",
@@ -235,7 +239,34 @@
       "no_currency": "Nenhuma moeda encontrada.",
       "search_currency": "Pesquisar uma moeda..."
     },
-    "review": {},
+    "review": {
+      "title": "Análise",
+      "subtitle": "Revise os detalhes da sua propriedade",
+      "content": {
+        "bedrooms": "Quartos:",
+        "bathrooms": "Banheiros:",
+        "living-rooms": "Salas de estar:",
+        "kitchens": "Cozinhas:",
+        "listing": "Listagem:",
+        "type": "Propriedade:",
+        "capacity": "Capacidade:",
+        "area": "Área:",
+        "units": {
+          "m": "eu",
+          "ft": "pés"
+        },
+        "features": "Características",
+        "contactName": "Nome do contato:",
+        "contactEmail": "E-mail de contato:",
+        "contactPhone": "Telefone de contato:",
+        "price": "Preço:",
+        "negotiable": "Negociável"
+      },
+      "listingType": {
+        "0": "Padrão",
+        "1": "Prêmio"
+      }
+    },
     "rooms": {
       "title": "Quartos",
       "subtitle": "Quantos cômodos sua propriedade tem?",

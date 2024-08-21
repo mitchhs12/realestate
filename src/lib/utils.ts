@@ -41,6 +41,7 @@ export const getCurrency = (currencies: CurrencyType[], symbol: string): Currenc
 };
 
 export const formatNumber = (num: number, numerals: any) => {
+  if (isNaN(num)) return ""; // Handle cases where num is not a valid number
   return new Intl.NumberFormat(numerals).format(num);
 };
 

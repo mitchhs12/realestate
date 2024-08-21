@@ -69,10 +69,6 @@ export default function Header({
   const isSellPage = pathname.includes("/sell");
   const isGuidesPage = pathname.includes("/guides");
 
-  useEffect(() => {
-    console.log("Locale in Header:", locale);
-  }, [locale]);
-
   const closeModal = () => {
     setIsModalOpen(false);
   };

@@ -115,6 +115,8 @@ export default {
       "subtitle": "How big is your property?",
       "size": "Enter the size of your property here.",
       "metres": "metres",
+      "m-placeholder": "Size in m²...",
+      "ft-placeholder": "Size in ft²...",
       "units": {
         "m": "m",
         "ft": "ft"
@@ -172,7 +174,9 @@ export default {
       "email-placeholder": "Enter the property owner's email...",
       "mobile": "Mobile:",
       "mobile-check": "Set as my phone number",
-      "mobile-placeholder": "Enter the property owner's mobile..."
+      "mobile-placeholder": "Enter the property owner's mobile...",
+      "no-country": "No countries found.",
+      "search-country": "Search for a country..."
     },
     "description": {
       "title": "Description",
@@ -235,7 +239,34 @@ export default {
       "no_currency": "No currencies found.",
       "search_currency": "Search for a currency..."
     },
-    "review": {},
+    "review": {
+      "title": "Review",
+      "subtitle": "Review your property details",
+      "content": {
+        "bedrooms": "Bedrooms:",
+        "bathrooms": "Bathrooms:",
+        "living-rooms": "Living rooms:",
+        "kitchens": "Kitchens:",
+        "listing": "Listing:",
+        "type": "Property:",
+        "capacity": "Capacity:",
+        "area": "Area:",
+        "units": {
+          "m": "m",
+          "ft": "ft"
+        },
+        "features": "Features",
+        "contactName": "Contact Name:",
+        "contactEmail": "Contact Email:",
+        "contactPhone": "Contact Phone:",
+        "price": "Price:",
+        "negotiable": "Negotiable"
+      },
+      "listingType": {
+        "0": "Standard",
+        "1": "Premium"
+      }
+    },
     "rooms": {
       "title": "Rooms",
       "subtitle": "How many rooms does your property have?",

@@ -115,6 +115,8 @@
       "subtitle": "귀하의 부동산 규모는 얼마인가요?",
       "size": "여기에 부동산 크기를 입력하세요.",
       "metres": "미터",
+      "m-placeholder": "크기 (m²)...",
+      "ft-placeholder": "크기 (ft²)...",
       "units": {
         "m": "중",
         "ft": "피트"
@@ -172,7 +174,9 @@
       "email-placeholder": "부동산 소유자의 이메일을 입력하세요...",
       "mobile": "이동하는:",
       "mobile-check": "내 전화번호로 설정",
-      "mobile-placeholder": "부동산 소유자의 휴대전화 번호를 입력하세요."
+      "mobile-placeholder": "부동산 소유자의 휴대전화 번호를 입력하세요.",
+      "no-country": "국가를 찾을 수 없습니다.",
+      "search-country": "국가를 검색하세요..."
     },
     "description": {
       "title": "설명",
@@ -235,7 +239,34 @@
       "no_currency": "통화를 찾을 수 없습니다.",
       "search_currency": "화폐를 검색하세요..."
     },
-    "review": {},
+    "review": {
+      "title": "검토",
+      "subtitle": "귀하의 부동산 세부 정보를 검토하세요",
+      "content": {
+        "bedrooms": "침실:",
+        "bathrooms": "욕실:",
+        "living-rooms": "거실:",
+        "kitchens": "주방:",
+        "listing": "리스트:",
+        "type": "재산:",
+        "capacity": "용량:",
+        "area": "영역:",
+        "units": {
+          "m": "중",
+          "ft": "피트"
+        },
+        "features": "특징",
+        "contactName": "연락처 이름:",
+        "contactEmail": "연락처 이메일:",
+        "contactPhone": "연락처 전화번호:",
+        "price": "가격:",
+        "negotiable": "협상 가능"
+      },
+      "listingType": {
+        "0": "기준",
+        "1": "프리미엄"
+      }
+    },
     "rooms": {
       "title": "객실",
       "subtitle": "귀하의 숙소에는 몇 개의 객실이 있나요?",

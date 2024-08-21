@@ -115,6 +115,8 @@
       "subtitle": "あなたの財産はどれくらいの大きさですか？",
       "size": "ここにあなたの不動産のサイズを入力してください。",
       "metres": "メートル",
+      "m-placeholder": "広さはm²単位です。",
+      "ft-placeholder": "サイズは平方フィート単位です...",
       "units": {
         "m": "メートル",
         "ft": "フィート"
@@ -172,7 +174,9 @@
       "email-placeholder": "物件所有者のメールアドレスを入力してください...",
       "mobile": "携帯：",
       "mobile-check": "私の電話番号として設定",
-      "mobile-placeholder": "不動産所有者の携帯電話番号を入力してください..."
+      "mobile-placeholder": "不動産所有者の携帯電話番号を入力してください...",
+      "no-country": "国が見つかりません。",
+      "search-country": "国を検索..."
     },
     "description": {
       "title": "説明",
@@ -235,7 +239,34 @@
       "no_currency": "通貨が見つかりません。",
       "search_currency": "通貨を検索..."
     },
-    "review": {},
+    "review": {
+      "title": "レビュー",
+      "subtitle": "物件の詳細を確認する",
+      "content": {
+        "bedrooms": "ベッドルーム:",
+        "bathrooms": "バスルーム:",
+        "living-rooms": "リビングルーム:",
+        "kitchens": "キッチン:",
+        "listing": "リスト:",
+        "type": "財産：",
+        "capacity": "容量：",
+        "area": "エリア：",
+        "units": {
+          "m": "メートル",
+          "ft": "フィート"
+        },
+        "features": "特徴",
+        "contactName": "連絡先名:",
+        "contactEmail": "連絡先メールアドレス:",
+        "contactPhone": "連絡先電話番号:",
+        "price": "価格：",
+        "negotiable": "交渉可能"
+      },
+      "listingType": {
+        "0": "標準",
+        "1": "プレミアム"
+      }
+    },
     "rooms": {
       "title": "客室",
       "subtitle": "宿泊施設には何部屋ありますか?",

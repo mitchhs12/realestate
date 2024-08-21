@@ -53,6 +53,8 @@ export const features = [
   "Walk-in closet",
 ];
 
+export const listingType = ["standard", "premium"];
+
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);
 export const stepLengths = sellSteps.map((step) => step.length);
 export const stepLengthsWithoutStepPages = stepLengths.map((step) => step - 1);

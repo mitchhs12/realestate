@@ -25,6 +25,8 @@ interface Props {
   mobile_placeholder: string;
   mobile_check: string;
   phoneList: any;
+  noCountry: string;
+  searchCountry: string;
 }
 
 export default function Contact({
@@ -43,6 +45,8 @@ export default function Contact({
   mobile_placeholder,
   mobile_check,
   phoneList,
+  noCountry,
+  searchCountry,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -148,6 +152,8 @@ export default function Contact({
                     onChange={setPropertyOwnerPhone}
                     labels={phoneList}
                     placeholder={mobile_placeholder}
+                    noCountry={noCountry}
+                    searchCountry={searchCountry}
                   />
                 </div>
               </div>

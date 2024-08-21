@@ -17,6 +17,8 @@ import { ScrollArea } from "./scroll-area";
 type PhoneInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value"> &
   Omit<RPNInput.Props<typeof RPNInput.default>, "onChange"> & {
     onChange?: (value: RPNInput.Value) => void;
+    searchCountry?: string;
+    noCountry?: string;
   };
 
 const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwardRef<
@@ -58,9 +60,11 @@ type CountrySelectProps = {
   value: RPNInput.Country;
   onChange: (value: RPNInput.Country) => void;
   options: CountrySelectOption[];
+  noCountry: string;
+  searchCountry: string;
 };
 
-const CountrySelect = ({ disabled, value, onChange, options }: CountrySelectProps) => {
+const CountrySelect = ({ disabled, value, onChange, options, noCountry, searchCountry }: CountrySelectProps) => {
   const handleSelect = React.useCallback(
     (country: RPNInput.Country) => {
       onChange(country);
@@ -85,8 +89,8 @@ const CountrySelect = ({ disabled, value, onChange, options }: CountrySelectProp
         <Command>
           <CommandList>
             <ScrollArea className="flex h-72 w-full">
-              <CommandInput placeholder="Search country..." />
-              <CommandEmpty>No country found.</CommandEmpty>
+              <CommandInput placeholder={searchCountry} />
+              <CommandEmpty>{noCountry}</CommandEmpty>
               <CommandGroup>
                 {options
                   .filter((x) => x.value)

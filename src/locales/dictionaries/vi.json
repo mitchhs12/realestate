@@ -115,6 +115,8 @@
       "subtitle": "Bất động sản của bạn có diện tích bao nhiêu?",
       "size": "Nhập kích thước bất động sản của bạn vào đây.",
       "metres": "mét",
+      "m-placeholder": "Diện tích tính bằng m²...",
+      "ft-placeholder": "Kích thước tính bằng ft²...",
       "units": {
         "m": "tôi",
         "ft": "ft"
@@ -172,7 +174,9 @@
       "email-placeholder": "Nhập email của chủ sở hữu bất động sản...",
       "mobile": "Di động:",
       "mobile-check": "Đặt làm số điện thoại của tôi",
-      "mobile-placeholder": "Nhập số điện thoại di động của chủ sở hữu bất động sản..."
+      "mobile-placeholder": "Nhập số điện thoại di động của chủ sở hữu bất động sản...",
+      "no-country": "Không tìm thấy quốc gia nào.",
+      "search-country": "Tìm kiếm một quốc gia..."
     },
     "description": {
       "title": "Sự miêu tả",
@@ -235,7 +239,34 @@
       "no_currency": "Không tìm thấy loại tiền tệ nào.",
       "search_currency": "Tìm kiếm một loại tiền tệ..."
     },
-    "review": {},
+    "review": {
+      "title": "Ôn tập",
+      "subtitle": "Xem lại thông tin chi tiết về tài sản của bạn",
+      "content": {
+        "bedrooms": "Phòng ngủ:",
+        "bathrooms": "Phòng tắm:",
+        "living-rooms": "Phòng khách:",
+        "kitchens": "Nhà bếp:",
+        "listing": "Liệt kê:",
+        "type": "Tài sản:",
+        "capacity": "Dung tích:",
+        "area": "Khu vực:",
+        "units": {
+          "m": "tôi",
+          "ft": "ft"
+        },
+        "features": "Đặc trưng",
+        "contactName": "Tên liên lạc:",
+        "contactEmail": "Email liên hệ:",
+        "contactPhone": "Điện thoại liên hệ:",
+        "price": "Giá:",
+        "negotiable": "Có thể thương lượng"
+      },
+      "listingType": {
+        "0": "Tiêu chuẩn",
+        "1": "Phần thưởng"
+      }
+    },
     "rooms": {
       "title": "Phòng",
       "subtitle": "Bất động sản của bạn có bao nhiêu phòng?",

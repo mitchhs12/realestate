@@ -115,6 +115,8 @@ export default {
       "subtitle": "Quelle est la taille de votre propriété?",
       "size": "Entrez ici la taille de votre propriété.",
       "metres": "mètres",
+      "m-placeholder": "Superficie en m²...",
+      "ft-placeholder": "Superficie en pieds carrés...",
       "units": {
         "m": "m",
         "ft": "pieds"
@@ -172,7 +174,9 @@ export default {
       "email-placeholder": "Entrez l'email du propriétaire du bien...",
       "mobile": "Mobile:",
       "mobile-check": "Définir comme mon numéro de téléphone",
-      "mobile-placeholder": "Entrez le numéro de téléphone portable du propriétaire du bien..."
+      "mobile-placeholder": "Entrez le numéro de téléphone portable du propriétaire du bien...",
+      "no-country": "Aucun pays trouvé.",
+      "search-country": "Rechercher un pays..."
     },
     "description": {
       "title": "Description",
@@ -235,7 +239,34 @@ export default {
       "no_currency": "Aucune devise trouvée.",
       "search_currency": "Rechercher une devise..."
     },
-    "review": {},
+    "review": {
+      "title": "Revoir",
+      "subtitle": "Vérifiez les détails de votre propriété",
+      "content": {
+        "bedrooms": "Chambres:",
+        "bathrooms": "Salles de bains :",
+        "living-rooms": "Pièces à vivre :",
+        "kitchens": "Cuisines:",
+        "listing": "Inscription:",
+        "type": "Propriété:",
+        "capacity": "Capacité:",
+        "area": "Zone:",
+        "units": {
+          "m": "m",
+          "ft": "pieds"
+        },
+        "features": "Caractéristiques",
+        "contactName": "Nom du contact :",
+        "contactEmail": "Courriel de contact :",
+        "contactPhone": "Téléphone de contact :",
+        "price": "Prix:",
+        "negotiable": "Négociable"
+      },
+      "listingType": {
+        "0": "Standard",
+        "1": "Prime"
+      }
+    },
     "rooms": {
       "title": "Chambres",
       "subtitle": "Combien de pièces possède votre propriété ?",

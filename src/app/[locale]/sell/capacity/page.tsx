@@ -39,6 +39,8 @@ export default async function Page() {
   const capacity = t("capacity");
   const m = t("units.m");
   const ft = t("units.ft");
+  const mPlaceholder = t("m-placeholder");
+  const ftPlaceholder = t("ft-placeholder");
 
   return (
     <Capacity
@@ -54,6 +56,8 @@ export default async function Page() {
       capacity={capacity}
       m={m}
       ft={ft}
+      mPlaceholder={mPlaceholder}
+      ftPlaceholder={ftPlaceholder}
     />
   );
 }

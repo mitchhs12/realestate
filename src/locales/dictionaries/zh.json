@@ -115,6 +115,8 @@
       "subtitle": "您的房产面积有多大？",
       "size": "在此输入您的房产面积。",
       "metres": "米",
+      "m-placeholder": "面积（平方米）...",
+      "ft-placeholder": "尺寸（平方英尺）...",
       "units": {
         "m": "米",
         "ft": "英尺"
@@ -172,7 +174,9 @@
       "email-placeholder": "输入业主的电子邮件...",
       "mobile": "移动的：",
       "mobile-check": "设置为我的电话号码",
-      "mobile-placeholder": "输入业主手机号..."
+      "mobile-placeholder": "输入业主手机号...",
+      "no-country": "未找到任何国家。",
+      "search-country": "搜索国家..."
     },
     "description": {
       "title": "描述",
@@ -235,7 +239,34 @@
       "no_currency": "未找到任何货币。",
       "search_currency": "搜索货币..."
     },
-    "review": {},
+    "review": {
+      "title": "审查",
+      "subtitle": "查看您的房产详细信息",
+      "content": {
+        "bedrooms": "卧室:",
+        "bathrooms": "浴室：",
+        "living-rooms": "客厅：",
+        "kitchens": "厨房：",
+        "listing": "清单：",
+        "type": "财产：",
+        "capacity": "容量：",
+        "area": "区域：",
+        "units": {
+          "m": "米",
+          "ft": "英尺"
+        },
+        "features": "特征",
+        "contactName": "联系人姓名：",
+        "contactEmail": "联系电子邮箱:",
+        "contactPhone": "联系电话:",
+        "price": "价格：",
+        "negotiable": "可商议"
+      },
+      "listingType": {
+        "0": "标准",
+        "1": "优质的"
+      }
+    },
     "rooms": {
       "title": "客房",
       "subtitle": "您的房子有多少个房间？",

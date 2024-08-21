@@ -115,6 +115,8 @@
       "subtitle": "Koliko je veliko vaše imanje?",
       "size": "Ovdje unesite veličinu svoje nekretnine.",
       "metres": "metara",
+      "m-placeholder": "Veličina u m²...",
+      "ft-placeholder": "Veličina u ft²...",
       "units": {
         "m": "m",
         "ft": "ft"
@@ -172,7 +174,9 @@
       "email-placeholder": "Unesite e-mail vlasnika nekretnine...",
       "mobile": "Mobitel:",
       "mobile-check": "Postavi kao moj telefonski broj",
-      "mobile-placeholder": "Unesite mobitel vlasnika nekretnine..."
+      "mobile-placeholder": "Unesite mobitel vlasnika nekretnine...",
+      "no-country": "Nema pronađenih zemalja.",
+      "search-country": "Traži državu..."
     },
     "description": {
       "title": "Opis",
@@ -235,7 +239,34 @@
       "no_currency": "Nema pronađenih valuta.",
       "search_currency": "Potražite valutu..."
     },
-    "review": {},
+    "review": {
+      "title": "Pregled",
+      "subtitle": "Pregledajte detalje svoje nekretnine",
+      "content": {
+        "bedrooms": "spavaće sobe:",
+        "bathrooms": "Kupaonice:",
+        "living-rooms": "Dnevne sobe:",
+        "kitchens": "kuhinje:",
+        "listing": "popis:",
+        "type": "Svojstvo:",
+        "capacity": "Kapacitet:",
+        "area": "područje:",
+        "units": {
+          "m": "m",
+          "ft": "ft"
+        },
+        "features": "Značajke",
+        "contactName": "Ime kontakta:",
+        "contactEmail": "E-mail za kontakt:",
+        "contactPhone": "Kontakt telefon:",
+        "price": "Cijena:",
+        "negotiable": "Mogućnost dogovora"
+      },
+      "listingType": {
+        "0": "Standard",
+        "1": "Premija"
+      }
+    },
     "rooms": {
       "title": "Sobe",
       "subtitle": "Koliko soba ima vaš objekt?",

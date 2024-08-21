@@ -1,5 +1,4 @@
 "use client";
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Switch } from "@/components/ui/switch";
@@ -7,6 +6,7 @@ import CounterComponent from "@/components/CounterComponent";
 import { Input } from "@/components/ui/input";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
+import NumberInput from "@/components/ui/numberinput";
 
 interface Props {
   currentHome: HomeType | null;
@@ -21,6 +21,8 @@ interface Props {
   capacity: string;
   m: string;
   ft: string;
+  mPlaceholder: string;
+  ftPlaceholder: string;
 }
 
 export default function Capacity({
@@ -36,6 +38,8 @@ export default function Capacity({
   capacity,
   m,
   ft,
+  mPlaceholder,
+  ftPlaceholder,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -47,7 +51,8 @@ export default function Capacity({
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
-  const [sqSize, setSqSize] = useState(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
+  const [sqSize, setSqSize] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
+  const [sqLabel, setSqLabel] = useState<string>("");
   const [metresOn, setMetresOn] = useState(true);
   const [humanCapacity, setHumanCapacity] = useState<number>(currentHome?.capacity ? currentHome?.capacity : 0);
   const { numerals } = useContext(LocaleContext);
@@ -92,13 +97,9 @@ export default function Capacity({
     setMetresOn(!metresOn);
   };
 
-  const formatNumber = (number: number) => {
-    return new Intl.NumberFormat(navigator.language).format(number);
-  };
-
-  const handleSqSizeChange = (e: any) => {
-    const value = parseFloat(e.target.value.replace(/,/g, ""));
-    setSqSize(isNaN(value) ? 0 : value);
+  const handleSqSizeChange = ({ value, number }: { value: string; number: number }) => {
+    setSqLabel(value);
+    setSqSize(number);
   };
 
   return (
@@ -116,13 +117,12 @@ export default function Capacity({
             <div className="flex flex-col md:flex-row h-1/2 w-full justify-between items-center">
               <div className="flex w-full h-full justify-center items-center">
                 <div className="flex w-4/5 h-full justify-start items-center gap-4">
-                  <Input
-                    type={"text"}
-                    value={formatNumber(sqSize)}
-                    onChange={handleSqSizeChange}
-                    placeholder={
-                      metresOn ? "Enter your property size in m² here..." : "Enter your property size in ft² here..."
-                    }
+                  <NumberInput
+                    component={Input}
+                    value={sqLabel}
+                    locales={numerals}
+                    onNumberFormat={(e: any) => handleSqSizeChange(e.detail)}
+                    placeholder={metresOn ? mPlaceholder : ftPlaceholder}
                   />
                   <div className="flex justify-start items-center">{metresOn ? `${m}²` : `${ft}²`}</div>
                 </div>

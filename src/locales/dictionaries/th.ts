@@ -115,6 +115,8 @@ export default {
       "subtitle": "ทรัพย์สินของคุณมีขนาดใหญ่แค่ไหน?",
       "size": "กรอกขนาดทรัพย์สินของคุณที่นี่",
       "metres": "เมตร",
+      "m-placeholder": "ขนาดเป็นตรม....",
+      "ft-placeholder": "ขนาดเป็นฟุต²...",
       "units": {
         "m": "ม.",
         "ft": "ฟุต"
@@ -172,7 +174,9 @@ export default {
       "email-placeholder": "ระบุอีเมล์ของเจ้าของทรัพย์สิน...",
       "mobile": "มือถือ:",
       "mobile-check": "ตั้งเป็นหมายเลขโทรศัพท์ของฉัน",
-      "mobile-placeholder": "กรอกเบอร์มือถือของเจ้าของทรัพย์สิน..."
+      "mobile-placeholder": "กรอกเบอร์มือถือของเจ้าของทรัพย์สิน...",
+      "no-country": "ไม่พบประเทศ.",
+      "search-country": "ค้นหาประเทศ..."
     },
     "description": {
       "title": "คำอธิบาย",
@@ -235,7 +239,34 @@ export default {
       "no_currency": "ไม่พบสกุลเงิน",
       "search_currency": "ค้นหาสกุลเงิน..."
     },
-    "review": {},
+    "review": {
+      "title": "ทบทวน",
+      "subtitle": "ตรวจสอบรายละเอียดทรัพย์สินของคุณ",
+      "content": {
+        "bedrooms": "ห้องนอน:",
+        "bathrooms": "ห้องน้ำ:",
+        "living-rooms": "ห้องนั่งเล่น:",
+        "kitchens": "ห้องครัว:",
+        "listing": "รายการ:",
+        "type": "คุณสมบัติ:",
+        "capacity": "ความจุ:",
+        "area": "พื้นที่:",
+        "units": {
+          "m": "ม.",
+          "ft": "ฟุต"
+        },
+        "features": "คุณสมบัติ",
+        "contactName": "ชื่อผู้ติดต่อ:",
+        "contactEmail": "อีเมลติดต่อ:",
+        "contactPhone": "เบอร์ติดต่อ:",
+        "price": "ราคา:",
+        "negotiable": "สามารถต่อรองได้"
+      },
+      "listingType": {
+        "0": "มาตรฐาน",
+        "1": "พรีเมี่ยม"
+      }
+    },
     "rooms": {
       "title": "ห้องพัก",
       "subtitle": "ที่พักของคุณมีกี่ห้อง?",
