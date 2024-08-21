@@ -38,6 +38,8 @@ export async function uploadPhotos(formData: FormData) {
     throw new Error("You forgot to attach photos!");
   }
 
+  console.log("running promise");
+
   const uploadPromises = files.map(async (file: any) => {
     if (typeof file !== "object" || !("arrayBuffer" in file)) {
       throw new Error("Invalid file");
@@ -49,11 +51,15 @@ export async function uploadPhotos(formData: FormData) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
+    console.log("running sharp");
+
     // Compress and convert to AVIF format using sharp
     const avifBuffer = await sharp(buffer)
       .resize({ width: 500, height: 500, fit: "outside" }) // Resize while maintaining aspect ratio
       .avif({ quality: 80 }) // Adjust quality as needed { quality: 80 }
       .toBuffer();
+
+    console.log("finished running sharp");
 
     const avifFileName = file.name.replace(/\.[^/.]+$/, ".avif"); // Change file extension to .avif
 
