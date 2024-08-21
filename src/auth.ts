@@ -11,7 +11,7 @@ const providers: Provider[] = [
   Google,
   Facebook,
   Resend({
-    from: "alicia@vivaideal.com",
+    from: "Name: alicia@vivaideal.com",
   }),
 ];
 
