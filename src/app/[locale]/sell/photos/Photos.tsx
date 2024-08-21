@@ -1,5 +1,4 @@
 "use client";
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Form, FormItem, FormField, FormControl } from "@/components/ui/form";
@@ -17,6 +16,7 @@ import {
   closestCenter,
   KeyboardSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   DragOverlay,
@@ -80,7 +80,7 @@ function SortableItem({
       style={style}
       {...attributes}
       {...listeners}
-      className="relative flex items-center justify-center border-2"
+      className="relative flex items-center justify-center h-[112px] sm:h-[184px] lg:h-[252px]"
     >
       <Image src={url} alt={`Uploaded ${id}`} fill={true} className="object-cover" />
       {isLoading && (
@@ -265,11 +265,17 @@ export default function Photos({
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 5,
+        distance: 1,
       },
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        distance: 1,
+        delay: 250,
+      },
     })
   );
 
@@ -309,12 +315,12 @@ export default function Photos({
             {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}
           </div>
         </div>
-        <div className="flex flex-col px-8 pb-8 gap-4 w-full lg:h-full justify-center items-center">
+        <div className="flex flex-col px-8 gap-4 w-full lg:h-full justify-center items-center h-full">
           <div className="flex justify-center text-center text-red-500 text-xs md:text-base lg:text-lg">
             {errorMessage}
           </div>
-          <div className="flex w-full max-w-7xl h-[800px] lg:h-full">
-            <div className="grid grid-rows-6 grid-cols-2 sm:grid-cols-3 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-3 gap-4 w-full">
+          <div className={`flex w-full h-full max-w-7xl items-start`}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-3 gap-4 pb-8 w-full">
               <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -343,7 +349,7 @@ export default function Photos({
                 </DragOverlay>
               </DndContext>
               {uploadedImageUrls.length < 12 && (
-                <div className="flex items-center justify-center border row-start-1 row-end-1">
+                <div className="flex items-center justify-center border row-start-1 row-end-1 h-[112px] sm:h-[184px] lg:h-[252px]">
                   <Form {...form}>
                     <form className="flex justify-start space-y-6 w-full h-full">
                       <FormField

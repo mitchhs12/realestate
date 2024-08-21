@@ -48,9 +48,9 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params: { locale } }: Readonly<Props>) {
-  // const currencies = await getCurrencies();
+  const currencies = await getCurrencies();
   const acceptLanguage = headers().get("Accept-Language");
-  const currencies = [{ symbol: "USD", usdPrice: 1 }];
+  // const currencies = [{ symbol: "USD", usdPrice: 1 }];
   let currency = { symbol: "USD", usdPrice: 1 };
   if (acceptLanguage) {
     const language = acceptLanguage.split(",");
