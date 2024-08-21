@@ -47,6 +47,7 @@ export default {
         "submit": "이메일로 가입하기",
         "or": "또는",
         "google": "구글로 가입하기",
+        "microsoft": "Microsoft로 로그인",
         "facebook": "페이스북으로 가입하기",
         "loading": "로딩중..."
       }

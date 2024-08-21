@@ -47,6 +47,7 @@ export default {
         "submit": "Cadastre-se com e-mail",
         "or": "ou",
         "google": "Cadastre-se com o Google",
+        "microsoft": "Entrar com a Microsoft",
         "facebook": "Cadastre-se com o Facebook",
         "loading": "Carregando..."
       }

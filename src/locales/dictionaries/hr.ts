@@ -47,6 +47,7 @@ export default {
         "submit": "Prijavite se putem e-pošte",
         "or": "ili",
         "google": "Prijavite se s Googleom",
+        "microsoft": "Prijavite se s Microsoftom",
         "facebook": "Prijavite se putem Facebooka",
         "loading": "Učitavanje..."
       }

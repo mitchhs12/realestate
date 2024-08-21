@@ -44,10 +44,11 @@
       "general": {
         "email": "Email",
         "email-placeholder": "example@mail.com",
-        "submit": "Sign up with Email",
+        "submit": "Log in with Email",
         "or": "or",
-        "google": "Sign up with Google",
-        "facebook": "Sign up with Facebook",
+        "google": "Log in with Google",
+        "microsoft": "Log in with Microsoft",
+        "facebook": "Log in with Facebook",
         "loading": "Loading..."
       }
     },

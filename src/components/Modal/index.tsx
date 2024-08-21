@@ -130,6 +130,28 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
             <Button
               variant="secondary"
               className="w-80 h-16"
+              onClick={() => handleSocialSignIn("microsoft-entra-id")}
+              disabled={isLoading !== null}
+            >
+              {isLoading === "microsoft-entra-id" ? (
+                <div className="flex justify-between items-center w-full gap-2">
+                  <div className="flex">
+                    <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
+                  </div>
+                  <div className="flex w-full">{g("loading")}</div>
+                </div>
+              ) : (
+                <div className="flex justify-between items-center w-full gap-2">
+                  <div className="flex">
+                    <Icons.microsoft />
+                  </div>
+                  <div className="flex flex-grow">{g("microsoft")} </div>
+                </div>
+              )}
+            </Button>
+            <Button
+              variant="secondary"
+              className="w-80 h-16"
               onClick={() => handleSocialSignIn("facebook")}
               disabled={isLoading !== null}
             >

@@ -47,6 +47,7 @@ export default {
         "submit": "E-posta ile kaydolun",
         "or": "veya",
         "google": "Google ile kaydolun",
+        "microsoft": "Microsoft ile oturum açın",
         "facebook": "Facebook ile kaydolun",
         "loading": "Yükleniyor..."
       }

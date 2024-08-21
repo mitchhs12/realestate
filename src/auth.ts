@@ -5,10 +5,16 @@ import prisma from "@/lib/prisma";
 import Google from "next-auth/providers/google";
 import Facebook from "next-auth/providers/facebook";
 import Resend from "next-auth/providers/resend";
+import MicrosoftEntraID from "next-auth/providers/microsoft-entra-id";
 import type { Provider } from "next-auth/providers";
 
 const providers: Provider[] = [
   Google,
+  MicrosoftEntraID({
+    clientId: process.env.AUTH_MICROSOFT_ENTRA_ID_ID,
+    clientSecret: process.env.AUTH_MICROSOFT_ENTRA_ID_SECRET,
+    tenantId: process.env.AUTH_MICROSOFT_ENTRA_ID_TENANT_ID,
+  }),
   Facebook,
   Resend({
     from: "Alicia <alicia@vivaideal.com>",

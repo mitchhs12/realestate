@@ -9,7 +9,7 @@ export default async function Page() {
   const scopedT = await getScopedI18n("guides");
 
   return (
-    <div className="flex flex-col h-full w-full border-2 items-center">
+    <div className="flex flex-col h-full w-full items-center">
       <div className="relative h-[20vh] flex w-full">
         <Image
           src="https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/banners/banner4.avif"

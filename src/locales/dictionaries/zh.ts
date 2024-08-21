@@ -47,6 +47,7 @@ export default {
         "submit": "使用电子邮件注册",
         "or": "或者",
         "google": "使用 Google 注册",
+        "microsoft": "使用 Microsoft 登录",
         "facebook": "使用 Facebook 注册",
         "loading": "加载中..."
       }

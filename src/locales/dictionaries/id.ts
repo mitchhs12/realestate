@@ -47,6 +47,7 @@ export default {
         "submit": "Daftar dengan Email",
         "or": "atau",
         "google": "Daftar dengan Google",
+        "microsoft": "Masuk dengan Microsoft",
         "facebook": "Daftar dengan Facebook",
         "loading": "Memuat..."
       }

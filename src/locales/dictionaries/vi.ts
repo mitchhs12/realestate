@@ -47,6 +47,7 @@ export default {
         "submit": "Đăng ký bằng Email",
         "or": "hoặc",
         "google": "Đăng ký với Google",
+        "microsoft": "Đăng nhập bằng Microsoft",
         "facebook": "Đăng ký bằng Facebook",
         "loading": "Đang tải..."
       }

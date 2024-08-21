@@ -47,6 +47,7 @@ export default {
         "submit": "Teken in met e-pos",
         "or": "of",
         "google": "Sluit aan by Google",
+        "microsoft": "Meld aan met Microsoft",
         "facebook": "Sluit aan met Facebook",
         "loading": "Laai tans..."
       }

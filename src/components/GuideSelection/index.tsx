@@ -18,7 +18,7 @@ export default async function GuideSelection({ type, guides }: { type: "buy" | "
     <div className="flex flex-col w-1/2 h-full items-center">
       <div className="flex w-full items-center justify-center gap-x-3">
         <h3 className="hidden md:flex text-sm lg:text-lg font-semibold text-nowrap">{scopedT("title")}</h3>
-        <h3 className="md:hidden text-sm md:text-md lg:text-lg font-semibold border-2">{scopedT("title-short")}</h3>
+        <h3 className="md:hidden text-sm md:text-md lg:text-lg font-semibold">{scopedT("title-short")}</h3>
         <div className="hidden sm:hidden sm:dark:flex">
           {type === "sell" ? (
             <Icons.sell_guide_dark width={"40"} height={"40"} />

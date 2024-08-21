@@ -47,6 +47,7 @@ export default {
         "submit": "メールで登録",
         "or": "または",
         "google": "Googleでサインアップ",
+        "microsoft": "Microsoftでログイン",
         "facebook": "Facebookでサインアップ",
         "loading": "読み込み中..."
       }

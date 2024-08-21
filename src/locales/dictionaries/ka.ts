@@ -47,6 +47,7 @@ export default {
         "submit": "დარეგისტრირდით ელექტრონული ფოსტით",
         "or": "ან",
         "google": "დარეგისტრირდით Google-ით",
+        "microsoft": "შედით Microsoft-ით",
         "facebook": "დარეგისტრირდით Facebook-ით",
         "loading": "იტვირთება..."
       }

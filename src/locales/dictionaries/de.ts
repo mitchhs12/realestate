@@ -47,6 +47,7 @@ export default {
         "submit": "Mit E-Mail anmelden",
         "or": "oder",
         "google": "Mit Google anmelden",
+        "microsoft": "Mit Microsoft anmelden",
         "facebook": "Mit Facebook anmelden",
         "loading": "Laden..."
       }
