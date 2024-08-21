@@ -113,19 +113,18 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
               onClick={() => handleSocialSignIn("google")}
               disabled={isLoading !== null}
             >
-              {isLoading === "google" ? (
-                <div className="flex justify-between items-center w-full gap-2">
-                  <div className="flex">
-                    <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
-                  </div>
-                  <div className="flex w-full">{g("loading")}</div>
+              <div className="flex justify-between items-center w-full gap-2">
+                <div className="flex w-[38px] h-[38px] justify-center items-center">
+                  {isLoading === "google" ? (
+                    <ReloadIcon className="animate-spin h-7 w-7" />
+                  ) : theme === "light" ? (
+                    <Icons.google />
+                  ) : (
+                    <Icons.google_dark />
+                  )}
                 </div>
-              ) : (
-                <div className="flex justify-between items-center w-full gap-2">
-                  <div className="flex">{theme === "light" ? <Icons.google /> : <Icons.google_dark />}</div>
-                  <div className="flex flex-grow">{g("google")}</div>
-                </div>
-              )}
+                <div className="flex flex-grow">{isLoading === "google" ? g("loading") : g("google")}</div>
+              </div>
             </Button>
             <Button
               variant="secondary"
@@ -133,21 +132,18 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
               onClick={() => handleSocialSignIn("microsoft-entra-id")}
               disabled={isLoading !== null}
             >
-              {isLoading === "microsoft-entra-id" ? (
-                <div className="flex justify-between items-center w-full gap-2">
-                  <div className="flex">
-                    <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
-                  </div>
-                  <div className="flex w-full">{g("loading")}</div>
-                </div>
-              ) : (
-                <div className="flex justify-between items-center w-full gap-2">
-                  <div className="flex">
+              <div className="flex justify-between items-center w-full gap-2">
+                <div className="flex w-[38px] h-[38px] justify-center items-center">
+                  {isLoading === "microsoft-entra-id" ? (
+                    <ReloadIcon className="animate-spin h-7 w-7" />
+                  ) : (
                     <Icons.microsoft />
-                  </div>
-                  <div className="flex flex-grow">{g("microsoft")} </div>
+                  )}
                 </div>
-              )}
+                <div className="flex flex-grow">
+                  {isLoading === "microsoft-entra-id" ? g("loading") : g("microsoft")}
+                </div>
+              </div>
             </Button>
             <Button
               variant="secondary"
@@ -155,19 +151,18 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
               onClick={() => handleSocialSignIn("facebook")}
               disabled={isLoading !== null}
             >
-              {isLoading === "facebook" ? (
-                <div className="flex justify-between items-center w-full gap-2">
-                  <div className="flex">
-                    <ReloadIcon className="mr-2 animate-spin h-8 w-8" />
-                  </div>
-                  <div className="flex w-full">{g("loading")}</div>
+              <div className="flex justify-between items-center w-full gap-2">
+                <div className="flex w-[38px] h-[38px] justify-center items-center">
+                  {isLoading === "facebook" ? (
+                    <ReloadIcon className="animate-spin h-7 w-7" />
+                  ) : theme === "light" ? (
+                    <Icons.facebook />
+                  ) : (
+                    <Icons.facebook_dark />
+                  )}
                 </div>
-              ) : (
-                <div className="flex justify-between items-center w-full gap-2">
-                  <div className="flex">{theme === "light" ? <Icons.facebook /> : <Icons.facebook_dark />}</div>
-                  <div className="flex flex-grow">{g("facebook")} </div>
-                </div>
-              )}
+                <div className="flex flex-grow">{isLoading === "facebook" ? g("loading") : g("facebook")} </div>
+              </div>
             </Button>
           </div>
         </div>

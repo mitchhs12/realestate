@@ -22,12 +22,6 @@ export const Icons = {
           fill="#E94235"
         />
       </g>
-      <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#747775" />
-      <defs>
-        <clipPath id="clip0_710_6217">
-          <rect width="20" height="20" fill="white" transform="translate(10 10)" />
-        </clipPath>
-      </defs>
     </svg>
   ),
   google_dark: (props: IconProps) => (
@@ -51,20 +45,14 @@ export const Icons = {
           fill="#E94235"
         />
       </g>
-      <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#8E918F" />
-      <defs>
-        <clipPath id="clip0_710_6219">
-          <rect width="20" height="20" fill="white" transform="translate(10 10)" />
-        </clipPath>
-      </defs>
     </svg>
   ),
   facebook: (props: IconProps) => (
     <svg
       clip-rule="evenodd"
       fillRule="evenodd"
-      width="39"
-      height="39"
+      width="38"
+      height="38"
       image-rendering="optimizeQuality"
       shape-rendering="geometricPrecision"
       text-rendering="geometricPrecision"
@@ -90,8 +78,8 @@ export const Icons = {
     <svg
       clip-rule="evenodd"
       fillRule="evenodd"
-      width="39"
-      height="39"
+      width="38"
+      height="38"
       image-rendering="optimizeQuality"
       shape-rendering="geometricPrecision"
       text-rendering="geometricPrecision"
@@ -110,7 +98,7 @@ export const Icons = {
     </svg>
   ),
   microsoft: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 21 21">
+    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 21 21">
       <title>MS-SymbolLockup</title>
       <rect x="1" y="1" width="9" height="9" fill="#f25022" />
       <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
