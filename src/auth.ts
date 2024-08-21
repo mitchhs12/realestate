@@ -7,6 +7,7 @@ import Facebook from "next-auth/providers/facebook";
 import Resend from "next-auth/providers/resend";
 import MicrosoftEntraID from "next-auth/providers/microsoft-entra-id";
 import type { Provider } from "next-auth/providers";
+//
 
 const providers: Provider[] = [
   Google,
