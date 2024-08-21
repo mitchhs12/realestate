@@ -252,6 +252,7 @@ export default function Photos({
 
       try {
         setErrorMessage(null);
+        console.log("attempting to upload this many photos:", files.length);
         await uploadPhotos(formData);
         await retrievePhotos(); // Refresh the photo URLs
         console.log("Files uploaded successfully!");
