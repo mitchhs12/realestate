@@ -80,7 +80,7 @@ function SortableItem({
       style={style}
       {...attributes}
       {...listeners}
-      className="relative flex items-center justify-center h-[112px] sm:h-[184px] lg:h-[252px]"
+      className="draggable relative flex items-center justify-center h-[112px] sm:h-[184px] lg:h-[252px]"
     >
       <Image src={url} alt={`Uploaded ${id}`} fill={true} className="object-cover" />
       {isLoading && (
@@ -262,22 +262,22 @@ export default function Photos({
     setIsUploading(false);
   };
 
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 1,
-      },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        distance: 1,
-        delay: 250,
-      },
-    })
-  );
+  const mouseSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 1,
+    },
+  });
+  const keyboardSensor = useSensor(KeyboardSensor, {
+    coordinateGetter: sortableKeyboardCoordinates,
+  });
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      delay: 1000,
+      tolerance: 5,
+    },
+  });
+
+  const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
   const handleDragStart = (event: any) => {
     const { active } = event;

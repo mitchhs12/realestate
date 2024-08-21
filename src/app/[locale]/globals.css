@@ -53,6 +53,10 @@ body {
   overflow: auto !important;
 }
 
+.draggable {
+  touch-action: none;
+}
+
 .divider {
   @apply w-full h-[2px] min-h-[2px] max-h-[2px] bg-gradient-to-r from-primary from-5% via-primary-foreground via-50% to-primary to-95%;
 }
