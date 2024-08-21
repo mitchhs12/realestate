@@ -195,25 +195,16 @@ export default function Photos({
     },
   });
 
-  const checkImageDimensions = (file: File): Promise<{ isValid: boolean; reason?: string }> => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new (window as any).Image();
-        img.onload = () => {
-          if (img.width < 500) {
-            resolve({ isValid: false, reason: "width" });
-          } else if (img.height < 500) {
-            resolve({ isValid: false, reason: "height" });
-          } else {
-            resolve({ isValid: true });
-          }
-        };
-        img.onerror = () => resolve({ isValid: false });
-        img.src = e.target!.result as string;
-      };
-      reader.readAsDataURL(file);
-    });
+  const checkImageDimensions = async (file: File): Promise<{ isValid: boolean; reason?: string }> => {
+    const bitmap = await createImageBitmap(file);
+
+    if (bitmap.width < 500) {
+      return { isValid: false, reason: "width" };
+    } else if (bitmap.height < 500) {
+      return { isValid: false, reason: "height" };
+    }
+
+    return { isValid: true };
   };
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
