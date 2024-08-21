@@ -20,52 +20,57 @@ async function uploadToS3(file: Buffer, homeId: string, fileName: string, fileTy
 }
 
 export async function uploadPhotos(formData: FormData) {
-  const session = await auth();
-  const userId = session?.user?.id;
+  try {
+    const session = await auth();
+    const userId = session?.user?.id;
 
-  if (!userId) {
-    throw new Error("User not found");
-  }
-
-  const files = formData.getAll("files");
-  const homeId = formData.get("homeId") as string;
-
-  if (!homeId) {
-    throw new Error("Home ID is required");
-  }
-
-  if (files.length === 0) {
-    throw new Error("You forgot to attach photos!");
-  }
-
-  console.log("running promise");
-
-  const uploadPromises = files.map(async (file: any) => {
-    if (typeof file !== "object" || !("arrayBuffer" in file)) {
-      throw new Error("Invalid file");
+    if (!userId) {
+      throw new Error("User not found");
     }
 
-    if (!file.type.startsWith("image/")) {
-      throw new Error("File is not an image!");
+    const files = formData.getAll("files");
+    const homeId = formData.get("homeId") as string;
+
+    if (!homeId) {
+      throw new Error("Home ID is required");
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
+    if (files.length === 0) {
+      throw new Error("You forgot to attach photos!");
+    }
 
-    console.log("running sharp");
+    console.log("running promise");
 
-    // Compress and convert to AVIF format using sharp
-    const avifBuffer = await sharp(buffer)
-      .resize({ width: 500, height: 500, fit: "outside" }) // Resize while maintaining aspect ratio
-      .avif({ quality: 80 }) // Adjust quality as needed { quality: 80 }
-      .toBuffer();
+    const uploadPromises = files.map(async (file: any) => {
+      if (typeof file !== "object" || !("arrayBuffer" in file)) {
+        throw new Error("Invalid file");
+      }
 
-    console.log("finished running sharp");
+      if (!file.type.startsWith("image/")) {
+        throw new Error("File is not an image!");
+      }
 
-    const avifFileName = file.name.replace(/\.[^/.]+$/, ".avif"); // Change file extension to .avif
+      const buffer = Buffer.from(await file.arrayBuffer());
 
-    return uploadToS3(avifBuffer, homeId, avifFileName, "image/avif");
-  });
+      console.log("running sharp");
 
-  const fileUrls = await Promise.all(uploadPromises);
-  return fileUrls;
+      // Compress and convert to AVIF format using sharp
+      const avifBuffer = await sharp(buffer)
+        .resize({ width: 500, height: 500, fit: "outside" }) // Resize while maintaining aspect ratio
+        .avif({ quality: 80 }) // Adjust quality as needed { quality: 80 }
+        .toBuffer();
+
+      console.log("finished running sharp");
+
+      const avifFileName = file.name.replace(/\.[^/.]+$/, ".avif"); // Change file extension to .avif
+
+      return uploadToS3(avifBuffer, homeId, avifFileName, "image/avif");
+    });
+
+    const fileUrls = await Promise.all(uploadPromises);
+    return fileUrls;
+  } catch (error) {
+    console.error("Error uploading photos:", error);
+    return error;
+  }
 }

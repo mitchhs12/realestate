@@ -244,8 +244,8 @@ export default function Photos({
       try {
         setErrorMessage(null);
         console.log("attempting to upload this many photos:", files.length);
-        await uploadPhotos(formData);
-        console.log("Files uploaded successfully!");
+        const error = await uploadPhotos(formData);
+        console.log("error", error);
         await retrievePhotos(); // Refresh the photo URLs
         console.log("Files retrieved successfully!");
       } catch (error) {
