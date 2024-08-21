@@ -78,7 +78,7 @@ export function ProfileButton({
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <HamburgerMenuIcon className="hidden sm:flex mr-2 ml-1 h-4 w-4" />
