@@ -218,40 +218,46 @@ export default function Photos({
         setIsUploading(false);
         return;
       }
-      const formData = new FormData();
+
+      const uploadPromises = [];
+
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         console.log("file:", file);
+
         if (!file.type.startsWith("image/")) {
           setErrorMessage(onlyImages);
           setIsUploading(false);
           return;
         }
-        // const { isValid, reason } = await checkImageDimensions(file);
-        // if (!isValid) {
-        //   setErrorMessage(reason === "width" ? tooNarrow : tooShort);
-        //   setIsUploading(false);
-        //   return;
-        // }
-        // check file size
-        if (file.size > 5000000) {
+        const { isValid, reason } = await checkImageDimensions(file);
+        if (!isValid) {
+          setErrorMessage(reason === "width" ? tooNarrow : tooShort);
+          setIsUploading(false);
+          return;
+        }
+        if (file.size > 4000000) {
           setErrorMessage(fileSize);
           setIsUploading(false);
           return;
         }
-        formData.append("files", file);
-      }
 
-      formData.append("homeId", currentHome.id.toString());
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("homeId", currentHome.id.toString());
+
+        // Upload each file and store the promise in the array
+        const uploadPromise = uploadPhotos(formData);
+        uploadPromises.push(uploadPromise);
+      }
 
       try {
         setErrorMessage(null);
-        console.log("attempting to upload this many photos:", files.length);
-        formData.forEach((value, key) => {
-          console.log(`${key}:`, value);
-        });
-        const error = await uploadPhotos(formData);
-        console.log("error", error);
+        console.log(`attempting to upload ${files.length} photos`);
+
+        // Wait for all the uploads to finish
+        const results = await Promise.all(uploadPromises);
+
         await retrievePhotos(); // Refresh the photo URLs
         console.log("Files retrieved successfully!");
       } catch (error) {
