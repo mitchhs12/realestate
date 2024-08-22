@@ -221,17 +221,18 @@ export default function Photos({
       const formData = new FormData();
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
+        console.log("file:", file);
         if (!file.type.startsWith("image/")) {
           setErrorMessage(onlyImages);
           setIsUploading(false);
           return;
         }
-        const { isValid, reason } = await checkImageDimensions(file);
-        if (!isValid) {
-          setErrorMessage(reason === "width" ? tooNarrow : tooShort);
-          setIsUploading(false);
-          return;
-        }
+        // const { isValid, reason } = await checkImageDimensions(file);
+        // if (!isValid) {
+        //   setErrorMessage(reason === "width" ? tooNarrow : tooShort);
+        //   setIsUploading(false);
+        //   return;
+        // }
         // check file size
         if (file.size > 5000000) {
           setErrorMessage(fileSize);
