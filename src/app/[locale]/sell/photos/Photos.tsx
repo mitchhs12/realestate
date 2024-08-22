@@ -210,6 +210,8 @@ export default function Photos({
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsUploading(true);
     const files = event.target.files;
+    console.log("files", files);
+
     if (files && currentHome) {
       if (files.length + uploadedImageUrls.length > 12) {
         setErrorMessage(restriction);
