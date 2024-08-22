@@ -253,13 +253,10 @@ export default function Photos({
 
       try {
         setErrorMessage(null);
-        console.log(`attempting to upload ${files.length} photos`);
 
         // Wait for all the uploads to finish
         const results = await Promise.all(uploadPromises);
-
         await retrievePhotos(); // Refresh the photo URLs
-        console.log("Files retrieved successfully!");
       } catch (error) {
         console.error("Error uploading files:", error);
       }

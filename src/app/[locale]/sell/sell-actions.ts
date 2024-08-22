@@ -20,7 +20,6 @@ async function uploadToS3(file: Buffer, homeId: string, fileName: string, fileTy
 }
 
 export async function uploadPhotos(formData: FormData) {
-  console.log("uploading photos");
   try {
     const session = await auth();
     const userId = session?.user?.id;
@@ -30,11 +29,7 @@ export async function uploadPhotos(formData: FormData) {
     }
 
     const file = formData.get("file");
-    console.log("file", file);
     const homeId = formData.get("homeId") as string;
-    console.log("homeId", homeId);
-
-    console.log("attempting to upload", file);
 
     if (!homeId) {
       return "Home ID is required";
