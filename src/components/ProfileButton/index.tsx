@@ -163,11 +163,11 @@ export function ProfileButton({
                   {languages.map((lang) => (
                     <DropdownMenuRadioItem
                       key={lang}
-                      className="flex cursor-pointer justify-start gap-3 text-start"
+                      className="flex cursor-pointer justify-end gap-3 text-end"
                       value={lang}
                     >
-                      <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} />
                       {getFullLanguageName(lang)}
+                      <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} />
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>
@@ -187,14 +187,14 @@ export function ProfileButton({
                   {locales.map((config) => (
                     <DropdownMenuRadioItem
                       key={config.currency}
-                      className="flex cursor-pointer justify-start gap-3 text-start"
+                      className="flex cursor-pointer justify-end gap-3 text-start"
                       value={config.currency}
                     >
+                      {config.currency}
                       <FlagComponent
                         country={config.locale.split("-")[1].toUpperCase() as Country}
                         countryName={config.locale.split("-")[1].toUpperCase() as string}
                       />
-                      {config.currency}
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>

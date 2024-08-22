@@ -38,13 +38,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     isMyPhone,
   } = useContext(SellContext);
 
-  useEffect(() => {
-    if (currentHome) {
-      // setLocalCurrentHome(currentHome);
-      console.log("CURRENT HOME", currentHome);
-    }
-  }, [currentHome]);
-
   router.prefetch(nextStep);
   router.prefetch(prevStep);
   console.log("currentHome", JSON.stringify(currentHome));
@@ -54,17 +47,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     if (currentHome) {
       const databaseStep = currentHome.listingFlowStep;
       return databaseStep;
-      // console.log("current databaseStep as recorded in currentHome", databaseStep);
-      // if (databaseStep <= stepLengths[0] - 1) {
-      //   console.log("IN 1st STEP CONDITIONAL");
-      //   return databaseStep;
-      // } else if (databaseStep <= stepLengths[0] - 1 + stepLengths[1] - 1) {
-      //   console.log("IN 2nd STEP CONDITIONAL");
-      //   return databaseStep + 1;
-      // } else {
-      //   console.log("IN 3rd STEP CONDITIONAL");
-      //   return databaseStep + 2;
-      // }
     } else {
       return 1;
     }
@@ -72,9 +54,9 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
 
   const shouldIncrementFlowStep = () => {
     const nextStepUpTo = checkStepPositionForNextNavigation();
-    // console.log("nextStepUpTo", nextStepUpTo);
-    // console.log("sellFlowFlatIndex", sellFlowFlatIndex);
-    // console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
+    console.log("nextStepUpTo", nextStepUpTo);
+    console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+    console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
     if (sellFlowFlatIndex < nextStepUpTo) {
       return false;
     } else if (sellFlowFlatIndex === nextStepUpTo) {
@@ -125,10 +107,11 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
       const _newHome = await updateHome(newHome, pathname, true);
       router.push(nextStep);
     } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
+      console.log("we are updating the home now!");
       const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
-      setNewHome(_newHome);
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
+      console.log("WE SHOULD INCREMENT THE FLOW STEP");
       if (pathname.startsWith("/sell/review")) {
         const result = await sellHome(currentLocale, pathname);
         if (result.error) {
@@ -138,6 +121,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
           router.push(nextStep);
         }
       } else {
+        console.log("INCREMENTING FLOW STEP");
         const _newHome = await updateHome(newHome, pathname, true);
         setNewHome(_newHome);
         router.push(nextStep);
