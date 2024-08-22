@@ -28,6 +28,9 @@ import { getFlagEmoji, getFullLanguageName } from "@/lib/utils";
 import { useChangeLocale, useCurrentLocale } from "@/locales/client";
 import { getCurrency } from "@/lib/utils";
 import { updateLanguage } from "@/app/[locale]/settings/actions";
+import { FlagComponent } from "@/components/ui/phone-input";
+import { Country } from "react-phone-number-input";
+import { languageToFlagMap } from "@/lib/validations";
 
 interface Props {
   openSignUpModal: () => void;
@@ -158,7 +161,12 @@ export function ProfileButton({
                   }}
                 >
                   {languages.map((lang) => (
-                    <DropdownMenuRadioItem key={lang} className="cursor-pointer" value={lang}>
+                    <DropdownMenuRadioItem
+                      key={lang}
+                      className="flex cursor-pointer justify-start gap-3 text-start"
+                      value={lang}
+                    >
+                      <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} />
                       {getFullLanguageName(lang)}
                     </DropdownMenuRadioItem>
                   ))}
@@ -177,8 +185,16 @@ export function ProfileButton({
                   onValueChange={(symbol) => setDefaultCurrency(getCurrency(currencies, symbol))}
                 >
                   {locales.map((config) => (
-                    <DropdownMenuRadioItem key={config.currency} className="cursor-pointer" value={config.currency}>
-                      {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
+                    <DropdownMenuRadioItem
+                      key={config.currency}
+                      className="flex cursor-pointer justify-start gap-3 text-start"
+                      value={config.currency}
+                    >
+                      <FlagComponent
+                        country={config.locale.split("-")[1].toUpperCase() as Country}
+                        countryName={config.locale.split("-")[1].toUpperCase() as string}
+                      />
+                      {config.currency}
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>

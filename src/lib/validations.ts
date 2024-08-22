@@ -215,6 +215,25 @@ export const localeToFlagMap: { [key: string]: React.ComponentType } = {
   "ka-GE": GE,
 };
 
+export const languageToFlagMap = {
+  af: "ZA", // South Africa
+  ar: "SA", // Saudi Arabia
+  de: "DE", // Germany
+  en: "US", // United States (common for English)
+  es: "ES", // Spain
+  fr: "FR", // France
+  hr: "HR", // Croatia
+  id: "ID", // Indonesia
+  ja: "JP", // Japan
+  ka: "GE", // Georgia
+  ko: "KR", // South Korea
+  pt: "PT", // Portugal (or "BR" for Brazil)
+  th: "TH", // Thailand
+  tr: "TR", // Turkey
+  vi: "VN", // Vietnam
+  zh: "CN", // China
+};
+
 export const defaultLanguage = "en";
 export const defaultCurrency = "USD";
 

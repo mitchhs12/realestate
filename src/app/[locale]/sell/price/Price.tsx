@@ -25,7 +25,6 @@ interface Props {
   subtitle: string;
   negotiable: string;
   price_placeholder: string;
-  searchCurrencies: string;
   noCurrencies: string;
   selectCurrency: string;
 }
@@ -39,7 +38,6 @@ export default function Price({
   subtitle,
   negotiable,
   price_placeholder,
-  searchCurrencies,
   noCurrencies,
   selectCurrency,
 }: Props) {
@@ -172,9 +170,8 @@ export default function Price({
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-[200px] p-0">
+                <PopoverContent className="flex justify-center w-full p-0">
                   <Command>
-                    <CommandInput placeholder={searchCurrencies} />
                     <CommandList>
                       <CommandEmpty>{noCurrencies}</CommandEmpty>
                       <CommandGroup>

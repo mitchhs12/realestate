@@ -33,7 +33,6 @@ export default async function Page() {
   const subtitle = t("subtitle");
   const negotiable = t("negotiable");
   const price_placeholder = t("price_placeholder");
-  const searchCurrencies = t("search_currency");
   const noCurrencies = t("no_currency");
   const selectCurrency = t("select_currency");
 
@@ -47,7 +46,6 @@ export default async function Page() {
       subtitle={subtitle}
       negotiable={negotiable}
       price_placeholder={price_placeholder}
-      searchCurrencies={searchCurrencies}
       noCurrencies={noCurrencies}
       selectCurrency={selectCurrency}
     />
