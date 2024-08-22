@@ -11,6 +11,8 @@ import { uploadPhotos } from "@/app/[locale]/sell/sell-actions";
 import { ReloadIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import imageCompression from "browser-image-compression";
+
 import {
   DndContext,
   closestCenter,
@@ -31,6 +33,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { HomeType } from "@/lib/validations";
+import { encode } from "@jsquash/avif";
 
 interface Props {
   currentHome: HomeType | null;
@@ -209,58 +212,72 @@ export default function Photos({
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsUploading(true);
-    const files = event.target.files;
-    console.log("files", files);
+    setErrorMessage(null);
 
-    if (files && currentHome) {
-      if (files.length + uploadedImageUrls.length > 12) {
-        setErrorMessage(restriction);
+    const files = event.target.files;
+
+    if (!files || !currentHome) {
+      setIsUploading(false);
+      return;
+    }
+
+    if (files.length + uploadedImageUrls.length > 12) {
+      setErrorMessage(restriction);
+      setIsUploading(false);
+      return;
+    }
+
+    const validImageFiles: File[] = [];
+
+    for (const file of Array.from(files)) {
+      try {
+        if (!file.type.startsWith("image/")) {
+          throw new Error(onlyImages);
+        }
+
+        const { isValid, reason } = await checkImageDimensions(file);
+        if (!isValid) {
+          throw new Error(reason === "width" ? tooNarrow : tooShort);
+        }
+
+        if (file.size > 4000000) {
+          throw new Error(fileSize);
+        }
+
+        validImageFiles.push(file);
+      } catch (error: any) {
+        setErrorMessage(error.message || "Error processing files");
         setIsUploading(false);
         return;
       }
+    }
 
-      const uploadPromises = [];
+    try {
+      const uploadPromises = validImageFiles.map(async (file) => {
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 500,
+          useWebWorker: true,
+          initialQuality: 0.9,
+        };
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        console.log("file:", file);
-
-        if (!file.type.startsWith("image/")) {
-          setErrorMessage(onlyImages);
-          setIsUploading(false);
-          return;
-        }
-        const { isValid, reason } = await checkImageDimensions(file);
-        if (!isValid) {
-          setErrorMessage(reason === "width" ? tooNarrow : tooShort);
-          setIsUploading(false);
-          return;
-        }
-        if (file.size > 4000000) {
-          setErrorMessage(fileSize);
-          setIsUploading(false);
-          return;
-        }
+        const compressedFile = await imageCompression(file, options);
+        const avifFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".avif"), { type: "image/avif" });
 
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("file", avifFile);
         formData.append("homeId", currentHome.id.toString());
 
-        // Upload each file and store the promise in the array
-        const uploadPromise = uploadPhotos(formData);
-        uploadPromises.push(uploadPromise);
-      }
+        return uploadPhotos(formData);
+      });
 
-      try {
-        setErrorMessage(null);
-
-        // Wait for all the uploads to finish
-        const results = await Promise.all(uploadPromises);
-        await retrievePhotos(); // Refresh the photo URLs
-      } catch (error) {
-        console.error("Error uploading files:", error);
-      }
+      await Promise.all(uploadPromises);
+      await retrievePhotos(); // Refresh the photo URLs
+    } catch (error: any) {
+      console.error("Error during file processing:", error);
+      setErrorMessage(error.message || "Error uploading files");
     }
+
     setIsUploading(false);
   };
 

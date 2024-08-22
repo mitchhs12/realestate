@@ -2,7 +2,7 @@ import React, { Ref, useCallback, useEffect } from "react";
 import Supercluster, { ClusterProperties } from "supercluster";
 import { FeaturesClusterMarker } from "@/components/MainMap/FeaturesClusterMarker";
 import { FeatureMarker } from "@/components/MainMap/FeatureMarker";
-import { useSupercluster } from "@/app/[locale]/hooks/use-supercluster";
+import { useSupercluster } from "@/hooks/use-supercluster";
 import { Feature, FeatureCollection, GeoJsonProperties, Point } from "geojson";
 
 type ClusteredMarkersProps = {

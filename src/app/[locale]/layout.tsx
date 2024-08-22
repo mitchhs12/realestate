@@ -14,32 +14,15 @@ import { headers } from "next/headers";
 import { getCurrency } from "@/lib/utils";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
+import { getStaticParams } from "@/locales/server"; // Adjust the path as needed
 
 export const metadata: Metadata = {
   title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
   description: "A marketplace for buying and renting houses, apartments, land and property",
 };
 
-// // NOT SURE IF I NEED THIS!!!
-export async function generateStaticParams() {
-  return [
-    { locale: "af" }, // Afrikaans
-    { locale: "ar" }, // Arabic
-    { locale: "de" }, // German
-    { locale: "en" }, // English
-    { locale: "es" }, // Spanish
-    { locale: "fr" }, // French
-    { locale: "hr" }, // Croatian
-    { locale: "id" }, // Indonesian
-    { locale: "ja" }, // Japanese
-    { locale: "ka" }, // Georgian
-    { locale: "ko" }, // Korean
-    { locale: "pt" }, // Portuguese
-    { locale: "th" }, // Thai
-    { locale: "tr" }, // Turkish
-    { locale: "vi" }, // Vietnamese
-    { locale: "zh" }, // Chinese
-  ];
+export function generateStaticParams() {
+  return getStaticParams();
 }
 
 type Props = {
@@ -50,8 +33,8 @@ type Props = {
 export default async function RootLayout({ children, params: { locale } }: Readonly<Props>) {
   const currencies = await getCurrencies();
   const acceptLanguage = headers().get("Accept-Language");
-  // const currencies = [{ symbol: "USD", usdPrice: 1 }];
   let currency = { symbol: "USD", usdPrice: 1 };
+
   if (acceptLanguage) {
     const language = acceptLanguage.split(",");
     const primaryLanguage = language[0];

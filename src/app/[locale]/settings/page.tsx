@@ -3,12 +3,16 @@ import SettingsPage from "./SettingsPage";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import { getScopedI18n } from "@/locales/server";
+import { setStaticParamsLocale } from "next-international/server";
+import { LanguageType } from "@/lib/validations";
 
 export const metadata: Metadata = {
   title: "Settings",
 };
 
-export default async function Page() {
+export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
+  setStaticParamsLocale(locale);
+
   const t = await getScopedI18n("settings");
   const title = t("title");
   const name_title = t("name.title");

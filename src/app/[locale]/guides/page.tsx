@@ -4,9 +4,12 @@ import { poppins } from "@/app/[locale]/fonts";
 import { sellGuides } from "@/lib/validations";
 import { buyGuides } from "@/lib/validations";
 import { getScopedI18n } from "@/locales/server";
+import { setStaticParamsLocale } from "next-international/server";
+import { LanguageType } from "@/lib/validations";
 
-export default async function Page() {
+export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   const scopedT = await getScopedI18n("guides");
+  setStaticParamsLocale(locale);
 
   return (
     <div className="flex flex-col h-full w-full items-center">

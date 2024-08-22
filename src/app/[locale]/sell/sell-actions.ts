@@ -49,15 +49,9 @@ export async function uploadPhotos(formData: FormData) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    // Compress and convert to AVIF format using sharp
-    const avifBuffer = await sharp(buffer)
-      .resize({ width: 500, height: 500, fit: "outside" }) // Resize while maintaining aspect ratio
-      .avif({ quality: 80 }) // Adjust quality as needed { quality: 80 }
-      .toBuffer();
+    const fileName = file.name; // Keep the original file name and extension
 
-    const avifFileName = file.name.replace(/\.[^/.]+$/, ".avif"); // Change file extension to .avif
-
-    return await uploadToS3(avifBuffer, homeId, avifFileName, "image/avif");
+    return await uploadToS3(buffer, homeId, fileName, file.type);
   } catch (error: any) {
     console.error("Error uploading photo:", error);
     return error.message;

@@ -4,19 +4,17 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
-import { getCurrentLocale } from "@/locales/server";
 import { getPath } from "@/lib/utils";
-
-export const metadata: Metadata = {
-  title: "Sell",
-};
 import { getScopedI18n } from "@/locales/server";
 import { getUnfinishedHome } from "./actions";
 import { headers } from "next/headers";
 
-export default async function Page() {
+export const metadata: Metadata = {
+  title: "Sell",
+};
+
+export default async function Page({ params: { locale } }: any) {
   const session = await getSession();
-  const locale = await getCurrentLocale();
   const user = session?.user;
   if (!user) {
     try {

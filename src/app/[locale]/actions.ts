@@ -9,7 +9,7 @@ export async function getFeatured(): Promise<HomeType[]> {
       isActive: true,
     },
     orderBy: {
-      createdAt: "asc", // or any other criteria for "featured"
+      price: "asc",
     },
     take: 6, // Limit the number of results to 4
   });
