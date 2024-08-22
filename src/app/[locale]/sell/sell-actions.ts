@@ -25,7 +25,7 @@ export async function uploadPhotos(formData: FormData) {
     const userId = session?.user?.id;
 
     if (!userId) {
-      throw new Error("User not found");
+      return Error("User not found");
     }
 
     const files = formData.getAll("files");
