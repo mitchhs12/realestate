@@ -32,11 +32,11 @@ export async function uploadPhotos(formData: FormData) {
     const homeId = formData.get("homeId") as string;
 
     if (!homeId) {
-      throw new Error("Home ID is required");
+      return "Home ID is required";
     }
 
     if (files.length === 0) {
-      throw new Error("You forgot to attach photos!");
+      return "You forgot to attach photos!";
     }
 
     console.log("running promise");
@@ -44,11 +44,11 @@ export async function uploadPhotos(formData: FormData) {
 
     const uploadPromises = files.map(async (file: any) => {
       if (typeof file !== "object" || !("arrayBuffer" in file)) {
-        throw new Error("Invalid file");
+        return new Error("Invalid file");
       }
 
       if (!file.type.startsWith("image/")) {
-        throw new Error("File is not an image!");
+        return new Error("File is not an image!");
       }
 
       const buffer = Buffer.from(await file.arrayBuffer());
