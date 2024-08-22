@@ -33,22 +33,25 @@ export default {
         "title": "S'inscrire",
         "subtitle": "Entrez votre email ci-dessous pour vous inscrire !",
         "already": "Vous avez déjà un compte ?",
-        "change": "Se connecter"
+        "change": "Se connecter",
+        "apple": "Inscrivez-vous avec Apple",
+        "google": "Inscrivez-vous avec Google",
+        "facebook": "Inscrivez-vous avec Facebook"
       },
       "log-in": {
         "title": "Content de te revoir",
         "subtitle": "Entrez votre email ci-dessous pour vous connecter.",
         "already": "Vous n'avez pas de compte ?",
-        "change": "S'inscrire"
+        "change": "S'inscrire",
+        "apple": "Connectez-vous avec Apple",
+        "google": "Connectez-vous avec Google",
+        "facebook": "Connectez-vous avec Facebook"
       },
       "general": {
         "email": "E-mail",
         "email-placeholder": "exemple@mail.com",
         "submit": "Inscrivez-vous avec e-mail",
         "or": "ou",
-        "google": "Inscrivez-vous avec Google",
-        "microsoft": "Connectez-vous avec Microsoft",
-        "facebook": "Inscrivez-vous avec Facebook",
         "loading": "Chargement..."
       }
     },

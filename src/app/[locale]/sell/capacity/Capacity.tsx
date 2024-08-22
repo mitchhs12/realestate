@@ -51,10 +51,13 @@ export default function Capacity({
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
+  const ftConversion = 10.76391042;
+
   const [sqSize, setSqSize] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
   const [sqLabel, setSqLabel] = useState<string>("");
   const [metresOn, setMetresOn] = useState(true);
   const [humanCapacity, setHumanCapacity] = useState<number>(currentHome?.capacity ? currentHome?.capacity : 0);
+  const [sqFeet, setSqFeet] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm * ftConversion : 0);
   const { numerals } = useContext(LocaleContext);
 
   useEffect(() => {
@@ -70,8 +73,6 @@ export default function Capacity({
     }
   }, [sqSize, humanCapacity]);
 
-  const ftConversion = 10.76391042;
-
   useEffect(() => {
     setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
@@ -86,20 +87,14 @@ export default function Capacity({
     setPrevLoading(false);
   }, []);
 
-  const handleUnitSwitch = () => {
-    if (sqSize > 0) {
-      if (metresOn) {
-        setSqSize(sqSize * ftConversion);
-      } else {
-        setSqSize(sqSize / ftConversion);
-      }
-    }
-    setMetresOn(!metresOn);
-  };
-
   const handleSqSizeChange = ({ value, number }: { value: string; number: number }) => {
-    setSqLabel(value);
-    setSqSize(number);
+    if (metresOn) {
+      setSqLabel(value);
+      setSqSize(number);
+    } else {
+      setSqLabel(value);
+      setSqSize(number / ftConversion);
+    }
   };
 
   return (
@@ -128,7 +123,19 @@ export default function Capacity({
                 </div>
               </div>
               <div className="flex w-full h-full items-center justify-center gap-4">
-                {metres} <Switch checked={!metresOn} onCheckedChange={handleUnitSwitch} /> {feet}
+                {metres}
+                <Switch
+                  checked={!metresOn}
+                  onCheckedChange={() => {
+                    if (metresOn) {
+                      setSqLabel((sqSize * ftConversion).toString());
+                    } else {
+                      setSqLabel(sqSize.toString());
+                    }
+                    setMetresOn(!metresOn);
+                  }}
+                />
+                {feet}
               </div>
             </div>
             <div className="flex flex-col h-full w-full justify-center items-center gap-4 md:gap-8">

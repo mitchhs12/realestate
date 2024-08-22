@@ -33,22 +33,25 @@
         "title": "დარეგისტრირდით",
         "subtitle": "შეიყვანეთ თქვენი ელფოსტა ქვემოთ, რომ დარეგისტრირდეთ!",
         "already": "უკვე გაქვთ ანგარიში?",
-        "change": "შესვლა"
+        "change": "შესვლა",
+        "apple": "დარეგისტრირდით Apple-თან",
+        "google": "დარეგისტრირდით Google-ით",
+        "facebook": "დარეგისტრირდით Facebook-ით"
       },
       "log-in": {
         "title": "კეთილი იყოს თქვენი მობრძანება",
         "subtitle": "შეიყვანეთ თქვენი ელფოსტა ქვემოთ, რომ შეხვიდეთ.",
         "already": "არ გაქვთ ანგარიში?",
-        "change": "დარეგისტრირდით"
+        "change": "დარეგისტრირდით",
+        "apple": "შედით Apple-ით",
+        "google": "შედით Google-ით",
+        "facebook": "შედით Facebook-ით"
       },
       "general": {
         "email": "ელფოსტა",
         "email-placeholder": "example@mail.com",
         "submit": "დარეგისტრირდით ელექტრონული ფოსტით",
         "or": "ან",
-        "google": "დარეგისტრირდით Google-ით",
-        "microsoft": "შედით Microsoft-ით",
-        "facebook": "დარეგისტრირდით Facebook-ით",
         "loading": "იტვირთება..."
       }
     },

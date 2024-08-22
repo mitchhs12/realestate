@@ -33,22 +33,25 @@
         "title": "สมัครสมาชิก",
         "subtitle": "กรอกอีเมล์ของคุณด้านล่างเพื่อสมัครสมาชิก!",
         "already": "มีบัญชีอยู่แล้วใช่ไหม?",
-        "change": "เข้าสู่ระบบ"
+        "change": "เข้าสู่ระบบ",
+        "apple": "ลงทะเบียนกับ Apple",
+        "google": "ลงทะเบียนด้วย Google",
+        "facebook": "ลงทะเบียนด้วย Facebook"
       },
       "log-in": {
         "title": "ยินดีต้อนรับกลับมา",
         "subtitle": "กรอกอีเมล์ของคุณด้านล่างเพื่อเข้าสู่ระบบ",
         "already": "ยังไม่มีบัญชีใช่ไหม?",
-        "change": "สมัครสมาชิก"
+        "change": "สมัครสมาชิก",
+        "apple": "เข้าสู่ระบบด้วย Apple",
+        "google": "เข้าสู่ระบบด้วย Google",
+        "facebook": "เข้าสู่ระบบด้วย Facebook"
       },
       "general": {
         "email": "อีเมล",
         "email-placeholder": "ตัวอย่าง@mail.com",
         "submit": "ลงทะเบียนด้วยอีเมล์",
         "or": "หรือ",
-        "google": "ลงทะเบียนด้วย Google",
-        "microsoft": "เข้าสู่ระบบด้วย Microsoft",
-        "facebook": "ลงทะเบียนด้วย Facebook",
         "loading": "กำลังโหลด..."
       }
     },

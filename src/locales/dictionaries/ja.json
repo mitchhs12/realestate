@@ -33,22 +33,25 @@
         "title": "サインアップ",
         "subtitle": "登録するには下記にメールアドレスを入力してください。",
         "already": "すでにアカウントをお持ちですか?",
-        "change": "ログイン"
+        "change": "ログイン",
+        "apple": "Appleでサインアップ",
+        "google": "Googleでサインアップ",
+        "facebook": "Facebookでサインアップ"
       },
       "log-in": {
         "title": "おかえり",
         "subtitle": "ログインするには、以下にメールアドレスを入力してください。",
         "already": "アカウントをお持ちではありませんか?",
-        "change": "サインアップ"
+        "change": "サインアップ",
+        "apple": "Appleでログイン",
+        "google": "Googleでログイン",
+        "facebook": "Facebookでログイン"
       },
       "general": {
         "email": "メール",
         "email-placeholder": "例@mail.com",
         "submit": "メールで登録",
         "or": "または",
-        "google": "Googleでサインアップ",
-        "microsoft": "Microsoftでログイン",
-        "facebook": "Facebookでサインアップ",
         "loading": "読み込み中..."
       }
     },

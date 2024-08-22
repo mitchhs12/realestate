@@ -33,22 +33,25 @@ export default {
         "title": "가입하기",
         "subtitle": "아래에 이메일을 입력하여 등록하세요!",
         "already": "이미 계정이 있으신가요?",
-        "change": "로그인"
+        "change": "로그인",
+        "apple": "Apple로 가입하기",
+        "google": "구글로 가입하기",
+        "facebook": "페이스북으로 가입하기"
       },
       "log-in": {
         "title": "환영합니다",
         "subtitle": "아래에 이메일을 입력하여 로그인하세요.",
         "already": "계정이 없으신가요?",
-        "change": "가입하기"
+        "change": "가입하기",
+        "apple": "Apple로 로그인",
+        "google": "Google로 로그인",
+        "facebook": "페이스북으로 로그인"
       },
       "general": {
         "email": "이메일",
         "email-placeholder": "예:@mail.com",
         "submit": "이메일로 가입하기",
         "or": "또는",
-        "google": "구글로 가입하기",
-        "microsoft": "Microsoft로 로그인",
-        "facebook": "페이스북으로 가입하기",
         "loading": "로딩중..."
       }
     },

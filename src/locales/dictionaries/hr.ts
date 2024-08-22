@@ -33,22 +33,25 @@ export default {
         "title": "Prijavite se",
         "subtitle": "Unesite svoju e-poštu ispod da biste se prijavili!",
         "already": "Već imate račun?",
-        "change": "Prijavite se"
+        "change": "Prijavite se",
+        "apple": "Prijavite se s Appleom",
+        "google": "Prijavite se s Googleom",
+        "facebook": "Prijavite se putem Facebooka"
       },
       "log-in": {
         "title": "Dobro došao nazad",
         "subtitle": "Unesite svoju e-poštu ispod kako biste se prijavili.",
         "already": "Nemate račun?",
-        "change": "Prijavite se"
+        "change": "Prijavite se",
+        "apple": "Prijavite se s Appleom",
+        "google": "Prijavite se s Googleom",
+        "facebook": "Prijavite se putem Facebooka"
       },
       "general": {
         "email": "E-mail",
         "email-placeholder": "primjer@mail.com",
         "submit": "Prijavite se putem e-pošte",
         "or": "ili",
-        "google": "Prijavite se s Googleom",
-        "microsoft": "Prijavite se s Microsoftom",
-        "facebook": "Prijavite se putem Facebooka",
         "loading": "Učitavanje..."
       }
     },

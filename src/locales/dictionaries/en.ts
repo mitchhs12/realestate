@@ -33,22 +33,25 @@ export default {
         "title": "Sign up",
         "subtitle": "Enter your email below to sign up!",
         "already": "Already have an account?",
-        "change": "Log in"
+        "change": "Log in",
+        "apple": "Sign up with Apple",
+        "google": "Sign up with Google",
+        "facebook": "Sign up with Facebook"
       },
       "log-in": {
         "title": "Welcome back",
         "subtitle": "Enter your email below to log in.",
         "already": "Don't have an account?",
-        "change": "Sign up"
+        "change": "Sign up",
+        "apple": "Log in with Apple",
+        "google": "Log in with Google",
+        "facebook": "Log in with Facebook"
       },
       "general": {
         "email": "Email",
         "email-placeholder": "example@mail.com",
         "submit": "Log in with Email",
         "or": "or",
-        "google": "Log in with Google",
-        "microsoft": "Log in with Microsoft",
-        "facebook": "Log in with Facebook",
         "loading": "Loading..."
       }
     },

@@ -33,22 +33,25 @@ export default {
         "title": "Üye olmak",
         "subtitle": "Kaydolmak için aşağıya e-postanızı girin!",
         "already": "Zaten bir hesabınız var mı?",
-        "change": "Giriş yapmak"
+        "change": "Giriş yapmak",
+        "apple": "Apple'a kaydolun",
+        "google": "Google ile kaydolun",
+        "facebook": "Facebook ile kaydolun"
       },
       "log-in": {
         "title": "tekrar hoşgeldiniz",
         "subtitle": "Giriş yapmak için aşağıya e-postanızı girin.",
         "already": "Hesabınız yok mu?",
-        "change": "Üye olmak"
+        "change": "Üye olmak",
+        "apple": "Apple ile oturum açın",
+        "google": "Google ile giriş yapın",
+        "facebook": "Facebook ile giriş yap"
       },
       "general": {
         "email": "E-posta",
         "email-placeholder": "ornek@posta.com",
         "submit": "E-posta ile kaydolun",
         "or": "veya",
-        "google": "Google ile kaydolun",
-        "microsoft": "Microsoft ile oturum açın",
-        "facebook": "Facebook ile kaydolun",
         "loading": "Yükleniyor..."
       }
     },

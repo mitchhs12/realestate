@@ -33,22 +33,25 @@ export default {
         "title": "Mendaftar",
         "subtitle": "Masukkan email Anda di bawah ini untuk mendaftar!",
         "already": "Sudah punya akun?",
-        "change": "Masuk"
+        "change": "Masuk",
+        "apple": "Daftar dengan Apple",
+        "google": "Daftar dengan Google",
+        "facebook": "Daftar dengan Facebook"
       },
       "log-in": {
         "title": "Selamat Datang kembali",
         "subtitle": "Masukkan email Anda di bawah ini untuk masuk.",
         "already": "Belum punya akun?",
-        "change": "Mendaftar"
+        "change": "Mendaftar",
+        "apple": "Masuk dengan Apple",
+        "google": "Masuk dengan Google",
+        "facebook": "Masuk dengan Facebook"
       },
       "general": {
         "email": "E-mail",
         "email-placeholder": "contoh@mail.com",
         "submit": "Daftar dengan Email",
         "or": "atau",
-        "google": "Daftar dengan Google",
-        "microsoft": "Masuk dengan Microsoft",
-        "facebook": "Daftar dengan Facebook",
         "loading": "Memuat..."
       }
     },

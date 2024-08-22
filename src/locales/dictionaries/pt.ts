@@ -33,22 +33,25 @@ export default {
         "title": "Inscrever-se",
         "subtitle": "Insira seu e-mail abaixo para se inscrever!",
         "already": "Já tem uma conta?",
-        "change": "Conecte-se"
+        "change": "Conecte-se",
+        "apple": "Inscreva-se na Apple",
+        "google": "Cadastre-se com o Google",
+        "facebook": "Cadastre-se com o Facebook"
       },
       "log-in": {
         "title": "bem vindo de volta",
         "subtitle": "Insira seu e-mail abaixo para efetuar login.",
         "already": "Não tem uma conta?",
-        "change": "Inscrever-se"
+        "change": "Inscrever-se",
+        "apple": "Entrar com a Apple",
+        "google": "Entrar com o Google",
+        "facebook": "Entrar com o Facebook"
       },
       "general": {
         "email": "E-mail",
         "email-placeholder": "exemplo@mail.com",
         "submit": "Cadastre-se com e-mail",
         "or": "ou",
-        "google": "Cadastre-se com o Google",
-        "microsoft": "Entrar com a Microsoft",
-        "facebook": "Cadastre-se com o Facebook",
         "loading": "Carregando..."
       }
     },

@@ -33,22 +33,25 @@ export default {
         "title": "报名",
         "subtitle": "在下面输入您的电子邮件进行注册！",
         "already": "已有账户？",
-        "change": "登录"
+        "change": "登录",
+        "apple": "通过 Apple 注册",
+        "google": "使用 Google 注册",
+        "facebook": "使用 Facebook 注册"
       },
       "log-in": {
         "title": "欢迎回来",
         "subtitle": "在下面输入您的电子邮件以登录。",
         "already": "沒有帳戶？",
-        "change": "报名"
+        "change": "报名",
+        "apple": "使用 Apple 登录",
+        "google": "使用 Google 登录",
+        "facebook": "使用 Facebook 登录"
       },
       "general": {
         "email": "电子邮件",
         "email-placeholder": "例如@mail.com",
         "submit": "使用电子邮件注册",
         "or": "或者",
-        "google": "使用 Google 注册",
-        "microsoft": "使用 Microsoft 登录",
-        "facebook": "使用 Facebook 注册",
         "loading": "加载中..."
       }
     },

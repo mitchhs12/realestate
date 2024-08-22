@@ -33,22 +33,25 @@ export default {
         "title": "Teken in",
         "subtitle": "Voer jou e-posadres hieronder in om aan te meld!",
         "already": "Het jy reeds 'n rekening?",
-        "change": "Meld aan"
+        "change": "Meld aan",
+        "apple": "Sluit aan by Apple",
+        "google": "Sluit aan by Google",
+        "facebook": "Sluit aan met Facebook"
       },
       "log-in": {
         "title": "Welkom terug",
         "subtitle": "Voer jou e-posadres hieronder in om aan te meld.",
         "already": "Het jy nie 'n rekening nie?",
-        "change": "Teken in"
+        "change": "Teken in",
+        "apple": "Meld aan met Apple",
+        "google": "Meld aan met Google",
+        "facebook": "Meld aan met Facebook"
       },
       "general": {
         "email": "E-pos",
         "email-placeholder": "voorbeeld@mail.com",
         "submit": "Teken in met e-pos",
         "or": "of",
-        "google": "Sluit aan by Google",
-        "microsoft": "Meld aan met Microsoft",
-        "facebook": "Sluit aan met Facebook",
         "loading": "Laai tans..."
       }
     },

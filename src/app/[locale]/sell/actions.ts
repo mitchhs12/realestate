@@ -117,6 +117,7 @@ export async function sellHome(currentLocale: string, url: string): Promise<Resp
   const result = validateHome(home);
 
   if (result.success === false) {
+    console.log("validation failed!");
     return result;
   }
 
@@ -129,6 +130,9 @@ export async function sellHome(currentLocale: string, url: string): Promise<Resp
     data: newData,
   });
 
+  console.log("HOME ACTIVATED!");
+  revalidatePath("/"); // Revalidate the path if necessary
+
   return { success: true, error: "" };
 }
 
@@ -140,6 +144,7 @@ export async function updateHome(
 ): Promise<HomeType> {
   const session = await auth();
   const userId = session?.user?.id;
+  console.log("shouldIncreaseListingFlowStep", shouldIncreaseListingFlowStep);
 
   if (!userId) {
     throw new Error("User not found");
@@ -155,6 +160,7 @@ export async function updateHome(
         listingFlowStep: 1, // Default value
       },
     });
+    console.log("new home created!!");
   } else {
     if (shouldIncreaseListingFlowStep) {
       console.log("we should increment the flow step");

@@ -33,22 +33,25 @@ export default {
         "title": "Melden Sie sich an",
         "subtitle": "Geben Sie unten Ihre E-Mail-Adresse ein, um sich anzumelden!",
         "already": "Hast du schon ein Konto?",
-        "change": "Einloggen"
+        "change": "Einloggen",
+        "apple": "Mit Apple anmelden",
+        "google": "Mit Google anmelden",
+        "facebook": "Mit Facebook anmelden"
       },
       "log-in": {
         "title": "Willkommen zurück",
         "subtitle": "Geben Sie unten Ihre E-Mail-Adresse ein, um sich anzumelden.",
         "already": "Sie haben noch kein Konto?",
-        "change": "Melden Sie sich an"
+        "change": "Melden Sie sich an",
+        "apple": "Mit Apple anmelden",
+        "google": "Mit Google anmelden",
+        "facebook": "Mit Facebook anmelden"
       },
       "general": {
         "email": "E-Mail",
         "email-placeholder": "beispiel@mail.com",
         "submit": "Mit E-Mail anmelden",
         "or": "oder",
-        "google": "Mit Google anmelden",
-        "microsoft": "Mit Microsoft anmelden",
-        "facebook": "Mit Facebook anmelden",
         "loading": "Laden..."
       }
     },

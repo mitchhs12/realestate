@@ -100,18 +100,20 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   async function handleNext() {
     setNextLoading(true);
     if (prevStep === "" && currentHome) {
+      console.log("running log 1");
       // we are on the first page of the sell flow so we are redirected to where we are up too
       router.push(stepsFlattened[checkStepPositionForNextNavigation()]);
     } else if (prevStep === "" && !currentHome) {
+      console.log("running log 2");
       // we are on the first page of the sell flow and we need to create a new home
       const _newHome = await updateHome(newHome, pathname, true);
       router.push(nextStep);
-    } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
-      console.log("we are updating the home now!");
+    } else if (currentHome && newHome && JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
+      console.log("running log 3");
       const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
-      console.log("WE SHOULD INCREMENT THE FLOW STEP");
+      console.log("running log 4");
       if (pathname.startsWith("/sell/review")) {
         const result = await sellHome(currentLocale, pathname);
         if (result.error) {
@@ -122,9 +124,17 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
         }
       } else {
         console.log("INCREMENTING FLOW STEP");
-        const _newHome = await updateHome(newHome, pathname, true);
-        setNewHome(_newHome);
-        router.push(nextStep);
+        if (newHome) {
+          const _newHome = await updateHome(newHome, pathname, true);
+          setNewHome(_newHome);
+          router.push(nextStep);
+        } else {
+          // newHome is null because we are navigating to the end page without making any changes
+          // the only time this should run is if we are up to the last page the user is up too and they click next, newHome is null or the two are the same.
+          const _newHome = await updateHome(currentHome, pathname, true);
+          setNewHome(_newHome);
+          router.push(nextStep);
+        }
       }
     } else {
       router.push(nextStep);

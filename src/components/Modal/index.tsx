@@ -123,26 +123,26 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
                     <Icons.google_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">{isLoading === "google" ? g("loading") : g("google")}</div>
+                <div className="flex flex-grow">{isLoading === "google" ? g("loading") : t("google")}</div>
               </div>
             </Button>
             <Button
               variant="secondary"
               className="w-80 h-16"
-              onClick={() => handleSocialSignIn("microsoft-entra-id")}
+              onClick={() => handleSocialSignIn("apple")}
               disabled={isLoading !== null}
             >
               <div className="flex justify-between items-center w-full gap-2">
                 <div className="flex w-[38px] h-[38px] justify-center items-center">
-                  {isLoading === "microsoft-entra-id" ? (
+                  {isLoading === "apple" ? (
                     <ReloadIcon className="animate-spin h-7 w-7" />
+                  ) : theme === "light" ? (
+                    <Icons.apple />
                   ) : (
-                    <Icons.microsoft />
+                    <Icons.apple_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">
-                  {isLoading === "microsoft-entra-id" ? g("loading") : g("microsoft")}
-                </div>
+                <div className="flex flex-grow">{isLoading === "apple" ? g("loading") : t("apple")}</div>
               </div>
             </Button>
             <Button
@@ -161,7 +161,7 @@ export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
                     <Icons.facebook_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">{isLoading === "facebook" ? g("loading") : g("facebook")} </div>
+                <div className="flex flex-grow">{isLoading === "facebook" ? g("loading") : t("facebook")} </div>
               </div>
             </Button>
           </div>

@@ -33,22 +33,25 @@
         "title": "Inscribirse",
         "subtitle": "¡Introduce tu correo electrónico a continuación para registrarte!",
         "already": "¿Ya tienes una cuenta?",
-        "change": "Acceso"
+        "change": "Acceso",
+        "apple": "Regístrate con Apple",
+        "google": "Regístrate con Google",
+        "facebook": "Regístrate con Facebook"
       },
       "log-in": {
         "title": "Bienvenido de nuevo",
         "subtitle": "Introduzca su correo electrónico a continuación para iniciar sesión.",
         "already": "¿No tienes una cuenta?",
-        "change": "Inscribirse"
+        "change": "Inscribirse",
+        "apple": "Iniciar sesión con Apple",
+        "google": "Iniciar sesión con Google",
+        "facebook": "Iniciar sesión con Facebook"
       },
       "general": {
         "email": "Correo electrónico",
         "email-placeholder": "ejemplo@mail.com",
         "submit": "Regístrate con correo electrónico",
         "or": "o",
-        "google": "Regístrate con Google",
-        "microsoft": "Iniciar sesión con Microsoft",
-        "facebook": "Regístrate con Facebook",
         "loading": "Cargando..."
       }
     },

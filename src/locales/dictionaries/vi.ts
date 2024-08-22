@@ -33,22 +33,25 @@ export default {
         "title": "Đăng ký",
         "subtitle": "Nhập email của bạn bên dưới để đăng ký!",
         "already": "Bạn đã có tài khoản?",
-        "change": "Đăng nhập"
+        "change": "Đăng nhập",
+        "apple": "Đăng ký với Apple",
+        "google": "Đăng ký với Google",
+        "facebook": "Đăng ký bằng Facebook"
       },
       "log-in": {
         "title": "Chào mừng trở lại",
         "subtitle": "Nhập email của bạn bên dưới để đăng nhập.",
         "already": "Bạn chưa có tài khoản?",
-        "change": "Đăng ký"
+        "change": "Đăng ký",
+        "apple": "Đăng nhập bằng Apple",
+        "google": "Đăng nhập bằng Google",
+        "facebook": "Đăng nhập bằng Facebook"
       },
       "general": {
         "email": "E-mail",
         "email-placeholder": "ví dụ@mail.com",
         "submit": "Đăng ký bằng Email",
         "or": "hoặc",
-        "google": "Đăng ký với Google",
-        "microsoft": "Đăng nhập bằng Microsoft",
-        "facebook": "Đăng ký bằng Facebook",
         "loading": "Đang tải..."
       }
     },
