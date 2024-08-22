@@ -50,7 +50,7 @@ const validateHome = (homeData: any) => {
   return { success: true, error: "" };
 };
 
-export async function getUnfinishedHome(url: string) {
+export async function getUnfinishedHome(url?: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -68,7 +68,7 @@ export async function getUnfinishedHome(url: string) {
       createdAt: "asc",
     },
   });
-  revalidatePath(url); // Revalidate the path if necessary
+  url && revalidatePath(url); // Revalidate the path if necessary
 
   return homes;
 }

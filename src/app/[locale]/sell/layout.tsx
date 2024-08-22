@@ -18,13 +18,22 @@ export default async function SellFlowLayout({ children, params: { locale } }: R
   const next = t("next");
   const finish = t("finish");
   const loading = t("loading");
+  const unfinishedHome = await getUnfinishedHome();
 
   return (
     <>
       <SellContextProvider>
         <div className="flex flex-col h-screen-minus-header-dvh w-full">
           <main className="flex-grow overflow-auto h-full">{children}</main>
-          <ProgressBar cont={cont} start={start} back={back} next={next} finish={finish} loading={loading} />
+          <ProgressBar
+            unfinishedHome={unfinishedHome}
+            cont={cont}
+            start={start}
+            back={back}
+            next={next}
+            finish={finish}
+            loading={loading}
+          />
         </div>
       </SellContextProvider>
     </>

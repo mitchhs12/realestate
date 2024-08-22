@@ -5,6 +5,9 @@ import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 import { getScopedI18n } from "@/locales/server";
+import { getUnfinishedHome } from "../actions";
+import { headers } from "next/headers";
+import { getPath } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Step 2",
@@ -21,6 +24,8 @@ export default async function Page() {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
+  const url = getPath(headers());
+  const unfinishedHome = await getUnfinishedHome(url);
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell/step2");
   const sellFlatIndex = await getSellFlowIndex("/sell/step2");
@@ -32,6 +37,7 @@ export default async function Page() {
 
   return (
     <Step2
+      currentHome={unfinishedHome}
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
