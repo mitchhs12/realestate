@@ -40,6 +40,7 @@ export async function uploadPhotos(formData: FormData) {
     }
 
     console.log("running promise");
+    return "THIS IS A TEST";
 
     const uploadPromises = files.map(async (file: any) => {
       if (typeof file !== "object" || !("arrayBuffer" in file)) {
