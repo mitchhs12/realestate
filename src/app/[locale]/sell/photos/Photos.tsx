@@ -181,7 +181,6 @@ export default function Photos({
 
   const retrievePhotos = async () => {
     if (currentHome) {
-      console.log("currentHomeId", currentHome.id);
       const photoUrls = await getPhotoUrls(currentHome.id);
       if (photoUrls) {
         setUploadedImageUrls(photoUrls);
@@ -259,10 +258,11 @@ export default function Photos({
           maxWidthOrHeight: 500,
           useWebWorker: true,
           initialQuality: 0.9,
+          fileType: "image/webp",
         };
 
         const compressedFile = await imageCompression(file, options);
-        const avifFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".avif"), { type: "image/avif" });
+        const avifFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".webp"), { type: "image/avif" });
 
         const formData = new FormData();
         formData.append("file", avifFile);

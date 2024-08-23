@@ -149,6 +149,7 @@ export default function Locations() {
   function generateUrl(placeName: string, countryName: string) {
     const baseUrl = "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home";
     const formattedPlace = placeName.toLowerCase().replace(/, /g, "/").replace(/ /g, "+").replace(/\./g, "");
+    console.log("formattedPlace", formattedPlace);
     return `${baseUrl}/${countryName.toLowerCase().trim()}/${formattedPlace}.avif`;
   }
 
