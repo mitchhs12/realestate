@@ -119,7 +119,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
           alert(result.error);
           setNextLoading(false);
         } else {
-          router.push(nextStep);
+          router.push(`/homes/${currentHome?.id}`);
         }
       } else {
         console.log("INCREMENTING FLOW STEP");
