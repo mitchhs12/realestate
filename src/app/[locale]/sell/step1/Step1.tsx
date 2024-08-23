@@ -26,6 +26,7 @@ export default function Step1({
 }: Props) {
   const {
     setCurrentHome,
+    setNewHome,
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
@@ -36,6 +37,7 @@ export default function Step1({
 
   useEffect(() => {
     setCurrentHome(currentHome);
+    setNewHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);

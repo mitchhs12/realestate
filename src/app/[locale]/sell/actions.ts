@@ -160,10 +160,8 @@ export async function updateHome(
         listingFlowStep: 1, // Default value
       },
     });
-    console.log("new home created!!");
   } else {
     if (shouldIncreaseListingFlowStep) {
-      console.log("we should increment the flow step");
       const promises: Promise<any>[] = [];
 
       // Check for updating phone number and add the promise to the array
@@ -175,7 +173,6 @@ export async function updateHome(
       const { id, listingFlowStep, ...homeData } = homeSchema.parse(homeValues);
 
       const newData = { ...homeData, listingFlowStep: listingFlowStep + 1 };
-      console.log("new flow step");
 
       promises.push(
         prisma.home.update({
@@ -186,6 +183,7 @@ export async function updateHome(
 
       // Wait for all promises to resolve
       const results = await Promise.all(promises);
+      console.log("results", results);
       updatedHome = results[results.length - 1]; // Always get the last result
     } else {
       const { id, ...homeData } = homeSchema.parse(homeValues);

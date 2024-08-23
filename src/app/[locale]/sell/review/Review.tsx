@@ -68,6 +68,7 @@ export default function Review({
   matchingListingType,
 }: Props) {
   const {
+    setNewHome,
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
@@ -78,6 +79,7 @@ export default function Review({
 
   useEffect(() => {
     setCurrentHome(currentHome);
+    setNewHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
