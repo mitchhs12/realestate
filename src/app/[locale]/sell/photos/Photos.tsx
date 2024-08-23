@@ -200,9 +200,9 @@ export default function Photos({
   const checkImageDimensions = async (file: File): Promise<{ isValid: boolean; reason?: string }> => {
     const bitmap = await createImageBitmap(file);
 
-    if (bitmap.width < 500) {
+    if (bitmap.width < 600) {
       return { isValid: false, reason: "width" };
-    } else if (bitmap.height < 500) {
+    } else if (bitmap.height < 600) {
       return { isValid: false, reason: "height" };
     }
 
@@ -255,7 +255,7 @@ export default function Photos({
       const uploadPromises = validImageFiles.map(async (file) => {
         const options = {
           maxSizeMB: 1,
-          maxWidthOrHeight: 500,
+          maxWidthOrHeight: 600,
           useWebWorker: true,
           fileType: "image/webp",
         };
