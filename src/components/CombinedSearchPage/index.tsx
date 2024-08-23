@@ -9,18 +9,8 @@ import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Drawer,
-  DrawerPortal,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerClose,
-  DrawerTrigger,
-  DrawerOverlay,
-} from "@/components/ui/drawer";
+
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
 
 interface Props {
   coordinates: CoordinatesType;
@@ -101,19 +91,15 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.2, 0.5, 0.8]}
+          snapPoints={[0.25, 0.5, 0.75, 1]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
-          onClose={() => setIsOpen(false)}
+          dismissible={false}
         >
-          <DrawerContent className="outline-none">
-            <div
-              className={`flex flex-col justify-center items-center max-w-xl mx-auto pt-4 min-w-72 md:px-0 gap-y-2 ${
-                snap === 1 ? "overflow-y-auto" : "overflow-hidden"
-              }`}
-            >
+          <DrawerContent className="w-full h-full outline-none gap-y-2 pb-4">
+            <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>
               <DrawerTitle>Results</DrawerTitle>
               <DrawerDescription>
                 {isSearchLoading ? (
@@ -122,8 +108,9 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
                   `${homes.length} properties in ${bounds ? "Map Area" : label}`
                 )}
               </DrawerDescription>
-
-              <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
+              <div className={`flex w-full h-full overflow-y-auto`}>
+                <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
+              </div>
             </div>
           </DrawerContent>
         </Drawer>

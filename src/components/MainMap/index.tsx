@@ -90,7 +90,7 @@ export default function MapComponent({
       if (!areBoundsEqual(existingBounds, bounds.detail.bounds)) {
         setBounds(bounds.detail.bounds);
       }
-    }, 600);
+    }, 1000);
 
     setBoundsTimeout(timeoutId);
   };
