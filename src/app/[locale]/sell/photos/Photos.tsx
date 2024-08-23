@@ -12,6 +12,7 @@ import { ReloadIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import imageCompression from "browser-image-compression";
+import { resizeImageToMinDimensions } from "@/lib/utils";
 
 import {
   DndContext,
@@ -234,11 +235,6 @@ export default function Photos({
           throw new Error(onlyImages);
         }
 
-        const { isValid, reason } = await checkImageDimensions(file);
-        if (!isValid) {
-          throw new Error(reason === "width" ? tooNarrow : tooShort);
-        }
-
         if (file.size > 4000000) {
           throw new Error(fileSize);
         }
@@ -253,14 +249,15 @@ export default function Photos({
 
     try {
       const uploadPromises = validImageFiles.map(async (file) => {
+        const resizedFile = await resizeImageToMinDimensions(file, 600, tooShort, tooNarrow);
+
         const options = {
           maxSizeMB: 1,
-          maxWidthOrHeight: 600,
           useWebWorker: true,
           fileType: "image/webp",
         };
 
-        const compressedFile = await imageCompression(file, options);
+        const compressedFile = await imageCompression(resizedFile, options);
         const avifFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".webp"), { type: "image/avif" });
 
         const formData = new FormData();

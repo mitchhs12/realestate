@@ -143,8 +143,6 @@ export default function Price({
     }
   };
 
-  console.log(value);
-
   return (
     <div className="flex flex-col h-full w-full items-center">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">

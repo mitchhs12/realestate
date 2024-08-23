@@ -71,7 +71,7 @@ export default function Description({
           </div>
         </div>
 
-        <div className="flex flex-col w-full h-full px-12 justify-center mt-10">
+        <div className="flex flex-col max-w-7xl w-full h-full px-12 justify-center mt-10">
           <Textarea
             value={description}
             placeholder="Provide a brief overview of your property..."

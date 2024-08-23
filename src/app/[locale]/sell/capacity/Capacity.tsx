@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
 import NumberInput from "@/components/ui/numberinput";
+import { formatNumber } from "@/lib/utils";
 
 interface Props {
   currentHome: HomeType | null;
@@ -53,12 +54,15 @@ export default function Capacity({
   } = useContext(SellContext);
   const ftConversion = 10.76391042;
 
+  const { numerals } = useContext(LocaleContext);
+
   const [sqSize, setSqSize] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm : 0);
-  const [sqLabel, setSqLabel] = useState<string>("");
+  const [sqLabel, setSqLabel] = useState<string>(
+    currentHome?.areaSqm ? formatNumber(currentHome?.areaSqm, numerals) : ""
+  );
   const [metresOn, setMetresOn] = useState(true);
   const [humanCapacity, setHumanCapacity] = useState<number>(currentHome?.capacity ? currentHome?.capacity : 0);
   const [sqFeet, setSqFeet] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm * ftConversion : 0);
-  const { numerals } = useContext(LocaleContext);
 
   useEffect(() => {
     if (currentHome && sqSize > 0 && humanCapacity > 0) {
@@ -128,9 +132,9 @@ export default function Capacity({
                   checked={!metresOn}
                   onCheckedChange={() => {
                     if (metresOn) {
-                      setSqLabel((sqSize * ftConversion).toString());
+                      setSqLabel(formatNumber(Math.round(sqSize * ftConversion), numerals));
                     } else {
-                      setSqLabel(sqSize.toString());
+                      setSqLabel(formatNumber(Math.round(sqSize), numerals));
                     }
                     setMetresOn(!metresOn);
                   }}

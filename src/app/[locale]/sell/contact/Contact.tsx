@@ -106,6 +106,8 @@ export default function Contact({
     }
   }, []);
 
+  console.log(user?.phoneNumber, propertyOwnerPhone);
+
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
@@ -157,7 +159,7 @@ export default function Contact({
                   />
                 </div>
               </div>
-              {currentHome?.contactPhone !== propertyOwnerPhone && (
+              {user?.phoneNumber !== propertyOwnerPhone && (
                 <div className="flex flex-row justify-center md:justify-end items-center gap-2 w-full pt-3">
                   <h2 className="flex font-light text-sm xs:text-base text-right text-nowrap">{mobile_check}</h2>
                   <div className="flex items-center">

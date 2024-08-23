@@ -91,8 +91,6 @@ export default function Review({
   const title = currentHome?.title || "";
   const description = currentHome?.description || "";
   const address = currentHome?.address || "";
-  const types = currentHome?.type || "";
-  const features = currentHome?.features || [];
   const bedrooms = currentHome?.bedrooms || 0;
   const bathrooms = currentHome?.bathrooms || 0;
   const livingRooms = currentHome?.livingrooms || 0;
@@ -106,7 +104,6 @@ export default function Review({
   const contactName = currentHome?.contactName || "";
   const contactEmail = currentHome?.contactEmail || "";
   const contactPhone = currentHome?.contactPhone || "";
-  const listingType = currentHome?.listingType || "";
 
   const [feet, setFeet] = useState(false);
   const [loadingStates, setLoadingStates] = useState(photos.map(() => true));
@@ -130,7 +127,7 @@ export default function Review({
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-20 w-full max-w-3xl h-full justify-start items-center text-center">
+      <div className="flex flex-col mb-20 w-full h-auto max-w-7xl justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{title_text}</h1>
@@ -139,23 +136,26 @@ export default function Review({
             <h3 className="text-lg w-full">{subtitle_text}</h3>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-center py-8 px-6 gap-8">
-          <Card className="w-full h-auto flex flex-col xs:p-4">
+        <div className="flex flex-col w-full h-full md:flex-row justify-center py-8 px-6 gap-8 lg:p-4">
+          <Card className="w-full h-auto flex flex-col">
             <CardHeader>
               <CardTitle className="text-2xl font-bold">{title}</CardTitle>
               <CardDescription>{description}</CardDescription>
             </CardHeader>
-            <CardContent className="grid gap-4">
-              <div className="flex flex-col text-left gap-y-8">
+            <CardContent className="flex justify-center gap-4 p-4 sm:p-8">
+              <div className="flex flex-col justify-center text-left gap-y-8 h-full w-full">
                 <p className="flex flex-col text-center">{address}</p>
-                <div className="grid grid-cols-2 xs:grid-cols-3 gap-4 justify-center items-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center items-center">
                   {photos.map((photo, index) => (
-                    <div key={index} className="relative flex items-center justify-center h-[100px]">
+                    <div
+                      key={index}
+                      className="relative flex items-center justify-center border w-full h-[133px] md:h-[166px] xl:h-[200px] shadow-md rounded-xl"
+                    >
                       <Image
                         src={photo}
                         alt={`Uploaded ${index}`}
                         fill={true}
-                        className="object-cover"
+                        className="object-cover object-center rounded-xl"
                         onLoad={() => handleImageLoad(index)}
                       />
                       {loadingStates[index] && (
@@ -169,108 +169,112 @@ export default function Review({
                     </div>
                   ))}
                 </div>
-                <Separator />
+                <div className="flex flex-col text-center justify-center items-center w-full h-full sm:shadow-md p-2 xs:p-4 sm:p-8 gap-8 rounded-2xl">
+                  <div className="flex flex-col w-full h-full max-w-5xl text-center gap-8">
+                    <div className="flex flex-col gap-8">
+                      <div className="flex flex-col w-full justify-center items-center overflow-auto text-xs sm:text-sm md:text-md lg:text-lg gap-y-4">
+                        <div className="flex flex-col w-full">
+                          <div className="flex justify-center w-full text-lg py-4">
+                            <strong>{listing_text}</strong>
+                            <span className="ml-2">{matchingListingType?.translation}</span>
+                          </div>
+                          <Separator />
+                        </div>
+                        <div className="grid grid-rows-2 grid-cols-2 sm:flex sm:flex-row justify-between w-full gap-2 py-4">
+                          <div className="flex flex-row gap-3 text-center">
+                            <strong>{bedrooms_text}</strong>
+                            <span>{formatNumber(bedrooms, numerals)}</span>
+                          </div>
+                          <div className="flex flex-row justify-end gap-3 text-center">
+                            <strong className="justify-start">{bathrooms_text}</strong>
+                            <span>{formatNumber(bathrooms, numerals)}</span>
+                          </div>
+                          <div className="flex flex-row gap-3 text-center">
+                            <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
+                          </div>
+                          <div className="flex flex-row justify-end gap-3 text-center">
+                            <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
+                          </div>
+                        </div>
+                        <div className="flex w-full text-end text-sm md:text-md lg:text-lg gap-y-8">
+                          <div className="flex justify-start w-full">
+                            <strong>{capacity_text}</strong>
+                            <span className="ml-2">{formatNumber(capacity, numerals)}</span>
+                          </div>
+                          <div className="flex justify-end w-full">
+                            <strong className="flex justify-start">{area_text} </strong>
+                            <span className="ml-2">
+                              {formatNumber(sqSize, numerals)}{" "}
+                              <button
+                                className="hover:bg-accent hover:text-accent-foreground underline"
+                                onClick={() => {
+                                  setFeet(!feet);
+                                }}
+                              >
+                                {!feet ? `${m_text}²` : `${ft_text}²`}
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col justify-center gap-8">
+                        <div className="flex text-sm md:text-md lg:text-lg justify-between">
+                          <div className="flex flex-col text-left">
+                            <p>
+                              <strong>{type_text}</strong>
+                            </p>
+                            <ul className="list-disc list-inside">
+                              {matchingTypes.map((type, index) => (
+                                <li key={index}>{type.translation}</li>
+                              ))}
+                            </ul>
+                          </div>
 
-                <div className="flex w-full justify-center items-center">
-                  <div className="flex flex-col w-full justify-center items-center overflow-auto text-sm md:text-md gap-y-4">
-                    <div className="flex justify-center w-full text-lg py-4">
-                      <strong>{listing_text}</strong>
-                      <span className="ml-2">{matchingListingType?.translation}</span>
+                          <div className="flex flex-col text-left">
+                            <p>
+                              <strong>{features_text}</strong>
+                            </p>
+                            <ul className="list-disc list-inside">
+                              {matchingFeatures.map((feature, index) => (
+                                <li key={index}>{feature.translation}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="flex flex-col text-center gap-2 text-sm md:text-md lg:text-lg">
+                          <div className="flex flex-col xs:gap-3 xs:flex-row">
+                            <strong>{contactName_text}</strong> {contactName}
+                          </div>
+                          <div className="flex flex-col xs:gap-3 xs:flex-row">
+                            <strong>{contactEmail_text}</strong> {contactEmail}
+                          </div>
+                          <div className="flex flex-col xs:gap-3 xs:flex-row">
+                            <strong>{contactPhone_text}</strong> {contactPhone}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex justify-center w-full gap-x-2">
-                      <div className="flex flex-col justify-center text-center w-full">
-                        <strong>{bedrooms_text}</strong>
-                        <span>{formatNumber(bedrooms, numerals)}</span>
-                      </div>
-                      <div className="flex flex-col justify-center text-center w-full">
-                        <strong className="justify-start">{bathrooms_text}</strong>
-                        <span>{formatNumber(bathrooms, numerals)}</span>
-                      </div>
-                      <div className="flex flex-col justify-center text-center w-full">
-                        <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
-                      </div>
-                      <div className="flex flex-col justify-center text-center w-full">
-                        <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
-                      </div>
-                    </div>
-                    <div className="flex w-full text-end text-sm md:text-md gap-y-8">
-                      <div className="flex justify-start w-full">
-                        <strong>{capacity_text}</strong>
-                        <span className="ml-2">{formatNumber(capacity, numerals)}</span>
-                      </div>
-                      <div className="flex justify-end w-full">
-                        <strong className="flex justify-start">{area_text} </strong>
-                        <span className="ml-2">
-                          {formatNumber(sqSize, numerals)}{" "}
-                          <button
-                            className="hover:bg-accent hover:text-accent-foreground underline"
-                            onClick={() => {
-                              setFeet(!feet);
-                            }}
-                          >
-                            {!feet ? `${m_text}²` : `${ft_text}²`}
-                          </button>
-                        </span>
+                    <div className="flex flex-col sm:flex-row w-full justify-between items-center gap-4 pb-4">
+                      <strong className="flex justify-center items-center gap-x-4 text-md sm:text-xl overflow-auto">
+                        {price_text}
+                        <p>{formatPrice(currency, price)}</p>
+                        <p>{currency}</p>
+                      </strong>
+                      <div>
+                        <p className="flex items-center gap-2 text-start text-sm sm:text-lg">
+                          <strong>{negotiable_text}</strong>
+                          {priceNegotiable ? (
+                            <CheckCircledIcon className="text-green-500 w-4 h-4 sm:w-6 sm:h-6" />
+                          ) : (
+                            <CrossCircledIcon className="text-red-500 w-4 h-4 sm:w-6 sm:h-6" />
+                          )}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="flex flex-col w-2/3 text-left">
-                  <p>
-                    <strong>{type_text}</strong>
-                  </p>
-                  <ul className="list-disc list-inside">
-                    {matchingTypes.map((type, index) => (
-                      <li key={index}>{type.translation}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-col w-2/3 text-left">
-                  <p>
-                    <strong>{features_text}</strong>
-                  </p>
-                  <ul className="list-disc list-inside">
-                    {matchingFeatures.map((feature, index) => (
-                      <li key={index}>{feature.translation}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-col">
-                  <p>
-                    <strong>{contactName_text}</strong> {contactName}
-                  </p>
-                  <p>
-                    <strong>{contactEmail_text}</strong> {contactEmail}
-                  </p>
-                  <p>
-                    <strong>{contactPhone_text}</strong> {contactPhone}
-                  </p>
-                </div>
               </div>
             </CardContent>
-
-            <CardFooter>
-              <div className="flex w-full justify-between items-center gap-4">
-                <strong className="flex justify-center items-center gap-x-4 text-sm sm:text-lg overflow-auto">
-                  {price_text}
-                  <p>{formatPrice(currency, price)}</p>
-                  <p>{currency}</p>
-                </strong>
-                <div>
-                  <p className="flex items-center gap-2 text-start text-sm sm:text-lg">
-                    <strong>{negotiable_text}</strong>
-                    {priceNegotiable ? (
-                      <CheckCircledIcon className="text-green-500 w-4 h-4 sm:w-6 sm:h-6" />
-                    ) : (
-                      <CrossCircledIcon className="text-red-500 w-4 h-4 sm:w-6 sm:h-6" />
-                    )}
-                  </p>
-                </div>
-              </div>
-            </CardFooter>
           </Card>
         </div>
       </div>

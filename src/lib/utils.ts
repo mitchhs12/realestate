@@ -119,3 +119,57 @@ export function getPath(headers: any) {
   // Fallback to root if the path cannot be determined
   return "/";
 }
+
+export const resizeImageToMinDimensions = async (
+  file: File,
+  minDimension: number,
+  heightError: string,
+  widthError: string
+): Promise<File> => {
+  return new Promise<File>((resolve, reject) => {
+    const img = new Image();
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      img.src = e.target?.result as string;
+    };
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx) {
+        return reject(new Error("Failed to get canvas context"));
+      }
+
+      const { width, height } = img;
+
+      // Check if either dimension is smaller than the minimum dimension
+      width < minDimension && reject(new Error(widthError));
+      height < minDimension && reject(new Error(heightError));
+
+      // Scale down image while keeping the aspect ratio, until the smallest dimension is minDimension
+      const scale = minDimension / Math.min(width, height);
+      const targetWidth = width * scale;
+      const targetHeight = height * scale;
+
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+      ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) {
+            return reject(new Error("Image resizing failed"));
+          }
+          const resizedFile = new File([blob], file.name, { type: file.type });
+          resolve(resizedFile);
+        },
+        file.type,
+        1
+      );
+    };
+
+    reader.readAsDataURL(file);
+  });
+};
