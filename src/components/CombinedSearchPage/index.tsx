@@ -24,7 +24,7 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
   const [isSearchLoading, setIsSearchLoading] = useState(true);
   const [isMapLoading, setIsMapLoading] = useState(true);
-  const [snap, setSnap] = useState<number | string | null>(0.2);
+  const [snap, setSnap] = useState<number | string | null>(0.5);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -91,23 +91,23 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.25, 0.5, 0.75, 1]}
+          snapPoints={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
           dismissible={false}
         >
-          <DrawerContent className="w-full h-full outline-none gap-y-2 pb-4">
+          <DrawerContent className="flex flex-col justify-center text-center items-start w-full h-full outline-none gap-y-2 pb-4 pt-4">
+            <DrawerTitle className="w-full">Results</DrawerTitle>
+            <DrawerDescription className="flex justify-center w-full">
+              {isSearchLoading ? (
+                <Skeleton className="w-48 h-5" />
+              ) : (
+                `${homes.length} properties in ${bounds ? "Map Area" : label}`
+              )}
+            </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>
-              <DrawerTitle>Results</DrawerTitle>
-              <DrawerDescription>
-                {isSearchLoading ? (
-                  <Skeleton className="w-48 h-5" />
-                ) : (
-                  `${homes.length} properties in ${bounds ? "Map Area" : label}`
-                )}
-              </DrawerDescription>
               <div className={`flex w-full h-full overflow-y-auto`}>
                 <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
               </div>
