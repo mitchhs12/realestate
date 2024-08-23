@@ -60,7 +60,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     if (sellFlowFlatIndex < nextStepUpTo) {
       return false;
     } else if (sellFlowFlatIndex === nextStepUpTo) {
-      console.log("running this XXX");
       return true;
     } else {
       return false;
@@ -114,7 +113,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
       console.log("running log 4");
-      if (pathname.startsWith("/sell/review")) {
+      if (sellFlowFlatIndex === stepsFlattened.length - 1) {
         const result = await sellHome(currentLocale, pathname);
         if (result.error) {
           alert(result.error);

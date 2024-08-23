@@ -257,7 +257,6 @@ export default function Photos({
           maxSizeMB: 1,
           maxWidthOrHeight: 500,
           useWebWorker: true,
-          initialQuality: 0.9,
           fileType: "image/webp",
         };
 
