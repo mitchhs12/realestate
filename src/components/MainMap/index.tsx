@@ -132,8 +132,8 @@ export default function MapComponent({
             gestureHandling={"greedy"}
             onBoundsChanged={handleBoundsChanged}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
-            zoom={newZoom !== 16 ? newZoom : 16}
-            maxZoom={20}
+            defaultZoom={newZoom !== 16 ? newZoom : 16}
+            maxZoom={19}
             minZoom={3}
             onZoomChanged={(num) => {
               setNewZoom(num.detail.zoom);
