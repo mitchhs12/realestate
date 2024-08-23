@@ -44,7 +44,6 @@ export const CarouselDots = ({ className }: any) => {
   const { api } = useCarousel();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [slidesCount, setSlidesCount] = React.useState(0);
-  const [visibleRange, setVisibleRange] = React.useState([0, 4]);
 
   React.useEffect(() => {
     if (!api) return;
@@ -53,23 +52,6 @@ export const CarouselDots = ({ className }: any) => {
       const newIndex = api.selectedScrollSnap();
       setSelectedIndex(newIndex);
       setSlidesCount(api.scrollSnapList().length);
-
-      const maxDots = 5;
-      const halfMaxDots = Math.floor(maxDots / 2);
-      let start = 0;
-      let end = maxDots - 1;
-
-      if (newIndex > halfMaxDots) {
-        start = newIndex - halfMaxDots;
-        end = newIndex + halfMaxDots;
-
-        if (end >= slidesCount) {
-          end = slidesCount - 1;
-          start = end - maxDots + 1;
-        }
-      }
-
-      setVisibleRange([start, end]);
     };
 
     onSelect();
@@ -80,21 +62,18 @@ export const CarouselDots = ({ className }: any) => {
       api.off("select", onSelect);
       api.off("reInit", onSelect);
     };
-  }, [api, slidesCount]);
+  }, [api]);
 
   if (slidesCount === 0) return null;
 
   const renderDots = () => {
     return Array.from({ length: slidesCount }).map((_, index) => {
       const isSelected = index === selectedIndex;
-      const visible = index >= visibleRange[0] && index <= visibleRange[1];
 
       return (
         <button
           key={index}
-          className={`mx-1 h-2 w-2 rounded-full transition-all ${isSelected ? "bg-primary" : "bg-white"} ${
-            visible ? "opacity-100" : "opacity-0"
-          } ${visible ? "block" : "hidden"}`}
+          className={`mx-1 h-2 w-2 rounded-full transition-all ${isSelected ? "bg-primary" : "bg-white"} opacity-100`}
           onClick={() => api?.scrollTo(index)}
           aria-label={`Slide ${index + 1}`}
         />
@@ -102,7 +81,22 @@ export const CarouselDots = ({ className }: any) => {
     });
   };
 
-  return <div className={`flex justify-center ${className}`}>{renderDots()}</div>;
+  const dotSize = 16; // Size of each dot including margin
+  const containerWidth = 5 * dotSize; // Width for 5 dots
+  const dotContainerStyle = {
+    transform: `translateX(calc(50% - ${selectedIndex * dotSize + dotSize / 2}px))`,
+    transition: "transform 0.5s ease",
+  };
+
+  return (
+    <div className={`overflow-hidden flex justify-center ${className}`}>
+      <div className="flex w-[50%] justify-center overflow-hidden" style={{ width: containerWidth }}>
+        <div className="flex" style={dotContainerStyle}>
+          {renderDots()}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
