@@ -73,7 +73,7 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
 
   const features: Feature<Point, HomeFeatureProps>[] = homes.map((home) => ({
     type: "Feature",
-    id: `home-${home.id}`, // Assuming unique home id, prefixing to ensure string ID
+    id: home.id, // Assuming unique home id, prefixing to ensure string ID
     geometry: {
       type: "Point",
       coordinates: [home.longitude, home.latitude],

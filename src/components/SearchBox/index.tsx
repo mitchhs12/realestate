@@ -115,6 +115,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
   };
 
   useEffect(() => {
+    console.log(JSON.stringify(results, null, 2));
     if (clickedLocation) {
       setClickedLocation(false);
       handleSearch(results[0].Text, results[0].PlaceId);

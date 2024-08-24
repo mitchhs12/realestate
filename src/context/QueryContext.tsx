@@ -9,8 +9,6 @@ interface QueryContextProps {
   setQuery: (value: string) => void;
   mapFocused: boolean;
   setMapFocused: (value: boolean) => void;
-  newZoom: number;
-  setNewZoom: (value: number) => void;
   currentCoords: CoordinatesType | null;
   setCurrentCoords: (value: CoordinatesType | null) => void;
   clickedLocation: boolean;
@@ -22,8 +20,6 @@ const QueryContext = createContext<QueryContextProps>({
   setQuery: () => {},
   mapFocused: false,
   setMapFocused: () => {},
-  newZoom: 16,
-  setNewZoom: () => {},
   currentCoords: null,
   setCurrentCoords: () => {},
   clickedLocation: false,
@@ -37,7 +33,6 @@ interface QueryProviderProps {
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [query, setQuery] = useState("");
   const [mapFocused, setMapFocused] = useState(true);
-  const [newZoom, setNewZoom] = useState(16);
   const [currentCoords, setCurrentCoords] = useState<CoordinatesType | null>(null);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
   const pathname = usePathname();
@@ -55,8 +50,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setQuery,
         mapFocused,
         setMapFocused,
-        newZoom,
-        setNewZoom,
         currentCoords,
         setCurrentCoords,
         clickedLocation,

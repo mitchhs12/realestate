@@ -15,9 +15,10 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/compone
 interface Props {
   coordinates: CoordinatesType;
   label: string;
+  initZoom: number | null;
 }
 
-export default function CombinedSearchPage({ coordinates, label }: Props) {
+export default function CombinedSearchPage({ coordinates, label, initZoom }: Props) {
   const { mapFocused, setMapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
   const [homes, setHomes] = useState<(HomeType | null)[]>(Array(12).fill(null));
@@ -62,28 +63,6 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
     }
   }, [bounds]);
 
-  useEffect(() => {
-    if (isOpen) {
-      console.log("drawer open!");
-    } else {
-      console.log("drawer closed!");
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (homes.length > 0 && window.innerWidth < 768) {
-      console.log("drawer opening!");
-      setIsOpen(true);
-    } else {
-      console.log("drawer closing!");
-      // setIsOpen(false);
-    }
-  }, [homes]);
-
-  useEffect(() => {
-    console.log("mapFocused", mapFocused);
-  }, [mapFocused]);
-
   return (
     <>
       <section className={`hidden md:flex w-full h-full ${mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
@@ -123,6 +102,7 @@ export default function CombinedSearchPage({ coordinates, label }: Props) {
           homesGeoJson={homesGeoJson}
           isMapLoading={isMapLoading}
           setIsMapLoading={setIsMapLoading}
+          initZoom={initZoom}
         />
       </section>
       <FloatingButton />

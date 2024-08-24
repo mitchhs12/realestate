@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { Feature, Point } from "geojson";
 import { HomeFeatureProps } from "@/lib/validations";
+import Link from "next/link";
 
 type InfowindowContentProps = {
   features: Feature<Point>[];
@@ -17,7 +18,7 @@ const InfoWindowContent = memo(({ features, theme }: InfowindowContentProps) => 
     return (
       <div className="flex flex-col text-xs p-5">
         <p>
-          <a href={getDetailsUrl(props)} target="_blank">
+          <a href={getDetailsUrl(f.id)} target="_blank">
             View details
           </a>
         </p>
@@ -33,9 +34,7 @@ const InfoWindowContent = memo(({ features, theme }: InfowindowContentProps) => 
 
           return (
             <li key={feature.id}>
-              <a href={getDetailsUrl(props)} target="_blank">
-                {props.name}
-              </a>
+              <Link href={getDetailsUrl(feature.id)}>{props.name}</Link>
             </li>
           );
         })}
@@ -49,15 +48,7 @@ const InfoWindowContent = memo(({ features, theme }: InfowindowContentProps) => 
 InfoWindowContent.displayName = "InfoWindowContent";
 export { InfoWindowContent };
 
-function getDetailsUrl(props: HomeFeatureProps) {
-  return "https://www.google.com";
+function getDetailsUrl(id: string | number | undefined) {
+  return `/homes/${id}`;
   // return props.wikipedia ? getWikipediaUrl(props.wikipedia) : getWikidataUrl(props.wikidata);
-}
-function getWikipediaUrl(contentId: string) {
-  const [lang, title] = contentId.split(":");
-
-  return `https://${lang}.wikipedia.org/wiki/${title.replace(/ /g, "_")}`;
-}
-function getWikidataUrl(id: string) {
-  return `https://www.wikidata.org/wiki/${id}`;
 }

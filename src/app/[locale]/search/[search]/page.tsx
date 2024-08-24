@@ -17,14 +17,54 @@ export default async function Page({ params }: { params: { search: string } }) {
   );
 
   const fullResponse = await response.json();
+  console.log(JSON.stringify(fullResponse, null, 2));
   const longLatArray = fullResponse.Place.Geometry.Point;
   const label = fullResponse.Place.Label;
   const coordinates: CoordinatesType = { lat: longLatArray[1], long: longLatArray[0] };
+  const category = fullResponse.Place.Categories[0];
+  let initZoom: number | null;
+  switch (category) {
+    case "AddressType":
+      initZoom = 17; // Very close, focusing on a specific address
+      break;
+    case "StreetType":
+      initZoom = 16; // Close, focusing on a street
+      break;
+    case "IntersectionType":
+      initZoom = 17; // Very close, focusing on an intersection
+      break;
+    case "PointOfInterestType":
+      initZoom = 15; // Close, default zoom level
+      break;
+    case "CountryType":
+      initZoom = 5; // Zoomed out, showing the entire country
+      break;
+    case "RegionType":
+      initZoom = 7; // A state or province, slightly zoomed out
+      break;
+    case "SubRegionType":
+      initZoom = 10; // A county or metro area, more zoomed in
+      break;
+    case "MunicipalityType":
+      initZoom = 11; // A city or town, zoomed in but not too close
+      break;
+    case "NeighborhoodType":
+      initZoom = 14; // A neighborhood within a city, closer zoom
+      break;
+    case "PostalCodeType":
+      initZoom = 15; // An area defined by postal code, fairly close
+      break;
+    default:
+      initZoom = 16; // Default zoom level for undefined categories
+      break;
+  }
+
+  // case for different categories set initZoom:
 
   if (response.status === 200) {
     return (
       <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end ">
-        <CombinedSearchPage coordinates={coordinates} label={label} />
+        <CombinedSearchPage coordinates={coordinates} label={label} initZoom={initZoom} />
       </main>
     );
   } else {

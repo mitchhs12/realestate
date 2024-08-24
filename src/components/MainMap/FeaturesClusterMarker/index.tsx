@@ -25,6 +25,7 @@ export const FeaturesClusterMarker = ({
     [onMarkerClick, marker, clusterId]
   );
   const markerSize = Math.floor(48 + Math.sqrt(size) * 2);
+
   return (
     <AdvancedMarker
       ref={markerRef}

@@ -49,19 +49,37 @@ export default function Card({ home, isLoading }: Props) {
       <Carousel>
         <CarouselContent className="rounded-t-xl">
           {home.photos.map((photo: string, index) => (
-            <Link key={index} href={`/homes/${home.id}`}>
-              <CarouselItem key={index} className={`flex relative justify-center items-center rounded-t-xl`}>
-                <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
-                  <Image
-                    src={photo}
-                    className="object-cover object-center rounded-t-lg"
-                    alt={home.title!}
-                    fill={true}
-                    sizes={"(max-width: 500px), (max-height: 500px)"}
-                  />
-                </div>
-              </CarouselItem>
-            </Link>
+            <div key={index}>
+              {/* Small screens: target="_self" */}
+              <Link href={`/homes/${home.id}`} className="flex sm:hidden">
+                <CarouselItem className="flex relative justify-center items-center rounded-t-xl">
+                  <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
+                    <Image
+                      src={photo}
+                      className="object-cover object-center rounded-t-lg"
+                      alt={home.title!}
+                      fill={true}
+                      sizes={"(max-width: 500px), (max-height: 500px)"}
+                    />
+                  </div>
+                </CarouselItem>
+              </Link>
+
+              {/* Larger screens: target="_blank" */}
+              <Link href={`/homes/${home.id}`} target="_blank" className="hidden sm:flex">
+                <CarouselItem className="flex relative justify-center items-center rounded-t-xl">
+                  <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
+                    <Image
+                      src={photo}
+                      className="object-cover object-center rounded-t-lg"
+                      alt={home.title!}
+                      fill={true}
+                      sizes={"(max-width: 500px), (max-height: 500px)"}
+                    />
+                  </div>
+                </CarouselItem>
+              </Link>
+            </div>
           ))}
         </CarouselContent>
         <CarouselPrevious className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8" />

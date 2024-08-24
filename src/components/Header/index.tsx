@@ -5,7 +5,7 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { poppins } from "@/app/[locale]/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -15,7 +15,8 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useCurrentLocale } from "@/locales/client";
 import { I18nProviderClient } from "@/locales/client";
-import { useEffect } from "react";
+import { ChevronLeft } from "lucide-react";
+import { useRef } from "react";
 
 interface Props {
   guides: string;
@@ -83,6 +84,13 @@ export default function Header({
     setIsModalOpen(true);
   };
 
+  const [previousPath, setPreviousPath] = useState("");
+
+  useEffect(() => {
+    setPreviousPath(pathname);
+    console.log("pathname", pathname);
+  }, [pathname, router]);
+
   return (
     <>
       <header
@@ -92,26 +100,32 @@ export default function Header({
       >
         {!isSellPage && (
           <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-3 lg:gap-6"}`}>
-            <Link href={`/`}>
-              <Button
-                size={"largeIcon"}
-                variant="outline"
-                className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
-              >
-                <div className="flex justify-center items-center gap-1">
-                  <div className="flex justify-center items-center">
+            <Button
+              size={"largeIcon"}
+              variant="outline"
+              className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+              onClick={() => {
+                pathname === "/" ? router.refresh() : pathname.includes("/homes") ? router.back() : router.push("/");
+              }}
+            >
+              <div className="flex justify-center items-center gap-1">
+                <div className="flex justify-center items-center">
+                  <div className="flex">
                     <Logo width={"40"} height={"40"} />
                   </div>
-                  <h1
-                    className={`${poppins.className} ${
-                      isSearchPage ? "hidden 2xl:flex" : "hidden sm:flex"
-                    } text-lg pr-2 font-normal align-middle`}
-                  >
-                    Viva Ideal
-                  </h1>
+                  <div className="flex sm:hidden">
+                    <ChevronLeft />
+                  </div>
                 </div>
-              </Button>
-            </Link>
+                <h1
+                  className={`${poppins.className} ${
+                    isSearchPage ? "hidden 2xl:flex" : "hidden sm:flex"
+                  } text-lg pr-2 font-normal align-middle`}
+                >
+                  Viva Ideal
+                </h1>
+              </div>
+            </Button>
             {!isSearchPage && !isSellPage && !isGuidesPage && (
               <Link href="/guides">
                 <Button

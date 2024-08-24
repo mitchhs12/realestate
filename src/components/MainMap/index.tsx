@@ -36,6 +36,7 @@ interface Props {
   homesGeoJson: HomesGeoJson | null;
   isMapLoading: boolean;
   setIsMapLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  initZoom: number | null;
 }
 
 export default function MapComponent({
@@ -45,6 +46,7 @@ export default function MapComponent({
   homesGeoJson,
   isMapLoading,
   setIsMapLoading,
+  initZoom,
 }: Props) {
   const MAP_CONFIGS: MapConfig[] = [
     {
@@ -64,7 +66,6 @@ export default function MapComponent({
   ];
 
   const { resolvedTheme: theme } = useTheme();
-  const { newZoom, setNewZoom } = useContext(QueryContext);
   const [numClusters, setNumClusters] = useState(0);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -132,12 +133,9 @@ export default function MapComponent({
             gestureHandling={"greedy"}
             onBoundsChanged={handleBoundsChanged}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
-            defaultZoom={newZoom !== 16 ? newZoom : 16}
+            defaultZoom={initZoom ? initZoom : 16}
             maxZoom={19}
             minZoom={3}
-            onZoomChanged={(num) => {
-              setNewZoom(num.detail.zoom);
-            }}
             disableDefaultUI={true}
             mapId={mapConfig.mapId || null}
             mapTypeId={mapConfig.mapTypeId}
