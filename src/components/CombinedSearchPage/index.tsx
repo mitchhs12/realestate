@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function CombinedSearchPage({ coordinates, label, initZoom }: Props) {
-  const { mapFocused, setMapFocused, currentCoords, setCurrentCoords } = useContext(QueryContext);
+  const { mapFocused, setMapFocused, setCurrentHome } = useContext(QueryContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
   const [homes, setHomes] = useState<(HomeType | null)[]>(Array(12).fill(null));
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
@@ -33,12 +33,6 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
       setHomesGeoJson(allHomes);
     });
   }, []);
-
-  useEffect(() => {
-    if (currentCoords) {
-      setCurrentCoords(coordinates);
-    }
-  }, [coordinates]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -70,7 +64,7 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
+          snapPoints={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}

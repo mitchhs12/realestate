@@ -8,6 +8,7 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
 import Link from "next/link";
 import lookup from "country-code-lookup";
+import ResizableCarousel from "@/components/ResizableCarousel";
 
 interface Props {
   home: HomeType | null;
@@ -46,25 +47,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
         setTitleUnderlined(false);
       }}
     >
-      <Carousel className="h-full w-full">
-        <CarouselContent>
-          {home.photos.map((photo: string, index) => (
-            <CarouselItem key={index} className="flex justify-center items-center h-full w-full">
-              <div className="relative justify-center items-center h-[200px] w-full">
-                <Image
-                  src={photo}
-                  className="object-cover object-center rounded-t-lg"
-                  alt={`${home.title} photo ${index}`}
-                  fill
-                  sizes="(max-width: 500px) 100vw, (max-height: 500px) 100vh"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="hidden sm:flex absolute left-6 size-8" />
-        <CarouselNext className="hidden sm:flex absolute right-6 size-8" />
-      </Carousel>
+      <ResizableCarousel home={home} />
       <Link href={`/homes/${home.id}`}>
         <div className="flex flex-col justify-center items-center w-full gap-2 px-2">
           <div className={`w-full flex ${home.title && home.title.length > 20 ? "justify-start" : "justify-center"}`}>

@@ -69,6 +69,7 @@ export default function MapComponent({
   const [numClusters, setNumClusters] = useState(0);
   const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
+  const { currentHome, query } = useContext(QueryContext);
 
   const areBoundsEqual = (bounds1: BoundsType | null, bounds2: BoundsType | null): boolean => {
     if (bounds1 === bounds2) return true;
@@ -91,7 +92,7 @@ export default function MapComponent({
       if (!areBoundsEqual(existingBounds, bounds.detail.bounds)) {
         setBounds(bounds.detail.bounds);
       }
-    }, 1000);
+    }, 600);
 
     setBoundsTimeout(timeoutId);
   };
@@ -119,6 +120,11 @@ export default function MapComponent({
     setIsMapLoading(false);
   };
 
+  const defaultCenter =
+    currentHome && currentHome.address === query
+      ? { lat: currentHome.latitude, lng: currentHome.longitude }
+      : { lat: coordinates.lat, lng: coordinates.long };
+
   return (
     <div className="flex flex-col w-full items-center justify-center">
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
@@ -132,7 +138,7 @@ export default function MapComponent({
             clickableIcons={false}
             gestureHandling={"greedy"}
             onBoundsChanged={handleBoundsChanged}
-            defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
+            defaultCenter={defaultCenter}
             defaultZoom={initZoom ? initZoom : 16}
             maxZoom={19}
             minZoom={3}

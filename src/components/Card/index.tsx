@@ -6,6 +6,7 @@ import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
+import { QueryContext } from "@/context/QueryContext";
 import Link from "next/link";
 import lookup from "country-code-lookup";
 
@@ -18,6 +19,9 @@ export default function Card({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
+  const { isSmallScreen } = useContext(QueryContext);
+
+  const target = isSmallScreen ? "_self" : "_blank";
 
   useEffect(() => {
     if (home && home.language) {
@@ -50,23 +54,7 @@ export default function Card({ home, isLoading }: Props) {
         <CarouselContent className="rounded-t-xl">
           {home.photos.map((photo: string, index) => (
             <div key={index}>
-              {/* Small screens: target="_self" */}
-              <Link href={`/homes/${home.id}`} className="flex sm:hidden">
-                <CarouselItem className="flex relative justify-center items-center rounded-t-xl">
-                  <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
-                    <Image
-                      src={photo}
-                      className="object-cover object-center rounded-t-lg"
-                      alt={home.title!}
-                      fill={true}
-                      sizes={"(max-width: 500px), (max-height: 500px)"}
-                    />
-                  </div>
-                </CarouselItem>
-              </Link>
-
-              {/* Larger screens: target="_blank" */}
-              <Link href={`/homes/${home.id}`} target="_blank" className="hidden sm:flex">
+              <Link href={`/homes/${home.id}`} target={target}>
                 <CarouselItem className="flex relative justify-center items-center rounded-t-xl">
                   <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
                     <Image

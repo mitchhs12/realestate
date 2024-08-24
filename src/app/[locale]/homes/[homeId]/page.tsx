@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import HomePhotos from "@/components/HomePhotos";
 import { getHomeById } from "@/app/[locale]/homes/actions";
+import HomeText from "@/components/HomeText";
 
 export const metadata: Metadata = {
   title: "Homes",
@@ -26,6 +27,9 @@ export default async function Page({ params }: { params: { homeId: string } }) {
         <div className="flex flex-col text-center border-2 h-full max-w-7xl w-full pt-8">
           <h1 className="flex justify-center text-3xl">{home.title}</h1>
           <HomePhotos home={home} />
+        </div>
+        <div>
+          <HomeText home={home} />
         </div>
       </main>
     );

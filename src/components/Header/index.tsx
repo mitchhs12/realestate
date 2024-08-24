@@ -5,7 +5,7 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { poppins } from "@/app/[locale]/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import { useCurrentLocale } from "@/locales/client";
 import { I18nProviderClient } from "@/locales/client";
 import { ChevronLeft } from "lucide-react";
-import { useRef } from "react";
+import { QueryContext } from "@/context/QueryContext";
 
 interface Props {
   guides: string;
@@ -62,6 +62,7 @@ export default function Header({
   const session = useSession();
   const user = session.data?.user;
   const locale = useCurrentLocale();
+  const { currentHome } = useContext(QueryContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -105,7 +106,11 @@ export default function Header({
               variant="outline"
               className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
               onClick={() => {
-                pathname === "/" ? router.refresh() : pathname.includes("/homes") ? router.back() : router.push("/");
+                pathname === "/"
+                  ? router.refresh()
+                  : pathname.includes("/homes")
+                  ? currentHome && router.back()
+                  : router.push("/");
               }}
             >
               <div className="flex justify-center items-center gap-1">
