@@ -1,12 +1,11 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { ReloadIcon, CrossCircledIcon, CheckCircledIcon } from "@radix-ui/react-icons";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { capitalizeFirstLetter } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";

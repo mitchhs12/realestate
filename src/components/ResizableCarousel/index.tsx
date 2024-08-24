@@ -14,7 +14,7 @@ export default function ResizableCard({ home, height }: Props) {
       <CarouselContent>
         {home.photos.map((photo: string, index) => (
           <CarouselItem key={index} className="flex justify-center items-center h-full w-full">
-            <div className={`relative justify-center items-center h-[${height ? height : "220px"}] w-full`}>
+            <div className={`relative justify-center items-center h-[220px] w-full`}>
               <Image
                 src={photo}
                 className="object-cover object-center rounded-t-lg"

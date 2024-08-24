@@ -23,12 +23,12 @@ export default async function Page({ params }: { params: { homeId: string } }) {
 
   if (home) {
     return (
-      <main className="flex flex-col md:justify-center min-h-screen-minus-header-svh md:flex-row">
-        <div className="flex flex-col text-center border-2 h-full max-w-7xl w-full pt-8">
+      <main className="flex flex-col items-center justify-start min-h-screen-minus-header-svh">
+        <div className="flex flex-col text-center h-full max-w-7xl w-full pt-8">
           <h1 className="flex justify-center text-3xl">{home.title}</h1>
           <HomePhotos home={home} />
         </div>
-        <div>
+        <div className="flex flex-col text-center h-full max-w-7xl w-full pt-8">
           <HomeText home={home} />
         </div>
       </main>

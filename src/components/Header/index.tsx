@@ -62,7 +62,7 @@ export default function Header({
   const session = useSession();
   const user = session.data?.user;
   const locale = useCurrentLocale();
-  const { currentHome } = useContext(QueryContext);
+  const { currentHome, isSmallScreen } = useContext(QueryContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -109,7 +109,11 @@ export default function Header({
                 pathname === "/"
                   ? router.refresh()
                   : pathname.includes("/homes")
-                  ? currentHome && router.back()
+                  ? currentHome
+                    ? isSmallScreen
+                      ? router.back()
+                      : router.push("/")
+                    : router.push("/")
                   : router.push("/");
               }}
             >
