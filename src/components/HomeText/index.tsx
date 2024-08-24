@@ -9,6 +9,9 @@ import { formatPrice } from "@/lib/utils";
 import { CheckCircledIcon, CrossCircledIcon, EyeOpenIcon, EyeClosedIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { User } from "next-auth";
+import { FlagComponent } from "@/components/ui/phone-input";
+import { Country } from "react-phone-number-input";
+import lookup from "country-code-lookup";
 
 interface Props {
   home: HomeType;
@@ -18,6 +21,8 @@ interface Props {
 export default function HomeText({ home, user }: Props) {
   const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice } = useContext(QueryContext);
   const { defaultCurrency, currencies } = useContext(LocaleContext);
+
+  console.log(defaultCurrency);
 
   useEffect(() => {
     if (home && home.address) {
@@ -56,44 +61,58 @@ export default function HomeText({ home, user }: Props) {
 
   return (
     <div className="flex flex-col w-full h-full justify-center p-8">
-      <div className="flex flex-row w-full h-full justify-between">
-        <div className="flex flex-col justify-start text-start w-full sm:w-2/3 border-2 h-auto">
-          <div className="flex flex-col justify-start gap-y-8 pb-8">
-            <p className="text-2xl">{home.address}</p>
-            <p className="text-2xl">{home.municipality}</p>
-            <p className="text-2xl">{home.subRegion}</p>
-            <p className="text-2xl">{home.region}</p>
-            <p className="text-2xl">{home.country}</p>
-            <p>{home.description}</p>
+      <div className="flex flex-row w-full h-full justify-between gap-4 md:gap-8">
+        <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-8 h-auto">
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col justify-start gap-y-3 pb-8">
+              <div className="text-2xl">{home.address?.split(",")[0]}</div>
+              <div className="flex gap-2 text-2xl">
+                <span>{home.municipality},</span>
+                <span>{home.subRegion},</span>
+                <span>{home.region}</span>
+              </div>
+              <div className="flex items-center text-2xl gap-3">
+                {home.country && lookup.byIso(home.country)?.country}
+                {home.country && (
+                  <FlagComponent
+                    country={lookup.byIso(home.country)?.iso2 as Country}
+                    countryName={home.country}
+                    height={"h-6"}
+                    width={"w-9"}
+                  />
+                )}
+              </div>
+            </div>
+            <div>{home.description}</div>
           </div>
-          <div className="flex flex-col gap-12 w-full xs:w-1/2 sm:w-3/4 border-2">
+          <div className="flex flex-col gap-12 w-full xs:w-1/2 sm:w-3/4">
             <div className="flex flex-col w-full gap-4">
-              <p className="text-xl">Rooms:</p>
+              <div className="text-xl">Rooms:</div>
               <div className="flex flex-row justify-between">
-                <p>Bedrooms:</p>
-                <p>{home.bedrooms}</p>
+                <span>Bedrooms:</span>
+                <span>{home.bedrooms}</span>
               </div>
               <div className="flex flex-row justify-between">
-                <p>Bathrooms:</p>
-                <p>{home.bathrooms}</p>
+                <span>Bathrooms:</span>
+                <span>{home.bathrooms}</span>
               </div>
               <div className="flex flex-row justify-between">
-                <p>Living Rooms:</p>
-                <p>{home.livingrooms}</p>
+                <span>Living Rooms:</span>
+                <span>{home.livingrooms}</span>
               </div>
               <div className="flex flex-row justify-between">
-                <p>Kitchens:</p>
-                <p>{home.kitchens}</p>
+                <span>Kitchens:</span>
+                <span>{home.kitchens}</span>
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              <p className="text-xl">Features:</p>
+              <div className="text-xl">Features:</div>
               {home.features.map((feature, index) => {
                 return <div key={index}>{feature}</div>;
               })}
             </div>
             <div className="flex flex-col gap-3">
-              <p className="text-xl">Type:</p>
+              <div className="text-xl">Type:</div>
               {home.type.map((type, index) => {
                 return <div key={index}>{type}</div>;
               })}
@@ -101,17 +120,23 @@ export default function HomeText({ home, user }: Props) {
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 h-full">
-          <Card>
-            <CardHeader className={`flex gap-y-3`}>
-              <CardTitle className={`text-2xl lg:text-3xl ${!revealPrice && "blur-md"}`}>
-                {formatPrice(defaultCurrency.symbol, home.priceUsd, defaultCurrency.usdPrice)}
+          <Card className="bg-primary shadow-2xl">
+            <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
+              <CardTitle className={`flex flex-col items-center ${!revealPrice && "blur-sm md:blur-md"}`}>
+                <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>
+                <div className="flex text-2xl md:text-3xl lg:text-5xl text-white dark:text-black">
+                  {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice)}
+                </div>
               </CardTitle>
-              <CardDescription className={`${!revealPrice && "blur-sm"}`}>
-                <p>Original listing price:</p>
-                {originalCurrencyRate && home.currency
-                  ? formatPrice(home.currency, home.price, originalCurrencyRate)
-                  : "Contact us"}
-                {home.currency}
+              <CardDescription
+                className={`flex flex-col w-full text-white dark:text-black ${!revealPrice && "blur-sm md:blur-md"}`}
+              >
+                <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency}):</span>
+                <span className={`flex justify-center text-base md:text-lg lg:text-xl font-semibold gap-2`}>
+                  {originalCurrencyRate && home.currency
+                    ? formatPrice(home.currency, home.price, originalCurrencyRate)
+                    : "Contact us"}
+                </span>
               </CardDescription>
               <div className="flex items-center justify-center">
                 <Button
@@ -119,25 +144,39 @@ export default function HomeText({ home, user }: Props) {
                     user ? setRevealPrice(!revealPrice) : openLogInModal();
                   }}
                   variant={"outline"}
-                  className="flex px-4 justify-center text-center"
+                  className="flex justify-center w-full text-center h-full"
                 >
-                  <div className="flex gap-2 w-[150px] justify-center">
-                    {revealPrice ? <EyeOpenIcon className="w-4 h-4" /> : <EyeClosedIcon className="w-4 h-4" />}
-                    <span className="text-xs">{`${revealPrice ? "Hide" : "Reveal"} the price!`}</span>
+                  <div className="flex gap-3 justify-center text-lg items-center">
+                    {revealPrice ? (
+                      <EyeOpenIcon className="w-4 md:w-6 h-4 md:h-6" />
+                    ) : (
+                      <EyeClosedIcon className="w-4 md:w-6 h-4 md:h-6" />
+                    )}
+                    <span className="text-xs md:text-sm lg:text-base">{`${
+                      revealPrice ? "Hide" : "Reveal"
+                    } the price!`}</span>
                   </div>
                 </Button>
               </div>
-            </CardHeader>
-            <CardContent className="flex flex-col items-center">
-              <div className="flex items-center gap-2 text-start text-sm sm:text-lg">
-                <strong className="text-xs md:text-sm lg:text-base">{"Price Negotiable?"}</strong>
-                {priceNegotiable ? (
-                  <CheckCircledIcon className="text-green-500 w-4 h-4 sm:w-6 sm:h-6" />
-                ) : (
-                  <CrossCircledIcon className="text-red-500 w-4 h-4 sm:w-6 sm:h-6" />
-                )}
+              <div className="flex flex-col items-center w-full">
+                <div className="flex items-center justify-center gap-2 w-full">
+                  <span className="flex text-start font-medium text-sm md:text-base lg:text-xl text-white dark:text-black">
+                    Price Negotiable?
+                  </span>
+                  <span className="flex text-center w-auto h-auto">
+                    {home.priceNegotiable ? (
+                      <span className="flex w-auto h-auto">
+                        <CheckCircledIcon className="rounded-full w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+                      </span>
+                    ) : (
+                      <span className="flex w-auto h-auto">
+                        <CrossCircledIcon className="text-red-500 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+                      </span>
+                    )}
+                  </span>
+                </div>
               </div>
-            </CardContent>
+            </CardHeader>
           </Card>
         </div>
       </div>

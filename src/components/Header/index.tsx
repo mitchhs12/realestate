@@ -129,7 +129,7 @@ export default function Header({
                 </h1>
               </div>
             </Button>
-            {!isSearchPage && !isSellPage && !isGuidesPage && (
+            {pathname === "/" && (
               <Link href="/guides">
                 <Button
                   size={"largeIcon"}
@@ -170,7 +170,7 @@ export default function Header({
         )} */}
 
         {!isSearchPage && !isSellPage && (
-          <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8">
+          <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
             <span className="text-sm md:text-lg">{construction}</span>
             <span className="text-xs md:text-md">{construction_sub}</span>
           </h1>

@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: { homeId: string } }) {
           <Footer />
         </footer>
         <div className="sticky sm:hidden bottom-0 bg-white w-full h-full text-center">
-          {<StickyPrice home={home} user={user} />}
+          <StickyPrice home={home} user={user} />
         </div>
       </div>
     );
