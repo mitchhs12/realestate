@@ -117,15 +117,27 @@ const CountrySelect = ({ disabled, value, onChange, options, noCountry, searchCo
   );
 };
 
-export const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
+interface FlagComponentProps extends RPNInput.FlagProps {
+  height?: string;
+  width?: string;
+}
+
+export const FlagComponent = ({ country, countryName, height, width }: FlagComponentProps) => {
   const Flag = flags[country];
 
   return (
-    <span className="bg-foreground/20 flex h-4 w-6 overflow-hidden rounded-sm">
+    <span
+      className={`bg-foreground/20 flex overflow-hidden rounded-sm ${height || "h-4"} ${width || "w-6"}`}
+      style={{
+        height: height || undefined,
+        width: width || undefined,
+      }}
+    >
       {Flag && <Flag title={countryName} />}
     </span>
   );
 };
+
 FlagComponent.displayName = "FlagComponent";
 
 export { PhoneInput };

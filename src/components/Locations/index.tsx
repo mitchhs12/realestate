@@ -13,7 +13,8 @@ import {
   CarouselNext,
   CarouselDots,
 } from "@/components/ui/carousel";
-import { getFlagEmoji } from "@/lib/utils";
+import { FlagComponent } from "@/components/ui/phone-input";
+import { Country } from "react-phone-number-input";
 
 interface CityImage {
   name: string;
@@ -252,10 +253,15 @@ export default function Locations() {
                       onLoad={() => handleImageLoad(urlMap[city.name])}
                     />
                     <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
-                      <p className={`${underlinedImage === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
-                      <p className={`text-sm md:text-sm ${underlinedImage === city.name && "underline"}`}>
-                        {city.name.split(",")[1]} {getFlagEmoji(city.countryCode)}
-                      </p>
+                      <div className="flex flex-col justify-center items-center">
+                        <p className={`${underlinedImage === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
+                        <p
+                          className={`flex items-center gap-2 text-sm ${underlinedImage === city.name && "underline"}`}
+                        >
+                          {city.name.split(",")[1]}{" "}
+                          {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </CarouselItem>
