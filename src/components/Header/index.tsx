@@ -62,28 +62,20 @@ export default function Header({
   const session = useSession();
   const user = session.data?.user;
   const locale = useCurrentLocale();
-  const { currentHome, isSmallScreen } = useContext(QueryContext);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const {
+    currentHome,
+    isSmallScreen,
+    openLogInModal,
+    openSignUpModal,
+    closeModal,
+    isModalOpen,
+    isLoginOpen,
+    setIsLoginOpen,
+  } = useContext(QueryContext);
 
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
   const isGuidesPage = pathname.includes("/guides");
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const openSignUpModal = () => {
-    setIsLoginOpen(false);
-    setIsModalOpen(true);
-  };
-
-  const openLogInModal = () => {
-    setIsLoginOpen(true);
-    setIsModalOpen(true);
-  };
 
   const [previousPath, setPreviousPath] = useState("");
 
@@ -122,9 +114,11 @@ export default function Header({
                   <div className="flex">
                     <Logo width={"40"} height={"40"} />
                   </div>
-                  <div className="flex sm:hidden">
-                    <ChevronLeft />
-                  </div>
+                  {pathname !== "/" && (
+                    <div className="flex sm:hidden">
+                      <ChevronLeft />
+                    </div>
+                  )}
                 </div>
                 <h1
                   className={`${poppins.className} ${
@@ -227,8 +221,8 @@ export default function Header({
 
       <div className="flex relative z-100">
         <I18nProviderClient locale={locale}>
-          <ModalPortal isOpen={isModalOpen} onClose={closeModal}>
-            <Modal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />
+          <ModalPortal>
+            <Modal />
           </ModalPortal>
         </I18nProviderClient>
       </div>

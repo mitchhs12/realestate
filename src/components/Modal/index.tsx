@@ -4,22 +4,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Icons } from "@/components/icons";
 import { useTheme } from "next-themes";
 import { useScopedI18n } from "@/locales/client";
+import { QueryContext } from "@/context/QueryContext";
 
-interface Props {
-  isLoginOpen?: boolean;
-  setIsLoginOpen?: (value: boolean) => void;
-}
-
-export function Modal({ isLoginOpen, setIsLoginOpen }: Props) {
+export function Modal() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const { resolvedTheme: theme } = useTheme();
+  const { isLoginOpen, setIsLoginOpen } = useContext(QueryContext);
   const [isLogin, setIsLogin] = useState(isLoginOpen);
   const g = useScopedI18n("home.modal.general");
   const t = useScopedI18n(`home.modal.${isLogin ? "log-in" : "sign-up"}`);

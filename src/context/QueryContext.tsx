@@ -16,6 +16,15 @@ interface QueryContextProps {
   setCurrentHome: (value: HomeType | null) => void;
   isSmallScreen: boolean;
   setIsSmallScreen: (value: boolean) => void;
+  openSignUpModal: () => void;
+  openLogInModal: () => void;
+  closeModal: () => void;
+  isModalOpen: boolean;
+  setIsModalOpen: (value: boolean) => void;
+  isLoginOpen: boolean;
+  setIsLoginOpen: (value: boolean) => void;
+  revealPrice: boolean;
+  setRevealPrice: (value: boolean) => void;
 }
 
 const QueryContext = createContext<QueryContextProps>({
@@ -29,6 +38,15 @@ const QueryContext = createContext<QueryContextProps>({
   setCurrentHome: () => {},
   isSmallScreen: false,
   setIsSmallScreen: () => {},
+  openSignUpModal: () => {},
+  openLogInModal: () => {},
+  closeModal: () => {},
+  isModalOpen: false,
+  setIsModalOpen: () => {},
+  isLoginOpen: false,
+  setIsLoginOpen: () => {},
+  revealPrice: false,
+  setRevealPrice: () => {},
 });
 
 interface QueryProviderProps {
@@ -41,8 +59,25 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
   const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [revealPrice, setRevealPrice] = useState(false);
 
   const pathname = usePathname();
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openSignUpModal = () => {
+    setIsLoginOpen(false);
+    setIsModalOpen(true);
+  };
+
+  const openLogInModal = () => {
+    setIsLoginOpen(true);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     if (pathname === "/") {
@@ -74,6 +109,15 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setCurrentHome,
         isSmallScreen,
         setIsSmallScreen,
+        openSignUpModal,
+        openLogInModal,
+        closeModal,
+        isModalOpen,
+        setIsModalOpen,
+        isLoginOpen,
+        setIsLoginOpen,
+        revealPrice,
+        setRevealPrice,
       }}
     >
       {children}

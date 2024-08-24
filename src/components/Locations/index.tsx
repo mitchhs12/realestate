@@ -254,15 +254,22 @@ export default function Locations() {
                     />
                     <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
                       <div className="flex flex-col justify-center items-center">
-                        <p className={`${underlinedImage === city.name && "underline"}`}>{city.name.split(",")[0]}</p>
+                        <p className={`flex items-center gap-x-2 ${underlinedImage === city.name && "underline"}`}>
+                          {city.name.split(",")[0]}{" "}
+                        </p>
                         <p
-                          className={`flex items-center gap-2 text-sm ${underlinedImage === city.name && "underline"}`}
+                          className={`flex items-center gap-x-2 text-sm ${
+                            underlinedImage === city.name && "underline"
+                          }`}
                         >
                           {city.name.split(",")[1]}{" "}
                           {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
                         </p>
                       </div>
                     </div>
+                    {/* <div className="absolute bottom-2 right-2 text-black dark:text-white">
+                      {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
+                    </div> */}
                   </div>
                 </CarouselItem>
                 {city.neighborhoods.map((neighborhood) => (
@@ -299,8 +306,14 @@ export default function Locations() {
                           underlinedImage === `${neighborhood.name}, ${city.name}` && "underline"
                         }`}
                       >
-                        {neighborhood.name}
+                        <p className="flex justify-center items-center gap-2">
+                          {neighborhood.name}
+                          {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
+                        </p>
                       </div>
+                      {/* <div className="absolute bottom-2 right-2 text-black dark:text-white">
+                        {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
+                      </div> */}
                     </div>
                   </CarouselItem>
                 ))}

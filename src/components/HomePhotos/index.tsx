@@ -22,8 +22,8 @@ export default function HomePhotos({ home }: { home: HomeType }) {
         </div>
 
         {/* Carousel for smaller screens */}
-        <div className="md:hidden w-full border-2 border-green-500">
-          <ResizableCarousel home={home} height={"300px"} />
+        <div className="md:hidden w-full">
+          <ResizableCarousel home={home} height={"h-[300px]"} />
         </div>
       </div>
     </div>
