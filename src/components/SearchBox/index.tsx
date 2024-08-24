@@ -168,9 +168,16 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                   }}
                 />
               </PopoverTrigger>
-              <Button variant="default" type="submit" disabled={loading} size="default" className="hidden lg:flex">
-                <div className="hidden sm:flex items-center justify-center w-[50px]">
-                  {loading ? <ReloadIcon className="h-5 w-5 animate-spin" /> : text}
+              <Button
+                variant="default"
+                type="submit"
+                disabled={loading}
+                size="default"
+                className="hidden lg:flex items-center justify-center min-w-[100px]"
+              >
+                <div className="inline-flex items-center justify-center">
+                  <span className={`block ${loading ? "invisible" : "visible"}`}>{text}</span>
+                  {loading && <ReloadIcon className="absolute h-5 w-auto animate-spin" />}
                 </div>
               </Button>
             </div>

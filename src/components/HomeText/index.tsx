@@ -57,24 +57,47 @@ export default function HomeText({ home, user }: Props) {
   return (
     <div className="flex flex-col w-full h-full justify-center p-8">
       <div className="flex flex-row w-full h-full justify-between">
-        <div className="flex flex-col justify-start text-start w-full sm:w-2/3 h-auto px-4">
-          <div className="flex flex-col gap-y-8">
+        <div className="flex flex-col justify-start text-start w-full sm:w-2/3 border-2 h-auto">
+          <div className="flex flex-col justify-start gap-y-8 pb-8">
             <p className="text-2xl">{home.address}</p>
+            <p className="text-2xl">{home.municipality}</p>
+            <p className="text-2xl">{home.subRegion}</p>
+            <p className="text-2xl">{home.region}</p>
+            <p className="text-2xl">{home.country}</p>
             <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
-            <p>{home.description}</p>
+          </div>
+          <div className="flex flex-col gap-12 w-full xs:w-1/2 sm:w-3/4 border-2">
+            <div className="flex flex-col w-full gap-4">
+              <p className="text-xl">Rooms:</p>
+              <div className="flex flex-row justify-between">
+                <p>Bedrooms:</p>
+                <p>{home.bedrooms}</p>
+              </div>
+              <div className="flex flex-row justify-between">
+                <p>Bathrooms:</p>
+                <p>{home.bathrooms}</p>
+              </div>
+              <div className="flex flex-row justify-between">
+                <p>Living Rooms:</p>
+                <p>{home.livingrooms}</p>
+              </div>
+              <div className="flex flex-row justify-between">
+                <p>Kitchens:</p>
+                <p>{home.kitchens}</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-xl">Features:</p>
+              {home.features.map((feature, index) => {
+                return <div key={index}>{feature}</div>;
+              })}
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-xl">Type:</p>
+              {home.type.map((type, index) => {
+                return <div key={index}>{type}</div>;
+              })}
+            </div>
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 h-full">
