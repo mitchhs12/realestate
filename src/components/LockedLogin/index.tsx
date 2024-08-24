@@ -12,7 +12,7 @@ export default function LockedLogin() {
   }, []);
 
   return (
-    <ModalPortal isOpen={openState}>
+    <ModalPortal>
       <Modal />
     </ModalPortal>
   );
