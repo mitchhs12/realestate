@@ -117,7 +117,7 @@ export default function HomeText({ home, user }: Props) {
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 h-full">
-          <Card className="bg-primary shadow-2xl">
+          <Card className="bg-primary shadow-2xl border">
             <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
               <CardTitle className={`flex flex-col items-center ${!revealPrice && "blur-sm md:blur-md"}`}>
                 <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>
@@ -128,7 +128,7 @@ export default function HomeText({ home, user }: Props) {
               <CardDescription
                 className={`flex flex-col w-full text-white dark:text-black ${!revealPrice && "blur-sm md:blur-md"}`}
               >
-                <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency}):</span>
+                <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency})</span>
                 <span className={`flex justify-center text-base md:text-lg lg:text-xl font-semibold gap-2`}>
                   {originalCurrencyRate && home.currency
                     ? formatPrice(home.currency, home.price, originalCurrencyRate)
