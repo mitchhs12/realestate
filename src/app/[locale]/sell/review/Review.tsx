@@ -256,7 +256,7 @@ export default function Review({
                     <div className="flex flex-col sm:flex-row w-full justify-between items-center gap-4 pb-4">
                       <strong className="flex justify-center items-center gap-x-4 text-md sm:text-xl overflow-auto">
                         {price_text}
-                        <p>{formatPrice(currency, price)}</p>
+                        <p>{formatPrice(currency, price, 0)}</p>
                         <p>{currency}</p>
                       </strong>
                       <div>
