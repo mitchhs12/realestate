@@ -2,7 +2,7 @@
 
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HomeType } from "@/lib/validations";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { formatPrice } from "@/lib/utils";
@@ -12,6 +12,8 @@ import { User } from "next-auth";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
+import { formatNumber } from "@/lib/utils";
+import { Switch } from "@/components/ui/switch";
 
 interface Props {
   home: HomeType;
@@ -20,9 +22,16 @@ interface Props {
 
 export default function HomeText({ home, user }: Props) {
   const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice } = useContext(QueryContext);
-  const { defaultCurrency, currencies } = useContext(LocaleContext);
+  const { defaultCurrency, currencies, numerals } = useContext(LocaleContext);
+  const [feet, setFeet] = useState(false);
+  const [sqSize, setSqSize] = useState(home.areaSqm);
 
   console.log(defaultCurrency);
+
+  useEffect(() => {
+    const ftConversion = 10.76391042;
+    setSqSize(!feet ? areaSqm : Math.round(areaSqm * ftConversion));
+  }, [feet]);
 
   useEffect(() => {
     if (home && home.address) {
@@ -60,7 +69,7 @@ export default function HomeText({ home, user }: Props) {
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
 
   return (
-    <div className="flex flex-col w-full h-full justify-center p-8">
+    <div className="flex flex-col w-full h-full justify-center px-8 py-4">
       <div className="flex flex-row w-full h-full justify-between gap-4 md:gap-8">
         <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-8 h-auto">
           <div className="flex flex-col gap-3">
@@ -88,24 +97,56 @@ export default function HomeText({ home, user }: Props) {
             </div>
             <div>{home.description}</div>
           </div>
+          <div className="flex text-lg items-center align-middle gap-2">
+            <p className="text-xl">{formatNumber(home.capacity, numerals)}</p> people can comfortably live in this
+            property.
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2 text-lg">
+              Size of this property:{" "}
+              <span className="text-xl">
+                {formatNumber(sqSize, numerals)} {feet ? "ft" : "m"}²
+              </span>
+            </div>
+            <div className="flex gap-2 text-lg items-center">
+              Units:{" "}
+              <span className="flex items-center gap-2">
+                {"m²"}
+                <Switch
+                  checked={feet}
+                  className="flex"
+                  onCheckedChange={() => {
+                    if (feet) {
+                      setFeet(true);
+                    } else {
+                      setFeet(false);
+                    }
+                    setFeet(!feet);
+                  }}
+                />
+                {"ft²"}
+              </span>
+            </div>
+          </div>
+
           <div className="flex flex-col gap-12 w-full sm:w-3/4">
             <div className="flex flex-col w-full gap-4">
               <div className="text-xl">Rooms:</div>
               <div className="flex flex-row justify-between">
                 <span>Bedrooms:</span>
-                <span>{home.bedrooms}</span>
+                <span>{formatNumber(home.bedrooms, numerals)}</span>
               </div>
               <div className="flex flex-row justify-between">
                 <span>Bathrooms:</span>
-                <span>{home.bathrooms}</span>
+                <span>{formatNumber(home.bathrooms, numerals)}</span>
               </div>
               <div className="flex flex-row justify-between">
                 <span>Living Rooms:</span>
-                <span>{home.livingrooms}</span>
+                <span>{formatNumber(home.livingrooms, numerals)}</span>
               </div>
               <div className="flex flex-row justify-between">
                 <span>Kitchens:</span>
-                <span>{home.kitchens}</span>
+                <span>{formatNumber(home.kitchens, numerals)}</span>
               </div>
             </div>
             <div className="flex flex-col gap-3">
@@ -116,8 +157,8 @@ export default function HomeText({ home, user }: Props) {
             </div>
           </div>
         </div>
-        <div className="hidden sm:flex flex-col w-1/3 h-full">
-          <Card className="bg-primary shadow-2xl border">
+        <div className="hidden sm:flex flex-col w-1/3 h-full shadow-2xl">
+          <Card className="bg-primary border-2 border-green-700">
             <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
               <CardTitle className={`flex flex-col items-center ${!revealPrice && "blur-sm md:blur-md"}`}>
                 <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>

@@ -33,7 +33,7 @@ export default function HomePhotos({ home }: { home: HomeType }) {
   }, [isModalOpen, selectedImageIndex]);
 
   return (
-    <div className="flex flex-col min-h-full w-full p-8">
+    <div className="flex flex-col min-h-full w-full px-8 py-4">
       <div className="relative w-full">
         {/* Grid for larger screens */}
         <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-4 h-80 lg:h-96 w-full">
@@ -54,7 +54,7 @@ export default function HomePhotos({ home }: { home: HomeType }) {
           ))}
         </div>
         {home.photos.length > 0 && (
-          <div className="absolute bottom-[-3rem] right-0">
+          <div className="absolute bottom-3 md:left-3">
             <Button variant="outline" onClick={() => openModal(0)}>
               Show all photos
             </Button>

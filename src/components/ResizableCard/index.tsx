@@ -9,6 +9,7 @@ import { useState } from "react";
 import Link from "next/link";
 import lookup from "country-code-lookup";
 import ResizableCarousel from "@/components/ResizableCarousel";
+import { QueryContext } from "@/context/QueryContext";
 
 interface Props {
   home: HomeType | null;
@@ -19,6 +20,9 @@ export default function ResizableCard({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
+  const { isSmallScreen } = useContext(QueryContext);
+
+  const target = isSmallScreen ? "_self" : "_blank";
 
   useEffect(() => {
     if (home && home.language) {
@@ -48,7 +52,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
       }}
     >
       <ResizableCarousel home={home} />
-      <Link href={`/homes/${home.id}`}>
+      <Link href={`/homes/${home.id}`} target={target}>
         <div className="flex flex-col justify-center items-center w-full gap-2 px-2">
           <div className={`w-full flex ${home.title && home.title.length > 20 ? "justify-start" : "justify-center"}`}>
             <h2
