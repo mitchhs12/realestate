@@ -10,16 +10,17 @@ export function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const formatPrice = (currency: string, value: number, decimals: number = 0): string => {
+export const formatPrice = (currency: string, value: number, decimals: number): string => {
   const option = locales.find((option) => option.currency === currency);
   const locale = option?.locale || "en-US";
-  const decimalLimit = option?.decimalsLimit || 2;
 
-  return new Intl.NumberFormat(locale, {
+  const formattedPrice = new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
-    maximumFractionDigits: decimalLimit > 0 ? decimalLimit : 0,
+    maximumFractionDigits: decimals,
   }).format(value);
+
+  return formattedPrice;
 };
 
 export const getFullCountryName = (locale: string) => {

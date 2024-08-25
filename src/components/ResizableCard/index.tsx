@@ -72,7 +72,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
             {home.country && getFlagEmoji(lookup.byIso(home.country)?.iso2 || "")}
           </div>
           <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
-            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice)}
+            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
           </div>
         </div>
       </Link>

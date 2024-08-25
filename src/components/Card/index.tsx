@@ -101,7 +101,7 @@ export default function Card({ home, isLoading }: Props) {
             )}
           </div>
           <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
-            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice)}
+            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
           </div>
         </div>
       </Link>

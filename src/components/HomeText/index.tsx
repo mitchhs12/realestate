@@ -65,27 +65,30 @@ export default function HomeText({ home, user }: Props) {
         <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-8 h-auto">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col justify-start gap-y-3 pb-8">
-              <div className="text-2xl">{home.address?.split(",")[0]}</div>
-              <div className="flex gap-2 text-2xl">
+              <div className="flex flex-wrap gap-2 text-2xl">
+                <div className="flex flex-col gap-3">
+                  {home.type.map((type, index) => {
+                    return <span key={index}>{type}</span>;
+                  })}
+                </div>
+                in
                 <span>{home.municipality},</span>
-                <span>{home.subRegion},</span>
-                <span>{home.region}</span>
-              </div>
-              <div className="flex items-center text-2xl gap-3">
-                {home.country && lookup.byIso(home.country)?.country}
-                {home.country && (
-                  <FlagComponent
-                    country={lookup.byIso(home.country)?.iso2 as Country}
-                    countryName={home.country}
-                    height={"h-6"}
-                    width={"w-9"}
-                  />
-                )}
+                <span className="flex items-center text-2xl gap-3">
+                  {home.country && lookup.byIso(home.country)?.country}
+                  {home.country && (
+                    <FlagComponent
+                      country={lookup.byIso(home.country)?.iso2 as Country}
+                      countryName={home.country}
+                      height={"h-6"}
+                      width={"w-9"}
+                    />
+                  )}
+                </span>
               </div>
             </div>
             <div>{home.description}</div>
           </div>
-          <div className="flex flex-col gap-12 w-full xs:w-1/2 sm:w-3/4">
+          <div className="flex flex-col gap-12 w-full sm:w-3/4">
             <div className="flex flex-col w-full gap-4">
               <div className="text-xl">Rooms:</div>
               <div className="flex flex-row justify-between">
@@ -111,12 +114,6 @@ export default function HomeText({ home, user }: Props) {
                 return <div key={index}>{feature}</div>;
               })}
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="text-xl">Type:</div>
-              {home.type.map((type, index) => {
-                return <div key={index}>{type}</div>;
-              })}
-            </div>
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 h-full">
@@ -124,8 +121,8 @@ export default function HomeText({ home, user }: Props) {
             <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
               <CardTitle className={`flex flex-col items-center ${!revealPrice && "blur-sm md:blur-md"}`}>
                 <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>
-                <div className="flex text-2xl md:text-3xl lg:text-5xl text-white dark:text-black">
-                  {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice)}
+                <div className="flex text-xl md:text-2xl lg:text-4xl text-white dark:text-black">
+                  {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
                 </div>
               </CardTitle>
               <CardDescription
@@ -166,7 +163,7 @@ export default function HomeText({ home, user }: Props) {
                   <span className="flex text-center w-auto h-auto">
                     {home.priceNegotiable ? (
                       <span className="flex w-auto h-auto">
-                        <CheckCircledIcon className="rounded-full w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+                        <CheckCircledIcon className="rounded-full text-white dark:text-black w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
                       </span>
                     ) : (
                       <span className="flex w-auto h-auto">

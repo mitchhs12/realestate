@@ -25,14 +25,14 @@ export default function StickyPrice({ home, user }: Props) {
       <div className="flex flex-row items-end justify-between w-full">
         <CardTitle className={`flex flex-col text-white items-start w-1/2 ${!revealPrice && "blur-md"}`}>
           <span className="font-light">Price:</span>
-          <span className="text-3xl font-semibold">
-            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice)}
+          <span className="text-xl font-semibold">
+            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
           </span>
         </CardTitle>
         <CardDescription className={`flex flex-col text-white w-1/2 h-full text-end ${!revealPrice && "blur-sm"}`}>
           <span className="text-xs">Original price ({home.currency})</span>
           <span className="flex justify-end gap-2 text-lg font-semibold">
-            {originalCurrencyRate && home.currency ? formatPrice(home.currency, home.price) : "Contact us"}
+            {originalCurrencyRate && home.currency ? formatPrice(home.currency, home.price, 0) : "Contact us"}
           </span>
         </CardDescription>
       </div>
