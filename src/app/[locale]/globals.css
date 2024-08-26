@@ -109,16 +109,15 @@ body {
 .custom-marker-clustering-map .marker.feature {
   width: 40px;
   height: 40px;
-
   background-color: #3f5b72;
-  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.5));
+  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .custom-marker-clustering-map .marker.cluster {
   width: 56px;
   height: 56px;
   background-color: #618bad;
-  filter: drop-shadow(2px 4px 12px rgba(0, 0, 0, 0.7));
+  -webkit-box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.7);
   overflow: hidden;
   padding-bottom: 0;
 }
@@ -127,7 +126,6 @@ body {
   background-color: white;
   color: rgba(0, 0, 0, 0.5);
   padding: 3px 6px;
-  /* oversized by the padding of the container */
   width: 100%;
   text-align: center;
   margin-top: 6px;
