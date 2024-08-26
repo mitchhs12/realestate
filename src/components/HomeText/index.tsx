@@ -15,6 +15,7 @@ import lookup from "country-code-lookup";
 import { formatNumber } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
 import BrokenPrice from "@/components/BrokenPrice";
+import { Check } from "lucide-react";
 
 interface Props {
   home: HomeType;
@@ -22,8 +23,16 @@ interface Props {
 }
 
 export default function HomeText({ home, user }: Props) {
-  const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice, isModalOpen } =
-    useContext(QueryContext);
+  const {
+    setCurrentHome,
+    setQuery,
+    openLogInModal,
+    revealPrice,
+    setRevealPrice,
+    revealContact,
+    setRevealContact,
+    isModalOpen,
+  } = useContext(QueryContext);
   const { defaultCurrency, currencies, numerals } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
@@ -32,7 +41,7 @@ export default function HomeText({ home, user }: Props) {
 
   useEffect(() => {
     const ftConversion = 10.76391042;
-    setSqSize(!feet ? areaSqm : Math.round(areaSqm * ftConversion));
+    setSqSize(!feet ? home.areaSqm : Math.round(home.areaSqm * ftConversion));
   }, [feet]);
 
   useEffect(() => {
@@ -97,16 +106,18 @@ export default function HomeText({ home, user }: Props) {
                 </span>
               </div>
             </div>
-            <div>{home.description}</div>
+            <div className="text-sm md:text-base">{home.description}</div>
           </div>
-          <p className="text-base sm:text-lg">
-            <span className="text-lg sm:text-xl">{formatNumber(home.capacity, numerals)}</span> people can comfortably
-            live here.
-          </p>
-
+          <div>
+            Capacity:
+            <p className="text-base sm:text-lg">
+              <span className="text-lg sm:text-xl">{formatNumber(home.capacity, numerals)}</span> people can comfortably
+              live here.
+            </p>
+          </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2 text-base sm:text-lg">
-              Size of this property:{" "}
+              Property size:{" "}
               <span className="flex text-base sm:text-lg">
                 {formatNumber(sqSize, numerals)} {feet ? "ft" : "m"}²
               </span>
@@ -131,37 +142,41 @@ export default function HomeText({ home, user }: Props) {
               </span>
             </div>
           </div>
-
           <div className="flex flex-col gap-12 w-full sm:w-3/4">
             <div className="flex flex-col w-full gap-4">
               <div className="text-xl">Rooms:</div>
-              <div className="flex flex-row justify-between">
-                <span>Bedrooms:</span>
-                <span>{formatNumber(home.bedrooms, numerals)}</span>
+              <div className="flex gap-3">
+                <span>{formatNumber(home.bedrooms, numerals)}</span>{" "}
+                <span>{home.bedrooms !== 1 ? "Bedrooms" : "Bedroom"}</span>
               </div>
-              <div className="flex flex-row justify-between">
-                <span>Bathrooms:</span>
+              <div className="flex gap-3">
                 <span>{formatNumber(home.bathrooms, numerals)}</span>
+                <span>{home.bathrooms !== 1 ? "Bathrooms" : "Bathroom"}</span>
               </div>
-              <div className="flex flex-row justify-between">
-                <span>Living Rooms:</span>
+              <div className="flex gap-3">
                 <span>{formatNumber(home.livingrooms, numerals)}</span>
+                <span>{home.livingrooms !== 1 ? "Living Rooms" : "Living Room"}</span>
               </div>
-              <div className="flex flex-row justify-between">
-                <span>Kitchens:</span>
+              <div className="flex gap-3">
                 <span>{formatNumber(home.kitchens, numerals)}</span>
+                <span>{home.kitchens !== 1 ? "Kitchens" : "Kitchen"}</span>
               </div>
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-xl">Features:</div>
               {home.features.map((feature, index) => {
-                return <div key={index}>{feature}</div>;
+                return (
+                  <div key={index} className="flex items-center gap-2">
+                    <Check size={18} />
+                    {feature}
+                  </div>
+                );
               })}
             </div>
           </div>
         </div>
-        <div className="hidden sm:flex flex-col w-1/3 h-full shadow-2xl">
-          <Card className="bg-primary border-2 border-green-700">
+        <div className="hidden sm:flex flex-col w-1/3 max-w-xs h-full items-end rounded-xl gap-10">
+          <Card className="bg-primary w-full shadow-xl">
             <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
               <CardTitle className={`flex flex-col items-center`}>
                 <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>
@@ -215,7 +230,7 @@ export default function HomeText({ home, user }: Props) {
               )}
               <div className="flex flex-col items-center w-full">
                 <div className="flex items-center justify-center gap-2 w-full">
-                  <span className="flex text-start font-medium text-sm md:text-base lg:text-xl text-white dark:text-black">
+                  <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl text-white dark:text-black">
                     Price Negotiable?
                   </span>
                   <span className="flex text-center w-auto h-auto">
@@ -232,6 +247,69 @@ export default function HomeText({ home, user }: Props) {
                 </div>
               </div>
             </CardHeader>
+          </Card>
+          <Card className="w-full max-w-xs shadow-xl">
+            <CardHeader>
+              <CardTitle className="text-md lg:text-lg">Owner Contact Information</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-5">
+              <div className="flex flex-col lg:flex-row lg:items-end gap-1 lg:gap-2">
+                <span className="text-start text-xs md:text-sm lg:text-base lg:text-end max-w-[60px] w-full">
+                  Name:
+                </span>
+                <span
+                  className={`${
+                    !revealContact ? "blur-sm select-none" : "select-text"
+                  } text-start text-xs md:text-sm lg:text-base lg:text-start w-4/5 font-medium`}
+                >
+                  {home.contactName}
+                </span>
+              </div>
+              <div className="flex flex-col lg:flex-row lg:items-end gap-1 lg:gap-2">
+                <span className="text-start text-xs md:text-sm lg:text-base lg:text-end max-w-[60px] w-full">
+                  Email:
+                </span>
+                <span
+                  className={`${
+                    !revealContact ? "blur-sm select-none" : "select-text"
+                  } text-start text-xs md:text-sm lg:text-base lg:text-start w-4/5 font-medium`}
+                >
+                  {home.contactEmail}
+                </span>
+              </div>
+              <div className="flex flex-col lg:flex-row lg:items-end gap-1 lg:gap-2">
+                <span className="text-start text-xs md:text-sm lg:text-base lg:text-end max-w-[60px] w-full">
+                  Phone:
+                </span>
+                <span
+                  className={`${
+                    !revealContact ? "blur-sm select-none" : "select-text"
+                  } text-start text-xs md:text-sm lg:text-base lg:text-start w-4/5 font-medium`}
+                >
+                  {home.contactPhone}
+                </span>
+              </div>
+              <div className="flex items-center justify-center">
+                <Button
+                  onClick={() => {
+                    setRevealContact(!revealContact);
+                  }}
+                  variant={"outline"}
+                  className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
+                >
+                  <div className="flex gap-3 justify-center text-lg items-center">
+                    {revealContact ? (
+                      <EyeOpenIcon className="w-4 md:w-6 h-4 md:h-6" />
+                    ) : (
+                      <EyeClosedIcon className="w-4 md:w-6 h-4 md:h-6" />
+                    )}
+                    <span className="text-xs md:text-sm lg:text-base">{`${
+                      revealContact ? "Hide" : "Reveal"
+                    } Contact Info!`}</span>
+                  </div>
+                </Button>
+              </div>
+            </CardContent>
           </Card>
         </div>
       </div>

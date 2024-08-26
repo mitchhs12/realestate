@@ -1,6 +1,7 @@
 import { HomeType } from "@/lib/validations";
 import { formatBrokenPrice } from "@/lib/utils";
 import { User } from "next-auth";
+import { Skeleton } from "../ui/skeleton";
 
 interface Props {
   home: HomeType;
@@ -34,14 +35,16 @@ export default function BrokenPrice({
 
           return (
             <span className={`flex items-center text-center ${className} font-semibold mb-2`}>
-              {symbolFirst ? (
+              {!user ? (
+                <Skeleton className="h-4 sm:h-5 lg:h-7 w-32" />
+              ) : symbolFirst ? (
                 <>
                   <span>{symbol}</span>
-                  <span className={`${user || blur ? "" : `${blurAmount} blur-sm`}`}>{number}</span>
+                  <span className={`${user || blur ? "" : `${blurAmount} blur-sm select-none`}`}>{number}</span>
                 </>
               ) : (
                 <>
-                  <span className={`${user || blur ? "" : `${blurAmount} blur-sm`}`}>{number}</span>
+                  <span className={`${user || blur ? "" : `${blurAmount} blur-sm select-none`}`}>{number}</span>
                   <span>{symbol}</span>
                 </>
               )}

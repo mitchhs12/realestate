@@ -5,10 +5,17 @@ import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
+import { getFeatured, getNew } from "./actions";
 
 export default async function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
-  const scopedT = await getScopedI18n("home");
   setStaticParamsLocale(locale);
+  const [scopedT, featuredHomesData, newHomesData] = await Promise.all([
+    getScopedI18n("home"),
+    getFeatured(),
+    getNew(),
+  ]);
+  const newHomes = newHomesData.map((home) => home || null);
+  const featuredHomes = featuredHomesData.map((home) => home || null);
 
   return (
     <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
@@ -29,7 +36,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
             <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light ">
               {scopedT("Popular")}
             </h2>
-            <Listings type={"featured"} />
+            <Listings homes={featuredHomes} />
           </div>
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-black">
@@ -37,7 +44,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
             <h2 className="flex justify-center text-sm md:text-md lg:text-lg xl:text-lg font-light">
               {scopedT("Newest")}
             </h2>
-            <Listings type={"new"} />
+            <Listings homes={newHomes} />
           </div>
         </section>
       </div>

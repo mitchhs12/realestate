@@ -1,8 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
-import { formatBrokenPrice } from "@/lib/utils";
 import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
@@ -109,7 +110,7 @@ export default function Card({ home, isLoading }: Props) {
               newCurrencySymbol={defaultCurrency.symbol}
               newCurrencyUsdPrice={defaultCurrency.usdPrice}
               user={user}
-              className="text-sm md:text-md lg:text-lg "
+              className="text-sm md:text-md lg:text-lg"
             />
           </div>
         </div>

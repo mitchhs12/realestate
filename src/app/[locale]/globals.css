@@ -126,6 +126,7 @@ body {
   background-color: white;
   color: rgba(0, 0, 0, 0.5);
   padding: 3px 6px;
+  /* oversized by the padding of the container */
   width: 100%;
   text-align: center;
   margin-top: 6px;

@@ -27,6 +27,8 @@ interface QueryContextProps {
   setIsLoginOpen: (value: boolean) => void;
   revealPrice: boolean;
   setRevealPrice: (value: boolean) => void;
+  revealContact: boolean;
+  setRevealContact: (value: boolean) => void;
   user?: User;
   session: {
     update: UpdateSession;
@@ -55,6 +57,8 @@ const QueryContext = createContext<QueryContextProps>({
   setIsLoginOpen: () => {},
   revealPrice: false,
   setRevealPrice: () => {},
+  revealContact: false,
+  setRevealContact: () => {},
   user: undefined,
   session: {
     update: async () => null,
@@ -76,6 +80,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [revealPrice, setRevealPrice] = useState(false);
+  const [revealContact, setRevealContact] = useState(false);
 
   const session = useSession();
   const user = session.data?.user;
@@ -134,6 +139,8 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setIsLoginOpen,
         revealPrice,
         setRevealPrice,
+        revealContact,
+        setRevealContact,
         user,
         session,
       }}

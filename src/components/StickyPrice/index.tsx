@@ -26,9 +26,9 @@ export default function StickyPrice({ home, user }: Props) {
   }, [isModalOpen]);
 
   return (
-    <CardHeader className={`flex flex-col gap-y-2 items-center bg-primary`}>
+    <CardHeader className={`flex flex-col gap-y-2 items-center bg-primary/90`}>
       <div className="flex flex-row items-end justify-between w-full">
-        <CardTitle className={`flex flex-col text-white items-start w-1/2`}>
+        <CardTitle className={`flex flex-col text-white dark:text-black items-start w-1/2`}>
           <span className="font-light">Price:</span>
           <span className="text-xl font-semibold">
             <BrokenPrice
@@ -42,7 +42,7 @@ export default function StickyPrice({ home, user }: Props) {
             />
           </span>
         </CardTitle>
-        <CardDescription className={`flex flex-col text-white w-1/2 h-full text-end`}>
+        <CardDescription className={`flex flex-col text-white dark:text-black w-1/2 h-full text-end `}>
           <span className="text-xs">Original price ({home.currency})</span>
           <span className="flex justify-end gap-2 text-lg font-semibold">
             {originalCurrencyRate && home.currency ? (
