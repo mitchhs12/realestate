@@ -13,12 +13,11 @@ import BrokenPrice from "@/components/BrokenPrice";
 
 interface Props {
   home: HomeType;
-  user?: User;
 }
 
-export default function StickyPrice({ home, user }: Props) {
+export default function StickyPrice({ home }: Props) {
   const { defaultCurrency, currencies } = useContext(LocaleContext);
-  const { openLogInModal, isModalOpen, revealPrice, setRevealPrice } = useContext(QueryContext);
+  const { openLogInModal, isModalOpen, revealPrice, setRevealPrice, user, session } = useContext(QueryContext);
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
 
   useEffect(() => {
@@ -35,8 +34,7 @@ export default function StickyPrice({ home, user }: Props) {
               home={home}
               newCurrencySymbol={defaultCurrency.symbol}
               newCurrencyUsdPrice={defaultCurrency.usdPrice}
-              user={user}
-              blur={revealPrice}
+              reveal={user ? true : false}
               blurAmount="blur-sm"
               className="mb-0"
             />
@@ -50,8 +48,7 @@ export default function StickyPrice({ home, user }: Props) {
                 home={home}
                 newCurrencySymbol={home.currency}
                 newCurrencyUsdPrice={originalCurrencyRate}
-                user={user}
-                blur={revealPrice}
+                reveal={user ? true : false}
                 blurAmount="blur-sm"
                 className="mb-0"
               />

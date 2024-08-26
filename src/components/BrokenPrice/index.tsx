@@ -7,18 +7,16 @@ interface Props {
   home: HomeType;
   newCurrencySymbol: string;
   newCurrencyUsdPrice: number;
-  user: User | undefined;
-  blur?: boolean;
+  reveal: boolean;
   blurAmount?: string;
   className?: string;
 }
 
-export default function BrokenPrice({
+export default function rokenPrice({
   home,
   newCurrencySymbol,
   newCurrencyUsdPrice,
-  user,
-  blur,
+  reveal,
   blurAmount,
   className,
 }: Props) {
@@ -35,16 +33,14 @@ export default function BrokenPrice({
 
           return (
             <span className={`flex items-center text-center ${className} font-semibold mb-2`}>
-              {!user ? (
-                <Skeleton className="h-4 sm:h-5 lg:h-7 w-32" />
-              ) : symbolFirst ? (
+              {symbolFirst ? (
                 <>
                   <span>{symbol}</span>
-                  <span className={`${user || blur ? "" : `${blurAmount} blur-sm select-none`}`}>{number}</span>
+                  <span className={`${!reveal && `${blurAmount} blur-sm select-none`}`}>{number}</span>
                 </>
               ) : (
                 <>
-                  <span className={`${user || blur ? "" : `${blurAmount} blur-sm select-none`}`}>{number}</span>
+                  <span className={`${!reveal && `${blurAmount} blur-sm select-none`}`}>{number}</span>
                   <span>{symbol}</span>
                 </>
               )}

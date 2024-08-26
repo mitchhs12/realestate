@@ -16,13 +16,13 @@ import { formatNumber } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
 import BrokenPrice from "@/components/BrokenPrice";
 import { Check } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   home: HomeType;
-  user?: User;
 }
 
-export default function HomeText({ home, user }: Props) {
+export default function HomeText({ home }: Props) {
   const {
     setCurrentHome,
     setQuery,
@@ -32,6 +32,8 @@ export default function HomeText({ home, user }: Props) {
     revealContact,
     setRevealContact,
     isModalOpen,
+    session,
+    user,
   } = useContext(QueryContext);
   const { defaultCurrency, currencies, numerals } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
@@ -180,33 +182,43 @@ export default function HomeText({ home, user }: Props) {
             <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
               <CardTitle className={`flex flex-col items-center`}>
                 <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>
-                <BrokenPrice
-                  home={home}
-                  newCurrencySymbol={defaultCurrency.symbol}
-                  newCurrencyUsdPrice={defaultCurrency.usdPrice}
-                  user={user}
-                  blur={revealPrice}
-                  blurAmount={"blur-sm md:blur-md"}
-                  className="text-xl md:text-2xl lg:text-4xl text-white dark:text-black"
-                />
-              </CardTitle>
-              <CardDescription className={`flex flex-col w-full text-white dark:text-black`}>
-                <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency})</span>
-                {originalCurrencyRate && home.currency ? (
+                {session.status === "loading" ? (
+                  <div className="flex justify-center w-full">
+                    <Skeleton className="bg-white/10 h-9 md:h-10 lg:h-12 w-8/12" />
+                  </div>
+                ) : (
                   <BrokenPrice
                     home={home}
-                    newCurrencySymbol={home.currency}
-                    newCurrencyUsdPrice={originalCurrencyRate}
-                    user={user}
-                    blur={revealPrice}
+                    newCurrencySymbol={defaultCurrency.symbol}
+                    newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                    reveal={user ? true : false}
                     blurAmount={"blur-sm md:blur-md"}
-                    className="justify-center text-base md:text-lg lg:text-xl text-white dark:text-black"
+                    className="text-xl md:text-2xl lg:text-4xl text-white dark:text-black"
                   />
+                )}
+              </CardTitle>
+              <div className={`flex flex-col w-full text-white dark:text-black`}>
+                <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency})</span>
+                {originalCurrencyRate && home.currency ? (
+                  session.status === "loading" ? (
+                    <div className="flex justify-center w-full">
+                      <Skeleton className="items-center bg-white/10 h-8 md:h-9 lg:h-9 w-7/12" />
+                    </div>
+                  ) : (
+                    <BrokenPrice
+                      home={home}
+                      newCurrencySymbol={home.currency}
+                      newCurrencyUsdPrice={originalCurrencyRate}
+                      reveal={user ? true : false}
+                      blurAmount={"blur-sm md:blur-md"}
+                      className="justify-center text-base md:text-lg lg:text-xl text-white dark:text-black"
+                    />
+                  )
                 ) : (
                   "Contact us"
                 )}
-              </CardDescription>
-              {!user && (
+              </div>
+              {session.status === ("unauthenticated" || "loading") && (
                 <div className="flex items-center justify-center">
                   <Button
                     onClick={() => {
@@ -250,7 +262,7 @@ export default function HomeText({ home, user }: Props) {
           </Card>
           <Card className="w-full max-w-xs shadow-xl">
             <CardHeader>
-              <CardTitle className="text-md lg:text-lg">Owner Contact Information</CardTitle>
+              <CardTitle className="text-md lg:text-lg">Contact Information</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-5">
               <div className="flex flex-col lg:flex-row lg:items-end gap-1 lg:gap-2">
@@ -292,13 +304,13 @@ export default function HomeText({ home, user }: Props) {
               <div className="flex items-center justify-center">
                 <Button
                   onClick={() => {
-                    setRevealContact(!revealContact);
+                    user ? setRevealContact(!revealContact) : openLogInModal();
                   }}
                   variant={"outline"}
                   className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
                 >
                   <div className="flex gap-3 justify-center text-lg items-center">
-                    {revealContact ? (
+                    {isModalOpen ? (
                       <EyeOpenIcon className="w-4 md:w-6 h-4 md:h-6" />
                     ) : (
                       <EyeClosedIcon className="w-4 md:w-6 h-4 md:h-6" />

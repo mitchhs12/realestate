@@ -24,8 +24,7 @@ export default function Card({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { isSmallScreen } = useContext(QueryContext);
-  const user = useSession().data?.user;
+  const { isSmallScreen, session, user } = useContext(QueryContext);
 
   const target = isSmallScreen ? "_self" : "_blank";
 
@@ -105,13 +104,17 @@ export default function Card({ home, isLoading }: Props) {
             )}
           </div>
           <div>
-            <BrokenPrice
-              home={home}
-              newCurrencySymbol={defaultCurrency.symbol}
-              newCurrencyUsdPrice={defaultCurrency.usdPrice}
-              user={user}
-              className="text-sm md:text-md lg:text-lg"
-            />
+            {session.status === "loading" ? (
+              <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
+            ) : (
+              <BrokenPrice
+                home={home}
+                newCurrencySymbol={defaultCurrency.symbol}
+                newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                reveal={user ? true : false}
+                className="text-sm md:text-md lg:text-lg"
+              />
+            )}
           </div>
         </div>
       </Link>

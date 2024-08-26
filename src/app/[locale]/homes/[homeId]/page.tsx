@@ -11,9 +11,6 @@ export const metadata: Metadata = {
 import getSession from "@/lib/getSession";
 
 export default async function Page({ params }: { params: { homeId: string } }) {
-  const session = await getSession();
-  const user = session?.user;
-
   // const session = await getSession();
   // const user = session?.user;
   // if (!user) {
@@ -36,14 +33,14 @@ export default async function Page({ params }: { params: { homeId: string } }) {
             <HomePhotos home={home} />
           </div>
           <div className="flex flex-col text-center h-full w-full">
-            <HomeText home={home} user={user} />
+            <HomeText home={home} />
           </div>
         </main>
         <footer className="flex justify-center items-center p-6 w-full bg-muted">
           <Footer />
         </footer>
         <div className="sticky sm:hidden bottom-0 bg-white w-full h-full text-center">
-          <StickyPrice home={home} user={user} />
+          <StickyPrice home={home} />
         </div>
       </div>
     );
