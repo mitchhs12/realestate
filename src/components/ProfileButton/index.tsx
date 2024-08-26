@@ -31,11 +31,11 @@ import { updateLanguage } from "@/app/[locale]/settings/actions";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { languageToFlagMap } from "@/lib/validations";
+import { QueryContext } from "@/context/QueryContext";
 
 interface Props {
   openSignUpModal: () => void;
   openLogInModal: () => void;
-  session: ReturnType<typeof useSession>;
   greeting: string;
   log_in: string;
   sign_up: string;
@@ -49,7 +49,6 @@ interface Props {
 export function ProfileButton({
   openSignUpModal,
   openLogInModal,
-  session,
   greeting,
   log_in,
   sign_up,
@@ -59,8 +58,8 @@ export function ProfileButton({
   currency,
   settings,
 }: Props) {
-  const user = session.data?.user;
   const { defaultCurrency, setDefaultCurrency, currencies } = useContext(LocaleContext);
+  const { user, session } = useContext(QueryContext);
   const router = useRouter();
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();

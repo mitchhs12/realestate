@@ -59,8 +59,6 @@ export default function Header({
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const session = useSession();
-  const user = session.data?.user;
   const locale = useCurrentLocale();
   const {
     currentHome,
@@ -71,6 +69,7 @@ export default function Header({
     isModalOpen,
     isLoginOpen,
     setIsLoginOpen,
+    user,
   } = useContext(QueryContext);
 
   const isSearchPage = pathname.includes("/search/");
@@ -193,7 +192,6 @@ export default function Header({
               <ProfileButton
                 openSignUpModal={openSignUpModal}
                 openLogInModal={openLogInModal}
-                session={session}
                 greeting={greeting}
                 log_in={log_in}
                 sign_up={sign_up}

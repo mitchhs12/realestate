@@ -14,6 +14,7 @@ import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
 import { formatNumber } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
+import BrokenPrice from "@/components/BrokenPrice";
 
 interface Props {
   home: HomeType;
@@ -21,7 +22,8 @@ interface Props {
 }
 
 export default function HomeText({ home, user }: Props) {
-  const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice } = useContext(QueryContext);
+  const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice, isModalOpen } =
+    useContext(QueryContext);
   const { defaultCurrency, currencies, numerals } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
@@ -161,42 +163,56 @@ export default function HomeText({ home, user }: Props) {
         <div className="hidden sm:flex flex-col w-1/3 h-full shadow-2xl">
           <Card className="bg-primary border-2 border-green-700">
             <CardHeader className={`flex gap-y-6 lg:gap-y-8 lg:py-10 px-3 lg:px-6`}>
-              <CardTitle className={`flex flex-col items-center ${!revealPrice && "blur-sm md:blur-md"}`}>
+              <CardTitle className={`flex flex-col items-center`}>
                 <div className="flex text-base md:text-lg lg:text-xl font-light text-white dark:text-black">Price</div>
-                <div className="flex text-xl md:text-2xl lg:text-4xl text-white dark:text-black">
-                  {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
-                </div>
+                <BrokenPrice
+                  home={home}
+                  newCurrencySymbol={defaultCurrency.symbol}
+                  newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                  user={user}
+                  blur={revealPrice}
+                  blurAmount={"blur-sm md:blur-md"}
+                  className="text-xl md:text-2xl lg:text-4xl text-white dark:text-black"
+                />
               </CardTitle>
-              <CardDescription
-                className={`flex flex-col w-full text-white dark:text-black ${!revealPrice && "blur-sm md:blur-md"}`}
-              >
+              <CardDescription className={`flex flex-col w-full text-white dark:text-black`}>
                 <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency})</span>
-                <span className={`flex justify-center text-base md:text-lg lg:text-xl font-semibold gap-2`}>
-                  {originalCurrencyRate && home.currency
-                    ? formatPrice(home.currency, home.price, originalCurrencyRate)
-                    : "Contact us"}
-                </span>
+                {originalCurrencyRate && home.currency ? (
+                  <BrokenPrice
+                    home={home}
+                    newCurrencySymbol={home.currency}
+                    newCurrencyUsdPrice={originalCurrencyRate}
+                    user={user}
+                    blur={revealPrice}
+                    blurAmount={"blur-sm md:blur-md"}
+                    className="justify-center text-base md:text-lg lg:text-xl text-white dark:text-black"
+                  />
+                ) : (
+                  "Contact us"
+                )}
               </CardDescription>
-              <div className="flex items-center justify-center">
-                <Button
-                  onClick={() => {
-                    user ? setRevealPrice(!revealPrice) : openLogInModal();
-                  }}
-                  variant={"outline"}
-                  className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
-                >
-                  <div className="flex gap-3 justify-center text-lg items-center">
-                    {revealPrice ? (
-                      <EyeOpenIcon className="w-4 md:w-6 h-4 md:h-6" />
-                    ) : (
-                      <EyeClosedIcon className="w-4 md:w-6 h-4 md:h-6" />
-                    )}
-                    <span className="text-xs md:text-sm lg:text-base">{`${
-                      revealPrice ? "Hide" : "Reveal"
-                    } the price!`}</span>
-                  </div>
-                </Button>
-              </div>
+              {!user && (
+                <div className="flex items-center justify-center">
+                  <Button
+                    onClick={() => {
+                      user ? setRevealPrice(!revealPrice) : openLogInModal();
+                    }}
+                    variant={"outline"}
+                    className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
+                  >
+                    <div className="flex gap-3 justify-center text-lg items-center">
+                      {revealPrice || isModalOpen ? (
+                        <EyeOpenIcon className="w-4 md:w-6 h-4 md:h-6" />
+                      ) : (
+                        <EyeClosedIcon className="w-4 md:w-6 h-4 md:h-6" />
+                      )}
+                      <span className="text-xs md:text-sm lg:text-base">{`${
+                        revealPrice ? "Hide" : "Reveal"
+                      } the price!`}</span>
+                    </div>
+                  </Button>
+                </div>
+              )}
               <div className="flex flex-col items-center w-full">
                 <div className="flex items-center justify-center gap-2 w-full">
                   <span className="flex text-start font-medium text-sm md:text-base lg:text-xl text-white dark:text-black">

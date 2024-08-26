@@ -1,9 +1,11 @@
 "use client";
 
-import React, { createContext, useState, ReactNode, useEffect, useRef } from "react";
-import { CoordinatesType } from "@/lib/validations";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { HomeType } from "@/lib/validations";
+import { UpdateSession, useSession } from "next-auth/react";
+import { Session } from "next-auth";
+import { User } from "next-auth";
 
 interface QueryContextProps {
   query: string;
@@ -25,6 +27,12 @@ interface QueryContextProps {
   setIsLoginOpen: (value: boolean) => void;
   revealPrice: boolean;
   setRevealPrice: (value: boolean) => void;
+  user?: User;
+  session: {
+    update: UpdateSession;
+    data: Session | null;
+    status: "authenticated" | "unauthenticated" | "loading";
+  };
 }
 
 const QueryContext = createContext<QueryContextProps>({
@@ -47,6 +55,12 @@ const QueryContext = createContext<QueryContextProps>({
   setIsLoginOpen: () => {},
   revealPrice: false,
   setRevealPrice: () => {},
+  user: undefined,
+  session: {
+    update: async () => null,
+    data: null,
+    status: "loading",
+  },
 });
 
 interface QueryProviderProps {
@@ -63,6 +77,8 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [revealPrice, setRevealPrice] = useState(false);
 
+  const session = useSession();
+  const user = session.data?.user;
   const pathname = usePathname();
 
   const closeModal = () => {
@@ -118,6 +134,8 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setIsLoginOpen,
         revealPrice,
         setRevealPrice,
+        user,
+        session,
       }}
     >
       {children}

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
-import { HomeType, languageToFlagMap, locales } from "@/lib/validations";
-import { formatPrice, getFlagEmoji } from "@/lib/utils";
+import { HomeType } from "@/lib/validations";
+import { formatBrokenPrice } from "@/lib/utils";
 import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
@@ -11,6 +11,8 @@ import Link from "next/link";
 import lookup from "country-code-lookup";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
+import { useSession } from "next-auth/react";
+import BrokenPrice from "@/components/BrokenPrice";
 
 interface Props {
   home: HomeType | null;
@@ -22,6 +24,7 @@ export default function Card({ home, isLoading }: Props) {
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { isSmallScreen } = useContext(QueryContext);
+  const user = useSession().data?.user;
 
   const target = isSmallScreen ? "_self" : "_blank";
 
@@ -100,8 +103,14 @@ export default function Card({ home, isLoading }: Props) {
               <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
             )}
           </div>
-          <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
-            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
+          <div>
+            <BrokenPrice
+              home={home}
+              newCurrencySymbol={defaultCurrency.symbol}
+              newCurrencyUsdPrice={defaultCurrency.usdPrice}
+              user={user}
+              className="text-sm md:text-md lg:text-lg "
+            />
           </div>
         </div>
       </Link>

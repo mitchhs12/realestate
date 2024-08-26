@@ -23,6 +23,43 @@ export const formatPrice = (currency: string, value: number, decimals: number): 
   return formattedPrice;
 };
 
+export const formatBrokenPrice = (
+  currency: string,
+  value: number,
+  decimals: number
+): { symbol: string; number: string; symbolFirst: boolean } => {
+  const option = locales.find((option) => option.currency === currency);
+  const locale = option?.locale || "en-US";
+
+  const formattedPrice = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+    maximumFractionDigits: decimals,
+  }).format(value);
+
+  const parts = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+    maximumFractionDigits: decimals,
+  }).formatToParts(value);
+
+  // Find the position of the currency symbol and the number
+  const symbol = parts.find((part) => part.type === "currency")?.value || "";
+  const number = parts
+    .filter((part) => part.type !== "currency")
+    .map((part) => part.value)
+    .join("");
+
+  // Determine if the symbol is before or after the number
+  const symbolFirst = parts[0].type === "currency";
+
+  return {
+    symbol,
+    number,
+    symbolFirst,
+  };
+};
+
 export const getFullCountryName = (locale: string) => {
   const countryCode = locale.split("-")[1];
   return new Intl.DisplayNames([locale], { type: "region" }).of(countryCode);
