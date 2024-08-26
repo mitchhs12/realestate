@@ -97,18 +97,19 @@ export default function HomeText({ home, user }: Props) {
             </div>
             <div>{home.description}</div>
           </div>
-          <div className="flex text-lg items-center align-middle gap-2">
-            <p className="text-xl">{formatNumber(home.capacity, numerals)}</p> people can comfortably live in this
-            property.
-          </div>
+          <p className="text-base sm:text-lg">
+            <span className="text-lg sm:text-xl">{formatNumber(home.capacity, numerals)}</span> people can comfortably
+            live here.
+          </p>
+
           <div className="flex flex-col">
-            <div className="flex items-center gap-2 text-lg">
+            <div className="flex items-center gap-2 text-base sm:text-lg">
               Size of this property:{" "}
-              <span className="text-xl">
+              <span className="flex text-base sm:text-lg">
                 {formatNumber(sqSize, numerals)} {feet ? "ft" : "m"}²
               </span>
             </div>
-            <div className="flex gap-2 text-lg items-center">
+            <div className="flex gap-2 text-base md:text-lg items-center">
               Units:{" "}
               <span className="flex items-center gap-2">
                 {"m²"}
@@ -182,7 +183,7 @@ export default function HomeText({ home, user }: Props) {
                     user ? setRevealPrice(!revealPrice) : openLogInModal();
                   }}
                   variant={"outline"}
-                  className="flex justify-center w-full text-center h-full"
+                  className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
                 >
                   <div className="flex gap-3 justify-center text-lg items-center">
                     {revealPrice ? (
