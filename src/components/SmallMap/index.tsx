@@ -8,6 +8,7 @@ import lightMap from "@/components/MainMap/map-styles/light-map";
 import { CoordinatesType } from "@/lib/validations";
 import { SellContext } from "@/context/SellContext";
 import { HomeType } from "@/lib/validations";
+import { Circle } from "@/components/SmallMap/Circle";
 
 export type MapConfig = {
   id: string;
@@ -15,6 +16,7 @@ export type MapConfig = {
   mapId?: string;
   mapTypeId?: string;
   styles?: google.maps.MapTypeStyle[];
+  disabled?: boolean;
 };
 
 const MapTypeId = {
@@ -27,9 +29,11 @@ const MapTypeId = {
 export default function MapComponent({
   coordinates,
   currentHome,
+  disabled,
 }: {
   currentHome: HomeType | null;
   coordinates: CoordinatesType;
+  disabled?: boolean;
 }) {
   const MAP_CONFIGS: MapConfig[] = [
     {
@@ -145,7 +149,7 @@ export default function MapComponent({
         ) : (
           <Map
             clickableIcons={false}
-            gestureHandling={"greedy"}
+            gestureHandling={disabled ? "none" : "greedy"}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             maxZoom={20}
             minZoom={6}
@@ -157,10 +161,21 @@ export default function MapComponent({
             mapId={mapConfig.mapId || null}
             mapTypeId={mapConfig.mapTypeId}
             reuseMaps={true}
-            className={"custom-marker-clustering-map"}
             onCameraChanged={handleCameraChanged}
           >
-            <Marker position={{ lat: cameraPos.lat, lng: cameraPos.long }} />
+            {disabled ? (
+              <Circle
+                radius={50}
+                center={{ lat: cameraPos.lat, lng: cameraPos.long }}
+                strokeColor={"green"}
+                strokeOpacity={1}
+                strokeWeight={3}
+                fillColor="#16A34A"
+                fillOpacity={0.3}
+              />
+            ) : (
+              <Marker position={{ lat: cameraPos.lat, lng: cameraPos.long }} />
+            )}
           </Map>
         )}
       </APIProvider>

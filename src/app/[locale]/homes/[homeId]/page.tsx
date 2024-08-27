@@ -4,6 +4,8 @@ import { getHomeById } from "@/app/[locale]/homes/actions";
 import HomeText from "@/components/HomeText";
 import Footer from "@/components/Footer";
 import StickyPrice from "@/components/StickyPrice";
+import MapComponent from "@/components/SmallMap";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Homes",
@@ -28,12 +30,23 @@ export default async function Page({ params }: { params: { homeId: string } }) {
     return (
       <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
         <main className="flex flex-col items-center justify-start max-w-7xl w-full">
-          <div className="flex flex-col text-center h-full w-full pt-8">
+          <div className="flex flex-col text-center h-full w-full pt-8 pb-2">
             <h1 className="flex justify-center text-3xl">{home.title}</h1>
             <HomePhotos home={home} />
           </div>
           <div className="flex flex-col text-center h-full w-full">
             <HomeText home={home} />
+            <div className="py-6 px-8">
+              <Separator />
+            </div>
+          </div>
+          <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-4">
+            <div className="text-lg sm:text-xl">Location:</div>
+            <MapComponent
+              coordinates={{ long: home.longitude, lat: home.latitude }}
+              currentHome={home}
+              disabled={true}
+            />
           </div>
         </main>
         <footer className="flex justify-center items-center p-6 w-full bg-muted">
