@@ -149,7 +149,7 @@ export default function MapComponent({
         ) : (
           <Map
             clickableIcons={false}
-            gestureHandling={disabled ? "none" : "greedy"}
+            gestureHandling={"greedy"}
             defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
             maxZoom={20}
             minZoom={6}
@@ -165,8 +165,8 @@ export default function MapComponent({
           >
             {disabled ? (
               <Circle
-                radius={50}
-                center={{ lat: cameraPos.lat, lng: cameraPos.long }}
+                radius={150}
+                center={{ lat: coordinates.lat, lng: coordinates.long }}
                 strokeColor={"green"}
                 strokeOpacity={1}
                 strokeWeight={3}

@@ -116,7 +116,6 @@ export default function StickyPrice({ home }: Props) {
                   variant="outline"
                   size="icon"
                   className="flex text-xs gap-2 p-2"
-                  disabled={!revealContact}
                 >
                   {copiedField === "name" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
                 </Button>
@@ -134,7 +133,6 @@ export default function StickyPrice({ home }: Props) {
                   variant="outline"
                   size="icon"
                   className="flex text-xs gap-2 p-2"
-                  disabled={!revealContact}
                 >
                   {copiedField === "email" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
                 </Button>
@@ -152,7 +150,6 @@ export default function StickyPrice({ home }: Props) {
                   variant="outline"
                   className="flex text-xs gap-2 p-2"
                   size="icon"
-                  disabled={!revealContact}
                 >
                   {copiedField === "phone" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
                 </Button>

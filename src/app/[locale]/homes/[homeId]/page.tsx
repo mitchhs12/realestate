@@ -42,11 +42,13 @@ export default async function Page({ params }: { params: { homeId: string } }) {
           </div>
           <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-4">
             <div className="text-lg sm:text-xl">Location:</div>
-            <MapComponent
-              coordinates={{ long: home.longitude, lat: home.latitude }}
-              currentHome={home}
-              disabled={true}
-            />
+            <div className="flex w-full max-w-7xl h-[40vh]">
+              <MapComponent
+                coordinates={{ long: home.longitude, lat: home.latitude }}
+                currentHome={home}
+                disabled={true}
+              />
+            </div>
           </div>
         </main>
         <footer className="flex justify-center items-center p-6 w-full bg-muted">
