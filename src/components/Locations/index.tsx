@@ -224,7 +224,7 @@ export default function Locations() {
         {imageMap.map((city, cityIndex) => (
           <div
             key={city.name}
-            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-48 2xl:w-52 space-y-2 shadow-lg dark:shadow-card bg-card hover:cursor-pointer"
+            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-48 2xl:w-52 space-y-2 bg-none hover:cursor-pointer"
             onClick={() => {}}
           >
             <Carousel onMouseLeave={() => setUnderlinedImage("")}>
@@ -244,7 +244,7 @@ export default function Locations() {
                     }}
                   >
                     <Image
-                      className="object-cover object-center rounded-xl"
+                      className="object-cover object-center rounded-lg"
                       src={urlMap[city.name]}
                       alt="City Image"
                       sizes={"(max-width: 200px), (max-height: 200px)"}
@@ -252,7 +252,7 @@ export default function Locations() {
                       priority={true}
                       onLoad={() => handleImageLoad(urlMap[city.name])}
                     />
-                    <div className="absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 rounded-t-xl">
+                    <div className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg">
                       <div className="flex flex-col justify-center items-center">
                         <p className={`flex items-center gap-x-2 ${underlinedImage === city.name && "underline"}`}>
                           {city.name.split(",")[0]}{" "}
@@ -292,7 +292,7 @@ export default function Locations() {
                       }}
                     >
                       <Image
-                        className="object-cover object-center rounded-xl" //opacity-65 dark:opacity-60"
+                        className="object-cover object-center rounded-lg" //opacity-65 dark:opacity-60"
                         src={urlMap[`${neighborhood.name}, ${city.name}`]}
                         alt="Location Image"
                         sizes={"(max-width: 200px), (max-height: 200px)"}
@@ -302,7 +302,7 @@ export default function Locations() {
                       />
 
                       <div
-                        className={`absolute top-0 left-0 right-0 bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white text-center py-1 ${
+                        className={`absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg ${
                           underlinedImage === `${neighborhood.name}, ${city.name}` && "underline"
                         }`}
                       >
@@ -339,7 +339,7 @@ export default function Locations() {
             </Carousel>
           </div>
         ))}
-        <Card
+        <div
           onClick={() => {
             setClickedLocation(true);
             setQuery(hoveredImageSearch);
@@ -348,26 +348,26 @@ export default function Locations() {
             setUnderlinedImage(key);
           }}
           onMouseLeave={() => setUnderlinedImage("")}
-          className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 border hover:cursor-pointer"
+          className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 hover:cursor-pointer"
         >
           {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
           <Image
             src={hoveredImage}
             alt="Location Image"
             fill={true}
-            className="object-cover rounded-xl absolute inset-0 z-0" // opacity-65 dark:opacity-60"
+            className="object-cover rounded-lg absolute inset-0 z-0" // opacity-65 dark:opacity-60"
             priority={true}
             sizes={"(max-width: 500px), (max-height: 500px)"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
           <CardTitle
-            className={`relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white dark:bg-secondary bg-opacity-70 text-black dark:text-white rounded-t-xl ${
+            className={`relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white/70 dark:bg-secondary/70 text-black dark:text-white rounded-t-lg ${
               underlinedImage === key && "underline"
             }`}
           >
             {key}
           </CardTitle>
-        </Card>
+        </div>
       </div>
     </div>
   );

@@ -179,7 +179,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
+          className={cn("bg-none relative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -200,7 +200,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
       <div ref={carouselRef} className="overflow-hidden">
         <div
           ref={ref}
-          className={cn("flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", className)}
+          className={cn("bg-none flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", className)}
           {...props}
         />
         <CarouselDots className="absolute w-full justify-center items-center bottom-4" />
@@ -219,7 +219,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
         ref={ref}
         role="group"
         aria-roledescription="slide"
-        className={cn("min-w-0 shrink-0 grow-0", orientation === "horizontal" ? "pl-4" : "pt-4", className)}
+        className={cn("bg-none min-w-0 shrink-0 grow-0", orientation === "horizontal" ? "pl-4" : "pt-4", className)}
         {...props}
       />
     );

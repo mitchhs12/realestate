@@ -12,7 +12,6 @@ import Link from "next/link";
 import lookup from "country-code-lookup";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
-import { useSession } from "next-auth/react";
 import BrokenPrice from "@/components/BrokenPrice";
 
 interface Props {
@@ -36,7 +35,7 @@ export default function Card({ home, isLoading }: Props) {
 
   return !home || isLoading ? (
     <div className="flex flex-col h-84 w-44 md:w-52 xl:w-48 2xl:w-52 space-y-2">
-      <Skeleton className="rounded-none rounded-t-xl h-40 w-full" />
+      <Skeleton className="rounded-none rounded-t-lg h-40 w-full" />
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-4 w-24" />
@@ -47,7 +46,7 @@ export default function Card({ home, isLoading }: Props) {
     </div>
   ) : (
     <div
-      className="flex flex-col h-84 w-44 md:w-52 xl:w-48 2xl:w-52 space-y-2"
+      className="flex flex-col h-84 w-44 md:w-52 xl:w-48 2xl:w-52"
       onMouseOver={() => {
         setTitleUnderlined(true);
       }}
@@ -56,11 +55,11 @@ export default function Card({ home, isLoading }: Props) {
       }}
     >
       <Carousel>
-        <CarouselContent className="rounded-t-xl">
+        <CarouselContent className="rounded-t-lg">
           {home.photos.map((photo: string, index) => (
             <div key={index}>
               <Link href={`/homes/${home.id}`} target={target}>
-                <CarouselItem className="flex relative justify-center items-center rounded-t-xl">
+                <CarouselItem className="flex relative justify-center items-center rounded-t-lg">
                   <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
                     <Image
                       src={photo}
@@ -79,7 +78,7 @@ export default function Card({ home, isLoading }: Props) {
         <CarouselNext className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8" />
       </Carousel>
       <Link href={`/homes/${home.id}`}>
-        <div className="flex flex-col justify-center items-center w-full gap-2 px-2">
+        <div className="flex flex-col justify-center items-center w-full gap-2 px-2 bg-background pt-2">
           <div className={`w-full flex ${home.title && home.title.length > 20 ? "justify-start" : "justify-center"}`}>
             <h2
               className={`text-sm md:text-md lg:text-lg xl:text-xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis ${
