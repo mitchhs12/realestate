@@ -145,6 +145,7 @@ export default function MapComponent({
             disableDefaultUI={true}
             mapId={mapConfig.mapId || null}
             mapTypeId={mapConfig.mapTypeId}
+            backgroundColor={theme === "dark" ? "black" : "white"}
             reuseMaps={true}
             className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
           >
