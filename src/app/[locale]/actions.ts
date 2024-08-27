@@ -11,7 +11,7 @@ export async function getFeatured(): Promise<HomeType[]> {
     orderBy: {
       price: "asc",
     },
-    take: 6, // Limit the number of results to 4
+    take: 5, // Limit the number of results to 4
   });
 
   return homes;
@@ -25,7 +25,7 @@ export async function getNew(): Promise<HomeType[]> {
     orderBy: {
       createdAt: "desc",
     },
-    take: 6, // Limit the number of results to 4
+    take: 5, // Limit the number of results to 4
   });
 
   return homes;

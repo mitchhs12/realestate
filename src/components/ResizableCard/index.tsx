@@ -1,6 +1,6 @@
+"use client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
-import { formatPrice, getFlagEmoji } from "@/lib/utils";
 import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";

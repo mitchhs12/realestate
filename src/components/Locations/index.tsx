@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Card, CardTitle } from "@/components/ui/card";
+import { CardTitle } from "@/components/ui/card";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
+import ResizableCarousel from "@/components/ResizableCarousel";
 
 interface CityImage {
   name: string;
@@ -219,125 +220,114 @@ export default function Locations() {
   };
 
   return (
-    <div className="flex flex-col items-center w-full gap-8">
-      <div className="grid grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+    <div className="flex flex-col items-center w-full gap-6">
+      <div className="grid p-8 w-full grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {imageMap.map((city, cityIndex) => (
-          <div
-            key={city.name}
-            className="flex flex-col rounded-xl h-full w-44 md:w-52 lg:w-52 xl:w-48 2xl:w-52 space-y-2 bg-none hover:cursor-pointer"
-            onClick={() => {}}
-          >
-            <Carousel onMouseLeave={() => setUnderlinedImage("")}>
-              <CarouselContent>
+          <Carousel className="w-full h-full" onMouseLeave={() => setUnderlinedImage("")}>
+            <CarouselContent>
+              <CarouselItem
+                key={city.name}
+                className="flex justify-center items-center h-full w-full"
+                onMouseOver={() => {
+                  handleHover(urlMap[city.name], city.name.split(",")[0], city.name);
+                }}
+              >
+                <div
+                  className="relative flex justify-center items-center h-40 w-full"
+                  onClick={() => {
+                    setClickedLocation(true);
+                    setQuery(city.name);
+                  }}
+                >
+                  <Image
+                    className="object-cover object-center rounded-lg"
+                    src={urlMap[city.name]}
+                    alt="City Image"
+                    sizes={"(max-width: 200px), (max-height: 200px)"}
+                    fill={true}
+                    priority={true}
+                    onLoad={() => handleImageLoad(urlMap[city.name])}
+                  />
+                  <div className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg">
+                    <div className="flex flex-col justify-center items-center">
+                      <p className={`flex items-center gap-x-2 ${underlinedImage === city.name && "underline"}`}>
+                        {city.name.split(",")[0]}{" "}
+                      </p>
+                      <p
+                        className={`flex items-center gap-x-2 text-sm ${underlinedImage === city.name && "underline"}`}
+                      >
+                        {city.name.split(",")[1]}{" "}
+                        {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+              {city.neighborhoods.map((neighborhood) => (
                 <CarouselItem
-                  key={city.name}
-                  className="flex justify-center items-center"
+                  key={neighborhood.name}
+                  className="flex justify-center items-center h-full w-full"
                   onMouseOver={() => {
-                    handleHover(urlMap[city.name], city.name.split(",")[0], city.name);
+                    handleHover(
+                      urlMap[`${neighborhood.name}, ${city.name}`],
+                      neighborhood.name,
+                      `${neighborhood.name}, ${city.name}`
+                    );
                   }}
                 >
                   <div
-                    className="relative flex justify-center items-center h-40 w-44 md:w-52 lg:w-52 xl:w-48 2xl:w-52"
+                    className="relative flex justify-center items-center h-40 w-full"
                     onClick={() => {
                       setClickedLocation(true);
-                      setQuery(city.name);
+                      setQuery(`${neighborhood.name}, ${city.name}`);
                     }}
                   >
                     <Image
-                      className="object-cover object-center rounded-lg"
-                      src={urlMap[city.name]}
-                      alt="City Image"
+                      className="object-cover object-center rounded-lg" //opacity-65 dark:opacity-60"
+                      src={urlMap[`${neighborhood.name}, ${city.name}`]}
+                      alt="Location Image"
                       sizes={"(max-width: 200px), (max-height: 200px)"}
                       fill={true}
                       priority={true}
-                      onLoad={() => handleImageLoad(urlMap[city.name])}
+                      onLoad={() => handleImageLoad(urlMap[`${neighborhood.name}, ${city.name}`])}
                     />
-                    <div className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg">
-                      <div className="flex flex-col justify-center items-center">
-                        <p className={`flex items-center gap-x-2 ${underlinedImage === city.name && "underline"}`}>
-                          {city.name.split(",")[0]}{" "}
-                        </p>
-                        <p
-                          className={`flex items-center gap-x-2 text-sm ${
-                            underlinedImage === city.name && "underline"
-                          }`}
-                        >
-                          {city.name.split(",")[1]}{" "}
-                          {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
-                        </p>
-                      </div>
+
+                    <div
+                      className={`absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg ${
+                        underlinedImage === `${neighborhood.name}, ${city.name}` && "underline"
+                      }`}
+                    >
+                      <p className="flex justify-center items-center gap-2">
+                        {neighborhood.name}
+                        {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
+                      </p>
                     </div>
                     {/* <div className="absolute bottom-2 right-2 text-black dark:text-white">
-                      {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
-                    </div> */}
-                  </div>
-                </CarouselItem>
-                {city.neighborhoods.map((neighborhood) => (
-                  <CarouselItem
-                    key={neighborhood.name}
-                    className="flex justify-center items-center"
-                    onMouseOver={() => {
-                      handleHover(
-                        urlMap[`${neighborhood.name}, ${city.name}`],
-                        neighborhood.name,
-                        `${neighborhood.name}, ${city.name}`
-                      );
-                    }}
-                  >
-                    <div
-                      className="relative flex justify-center items-center h-40 w-44 md:h-40 md:w-52 lg:h-40 lg:w-52 xl:h-40 xl:w-52"
-                      onClick={() => {
-                        setClickedLocation(true);
-                        setQuery(`${neighborhood.name}, ${city.name}`);
-                      }}
-                    >
-                      <Image
-                        className="object-cover object-center rounded-lg" //opacity-65 dark:opacity-60"
-                        src={urlMap[`${neighborhood.name}, ${city.name}`]}
-                        alt="Location Image"
-                        sizes={"(max-width: 200px), (max-height: 200px)"}
-                        fill={true}
-                        priority={true}
-                        onLoad={() => handleImageLoad(urlMap[`${neighborhood.name}, ${city.name}`])}
-                      />
-
-                      <div
-                        className={`absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg ${
-                          underlinedImage === `${neighborhood.name}, ${city.name}` && "underline"
-                        }`}
-                      >
-                        <p className="flex justify-center items-center gap-2">
-                          {neighborhood.name}
-                          {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
-                        </p>
-                      </div>
-                      {/* <div className="absolute bottom-2 right-2 text-black dark:text-white">
                         {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
                       </div> */}
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              {
-                <CarouselPrevious
-                  className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
-                  onCustomClick={(canScrollPrev: boolean) => handlePreviousClick(canScrollPrev, cityIndex)}
-                  onMouseOver={() => {
-                    setUnderlinedImage(hoveredImageSearch);
-                  }}
-                />
-              }
-              {
-                <CarouselNext
-                  className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
-                  onCustomClick={(canScrollNext: boolean) => handleNextClick(canScrollNext, cityIndex)}
-                  onMouseOver={() => {
-                    setUnderlinedImage(hoveredImageSearch);
-                  }}
-                />
-              }
-            </Carousel>
-          </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            {
+              <CarouselPrevious
+                className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
+                onCustomClick={(canScrollPrev: boolean) => handlePreviousClick(canScrollPrev, cityIndex)}
+                onMouseOver={() => {
+                  setUnderlinedImage(hoveredImageSearch);
+                }}
+              />
+            }
+            {
+              <CarouselNext
+                className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
+                onCustomClick={(canScrollNext: boolean) => handleNextClick(canScrollNext, cityIndex)}
+                onMouseOver={() => {
+                  setUnderlinedImage(hoveredImageSearch);
+                }}
+              />
+            }
+          </Carousel>
         ))}
         <div
           onClick={() => {
