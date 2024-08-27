@@ -12,7 +12,7 @@ export default function Listings({ homes }: Props) {
         {homes.map((home, index) => (
           <div
             key={index}
-            className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/15 rounded-lg
+            className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg
               ${index >= 4 && "hidden sm:block"}
               ${index >= 3 && "sm:hidden lg:block"}
               ${index >= 4 && "lg:hidden xl:block"}

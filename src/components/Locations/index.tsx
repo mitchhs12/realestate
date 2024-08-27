@@ -223,7 +223,11 @@ export default function Locations() {
     <div className="flex flex-col items-center w-full gap-6">
       <div className="grid p-8 w-full grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {imageMap.map((city, cityIndex) => (
-          <Carousel key={cityIndex} className="w-full h-full" onMouseLeave={() => setUnderlinedImage("")}>
+          <Carousel
+            key={cityIndex}
+            className="w-full h-full hover:cursor-pointer"
+            onMouseLeave={() => setUnderlinedImage("")}
+          >
             <CarouselContent>
               <CarouselItem
                 key={city.name}

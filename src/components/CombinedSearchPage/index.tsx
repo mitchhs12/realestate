@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function CombinedSearchPage({ coordinates, label, initZoom }: Props) {
-  const { mapFocused, setMapFocused, setCurrentHome } = useContext(QueryContext);
+  const { mapFocused, setMapFocused } = useContext(QueryContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
   const [homes, setHomes] = useState<(HomeType | null)[]>(Array(12).fill(null));
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
@@ -27,6 +27,7 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [snap, setSnap] = useState<number | string | null>(0.5);
   const [isOpen, setIsOpen] = useState(false);
+  const [searchLabel, setSearchLabel] = useState(label);
 
   useEffect(() => {
     getAllHomes().then((allHomes) => {
@@ -52,6 +53,7 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
       setIsSearchLoading(true);
       getSearchResults("search", bounds).then((data) => {
         setHomes(data);
+        setSearchLabel("map area");
         setIsSearchLoading(false);
       });
     }
@@ -59,7 +61,18 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
 
   return (
     <>
-      <section className={`hidden md:flex w-full h-full ${mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
+      <section
+        className={`hidden md:flex flex-col w-full h-full ${
+          mapFocused && "md:hidden"
+        } lg:flex lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900`}
+      >
+        <h1 className="flex pt-8 text-2xl justify-center w-full">
+          {isSearchLoading ? (
+            <Skeleton className="rounded-lg w-80 h-8" />
+          ) : (
+            `${homes.length} ${homes.length === 1 ? "property" : "properties"} in ${searchLabel}.`
+          )}
+        </h1>
         <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
       </section>
       <div className="flex md:hidden">
@@ -71,13 +84,13 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
           modal={false}
           dismissible={false}
         >
-          <DrawerContent className="flex flex-col justify-center text-center items-start w-full h-full outline-none gap-y-2 pb-4 pt-4">
+          <DrawerContent className="flex flex-col justify-center text-center items-start w-full h-full outline-none gap-y-2 py-2 p-4">
             <DrawerTitle className="w-full">Results</DrawerTitle>
             <DrawerDescription className="flex justify-center w-full">
               {isSearchLoading ? (
                 <Skeleton className="w-48 h-5" />
               ) : (
-                `${homes.length} properties in ${bounds ? "Map Area" : label}`
+                `${homes.length} ${homes.length === 1 ? "property" : "properties"} in ${searchLabel}.`
               )}
             </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>

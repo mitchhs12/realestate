@@ -91,8 +91,8 @@ export default function HomePhotos({ home }: { home: HomeType }) {
                   src={photo}
                   className="object-cover object-center rounded-lg"
                   alt={`${home.title} photo ${index}`}
-                  width={800}
-                  height={600}
+                  width={700}
+                  height={700}
                   sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
                 />
               </div>

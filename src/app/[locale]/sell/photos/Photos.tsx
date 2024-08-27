@@ -198,18 +198,6 @@ export default function Photos({
     },
   });
 
-  const checkImageDimensions = async (file: File): Promise<{ isValid: boolean; reason?: string }> => {
-    const bitmap = await createImageBitmap(file);
-
-    if (bitmap.width < 600) {
-      return { isValid: false, reason: "width" };
-    } else if (bitmap.height < 600) {
-      return { isValid: false, reason: "height" };
-    }
-
-    return { isValid: true };
-  };
-
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsUploading(true);
     setErrorMessage(null);
@@ -249,7 +237,7 @@ export default function Photos({
 
     try {
       const uploadPromises = validImageFiles.map(async (file) => {
-        const resizedFile = await resizeImageToMinDimensions(file, 600, tooShort, tooNarrow);
+        const resizedFile = await resizeImageToMinDimensions(file, 700, tooShort, tooNarrow);
 
         const options = {
           maxSizeMB: 1,
