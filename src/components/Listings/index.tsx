@@ -9,7 +9,7 @@ interface Props {
 export default function Listings({ homes }: Props) {
   return (
     <div className="flex flex-col items-center h-full w-full">
-      <div className="grid grid-cols-2 grid-rows-2 p-8 gap-6 w-full h-full sm:grid-cols-3 sm:grid-rows-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center md:gap-4 lg:gap-5 xl:gap-5">
+      <div className="grid grid-cols-2 grid-rows-2 p-8 w-full h-full sm:grid-cols-3 sm:grid-rows-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {homes.map((home, index) => (
           <div
             key={index}

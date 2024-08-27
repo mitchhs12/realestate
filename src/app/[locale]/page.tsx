@@ -22,25 +22,25 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       <main className="w-full">
         <Hero />
       </main>
-      <div className="flex flex-col justify-start h-full w-full max-w-7xl">
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-black">
-          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start w-full h-full border border-green-500">
+      <div className="flex flex-col justify-start h-full w-full">
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
+          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start w-full h-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
               {scopedT("Recommended")}
             </h2>
             <Locations />
           </div>
         </section>
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-950">
-          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full w-full border border-green-500">
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-zinc-950">
+          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full w-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
               {scopedT("Popular")}
             </h2>
             <Listings homes={featuredHomes} />
           </div>
         </section>
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-black">
-          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full w-full border border-green-500">
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
+          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full w-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
               {scopedT("Newest")}
             </h2>
@@ -49,7 +49,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         </section>
       </div>
 
-      <footer className="flex justify-center items-center p-6 w-full bg-muted">
+      <footer className="flex justify-center items-center p-6 w-full bg-white dark:bg-black">
         <Footer />
       </footer>
     </div>
