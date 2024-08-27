@@ -331,6 +331,29 @@
     "map-area": "map area.",
     "results": "Results"
   },
+  "homes": {
+    "capacity": "people can comfortably live here.",
+    "capacity-title": "Capacity:",
+    "rooms-title": "Rooms:",
+    "features-title": "Features:",
+    "location-title": "Location:",
+    "price-title": "Price",
+    "original-price": "Original Price",
+    "negotiable": "Price Negotiable?",
+    "price-button": { "show": "Reveal the Price!", "hide": "Hide the Price!", "mobile": "Reveal Price!" },
+    "contact": {
+      "contact-title": "Contact Information",
+      "contact-title-mobile": "Property Owner Contact Information",
+      "Name": "Name:",
+      "Email": "Email:",
+      "Phone": "Phone:",
+      "contact-button": {
+        "show": "Show Contact Details",
+        "hide": "Hide Contact Details",
+        "mobile": "Contact Owner"
+      }
+    }
+  },
   "settings": {
     "title": "Account Settings",
     "name": {

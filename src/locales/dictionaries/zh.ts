@@ -337,6 +337,33 @@ export default {
     "map-area": "地图区域。",
     "results": "结果："
   },
+  "homes": {
+    "capacity": "人们可以舒适地在这里生活。",
+    "capacity-title": "容量：",
+    "rooms-title": "房间:",
+    "features-title": "特征：",
+    "location-title": "地点：",
+    "price-title": "价格",
+    "original-price": "原价",
+    "negotiable": "价格可以商量吗？",
+    "price-button": {
+      "show": "揭晓价格！",
+      "hide": "隐藏价格！",
+      "mobile": "揭晓价格！"
+    },
+    "contact": {
+      "contact-title": "联系信息",
+      "contact-title-mobile": "业主联系信息",
+      "Name": "姓名：",
+      "Email": "电子邮件：",
+      "Phone": "电话：",
+      "contact-button": {
+        "show": "显示联系方式",
+        "hide": "隐藏联系方式",
+        "mobile": "联系业主"
+      }
+    }
+  },
   "settings": {
     "title": "帐户设置",
     "name": {

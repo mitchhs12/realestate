@@ -337,6 +337,33 @@
     "map-area": "área do mapa.",
     "results": "Resultados:"
   },
+  "homes": {
+    "capacity": "as pessoas podem viver confortavelmente aqui.",
+    "capacity-title": "Capacidade:",
+    "rooms-title": "Quartos:",
+    "features-title": "Características:",
+    "location-title": "Localização:",
+    "price-title": "Preço",
+    "original-price": "Preço original",
+    "negotiable": "Preço negociável?",
+    "price-button": {
+      "show": "Revele o preço!",
+      "hide": "Esconda o preço!",
+      "mobile": "Revelar preço!"
+    },
+    "contact": {
+      "contact-title": "Informações de contato",
+      "contact-title-mobile": "Informações de contato do proprietário do imóvel",
+      "Name": "Nome:",
+      "Email": "E-mail:",
+      "Phone": "Telefone:",
+      "contact-button": {
+        "show": "Mostrar detalhes de contato",
+        "hide": "Ocultar detalhes de contato",
+        "mobile": "Contate o Proprietário"
+      }
+    }
+  },
   "settings": {
     "title": "Configurações de Conta",
     "name": {

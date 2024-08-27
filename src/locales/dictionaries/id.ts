@@ -337,6 +337,33 @@ export default {
     "map-area": "area peta.",
     "results": "Hasil:"
   },
+  "homes": {
+    "capacity": "Orang-orang dapat hidup dengan nyaman di sini.",
+    "capacity-title": "Kapasitas:",
+    "rooms-title": "Kamar:",
+    "features-title": "Fitur:",
+    "location-title": "Lokasi:",
+    "price-title": "Harga",
+    "original-price": "Harga Asli",
+    "negotiable": "Harga Bisa Nego?",
+    "price-button": {
+      "show": "Ungkapkan Harganya!",
+      "hide": "Sembunyikan Harga!",
+      "mobile": "Ungkapkan Harga!"
+    },
+    "contact": {
+      "contact-title": "Informasi Kontak",
+      "contact-title-mobile": "Informasi Kontak Pemilik Properti",
+      "Name": "Nama:",
+      "Email": "E-mail:",
+      "Phone": "Telepon:",
+      "contact-button": {
+        "show": "Tampilkan Detail Kontak",
+        "hide": "Sembunyikan Detail Kontak",
+        "mobile": "Hubungi Pemilik"
+      }
+    }
+  },
   "settings": {
     "title": "Pengaturan Akun",
     "name": {

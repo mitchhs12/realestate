@@ -337,6 +337,33 @@
     "map-area": "พื้นที่แผนที่",
     "results": "ผลลัพธ์:"
   },
+  "homes": {
+    "capacity": "ประชาชนสามารถอยู่อาศัยได้อย่างสบายที่นี่",
+    "capacity-title": "ความจุ:",
+    "rooms-title": "ห้องพัก:",
+    "features-title": "คุณสมบัติ:",
+    "location-title": "ที่ตั้ง:",
+    "price-title": "ราคา",
+    "original-price": "ราคาเดิม",
+    "negotiable": "ราคาต่อรองได้?",
+    "price-button": {
+      "show": "เปิดเผยราคา!",
+      "hide": "ซ่อนราคา!",
+      "mobile": "เปิดเผยราคา!"
+    },
+    "contact": {
+      "contact-title": "ข้อมูลการติดต่อ",
+      "contact-title-mobile": "ข้อมูลการติดต่อเจ้าของทรัพย์สิน",
+      "Name": "ชื่อ:",
+      "Email": "อีเมล:",
+      "Phone": "โทรศัพท์:",
+      "contact-button": {
+        "show": "แสดงรายละเอียดการติดต่อ",
+        "hide": "ซ่อนรายละเอียดการติดต่อ",
+        "mobile": "ติดต่อเจ้าของ"
+      }
+    }
+  },
   "settings": {
     "title": "การตั้งค่าบัญชี",
     "name": {

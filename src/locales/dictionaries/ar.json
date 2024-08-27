@@ -337,6 +337,33 @@
     "map-area": "منطقة الخريطة.",
     "results": "نتائج:"
   },
+  "homes": {
+    "capacity": "يمكن للناس أن يعيشوا هنا بشكل مريح.",
+    "capacity-title": "سعة:",
+    "rooms-title": "الغرف:",
+    "features-title": "سمات:",
+    "location-title": "موقع:",
+    "price-title": "سعر",
+    "original-price": "السعر الأصلي",
+    "negotiable": "السعر قابل للتفاوض؟",
+    "price-button": {
+      "show": "كشف السعر!",
+      "hide": "إخفاء السعر!",
+      "mobile": "كشف السعر!"
+    },
+    "contact": {
+      "contact-title": "معلومات الاتصال",
+      "contact-title-mobile": "معلومات الاتصال بمالك العقار",
+      "Name": "اسم:",
+      "Email": "بريد إلكتروني:",
+      "Phone": "هاتف:",
+      "contact-button": {
+        "show": "إظهار تفاصيل الاتصال",
+        "hide": "إخفاء تفاصيل الاتصال",
+        "mobile": "اتصل بالمالك"
+      }
+    }
+  },
   "settings": {
     "title": "إعدادات الحساب",
     "name": {

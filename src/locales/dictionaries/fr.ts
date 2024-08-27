@@ -337,6 +337,33 @@ export default {
     "map-area": "zone de la carte.",
     "results": "Résultats:"
   },
+  "homes": {
+    "capacity": "les gens peuvent vivre confortablement ici.",
+    "capacity-title": "Capacité:",
+    "rooms-title": "Chambres:",
+    "features-title": "Caractéristiques:",
+    "location-title": "Emplacement:",
+    "price-title": "Prix",
+    "original-price": "Prix d'origine",
+    "negotiable": "Prix négociable ?",
+    "price-button": {
+      "show": "Révélez le prix !",
+      "hide": "Cachez le prix !",
+      "mobile": "Révéler le prix !"
+    },
+    "contact": {
+      "contact-title": "Coordonnées",
+      "contact-title-mobile": "Coordonnées du propriétaire",
+      "Name": "Nom:",
+      "Email": "E-mail:",
+      "Phone": "Téléphone:",
+      "contact-button": {
+        "show": "Afficher les coordonnées",
+        "hide": "Masquer les coordonnées",
+        "mobile": "Contacter le propriétaire"
+      }
+    }
+  },
   "settings": {
     "title": "Paramètres du compte",
     "name": {

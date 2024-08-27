@@ -337,6 +337,33 @@ export default {
     "map-area": "Área del mapa.",
     "results": "Resultados:"
   },
+  "homes": {
+    "capacity": "La gente puede vivir cómodamente aquí.",
+    "capacity-title": "Capacidad:",
+    "rooms-title": "Alojamiento:",
+    "features-title": "Características:",
+    "location-title": "Ubicación:",
+    "price-title": "Precio",
+    "original-price": "Precio original",
+    "negotiable": "¿Precio negociable?",
+    "price-button": {
+      "show": "¡Revelar el precio!",
+      "hide": "¡Ocultar el precio!",
+      "mobile": "¡Revelar precio!"
+    },
+    "contact": {
+      "contact-title": "Información del contacto",
+      "contact-title-mobile": "Información de contacto del propietario de la propiedad",
+      "Name": "Nombre:",
+      "Email": "Correo electrónico:",
+      "Phone": "Teléfono:",
+      "contact-button": {
+        "show": "Mostrar datos de contacto",
+        "hide": "Ocultar datos de contacto",
+        "mobile": "Contactar al propietario"
+      }
+    }
+  },
   "settings": {
     "title": "Configuraciones de la cuenta",
     "name": {

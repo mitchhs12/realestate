@@ -21,6 +21,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
           style={{ objectFit: "cover" }}
           quality={80}
           priority={true}
+          sizes="100vw"
           className="-z-10 opacity-30 dark:opacity-20"
         />
         <div className="absolute inset-0 flex flex-col w-full justify-center items-center">

@@ -337,6 +337,33 @@ export default {
     "map-area": "područje karte.",
     "results": "Rezultati:"
   },
+  "homes": {
+    "capacity": "ljudi ovdje mogu udobno živjeti.",
+    "capacity-title": "Kapacitet:",
+    "rooms-title": "Sobe:",
+    "features-title": "Značajke:",
+    "location-title": "Mjesto:",
+    "price-title": "Cijena",
+    "original-price": "Originalna cijena",
+    "negotiable": "Cijena po dogovoru?",
+    "price-button": {
+      "show": "Otkrijte cijenu!",
+      "hide": "Sakrij cijenu!",
+      "mobile": "Otkrijte cijenu!"
+    },
+    "contact": {
+      "contact-title": "Podaci za kontakt",
+      "contact-title-mobile": "Podaci za kontakt vlasnika nekretnine",
+      "Name": "Ime:",
+      "Email": "Email:",
+      "Phone": "Telefon:",
+      "contact-button": {
+        "show": "Prikaži pojedinosti o kontaktu",
+        "hide": "Sakrij pojedinosti o kontaktu",
+        "mobile": "Kontaktirajte vlasnika"
+      }
+    }
+  },
   "settings": {
     "title": "Postavke računa",
     "name": {

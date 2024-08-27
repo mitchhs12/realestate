@@ -337,6 +337,33 @@
     "map-area": "harita alanı.",
     "results": "Sonuçlar:"
   },
+  "homes": {
+    "capacity": "İnsanlar burada rahatça yaşayabilirler.",
+    "capacity-title": "Kapasite:",
+    "rooms-title": "Odalar:",
+    "features-title": "Özellikler:",
+    "location-title": "Konum:",
+    "price-title": "Fiyat",
+    "original-price": "Orijinal Fiyat",
+    "negotiable": "Fiyat Pazarlığa Açık mı?",
+    "price-button": {
+      "show": "Fiyatı Açıkla!",
+      "hide": "Fiyatı Gizle!",
+      "mobile": "Fiyatı Açıkla!"
+    },
+    "contact": {
+      "contact-title": "İletişim Bilgileri",
+      "contact-title-mobile": "Mülk Sahibinin İletişim Bilgileri",
+      "Name": "İsim:",
+      "Email": "E-posta:",
+      "Phone": "Telefon:",
+      "contact-button": {
+        "show": "İletişim Detaylarını Göster",
+        "hide": "İletişim Detaylarını Gizle",
+        "mobile": "Sahibiyle İletişime Geçin"
+      }
+    }
+  },
   "settings": {
     "title": "Hesap Ayarları",
     "name": {

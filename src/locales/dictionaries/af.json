@@ -337,6 +337,33 @@
     "map-area": "kaart area.",
     "results": "Resultate:"
   },
+  "homes": {
+    "capacity": "mense kan gemaklik hier woon.",
+    "capacity-title": "Kapasiteit:",
+    "rooms-title": "Kamers:",
+    "features-title": "Kenmerke:",
+    "location-title": "Ligging:",
+    "price-title": "Prys",
+    "original-price": "Oorspronklike prys",
+    "negotiable": "Prys onderhandelbaar?",
+    "price-button": {
+      "show": "Onthul die prys!",
+      "hide": "Versteek die prys!",
+      "mobile": "Onthul prys!"
+    },
+    "contact": {
+      "contact-title": "Kontakinligting",
+      "contact-title-mobile": "Eiendomseienaar se kontakinligting",
+      "Name": "Naam:",
+      "Email": "E-pos:",
+      "Phone": "Telefoon:",
+      "contact-button": {
+        "show": "Wys kontakbesonderhede",
+        "hide": "Versteek kontakbesonderhede",
+        "mobile": "Kontak Eienaar"
+      }
+    }
+  },
   "settings": {
     "title": "Rekeninginstellings",
     "name": {

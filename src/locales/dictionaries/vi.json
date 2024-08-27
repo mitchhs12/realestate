@@ -337,6 +337,33 @@
     "map-area": "khu vực bản đồ.",
     "results": "Kết quả:"
   },
+  "homes": {
+    "capacity": "mọi người có thể thoải mái sống ở đây.",
+    "capacity-title": "Dung tích:",
+    "rooms-title": "Phòng:",
+    "features-title": "Đặc trưng:",
+    "location-title": "Vị trí:",
+    "price-title": "Giá",
+    "original-price": "Giá gốc",
+    "negotiable": "Giá có thể thương lượng?",
+    "price-button": {
+      "show": "Tiết lộ giá!",
+      "hide": "Ẩn giá!",
+      "mobile": "Tiết lộ giá!"
+    },
+    "contact": {
+      "contact-title": "Thông tin liên lạc",
+      "contact-title-mobile": "Thông tin liên lạc của chủ sở hữu bất động sản",
+      "Name": "Tên:",
+      "Email": "E-mail:",
+      "Phone": "Điện thoại:",
+      "contact-button": {
+        "show": "Hiển thị chi tiết liên lạc",
+        "hide": "Ẩn thông tin liên lạc",
+        "mobile": "Liên hệ với chủ sở hữu"
+      }
+    }
+  },
   "settings": {
     "title": "Cài đặt tài khoản",
     "name": {

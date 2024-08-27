@@ -337,6 +337,33 @@
     "map-area": "Kartenbereich.",
     "results": "Ergebnisse:"
   },
+  "homes": {
+    "capacity": "Hier lässt es sich gut leben.",
+    "capacity-title": "Kapazität:",
+    "rooms-title": "Zimmer:",
+    "features-title": "Merkmale:",
+    "location-title": "Standort:",
+    "price-title": "Preis",
+    "original-price": "Ursprünglicher Preis",
+    "negotiable": "Preis verhandelbar?",
+    "price-button": {
+      "show": "Enthüllen Sie den Preis!",
+      "hide": "Verstecke den Preis!",
+      "mobile": "Preis anzeigen!"
+    },
+    "contact": {
+      "contact-title": "Kontaktinformationen",
+      "contact-title-mobile": "Kontaktinformationen des Immobilieneigentümers",
+      "Name": "Name:",
+      "Email": "E-Mail:",
+      "Phone": "Telefon:",
+      "contact-button": {
+        "show": "Kontaktdaten anzeigen",
+        "hide": "Kontaktdaten verbergen",
+        "mobile": "Kontaktieren Sie den Eigentümer"
+      }
+    }
+  },
   "settings": {
     "title": "Kontoeinstellungen",
     "name": {

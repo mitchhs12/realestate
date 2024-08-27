@@ -337,6 +337,33 @@
     "map-area": "지도 지역",
     "results": "결과:"
   },
+  "homes": {
+    "capacity": "사람들은 이곳에서 편안하게 살 수 있습니다.",
+    "capacity-title": "용량:",
+    "rooms-title": "객실:",
+    "features-title": "특징:",
+    "location-title": "위치:",
+    "price-title": "가격",
+    "original-price": "원래 가격",
+    "negotiable": "가격 협상 가능?",
+    "price-button": {
+      "show": "가격을 공개하세요!",
+      "hide": "가격을 숨기세요!",
+      "mobile": "가격을 공개하세요!"
+    },
+    "contact": {
+      "contact-title": "연락처 정보",
+      "contact-title-mobile": "부동산 소유자 연락처 정보",
+      "Name": "이름:",
+      "Email": "이메일:",
+      "Phone": "핸드폰:",
+      "contact-button": {
+        "show": "연락처 정보 표시",
+        "hide": "연락처 정보 숨기기",
+        "mobile": "소유자에게 연락하기"
+      }
+    }
+  },
   "settings": {
     "title": "계정 설정",
     "name": {
