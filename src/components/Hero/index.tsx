@@ -15,6 +15,7 @@ export default async function Hero() {
         style={{ objectFit: "cover" }}
         quality={80}
         priority={true}
+        sizes="100vw" // The image always takes up 100% of the viewport width
         className="-z-10 opacity-30 dark:opacity-20"
       />
       <div className="absolute inset-0 flex flex-col w-full justify-center items-center">

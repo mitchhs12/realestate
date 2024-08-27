@@ -60,17 +60,7 @@ export default function Header({
   const pathname = usePathname();
   const router = useRouter();
   const locale = useCurrentLocale();
-  const {
-    currentHome,
-    isSmallScreen,
-    openLogInModal,
-    openSignUpModal,
-    closeModal,
-    isModalOpen,
-    isLoginOpen,
-    setIsLoginOpen,
-    user,
-  } = useContext(QueryContext);
+  const { currentHome, isSmallScreen, openLogInModal, openSignUpModal, user } = useContext(QueryContext);
 
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");

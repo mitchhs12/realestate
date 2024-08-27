@@ -24,8 +24,12 @@ export default function ResizableCard({ home, height, rounded, openModal }: Prop
                 src={photo}
                 className={`object-cover object-center ${rounded ? rounded : "rounded-t-lg"}`}
                 alt={`${home.title} photo ${index}`}
-                fill
-                sizes="(max-width: 500px) 100vw, (max-height: 500px) 100vh"
+                fill={true}
+                sizes="
+                (max-width: 400px) 400px,
+                (max-width: 510px) 510px,
+                (max-width: 768px) 768px, 
+                100vw"
               />
             </div>
           </CarouselItem>

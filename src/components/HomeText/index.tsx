@@ -24,6 +24,7 @@ import { Check, Phone, PhoneCall } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { handleCopy } from "@/lib/utils";
+import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
 
 interface Props {
   home: HomeType;
@@ -150,18 +151,22 @@ export default function HomeText({ home }: Props) {
               <div className="flex flex-col w-full gap-3">
                 <div className="text-lg sm:text-xl">Rooms:</div>
                 <div className="flex gap-3">
+                  <BedDouble size={18} />
                   <span>{formatNumber(home.bedrooms, numerals)}</span>{" "}
                   <span>{home.bedrooms !== 1 ? "Bedrooms" : "Bedroom"}</span>
                 </div>
                 <div className="flex gap-3">
+                  <Bath size={18} />
                   <span>{formatNumber(home.bathrooms, numerals)}</span>
                   <span>{home.bathrooms !== 1 ? "Bathrooms" : "Bathroom"}</span>
                 </div>
                 <div className="flex gap-3">
+                  <Sofa size={18} />
                   <span>{formatNumber(home.livingrooms, numerals)}</span>
                   <span>{home.livingrooms !== 1 ? "Living Rooms" : "Living Room"}</span>
                 </div>
                 <div className="flex gap-3">
+                  <CookingPot size={18} />
                   <span>{formatNumber(home.kitchens, numerals)}</span>
                   <span>{home.kitchens !== 1 ? "Kitchens" : "Kitchen"}</span>
                 </div>
