@@ -243,7 +243,9 @@ export default function Locations() {
                     className="object-cover object-center rounded-lg"
                     src={urlMap[city.name]}
                     alt="City Image"
-                    sizes={"(max-width: 200px), (max-height: 200px)"}
+                    sizes={
+                      "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px, (max-width: 1024px) 1024px"
+                    }
                     fill={true}
                     priority={true}
                     onLoad={() => handleImageLoad(urlMap[city.name])}
@@ -349,7 +351,7 @@ export default function Locations() {
             fill={true}
             className="object-cover rounded-lg absolute inset-0 z-0" // opacity-65 dark:opacity-60"
             priority={true}
-            sizes={"(max-width: 500px), (max-height: 500px)"}
+            sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
           <CardTitle

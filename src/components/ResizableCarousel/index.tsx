@@ -29,6 +29,10 @@ export default function ResizableCard({ home, height, rounded, openModal }: Prop
                 (max-width: 400px) 400px,
                 (max-width: 510px) 510px,
                 (max-width: 768px) 768px, 
+                (max-width: 1024px) 1024px, 
+                (max-width: 1280px) 1280px, 
+                (max-width: 1536px) 1536px,
+                (max-width: 1920px) 1920px,
                 100vw"
               />
             </div>

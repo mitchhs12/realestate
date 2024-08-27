@@ -48,7 +48,7 @@ export default function HomePhotos({ home }: { home: HomeType }) {
                 className="object-cover object-center rounded-lg hover:cursor-pointer"
                 alt={`${home.title} photo ${index}`}
                 fill
-                sizes="(max-width: 500px), (max-height: 500px)"
+                sizes="(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"
               />
             </div>
           ))}
@@ -93,6 +93,7 @@ export default function HomePhotos({ home }: { home: HomeType }) {
                   alt={`${home.title} photo ${index}`}
                   width={800}
                   height={600}
+                  sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
                 />
               </div>
             ))}
