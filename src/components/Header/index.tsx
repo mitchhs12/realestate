@@ -87,7 +87,7 @@ export default function Header({
     <>
       <header
         className={`sticky top-0 flex ${
-          isSellPage ? "justify-end" : "justify-center shadow-lg xs:justify-between"
+          isSellPage ? "justify-end" : "justify-center shadow-lg dark:shadow-white/15 xs:justify-between"
         } items-center h-[86px] z-[40] px-6 bg-background`}
       >
         {!isSellPage && (

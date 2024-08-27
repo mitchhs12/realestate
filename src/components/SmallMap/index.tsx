@@ -55,7 +55,6 @@ export default function MapComponent({
   const { resolvedTheme: theme } = useTheme();
   const { setNewHome, setNextLoading, setPrevLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
-  const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
   const [newZoom, setNewZoom] = useState(17);
 
@@ -120,14 +119,6 @@ export default function MapComponent({
     [debouncedGetAddress]
   );
 
-  useEffect(() => {
-    if (theme) {
-      console.log("running use Effect!");
-      console.log("theme", theme);
-      setMapConfig(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
-    }
-  }, [theme]);
-
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   if (!apiKey) {
@@ -147,36 +138,39 @@ export default function MapComponent({
             Loading...
           </div>
         ) : (
-          <Map
-            clickableIcons={false}
-            gestureHandling={"greedy"}
-            defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
-            maxZoom={20}
-            minZoom={6}
-            onZoomChanged={(num) => {
-              setNewZoom(num.detail.zoom);
-            }}
-            {...cameraProps}
-            disableDefaultUI={true}
-            mapId={mapConfig.mapId || null}
-            mapTypeId={mapConfig.mapTypeId}
-            reuseMaps={true}
-            onCameraChanged={handleCameraChanged}
-          >
-            {disabled ? (
-              <Circle
-                radius={150}
-                center={{ lat: coordinates.lat, lng: coordinates.long }}
-                strokeColor={"green"}
-                strokeOpacity={1}
-                strokeWeight={3}
-                fillColor="#16A34A"
-                fillOpacity={0.3}
-              />
-            ) : (
-              <Marker position={{ lat: cameraPos.lat, lng: cameraPos.long }} />
-            )}
-          </Map>
+          <div className="rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15">
+            <Map
+              clickableIcons={false}
+              gestureHandling={"greedy"}
+              defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
+              maxZoom={20}
+              minZoom={6}
+              onZoomChanged={(num) => {
+                setNewZoom(num.detail.zoom);
+              }}
+              backgroundColor={theme === "dark" ? "black" : "white"}
+              {...cameraProps}
+              disableDefaultUI={true}
+              mapId={theme === "dark" ? MAP_CONFIGS[1].mapId : MAP_CONFIGS[0].mapId}
+              mapTypeId={theme === "dark" ? MAP_CONFIGS[1].mapTypeId : MAP_CONFIGS[0].mapTypeId}
+              reuseMaps={true}
+              onCameraChanged={handleCameraChanged}
+            >
+              {disabled ? (
+                <Circle
+                  radius={150}
+                  center={{ lat: coordinates.lat, lng: coordinates.long }}
+                  strokeColor={"#16A34A"}
+                  strokeOpacity={1}
+                  strokeWeight={3}
+                  fillColor="#16A34A"
+                  fillOpacity={0.3}
+                />
+              ) : (
+                <Marker position={{ lat: cameraPos.lat, lng: cameraPos.long }} />
+              )}
+            </Map>
+          </div>
         )}
       </APIProvider>
     </div>

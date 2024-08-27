@@ -67,7 +67,6 @@ export default function MapComponent({
 
   const { resolvedTheme: theme } = useTheme();
   const [numClusters, setNumClusters] = useState(0);
-  const [mapConfig, setMapConfig] = useState<MapConfig>(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
   const { currentHome, query } = useContext(QueryContext);
 
@@ -104,12 +103,6 @@ export default function MapComponent({
 
   const hamdleInfoWindowClose = useCallback(() => setInfowindowData(null), [setInfowindowData]);
 
-  useEffect(() => {
-    if (theme) {
-      setMapConfig(theme === "dark" ? MAP_CONFIGS[1] : MAP_CONFIGS[0]);
-    }
-  }, [theme]);
-
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   if (!apiKey) {
@@ -143,8 +136,8 @@ export default function MapComponent({
             maxZoom={19}
             minZoom={3}
             disableDefaultUI={true}
-            mapId={mapConfig.mapId || null}
-            mapTypeId={mapConfig.mapTypeId}
+            mapId={theme === "dark" ? MAP_CONFIGS[1].mapId : MAP_CONFIGS[0].mapId}
+            mapTypeId={theme === "dark" ? MAP_CONFIGS[1].mapTypeId : MAP_CONFIGS[0].mapTypeId}
             backgroundColor={theme === "dark" ? "black" : "white"}
             reuseMaps={true}
             className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
