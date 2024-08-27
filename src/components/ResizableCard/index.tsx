@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType } from "@/lib/validations";
 import { formatPrice, getFlagEmoji } from "@/lib/utils";
@@ -10,6 +8,9 @@ import Link from "next/link";
 import lookup from "country-code-lookup";
 import ResizableCarousel from "@/components/ResizableCarousel";
 import { QueryContext } from "@/context/QueryContext";
+import BrokenPrice from "@/components/BrokenPrice";
+import { FlagComponent } from "@/components/ui/phone-input";
+import { Country } from "react-phone-number-input";
 
 interface Props {
   home: HomeType | null;
@@ -20,7 +21,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { isSmallScreen } = useContext(QueryContext);
+  const { isSmallScreen, user, session } = useContext(QueryContext);
 
   const target = isSmallScreen ? "_self" : "_blank";
 
@@ -71,12 +72,25 @@ export default function ResizableCard({ home, isLoading }: Props) {
           <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
             {home.region}
           </div>
-          <div className="flex text-center text-sm sm:text-sm lg:text-md">
+          <div className="flex text-center gap-2 items-center text-sm sm:text-sm lg:text-md">
             {home.country && lookup.byIso(home.country)?.country}{" "}
-            {home.country && getFlagEmoji(lookup.byIso(home.country)?.iso2 || "")}
+            {home.country && (
+              <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
+            )}
           </div>
-          <div className="flex text-center text-sm md:text-md lg:text-lg font-semibold mb-2">
-            {formatPrice(defaultCurrency.symbol, home.priceUsd * defaultCurrency.usdPrice, 0)}
+          <div className="mb-2">
+            {session.status === "loading" ? (
+              <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
+            ) : (
+              <BrokenPrice
+                home={home}
+                newCurrencySymbol={defaultCurrency.symbol}
+                newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                reveal={user ? true : false}
+                blurAmount="blur-sm"
+                className="text-sm md:text-md lg:text-lg"
+              />
+            )}
           </div>
         </div>
       </Link>

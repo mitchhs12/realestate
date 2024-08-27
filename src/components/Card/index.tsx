@@ -112,6 +112,7 @@ export default function Card({ home, isLoading }: Props) {
                 newCurrencySymbol={defaultCurrency.symbol}
                 newCurrencyUsdPrice={defaultCurrency.usdPrice}
                 reveal={user ? true : false}
+                blurAmount={"blur-sm"}
                 className="text-sm md:text-md lg:text-lg"
               />
             )}

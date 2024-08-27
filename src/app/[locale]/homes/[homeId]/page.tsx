@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: { homeId: string } }) {
               <Separator />
             </div>
           </div>
-          <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-4">
+          <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-4 gap-3">
             <div className="text-lg sm:text-xl">Location:</div>
             <div className="flex w-full max-w-7xl h-[40vh]">
               <MapComponent

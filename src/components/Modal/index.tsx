@@ -110,7 +110,7 @@ export function Modal() {
               onClick={() => handleSocialSignIn("google")}
               disabled={isLoading !== null}
             >
-              <div className="flex justify-between items-center w-full gap-2">
+              <div className="flex justify-between items-center w-full gap-5">
                 <div className="flex w-[38px] h-[38px] justify-center items-center">
                   {isLoading === "google" ? (
                     <ReloadIcon className="animate-spin h-7 w-7" />
@@ -129,7 +129,7 @@ export function Modal() {
               onClick={() => handleSocialSignIn("apple")}
               disabled={isLoading !== null}
             >
-              <div className="flex justify-between items-center w-full gap-2">
+              <div className="flex justify-between items-center w-full gap-5">
                 <div className="flex w-[38px] h-[38px] justify-center items-center">
                   {isLoading === "apple" ? (
                     <ReloadIcon className="animate-spin h-7 w-7" />
@@ -148,7 +148,7 @@ export function Modal() {
               onClick={() => handleSocialSignIn("facebook")}
               disabled={isLoading !== null}
             >
-              <div className="flex justify-between items-center w-full gap-2">
+              <div className="flex justify-between items-center w-full gap-5">
                 <div className="flex w-[38px] h-[38px] justify-center items-center">
                   {isLoading === "facebook" ? (
                     <ReloadIcon className="animate-spin h-7 w-7" />
