@@ -5,7 +5,6 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { useContext, useEffect, useState } from "react";
 import { HomeType } from "@/lib/validations";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { formatPrice } from "@/lib/utils";
 import {
   CheckCircledIcon,
   CrossCircledIcon,
@@ -15,16 +14,16 @@ import {
   CheckIcon,
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { User } from "next-auth";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
 import { formatNumber } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
 import BrokenPrice from "@/components/BrokenPrice";
-import { Check } from "lucide-react";
+import { Check, Phone, PhoneCall } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
+import { handleCopy } from "@/lib/utils";
 
 interface Props {
   home: HomeType;
@@ -46,7 +45,7 @@ export default function HomeText({ home }: Props) {
   const { defaultCurrency, currencies, numerals } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
-  const [copiedField, setCopiedField] = useState(null);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -59,12 +58,6 @@ export default function HomeText({ home }: Props) {
       setQuery(home.address);
     }
   }, [home]);
-
-  const handleCopy = (text: any, field: any) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(field);
-    setTimeout(() => setCopiedField(null), 2000); // Reset the copied state after 2 seconds
-  };
 
   const title = home.title;
   const description = home.description;
@@ -204,7 +197,7 @@ export default function HomeText({ home }: Props) {
                   newCurrencySymbol={defaultCurrency.symbol}
                   newCurrencyUsdPrice={defaultCurrency.usdPrice}
                   reveal={user ? true : false}
-                  blurAmount={"blur-md"}
+                  blurAmount={"blur-lg"}
                   className="text-primary justify-center text-2xl md:text-3xl lg:text-4xl"
                 />
               )}
@@ -221,7 +214,7 @@ export default function HomeText({ home }: Props) {
                       newCurrencySymbol={home.currency}
                       newCurrencyUsdPrice={originalCurrencyRate}
                       reveal={user ? true : false}
-                      blurAmount={"blur-sm md:blur-md"}
+                      blurAmount={"blur-md"}
                       className="text-primary justify-center text-base md:text-lg lg:text-xl"
                     />
                   )
@@ -283,7 +276,7 @@ export default function HomeText({ home }: Props) {
                 >
                   <div className="text-start">{home.contactName}</div>
                   <Button
-                    onClick={() => handleCopy(home.contactName, "name")}
+                    onClick={() => home.contactName && handleCopy(home.contactName, "name", setCopiedField)}
                     variant="outline"
                     size="icon"
                     className="flex text-xs gap-2 p-2"
@@ -303,7 +296,7 @@ export default function HomeText({ home }: Props) {
                 >
                   <div className="justify-start truncate">{home.contactEmail}</div>
                   <Button
-                    onClick={() => handleCopy(home.contactEmail, "email")}
+                    onClick={() => home.contactEmail && handleCopy(home.contactEmail, "email", setCopiedField)}
                     variant="outline"
                     size="icon"
                     className="flex text-xs gap-2 p-2"
@@ -323,7 +316,7 @@ export default function HomeText({ home }: Props) {
                 >
                   <div className="justify-start">{home.contactPhone}</div>
                   <Button
-                    onClick={() => handleCopy(home.contactPhone, "phone")}
+                    onClick={() => home.contactPhone && handleCopy(home.contactPhone, "phone", setCopiedField)}
                     variant="outline"
                     className="flex text-xs gap-2 p-2"
                     size="icon"
@@ -343,11 +336,7 @@ export default function HomeText({ home }: Props) {
                   className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
                 >
                   <div className="flex gap-3 justify-center text-lg items-center">
-                    {revealContact ? (
-                      <EyeOpenIcon className="w-4 md:w-6 h-4 md:h-6" />
-                    ) : (
-                      <EyeClosedIcon className="w-4 md:w-6 h-4 md:h-6" />
-                    )}
+                    {revealContact || isModalOpen ? <PhoneCall className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
                     <span className="text-xs md:text-sm lg:text-base">
                       {revealContact ? "Hide" : "Show"} Contact Info!
                     </span>

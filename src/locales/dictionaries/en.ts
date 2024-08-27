@@ -33,19 +33,19 @@ export default {
         "title": "Sign up",
         "subtitle": "Enter your email below to sign up!",
         "already": "Already have an account?",
-        "change": "Log in",
+        "change": "Sign in",
         "apple": "Sign up with Apple",
         "google": "Sign up with Google",
         "facebook": "Sign up with Facebook"
       },
       "log-in": {
-        "title": "Welcome back",
-        "subtitle": "Enter your email below to log in.",
+        "title": "Sign in",
+        "subtitle": "Enter your email below to sign in.",
         "already": "Don't have an account?",
         "change": "Sign up",
-        "apple": "Log in with Apple",
-        "google": "Log in with Google",
-        "facebook": "Log in with Facebook"
+        "apple": "Sign in with Apple",
+        "google": "Sign in with Google",
+        "facebook": "Sign in with Facebook"
       },
       "general": {
         "email": "Email",
@@ -177,7 +177,7 @@ export default {
       "email": "Email:",
       "email-placeholder": "Enter the property owner's email...",
       "mobile": "Mobile:",
-      "mobile-check": "Set as my phone number",
+      "mobile-check": "This is my phone number",
       "mobile-placeholder": "Enter the property owner's mobile...",
       "no-country": "No countries found.",
       "search-country": "Search for a country..."

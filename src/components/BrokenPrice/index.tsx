@@ -12,7 +12,7 @@ interface Props {
   className?: string;
 }
 
-export default function rokenPrice({
+export default function BrokenPrice({
   home,
   newCurrencySymbol,
   newCurrencyUsdPrice,
@@ -36,11 +36,11 @@ export default function rokenPrice({
               {symbolFirst ? (
                 <>
                   <span>{symbol}</span>
-                  <span className={`${!reveal && `${blurAmount} blur-sm select-none`}`}>{number}</span>
+                  <span className={`${!reveal && `${blurAmount} select-none`}`}>{number}</span>
                 </>
               ) : (
                 <>
-                  <span className={`${!reveal && `${blurAmount} blur-sm select-none`}`}>{number}</span>
+                  <span className={`${!reveal && `${blurAmount} select-none`}`}>{number}</span>
                   <span>{symbol}</span>
                 </>
               )}

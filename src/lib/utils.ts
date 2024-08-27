@@ -83,6 +83,12 @@ export const formatNumber = (num: number, numerals: any) => {
   return new Intl.NumberFormat(numerals).format(num);
 };
 
+export const handleCopy = (text: string, field: string, setCopiedField: (field: string | null) => void) => {
+  navigator.clipboard.writeText(text);
+  setCopiedField(field);
+  setTimeout(() => setCopiedField(null), 2000); // Reset the copied state after 2 seconds
+};
+
 export const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
