@@ -24,24 +24,24 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       </main>
       <div className="flex flex-col justify-start h-full w-full">
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
-          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start w-full h-full max-w-7xl">
-            <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
+          <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-7xl">
+            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {scopedT("Recommended")}
             </h2>
             <Locations />
           </div>
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-50 dark:bg-zinc-950">
-          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full w-full max-w-7xl">
-            <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
+          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
+            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {scopedT("Popular")}
             </h2>
             <Listings homes={featuredHomes} />
           </div>
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
-          <div className="flex flex-col space-y-8 pt-8 pb-12 justify-start h-full w-full max-w-7xl">
-            <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
+          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
+            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {scopedT("Newest")}
             </h2>
             <Listings homes={newHomes} />
