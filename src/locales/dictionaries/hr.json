@@ -331,6 +331,12 @@
       "finish": "Završiti!"
     }
   },
+  "search": {
+    "properties": "svojstva u",
+    "property": "vlasništvo u",
+    "map-area": "područje karte.",
+    "results": "Rezultati:"
+  },
   "settings": {
     "title": "Postavke računa",
     "name": {

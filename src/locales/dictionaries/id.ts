@@ -331,6 +331,12 @@ export default {
       "finish": "Menyelesaikan!"
     }
   },
+  "search": {
+    "properties": "properti di",
+    "property": "properti di",
+    "map-area": "area peta.",
+    "results": "Hasil:"
+  },
   "settings": {
     "title": "Pengaturan Akun",
     "name": {

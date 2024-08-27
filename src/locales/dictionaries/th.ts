@@ -331,6 +331,12 @@ export default {
       "finish": "เสร็จ!"
     }
   },
+  "search": {
+    "properties": "คุณสมบัติใน",
+    "property": "ทรัพย์สินใน",
+    "map-area": "พื้นที่แผนที่",
+    "results": "ผลลัพธ์:"
+  },
   "settings": {
     "title": "การตั้งค่าบัญชี",
     "name": {

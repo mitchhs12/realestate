@@ -56,7 +56,7 @@ export default {
       }
     },
     "hero": {
-      "title": "Find your dream home.",
+      "title": "Find your dream home",
       "search": {
         "placeholder": "Search for any address or place...",
         "search-button": "Search"
@@ -330,6 +330,12 @@ export default {
       "loading": "Loading...",
       "finish": "Finish!"
     }
+  },
+  "search": {
+    "properties": "properties in",
+    "property": "property in",
+    "map-area": "map area.",
+    "results": "Results"
   },
   "settings": {
     "title": "Account Settings",

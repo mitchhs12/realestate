@@ -331,6 +331,12 @@ export default {
       "finish": "დაასრულე!"
     }
   },
+  "search": {
+    "properties": "თვისებები in",
+    "property": "ქონებაში",
+    "map-area": "რუკის ტერიტორია.",
+    "results": "შედეგები:"
+  },
   "settings": {
     "title": "ანგარიშის პარამეტრები",
     "name": {

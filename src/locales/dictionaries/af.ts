@@ -331,6 +331,12 @@ export default {
       "finish": "Voltooi!"
     }
   },
+  "search": {
+    "properties": "eiendomme in",
+    "property": "eiendom in",
+    "map-area": "kaart area.",
+    "results": "Resultate:"
+  },
   "settings": {
     "title": "Rekeninginstellings",
     "name": {

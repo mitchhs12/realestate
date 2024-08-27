@@ -331,6 +331,12 @@ export default {
       "finish": "结束！"
     }
   },
+  "search": {
+    "properties": "属性",
+    "property": "财产",
+    "map-area": "地图区域。",
+    "results": "结果："
+  },
   "settings": {
     "title": "帐户设置",
     "name": {

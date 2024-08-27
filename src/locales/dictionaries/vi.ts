@@ -331,6 +331,12 @@ export default {
       "finish": "Hoàn thành!"
     }
   },
+  "search": {
+    "properties": "tính chất trong",
+    "property": "tài sản trong",
+    "map-area": "khu vực bản đồ.",
+    "results": "Kết quả:"
+  },
   "settings": {
     "title": "Cài đặt tài khoản",
     "name": {

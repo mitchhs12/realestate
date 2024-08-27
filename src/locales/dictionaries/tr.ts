@@ -331,6 +331,12 @@ export default {
       "finish": "Sona ermek!"
     }
   },
+  "search": {
+    "properties": "özellikleri",
+    "property": "mülk",
+    "map-area": "harita alanı.",
+    "results": "Sonuçlar:"
+  },
   "settings": {
     "title": "Hesap Ayarları",
     "name": {

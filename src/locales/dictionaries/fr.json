@@ -331,6 +331,12 @@
       "finish": "Finition!"
     }
   },
+  "search": {
+    "properties": "propriétés dans",
+    "property": "propriété dans",
+    "map-area": "zone de la carte.",
+    "results": "Résultats:"
+  },
   "settings": {
     "title": "Paramètres du compte",
     "name": {

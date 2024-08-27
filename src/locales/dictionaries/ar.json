@@ -331,6 +331,12 @@
       "finish": "ينهي!"
     }
   },
+  "search": {
+    "properties": "خصائص في",
+    "property": "الممتلكات في",
+    "map-area": "منطقة الخريطة.",
+    "results": "نتائج:"
+  },
   "settings": {
     "title": "إعدادات الحساب",
     "name": {

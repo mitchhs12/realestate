@@ -331,6 +331,12 @@
       "finish": "仕上げる！"
     }
   },
+  "search": {
+    "properties": "プロパティ",
+    "property": "不動産の",
+    "map-area": "マップエリア。",
+    "results": "結果："
+  },
   "settings": {
     "title": "アカウント設定",
     "name": {

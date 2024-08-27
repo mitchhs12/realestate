@@ -331,6 +331,12 @@ export default {
       "finish": "¡Finalizar!"
     }
   },
+  "search": {
+    "properties": "Propiedades en",
+    "property": "propiedad en",
+    "map-area": "Área del mapa.",
+    "results": "Resultados:"
+  },
   "settings": {
     "title": "Configuraciones de la cuenta",
     "name": {

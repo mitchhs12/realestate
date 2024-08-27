@@ -1,6 +1,7 @@
 import CombinedSearchPage from "@/components/CombinedSearchPage";
 import { CoordinatesType } from "@/lib/validations";
 import { Metadata } from "next";
+import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -16,8 +17,12 @@ export default async function Page({ params }: { params: { search: string } }) {
     `${AWS_LOCATION_SERVICE_ENDPOINT}/places/v0/indexes/${INDEX_NAME}/places/${params.search}?key=${API_KEY}&language=${language}`
   );
 
+  const t = await getScopedI18n("search");
+  const propertiesText = t("properties");
+  const propertyText = t("property");
+  const mapAreaText = t("map-area");
+  const resultsText = t("results");
   const fullResponse = await response.json();
-  console.log(JSON.stringify(fullResponse, null, 2));
   const longLatArray = fullResponse.Place.Geometry.Point;
   const label = fullResponse.Place.Label;
   const coordinates: CoordinatesType = { lat: longLatArray[1], long: longLatArray[0] };
@@ -64,7 +69,15 @@ export default async function Page({ params }: { params: { search: string } }) {
   if (response.status === 200) {
     return (
       <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end ">
-        <CombinedSearchPage coordinates={coordinates} label={label} initZoom={initZoom} />
+        <CombinedSearchPage
+          coordinates={coordinates}
+          label={label}
+          initZoom={initZoom}
+          propertyText={propertyText}
+          propertiesText={propertiesText}
+          mapAreaText={mapAreaText}
+          resultsText={resultsText}
+        />
       </main>
     );
   } else {

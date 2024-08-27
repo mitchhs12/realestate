@@ -9,17 +9,31 @@ import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Skeleton } from "@/components/ui/skeleton";
-
+import { formatNumber } from "@/lib/utils";
 import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
+import { LocaleContext } from "@/context/LocaleContext";
 
 interface Props {
   coordinates: CoordinatesType;
   label: string;
   initZoom: number | null;
+  propertyText: string;
+  propertiesText: string;
+  mapAreaText: string;
+  resultsText: string;
 }
 
-export default function CombinedSearchPage({ coordinates, label, initZoom }: Props) {
+export default function CombinedSearchPage({
+  coordinates,
+  label,
+  initZoom,
+  propertyText,
+  propertiesText,
+  mapAreaText,
+  resultsText,
+}: Props) {
   const { mapFocused, setMapFocused } = useContext(QueryContext);
+  const { numerals } = useContext(LocaleContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
   const [homes, setHomes] = useState<(HomeType | null)[]>(Array(12).fill(null));
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
@@ -53,7 +67,7 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
       setIsSearchLoading(true);
       getSearchResults("search", bounds).then((data) => {
         setHomes(data);
-        setSearchLabel("map area");
+        setSearchLabel(mapAreaText);
         setIsSearchLoading(false);
       });
     }
@@ -70,7 +84,9 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (
-            `${homes.length} ${homes.length === 1 ? "property" : "properties"} in ${searchLabel}.`
+            `${formatNumber(homes.length, numerals)} ${
+              homes.length === 1 ? propertyText : propertiesText
+            } ${searchLabel}.`
           )}
         </h1>
         <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
@@ -85,12 +101,14 @@ export default function CombinedSearchPage({ coordinates, label, initZoom }: Pro
           dismissible={false}
         >
           <DrawerContent className="flex flex-col justify-center text-center items-start w-full h-full outline-none gap-y-2 py-2 p-4">
-            <DrawerTitle className="w-full">Results</DrawerTitle>
+            <DrawerTitle className="w-full">{resultsText}</DrawerTitle>
             <DrawerDescription className="flex justify-center w-full">
               {isSearchLoading ? (
                 <Skeleton className="w-48 h-5" />
               ) : (
-                `${homes.length} ${homes.length === 1 ? "property" : "properties"} in ${searchLabel}.`
+                `${formatNumber(homes.length, numerals)} ${
+                  homes.length === 1 ? propertyText : propertiesText
+                } ${searchLabel}`
               )}
             </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>

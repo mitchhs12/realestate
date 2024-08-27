@@ -331,6 +331,12 @@ export default {
       "finish": "Beenden!"
     }
   },
+  "search": {
+    "properties": "Immobilien in",
+    "property": "Eigentum in",
+    "map-area": "Kartenbereich.",
+    "results": "Ergebnisse:"
+  },
   "settings": {
     "title": "Kontoeinstellungen",
     "name": {

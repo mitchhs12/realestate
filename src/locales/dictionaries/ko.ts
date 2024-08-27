@@ -331,6 +331,12 @@ export default {
       "finish": "마치다!"
     }
   },
+  "search": {
+    "properties": "속성",
+    "property": "속성에",
+    "map-area": "지도 지역",
+    "results": "결과:"
+  },
   "settings": {
     "title": "계정 설정",
     "name": {

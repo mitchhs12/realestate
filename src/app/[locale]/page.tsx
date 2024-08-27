@@ -23,7 +23,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         <Hero />
       </main>
       <div className="flex flex-col justify-start h-full w-full">
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-950">
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
           <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {scopedT("Recommended")}
@@ -39,7 +39,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
             <Listings homes={featuredHomes} />
           </div>
         </section>
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-950">
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
           <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {scopedT("Newest")}
