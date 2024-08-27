@@ -1,11 +1,8 @@
 "use client";
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Image from "next/image";
 import { HomeType, BoundsType } from "@/lib/validations";
 import { useState, useContext, useEffect, useRef } from "react";
 import { QueryContext } from "@/context/QueryContext";
-import Card from "@/components/Card";
 import ResizableCard from "../ResizableCard";
 
 interface Props {

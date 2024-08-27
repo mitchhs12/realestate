@@ -254,7 +254,9 @@ export default function Locations() {
                         {city.name.split(",")[0]}{" "}
                       </p>
                       <p
-                        className={`flex items-center gap-x-2 text-sm ${underlinedImage === city.name && "underline"}`}
+                        className={`flex items-center gap-x-2 font-medium text-sm ${
+                          underlinedImage === city.name && "underline"
+                        }`}
                       >
                         {city.name.split(",")[1]}{" "}
                         {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}

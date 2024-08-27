@@ -1,5 +1,4 @@
 import { HomeType } from "@/lib/validations";
-// import Card from "@/components/Card";
 import ResizableCard from "@/components/ResizableCard";
 
 interface Props {
