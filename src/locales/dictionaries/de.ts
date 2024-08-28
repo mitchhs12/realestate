@@ -338,14 +338,39 @@ export default {
     "results": "Ergebnisse:"
   },
   "homes": {
-    "capacity": "Hier lässt es sich gut leben.",
+    "units": {
+      "m": "m²",
+      "ft": "Quadratfuß"
+    },
+    "capacity": {
+      "single": "Person.",
+      "plural": "Menschen."
+    },
     "capacity-title": "Kapazität:",
     "rooms-title": "Zimmer:",
     "features-title": "Merkmale:",
     "location-title": "Standort:",
     "price-title": "Preis",
+    "size-title": "Grundstücksgröße:",
+    "show-all-photos": "Alle Fotos anzeigen",
     "original-price": "Ursprünglicher Preis",
     "negotiable": "Preis verhandelbar?",
+    "bedrooms": {
+      "single": "Schlafzimmer",
+      "plural": "Schlafzimmer"
+    },
+    "bathrooms": {
+      "single": "Badezimmer",
+      "plural": "Badezimmer"
+    },
+    "living-rooms": {
+      "single": "Wohnzimmer",
+      "plural": "Wohnzimmer"
+    },
+    "kitchens": {
+      "single": "Küche",
+      "plural": "Küchen"
+    },
     "price-button": {
       "show": "Enthüllen Sie den Preis!",
       "hide": "Verstecke den Preis!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "Kontaktinformationen",
       "contact-title-mobile": "Kontaktinformationen des Immobilieneigentümers",
-      "Name": "Name:",
-      "Email": "E-Mail:",
-      "Phone": "Telefon:",
-      "contact-button": {
-        "show": "Kontaktdaten anzeigen",
-        "hide": "Kontaktdaten verbergen",
-        "mobile": "Kontaktieren Sie den Eigentümer"
-      }
+      "name": "Name:",
+      "email": "E-Mail:",
+      "phone": "Telefon:",
+      "contact-button": "Kontaktdetails"
     }
   },
   "settings": {

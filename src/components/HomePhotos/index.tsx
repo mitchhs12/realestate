@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 
-export default function HomePhotos({ home }: { home: HomeType }) {
+export default function HomePhotos({ home, showAllPhotos }: { home: HomeType; showAllPhotos: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -54,9 +54,9 @@ export default function HomePhotos({ home }: { home: HomeType }) {
           ))}
         </div>
         {home.photos.length > 0 && (
-          <div className="absolute bottom-3 md:left-3">
+          <div className="hidden md:flex absolute bottom-3 md:left-3">
             <Button variant="outline" onClick={() => openModal(0)}>
-              Show all photos
+              {showAllPhotos}
             </Button>
           </div>
         )}

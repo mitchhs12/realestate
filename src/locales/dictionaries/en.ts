@@ -122,8 +122,8 @@ export default {
       "m-placeholder": "Size in m²...",
       "ft-placeholder": "Size in ft²...",
       "units": {
-        "m": "m",
-        "ft": "ft"
+        "m": "m²",
+        "ft": "ft²"
       },
       "feet": "feet",
       "capacity": "Now estimate how many people could comfortably live in your property."
@@ -256,8 +256,8 @@ export default {
         "capacity": "Capacity:",
         "area": "Area:",
         "units": {
-          "m": "m",
-          "ft": "ft"
+          "m": "m²",
+          "ft": "ft²"
         },
         "features": "Features",
         "contactName": "Contact Name:",
@@ -338,14 +338,39 @@ export default {
     "results": "Results"
   },
   "homes": {
-    "capacity": "people can comfortably live here.",
+    "units": {
+      "m": "m²",
+      "ft": "ft²"
+    },
+    "capacity": {
+      "single": "Person.",
+      "plural": "People."
+    },
     "capacity-title": "Capacity:",
     "rooms-title": "Rooms:",
     "features-title": "Features:",
     "location-title": "Location:",
     "price-title": "Price",
+    "size-title": "Property size:",
+    "show-all-photos": "Show all photos",
     "original-price": "Original Price",
     "negotiable": "Price Negotiable?",
+    "bedrooms": {
+      "single": "Bedroom",
+      "plural": "Bedrooms"
+    },
+    "bathrooms": {
+      "single": "Bathroom",
+      "plural": "Bathrooms"
+    },
+    "living-rooms": {
+      "single": "Living Room",
+      "plural": "Living Rooms"
+    },
+    "kitchens": {
+      "single": "Kitchen",
+      "plural": "Kitchens"
+    },
     "price-button": {
       "show": "Reveal the Price!",
       "hide": "Hide the Price!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "Contact Information",
       "contact-title-mobile": "Property Owner Contact Information",
-      "Name": "Name:",
-      "Email": "Email:",
-      "Phone": "Phone:",
-      "contact-button": {
-        "show": "Show Contact Details",
-        "hide": "Hide Contact Details",
-        "mobile": "Contact Owner"
-      }
+      "name": "Name:",
+      "email": "Email:",
+      "phone": "Phone:",
+      "contact-button": "Contact Details"
     }
   },
   "settings": {

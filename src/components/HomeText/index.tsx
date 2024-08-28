@@ -28,9 +28,55 @@ import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
 
 interface Props {
   home: HomeType;
+  units: { m: string; ft: string };
+  capacityText: { single: string; plural: string };
+  capacityTitle: string;
+  roomsTitle: string;
+  featuresTitle: string;
+  priceTitle: string;
+  originalPrice: string;
+  negotiable: string;
+  sizeTitle: string;
+  showPrice: string;
+  hidePrice: string;
+  contactTitle: string;
+  contactNameText: string;
+  contactEmailText: string;
+  contactPhoneText: string;
+  contactButton: string;
+  matchingTypes: { id: string; translation: string }[];
+  matchingFeatures: { id: string; translation: string }[];
+  bedroomsText: { single: string; plural: string };
+  bathroomsText: { single: string; plural: string };
+  livingroomsText: { single: string; plural: string };
+  kitchensText: { single: string; plural: string };
 }
 
-export default function HomeText({ home }: Props) {
+export default function HomeText({
+  home,
+  units,
+  capacityText,
+  capacityTitle,
+  roomsTitle,
+  featuresTitle,
+  priceTitle,
+  originalPrice,
+  negotiable,
+  sizeTitle,
+  showPrice,
+  hidePrice,
+  contactTitle,
+  contactNameText,
+  contactEmailText,
+  contactPhoneText,
+  contactButton,
+  matchingTypes,
+  matchingFeatures,
+  bedroomsText,
+  bathroomsText,
+  livingroomsText,
+  kitchensText,
+}: Props) {
   const {
     setCurrentHome,
     setQuery,
@@ -43,10 +89,12 @@ export default function HomeText({ home }: Props) {
     session,
     user,
   } = useContext(QueryContext);
-  const { defaultCurrency, currencies, numerals } = useContext(LocaleContext);
+  const { defaultCurrency, currencies, numerals, defaultLanguage } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [translatedMunicipality, setTranslatedMunicipality] = useState<string | null>(null);
+  const [titleLoading, setTitleLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -59,6 +107,25 @@ export default function HomeText({ home }: Props) {
       setQuery(home.address);
     }
   }, [home]);
+
+  useEffect(() => {
+    const fetchTranslatedTitle = async () => {
+      const response = await fetch("/api/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: home.municipality }),
+      });
+      const data = await response.json();
+      console.log("translated", data);
+      setTranslatedMunicipality(data);
+    };
+    if (home && home.municipality) {
+      fetchTranslatedTitle();
+    }
+    setTitleLoading(false);
+  }, []);
 
   const title = home.title;
   const description = home.description;
@@ -92,42 +159,49 @@ export default function HomeText({ home }: Props) {
     <div className="flex flex-col w-full h-full justify-center px-8 py-4">
       <div className="flex flex-row w-full h-full justify-between gap-8">
         <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-6 h-auto">
-          <div className="flex flex-wrap gap-2 text-2xl sm:text-3xl">
-            <div className="flex flex-col gap-3">
-              {home.type.map((type, index) => {
-                return <span key={index}>{type}</span>;
-              })}
+          {titleLoading ? (
+            <Skeleton className="h-9 md:h-10 lg:h-12 w-8/12" />
+          ) : (
+            <div className="flex flex-wrap gap-2 text-2xl sm:text-3xl">
+              <div className="flex gap-2">
+                {matchingTypes.map((type, index) => (
+                  <span key={index}>
+                    {index > 0 && <span className="text-gray-300">| </span>}
+                    {type.translation}
+                  </span>
+                ))}
+              </div>
+              in
+              <span>{home.municipality},</span>
+              <span className="flex items-center gap-3">
+                {home.country && lookup.byIso(home.country)?.country}
+                {home.country && (
+                  <FlagComponent
+                    country={lookup.byIso(home.country)?.iso2 as Country}
+                    countryName={home.country}
+                    height={"h-6"}
+                    width={"w-9"}
+                  />
+                )}
+              </span>
             </div>
-            in
-            <span>{home.municipality},</span>
-            <span className="flex items-center gap-3">
-              {home.country && lookup.byIso(home.country)?.country}
-              {home.country && (
-                <FlagComponent
-                  country={lookup.byIso(home.country)?.iso2 as Country}
-                  countryName={home.country}
-                  height={"h-6"}
-                  width={"w-9"}
-                />
-              )}
-            </span>
-          </div>
+          )}
           <Separator />
           <div className="flex flex-col gap-8">
             <div className="text-base">{home.description}</div>
 
             <div>
-              <div className="text-lg sm:text-xl">Capacity:</div>
-              <p className="text-base sm:text-lg">
-                <span className="text-lg sm:text-xl">{formatNumber(home.capacity, numerals)}</span> people can
-                comfortably live here.
+              <div className="text-lg sm:text-xl">{capacityTitle}</div>
+              <p className="flex items-center text-base sm:text-lg gap-1">
+                <span>{formatNumber(home.capacity, numerals)}</span>
+                {home.capacity === 0 ? capacityText.single : capacityText.plural}
               </p>
             </div>
             <div className="flex flex-col">
-              <div className="flex items-center text-lg sm:text-xl gap-2">Property size</div>
+              <div className="flex items-center text-lg sm:text-xl gap-2">{sizeTitle}</div>
               <div className="flex gap-4">
                 <span className="flex gap-2 text-base md:text-lg items-center">
-                  [ {"m²"}
+                  [ {units.m}
                   <Switch
                     checked={feet}
                     className="flex"
@@ -140,45 +214,45 @@ export default function HomeText({ home }: Props) {
                       setFeet(!feet);
                     }}
                   />
-                  {"ft²"} ]:
+                  {units.ft} ]:
                 </span>
                 <span className="flex text-lg md:text-xl">
-                  {formatNumber(sqSize, numerals)} {feet ? "ft" : "m"}²
+                  {formatNumber(sqSize, numerals)} {feet ? units.ft : units.m}
                 </span>
               </div>
             </div>
             <div className="flex flex-col w-full sm:w-3/4">
               <div className="flex flex-col w-full gap-3">
-                <div className="text-lg sm:text-xl">Rooms:</div>
+                <div className="text-lg sm:text-xl">{roomsTitle}</div>
                 <div className="flex gap-3">
                   <BedDouble size={18} />
                   <span>{formatNumber(home.bedrooms, numerals)}</span>{" "}
-                  <span>{home.bedrooms !== 1 ? "Bedrooms" : "Bedroom"}</span>
+                  <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
                 </div>
                 <div className="flex gap-3">
                   <Bath size={18} />
                   <span>{formatNumber(home.bathrooms, numerals)}</span>
-                  <span>{home.bathrooms !== 1 ? "Bathrooms" : "Bathroom"}</span>
+                  <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
                 </div>
                 <div className="flex gap-3">
                   <Sofa size={18} />
                   <span>{formatNumber(home.livingrooms, numerals)}</span>
-                  <span>{home.livingrooms !== 1 ? "Living Rooms" : "Living Room"}</span>
+                  <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
                 </div>
                 <div className="flex gap-3">
                   <CookingPot size={18} />
                   <span>{formatNumber(home.kitchens, numerals)}</span>
-                  <span>{home.kitchens !== 1 ? "Kitchens" : "Kitchen"}</span>
+                  <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-lg sm:text-xl">Features:</div>
-              {home.features.map((feature, index) => {
+              <div className="text-lg sm:text-xl">{featuresTitle}</div>
+              {matchingFeatures.map((feature, index) => {
                 return (
                   <div key={index} className="flex items-center gap-2">
                     <Check size={18} />
-                    {feature}
+                    {feature.translation}
                   </div>
                 );
               })}
@@ -188,7 +262,7 @@ export default function HomeText({ home }: Props) {
         <div className="hidden sm:flex flex-col w-1/3 max-w-xs h-full items-end rounded-xl gap-10">
           <Card className="w-full max-w-xs shadow-lg">
             <CardHeader>
-              <CardTitle className="text-sm md:text-base lg:text-lg">Pricing</CardTitle>
+              <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>
             </CardHeader>
 
             <CardContent className="flex flex-col gap-3">
@@ -207,7 +281,9 @@ export default function HomeText({ home }: Props) {
                 />
               )}
               <div className={`flex flex-col w-full`}>
-                <span className={`text-sm md:text-base lg:text-lg`}>Original Price ({home.currency})</span>
+                <span className={`text-sm md:text-base lg:text-lg`}>
+                  {originalPrice} ({home.currency})
+                </span>
                 {originalCurrencyRate && home.currency ? (
                   session.status === "loading" ? (
                     <div className="flex justify-center w-full">
@@ -229,7 +305,7 @@ export default function HomeText({ home }: Props) {
               </div>
               <div className="flex flex-col items-center w-full">
                 <div className="flex items-center justify-center gap-2 w-full">
-                  <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">Price Negotiable?</span>
+                  <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">{negotiable}</span>
                   <span className="flex text-center w-auto h-auto">
                     {home.priceNegotiable ? (
                       <span className="flex w-auto h-auto">
@@ -259,8 +335,8 @@ export default function HomeText({ home }: Props) {
                         <EyeClosedIcon className="w-5 h-5" />
                       )}
                       <span className="text-xs md:text-sm lg:text-base">{`${
-                        revealPrice ? "Hide" : "Show"
-                      } the Price!`}</span>
+                        revealPrice ? hidePrice : showPrice
+                      }`}</span>
                     </div>
                   </Button>
                 </div>
@@ -269,11 +345,11 @@ export default function HomeText({ home }: Props) {
           </Card>
           <Card className="w-full max-w-xs shadow-lg">
             <CardHeader>
-              <CardTitle className="text-sm md:text-base lg:text-lg">Contact Information</CardTitle>
+              <CardTitle className="text-sm md:text-base lg:text-lg">{contactTitle}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-5">
               <div className="flex flex-col items-start">
-                <span className="text-start text-xs md:text-sm">Name:</span>
+                <span className="text-start text-xs md:text-sm">{contactNameText}</span>
                 <div
                   className={`${
                     !revealContact ? "blur-sm select-none" : "select-text"
@@ -293,7 +369,7 @@ export default function HomeText({ home }: Props) {
               </div>
 
               <div className="flex flex-col items-start">
-                <span className="text-start text-xs md:text-sm">Email:</span>
+                <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
                 <div
                   className={`${
                     !revealContact ? "blur-sm select-none" : "select-text"
@@ -313,7 +389,7 @@ export default function HomeText({ home }: Props) {
               </div>
 
               <div className="flex flex-col items-start">
-                <span className="text-start text-xs md:text-sm">Phone:</span>
+                <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
                 <div
                   className={`${
                     !revealContact ? "blur-sm select-none" : "select-text"
@@ -342,9 +418,7 @@ export default function HomeText({ home }: Props) {
                 >
                   <div className="flex gap-3 justify-center text-lg items-center">
                     {revealContact || isModalOpen ? <PhoneCall className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
-                    <span className="text-xs md:text-sm lg:text-base">
-                      {revealContact ? "Hide" : "Show"} Contact Info!
-                    </span>
+                    <span className="text-xs md:text-sm lg:text-base">{contactButton}</span>
                   </div>
                 </Button>
               </div>

@@ -94,6 +94,22 @@ export const isValidEmail = (email: string): boolean => {
   return emailRegex.test(email);
 };
 
+export const findMatching = (object: Array<{ id: string; translation: string }>, array: any, key: string) => {
+  return object.filter((item) => {
+    if (Array.isArray(array[key])) {
+      return array[key].includes(item.id);
+    }
+    return array[key] === item.id;
+  });
+};
+
+export const findMatchingItem = (
+  object: Array<{ id: string; translation: string }>,
+  value: string | null | undefined
+): { id: string; translation: string } | undefined => {
+  return object.find((item) => item.id === value);
+};
+
 export async function getPhoneLocale(currentLocale: string) {
   let localeModule;
 

@@ -80,7 +80,7 @@ export default function CombinedSearchPage({
           mapFocused && "md:hidden"
         } lg:flex lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900`}
       >
-        <h1 className="flex pt-8 text-2xl justify-center w-full">
+        <h1 className="flex py-8 text-2xl justify-center items-center border-2 h-[32px] w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (

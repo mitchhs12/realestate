@@ -338,14 +338,39 @@ export default {
     "results": "结果："
   },
   "homes": {
-    "capacity": "人们可以舒适地在这里生活。",
+    "units": {
+      "m": "平方米",
+      "ft": "平方英尺"
+    },
+    "capacity": {
+      "single": "人。",
+      "plural": "人们。"
+    },
     "capacity-title": "容量：",
     "rooms-title": "房间:",
     "features-title": "特征：",
     "location-title": "地点：",
     "price-title": "价格",
+    "size-title": "房产面积：",
+    "show-all-photos": "显示所有照片",
     "original-price": "原价",
     "negotiable": "价格可以商量吗？",
+    "bedrooms": {
+      "single": "卧室",
+      "plural": "卧室"
+    },
+    "bathrooms": {
+      "single": "浴室",
+      "plural": "浴室"
+    },
+    "living-rooms": {
+      "single": "客厅",
+      "plural": "客厅"
+    },
+    "kitchens": {
+      "single": "厨房",
+      "plural": "厨房"
+    },
     "price-button": {
       "show": "揭晓价格！",
       "hide": "隐藏价格！",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "联系信息",
       "contact-title-mobile": "业主联系信息",
-      "Name": "姓名：",
-      "Email": "电子邮件：",
-      "Phone": "电话：",
-      "contact-button": {
-        "show": "显示联系方式",
-        "hide": "隐藏联系方式",
-        "mobile": "联系业主"
-      }
+      "name": "姓名：",
+      "email": "电子邮件：",
+      "phone": "电话：",
+      "contact-button": "联系方式"
     }
   },
   "settings": {

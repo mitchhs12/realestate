@@ -338,14 +338,39 @@ export default {
     "results": "ผลลัพธ์:"
   },
   "homes": {
-    "capacity": "ประชาชนสามารถอยู่อาศัยได้อย่างสบายที่นี่",
+    "units": {
+      "m": "ตร.ม.",
+      "ft": "ฟุต²"
+    },
+    "capacity": {
+      "single": "บุคคล.",
+      "plural": "ประชากร."
+    },
     "capacity-title": "ความจุ:",
     "rooms-title": "ห้องพัก:",
     "features-title": "คุณสมบัติ:",
     "location-title": "ที่ตั้ง:",
     "price-title": "ราคา",
+    "size-title": "ขนาดทรัพย์สิน :",
+    "show-all-photos": "แสดงรูปภาพทั้งหมด",
     "original-price": "ราคาเดิม",
     "negotiable": "ราคาต่อรองได้?",
+    "bedrooms": {
+      "single": "ห้องนอน",
+      "plural": "ห้องนอน"
+    },
+    "bathrooms": {
+      "single": "ห้องน้ำ",
+      "plural": "ห้องน้ำ"
+    },
+    "living-rooms": {
+      "single": "ห้องนั่งเล่น",
+      "plural": "ห้องนั่งเล่น"
+    },
+    "kitchens": {
+      "single": "ครัว",
+      "plural": "ห้องครัว"
+    },
     "price-button": {
       "show": "เปิดเผยราคา!",
       "hide": "ซ่อนราคา!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "ข้อมูลการติดต่อ",
       "contact-title-mobile": "ข้อมูลการติดต่อเจ้าของทรัพย์สิน",
-      "Name": "ชื่อ:",
-      "Email": "อีเมล:",
-      "Phone": "โทรศัพท์:",
-      "contact-button": {
-        "show": "แสดงรายละเอียดการติดต่อ",
-        "hide": "ซ่อนรายละเอียดการติดต่อ",
-        "mobile": "ติดต่อเจ้าของ"
-      }
+      "name": "ชื่อ:",
+      "email": "อีเมล:",
+      "phone": "โทรศัพท์:",
+      "contact-button": "ข้อมูลการติดต่อ"
     }
   },
   "settings": {

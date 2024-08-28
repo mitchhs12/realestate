@@ -6,28 +6,12 @@ import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
-import { getPath } from "@/lib/utils";
+import { getPath, findMatching, findMatchingItem } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { types, features, listingType } from "@/lib/sellFlowData";
 
 export const metadata: Metadata = {
   title: "Review",
-};
-
-const findMatching = (object: Array<{ id: string; translation: string }>, array: any, key: string) => {
-  return object.filter((item) => {
-    if (Array.isArray(array[key])) {
-      return array[key].includes(item.id);
-    }
-    return array[key] === item.id;
-  });
-};
-
-const findMatchingItem = (
-  object: Array<{ id: string; translation: string }>,
-  value: string | null | undefined
-): { id: string; translation: string } | undefined => {
-  return object.find((item) => item.id === value);
 };
 
 export default async function Page() {
@@ -71,7 +55,7 @@ export default async function Page() {
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
     id: features[index],
-    translation: f(`options.${index}` as keyof typeof t),
+    translation: f(`options.${index}` as keyof typeof f),
   }));
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
@@ -81,7 +65,7 @@ export default async function Page() {
 
   const listingTypeObject = Array.from({ length: 3 }, (_, index) => ({
     id: listingType[index],
-    translation: r(`listingType.${index}` as keyof typeof t),
+    translation: r(`listingType.${index}` as keyof typeof r),
   }));
 
   const matchingTypes = findMatching(typesObject, unfinishedHome, "type");

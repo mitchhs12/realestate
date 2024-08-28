@@ -338,14 +338,39 @@
     "results": "შედეგები:"
   },
   "homes": {
-    "capacity": "ადამიანებს შეუძლიათ კომფორტულად იცხოვრონ აქ.",
+    "units": {
+      "m": "მ²",
+      "ft": "ft²"
+    },
+    "capacity": {
+      "single": "პირი.",
+      "plural": "ხალხი."
+    },
     "capacity-title": "ტევადობა:",
     "rooms-title": "ოთახები:",
     "features-title": "მახასიათებლები:",
     "location-title": "მდებარეობა:",
     "price-title": "ფასი",
+    "size-title": "ქონების ზომა:",
+    "show-all-photos": "ყველა ფოტოს ჩვენება",
     "original-price": "ორიგინალური ფასი",
     "negotiable": "ფასი შეთანხმებით?",
+    "bedrooms": {
+      "single": "საძინებელი",
+      "plural": "საძინებლები"
+    },
+    "bathrooms": {
+      "single": "აბაზანა",
+      "plural": "სველი წერტილები"
+    },
+    "living-rooms": {
+      "single": "მისაღები ოთახი",
+      "plural": "მისაღები ოთახები"
+    },
+    "kitchens": {
+      "single": "სამზარეულო",
+      "plural": "სამზარეულოები"
+    },
     "price-button": {
       "show": "გამოავლინე ფასი!",
       "hide": "დამალეთ ფასი!",
@@ -354,14 +379,10 @@
     "contact": {
       "contact-title": "საკონტაქტო ინფორმაცია",
       "contact-title-mobile": "ქონების მფლობელის საკონტაქტო ინფორმაცია",
-      "Name": "სახელი:",
-      "Email": "ელფოსტა:",
-      "Phone": "ტელეფონი:",
-      "contact-button": {
-        "show": "საკონტაქტო დეტალების ჩვენება",
-        "hide": "საკონტაქტო დეტალების დამალვა",
-        "mobile": "დაუკავშირდით მფლობელს"
-      }
+      "name": "სახელი:",
+      "email": "ელფოსტა:",
+      "phone": "ტელეფონი:",
+      "contact-button": "საკონტაქტო დეტალები"
     }
   },
   "settings": {

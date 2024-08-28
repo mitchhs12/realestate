@@ -338,14 +338,39 @@
     "results": "Hasil:"
   },
   "homes": {
-    "capacity": "Orang-orang dapat hidup dengan nyaman di sini.",
+    "units": {
+      "m": "meter persegi",
+      "ft": "kaki persegi"
+    },
+    "capacity": {
+      "single": "Orang.",
+      "plural": "Rakyat."
+    },
     "capacity-title": "Kapasitas:",
     "rooms-title": "Kamar:",
     "features-title": "Fitur:",
     "location-title": "Lokasi:",
     "price-title": "Harga",
+    "size-title": "Ukuran properti:",
+    "show-all-photos": "Tampilkan semua foto",
     "original-price": "Harga Asli",
     "negotiable": "Harga Bisa Nego?",
+    "bedrooms": {
+      "single": "Kamar tidur",
+      "plural": "Kamar tidur"
+    },
+    "bathrooms": {
+      "single": "Kamar mandi",
+      "plural": "Kamar mandi"
+    },
+    "living-rooms": {
+      "single": "Ruang tamu",
+      "plural": "Ruang Tamu"
+    },
+    "kitchens": {
+      "single": "Dapur",
+      "plural": "Dapur"
+    },
     "price-button": {
       "show": "Ungkapkan Harganya!",
       "hide": "Sembunyikan Harga!",
@@ -354,14 +379,10 @@
     "contact": {
       "contact-title": "Informasi Kontak",
       "contact-title-mobile": "Informasi Kontak Pemilik Properti",
-      "Name": "Nama:",
-      "Email": "E-mail:",
-      "Phone": "Telepon:",
-      "contact-button": {
-        "show": "Tampilkan Detail Kontak",
-        "hide": "Sembunyikan Detail Kontak",
-        "mobile": "Hubungi Pemilik"
-      }
+      "name": "Nama:",
+      "email": "E-mail:",
+      "phone": "Telepon:",
+      "contact-button": "Rincian Kontak"
     }
   },
   "settings": {

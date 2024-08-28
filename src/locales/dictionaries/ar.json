@@ -338,14 +338,39 @@
     "results": "نتائج:"
   },
   "homes": {
-    "capacity": "يمكن للناس أن يعيشوا هنا بشكل مريح.",
+    "units": {
+      "m": "متر مربع",
+      "ft": "قدم مربع"
+    },
+    "capacity": {
+      "single": "شخص.",
+      "plural": "الناس."
+    },
     "capacity-title": "سعة:",
     "rooms-title": "الغرف:",
     "features-title": "سمات:",
     "location-title": "موقع:",
     "price-title": "سعر",
+    "size-title": "حجم العقار:",
+    "show-all-photos": "عرض جميع الصور",
     "original-price": "السعر الأصلي",
     "negotiable": "السعر قابل للتفاوض؟",
+    "bedrooms": {
+      "single": "غرفة نوم",
+      "plural": "غرف النوم"
+    },
+    "bathrooms": {
+      "single": "حمام",
+      "plural": "الحمامات"
+    },
+    "living-rooms": {
+      "single": "غرفة الجلوس",
+      "plural": "غرف المعيشة"
+    },
+    "kitchens": {
+      "single": "مطبخ",
+      "plural": "المطابخ"
+    },
     "price-button": {
       "show": "كشف السعر!",
       "hide": "إخفاء السعر!",
@@ -354,14 +379,10 @@
     "contact": {
       "contact-title": "معلومات الاتصال",
       "contact-title-mobile": "معلومات الاتصال بمالك العقار",
-      "Name": "اسم:",
-      "Email": "بريد إلكتروني:",
-      "Phone": "هاتف:",
-      "contact-button": {
-        "show": "إظهار تفاصيل الاتصال",
-        "hide": "إخفاء تفاصيل الاتصال",
-        "mobile": "اتصل بالمالك"
-      }
+      "name": "اسم:",
+      "email": "بريد إلكتروني:",
+      "phone": "هاتف:",
+      "contact-button": "تفاصيل الاتصال"
     }
   },
   "settings": {

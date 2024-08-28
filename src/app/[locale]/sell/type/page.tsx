@@ -37,8 +37,6 @@ export default async function Page() {
     translation: t(`options.${index}` as keyof typeof t),
   }));
 
-  console.log(options);
-
   return (
     <Type
       currentHome={unfinishedHome}

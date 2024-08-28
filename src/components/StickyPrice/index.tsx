@@ -15,9 +15,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   home: HomeType;
+  contactNameText: string;
+  contactEmailText: string;
+  contactPhoneText: string;
+  mobilePrice: string;
+  contactTitleMobile: string;
+  contactButton: string;
 }
 
-export default function StickyPrice({ home }: Props) {
+export default function StickyPrice({
+  home,
+  contactNameText,
+  contactEmailText,
+  contactPhoneText,
+  mobilePrice,
+  contactTitleMobile,
+  contactButton,
+}: Props) {
   const { defaultCurrency, currencies } = useContext(LocaleContext);
   const { openLogInModal, isModalOpen, revealPrice, setRevealPrice, user, session } = useContext(QueryContext);
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
@@ -79,7 +93,7 @@ export default function StickyPrice({ home }: Props) {
                     <EyeClosedIcon className="w-4 h-4" />
                   )}
                 </div>
-                <div className="text-xs xs:text-sm">{`Reveal Price!`}</div>
+                <div className="text-xs xs:text-sm">{mobilePrice}</div>
               </Button>
             )}
             <Button
@@ -92,7 +106,7 @@ export default function StickyPrice({ home }: Props) {
               <div className="flex justify-center">
                 {contactModalOpen ? <PhoneCall className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
               </div>
-              <div className="text-xs xs:text-sm">Contact Owner</div>
+              <div className="text-xs xs:text-sm">{contactButton}</div>
             </Button>
           </div>
         )}
@@ -101,12 +115,12 @@ export default function StickyPrice({ home }: Props) {
       <Dialog open={contactModalOpen} onOpenChange={setContactModalOpen}>
         <DialogContent className="max-w-[85vw] sm:max-w-3xl rounded-md" onOpenAutoFocus={(e) => e.preventDefault()}>
           <DialogHeader>
-            <DialogTitle>Property Owner Contact Information</DialogTitle>
+            <DialogTitle>{contactTitleMobile}</DialogTitle>
             <DialogClose asChild></DialogClose>
           </DialogHeader>
           <div className="max-h-[85vh] overflow-y-auto grid grid-cols-1 gap-4 p-4">
             <div className="flex flex-col items-start">
-              <span className="text-start text-xs md:text-sm">Name:</span>
+              <span className="text-start text-xs md:text-sm">{contactNameText}</span>
               <div
                 className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
               >
@@ -123,7 +137,7 @@ export default function StickyPrice({ home }: Props) {
             </div>
 
             <div className="flex flex-col items-start">
-              <span className="text-start text-xs md:text-sm">Email:</span>
+              <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
               <div
                 className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
               >
@@ -140,7 +154,7 @@ export default function StickyPrice({ home }: Props) {
             </div>
 
             <div className="flex flex-col items-start">
-              <span className="text-start text-xs md:text-sm">Phone:</span>
+              <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
               <div
                 className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
               >

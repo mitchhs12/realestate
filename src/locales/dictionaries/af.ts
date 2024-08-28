@@ -338,14 +338,39 @@ export default {
     "results": "Resultate:"
   },
   "homes": {
-    "capacity": "mense kan gemaklik hier woon.",
+    "units": {
+      "m": "m²",
+      "ft": "ft²"
+    },
+    "capacity": {
+      "single": "Persoon.",
+      "plural": "Mense."
+    },
     "capacity-title": "Kapasiteit:",
     "rooms-title": "Kamers:",
     "features-title": "Kenmerke:",
     "location-title": "Ligging:",
     "price-title": "Prys",
+    "size-title": "Eiendom grootte:",
+    "show-all-photos": "Wys alle foto's",
     "original-price": "Oorspronklike prys",
     "negotiable": "Prys onderhandelbaar?",
+    "bedrooms": {
+      "single": "Slaapkamer",
+      "plural": "Slaapkamers"
+    },
+    "bathrooms": {
+      "single": "Badkamer",
+      "plural": "Badkamers"
+    },
+    "living-rooms": {
+      "single": "Woonkamer",
+      "plural": "Woonkamers"
+    },
+    "kitchens": {
+      "single": "Kombuis",
+      "plural": "Kombuise"
+    },
     "price-button": {
       "show": "Onthul die prys!",
       "hide": "Versteek die prys!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "Kontakinligting",
       "contact-title-mobile": "Eiendomseienaar se kontakinligting",
-      "Name": "Naam:",
-      "Email": "E-pos:",
-      "Phone": "Telefoon:",
-      "contact-button": {
-        "show": "Wys kontakbesonderhede",
-        "hide": "Versteek kontakbesonderhede",
-        "mobile": "Kontak Eienaar"
-      }
+      "name": "Naam:",
+      "email": "E-pos:",
+      "phone": "Telefoon:",
+      "contact-button": "Kontakbesonderhede"
     }
   },
   "settings": {

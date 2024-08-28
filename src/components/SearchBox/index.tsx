@@ -7,7 +7,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { QueryContext } from "@/context/QueryContext";
-import { useScopedI18n } from "@/locales/client";
+import { LocaleContext } from "@/context/LocaleContext";
 
 interface Result {
   Text: string;
@@ -29,6 +29,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
   const popoverRef = useRef<HTMLDivElement>(null);
   const [popoverOpen, setPopoverOpen] = useState(false); // State to control Popover open
   const { query, setQuery, clickedLocation, setClickedLocation } = useContext(QueryContext);
+  const { defaultLanguage } = useContext(LocaleContext);
   const initialQueryRef = useRef(query);
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
@@ -93,7 +94,9 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
   const fetchPlaces = async (query: string) => {
     try {
       const body =
-        longLatArray.length > 0 ? { query: { text: query, longLatArray: longLatArray } } : { query: { text: query } };
+        longLatArray.length > 0
+          ? { query: { text: query, language: defaultLanguage, longLatArray: longLatArray } }
+          : { query: { text: query, language: defaultLanguage } };
       const response = await fetch("/api/autocomplete", {
         method: "POST",
         headers: {

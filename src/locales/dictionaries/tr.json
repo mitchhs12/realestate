@@ -338,14 +338,39 @@
     "results": "Sonuçlar:"
   },
   "homes": {
-    "capacity": "İnsanlar burada rahatça yaşayabilirler.",
+    "units": {
+      "m": "m²",
+      "ft": "ft²"
+    },
+    "capacity": {
+      "single": "Kişi.",
+      "plural": "İnsanlar."
+    },
     "capacity-title": "Kapasite:",
     "rooms-title": "Odalar:",
     "features-title": "Özellikler:",
     "location-title": "Konum:",
     "price-title": "Fiyat",
+    "size-title": "Emlak büyüklüğü:",
+    "show-all-photos": "Tüm fotoğrafları göster",
     "original-price": "Orijinal Fiyat",
     "negotiable": "Fiyat Pazarlığa Açık mı?",
+    "bedrooms": {
+      "single": "Yatak odası",
+      "plural": "Yatak odaları"
+    },
+    "bathrooms": {
+      "single": "Banyo",
+      "plural": "Banyolar"
+    },
+    "living-rooms": {
+      "single": "Oturma odası",
+      "plural": "Oturma Odaları"
+    },
+    "kitchens": {
+      "single": "Mutfak",
+      "plural": "Mutfaklar"
+    },
     "price-button": {
       "show": "Fiyatı Açıkla!",
       "hide": "Fiyatı Gizle!",
@@ -354,14 +379,10 @@
     "contact": {
       "contact-title": "İletişim Bilgileri",
       "contact-title-mobile": "Mülk Sahibinin İletişim Bilgileri",
-      "Name": "İsim:",
-      "Email": "E-posta:",
-      "Phone": "Telefon:",
-      "contact-button": {
-        "show": "İletişim Detaylarını Göster",
-        "hide": "İletişim Detaylarını Gizle",
-        "mobile": "Sahibiyle İletişime Geçin"
-      }
+      "name": "İsim:",
+      "email": "E-posta:",
+      "phone": "Telefon:",
+      "contact-button": "İletişim Bilgileri"
     }
   },
   "settings": {

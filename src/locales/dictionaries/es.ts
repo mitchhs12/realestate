@@ -338,14 +338,39 @@ export default {
     "results": "Resultados:"
   },
   "homes": {
-    "capacity": "La gente puede vivir cómodamente aquí.",
+    "units": {
+      "m": "metros cuadrados",
+      "ft": "pies cuadrados"
+    },
+    "capacity": {
+      "single": "Persona.",
+      "plural": "Gente."
+    },
     "capacity-title": "Capacidad:",
     "rooms-title": "Alojamiento:",
     "features-title": "Características:",
     "location-title": "Ubicación:",
     "price-title": "Precio",
+    "size-title": "Tamaño de la propiedad:",
+    "show-all-photos": "Mostrar todas las fotos",
     "original-price": "Precio original",
     "negotiable": "¿Precio negociable?",
+    "bedrooms": {
+      "single": "Dormitorio",
+      "plural": "Dormitorios"
+    },
+    "bathrooms": {
+      "single": "Baño",
+      "plural": "Baños"
+    },
+    "living-rooms": {
+      "single": "Sala de estar",
+      "plural": "Salas de estar"
+    },
+    "kitchens": {
+      "single": "Cocina",
+      "plural": "Cocinas"
+    },
     "price-button": {
       "show": "¡Revelar el precio!",
       "hide": "¡Ocultar el precio!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "Información del contacto",
       "contact-title-mobile": "Información de contacto del propietario de la propiedad",
-      "Name": "Nombre:",
-      "Email": "Correo electrónico:",
-      "Phone": "Teléfono:",
-      "contact-button": {
-        "show": "Mostrar datos de contacto",
-        "hide": "Ocultar datos de contacto",
-        "mobile": "Contactar al propietario"
-      }
+      "name": "Nombre:",
+      "email": "Correo electrónico:",
+      "phone": "Teléfono:",
+      "contact-button": "Datos de contacto"
     }
   },
   "settings": {

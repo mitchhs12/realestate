@@ -338,14 +338,39 @@ export default {
     "results": "Rezultati:"
   },
   "homes": {
-    "capacity": "ljudi ovdje mogu udobno živjeti.",
+    "units": {
+      "m": "m²",
+      "ft": "ft²"
+    },
+    "capacity": {
+      "single": "Osoba.",
+      "plural": "Ljudi."
+    },
     "capacity-title": "Kapacitet:",
     "rooms-title": "Sobe:",
     "features-title": "Značajke:",
     "location-title": "Mjesto:",
     "price-title": "Cijena",
+    "size-title": "Veličina posjeda:",
+    "show-all-photos": "Prikaži sve fotografije",
     "original-price": "Originalna cijena",
     "negotiable": "Cijena po dogovoru?",
+    "bedrooms": {
+      "single": "Spavaća soba",
+      "plural": "spavaće sobe"
+    },
+    "bathrooms": {
+      "single": "Kupaonica",
+      "plural": "Kupaonice"
+    },
+    "living-rooms": {
+      "single": "Dnevni boravak",
+      "plural": "Dnevne sobe"
+    },
+    "kitchens": {
+      "single": "Kuhinja",
+      "plural": "kuhinje"
+    },
     "price-button": {
       "show": "Otkrijte cijenu!",
       "hide": "Sakrij cijenu!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "Podaci za kontakt",
       "contact-title-mobile": "Podaci za kontakt vlasnika nekretnine",
-      "Name": "Ime:",
-      "Email": "Email:",
-      "Phone": "Telefon:",
-      "contact-button": {
-        "show": "Prikaži pojedinosti o kontaktu",
-        "hide": "Sakrij pojedinosti o kontaktu",
-        "mobile": "Kontaktirajte vlasnika"
-      }
+      "name": "Ime:",
+      "email": "Email:",
+      "phone": "Telefon:",
+      "contact-button": "Kontakt detalji"
     }
   },
   "settings": {

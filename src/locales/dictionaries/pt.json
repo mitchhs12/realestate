@@ -338,14 +338,39 @@
     "results": "Resultados:"
   },
   "homes": {
-    "capacity": "as pessoas podem viver confortavelmente aqui.",
+    "units": {
+      "m": "m²",
+      "ft": "pés²"
+    },
+    "capacity": {
+      "single": "Pessoa.",
+      "plural": "Pessoas."
+    },
     "capacity-title": "Capacidade:",
     "rooms-title": "Quartos:",
     "features-title": "Características:",
     "location-title": "Localização:",
     "price-title": "Preço",
+    "size-title": "Tamanho da propriedade:",
+    "show-all-photos": "Mostrar todas as fotos",
     "original-price": "Preço original",
     "negotiable": "Preço negociável?",
+    "bedrooms": {
+      "single": "Quarto",
+      "plural": "Quartos"
+    },
+    "bathrooms": {
+      "single": "Banheiro",
+      "plural": "Banheiros"
+    },
+    "living-rooms": {
+      "single": "Sala de estar",
+      "plural": "Salas de estar"
+    },
+    "kitchens": {
+      "single": "Cozinha",
+      "plural": "Cozinhas"
+    },
     "price-button": {
       "show": "Revele o preço!",
       "hide": "Esconda o preço!",
@@ -354,14 +379,10 @@
     "contact": {
       "contact-title": "Informações de contato",
       "contact-title-mobile": "Informações de contato do proprietário do imóvel",
-      "Name": "Nome:",
-      "Email": "E-mail:",
-      "Phone": "Telefone:",
-      "contact-button": {
-        "show": "Mostrar detalhes de contato",
-        "hide": "Ocultar detalhes de contato",
-        "mobile": "Contate o Proprietário"
-      }
+      "name": "Nome:",
+      "email": "E-mail:",
+      "phone": "Telefone:",
+      "contact-button": "Detalhes de contato"
     }
   },
   "settings": {

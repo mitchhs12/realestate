@@ -338,14 +338,39 @@
     "results": "Résultats:"
   },
   "homes": {
-    "capacity": "les gens peuvent vivre confortablement ici.",
+    "units": {
+      "m": "m²",
+      "ft": "pieds carrés"
+    },
+    "capacity": {
+      "single": "Personne.",
+      "plural": "Personnes."
+    },
     "capacity-title": "Capacité:",
     "rooms-title": "Chambres:",
     "features-title": "Caractéristiques:",
     "location-title": "Emplacement:",
     "price-title": "Prix",
+    "size-title": "Superficie de la propriété:",
+    "show-all-photos": "Afficher toutes les photos",
     "original-price": "Prix d'origine",
     "negotiable": "Prix négociable ?",
+    "bedrooms": {
+      "single": "Chambre à coucher",
+      "plural": "Chambres"
+    },
+    "bathrooms": {
+      "single": "Salle de bain",
+      "plural": "Salles de bains"
+    },
+    "living-rooms": {
+      "single": "Salon",
+      "plural": "Salons"
+    },
+    "kitchens": {
+      "single": "Cuisine",
+      "plural": "Cuisines"
+    },
     "price-button": {
       "show": "Révélez le prix !",
       "hide": "Cachez le prix !",
@@ -354,14 +379,10 @@
     "contact": {
       "contact-title": "Coordonnées",
       "contact-title-mobile": "Coordonnées du propriétaire",
-      "Name": "Nom:",
-      "Email": "E-mail:",
-      "Phone": "Téléphone:",
-      "contact-button": {
-        "show": "Afficher les coordonnées",
-        "hide": "Masquer les coordonnées",
-        "mobile": "Contacter le propriétaire"
-      }
+      "name": "Nom:",
+      "email": "E-mail:",
+      "phone": "Téléphone:",
+      "contact-button": "Coordonnées"
     }
   },
   "settings": {

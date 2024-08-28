@@ -338,14 +338,39 @@ export default {
     "results": "Kết quả:"
   },
   "homes": {
-    "capacity": "mọi người có thể thoải mái sống ở đây.",
+    "units": {
+      "m": "mét vuông",
+      "ft": "ft²"
+    },
+    "capacity": {
+      "single": "Người.",
+      "plural": "Mọi người."
+    },
     "capacity-title": "Dung tích:",
     "rooms-title": "Phòng:",
     "features-title": "Đặc trưng:",
     "location-title": "Vị trí:",
     "price-title": "Giá",
+    "size-title": "Diện tích bất động sản:",
+    "show-all-photos": "Hiển thị tất cả hình ảnh",
     "original-price": "Giá gốc",
     "negotiable": "Giá có thể thương lượng?",
+    "bedrooms": {
+      "single": "Phòng ngủ",
+      "plural": "Phòng ngủ"
+    },
+    "bathrooms": {
+      "single": "Phòng tắm",
+      "plural": "Phòng tắm"
+    },
+    "living-rooms": {
+      "single": "Phòng khách",
+      "plural": "Phòng khách"
+    },
+    "kitchens": {
+      "single": "Phòng bếp",
+      "plural": "Nhà bếp"
+    },
     "price-button": {
       "show": "Tiết lộ giá!",
       "hide": "Ẩn giá!",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "Thông tin liên lạc",
       "contact-title-mobile": "Thông tin liên lạc của chủ sở hữu bất động sản",
-      "Name": "Tên:",
-      "Email": "E-mail:",
-      "Phone": "Điện thoại:",
-      "contact-button": {
-        "show": "Hiển thị chi tiết liên lạc",
-        "hide": "Ẩn thông tin liên lạc",
-        "mobile": "Liên hệ với chủ sở hữu"
-      }
+      "name": "Tên:",
+      "email": "E-mail:",
+      "phone": "Điện thoại:",
+      "contact-button": "Chi tiết liên lạc"
     }
   },
   "settings": {

@@ -338,14 +338,39 @@ export default {
     "results": "結果："
   },
   "homes": {
-    "capacity": "人々はここで快適に暮らすことができます。",
+    "units": {
+      "m": "平方メートル",
+      "ft": "平方フィート"
+    },
+    "capacity": {
+      "single": "人。",
+      "plural": "人々。"
+    },
     "capacity-title": "容量：",
     "rooms-title": "客室:",
     "features-title": "特徴：",
     "location-title": "位置：",
     "price-title": "価格",
+    "size-title": "物件サイズ:",
+    "show-all-photos": "すべての写真を表示",
     "original-price": "元の価格",
     "negotiable": "価格交渉可能でしょうか?",
+    "bedrooms": {
+      "single": "寝室",
+      "plural": "ベッドルーム"
+    },
+    "bathrooms": {
+      "single": "バスルーム",
+      "plural": "バスルーム"
+    },
+    "living-rooms": {
+      "single": "リビングルーム",
+      "plural": "リビングルーム"
+    },
+    "kitchens": {
+      "single": "台所",
+      "plural": "キッチン"
+    },
     "price-button": {
       "show": "価格を公開！",
       "hide": "価格を隠せ！",
@@ -354,14 +379,10 @@ export default {
     "contact": {
       "contact-title": "連絡先",
       "contact-title-mobile": "不動産所有者の連絡先情報",
-      "Name": "名前：",
-      "Email": "メールアドレス:",
-      "Phone": "電話：",
-      "contact-button": {
-        "show": "連絡先の詳細を表示",
-        "hide": "連絡先の詳細を非表示",
-        "mobile": "オーナーに連絡する"
-      }
+      "name": "名前：",
+      "email": "メールアドレス:",
+      "phone": "電話：",
+      "contact-button": "連絡先"
     }
   },
   "settings": {
