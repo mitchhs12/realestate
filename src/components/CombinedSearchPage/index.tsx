@@ -21,6 +21,8 @@ interface Props {
   propertiesText: string;
   mapAreaText: string;
   resultsText: string;
+  showMap: string;
+  showList: string;
 }
 
 export default function CombinedSearchPage({
@@ -31,6 +33,8 @@ export default function CombinedSearchPage({
   propertiesText,
   mapAreaText,
   resultsText,
+  showMap,
+  showList,
 }: Props) {
   const { mapFocused, setMapFocused } = useContext(QueryContext);
   const { numerals } = useContext(LocaleContext);
@@ -44,7 +48,7 @@ export default function CombinedSearchPage({
   const [searchLabel, setSearchLabel] = useState(label);
 
   useEffect(() => {
-    getAllHomes().then((allHomes) => {
+    void getAllHomes().then((allHomes) => {
       setHomesGeoJson(allHomes);
     });
   }, []);
@@ -80,13 +84,13 @@ export default function CombinedSearchPage({
           mapFocused && "md:hidden"
         } lg:flex lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900`}
       >
-        <h1 className="flex py-8 text-2xl justify-center items-center border-2 h-[32px] w-full">
+        <h1 className="flex py-8 text-2xl justify-center items-center h-[32px] w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (
             `${formatNumber(homes.length, numerals)} ${
               homes.length === 1 ? propertyText : propertiesText
-            } ${searchLabel}.`
+            } ${searchLabel}`
           )}
         </h1>
         <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
@@ -130,7 +134,7 @@ export default function CombinedSearchPage({
           initZoom={initZoom}
         />
       </section>
-      <FloatingButton />
+      <FloatingButton showMap={showMap} showList={showList} />
     </>
   );
 }

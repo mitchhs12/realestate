@@ -335,7 +335,9 @@ export default {
     "properties": "属性",
     "property": "财产",
     "map-area": "地图区域。",
-    "results": "结果："
+    "results": "结果：",
+    "show-map": "显示地图",
+    "show-list": "显示列表"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@ export default {
       "email": "电子邮件：",
       "phone": "电话：",
       "contact-button": "联系方式"
-    }
+    },
+    "translate-button": "翻译",
+    "show-original-button": "显示原始内容"
   },
   "settings": {
     "title": "帐户设置",

@@ -1,16 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { HomeType } from "@/lib/validations";
 import ResizableCarousel from "@/components/ResizableCarousel";
 import { Button } from "@/components/ui/button";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import { HomeContext } from "@/context/HomeContext";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Languages } from "lucide-react";
+import { LocaleContext } from "@/context/LocaleContext";
+import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 
-export default function HomePhotos({ home, showAllPhotos }: { home: HomeType; showAllPhotos: string }) {
+interface Props {
+  showAllPhotos: string;
+  translateButton: string;
+  showOriginalButton: string;
+}
+
+export default function HomePhotos({ showAllPhotos, translateButton, showOriginalButton }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { translationLoading, home, titleLoading, originalTitle, title, handleTitleConvert } = useContext(HomeContext);
+  const { defaultLanguage } = useContext(LocaleContext);
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);
@@ -34,6 +46,25 @@ export default function HomePhotos({ home, showAllPhotos }: { home: HomeType; sh
 
   return (
     <div className="flex flex-col min-h-full w-full px-8 py-4">
+      <div className="flex relative text-3xl pb-6">
+        <h1 className="flex flex-grow items-center justify-center">
+          {home.title}
+          {/* {translationLoading || titleLoading ? <Skeleton className="h-[36px] w-11/12" /> : title}
+          {languagesRequiringClientSideTranslation.includes(defaultLanguage) && (
+            <div className="absolute right-0">
+              <Button
+                disabled={titleLoading || translationLoading}
+                className="gap-2"
+                variant={"outline"}
+                onClick={handleTitleConvert}
+              >
+                <Languages width={18} />
+                {originalTitle ? translateButton : showOriginalButton}
+              </Button>
+            </div>
+          )} */}
+        </h1>
+      </div>
       <div className="relative w-full">
         {/* Grid for larger screens */}
         <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-4 h-80 lg:h-96 w-full">

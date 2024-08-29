@@ -3,7 +3,7 @@
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useContext, useEffect, useState } from "react";
-import { HomeType } from "@/lib/validations";
+import { HomeType, languagesRequiringClientSideTranslation } from "@/lib/validations";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   CheckCircledIcon,
@@ -20,14 +20,13 @@ import lookup from "country-code-lookup";
 import { formatNumber } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
 import BrokenPrice from "@/components/BrokenPrice";
-import { Check, Phone, PhoneCall } from "lucide-react";
+import { Check, Languages, Phone, PhoneCall, BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { handleCopy } from "@/lib/utils";
-import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
+import { HomeContext } from "@/context/HomeContext";
 
 interface Props {
-  home: HomeType;
   units: { m: string; ft: string };
   capacityText: { single: string; plural: string };
   capacityTitle: string;
@@ -44,16 +43,15 @@ interface Props {
   contactEmailText: string;
   contactPhoneText: string;
   contactButton: string;
-  matchingTypes: { id: string; translation: string }[];
-  matchingFeatures: { id: string; translation: string }[];
   bedroomsText: { single: string; plural: string };
   bathroomsText: { single: string; plural: string };
   livingroomsText: { single: string; plural: string };
   kitchensText: { single: string; plural: string };
+  translateButton: string;
+  showOriginalButton: string;
 }
 
 export default function HomeText({
-  home,
   units,
   capacityText,
   capacityTitle,
@@ -70,12 +68,12 @@ export default function HomeText({
   contactEmailText,
   contactPhoneText,
   contactButton,
-  matchingTypes,
-  matchingFeatures,
   bedroomsText,
   bathroomsText,
   livingroomsText,
   kitchensText,
+  translateButton,
+  showOriginalButton,
 }: Props) {
   const {
     setCurrentHome,
@@ -89,12 +87,23 @@ export default function HomeText({
     session,
     user,
   } = useContext(QueryContext);
+  const {
+    home,
+    matchingTypes,
+    matchingFeatures,
+    translatedMunicipality,
+    translatedDescription,
+    translationLoading,
+    descriptionLoading,
+    description,
+    handleDescriptionConvert,
+    originalDescription,
+  } = useContext(HomeContext);
+
   const { defaultCurrency, currencies, numerals, defaultLanguage } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [translatedMunicipality, setTranslatedMunicipality] = useState<string | null>(null);
-  const [titleLoading, setTitleLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -108,62 +117,19 @@ export default function HomeText({
     }
   }, [home]);
 
-  useEffect(() => {
-    const fetchTranslatedTitle = async () => {
-      const response = await fetch("/api/translate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: home.municipality }),
-      });
-      const data = await response.json();
-      console.log("translated", data);
-      setTranslatedMunicipality(data);
-    };
-    if (home && home.municipality) {
-      fetchTranslatedTitle();
-    }
-    setTitleLoading(false);
-  }, []);
-
-  const title = home.title;
-  const description = home.description;
-  const price = home.price;
-  const address = home.address;
-  const minicipality = home.municipality;
-  const subRegion = home.subRegion;
-  const region = home.region;
-  const country = home.country;
-  const type = home.type;
-  const features = home.features;
-  const bedrooms = home.bedrooms;
-  const bathrooms = home.bathrooms;
-  const livingrooms = home.livingrooms;
-  const kitchens = home.kitchens;
-  const capacity = home.capacity;
-  const photos = home.photos;
-  const currency = home.currency;
-  const language = home.language;
-  const priceUsd = home.priceUsd;
-  const priceNegotiable = home.priceNegotiable;
-  const contactName = home.contactName;
-  const contactEmail = home.contactEmail;
-  const contactPhone = home.contactPhone;
-  const listingType = home.listingType;
-  const areaSqm = home.areaSqm;
-
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
 
   return (
     <div className="flex flex-col w-full h-full justify-center px-8 py-4">
       <div className="flex flex-row w-full h-full justify-between gap-8">
         <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-6 h-auto">
-          {titleLoading ? (
-            <Skeleton className="h-9 md:h-10 lg:h-12 w-8/12" />
+          {translationLoading ? (
+            <div className="flex justify-center sm:justify-start w-full">
+              <Skeleton className="h-[6vh] sm:h-[6vh] md:h-[6.5vh] lg:h-[6.5vh] w-11/12" />
+            </div>
           ) : (
-            <div className="flex flex-wrap gap-2 text-2xl sm:text-3xl">
-              <div className="flex gap-2">
+            <div className="flex flex-col items-center sm:items-start gap-2">
+              <div className="flex gap-2 text-2xl md:text-3xl lg:text-3xl">
                 {matchingTypes.map((type, index) => (
                   <span key={index}>
                     {index > 0 && <span className="text-gray-300">| </span>}
@@ -171,24 +137,45 @@ export default function HomeText({
                   </span>
                 ))}
               </div>
-              in
-              <span>{home.municipality},</span>
-              <span className="flex items-center gap-3">
-                {home.country && lookup.byIso(home.country)?.country}
-                {home.country && (
-                  <FlagComponent
-                    country={lookup.byIso(home.country)?.iso2 as Country}
-                    countryName={home.country}
-                    height={"h-6"}
-                    width={"w-9"}
-                  />
-                )}
-              </span>
+              <div className="flex gap-2 flex-wrap justify-center sm:justify-start text-lg sm:text-xl md:text-2xl lg:text-2xl">
+                <div>{translatedMunicipality ? translatedMunicipality : home.municipality}</div>
+                <div className="flex items-center gap-3">
+                  <span className="text-gray-300">| </span>
+                  {home.country && lookup.byIso(home.country)?.country}
+                  {home.country && (
+                    <FlagComponent
+                      country={lookup.byIso(home.country)?.iso2 as Country}
+                      countryName={home.country}
+                      height={"h-6"}
+                      width={"w-9"}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           )}
           <Separator />
           <div className="flex flex-col gap-8">
-            <div className="text-base">{home.description}</div>
+            <div className="flex flex-col gap-3">
+              <div className="text-base">
+                {translationLoading || descriptionLoading ? (
+                  <Skeleton className="h-[9vh] sm:h-[9vh] md:h-[9vh] lg:h-[16vh] w-full" />
+                ) : (
+                  description
+                )}
+              </div>
+              <div className={`${defaultLanguage === "en" ? "hidden" : "flex"} w-full h-full justify-start`}>
+                <Button
+                  disabled={descriptionLoading || translationLoading}
+                  className="gap-2"
+                  variant={"outline"}
+                  onClick={handleDescriptionConvert}
+                >
+                  <Languages width={18} />
+                  {originalDescription ? translateButton : showOriginalButton}
+                </Button>
+              </div>
+            </div>
 
             <div>
               <div className="text-lg sm:text-xl">{capacityTitle}</div>
@@ -268,7 +255,7 @@ export default function HomeText({
             <CardContent className="flex flex-col gap-3">
               {session.status === "loading" ? (
                 <div className="flex justify-center w-full">
-                  <Skeleton className="h-9 md:h-10 lg:h-12 w-8/12" />
+                  <Skeleton className="h-10 md:h-11 lg:h-12 w-8/12" />
                 </div>
               ) : (
                 <BrokenPrice

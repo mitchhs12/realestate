@@ -335,7 +335,9 @@
     "properties": "svojstva u",
     "property": "vlasništvo u",
     "map-area": "područje karte.",
-    "results": "Rezultati:"
+    "results": "Rezultati:",
+    "show-map": "Prikaži kartu",
+    "show-list": "Prikaži popis"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@
       "email": "Email:",
       "phone": "Telefon:",
       "contact-button": "Kontakt detalji"
-    }
+    },
+    "translate-button": "Prevesti",
+    "show-original-button": "Prikaži izvornik"
   },
   "settings": {
     "title": "Postavke računa",

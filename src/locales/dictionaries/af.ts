@@ -335,7 +335,9 @@ export default {
     "properties": "eiendomme in",
     "property": "eiendom in",
     "map-area": "kaart area.",
-    "results": "Resultate:"
+    "results": "Resultate:",
+    "show-map": "Wys kaart",
+    "show-list": "Wys lys"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@ export default {
       "email": "E-pos:",
       "phone": "Telefoon:",
       "contact-button": "Kontakbesonderhede"
-    }
+    },
+    "translate-button": "Vertaal",
+    "show-original-button": "Wys oorspronklike"
   },
   "settings": {
     "title": "Rekeninginstellings",

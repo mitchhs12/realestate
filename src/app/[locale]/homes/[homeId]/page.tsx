@@ -1,26 +1,19 @@
 import { Metadata } from "next";
 import HomePhotos from "@/components/HomePhotos";
-import { getHomeById } from "@/app/[locale]/homes/actions";
 import HomeText from "@/components/HomeText";
 import Footer from "@/components/Footer";
 import StickyPrice from "@/components/StickyPrice";
 import MapComponent from "@/components/SmallMap";
 import { Separator } from "@/components/ui/separator";
 import { getScopedI18n } from "@/locales/server";
-import { features, types } from "@/lib/sellFlowData";
-import { findMatching } from "@/lib/utils";
+import SmallMapWrapper from "@/components/SmallMap/SmallMapWrapper";
 
 export const metadata: Metadata = {
   title: "Homes",
 };
 
-export default async function Page({ params }: { params: { homeId: string } }) {
-  const [home, h, f, t] = await Promise.all([
-    getHomeById(params.homeId),
-    getScopedI18n("homes"),
-    getScopedI18n("sell.features"),
-    getScopedI18n("sell.type"),
-  ]);
+export default async function Page() {
+  const [h] = await Promise.all([getScopedI18n("homes")]);
 
   const capacityText = { single: h("capacity.single"), plural: h("capacity.plural") };
   const capacityTitle = h("capacity-title");
@@ -51,95 +44,68 @@ export default async function Page({ params }: { params: { homeId: string } }) {
   const contactEmailText = h("contact.email");
   const contactPhoneText = h("contact.phone");
   const contactButton = h("contact.contact-button");
+  const translateButton = h("translate-button");
+  const showOriginalButton = h("show-original-button");
 
-  const featuresObject = Array.from({ length: 26 }, (_, index) => ({
-    id: features[index],
-    translation: f(`options.${index}` as keyof typeof f),
-  }));
-
-  const typesObject = Array.from({ length: 17 }, (_, index) => ({
-    id: types[index],
-    translation: t(`options.${index}` as keyof typeof t),
-  }));
-
-  const matchingTypes = findMatching(typesObject, home, "type");
-  const matchingFeatures = findMatching(featuresObject, home, "features");
-
-  if (home) {
-    return (
-      <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
-        <main className="flex flex-col items-center justify-start max-w-7xl w-full">
-          <div className="flex flex-col text-center h-full w-full pt-8 pb-2">
-            <h1 className="flex justify-center text-3xl">{home.title}</h1>
-            <HomePhotos home={home} showAllPhotos={showAllPhotos} />
-          </div>
-          <div className="flex flex-col text-center h-full w-full">
-            <HomeText
-              home={home}
-              units={units}
-              capacityText={capacityText}
-              capacityTitle={capacityTitle}
-              roomsTitle={roomsTitle}
-              featuresTitle={featuresTitle}
-              priceTitle={priceTitle}
-              originalPrice={originalPrice}
-              negotiable={negotiable}
-              sizeTitle={sizeTitle}
-              showPrice={showPrice}
-              hidePrice={hidePrice}
-              contactTitle={contactTitle}
-              contactNameText={contactNameText}
-              contactEmailText={contactEmailText}
-              contactPhoneText={contactPhoneText}
-              contactButton={contactButton}
-              matchingTypes={matchingTypes}
-              matchingFeatures={matchingFeatures}
-              bedroomsText={bedrooms}
-              bathroomsText={bathrooms}
-              livingroomsText={livingRooms}
-              kitchensText={kitchens}
-            />
-            <div className="py-6 px-8">
-              <Separator />
-            </div>
-          </div>
-          <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-2 gap-3 mb-16">
-            <div className="text-lg sm:text-xl">{locationTitle}</div>
-            <div className="flex w-full max-w-7xl h-[40vh]">
-              <MapComponent
-                coordinates={{ long: home.longitude, lat: home.latitude }}
-                currentHome={home}
-                disabled={true}
-              />
-            </div>
-          </div>
-        </main>
-        <footer className="flex justify-center items-center p-6 w-full bg-muted">
-          <Footer />
-        </footer>
-        <div className="sticky sm:hidden bottom-0 bg-white w-full h-full text-center">
-          <StickyPrice
-            home={home}
+  return (
+    <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
+      <main className="flex flex-col items-center justify-start max-w-7xl w-full">
+        <div className="flex flex-col text-center h-full w-full pt-2 pb-2">
+          <HomePhotos
+            showAllPhotos={showAllPhotos}
+            translateButton={translateButton}
+            showOriginalButton={showOriginalButton}
+          />
+        </div>
+        <div className="flex flex-col text-center h-full w-full">
+          <HomeText
+            units={units}
+            capacityText={capacityText}
+            capacityTitle={capacityTitle}
+            roomsTitle={roomsTitle}
+            featuresTitle={featuresTitle}
+            priceTitle={priceTitle}
+            originalPrice={originalPrice}
+            negotiable={negotiable}
+            sizeTitle={sizeTitle}
+            showPrice={showPrice}
+            hidePrice={hidePrice}
+            contactTitle={contactTitle}
             contactNameText={contactNameText}
             contactEmailText={contactEmailText}
             contactPhoneText={contactPhoneText}
-            mobilePrice={mobilePrice}
-            contactTitleMobile={contactTitleMobile}
             contactButton={contactButton}
+            bedroomsText={bedrooms}
+            bathroomsText={bathrooms}
+            livingroomsText={livingRooms}
+            kitchensText={kitchens}
+            translateButton={translateButton}
+            showOriginalButton={showOriginalButton}
           />
+          <div className="py-6 px-8">
+            <Separator />
+          </div>
         </div>
+        <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-2 gap-3 mb-16">
+          <div className="text-lg sm:text-xl">{locationTitle}</div>
+          <div className="flex w-full max-w-7xl h-[40vh]">
+            <SmallMapWrapper />
+          </div>
+        </div>
+      </main>
+      <footer className="flex justify-center items-center p-6 w-full bg-muted">
+        <Footer />
+      </footer>
+      <div className="sticky sm:hidden bottom-0 bg-white w-full h-full text-center">
+        <StickyPrice
+          contactNameText={contactNameText}
+          contactEmailText={contactEmailText}
+          contactPhoneText={contactPhoneText}
+          mobilePrice={mobilePrice}
+          contactTitleMobile={contactTitleMobile}
+          contactButton={contactButton}
+        />
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <main>
-          <div className="flex justify-center text-xl">Something went wrong fetching this home.</div>
-        </main>
-        <footer className="flex justify-center items-center p-6 w-full bg-muted">
-          <Footer />
-        </footer>
-      </div>
-    );
-  }
+    </div>
+  );
 }

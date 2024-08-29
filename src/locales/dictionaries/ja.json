@@ -335,7 +335,9 @@
     "properties": "プロパティ",
     "property": "不動産の",
     "map-area": "マップエリア。",
-    "results": "結果："
+    "results": "結果：",
+    "show-map": "地図を表示",
+    "show-list": "リストを表示"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@
       "email": "メールアドレス:",
       "phone": "電話：",
       "contact-button": "連絡先"
-    }
+    },
+    "translate-button": "翻訳する",
+    "show-original-button": "オリジナルを表示"
   },
   "settings": {
     "title": "アカウント設定",

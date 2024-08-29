@@ -335,7 +335,9 @@
     "properties": "tính chất trong",
     "property": "tài sản trong",
     "map-area": "khu vực bản đồ.",
-    "results": "Kết quả:"
+    "results": "Kết quả:",
+    "show-map": "Hiển thị bản đồ",
+    "show-list": "Hiển thị danh sách"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@
       "email": "E-mail:",
       "phone": "Điện thoại:",
       "contact-button": "Chi tiết liên lạc"
-    }
+    },
+    "translate-button": "Dịch",
+    "show-original-button": "Hiển thị bản gốc"
   },
   "settings": {
     "title": "Cài đặt tài khoản",

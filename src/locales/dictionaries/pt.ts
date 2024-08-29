@@ -335,7 +335,9 @@ export default {
     "properties": "propriedades em",
     "property": "propriedade em",
     "map-area": "área do mapa.",
-    "results": "Resultados:"
+    "results": "Resultados:",
+    "show-map": "Mostrar mapa",
+    "show-list": "Mostrar lista"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@ export default {
       "email": "E-mail:",
       "phone": "Telefone:",
       "contact-button": "Detalhes de contato"
-    }
+    },
+    "translate-button": "Traduzir",
+    "show-original-button": "Mostrar original"
   },
   "settings": {
     "title": "Configurações de Conta",

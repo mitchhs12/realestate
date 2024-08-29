@@ -18,7 +18,7 @@ export default function ResizableCard({ home, height, rounded, openModal }: Prop
           <CarouselItem key={index} className="flex justify-center items-center h-full w-full">
             <div
               onClick={openModal && (() => openModal(index))}
-              className={`relative justify-center items-center ${height ? height : "h-[220px]"} w-full`}
+              className={`relative justify-center items-center ${height ? height : "h-[200px]"} w-full`}
             >
               <Image
                 src={photo}

@@ -335,7 +335,9 @@ export default {
     "properties": "properti di",
     "property": "properti di",
     "map-area": "area peta.",
-    "results": "Hasil:"
+    "results": "Hasil:",
+    "show-map": "Tampilkan Peta",
+    "show-list": "Tampilkan Daftar"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@ export default {
       "email": "E-mail:",
       "phone": "Telepon:",
       "contact-button": "Rincian Kontak"
-    }
+    },
+    "translate-button": "Menerjemahkan",
+    "show-original-button": "Tampilkan Aslinya"
   },
   "settings": {
     "title": "Pengaturan Akun",

@@ -335,7 +335,9 @@ export default {
     "properties": "คุณสมบัติใน",
     "property": "ทรัพย์สินใน",
     "map-area": "พื้นที่แผนที่",
-    "results": "ผลลัพธ์:"
+    "results": "ผลลัพธ์:",
+    "show-map": "แสดงแผนที่",
+    "show-list": "แสดงรายการ"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@ export default {
       "email": "อีเมล:",
       "phone": "โทรศัพท์:",
       "contact-button": "ข้อมูลการติดต่อ"
-    }
+    },
+    "translate-button": "แปล",
+    "show-original-button": "แสดงต้นฉบับ"
   },
   "settings": {
     "title": "การตั้งค่าบัญชี",

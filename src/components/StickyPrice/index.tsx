@@ -12,9 +12,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@
 import { Phone, PhoneCall } from "lucide-react";
 import { handleCopy } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
+import { HomeContext } from "@/context/HomeContext";
 
 interface Props {
-  home: HomeType;
   contactNameText: string;
   contactEmailText: string;
   contactPhoneText: string;
@@ -24,7 +24,6 @@ interface Props {
 }
 
 export default function StickyPrice({
-  home,
   contactNameText,
   contactEmailText,
   contactPhoneText,
@@ -32,11 +31,11 @@ export default function StickyPrice({
   contactTitleMobile,
   contactButton,
 }: Props) {
+  const { home } = useContext(HomeContext);
   const { defaultCurrency, currencies } = useContext(LocaleContext);
   const { openLogInModal, isModalOpen, revealPrice, setRevealPrice, user, session } = useContext(QueryContext);
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [revealContact, setRevealContact] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   return (

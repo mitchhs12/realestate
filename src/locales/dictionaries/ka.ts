@@ -335,7 +335,9 @@ export default {
     "properties": "თვისებები in",
     "property": "ქონებაში",
     "map-area": "რუკის ტერიტორია.",
-    "results": "შედეგები:"
+    "results": "შედეგები:",
+    "show-map": "რუკის ჩვენება",
+    "show-list": "სიის ჩვენება"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@ export default {
       "email": "ელფოსტა:",
       "phone": "ტელეფონი:",
       "contact-button": "საკონტაქტო დეტალები"
-    }
+    },
+    "translate-button": "თარგმნეთ",
+    "show-original-button": "ორიგინალის ჩვენება"
   },
   "settings": {
     "title": "ანგარიშის პარამეტრები",

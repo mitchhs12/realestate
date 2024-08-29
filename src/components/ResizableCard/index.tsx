@@ -11,6 +11,8 @@ import { QueryContext } from "@/context/QueryContext";
 import BrokenPrice from "@/components/BrokenPrice";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   home: HomeType | null;
@@ -33,12 +35,12 @@ export default function ResizableCard({ home, isLoading }: Props) {
 
   return !home || isLoading ? (
     <div className="flex flex-col h-full w-full space-y-2">
-      <Skeleton className="rounded-none rounded-t-xl h-40 w-full" />
+      <Skeleton className="rounded-none rounded-t-xl h-[200px] w-full" />
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
-        <Skeleton className="h-4 sm:h-5 lg:h-6 w-32" />
-        <Skeleton className="h-4 sm:h-4 lg:h-4 w-24" />
-        <Skeleton className="h-3 sm:h-3 lg:h-4 w-24" />
-        <Skeleton className="h-3 sm:h-3 lg:h-4 w-28" />
+        <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
+        <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />
+        <Skeleton className="h-4 sm:h-3 lg:h-4 w-24" />
+        <Skeleton className="h-4 sm:h-3 lg:h-5 w-28" />
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-36 font-semibold" />
       </div>
     </div>
@@ -55,15 +57,20 @@ export default function ResizableCard({ home, isLoading }: Props) {
       <ResizableCarousel home={home} />
       <Link href={`/homes/${home.id}`} target={target}>
         <div className="flex flex-col justify-center items-center w-full gap-2 px-2">
-          <div className={`w-full flex ${home.title && home.title.length > 20 ? "justify-start" : "justify-center"}`}>
+          <div className={`w-full flex justify-center items-center relative`}>
             <h2
-              className={`text-sm md:text-md lg:text-lg xl:text-xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis ${
-                titleUnderlined && "underline"
+              className={`w-full flex-grow max-w-full text-md md:text-lg lg:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
+                titleUnderlined ? "underline" : ""
               }`}
-              lang={lang}
             >
-              {home.title}
+              {home.type.length > 1 ? home.type[0] : home.type}
             </h2>
+
+            {home.type.length > 1 && (
+              <Button className="absolute right-0" variant={"secondary"} size={"icon"}>
+                <ArrowUpDown className="w-4 h-4" />
+              </Button>
+            )}
           </div>
 
           <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">

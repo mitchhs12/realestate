@@ -49,6 +49,8 @@ export const languages: LanguageType[] = [
   "zh",
 ];
 
+export const languagesRequiringClientSideTranslation: LanguageType[] = ["ar", "ja", "ka", "ko", "th", "zh"];
+
 export const updateNameSchema = z.object({
   name: z.string().trim().min(1, "Cannot be empty"),
 });

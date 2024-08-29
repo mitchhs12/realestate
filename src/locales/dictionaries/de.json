@@ -335,7 +335,9 @@
     "properties": "Immobilien in",
     "property": "Eigentum in",
     "map-area": "Kartenbereich.",
-    "results": "Ergebnisse:"
+    "results": "Ergebnisse:",
+    "show-map": "Karte anzeigen",
+    "show-list": "Liste anzeigen"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@
       "email": "E-Mail:",
       "phone": "Telefon:",
       "contact-button": "Kontaktdetails"
-    }
+    },
+    "translate-button": "Übersetzen",
+    "show-original-button": "Zeige Original"
   },
   "settings": {
     "title": "Kontoeinstellungen",

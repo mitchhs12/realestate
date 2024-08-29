@@ -335,7 +335,9 @@
     "properties": "خصائص في",
     "property": "الممتلكات في",
     "map-area": "منطقة الخريطة.",
-    "results": "نتائج:"
+    "results": "نتائج:",
+    "show-map": "إظهار الخريطة",
+    "show-list": "إظهار القائمة"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@
       "email": "بريد إلكتروني:",
       "phone": "هاتف:",
       "contact-button": "تفاصيل الاتصال"
-    }
+    },
+    "translate-button": "يترجم",
+    "show-original-button": "عرض الأصل"
   },
   "settings": {
     "title": "إعدادات الحساب",

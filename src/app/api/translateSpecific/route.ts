@@ -1,5 +1,3 @@
-// app/api/detectLanguage/route.js
-
 import { NextResponse } from "next/server";
 import { TranslationServiceClient } from "@google-cloud/translate";
 import { ExternalAccountClient } from "google-auth-library";
@@ -31,22 +29,17 @@ const translationClient = new TranslationServiceClient({ authClient: authClient 
 
 export async function POST(req: NextRequest) {
   try {
-    const { title, municipality, description, target } = await req.json();
+    const { text, target } = await req.json();
 
-    if (!title) {
+    if (!text) {
       return NextResponse.json({ error: "Title is required" }, { status: 400 });
-    } else if (!description) {
-      return NextResponse.json({ error: "Description is required" }, { status: 400 });
-    } else if (!municipality) {
-      return NextResponse.json({ error: "Municipality is required" }, { status: 400 });
     } else if (!target) {
       return NextResponse.json({ error: "Target language is required" }, { status: 400 });
     }
 
-    // Construct request
     const request = {
       parent: `projects/${GCP_PROJECT_ID}/locations/global`,
-      contents: [title, municipality, description],
+      contents: [text],
       mimeType: "text/plain",
       sourceLanguageCode: "en",
       targetLanguageCode: target,
@@ -59,9 +52,7 @@ export async function POST(req: NextRequest) {
     }
 
     const responseObj = {
-      title: response.translations[0].translatedText,
-      municipality: response.translations[1].translatedText,
-      description: response.translations[2].translatedText,
+      text: response.translations[0].translatedText,
     };
 
     return NextResponse.json(responseObj, { status: 200 });

@@ -335,7 +335,9 @@
     "properties": "속성",
     "property": "속성에",
     "map-area": "지도 지역",
-    "results": "결과:"
+    "results": "결과:",
+    "show-map": "지도 표시",
+    "show-list": "목록 표시"
   },
   "homes": {
     "units": {
@@ -383,7 +385,9 @@
       "email": "이메일:",
       "phone": "핸드폰:",
       "contact-button": "연락처 정보"
-    }
+    },
+    "translate-button": "번역하다",
+    "show-original-button": "원본보기"
   },
   "settings": {
     "title": "계정 설정",
