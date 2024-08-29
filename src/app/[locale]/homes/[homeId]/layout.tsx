@@ -4,16 +4,21 @@ import Footer from "@/components/Footer";
 import { getScopedI18n } from "@/locales/server";
 import { findMatching } from "@/lib/utils";
 import { features, types } from "@/lib/sellFlowData";
+import lookup from "country-code-lookup";
+import { Country } from "react-phone-number-input";
+import { getPhoneLocale, PhoneLocale } from "@/lib/utils";
 
 type Props = {
   children: React.ReactNode;
-  params: { homeId: string };
+  params: { homeId: string; locale: string };
 };
 
-export default async function HomeLayout({ children, params: { homeId } }: Readonly<Props>) {
-  const home = await getHomeById(homeId);
-  const f = await getScopedI18n("sell.features");
-  const t = await getScopedI18n("sell.type");
+export default async function HomeLayout({ children, params: { homeId, locale } }: Readonly<Props>) {
+  const [home, f, t] = await Promise.all([
+    getHomeById(homeId),
+    getScopedI18n("sell.features"),
+    getScopedI18n("sell.type"),
+  ]);
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
     id: features[index],

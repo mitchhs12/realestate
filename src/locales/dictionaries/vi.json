@@ -62,6 +62,77 @@
         "search-button": "Tìm kiếm"
       }
     },
+    "AR": {
+      "name": "Argentina",
+      "city": "Buenos Aires",
+      "neighborhoods": {
+        "0": "Palermo",
+        "1": "Khu vực Recoleta",
+        "2": "Belgrano"
+      }
+    },
+    "MX": {
+      "name": "Mêhicô",
+      "city": "Thành phố Mexico",
+      "neighborhoods": {
+        "0": "Polanco",
+        "1": "Condesa",
+        "2": "Roma Bắc"
+      }
+    },
+    "BR": {
+      "name": "Brazil",
+      "city": "Rio de Janeiro",
+      "neighborhoods": {
+        "0": "Ipanema",
+        "1": "Leblon",
+        "2": "Barra da Tijuca"
+      }
+    },
+    "CO": {
+      "name": "Côlômbia",
+      "city": "Medellín",
+      "neighborhoods": {
+        "0": "El Poblado",
+        "1": "nguyệt quế"
+      }
+    },
+    "CL": {
+      "name": "Chilê",
+      "city": "Santiago",
+      "neighborhoods": {
+        "0": "Providencia",
+        "1": "Condes",
+        "2": "Vitacura"
+      }
+    },
+    "EC": {
+      "name": "Êcuađo",
+      "city": "Quito",
+      "neighborhoods": {
+        "0": "Hoa hồng",
+        "1": "Cumbaya",
+        "2": "González Suarez"
+      }
+    },
+    "PE": {
+      "name": "Pê-ru",
+      "city": "Lima",
+      "neighborhoods": {
+        "0": "Miraflores",
+        "1": "Thánh Isidro",
+        "2": "Barranco"
+      }
+    },
+    "UY": {
+      "name": "Urugoay",
+      "city": "Montevideo",
+      "neighborhoods": {
+        "0": "Punta Carretas",
+        "1": "Pocitos",
+        "2": "Carrasco"
+      }
+    },
     "Recommended": "Các quận thành phố được đề xuất",
     "Popular": "Phổ biến",
     "Newest": "Mới nhất",

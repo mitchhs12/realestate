@@ -5,23 +5,23 @@ export const sellSteps = [
 ];
 
 export const types = [
-  "House", //
-  "Apartment", //
-  "Cabin", //
+  "House", //X
+  "Apartment", //X
+  "Cabin", //X
   "Casa particular", //
-  "Castle", //
-  "Commercial building", //
-  "Container", //
+  "Castle", //X
+  "Commercial building", //X
+  "Container", // (cube)
   "Cycladic home", //
   "Earth home", //
-  "Farm", //
-  "Houseboat", //
-  "Land", //
+  "Farm", // argriculture
+  "Houseboat", //X
+  "Land", //landscape
   "Mansion", //
   "Tiny home", //
-  "Tower", //
-  "Warehouse", //
-  "Windmill", //
+  "Tower", //fort
+  "Warehouse", //X
+  "Windmill", //energy?
 ];
 
 export const features = [

@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { FeatureCollection, Point } from "geojson";
-import * as Flags from "country-flag-icons/react/3x2";
 import {
   US,
   DE,
@@ -76,6 +75,59 @@ export const updateSettingsSchema = z.object({
   currency: z.string().min(1, "Cannot be empty"),
   language: z.enum(["af", "ar", "de", "en", "es", "fr", "hr", "id", "ja", "ka", "ko", "pt", "th", "tr", "vi", "zh"]),
 });
+
+type CountryKey = "AR" | "MX" | "BR" | "CO" | "CL" | "EC" | "PE" | "UY";
+
+interface CityInfo {
+  folder: string;
+  city: { id: string; translation: string };
+  neighborhoods: { id: string; translation: string }[];
+}
+
+export type CountryProps = Record<CountryKey, CityInfo>;
+
+export const locationImageIds = {
+  AR: {
+    folder: "argentina",
+    city: "buenos-aires",
+    neighborhoods: ["palermo", "recoleta", "belgrano"],
+  },
+  MX: {
+    folder: "mexico",
+    city: "mexico-city",
+    neighborhoods: ["polanco", "condesa", "roma-norte"],
+  },
+  BR: {
+    folder: "brazil",
+    city: "rio-de-janeiro",
+    neighborhoods: ["ipanema", "leblon", "barra-da-tijuca"],
+  },
+  CO: {
+    folder: "colombia",
+    city: "medellin",
+    neighborhoods: ["el-poblado", "laureles"],
+  },
+  CL: {
+    folder: "chile",
+    city: "santiago",
+    neighborhoods: ["providencia", "las-condes", "vitacura"],
+  },
+  EC: {
+    folder: "ecuador",
+    city: "quito",
+    neighborhoods: ["la-floresta", "cumbaya", "gonzalez-suarez"],
+  },
+  PE: {
+    folder: "peru",
+    city: "lima",
+    neighborhoods: ["miraflores", "san-isidro", "barranco"],
+  },
+  UY: {
+    folder: "uruguay",
+    city: "montevideo",
+    neighborhoods: ["punta-carretas", "pocitos", "carrasco"],
+  },
+};
 
 export const homeSchema = z.object({
   id: z.number().int(),

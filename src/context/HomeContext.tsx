@@ -4,6 +4,9 @@ import React, { createContext, useState, ReactNode, useEffect, useContext } from
 import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { languagesRequiringClientSideTranslation } from "@/lib/validations";
+import lookup from "country-code-lookup";
+import { Country } from "react-phone-number-input";
+import { getCountryNameForLocale } from "@/lib/utils";
 
 interface HomeContextProps {
   home: HomeType;
@@ -25,6 +28,7 @@ interface HomeContextProps {
   title: string | null;
   originalDescription: boolean;
   originalTitle: boolean;
+  countryName: string | null | undefined;
 }
 
 const HomeContext = createContext<HomeContextProps>({
@@ -79,6 +83,7 @@ const HomeContext = createContext<HomeContextProps>({
   title: null,
   originalDescription: true,
   originalTitle: true,
+  countryName: "",
 });
 
 interface HomeProviderProps {
@@ -100,6 +105,12 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
   const [originalTitle, setOriginalTitle] = useState<boolean>(true);
   const [description, setDescription] = useState<string | null>(home.description);
   const [title, setTitle] = useState<string | null>(home.title);
+
+  const iso = home && home.country && lookup.byIso(home.country);
+  const countryName =
+    iso && typeof iso !== "string"
+      ? getCountryNameForLocale(iso.iso2, defaultLanguage || home.country || "")
+      : home.country;
 
   // Description functions
   const handleDescriptionConvert = () => {
@@ -212,6 +223,7 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
         title,
         originalDescription,
         originalTitle,
+        countryName,
       }}
     >
       {children}

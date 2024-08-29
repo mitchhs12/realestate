@@ -62,6 +62,77 @@ export default {
         "search-button": "Recherche"
       }
     },
+    "AR": {
+      "name": "Argentine",
+      "city": "Buenos Aires",
+      "neighborhoods": {
+        "0": "Palerme",
+        "1": "Recoleta",
+        "2": "Belgrano"
+      }
+    },
+    "MX": {
+      "name": "Mexique",
+      "city": "Ville de Mexico",
+      "neighborhoods": {
+        "0": "Polanco",
+        "1": "Condesa",
+        "2": "Rome Nord"
+      }
+    },
+    "BR": {
+      "name": "Brésil",
+      "city": "Rio de Janeiro",
+      "neighborhoods": {
+        "0": "Ipanema",
+        "1": "Leblon",
+        "2": "Barra da Tijuca"
+      }
+    },
+    "CO": {
+      "name": "Colombie",
+      "city": "Medellin",
+      "neighborhoods": {
+        "0": "Le peuple",
+        "1": "Lauriers"
+      }
+    },
+    "CL": {
+      "name": "Chili",
+      "city": "Santiago",
+      "neighborhoods": {
+        "0": "Providence",
+        "1": "Las Condes",
+        "2": "Vitacura"
+      }
+    },
+    "EC": {
+      "name": "Équateur",
+      "city": "Quito",
+      "neighborhoods": {
+        "0": "La Floresta",
+        "1": "Cumbayá",
+        "2": "González Suárez"
+      }
+    },
+    "PE": {
+      "name": "Pérou",
+      "city": "Lima",
+      "neighborhoods": {
+        "0": "Miraflores",
+        "1": "Saint Isidro",
+        "2": "Barranco"
+      }
+    },
+    "UY": {
+      "name": "Uruguay",
+      "city": "Montevideo",
+      "neighborhoods": {
+        "0": "Punta Carretas",
+        "1": "Pocitos",
+        "2": "Carrasco"
+      }
+    },
     "Recommended": "Quartiers recommandés de la ville",
     "Popular": "Populaire",
     "Newest": "Le plus récent",

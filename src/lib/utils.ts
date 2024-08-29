@@ -60,6 +60,11 @@ export const formatBrokenPrice = (
   };
 };
 
+export const getCountryNameForLocale = (countryCode: string, locale: string) => {
+  const displayNames = new Intl.DisplayNames([locale], { type: "region" });
+  return displayNames.of(countryCode);
+};
+
 export const getFullCountryName = (locale: string) => {
   const countryCode = locale.split("-")[1];
   return new Intl.DisplayNames([locale], { type: "region" }).of(countryCode);
@@ -108,6 +113,13 @@ export const findMatchingItem = (
   value: string | null | undefined
 ): { id: string; translation: string } | undefined => {
   return object.find((item) => item.id === value);
+};
+
+export type PhoneLocale = {
+  ext: string;
+  country: string;
+  phone: string;
+  [key: string]: string; // Add this line to allow any string key
 };
 
 export async function getPhoneLocale(currentLocale: string) {

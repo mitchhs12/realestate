@@ -62,6 +62,77 @@ export default {
         "search-button": "Mencari"
       }
     },
+    "AR": {
+      "name": "Argentina",
+      "city": "Buenos Aires",
+      "neighborhoods": {
+        "0": "Kota Palermo",
+        "1": "Kota Recoleta",
+        "2": "Belgrano"
+      }
+    },
+    "MX": {
+      "name": "Meksiko",
+      "city": "Kota Meksiko",
+      "neighborhoods": {
+        "0": "Polanco",
+        "1": "Kondesa",
+        "2": "Roma Utara"
+      }
+    },
+    "BR": {
+      "name": "Brazil",
+      "city": "Rio de Janeiro",
+      "neighborhoods": {
+        "0": "Pulau Ipanema",
+        "1": "Leblon",
+        "2": "Barra dari Tijuca"
+      }
+    },
+    "CO": {
+      "name": "Kolumbia",
+      "city": "Medellin",
+      "neighborhoods": {
+        "0": "El Poblado",
+        "1": "Laureles"
+      }
+    },
+    "CL": {
+      "name": "Chili",
+      "city": "Kota Santiago",
+      "neighborhoods": {
+        "0": "Penyediaan",
+        "1": "Las Condes",
+        "2": "Bahasa Indonesia: Vitacura"
+      }
+    },
+    "EC": {
+      "name": "Ekuador",
+      "city": "Quito",
+      "neighborhoods": {
+        "0": "La Floresta",
+        "1": "Cumbaya",
+        "2": "Gonzalez Suarez"
+      }
+    },
+    "PE": {
+      "name": "Bahasa Indonesia: Peru",
+      "city": "Lima",
+      "neighborhoods": {
+        "0": "Kota Miraflores",
+        "1": "San Isidro",
+        "2": "Barranco"
+      }
+    },
+    "UY": {
+      "name": "Bahasa Indonesia:",
+      "city": "Kota Montevideo",
+      "neighborhoods": {
+        "0": "Punta Carretas",
+        "1": "Pocitos",
+        "2": "Karasak"
+      }
+    },
     "Recommended": "Destinasi Kota yang Direkomendasikan",
     "Popular": "Populer",
     "Newest": "Terbaru",

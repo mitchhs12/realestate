@@ -15,6 +15,7 @@ import { getCurrency } from "@/lib/utils";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
 import { getStaticParams } from "@/locales/server"; // Adjust the path as needed
+import { getPhoneLocale } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
@@ -32,6 +33,7 @@ type Props = {
 
 export default async function RootLayout({ children, params: { locale } }: Readonly<Props>) {
   const currencies = await getCurrencies();
+
   const acceptLanguage = headers().get("Accept-Language");
   let currency = { symbol: "USD", usdPrice: 1 };
 

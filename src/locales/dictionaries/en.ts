@@ -62,6 +62,77 @@ export default {
         "search-button": "Search"
       }
     },
+    "AR": {
+      "name": "Argentina",
+      "city": "Buenos Aires",
+      "neighborhoods": [
+        "Palermo",
+        "Recoleta",
+        "Belgrano"
+      ]
+    },
+    "MX": {
+      "name": "Mexico",
+      "city": "Mexico City",
+      "neighborhoods": [
+        "Polanco",
+        "Condesa",
+        "Roma Norte"
+      ]
+    },
+    "BR": {
+      "name": "Brazil",
+      "city": "Rio de Janeiro",
+      "neighborhoods": [
+        "Ipanema",
+        "Leblon",
+        "Barra da Tijuca"
+      ]
+    },
+    "CO": {
+      "name": "Colombia",
+      "city": "Medellín",
+      "neighborhoods": [
+        "El Poblado",
+        "Laureles"
+      ]
+    },
+    "CL": {
+      "name": "Chile",
+      "city": "Santiago",
+      "neighborhoods": [
+        "Providencia",
+        "Las Condes",
+        "Vitacura"
+      ]
+    },
+    "EC": {
+      "name": "Ecuador",
+      "city": "Quito",
+      "neighborhoods": [
+        "La Floresta",
+        "Cumbayá",
+        "González Suárez"
+      ]
+    },
+    "PE": {
+      "name": "Peru",
+      "city": "Lima",
+      "neighborhoods": [
+        "Miraflores",
+        "San Isidro",
+        "Barranco"
+      ]
+    },
+    "UY": {
+      "name": "Uruguay",
+      "city": "Montevideo",
+      "neighborhoods": [
+        "Punta Carretas",
+        "Pocitos",
+        "Carrasco"
+      ]
+    },
     "Recommended": "Recommended City Destricts",
     "Popular": "Popular",
     "Newest": "Newest",

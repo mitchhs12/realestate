@@ -62,6 +62,77 @@ export default {
         "search-button": "Aramak"
       }
     },
+    "AR": {
+      "name": "Arjantin",
+      "city": "Buenos Aires",
+      "neighborhoods": {
+        "0": "Palermo",
+        "1": "Reçelta",
+        "2": "Belgrano"
+      }
+    },
+    "MX": {
+      "name": "Meksika",
+      "city": "Meksika Şehri",
+      "neighborhoods": {
+        "0": "Polantu",
+        "1": "Condesa",
+        "2": "Roma Kuzey"
+      }
+    },
+    "BR": {
+      "name": "Brezilya",
+      "city": "Rio de Janeiro",
+      "neighborhoods": {
+        "0": "İpanema",
+        "1": "Leblon",
+        "2": "Tijuca Barrası"
+      }
+    },
+    "CO": {
+      "name": "Kolombiya",
+      "city": "Medellín",
+      "neighborhoods": {
+        "0": "El Poblado",
+        "1": "Defneler"
+      }
+    },
+    "CL": {
+      "name": "Şili",
+      "city": "Santiago",
+      "neighborhoods": {
+        "0": "Providence",
+        "1": "Las Condes",
+        "2": "Vitacura"
+      }
+    },
+    "EC": {
+      "name": "Ekvador",
+      "city": "Quito",
+      "neighborhoods": {
+        "0": "Çiçek",
+        "1": "Cumbaya",
+        "2": "González Suarez"
+      }
+    },
+    "PE": {
+      "name": "Peru",
+      "city": "Lima",
+      "neighborhoods": {
+        "0": "Miraflores",
+        "1": "San Isidro",
+        "2": "Barranco"
+      }
+    },
+    "UY": {
+      "name": "Uruguay",
+      "city": "Montevideo",
+      "neighborhoods": {
+        "0": "Punta Carretas",
+        "1": "Tatlılar",
+        "2": "Karakova"
+      }
+    },
     "Recommended": "Önerilen Şehir Bölgeleri",
     "Popular": "Popüler",
     "Newest": "En yeni",

@@ -3,7 +3,6 @@
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useContext, useEffect, useState } from "react";
-import { HomeType, languagesRequiringClientSideTranslation } from "@/lib/validations";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   CheckCircledIcon,
@@ -92,12 +91,12 @@ export default function HomeText({
     matchingTypes,
     matchingFeatures,
     translatedMunicipality,
-    translatedDescription,
     translationLoading,
     descriptionLoading,
     description,
     handleDescriptionConvert,
     originalDescription,
+    countryName,
   } = useContext(HomeContext);
 
   const { defaultCurrency, currencies, numerals, defaultLanguage } = useContext(LocaleContext);
@@ -141,7 +140,7 @@ export default function HomeText({
                 <div>{translatedMunicipality ? translatedMunicipality : home.municipality}</div>
                 <div className="flex items-center gap-3">
                   <span className="text-gray-300">| </span>
-                  {home.country && lookup.byIso(home.country)?.country}
+                  {countryName}
                   {home.country && (
                     <FlagComponent
                       country={lookup.byIso(home.country)?.iso2 as Country}

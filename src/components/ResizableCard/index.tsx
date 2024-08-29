@@ -13,6 +13,7 @@ import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getCountryNameForLocale } from "@/lib/utils";
 
 interface Props {
   home: HomeType | null;
@@ -20,7 +21,7 @@ interface Props {
 }
 
 export default function ResizableCard({ home, isLoading }: Props) {
-  const { defaultCurrency } = useContext(LocaleContext);
+  const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { isSmallScreen, user, session } = useContext(QueryContext);
@@ -34,6 +35,12 @@ export default function ResizableCard({ home, isLoading }: Props) {
       setLang(home.language);
     }
   }, [home]);
+
+  const iso = home && home.country && lookup.byIso(home.country);
+  const countryName =
+    iso && typeof iso !== "string"
+      ? getCountryNameForLocale(iso.iso2, defaultLanguage || home.country || "")
+      : home?.country;
 
   return !home || isLoading ? (
     <div className="flex flex-col h-full w-full space-y-2">
@@ -72,11 +79,11 @@ export default function ResizableCard({ home, isLoading }: Props) {
           <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
             {home.municipality}
           </div>
-          <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
+          {/* <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
             {home.region}
-          </div>
+          </div> */}
           <div className="flex text-center gap-2 items-center text-sm sm:text-sm lg:text-md">
-            {home.country && lookup.byIso(home.country)?.country}{" "}
+            {countryName}
             {home.country && (
               <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
             )}

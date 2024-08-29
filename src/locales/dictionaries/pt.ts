@@ -62,6 +62,77 @@ export default {
         "search-button": "Procurar"
       }
     },
+    "AR": {
+      "name": "Argentina",
+      "city": "Buenos Aires",
+      "neighborhoods": {
+        "0": "Palermo",
+        "1": "Recoleta",
+        "2": "Belgrano"
+      }
+    },
+    "MX": {
+      "name": "México",
+      "city": "Cidade do México",
+      "neighborhoods": {
+        "0": "Polanco",
+        "1": "Condesa",
+        "2": "Roma Norte"
+      }
+    },
+    "BR": {
+      "name": "Brasil",
+      "city": "Rio de Janeiro",
+      "neighborhoods": {
+        "0": "Ipanema",
+        "1": "Leblon",
+        "2": "Barra da Tijuca"
+      }
+    },
+    "CO": {
+      "name": "Colômbia",
+      "city": "Medellín",
+      "neighborhoods": {
+        "0": "El Poblado",
+        "1": "Loureiros"
+      }
+    },
+    "CL": {
+      "name": "Chile",
+      "city": "Santiago",
+      "neighborhoods": {
+        "0": "Providência",
+        "1": "Las Condes",
+        "2": "Vitacura"
+      }
+    },
+    "EC": {
+      "name": "Equador",
+      "city": "Quito",
+      "neighborhoods": {
+        "0": "La Floresta",
+        "1": "Cumbayá",
+        "2": "González Suárez"
+      }
+    },
+    "PE": {
+      "name": "Peru",
+      "city": "Lima",
+      "neighborhoods": {
+        "0": "Miraflores",
+        "1": "São Isidro",
+        "2": "Barranco"
+      }
+    },
+    "UY": {
+      "name": "Uruguai",
+      "city": "Montevidéu",
+      "neighborhoods": {
+        "0": "Punta Carretas",
+        "1": "Pocitos",
+        "2": "Carrasco"
+      }
+    },
     "Recommended": "Distritos da cidade recomendados",
     "Popular": "Popular",
     "Newest": "Mais novo",
