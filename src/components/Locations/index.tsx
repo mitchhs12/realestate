@@ -40,8 +40,6 @@ export default function Locations({ countries }: { countries: CountryProps }) {
     neighborhoods: country.neighborhoods,
   }));
 
-  console.log(countries);
-
   const [hoveredImage, setHoveredImage] = useState(getUrl(countries.AR.folder, countries.AR.city.id));
   const [hoveredImageSearch, setHoveredImageSearch] = useState("Buenos Aires, Argentina");
   const [underlinedImage, setUnderlinedImage] = useState("");

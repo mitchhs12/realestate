@@ -118,7 +118,6 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
   };
 
   useEffect(() => {
-    console.log(JSON.stringify(results, null, 2));
     if (clickedLocation) {
       setClickedLocation(false);
       handleSearch(results[0].Text, results[0].PlaceId);
@@ -142,7 +141,6 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
         className="flex w-full justify-center space-x-2 px-4"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log("test");
           {
             results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
           }

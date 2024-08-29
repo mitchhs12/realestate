@@ -70,7 +70,6 @@ export default function Header({
 
   useEffect(() => {
     setPreviousPath(pathname);
-    console.log("pathname", pathname);
   }, [pathname, router]);
 
   return (

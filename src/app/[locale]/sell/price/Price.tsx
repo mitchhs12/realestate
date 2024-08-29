@@ -56,10 +56,6 @@ export default function Price({
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
-  useEffect(() => {
-    console.log("current value", value);
-  }, [value]);
-
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
   const initialIntlConfig = currentHome?.currency

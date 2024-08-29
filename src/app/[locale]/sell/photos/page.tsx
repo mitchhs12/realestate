@@ -38,7 +38,6 @@ export default async function Page() {
   const tooNarrow = t("tooNarrow");
   const tooShort = t("tooShort");
   const fileSize = t("fileSize");
-  console.log(restriction);
 
   return (
     <Photos

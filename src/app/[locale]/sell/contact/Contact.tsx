@@ -106,8 +106,6 @@ export default function Contact({
     }
   }, []);
 
-  console.log(user?.phoneNumber, propertyOwnerPhone);
-
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">

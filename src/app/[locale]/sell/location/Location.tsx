@@ -59,7 +59,6 @@ export default function Location({
         }),
       });
       const data = await coordinates.json();
-      console.log("data", data);
       setCurrentCoords(data);
     };
     if (searchResult.placeId !== "") {

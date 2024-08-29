@@ -86,7 +86,6 @@ export default function Review({
     setPrevLoading(false);
   }, []);
 
-  console.log("currentHome", JSON.stringify(currentHome, null, 2));
   const title = currentHome?.title || "";
   const description = currentHome?.description || "";
   const address = currentHome?.address || "";
@@ -121,8 +120,6 @@ export default function Review({
       return newStates;
     });
   };
-
-  console.log("currency", currency, "price", price);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">

@@ -80,7 +80,6 @@ export default function MapComponent({
       }),
     });
     const data = await result.json();
-    console.log("Data Response", data);
     currentHome &&
       setNewHome({
         ...currentHome,
