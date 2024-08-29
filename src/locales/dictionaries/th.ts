@@ -407,7 +407,8 @@ export default {
     "property": "ทรัพย์สินในพื้นที่แผนที่",
     "results": "ผลลัพธ์",
     "show-map": "แสดงแผนที่",
-    "show-list": "แสดงรายการ"
+    "show-list": "แสดงรายการ",
+    "no-homes-found": "ไม่พบบ้าน!"
   },
   "homes": {
     "units": {

@@ -407,7 +407,8 @@ export default {
     "property": "nekretnina u području karte.",
     "results": "Rezultati",
     "show-map": "Prikaži kartu",
-    "show-list": "Prikaži popis"
+    "show-list": "Prikaži popis",
+    "no-homes-found": "Nema pronađenih domova!"
   },
   "homes": {
     "units": {

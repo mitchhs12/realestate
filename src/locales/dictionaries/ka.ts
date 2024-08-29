@@ -407,7 +407,8 @@ export default {
     "property": "ქონება რუკაზე.",
     "results": "შედეგები",
     "show-map": "რუკის ჩვენება",
-    "show-list": "სიის ჩვენება"
+    "show-list": "სიის ჩვენება",
+    "no-homes-found": "სახლები ვერ მოიძებნა!"
   },
   "homes": {
     "units": {

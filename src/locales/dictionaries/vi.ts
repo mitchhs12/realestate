@@ -407,7 +407,8 @@ export default {
     "property": "bất động sản trong khu vực bản đồ.",
     "results": "Kết quả",
     "show-map": "Hiển thị bản đồ",
-    "show-list": "Hiển thị danh sách"
+    "show-list": "Hiển thị danh sách",
+    "no-homes-found": "Không tìm thấy nhà nào!"
   },
   "homes": {
     "units": {

@@ -20,7 +20,7 @@ const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
     const props = f.properties! as HomeFeatureProps;
 
     return (
-      <div className="flex flex-col text-xs p-5">
+      <div className="flex flex-col text-sm p-5">
         <p>
           <Link href={getDetailsUrl(f.id)} target={linkTarget}>
             View details

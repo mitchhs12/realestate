@@ -407,7 +407,8 @@
     "property": "eiendom in kaartgebied.",
     "results": "Resultate",
     "show-map": "Wys kaart",
-    "show-list": "Wys lys"
+    "show-list": "Wys lys",
+    "no-homes-found": "Geen huise gevind nie!"
   },
   "homes": {
     "units": {

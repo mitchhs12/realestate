@@ -407,7 +407,8 @@
     "property": "Harita alanında mülk.",
     "results": "Sonuçlar",
     "show-map": "Haritayı Göster",
-    "show-list": "Listeyi Göster"
+    "show-list": "Listeyi Göster",
+    "no-homes-found": "Ev Bulunamadı!"
   },
   "homes": {
     "units": {

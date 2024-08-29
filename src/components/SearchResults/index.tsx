@@ -12,9 +12,10 @@ interface Props {
   label: string;
   bounds: BoundsType | null;
   typesObject: { id: string; translation: string }[];
+  noHomesFound: string;
 }
 
-export default function SearchResults({ homes, isSearchLoading, label, bounds, typesObject }: Props) {
+export default function SearchResults({ homes, isSearchLoading, label, bounds, typesObject, noHomesFound }: Props) {
   const { query } = useContext(QueryContext);
   const [currentQuery, setCurrentQuery] = useState(query);
   const [boundsChanged, setBoundsChanged] = useState(false);
@@ -36,9 +37,9 @@ export default function SearchResults({ homes, isSearchLoading, label, bounds, t
 
   return (
     <div className="flex flex-col h-full justify-start items-start w-full overflow-y-auto px-4 pb-4">
-      <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
-        {homes && homes.length > 0 ? (
-          homes.map((home, index) => {
+      {homes && homes.length > 0 ? (
+        <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
+          {homes.map((home, index) => {
             const matchingTypes = findMatching(typesObject, home, "type");
 
             return (
@@ -46,20 +47,19 @@ export default function SearchResults({ homes, isSearchLoading, label, bounds, t
                 <div
                   className={`flex justify-center rounded-xl h-full w-full space-y-2 shadow-lg dark:shadow-white/10 bg-zinc-100 dark:bg-zinc-900 ${
                     isSearchLoading && index >= 4 && "hidden sm:block"
-                  }
-                  ${isSearchLoading && index >= 9 && "sm:hidden lg:block"}
-                  ${isSearchLoading && index >= 6 && "lg:hidden xl:block"}
-                  ${isSearchLoading && index >= 9 && "xl:hidden 2xl:block"}`}
+                  } ${isSearchLoading && index >= 9 && "sm:hidden lg:block"} ${
+                    isSearchLoading && index >= 6 && "lg:hidden xl:block"
+                  } ${isSearchLoading && index >= 9 && "xl:hidden 2xl:block"}`}
                 >
                   <ResizableCard home={home} isLoading={isSearchLoading} types={matchingTypes} />
                 </div>
               </div>
             );
-          })
-        ) : (
-          <div className="flex justify-center items-center p-6">No Homes Found!</div>
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <div className="flex justify-center w-full items-center p-6">{noHomesFound}</div>
+      )}
     </div>
   );
 }

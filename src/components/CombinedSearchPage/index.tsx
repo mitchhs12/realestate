@@ -24,6 +24,7 @@ interface Props {
   showMap: string;
   showList: string;
   typesObject: { id: string; translation: string }[];
+  noHomesFound: string;
 }
 
 export default function CombinedSearchPage({
@@ -36,6 +37,7 @@ export default function CombinedSearchPage({
   showMap,
   showList,
   typesObject,
+  noHomesFound,
 }: Props) {
   const { mapFocused, setMapFocused } = useContext(QueryContext);
   const { numerals } = useContext(LocaleContext);
@@ -107,6 +109,7 @@ export default function CombinedSearchPage({
           bounds={bounds}
           label={label}
           typesObject={typesObject}
+          noHomesFound={noHomesFound}
         />
       </section>
       <div className="flex md:hidden">
@@ -135,6 +138,7 @@ export default function CombinedSearchPage({
                   bounds={bounds}
                   label={label}
                   typesObject={typesObject}
+                  noHomesFound={noHomesFound}
                 />
               </div>
             </div>

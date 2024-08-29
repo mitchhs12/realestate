@@ -407,7 +407,8 @@
     "property": "マップエリア内のプロパティ。",
     "results": "結果",
     "show-map": "地図を表示",
-    "show-list": "リストを表示"
+    "show-list": "リストを表示",
+    "no-homes-found": "家が見つかりません!"
   },
   "homes": {
     "units": {

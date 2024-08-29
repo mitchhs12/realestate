@@ -407,7 +407,8 @@ export default {
     "property": "Grundstück im Kartenbereich.",
     "results": "Ergebnisse",
     "show-map": "Karte anzeigen",
-    "show-list": "Liste anzeigen"
+    "show-list": "Liste anzeigen",
+    "no-homes-found": "Keine Häuser gefunden!"
   },
   "homes": {
     "units": {

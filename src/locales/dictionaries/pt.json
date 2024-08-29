@@ -407,7 +407,8 @@
     "property": "propriedade na área do mapa.",
     "results": "Resultados",
     "show-map": "Mostrar mapa",
-    "show-list": "Mostrar lista"
+    "show-list": "Mostrar lista",
+    "no-homes-found": "Nenhuma casa encontrada!"
   },
   "homes": {
     "units": {

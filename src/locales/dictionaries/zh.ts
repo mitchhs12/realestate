@@ -407,7 +407,8 @@ export default {
     "property": "地图区域中的财产。",
     "results": "结果",
     "show-map": "显示地图",
-    "show-list": "显示列表"
+    "show-list": "显示列表",
+    "no-homes-found": "未找到任何房源！"
   },
   "homes": {
     "units": {

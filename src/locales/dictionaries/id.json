@@ -407,7 +407,8 @@
     "property": "properti di area peta.",
     "results": "Hasil",
     "show-map": "Tampilkan Peta",
-    "show-list": "Tampilkan Daftar"
+    "show-list": "Tampilkan Daftar",
+    "no-homes-found": "Tidak Ada Rumah yang Ditemukan!"
   },
   "homes": {
     "units": {

@@ -407,7 +407,8 @@ export default {
     "property": "property in map area.",
     "results": "Results",
     "show-map": "Show Map",
-    "show-list": "Show List"
+    "show-list": "Show List",
+    "no-homes-found": "No Homes Found!"
   },
   "homes": {
     "units": {

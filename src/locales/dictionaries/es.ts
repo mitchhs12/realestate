@@ -407,7 +407,8 @@ export default {
     "property": "Propiedad en zona del mapa.",
     "results": "Resultados",
     "show-map": "Mostrar mapa",
-    "show-list": "Mostrar lista"
+    "show-list": "Mostrar lista",
+    "no-homes-found": "¡No se encontraron casas!"
   },
   "homes": {
     "units": {

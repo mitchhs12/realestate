@@ -26,6 +26,7 @@ export default async function Page({ params }: { params: { search: string } }) {
   const resultsText = t("results");
   const showMap = t("show-map");
   const showList = t("show-list");
+  const noHomesFound = t("no-homes-found");
   const fullResponse = await response.json();
   const longLatArray = fullResponse.Place.Geometry.Point;
   const label = fullResponse.Place.Label;
@@ -91,6 +92,7 @@ export default async function Page({ params }: { params: { search: string } }) {
           showMap={showMap}
           showList={showList}
           typesObject={typesObject}
+          noHomesFound={noHomesFound}
         />
       </main>
     );

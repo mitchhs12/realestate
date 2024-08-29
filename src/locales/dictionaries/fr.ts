@@ -407,7 +407,8 @@ export default {
     "property": "propriété dans la zone de la carte.",
     "results": "Résultats",
     "show-map": "Afficher la carte",
-    "show-list": "Afficher la liste"
+    "show-list": "Afficher la liste",
+    "no-homes-found": "Aucune maison trouvée !"
   },
   "homes": {
     "units": {
