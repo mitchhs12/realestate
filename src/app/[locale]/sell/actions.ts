@@ -130,7 +130,6 @@ export async function sellHome(currentLocale: string, url: string): Promise<Resp
     data: newData,
   });
 
-  console.log("HOME ACTIVATED!");
   revalidatePath("/"); // Revalidate the path if necessary
 
   return { success: true, error: "" };
