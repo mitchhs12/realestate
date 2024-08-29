@@ -18,14 +18,17 @@ import { getCountryNameForLocale } from "@/lib/utils";
 interface Props {
   home: HomeType | null;
   isLoading?: boolean;
+  types: { id: string; translation: string }[];
 }
 
-export default function ResizableCard({ home, isLoading }: Props) {
+export default function ResizableCard({ home, isLoading, types }: Props) {
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { isSmallScreen, user, session } = useContext(QueryContext);
-  const [currentType, setCurrentType] = useState(home?.type[0]);
+  const [currentType, setCurrentType] = useState(
+    types.length > 0 ? types[0].translation : home ? home.type[0] : "Unknown Type"
+  );
   const [index, setIndex] = useState(0);
 
   const target = isSmallScreen ? "_self" : "_blank";
@@ -72,7 +75,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
                 titleUnderlined ? "underline" : ""
               }`}
             >
-              {home.type.length > 1 ? currentType : home.type}
+              {types.length > 1 ? currentType : types[0]?.translation || home.type[0] || "Unknown Type"}
             </h2>
           </div>
 
@@ -104,7 +107,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
           </div>
         </div>
       </Link>
-      {home.type.length > 1 && (
+      {types.length > 1 && (
         <Button
           className="absolute bottom-2 right-2"
           variant={"outline"}
@@ -112,9 +115,9 @@ export default function ResizableCard({ home, isLoading }: Props) {
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
-            const newIndex = (index + 1) % home.type.length;
+            const newIndex = (index + 1) % types.length;
             setIndex(newIndex);
-            setCurrentType(home.type[newIndex]);
+            setCurrentType(types[newIndex].translation);
           }}
         >
           <ArrowUpDown className="w-5 h-5" />

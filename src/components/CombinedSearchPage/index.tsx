@@ -23,6 +23,7 @@ interface Props {
   resultsText: string;
   showMap: string;
   showList: string;
+  typesObject: { id: string; translation: string }[];
 }
 
 export default function CombinedSearchPage({
@@ -35,6 +36,7 @@ export default function CombinedSearchPage({
   resultsText,
   showMap,
   showList,
+  typesObject,
 }: Props) {
   const { mapFocused, setMapFocused } = useContext(QueryContext);
   const { numerals } = useContext(LocaleContext);
@@ -93,7 +95,13 @@ export default function CombinedSearchPage({
             } ${searchLabel}`
           )}
         </h1>
-        <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
+        <SearchResults
+          homes={homes}
+          isSearchLoading={isSearchLoading}
+          bounds={bounds}
+          label={label}
+          typesObject={typesObject}
+        />
       </section>
       <div className="flex md:hidden">
         <Drawer
@@ -117,7 +125,13 @@ export default function CombinedSearchPage({
             </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>
               <div className={`flex w-full h-full overflow-y-auto`}>
-                <SearchResults homes={homes} isSearchLoading={isSearchLoading} bounds={bounds} label={label} />
+                <SearchResults
+                  homes={homes}
+                  isSearchLoading={isSearchLoading}
+                  bounds={bounds}
+                  label={label}
+                  typesObject={typesObject}
+                />
               </div>
             </div>
           </DrawerContent>
