@@ -3,6 +3,7 @@ import { CoordinatesType } from "@/lib/validations";
 import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
 import { types } from "@/lib/sellFlowData";
+import { getAllHomes } from "../actions";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -19,6 +20,7 @@ export default async function Page({ params }: { params: { search: string } }) {
   );
 
   const t = await getScopedI18n("search");
+
   const propertiesText = t("properties");
   const propertyText = t("property");
   const mapAreaText = t("map-area");

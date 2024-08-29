@@ -12,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { formatNumber } from "@/lib/utils";
 import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
 import { LocaleContext } from "@/context/LocaleContext";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface Props {
   coordinates: CoordinatesType;
@@ -46,7 +47,7 @@ export default function CombinedSearchPage({
   const [isSearchLoading, setIsSearchLoading] = useState(true);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [snap, setSnap] = useState<number | string | null>(0.5);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
   const [searchLabel, setSearchLabel] = useState(label);
 
   useEffect(() => {
@@ -55,16 +56,19 @@ export default function CombinedSearchPage({
     });
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMapFocused(true);
-      } else if (homes.length > 0) {
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth >= 768) {
+  //       setIsOpen(false);
+  //       setMapFocused(true);
+  //     } else if (homes.length > 0) {
+  //       console.log("running this");
+  //       setIsOpen(true);
+  //     }
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   useEffect(() => {
     if (bounds) {
@@ -76,6 +80,16 @@ export default function CombinedSearchPage({
       });
     }
   }, [bounds]);
+
+  useEffect(() => {
+    if (homes[0] !== null && homes.length > 0 && window.innerWidth < 768) {
+      setIsOpen(true);
+    } else if (window.innerWidth >= 768) {
+      setIsOpen(false);
+      setMapFocused(true);
+    }
+    console.log("homes", homes);
+  }, [homes]);
 
   return (
     <>
@@ -136,15 +150,23 @@ export default function CombinedSearchPage({
         </Drawer>
       </div>
       <section className={`flex w-full h-full ${!mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
-        <MapComponent
-          coordinates={coordinates}
-          existingBounds={bounds}
-          setBounds={setBounds}
-          homesGeoJson={homesGeoJson}
-          isMapLoading={isMapLoading}
-          setIsMapLoading={setIsMapLoading}
-          initZoom={initZoom}
-        />
+        {homesGeoJson ? (
+          <MapComponent
+            coordinates={coordinates}
+            existingBounds={bounds}
+            setBounds={setBounds}
+            homesGeoJson={homesGeoJson}
+            isMapLoading={isMapLoading}
+            setIsMapLoading={setIsMapLoading}
+            initZoom={initZoom}
+          />
+        ) : (
+          // <Skeleton className="w-full h-full" />
+          <div className="flex w-full h-full items-center justify-center text-lg lg:text-3xl">
+            <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
+            Loading...
+          </div>
+        )}
       </section>
       <FloatingButton showMap={showMap} showList={showList} />
     </>
