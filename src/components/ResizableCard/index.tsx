@@ -24,6 +24,8 @@ export default function ResizableCard({ home, isLoading }: Props) {
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { isSmallScreen, user, session } = useContext(QueryContext);
+  const [currentType, setCurrentType] = useState(home?.type[0]);
+  const [index, setIndex] = useState(0);
 
   const target = isSmallScreen ? "_self" : "_blank";
 
@@ -46,7 +48,7 @@ export default function ResizableCard({ home, isLoading }: Props) {
     </div>
   ) : (
     <div
-      className="flex flex-col h-full w-full space-y-2"
+      className="flex flex-col h-full w-full space-y-2 relative"
       onMouseOver={() => {
         setTitleUnderlined(true);
       }}
@@ -56,21 +58,15 @@ export default function ResizableCard({ home, isLoading }: Props) {
     >
       <ResizableCarousel home={home} />
       <Link href={`/homes/${home.id}`} target={target}>
-        <div className="flex flex-col justify-center items-center w-full gap-2 px-2">
-          <div className={`w-full flex justify-center items-center relative`}>
+        <div className="flex flex-col justify-center items-center w-full gap-2 px-2 relative">
+          <div className="w-full flex flex-col justify-center items-center">
             <h2
               className={`w-full flex-grow max-w-full text-md md:text-lg lg:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
                 titleUnderlined ? "underline" : ""
               }`}
             >
-              {home.type.length > 1 ? home.type[0] : home.type}
+              {home.type.length > 1 ? currentType : home.type}
             </h2>
-
-            {home.type.length > 1 && (
-              <Button className="absolute right-0" variant={"secondary"} size={"icon"}>
-                <ArrowUpDown className="w-4 h-4" />
-              </Button>
-            )}
           </div>
 
           <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
@@ -101,6 +97,22 @@ export default function ResizableCard({ home, isLoading }: Props) {
           </div>
         </div>
       </Link>
+      {home.type.length > 1 && (
+        <Button
+          className="absolute bottom-2 right-2"
+          variant={"outline"}
+          size={"icon"}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            const newIndex = (index + 1) % home.type.length;
+            setIndex(newIndex);
+            setCurrentType(home.type[newIndex]);
+          }}
+        >
+          <ArrowUpDown className="w-5 h-5" />
+        </Button>
+      )}
     </div>
   );
 }
