@@ -25,6 +25,7 @@ export default function ResizableCard({ home, height, rounded, openModal }: Prop
                 className={`object-cover object-center ${rounded ? rounded : "rounded-t-lg"}`}
                 alt={`${home.title} photo ${index}`}
                 fill={true}
+                loading={"lazy"}
                 sizes="
                 (max-width: 400px) 400px,
                 (max-width: 510px) 510px,

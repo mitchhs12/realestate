@@ -14,8 +14,15 @@ export default async function Hero() {
         fill={true}
         style={{ objectFit: "cover" }}
         quality={80}
-        // priority={true}
-        sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
+        loading={"lazy"}
+        sizes="(max-width: 400px) 400px,
+        (max-width: 510px) 510px,
+        (max-width: 768px) 768px, 
+        (max-width: 1024px) 1024px, 
+        (max-width: 1280px) 1280px, 
+        (max-width: 1536px) 1536px,
+        (max-width: 1920px) 1920px,
+        100vw"
         className="-z-10 opacity-30 dark:opacity-20"
       />
       <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
