@@ -46,7 +46,7 @@ export default function CombinedSearchPage({
   const [isSearchLoading, setIsSearchLoading] = useState(true);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [snap, setSnap] = useState<number | string | null>(0.5);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [searchLabel, setSearchLabel] = useState(label);
 
   useEffect(() => {
@@ -58,10 +58,8 @@ export default function CombinedSearchPage({
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setIsOpen(false);
         setMapFocused(true);
       } else if (homes.length > 0) {
-        setIsOpen(true);
       }
     };
     window.addEventListener("resize", handleResize);
