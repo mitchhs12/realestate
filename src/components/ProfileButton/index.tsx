@@ -131,7 +131,7 @@ export function ProfileButton({
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
-              <SunMoon width={20} height={20} strokeWidth={1} />
+              <SunMoon width={20} height={20} strokeWidth={1.25} />
               {theme.theme}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -139,15 +139,15 @@ export function ProfileButton({
                 <DropdownMenuRadioGroup value={useTheme().theme} onValueChange={setTheme}>
                   <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="light">
                     {theme.light}
-                    <Sun width={20} height={20} strokeWidth={1} />
+                    <Sun width={20} height={20} strokeWidth={1.25} />
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="dark">
                     {theme.dark}
-                    <Moon width={20} height={20} strokeWidth={1} />
+                    <Moon width={20} height={20} strokeWidth={1.25} />
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="system">
                     {theme.system}
-                    <Laptop width={20} height={20} strokeWidth={1} />
+                    <Laptop width={20} height={20} strokeWidth={1.25} />
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubContent>
@@ -158,7 +158,7 @@ export function ProfileButton({
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
-              <Languages width={20} height={20} strokeWidth={1} />
+              <Languages width={20} height={20} strokeWidth={1.25} />
               {language}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -187,7 +187,7 @@ export function ProfileButton({
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
-              <CircleDollarSign width={20} height={20} strokeWidth={1} />
+              <CircleDollarSign width={20} height={20} strokeWidth={1.25} />
               {currency}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -223,7 +223,7 @@ export function ProfileButton({
                 router.push("/settings");
               }}
             >
-              <Settings width={20} height={20} strokeWidth={1} />
+              <Settings width={20} height={20} strokeWidth={1.25} />
               {settings}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -231,7 +231,7 @@ export function ProfileButton({
               className="cursor-pointer flex items-center gap-2"
               onClick={() => signOut({ callbackUrl: "/" })}
             >
-              <LogOut width={20} height={20} strokeWidth={1} />
+              <LogOut width={20} height={20} strokeWidth={1.25} />
               {log_out}
             </DropdownMenuItem>
           </DropdownMenuGroup>
