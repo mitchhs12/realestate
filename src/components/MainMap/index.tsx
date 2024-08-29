@@ -121,44 +121,46 @@ export default function MapComponent({
   return (
     <div className="flex flex-col w-full items-center justify-center">
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
-        <Map
-          clickableIcons={false}
-          gestureHandling={"greedy"}
-          onBoundsChanged={handleBoundsChanged}
-          defaultCenter={defaultCenter}
-          defaultZoom={initZoom ? initZoom : 16}
-          maxZoom={19}
-          minZoom={3}
-          disableDefaultUI={true}
-          mapId={theme === "dark" ? MAP_CONFIGS[1].mapId : MAP_CONFIGS[0].mapId}
-          mapTypeId={theme === "dark" ? MAP_CONFIGS[1].mapTypeId : MAP_CONFIGS[0].mapTypeId}
-          backgroundColor={theme === "dark" ? "black" : "white"}
-          reuseMaps={true}
-          className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
-        >
-          {homesGeoJson && (
-            <ClusteredMarkers
-              geojson={homesGeoJson}
-              setNumClusters={setNumClusters}
-              setInfowindowData={setInfowindowData}
-              theme={theme}
-            />
-          )}
+        {!isMapLoading && (
+          <Map
+            clickableIcons={false}
+            gestureHandling={"greedy"}
+            onBoundsChanged={handleBoundsChanged}
+            defaultCenter={defaultCenter}
+            defaultZoom={initZoom ? initZoom : 16}
+            maxZoom={19}
+            minZoom={3}
+            disableDefaultUI={true}
+            mapId={theme === "dark" ? MAP_CONFIGS[1].mapId : MAP_CONFIGS[0].mapId}
+            mapTypeId={theme === "dark" ? MAP_CONFIGS[1].mapTypeId : MAP_CONFIGS[0].mapTypeId}
+            backgroundColor={theme === "dark" ? "black" : "white"}
+            reuseMaps={true}
+            className={`custom-marker-clustering-map ${theme === "dark" ? "dark-mode" : "light-mode"}`}
+          >
+            {homesGeoJson && (
+              <ClusteredMarkers
+                geojson={homesGeoJson}
+                setNumClusters={setNumClusters}
+                setInfowindowData={setInfowindowData}
+                theme={theme}
+              />
+            )}
 
-          {infowindowData && (
-            <InfoWindow
-              headerContent={`${
-                infowindowData.features.length === 1
-                  ? infowindowData.features[0].properties?.name
-                  : `${new Intl.NumberFormat().format(infowindowData.features.length)} Properties`
-              }`}
-              onClose={hamdleInfoWindowClose}
-              anchor={infowindowData.anchor}
-            >
-              <InfoWindowContent features={infowindowData.features} theme={theme} />
-            </InfoWindow>
-          )}
-        </Map>
+            {infowindowData && (
+              <InfoWindow
+                headerContent={`${
+                  infowindowData.features.length === 1
+                    ? infowindowData.features[0].properties?.name
+                    : `${new Intl.NumberFormat().format(infowindowData.features.length)} Properties`
+                }`}
+                onClose={hamdleInfoWindowClose}
+                anchor={infowindowData.anchor}
+              >
+                <InfoWindowContent features={infowindowData.features} theme={theme} />
+              </InfoWindow>
+            )}
+          </Map>
+        )}
       </APIProvider>
     </div>
   );
