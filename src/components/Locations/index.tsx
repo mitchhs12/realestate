@@ -36,7 +36,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
   );
 
   const imageMap = Object.values(countries).map((country) => ({
-    name: country.city.id,
+    city: { id: country.city.id, translation: country.city.translation },
     neighborhoods: country.neighborhoods,
   }));
 
@@ -64,34 +64,33 @@ export default function Locations({ countries }: { countries: CountryProps }) {
     setKey(key);
   };
 
-  // const handlePreviousClick = (canScrollPrev: boolean, cityIndex: number) => {
-  //   setCurrentIndexes((prevIndexes) => {
-  //     const newIndexes = [...prevIndexes];
-  //     newIndexes[cityIndex] = Math.max(newIndexes[cityIndex] - 1, 0);
+  const handlePreviousClick = (canScrollPrev: boolean, cityIndex: number) => {
+    setCurrentIndexes((prevIndexes) => {
+      const newIndexes = [...prevIndexes];
+      const city = imageMap[cityIndex];
 
-  //     const city = imageMap[cityIndex];
+      newIndexes[cityIndex] = Math.max(newIndexes[cityIndex] - 1, 0);
 
-  //     const imageKey =
-  //       newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
-  //     handleHover(getUrl(countries.AR.folder, city.name), city.name, imageKey);
+      const imageKey = newIndexes[cityIndex] === 0 ? city.city : city.neighborhoods[newIndexes[cityIndex] - 1];
+      handleHover(urlMap[imageKey.id], imageKey, imageKey.id);
 
-  //     return newIndexes;
-  //   });
-  // };
+      return newIndexes;
+    });
+  };
 
-  // const handleNextClick = (canScrollNext: boolean, cityIndex: number) => {
-  //   setCurrentIndexes((prevIndexes) => {
-  //     const newIndexes = [...prevIndexes];
-  //     const city = imageMap[cityIndex];
-  //     newIndexes[cityIndex] = Math.min(newIndexes[cityIndex] + 1, city.neighborhoods.length);
+  const handleNextClick = (canScrollNext: boolean, cityIndex: number) => {
+    setCurrentIndexes((prevIndexes) => {
+      const newIndexes = [...prevIndexes];
+      const city = imageMap[cityIndex];
+      newIndexes[cityIndex] = Math.min(newIndexes[cityIndex] + 1, city.neighborhoods.length);
 
-  //     const imageKey =
-  //       newIndexes[cityIndex] === 0 ? city.name : `${city.neighborhoods[newIndexes[cityIndex] - 1].name}, ${city.name}`;
-  //     handleHover(urlMap[imageKey], imageKey.split(",")[0], imageKey);
+      const imageKey = newIndexes[cityIndex] === 0 ? city.city : city.neighborhoods[newIndexes[cityIndex] - 1];
 
-  //     return newIndexes;
-  //   });
-  // };
+      handleHover(urlMap[imageKey.id], imageKey, imageKey.id);
+
+      return newIndexes;
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full gap-6">
@@ -190,7 +189,10 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             {
               <CarouselPrevious
                 className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
-                // onCustomClick={(canScrollPrev: boolean) => handlePreviousClick(canScrollPrev, countryIndex)}
+                onCustomClick={(canScrollPrev: boolean) => {
+                  console.log(canScrollPrev, countryIndex);
+                  handlePreviousClick(canScrollPrev, countryIndex);
+                }}
                 onMouseOver={() => {
                   setUnderlinedImage(hoveredImageSearch);
                 }}
@@ -199,7 +201,10 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             {
               <CarouselNext
                 className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
-                // onCustomClick={(canScrollNext: boolean) => handleNextClick(canScrollNext, countryIndex)}
+                onCustomClick={(canScrollNext: boolean) => {
+                  console.log(canScrollNext, countryIndex);
+                  handleNextClick(canScrollNext, countryIndex);
+                }}
                 onMouseOver={() => {
                   setUnderlinedImage(hoveredImageSearch);
                 }}
