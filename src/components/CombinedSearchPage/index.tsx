@@ -20,7 +20,6 @@ interface Props {
   initZoom: number | null;
   propertyText: string;
   propertiesText: string;
-  mapAreaText: string;
   resultsText: string;
   showMap: string;
   showList: string;
@@ -33,7 +32,6 @@ export default function CombinedSearchPage({
   initZoom,
   propertyText,
   propertiesText,
-  mapAreaText,
   resultsText,
   showMap,
   showList,
@@ -48,7 +46,6 @@ export default function CombinedSearchPage({
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [snap, setSnap] = useState<number | string | null>(0.5);
   const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
-  const [searchLabel, setSearchLabel] = useState(label);
 
   useEffect(() => {
     void getAllHomes().then((allHomes) => {
@@ -75,7 +72,6 @@ export default function CombinedSearchPage({
       setIsSearchLoading(true);
       getSearchResults("search", bounds).then((data) => {
         setHomes(data);
-        setSearchLabel(mapAreaText);
         setIsSearchLoading(false);
       });
     }
@@ -102,9 +98,7 @@ export default function CombinedSearchPage({
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (
-            `${formatNumber(homes.length, numerals)} ${
-              homes.length === 1 ? propertyText : propertiesText
-            } ${searchLabel}`
+            `${formatNumber(homes.length, numerals)} ${homes.length === 1 ? propertyText : propertiesText} `
           )}
         </h1>
         <SearchResults
@@ -130,9 +124,7 @@ export default function CombinedSearchPage({
               {isSearchLoading ? (
                 <Skeleton className="w-48 h-5" />
               ) : (
-                `${formatNumber(homes.length, numerals)} ${
-                  homes.length === 1 ? propertyText : propertiesText
-                } ${searchLabel}`
+                `${formatNumber(homes.length, numerals)} ${homes.length === 1 ? propertyText : propertiesText}`
               )}
             </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>

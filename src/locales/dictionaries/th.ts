@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "คุณสมบัติใน",
-    "property": "ทรัพย์สินใน",
-    "map-area": "พื้นที่แผนที่",
-    "results": "ผลลัพธ์:",
+    "properties": "คุณสมบัติในพื้นที่แผนที่",
+    "property": "ทรัพย์สินในพื้นที่แผนที่",
+    "results": "ผลลัพธ์",
     "show-map": "แสดงแผนที่",
     "show-list": "แสดงรายการ"
   },

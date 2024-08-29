@@ -403,10 +403,9 @@
     }
   },
   "search": {
-    "properties": "属性",
-    "property": "财产",
-    "map-area": "地图区域。",
-    "results": "结果：",
+    "properties": "地图区域中的属性。",
+    "property": "地图区域中的财产。",
+    "results": "结果",
     "show-map": "显示地图",
     "show-list": "显示列表"
   },

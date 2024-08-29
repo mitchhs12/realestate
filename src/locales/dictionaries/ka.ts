@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "თვისებები in",
-    "property": "ქონებაში",
-    "map-area": "რუკის ტერიტორია.",
-    "results": "შედეგები:",
+    "properties": "თვისებები რუკაზე.",
+    "property": "ქონება რუკაზე.",
+    "results": "შედეგები",
     "show-map": "რუკის ჩვენება",
     "show-list": "სიის ჩვენება"
   },

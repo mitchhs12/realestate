@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "svojstva u",
-    "property": "vlasništvo u",
-    "map-area": "područje karte.",
-    "results": "Rezultati:",
+    "properties": "svojstva u području karte.",
+    "property": "nekretnina u području karte.",
+    "results": "Rezultati",
     "show-map": "Prikaži kartu",
     "show-list": "Prikaži popis"
   },

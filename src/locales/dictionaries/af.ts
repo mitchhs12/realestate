@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "eiendomme in",
-    "property": "eiendom in",
-    "map-area": "kaart area.",
-    "results": "Resultate:",
+    "properties": "eiendomme in kaartgebied.",
+    "property": "eiendom in kaartgebied.",
+    "results": "Resultate",
     "show-map": "Wys kaart",
     "show-list": "Wys lys"
   },

@@ -23,7 +23,6 @@ export default async function Page({ params }: { params: { search: string } }) {
 
   const propertiesText = t("properties");
   const propertyText = t("property");
-  const mapAreaText = t("map-area");
   const resultsText = t("results");
   const showMap = t("show-map");
   const showList = t("show-list");
@@ -88,7 +87,6 @@ export default async function Page({ params }: { params: { search: string } }) {
           initZoom={initZoom}
           propertyText={propertyText}
           propertiesText={propertiesText}
-          mapAreaText={mapAreaText}
           resultsText={resultsText}
           showMap={showMap}
           showList={showList}

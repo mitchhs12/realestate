@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "خصائص في",
-    "property": "الممتلكات في",
-    "map-area": "منطقة الخريطة.",
-    "results": "نتائج:",
+    "properties": "العقارات في منطقة الخريطة.",
+    "property": "الممتلكات في منطقة الخريطة.",
+    "results": "نتائج",
     "show-map": "إظهار الخريطة",
     "show-list": "إظهار القائمة"
   },

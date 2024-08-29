@@ -403,10 +403,9 @@
     }
   },
   "search": {
-    "properties": "Propiedades en",
-    "property": "propiedad en",
-    "map-area": "Área del mapa.",
-    "results": "Resultados:",
+    "properties": "Propiedades en el área del mapa.",
+    "property": "Propiedad en zona del mapa.",
+    "results": "Resultados",
     "show-map": "Mostrar mapa",
     "show-list": "Mostrar lista"
   },

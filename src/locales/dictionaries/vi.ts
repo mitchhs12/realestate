@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "tính chất trong",
-    "property": "tài sản trong",
-    "map-area": "khu vực bản đồ.",
-    "results": "Kết quả:",
+    "properties": "các thuộc tính trong khu vực bản đồ.",
+    "property": "bất động sản trong khu vực bản đồ.",
+    "results": "Kết quả",
     "show-map": "Hiển thị bản đồ",
     "show-list": "Hiển thị danh sách"
   },

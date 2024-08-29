@@ -403,10 +403,9 @@
     }
   },
   "search": {
-    "properties": "özellikleri",
-    "property": "mülk",
-    "map-area": "harita alanı.",
-    "results": "Sonuçlar:",
+    "properties": "Harita alanındaki özellikler.",
+    "property": "Harita alanında mülk.",
+    "results": "Sonuçlar",
     "show-map": "Haritayı Göster",
     "show-list": "Listeyi Göster"
   },

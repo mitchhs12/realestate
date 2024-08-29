@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "properti di",
-    "property": "properti di",
-    "map-area": "area peta.",
-    "results": "Hasil:",
+    "properties": "properti di area peta.",
+    "property": "properti di area peta.",
+    "results": "Hasil",
     "show-map": "Tampilkan Peta",
     "show-list": "Tampilkan Daftar"
   },

@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "Immobilien in",
-    "property": "Eigentum in",
-    "map-area": "Kartenbereich.",
-    "results": "Ergebnisse:",
+    "properties": "Eigenschaften im Kartenbereich.",
+    "property": "Grundstück im Kartenbereich.",
+    "results": "Ergebnisse",
     "show-map": "Karte anzeigen",
     "show-list": "Liste anzeigen"
   },

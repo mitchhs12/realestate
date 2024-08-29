@@ -403,10 +403,9 @@ export default {
     }
   },
   "search": {
-    "properties": "プロパティ",
-    "property": "不動産の",
-    "map-area": "マップエリア。",
-    "results": "結果：",
+    "properties": "マップエリア内のプロパティ。",
+    "property": "マップエリア内のプロパティ。",
+    "results": "結果",
     "show-map": "地図を表示",
     "show-list": "リストを表示"
   },
