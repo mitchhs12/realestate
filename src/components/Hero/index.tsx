@@ -13,8 +13,8 @@ export default async function Hero() {
         alt="background"
         fill={true}
         style={{ objectFit: "cover" }}
-        quality={80}
-        loading={"lazy"}
+        quality={70}
+        priority={true}
         sizes="(max-width: 400px) 400px,
         (max-width: 510px) 510px,
         (max-width: 768px) 768px, 
