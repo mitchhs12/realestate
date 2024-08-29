@@ -32,6 +32,7 @@ import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { languageToFlagMap } from "@/lib/validations";
 import { QueryContext } from "@/context/QueryContext";
+import { Languages, CircleDollarSign, Settings, SunMoon, LogOut, Sun, Moon, Laptop } from "lucide-react";
 
 interface Props {
   openSignUpModal: () => void;
@@ -129,18 +130,24 @@ export function ProfileButton({
         )}
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>{theme.theme}</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger className="flex items-center gap-2">
+              <SunMoon width={20} height={20} strokeWidth={1} />
+              {theme.theme}
+            </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2">
                 <DropdownMenuRadioGroup value={useTheme().theme} onValueChange={setTheme}>
-                  <DropdownMenuRadioItem className="cursor-pointer" value="light">
+                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="light">
                     {theme.light}
+                    <Sun width={20} height={20} strokeWidth={1} />
                   </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem className="cursor-pointer" value="dark">
+                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="dark">
                     {theme.dark}
+                    <Moon width={20} height={20} strokeWidth={1} />
                   </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem className="cursor-pointer" value="system">
+                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="system">
                     {theme.system}
+                    <Laptop width={20} height={20} strokeWidth={1} />
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubContent>
@@ -150,7 +157,10 @@ export function ProfileButton({
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>{language}</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger className="flex items-center gap-2">
+              <Languages width={20} height={20} strokeWidth={1} />
+              {language}
+            </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
                 <DropdownMenuRadioGroup
@@ -176,7 +186,10 @@ export function ProfileButton({
         </DropdownMenuGroup>
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>{currency}</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger className="flex items-center gap-2">
+              <CircleDollarSign width={20} height={20} strokeWidth={1} />
+              {currency}
+            </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
                 <DropdownMenuRadioGroup
@@ -205,15 +218,20 @@ export function ProfileButton({
           <DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className="cursor-pointer"
+              className="cursor-pointer flex items-center gap-2"
               onClick={() => {
                 router.push("/settings");
               }}
             >
+              <Settings width={20} height={20} strokeWidth={1} />
               {settings}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer" onClick={() => signOut({ callbackUrl: "/" })}>
+            <DropdownMenuItem
+              className="cursor-pointer flex items-center gap-2"
+              onClick={() => signOut({ callbackUrl: "/" })}
+            >
+              <LogOut width={20} height={20} strokeWidth={1} />
               {log_out}
             </DropdownMenuItem>
           </DropdownMenuGroup>
