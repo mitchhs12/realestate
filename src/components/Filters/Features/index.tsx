@@ -61,35 +61,19 @@ export default function Categories({ selectedFeatures, setSelectedFeatures, moda
     <>
       {featuresObject.map((feature, index) => {
         if (index !== 0) {
-          if (!modal) {
-            return (
-              <DropdownMenuCheckboxItem
-                className="cursor-pointer"
-                key={feature.id}
-                checked={feature.checked}
-                onCheckedChange={() => handleCheckedChange(index)}
-                onSelect={(event) => event?.preventDefault()}
-              >
-                {feature.translation}
-              </DropdownMenuCheckboxItem>
-            );
-          } else {
-            return (
-              <div key={feature.id} className="flex items-center gap-2">
-                <Checkbox
-                  className="w-4 h-4 cursor-pointer"
-                  key={feature.id}
-                  checked={feature.checked}
-                  onCheckedChange={() => handleCheckedChange(index)}
-                  onSelect={(event) => event?.preventDefault()}
-                />
-                <label htmlFor={feature.id} className="cursor-pointer">
-                  {feature.translation}
-                </label>
-              </div>
-            );
-          }
-        }
+          return (
+            <div
+              className="flex items-center justify-between gap-3 w-full cursor-pointer hover:bg-secondary rounded-sm p-2 px-3"
+              onClick={() => {
+                handleCheckedChange(index);
+              }}
+            >
+              <div className="flex items-center text-sm gap-3 w-full">{feature.translation}</div>
+
+              <Checkbox id={feature.id} className="h-4 w-4 cursor-pointer" key={feature.id} checked={feature.checked} />
+            </div>
+          );
+        } else return null;
       })}
     </>
   );
