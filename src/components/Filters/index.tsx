@@ -56,16 +56,6 @@ export default function Filters({ filters, locale }: Props) {
     }
   }, [selectedFeatures, selectedTypes]);
 
-  useEffect(() => {
-    console.log("newFilters", newFilters);
-    console.log("originalFilters", originalFilters);
-    console.log("equivalent?", newFilters === originalFilters);
-  }, [originalFilters, newFilters]);
-
-  // useEffect(() => {
-  //   console.log("PRIIIIIIIIIIIIICIE", priceRange[1] * defaultCurrency.usdPrice);
-  // }, [priceRange]);
-
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>

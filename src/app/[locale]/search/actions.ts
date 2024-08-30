@@ -93,7 +93,6 @@ export async function getSearchResults(
     });
   }
 
-  console.log("common filters 2", commonFilters);
   revalidatePath(page); // Revalidate the path if necessary
   return homes;
 }
@@ -182,9 +181,6 @@ export async function getAllHomesFiltered(
   const homes = await prisma.home.findMany({
     where: commonFilters,
   });
-
-  console.log("commonfilters", commonFilters);
-  console.log("homessss", homes);
 
   const features: Feature<Point, HomeFeatureProps>[] = homes.map((home) => ({
     type: "Feature",

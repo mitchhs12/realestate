@@ -4,6 +4,7 @@ import { useScopedI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
 import { types } from "@/lib/sellFlowData";
 import { DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface CategoriesObject {
   id: string;
@@ -14,9 +15,10 @@ interface CategoriesObject {
 interface Props {
   selectedTypes: string[];
   setSelectedTypes: (selectedIds: string[]) => void;
+  modal?: boolean;
 }
 
-export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
+export default function Categories({ selectedTypes, setSelectedTypes, modal }: Props) {
   const t = useScopedI18n("sell.type");
   const [categoriesObject, setCategoriesObject] = useState<CategoriesObject[]>([]);
 
@@ -58,17 +60,34 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
   return (
     <>
       {categoriesObject.map((feature, index) => {
-        return (
-          <DropdownMenuCheckboxItem
-            className="cursor-pointer"
-            key={feature.id}
-            checked={feature.checked}
-            onCheckedChange={() => handleCheckedChange(index)}
-            onSelect={(event) => event?.preventDefault()}
-          >
-            {feature.translation}
-          </DropdownMenuCheckboxItem>
-        );
+        if (!modal) {
+          return (
+            <DropdownMenuCheckboxItem
+              className="cursor-pointer"
+              key={feature.id}
+              checked={feature.checked}
+              onCheckedChange={() => handleCheckedChange(index)}
+              onSelect={(event) => event?.preventDefault()}
+            >
+              {feature.translation}
+            </DropdownMenuCheckboxItem>
+          );
+        } else {
+          return (
+            <div key={feature.id} className="flex items-center gap-2">
+              <Checkbox
+                className="w-4 h-4 cursor-pointer"
+                key={feature.id}
+                checked={feature.checked}
+                onCheckedChange={() => handleCheckedChange(index)}
+                onSelect={(event) => event?.preventDefault()}
+              />
+              <label htmlFor={feature.id} className="cursor-pointer">
+                {feature.translation}
+              </label>
+            </div>
+          );
+        }
       })}
     </>
   );

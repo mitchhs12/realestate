@@ -17,6 +17,7 @@ import { ChevronLeft } from "lucide-react";
 import { QueryContext } from "@/context/QueryContext";
 import Filters from "@/components/Filters";
 import { I18nProviderClient } from "@/locales/client";
+import FiltersDialog from "@/components/FiltersDialog";
 
 interface Props {
   guides: string;
@@ -139,7 +140,12 @@ export default function Header({
         )}
         {isSearchPage && (
           <div className="flex items-center justify-center gap-3 px-3 w-full">
-            <Filters filters={filters} locale={locale} />
+            <div className="hidden sm:flex">
+              <Filters filters={filters} locale={locale} />
+            </div>
+            <div className="flex sm:hidden">
+              <FiltersDialog filters={filters} locale={locale} />
+            </div>
             <div className="flex flex-grow xs:flex-grow-0 ">
               <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
             </div>
