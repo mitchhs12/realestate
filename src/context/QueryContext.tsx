@@ -1,14 +1,13 @@
 "use client";
 
-import React, { createContext, useState, ReactNode, useEffect } from "react";
+import React, { createContext, useState, ReactNode, useEffect, useContext } from "react";
 import { usePathname } from "next/navigation";
 import { HomeType } from "@/lib/validations";
-import { useContext } from "react";
-import { LocaleContext } from "@/context/LocaleContext";
 import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
 import { types, features } from "@/lib/sellFlowData";
+import { LocaleContext } from "@/context/LocaleContext";
 
 interface QueryContextProps {
   query: string;
@@ -50,14 +49,20 @@ interface QueryContextProps {
   allSelectedTypes: boolean;
   handleAllFeatures: () => void;
   handleAllTypes: () => void;
-  initialFilters: string;
-  setInitialFilters: (value: string) => void;
+  newFilters: string;
+  setNewFilters: (value: string) => void;
   convertedPriceRange: number[];
   setConvertedPriceRange: (value: number[]) => void;
   initialMaxPrice: number;
+  originalFilters: string;
 }
 
-const initialMaxPrice = 100000000;
+const initialMaxPrice = 10000000;
+const originalFilters = JSON.stringify({
+  features: [],
+  types: [],
+  convertedPriceRange: [],
+});
 
 const QueryContext = createContext<QueryContextProps>({
   query: "",
@@ -99,15 +104,16 @@ const QueryContext = createContext<QueryContextProps>({
   allSelectedTypes: true,
   handleAllFeatures: () => {},
   handleAllTypes: () => {},
-  initialFilters: JSON.stringify({
+  newFilters: JSON.stringify({
     features: [],
     types: [],
-    priceRange: [1, initialMaxPrice],
+    priceRange: [1, Math.round(initialMaxPrice)],
   }),
-  setInitialFilters: () => {},
+  setNewFilters: () => {},
   convertedPriceRange: [1, initialMaxPrice],
   setConvertedPriceRange: () => {},
   initialMaxPrice: initialMaxPrice,
+  originalFilters: originalFilters,
 });
 
 interface QueryProviderProps {
@@ -131,11 +137,11 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [isFiltering, setIsFiltering] = useState(false);
   const [allSelectedFeatures, setAllSelectedFeatures] = useState(true);
   const [allSelectedTypes, setAllSelectedTypes] = useState(true);
-  const [initialFilters, setInitialFilters] = useState(
+  const [newFilters, setNewFilters] = useState(
     JSON.stringify({
       features: [],
       types: [],
-      priceRange: [1, initialMaxPrice],
+      convertedPriceRange: [1, Math.round(initialMaxPrice / defaultCurrency.usdPrice)],
     })
   );
   const [convertedPriceRange, setConvertedPriceRange] = useState<number[]>([]);
@@ -245,11 +251,12 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         allSelectedTypes,
         handleAllFeatures,
         handleAllTypes,
-        initialFilters,
-        setInitialFilters,
+        newFilters,
+        setNewFilters,
         convertedPriceRange,
         setConvertedPriceRange,
         initialMaxPrice,
+        originalFilters,
       }}
     >
       {children}

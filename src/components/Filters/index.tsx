@@ -11,11 +11,11 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { useContext, useEffect, useState } from "react";
 import { I18nProviderClient } from "@/locales/client";
-import { Languages, CircleDollarSign } from "lucide-react";
-import { SlidersHorizontal, DollarSign } from "lucide-react";
+import { SlidersHorizontal, House, Sparkles, DollarSign } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
@@ -42,8 +42,10 @@ export default function Filters({ filters, locale }: Props) {
     allSelectedTypes,
     handleAllFeatures,
     handleAllTypes,
-    initialFilters,
+    newFilters,
     initialMaxPrice,
+    originalFilters,
+    setNewFilters,
   } = useContext(QueryContext);
   const { defaultCurrency } = useContext(LocaleContext);
   const [isReady, setIsReady] = useState(false);
@@ -54,13 +56,15 @@ export default function Filters({ filters, locale }: Props) {
     }
   }, [selectedFeatures, selectedTypes]);
 
+  useEffect(() => {
+    console.log("newFilters", newFilters);
+    console.log("originalFilters", originalFilters);
+    console.log("equivalent?", newFilters === originalFilters);
+  }, [originalFilters, newFilters]);
+
   // useEffect(() => {
   //   console.log("PRIIIIIIIIIIIIICIE", priceRange[1] * defaultCurrency.usdPrice);
   // }, [priceRange]);
-
-  useEffect(() => {
-    console.log("here", selectedFeatures);
-  }, [selectedFeatures]);
 
   return (
     <DropdownMenu modal={false}>
@@ -106,12 +110,13 @@ export default function Filters({ filters, locale }: Props) {
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
-              <Languages width={20} height={20} strokeWidth={1.25} />
+              <House width={20} height={20} strokeWidth={1.25} />
               Categories
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent className="flex flex-col p-2 max-h-60">
+              <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={locale}>
+                  <DropdownMenuLabel className="flex items-center justify-center pb-3">Show me only</DropdownMenuLabel>
                   <div className="overflow-y-auto">
                     <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
                   </div>
@@ -126,12 +131,15 @@ export default function Filters({ filters, locale }: Props) {
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex justify-center items-center gap-2">
-              <CircleDollarSign width={20} height={20} strokeWidth={1.25} />
+              <Sparkles width={20} height={20} strokeWidth={1.25} />
               <span>Features</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent className="flex flex-col p-2 max-h-60">
+              <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={locale}>
+                  <DropdownMenuLabel className="flex justify-center items-center pb-3">
+                    Show me properties with
+                  </DropdownMenuLabel>
                   <div className="overflow-y-auto">
                     <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
                   </div>
@@ -144,23 +152,47 @@ export default function Filters({ filters, locale }: Props) {
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <Button
-          variant={"default"}
-          size={"default"}
-          type={"submit"}
-          className="flex w-full"
-          disabled={
-            initialFilters ===
-            JSON.stringify({
-              features: selectedFeatures,
-              types: selectedTypes,
-              convertedPriceRange: convertedPriceRange,
-            })
-          }
-          onClick={() => setIsFiltering(true)}
-        >
-          <span>Apply Filters</span>
-        </Button>
+        <div className="flex items-center gap-4 justify-center">
+          <Button
+            variant={"default"}
+            size={"sm"}
+            type={"submit"}
+            className="flex"
+            disabled={
+              newFilters ===
+              JSON.stringify({
+                features: selectedFeatures,
+                types: selectedTypes,
+                convertedPriceRange: convertedPriceRange,
+              })
+            }
+            onClick={() => setIsFiltering(true)}
+          >
+            <span>Apply New Filters</span>
+          </Button>
+          <Button
+            variant={"outline"}
+            size={"sm"}
+            type={"submit"}
+            className="flex"
+            disabled={originalFilters === newFilters}
+            onClick={() => {
+              setNewFilters(
+                JSON.stringify({
+                  features: [],
+                  types: [],
+                  convertedPriceRange: [],
+                })
+              );
+              setSelectedFeatures([]);
+              setSelectedTypes([]);
+              setConvertedPriceRange([]);
+              setIsFiltering(true);
+            }}
+          >
+            <span>Reset Filters</span>
+          </Button>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

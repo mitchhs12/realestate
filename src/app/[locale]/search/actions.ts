@@ -45,7 +45,7 @@ export async function getSearchResults(
     commonFilters = {
       ...commonFilters,
       type: {
-        hasEvery: types,
+        hasSome: types,
       },
     };
   }
@@ -55,7 +55,7 @@ export async function getSearchResults(
     commonFilters = {
       ...commonFilters,
       features: {
-        hasEvery: features,
+        hasSome: features,
       },
     };
   }

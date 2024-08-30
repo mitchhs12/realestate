@@ -46,7 +46,7 @@ export default function CombinedSearchPage({
     selectedFeatures,
     isFiltering,
     setIsFiltering,
-    setInitialFilters,
+    setNewFilters,
     convertedPriceRange,
   } = useContext(QueryContext);
   const { numerals, defaultCurrency } = useContext(LocaleContext);
@@ -64,33 +64,8 @@ export default function CombinedSearchPage({
     });
   }, []);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.innerWidth >= 768) {
-  //       setIsOpen(false);
-  //       setMapFocused(true);
-  //     } else if (homes.length > 0) {
-  //       console.log("running this");
-  //       setIsOpen(true);
-  //     }
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (bounds) {
-  //     console.log("OLD SEARCH RESULTS ");
-  //     setIsSearchLoading(true);
-  //     getSearchResults("search", bounds).then((data) => {
-  //       setHomes(data);
-  //       setIsSearchLoading(false);
-  //     });
-  //   }
-  // }, [bounds]);
-
   useEffect(() => {
-    if ((bounds && isSearchLoading) || (bounds && isFiltering)) {
+    if (bounds) {
       setIsSearchLoading(true);
       console.log("priceRange in local currency", convertedPriceRange);
       console.log("selectedTypes", selectedTypes);
@@ -100,7 +75,7 @@ export default function CombinedSearchPage({
           setHomes(data);
           setIsSearchLoading(false);
           setIsFiltering(false);
-          setInitialFilters(
+          setNewFilters(
             JSON.stringify({
               features: selectedFeatures,
               types: selectedTypes,
