@@ -39,8 +39,17 @@ export default function CombinedSearchPage({
   typesObject,
   noHomesFound,
 }: Props) {
-  const { mapFocused, setMapFocused } = useContext(QueryContext);
-  const { numerals } = useContext(LocaleContext);
+  const {
+    mapFocused,
+    setMapFocused,
+    selectedTypes,
+    selectedFeatures,
+    isFiltering,
+    setIsFiltering,
+    setInitialFilters,
+    convertedPriceRange,
+  } = useContext(QueryContext);
+  const { numerals, defaultCurrency } = useContext(LocaleContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
   const [homes, setHomes] = useState<(HomeType | null)[]>(Array(12).fill(null));
   const [homesGeoJson, setHomesGeoJson] = useState<HomesGeoJson | null>(null);
@@ -69,15 +78,39 @@ export default function CombinedSearchPage({
   //   return () => window.removeEventListener("resize", handleResize);
   // }, []);
 
+  // useEffect(() => {
+  //   if (bounds) {
+  //     console.log("OLD SEARCH RESULTS ");
+  //     setIsSearchLoading(true);
+  //     getSearchResults("search", bounds).then((data) => {
+  //       setHomes(data);
+  //       setIsSearchLoading(false);
+  //     });
+  //   }
+  // }, [bounds]);
+
   useEffect(() => {
-    if (bounds) {
+    if ((bounds && isSearchLoading) || (bounds && isFiltering)) {
       setIsSearchLoading(true);
-      getSearchResults("search", bounds).then((data) => {
-        setHomes(data);
-        setIsSearchLoading(false);
-      });
+      console.log("priceRange in local currency", convertedPriceRange);
+      console.log("selectedTypes", selectedTypes);
+      console.log("selectedFeatures", selectedFeatures);
+      getSearchResults("search", bounds, convertedPriceRange, selectedTypes, selectedFeatures, defaultCurrency).then(
+        (data) => {
+          setHomes(data);
+          setIsSearchLoading(false);
+          setIsFiltering(false);
+          setInitialFilters(
+            JSON.stringify({
+              features: selectedFeatures,
+              types: selectedTypes,
+              convertedPriceRange: convertedPriceRange,
+            })
+          );
+        }
+      );
     }
-  }, [bounds]);
+  }, [isFiltering, bounds]);
 
   useEffect(() => {
     if (homes[0] !== null && homes.length > 0 && window.innerWidth < 768) {

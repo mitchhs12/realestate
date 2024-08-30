@@ -5,6 +5,7 @@ export default {
         "placeholder": "Rechercher n'importe quelle adresse ou lieu...",
         "search-button": "Recherche"
       },
+      "filters": "Filtres",
       "guides": "Guides",
       "construction": "Ce site est en construction.",
       "construction-sub": "Veuillez créer un compte et nous vous enverrons un e-mail dès qu'il sera prêt.",

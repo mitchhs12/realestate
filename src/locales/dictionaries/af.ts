@@ -5,6 +5,7 @@ export default {
         "placeholder": "Soek vir enige adres of plek...",
         "search-button": "Soek"
       },
+      "filters": "Filters",
       "guides": "Gidse",
       "construction": "Hierdie webwerf is onder konstruksie.",
       "construction-sub": "Skep asseblief 'n rekening, en ons sal vir jou 'n e-pos stuur wanneer dit gereed is.",

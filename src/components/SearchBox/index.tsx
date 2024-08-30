@@ -138,7 +138,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
   return (
     <div className="flex w-full">
       <form
-        className="flex w-full justify-center space-x-2 px-4"
+        className="flex w-full justify-center space-x-2"
         onSubmit={(e) => {
           e.preventDefault();
           {
@@ -148,7 +148,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
       >
         <div className="flex flex-col w-full items-center">
           <Popover open={popoverOpen}>
-            <div className="flex justify-center items-center w-[286px] sm:w-[400px] md:w-[540px] lg:w-[800px] xl:w-[1000px] gap-x-2">
+            <div className="flex justify-center items-center w-[260px] xs:w-[230px] sm:w-[340px] md:w-[420px] lg:w-[680px] xl:w-[900px] gap-x-2">
               <PopoverTrigger asChild>
                 <Input
                   ref={inputRef}
@@ -187,7 +187,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                 <PopoverContent
                   ref={popoverRef}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className="w-[286px] sm:w-[400px] md:w-[540px] lg:w-[710px] xl:w-[910px]"
+                  className="w-[260px] xs:w-[230px] sm:w-[340px] md:w-[420px] lg:w-[572px] xl:w-[792px]"
                 >
                   {results.length === 0 && <div>No results found.</div>}
                   {results.length > 0 && (

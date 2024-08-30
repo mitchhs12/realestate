@@ -5,6 +5,7 @@ export default {
         "placeholder": "Herhangi bir adresi veya yeri arayın...",
         "search-button": "Aramak"
       },
+      "filters": "Filtreler",
       "guides": "Rehberler",
       "construction": "Bu site yapım aşamasındadır.",
       "construction-sub": "Lütfen bir hesap oluşturun, hazır olduğunda size e-posta göndereceğiz.",

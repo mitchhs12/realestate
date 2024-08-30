@@ -3,9 +3,12 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { HomeType } from "@/lib/validations";
+import { useContext } from "react";
+import { LocaleContext } from "@/context/LocaleContext";
 import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
+import { types, features } from "@/lib/sellFlowData";
 
 interface QueryContextProps {
   query: string;
@@ -35,7 +38,26 @@ interface QueryContextProps {
     data: Session | null;
     status: "authenticated" | "unauthenticated" | "loading";
   };
+  priceRange: number[];
+  setPriceRange: (value: number[]) => void;
+  selectedTypes: string[];
+  setSelectedFeatures: (value: string[]) => void;
+  selectedFeatures: string[];
+  setSelectedTypes: (value: string[]) => void;
+  isFiltering: boolean;
+  setIsFiltering: (value: boolean) => void;
+  allSelectedFeatures: boolean;
+  allSelectedTypes: boolean;
+  handleAllFeatures: () => void;
+  handleAllTypes: () => void;
+  initialFilters: string;
+  setInitialFilters: (value: string) => void;
+  convertedPriceRange: number[];
+  setConvertedPriceRange: (value: number[]) => void;
+  initialMaxPrice: number;
 }
+
+const initialMaxPrice = 100000000;
 
 const QueryContext = createContext<QueryContextProps>({
   query: "",
@@ -65,6 +87,27 @@ const QueryContext = createContext<QueryContextProps>({
     data: null,
     status: "loading",
   },
+  priceRange: [1, initialMaxPrice],
+  setPriceRange: () => {},
+  selectedTypes: [],
+  setSelectedFeatures: () => {},
+  selectedFeatures: [],
+  setSelectedTypes: () => {},
+  isFiltering: false,
+  setIsFiltering: () => {},
+  allSelectedFeatures: true,
+  allSelectedTypes: true,
+  handleAllFeatures: () => {},
+  handleAllTypes: () => {},
+  initialFilters: JSON.stringify({
+    features: [],
+    types: [],
+    priceRange: [1, initialMaxPrice],
+  }),
+  setInitialFilters: () => {},
+  convertedPriceRange: [1, initialMaxPrice],
+  setConvertedPriceRange: () => {},
+  initialMaxPrice: initialMaxPrice,
 });
 
 interface QueryProviderProps {
@@ -72,6 +115,7 @@ interface QueryProviderProps {
 }
 
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
+  const { defaultCurrency } = useContext(LocaleContext);
   const [query, setQuery] = useState("");
   const [mapFocused, setMapFocused] = useState(true);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
@@ -81,6 +125,52 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [revealPrice, setRevealPrice] = useState(false);
   const [revealContact, setRevealContact] = useState(false);
+  const [priceRange, setPriceRange] = useState<number[]>([1, initialMaxPrice]);
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [isFiltering, setIsFiltering] = useState(false);
+  const [allSelectedFeatures, setAllSelectedFeatures] = useState(true);
+  const [allSelectedTypes, setAllSelectedTypes] = useState(true);
+  const [initialFilters, setInitialFilters] = useState(
+    JSON.stringify({
+      features: [],
+      types: [],
+      priceRange: [1, initialMaxPrice],
+    })
+  );
+  const [convertedPriceRange, setConvertedPriceRange] = useState<number[]>([]);
+
+  const handleAllFeatures = () => {
+    if (allSelectedFeatures) {
+      setSelectedFeatures([]);
+    } else {
+      setSelectedFeatures(features);
+    }
+  };
+
+  const handleAllTypes = () => {
+    if (allSelectedTypes) {
+      setSelectedTypes([]);
+    } else {
+      setSelectedTypes(types);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedFeatures.length === features.length) {
+      setAllSelectedFeatures(true);
+    } else {
+      setAllSelectedFeatures(false);
+    }
+  }, [selectedFeatures]);
+
+  useEffect(() => {
+    if (selectedTypes.length === types.length) {
+      setAllSelectedTypes(true);
+    } else {
+      setAllSelectedTypes(false);
+    }
+  }, [selectedTypes]);
 
   const session = useSession();
   const user = session.data?.user;
@@ -143,6 +233,23 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setRevealContact,
         user,
         session,
+        priceRange,
+        setPriceRange,
+        selectedTypes,
+        setSelectedFeatures,
+        selectedFeatures,
+        setSelectedTypes,
+        isFiltering,
+        setIsFiltering,
+        allSelectedFeatures,
+        allSelectedTypes,
+        handleAllFeatures,
+        handleAllTypes,
+        initialFilters,
+        setInitialFilters,
+        convertedPriceRange,
+        setConvertedPriceRange,
+        initialMaxPrice,
       }}
     >
       {children}

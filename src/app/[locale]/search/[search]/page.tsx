@@ -3,6 +3,7 @@ import { CoordinatesType } from "@/lib/validations";
 import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
 import { types } from "@/lib/sellFlowData";
+import { features } from "@/lib/sellFlowData";
 import { getAllHomes } from "../actions";
 
 export const metadata: Metadata = {
@@ -33,11 +34,11 @@ export default async function Page({ params }: { params: { search: string } }) {
   const coordinates: CoordinatesType = { lat: longLatArray[1], long: longLatArray[0] };
   const category = fullResponse.Place.Categories[0];
 
-  const f = await getScopedI18n("sell.type");
+  const typesT = await getScopedI18n("sell.type");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: types[index],
-    translation: f(`options.${index}` as keyof typeof t),
+    translation: typesT(`options.${index}` as keyof typeof typesT),
   }));
 
   let initZoom: number | null;

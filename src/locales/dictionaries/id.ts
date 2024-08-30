@@ -5,6 +5,7 @@ export default {
         "placeholder": "Cari alamat atau tempat apa pun...",
         "search-button": "Mencari"
       },
+      "filters": "Filternya",
       "guides": "Panduan",
       "construction": "Situs ini sedang dalam pembangunan.",
       "construction-sub": "Silakan buat akun, dan kami akan mengirimkan email kepada Anda ketika akun sudah siap.",

@@ -12,11 +12,11 @@ import Logo from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { useCurrentLocale } from "@/locales/client";
-import { I18nProviderClient } from "@/locales/client";
 import { ChevronLeft } from "lucide-react";
 import { QueryContext } from "@/context/QueryContext";
+import Filters from "@/components/Filters";
+import { I18nProviderClient } from "@/locales/client";
 
 interface Props {
   guides: string;
@@ -36,6 +36,7 @@ interface Props {
   settings: string;
   exit: string;
   exit_short: string;
+  filters: string;
 }
 
 export default function Header({
@@ -56,6 +57,7 @@ export default function Header({
   settings,
   exit,
   exit_short,
+  filters,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
@@ -136,8 +138,11 @@ export default function Header({
           </div>
         )}
         {isSearchPage && (
-          <div className="justify-center">
-            <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+          <div className="flex items-center justify-center gap-3 px-3 w-full">
+            <Filters filters={filters} locale={locale} />
+            <div className="flex flex-grow xs:flex-grow-0 ">
+              <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+            </div>
           </div>
         )}
 

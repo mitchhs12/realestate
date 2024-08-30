@@ -5,6 +5,7 @@ export default {
         "placeholder": "ابحث عن أي عنوان أو مكان...",
         "search-button": "يبحث"
       },
+      "filters": "المرشحات",
       "guides": "أدلة",
       "construction": "هذا الموقع قيد الإنشاء.",
       "construction-sub": "يرجى إنشاء حساب، وسنرسل إليك بريدًا إلكترونيًا عندما يكون جاهزًا.",

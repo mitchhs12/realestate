@@ -37,6 +37,7 @@ export default async function MainLayout({ children }: Props) {
         settings={p("settings")}
         exit={p("exit")}
         exit_short={p("exit-short")}
+        filters={h("filters")}
       />
       {children}
     </>

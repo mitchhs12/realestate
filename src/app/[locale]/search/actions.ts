@@ -5,20 +5,67 @@ import { revalidatePath } from "next/cache";
 import { BoundsType } from "@/lib/validations";
 import { HomesGeoJson, HomeFeatureProps } from "@/lib/validations";
 import { Feature, Point } from "geojson";
+import { CurrencyType } from "@/lib/validations";
 
-export async function getSearchResults(page: string, bounds: BoundsType) {
+export async function getSearchResults(
+  page: string,
+  bounds: BoundsType,
+  priceRange: number[] = [],
+  types: string[] = [],
+  features: string[] = [],
+  defaultCurrency: CurrencyType
+) {
   let homes = [];
+
+  let commonFilters: any = {
+    isActive: true,
+    latitude: {
+      gte: bounds.south,
+      lte: bounds.north,
+    },
+    longitude: {
+      gte: bounds.west,
+      lte: bounds.east,
+    },
+  };
+
+  // Add price filter if priceRange is defined
+  if (priceRange.length === 2) {
+    commonFilters = {
+      ...commonFilters,
+      priceUsd: {
+        gte: Math.round(priceRange[0] / defaultCurrency.usdPrice),
+        lte: Math.round(priceRange[1] / defaultCurrency.usdPrice),
+      },
+    };
+  }
+
+  // Add type filter if types is defined
+  if (types.length > 0) {
+    commonFilters = {
+      ...commonFilters,
+      type: {
+        hasEvery: types,
+      },
+    };
+  }
+
+  // Add features filter if features is defined
+  if (features.length > 0) {
+    commonFilters = {
+      ...commonFilters,
+      features: {
+        hasEvery: features,
+      },
+    };
+  }
 
   // Case 1: Longitude wrap-around (crossing the International Date Line)
   if (bounds.west > bounds.east) {
     // Query region 1: from west to 180
     const region1 = await prisma.home.findMany({
       where: {
-        isActive: true,
-        latitude: {
-          gte: bounds.south,
-          lte: bounds.north,
-        },
+        ...commonFilters,
         longitude: {
           gte: bounds.west,
           lte: 180,
@@ -29,11 +76,7 @@ export async function getSearchResults(page: string, bounds: BoundsType) {
     // Query region 2: from -180 to east
     const region2 = await prisma.home.findMany({
       where: {
-        isActive: true,
-        latitude: {
-          gte: bounds.south,
-          lte: bounds.north,
-        },
+        ...commonFilters,
         longitude: {
           gte: -180,
           lte: bounds.east,
@@ -46,17 +89,7 @@ export async function getSearchResults(page: string, bounds: BoundsType) {
   // Case 2: Normal longitude and latitude range
   else {
     homes = await prisma.home.findMany({
-      where: {
-        isActive: true,
-        latitude: {
-          gte: bounds.south,
-          lte: bounds.north,
-        },
-        longitude: {
-          gte: bounds.west,
-          lte: bounds.east,
-        },
-      },
+      where: commonFilters,
     });
   }
 
