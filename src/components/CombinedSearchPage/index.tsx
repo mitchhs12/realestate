@@ -2,7 +2,7 @@
 
 import SearchResults from "@/components/SearchResults";
 import MapComponent from "@/components/MainMap";
-import { getAllHomes, getSearchResults } from "@/app/[locale]/search/actions";
+import { getAllHomes, getSearchResults, getAllHomesFiltered } from "@/app/[locale]/search/actions";
 import FloatingButton from "@/components/FloatingButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
@@ -58,18 +58,21 @@ export default function CombinedSearchPage({
   const [snap, setSnap] = useState<number | string | null>(0.5);
   const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
 
+  // INITIAL GET ALL HOMES ON FIRST RENDER
   useEffect(() => {
-    void getAllHomes().then((allHomes) => {
+    getAllHomes().then((allHomes) => {
       setHomesGeoJson(allHomes);
     });
   }, []);
 
+  // SEARCH COMPONENT
   useEffect(() => {
     if (bounds) {
       setIsSearchLoading(true);
       console.log("priceRange in local currency", convertedPriceRange);
       console.log("selectedTypes", selectedTypes);
       console.log("selectedFeatures", selectedFeatures);
+
       getSearchResults("search", bounds, convertedPriceRange, selectedTypes, selectedFeatures, defaultCurrency).then(
         (data) => {
           setHomes(data);
@@ -86,6 +89,15 @@ export default function CombinedSearchPage({
       );
     }
   }, [isFiltering, bounds]);
+
+  // GETS THE FILTERED HOMES FOR THE MAP
+  useEffect(() => {
+    if (isFiltering) {
+      getAllHomesFiltered(selectedTypes, selectedFeatures, convertedPriceRange, defaultCurrency).then((fixedHomes) => {
+        setHomesGeoJson(fixedHomes);
+      });
+    }
+  }, [isFiltering]);
 
   useEffect(() => {
     if (homes[0] !== null && homes.length > 0 && window.innerWidth < 768) {

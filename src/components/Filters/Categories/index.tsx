@@ -58,20 +58,17 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
   return (
     <>
       {categoriesObject.map((feature, index) => {
-        if (index !== 0) {
-          return (
-            <DropdownMenuCheckboxItem
-              className="cursor-pointer"
-              key={feature.id}
-              checked={feature.checked}
-              onCheckedChange={() => handleCheckedChange(index)}
-              onSelect={(event) => event?.preventDefault()}
-            >
-              {feature.translation}
-            </DropdownMenuCheckboxItem>
-          );
-        }
-        return null;
+        return (
+          <DropdownMenuCheckboxItem
+            className="cursor-pointer"
+            key={feature.id}
+            checked={feature.checked}
+            onCheckedChange={() => handleCheckedChange(index)}
+            onSelect={(event) => event?.preventDefault()}
+          >
+            {feature.translation}
+          </DropdownMenuCheckboxItem>
+        );
       })}
     </>
   );

@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { BoundsType } from "@/lib/validations";
+import { BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson, HomeFeatureProps } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 import { CurrencyType } from "@/lib/validations";
@@ -93,6 +93,7 @@ export async function getSearchResults(
     });
   }
 
+  console.log("common filters 2", commonFilters);
   revalidatePath(page); // Revalidate the path if necessary
   return homes;
 }
@@ -103,6 +104,87 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
       isActive: true,
     },
   });
+
+  const features: Feature<Point, HomeFeatureProps>[] = homes.map((home) => ({
+    type: "Feature",
+    id: home.id, // Assuming unique home id, prefixing to ensure string ID
+    geometry: {
+      type: "Point",
+      coordinates: [home.longitude, home.latitude],
+    },
+    properties: {
+      name: home.title,
+      address: home.address,
+      description: home.description,
+      type: home.type, // Include type from home object
+      features: home.features, // Include features from home object
+      price: home.price, // Include price from home object
+      bedrooms: home.bedrooms, // Include bedrooms from home object
+      bathrooms: home.bathrooms, // Include bathrooms from home object
+      livingrooms: home.livingrooms, // Include livingrooms from home object
+      kitchens: home.kitchens, // Include kitchens from home object
+      capacity: home.capacity, // Include capacity from home object
+      photos: home.photos, // Include photos from home object
+      contactName: home.contactName, // Include contactName from home object
+      contactEmail: home.contactEmail, // Include contactEmail from home object
+      contactPhone: home.contactPhone, // Include contactPhone from home object
+    },
+  }));
+
+  return {
+    type: "FeatureCollection",
+    features,
+  };
+}
+
+export async function getAllHomesFiltered(
+  typesFilter: string[] = [],
+  featuresFilter: string[] = [],
+  convertedPriceRange: number[] = [],
+  defaultCurrency: CurrencyType
+): Promise<HomesGeoJson> {
+  // Base filters for active homes
+  let commonFilters: any = {
+    isActive: true,
+  };
+
+  // Add price filter if priceRange has exactly two elements
+  if (convertedPriceRange.length === 2) {
+    commonFilters = {
+      ...commonFilters,
+      priceUsd: {
+        gte: Math.round(convertedPriceRange[0] / defaultCurrency.usdPrice),
+        lte: Math.round(convertedPriceRange[1] / defaultCurrency.usdPrice),
+      },
+    };
+  }
+
+  // Add type filter if typesFilter has elements
+  if (typesFilter.length > 0) {
+    commonFilters = {
+      ...commonFilters,
+      type: {
+        hasSome: typesFilter,
+      },
+    };
+  }
+
+  // Add features filter if featuresFilter has elements
+  if (featuresFilter.length > 0) {
+    commonFilters = {
+      ...commonFilters,
+      features: {
+        hasSome: featuresFilter,
+      },
+    };
+  }
+
+  const homes = await prisma.home.findMany({
+    where: commonFilters,
+  });
+
+  console.log("commonfilters", commonFilters);
+  console.log("homessss", homes);
 
   const features: Feature<Point, HomeFeatureProps>[] = homes.map((home) => ({
     type: "Feature",
