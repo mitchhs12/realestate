@@ -6,6 +6,10 @@
         "search-button": "Mencari"
       },
       "filters": "Filternya",
+      "filters-button": {
+        "categories": "Kategori",
+        "features": "Fitur"
+      },
       "guides": "Panduan",
       "construction": "Situs ini sedang dalam pembangunan.",
       "construction-sub": "Silakan buat akun, dan kami akan mengirimkan email kepada Anda ketika akun sudah siap.",
@@ -134,9 +138,10 @@
         "2": "Karasak"
       }
     },
-    "Recommended": "Destinasi Kota yang Direkomendasikan",
-    "Popular": "Populer",
-    "Newest": "Terbaru",
+    "cities": "Destinasi Kota yang Direkomendasikan",
+    "recommended": "Direkomendasikan",
+    "cheapest": "Termurah",
+    "newest": "Terbaru",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Semua hak dilindungi undang-undang."
     }
@@ -450,6 +455,7 @@
       "hide": "Sembunyikan Harga!",
       "mobile": "Ungkapkan Harga!"
     },
+    "edit": "Edit Detail Properti",
     "contact": {
       "contact-title": "Informasi Kontak",
       "contact-title-mobile": "Informasi Kontak Pemilik Properti",
@@ -460,6 +466,9 @@
     },
     "translate-button": "Menerjemahkan",
     "show-original-button": "Tampilkan Aslinya"
+  },
+  "my-properties": {
+    "title": "Properti Saya"
   },
   "settings": {
     "title": "Pengaturan Akun",

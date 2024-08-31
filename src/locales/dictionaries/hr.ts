@@ -6,6 +6,10 @@ export default {
         "search-button": "Pretraživanje"
       },
       "filters": "Filteri",
+      "filters-button": {
+        "categories": "kategorije",
+        "features": "Značajke"
+      },
       "guides": "Vodiči",
       "construction": "Ova stranica je u izradi.",
       "construction-sub": "Izradite račun, a mi ćemo vam poslati e-poštu kada bude spreman.",
@@ -134,9 +138,10 @@ export default {
         "2": "Carrasco"
       }
     },
-    "Recommended": "Preporučene gradske četvrti",
-    "Popular": "Popularan",
-    "Newest": "Najnoviji",
+    "cities": "Preporučene gradske četvrti",
+    "recommended": "Preporučeno",
+    "cheapest": "Najjeftiniji",
+    "newest": "Najnoviji",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana."
     }
@@ -450,6 +455,7 @@ export default {
       "hide": "Sakrij cijenu!",
       "mobile": "Otkrijte cijenu!"
     },
+    "edit": "Uredite pojedinosti nekretnine",
     "contact": {
       "contact-title": "Podaci za kontakt",
       "contact-title-mobile": "Podaci za kontakt vlasnika nekretnine",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "Prevesti",
     "show-original-button": "Prikaži izvornik"
+  },
+  "my-properties": {
+    "title": "Moja svojstva"
   },
   "settings": {
     "title": "Postavke računa",

@@ -6,6 +6,10 @@
         "search-button": "ค้นหา"
       },
       "filters": "ตัวกรอง",
+      "filters-button": {
+        "categories": "หมวดหมู่",
+        "features": "คุณสมบัติ"
+      },
       "guides": "คำแนะนำ",
       "construction": "เว็บไซต์นี้กำลังอยู่ในระหว่างการก่อสร้าง",
       "construction-sub": "โปรดสร้างบัญชี และเราจะส่งอีเมลถึงคุณเมื่อพร้อม",
@@ -134,9 +138,10 @@
         "2": "คาร์ราสโก้"
       }
     },
-    "Recommended": "เขตพื้นที่เมืองที่แนะนำ",
-    "Popular": "เป็นที่นิยม",
-    "Newest": "ใหม่ล่าสุด",
+    "cities": "เขตพื้นที่เมืองที่แนะนำ",
+    "recommended": "ที่แนะนำ",
+    "cheapest": "ถูกที่สุด",
+    "newest": "ใหม่ล่าสุด",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. สงวนลิขสิทธิ์"
     }
@@ -450,6 +455,7 @@
       "hide": "ซ่อนราคา!",
       "mobile": "เปิดเผยราคา!"
     },
+    "edit": "แก้ไขรายละเอียดทรัพย์สิน",
     "contact": {
       "contact-title": "ข้อมูลการติดต่อ",
       "contact-title-mobile": "ข้อมูลการติดต่อเจ้าของทรัพย์สิน",
@@ -460,6 +466,9 @@
     },
     "translate-button": "แปล",
     "show-original-button": "แสดงต้นฉบับ"
+  },
+  "my-properties": {
+    "title": "คุณสมบัติของฉัน"
   },
   "settings": {
     "title": "การตั้งค่าบัญชี",

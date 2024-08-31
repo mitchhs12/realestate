@@ -32,7 +32,7 @@ import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { languageToFlagMap } from "@/lib/validations";
 import { QueryContext } from "@/context/QueryContext";
-import { Languages, CircleDollarSign, Settings, SunMoon, LogOut, Sun, Moon, Laptop } from "lucide-react";
+import { Languages, CircleDollarSign, Settings, SunMoon, LogOut, Sun, Moon, Laptop, House } from "lucide-react";
 
 interface Props {
   openSignUpModal: () => void;
@@ -102,7 +102,21 @@ export function ProfileButton({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
         {user ? (
-          <DropdownMenuLabel>{user.name ? `${greeting} ${user.name.split(" ")[0]}!` : user.email}</DropdownMenuLabel>
+          <>
+            <DropdownMenuLabel>{user.name ? `${greeting} ${user.name.split(" ")[0]}!` : user.email}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem
+                className="cursor-pointer flex items-center gap-2"
+                onClick={() => {
+                  router.push("/my-properties");
+                }}
+              >
+                <House width={20} height={20} strokeWidth={1.25} />
+                My Properties
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
             <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => openLogInModal()}>
@@ -113,7 +127,6 @@ export function ProfileButton({
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}
-        <DropdownMenuSeparator />
         {/* Admin Menu */}
         {user?.role === "admin" && (
           <DropdownMenuGroup>
@@ -128,32 +141,6 @@ export function ProfileButton({
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}
-        <DropdownMenuGroup>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="flex items-center gap-2">
-              <SunMoon width={20} height={20} strokeWidth={1.25} />
-              {theme.theme}
-            </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className="p-2">
-                <DropdownMenuRadioGroup value={useTheme().theme} onValueChange={setTheme}>
-                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="light">
-                    {theme.light}
-                    <Sun width={20} height={20} strokeWidth={1.25} />
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="dark">
-                    {theme.dark}
-                    <Moon width={20} height={20} strokeWidth={1.25} />
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="system">
-                    {theme.system}
-                    <Laptop width={20} height={20} strokeWidth={1.25} />
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-        </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
@@ -209,6 +196,32 @@ export function ProfileButton({
                       />
                     </DropdownMenuRadioItem>
                   ))}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuGroup>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger className="flex items-center gap-2">
+              <SunMoon width={20} height={20} strokeWidth={1.25} />
+              {theme.theme}
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent className="p-2">
+                <DropdownMenuRadioGroup value={useTheme().theme} onValueChange={setTheme}>
+                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="light">
+                    {theme.light}
+                    <Sun width={20} height={20} strokeWidth={1.25} />
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="dark">
+                    {theme.dark}
+                    <Moon width={20} height={20} strokeWidth={1.25} />
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="system">
+                    {theme.system}
+                    <Laptop width={20} height={20} strokeWidth={1.25} />
+                  </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>

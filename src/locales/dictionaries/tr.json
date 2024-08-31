@@ -6,6 +6,10 @@
         "search-button": "Aramak"
       },
       "filters": "Filtreler",
+      "filters-button": {
+        "categories": "Kategoriler",
+        "features": "Özellikler"
+      },
       "guides": "Rehberler",
       "construction": "Bu site yapım aşamasındadır.",
       "construction-sub": "Lütfen bir hesap oluşturun, hazır olduğunda size e-posta göndereceğiz.",
@@ -134,9 +138,10 @@
         "2": "Karakova"
       }
     },
-    "Recommended": "Önerilen Şehir Bölgeleri",
-    "Popular": "Popüler",
-    "Newest": "En yeni",
+    "cities": "Önerilen Şehir Bölgeleri",
+    "recommended": "Tavsiye edilen",
+    "cheapest": "En ucuz",
+    "newest": "En yeni",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Tüm hakları saklıdır."
     }
@@ -450,6 +455,7 @@
       "hide": "Fiyatı Gizle!",
       "mobile": "Fiyatı Açıkla!"
     },
+    "edit": "Özellik Ayrıntılarını Düzenle",
     "contact": {
       "contact-title": "İletişim Bilgileri",
       "contact-title-mobile": "Mülk Sahibinin İletişim Bilgileri",
@@ -460,6 +466,9 @@
     },
     "translate-button": "Çevir",
     "show-original-button": "Orijinali göster"
+  },
+  "my-properties": {
+    "title": "Benim Özelliklerim"
   },
   "settings": {
     "title": "Hesap Ayarları",

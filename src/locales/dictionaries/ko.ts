@@ -6,6 +6,10 @@ export default {
         "search-button": "찾다"
       },
       "filters": "필터",
+      "filters-button": {
+        "categories": "카테고리",
+        "features": "특징"
+      },
       "guides": "가이드",
       "construction": "이 사이트는 현재 공사 중입니다.",
       "construction-sub": "계정을 만들어 주세요. 계정이 준비되면 이메일로 알려드리겠습니다.",
@@ -134,9 +138,10 @@ export default {
         "2": "카라스코"
       }
     },
-    "Recommended": "추천 도시 구역",
-    "Popular": "인기 있는",
-    "Newest": "최신",
+    "cities": "추천 도시 구역",
+    "recommended": "추천",
+    "cheapest": "가장 저렴한",
+    "newest": "최신",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. 모든 권리 보유."
     }
@@ -450,6 +455,7 @@ export default {
       "hide": "가격을 숨기세요!",
       "mobile": "가격을 공개하세요!"
     },
+    "edit": "속성 세부 정보 편집",
     "contact": {
       "contact-title": "연락처 정보",
       "contact-title-mobile": "부동산 소유자 연락처 정보",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "번역하다",
     "show-original-button": "원본보기"
+  },
+  "my-properties": {
+    "title": "내 속성"
   },
   "settings": {
     "title": "계정 설정",

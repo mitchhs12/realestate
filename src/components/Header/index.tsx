@@ -121,20 +121,21 @@ export default function Header({
               </div>
             </Button>
             {pathname === "/" && (
-              <Link href="/guides">
-                <Button
-                  size={"largeIcon"}
-                  variant="outline"
-                  className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
-                >
-                  <div className="flex justify-center text-center items-center gap-2 p-1">
-                    <div className="flex justify-center items-center">
-                      <Icons.book_icon width={"22"} height={"22"} />
-                    </div>
-                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>{guides}</h1>
+              // <Link href="/guides">
+              <Button
+                size={"largeIcon"}
+                variant="outline"
+                className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                disabled={true}
+              >
+                <div className="flex justify-center text-center items-center gap-2 p-1">
+                  <div className="flex justify-center items-center">
+                    <Icons.book_icon width={"22"} height={"22"} />
                   </div>
-                </Button>
-              </Link>
+                  <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>{guides}</h1>
+                </div>
+              </Button>
+              // </Link>
             )}
           </div>
         )}

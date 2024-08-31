@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "Step 3",
 };
 
-export default async function Page() {
+export default async function Page({ params: { locale } }: { params: { locale: string } }) {
   const session = await getSession();
   const user = session?.user;
   if (!user) {
     try {
-      return <LockedLogin />;
+      return <LockedLogin locale={locale} />;
     } catch (error) {
       console.error("Failed to render LockedLogin component:", error);
       redirect("/api/auth/signin?callbackUrl=/sell");

@@ -6,6 +6,10 @@
         "search-button": "Tìm kiếm"
       },
       "filters": "Bộ lọc",
+      "filters-button": {
+        "categories": "Thể loại",
+        "features": "Đặc trưng"
+      },
       "guides": "Hướng dẫn",
       "construction": "Trang web này đang được xây dựng.",
       "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi email cho bạn khi tài khoản đã sẵn sàng.",
@@ -134,9 +138,10 @@
         "2": "Carrasco"
       }
     },
-    "Recommended": "Các quận thành phố được đề xuất",
-    "Popular": "Phổ biến",
-    "Newest": "Mới nhất",
+    "cities": "Các quận thành phố được đề xuất",
+    "recommended": "Khuyến khích",
+    "cheapest": "Rẻ nhất",
+    "newest": "Mới nhất",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền."
     }
@@ -450,6 +455,7 @@
       "hide": "Ẩn giá!",
       "mobile": "Tiết lộ giá!"
     },
+    "edit": "Chỉnh sửa chi tiết tài sản",
     "contact": {
       "contact-title": "Thông tin liên lạc",
       "contact-title-mobile": "Thông tin liên lạc của chủ sở hữu bất động sản",
@@ -460,6 +466,9 @@
     },
     "translate-button": "Dịch",
     "show-original-button": "Hiển thị bản gốc"
+  },
+  "my-properties": {
+    "title": "Thuộc tính của tôi"
   },
   "settings": {
     "title": "Cài đặt tài khoản",

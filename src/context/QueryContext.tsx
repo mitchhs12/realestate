@@ -55,6 +55,7 @@ interface QueryContextProps {
   setConvertedPriceRange: (value: number[]) => void;
   initialMaxPrice: number;
   originalFilters: string;
+  lockModal: () => void;
 }
 
 const initialMaxPrice = 10000000;
@@ -114,6 +115,7 @@ const QueryContext = createContext<QueryContextProps>({
   setConvertedPriceRange: () => {},
   initialMaxPrice: initialMaxPrice,
   originalFilters: originalFilters,
+  lockModal: () => {},
 });
 
 interface QueryProviderProps {
@@ -145,6 +147,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
     })
   );
   const [convertedPriceRange, setConvertedPriceRange] = useState<number[]>([]);
+  const [isModalLocked, setIsModalLocked] = useState(false);
 
   const handleAllFeatures = () => {
     if (allSelectedFeatures) {
@@ -183,7 +186,14 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const pathname = usePathname();
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    if (!isModalLocked) {
+      setIsModalOpen(false);
+    }
+  };
+
+  const lockModal = () => {
+    setIsModalLocked(true);
+    openLogInModal();
   };
 
   const openSignUpModal = () => {
@@ -257,6 +267,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setConvertedPriceRange,
         initialMaxPrice,
         originalFilters,
+        lockModal,
       }}
     >
       {children}

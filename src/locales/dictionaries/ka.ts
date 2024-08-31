@@ -6,6 +6,10 @@ export default {
         "search-button": "ძიება"
       },
       "filters": "ფილტრები",
+      "filters-button": {
+        "categories": "კატეგორიები",
+        "features": "მახასიათებლები"
+      },
       "guides": "გიდები",
       "construction": "ეს საიტი მშენებლობის პროცესშია.",
       "construction-sub": "გთხოვთ, შექმენით ანგარიში და ჩვენ გამოგიგზავნით ელფოსტას, როცა ის მზად იქნება.",
@@ -134,9 +138,10 @@ export default {
         "2": "კარასკო"
       }
     },
-    "Recommended": "რეკომენდებული ქალაქის უბნები",
-    "Popular": "პოპულარული",
-    "Newest": "უახლესი",
+    "cities": "რეკომენდებული ქალაქების უბნები",
+    "recommended": "რეკომენდირებულია",
+    "cheapest": "ყველაზე იაფად",
+    "newest": "უახლესი",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. ყველა უფლება დაცულია."
     }
@@ -450,6 +455,7 @@ export default {
       "hide": "დამალეთ ფასი!",
       "mobile": "გამოავლინე ფასი!"
     },
+    "edit": "ქონების დეტალების რედაქტირება",
     "contact": {
       "contact-title": "საკონტაქტო ინფორმაცია",
       "contact-title-mobile": "ქონების მფლობელის საკონტაქტო ინფორმაცია",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "თარგმნეთ",
     "show-original-button": "ორიგინალის ჩვენება"
+  },
+  "my-properties": {
+    "title": "ჩემი თვისებები"
   },
   "settings": {
     "title": "ანგარიშის პარამეტრები",

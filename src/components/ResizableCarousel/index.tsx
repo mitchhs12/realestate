@@ -26,6 +26,8 @@ export default function ResizableCard({ home, height, rounded, openModal }: Prop
                 alt={`${home.title} photo ${index}`}
                 fill={true}
                 loading={"lazy"}
+                placeholder={"blur"}
+                blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+xVDwADXgGE0GKsWQAAAABJRU5ErkJggg=="
                 sizes="
                 (max-width: 400px) 400px,
                 (max-width: 510px) 510px,

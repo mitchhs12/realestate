@@ -18,7 +18,7 @@ export default async function Page({ params: { locale } }: any) {
   const user = session?.user;
   if (!user) {
     try {
-      return <LockedLogin />;
+      return <LockedLogin locale={locale} />;
     } catch (error) {
       console.error("Failed to render LockedLogin component:", error);
       redirect("/api/auth/signin?callbackUrl=/sell");

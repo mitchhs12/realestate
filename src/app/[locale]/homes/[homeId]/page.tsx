@@ -6,10 +6,6 @@ import StickyPrice from "@/components/StickyPrice";
 import { Separator } from "@/components/ui/separator";
 import { getScopedI18n } from "@/locales/server";
 import SmallMapWrapper from "@/components/SmallMap/SmallMapWrapper";
-import { getPhoneLocale } from "@/lib/utils";
-import { PhoneLocale } from "@/lib/utils";
-import lookup from "country-code-lookup";
-import { Country } from "react-phone-number-input";
 
 export const metadata: Metadata = {
   title: "Homes",
@@ -27,6 +23,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
   const originalPrice = h("original-price");
   const negotiable = h("negotiable");
   const sizeTitle = h("size-title");
+  const edit = h("edit");
 
   const bedrooms = { single: h("bedrooms.single"), plural: h("bedrooms.plural") };
   const bathrooms = { single: h("bathrooms.single"), plural: h("bathrooms.plural") };
@@ -84,6 +81,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
             kitchensText={kitchens}
             translateButton={translateButton}
             showOriginalButton={showOriginalButton}
+            edit={edit}
           />
           <div className="py-6 px-8">
             <Separator />

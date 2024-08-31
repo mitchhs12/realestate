@@ -5,14 +5,20 @@ import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
-import { getFeatured, getNew } from "./actions";
+import { getFeatured, getNew, getCheapest } from "./actions";
 import { locationImageIds } from "@/lib/validations";
 
 export default async function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
-  const [t, featuredHomesData, newHomesData] = await Promise.all([getScopedI18n("home"), getFeatured(), getNew()]);
-  const newHomes = newHomesData.map((home) => home || null);
-  const featuredHomes = featuredHomesData.map((home) => home || null);
+  const [t, recommendedHomesData, cheapestHomesData, newHomesData] = await Promise.all([
+    getScopedI18n("home"),
+    getFeatured(),
+    getCheapest(),
+    getNew(),
+  ]);
+  const recommended = recommendedHomesData.map((home) => home || null);
+  const cheapest = cheapestHomesData.map((home) => home || null);
+  const newest = newHomesData.map((home) => home || null);
   const countries = {
     AR: {
       folder: locationImageIds.AR.folder,
@@ -89,7 +95,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
           <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
-              {t("Recommended")}
+              {t("cities")}
             </h2>
             <Locations countries={countries} />
           </div>
@@ -97,17 +103,25 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         <section className="flex flex-col justify-center items-center w-full h-full bg-background dark:bg-background">
           <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
-              {t("Popular")}
+              {t("recommended")}
             </h2>
-            <Listings homes={featuredHomes} />
+            <Listings homes={recommended} />
           </div>
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
           <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
-              {t("Newest")}
+              {t("newest")}
             </h2>
-            <Listings homes={newHomes} />
+            <Listings homes={newest} />
+          </div>
+        </section>
+        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
+          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
+            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
+              {t("cheapest")}
+            </h2>
+            <Listings homes={cheapest} />
           </div>
         </section>
       </div>

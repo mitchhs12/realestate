@@ -17,9 +17,22 @@ import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
 import { formatNumber } from "@/lib/utils";
-import { Switch } from "@/components/ui/switch";
 import BrokenPrice from "@/components/BrokenPrice";
-import { Check, Languages, Phone, PhoneCall, BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
+import {
+  Check,
+  Languages,
+  Phone,
+  PhoneCall,
+  BedDouble,
+  CookingPot,
+  Bath,
+  Sofa,
+  Pencil,
+  Users,
+  Ruler,
+  Footprints,
+  LandPlot,
+} from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { handleCopy } from "@/lib/utils";
@@ -48,6 +61,7 @@ interface Props {
   kitchensText: { single: string; plural: string };
   translateButton: string;
   showOriginalButton: string;
+  edit: string;
 }
 
 export default function HomeText({
@@ -73,6 +87,7 @@ export default function HomeText({
   kitchensText,
   translateButton,
   showOriginalButton,
+  edit,
 }: Props) {
   const {
     setCurrentHome,
@@ -176,58 +191,66 @@ export default function HomeText({
               </div>
             </div>
 
-            <div>
+            <div className="flex flex-col gap-3">
               <div className="text-lg sm:text-xl">{capacityTitle}</div>
-              <p className="flex items-center text-base sm:text-lg gap-1">
-                <span>{formatNumber(home.capacity, numerals)}</span>
-                {home.capacity === 0 ? capacityText.single : capacityText.plural}
-              </p>
+              <div className="flex items-center gap-3">
+                <Users size={20} strokeWidth={1.25} />
+                <div className="flex items-center gap-1">
+                  <span>{formatNumber(home.capacity, numerals)}</span>
+                  {home.capacity === 0 ? capacityText.single : capacityText.plural}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center text-lg sm:text-xl gap-2">{sizeTitle}</div>
-              <div className="flex gap-4">
-                <span className="flex gap-2 text-base md:text-lg items-center">
-                  [ {units.m}
-                  <Switch
-                    checked={feet}
-                    className="flex"
-                    onCheckedChange={() => {
-                      if (feet) {
-                        setFeet(true);
-                      } else {
-                        setFeet(false);
-                      }
-                      setFeet(!feet);
-                    }}
-                  />
-                  {units.ft} ]:
-                </span>
-                <span className="flex text-lg md:text-xl">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
+              <div className="flex gap-3 items-center">
+                <div className="flex">
+                  <LandPlot size={20} strokeWidth={1} />
+                </div>
+                <div className="flex flex-col">
                   {formatNumber(sqSize, numerals)} {feet ? units.ft : units.m}
-                </span>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <Button
+                  className="flex items-center gap-3"
+                  variant={"outline"}
+                  size={"default"}
+                  onClick={() => {
+                    if (feet) {
+                      setFeet(true);
+                    } else {
+                      setFeet(false);
+                    }
+                    setFeet(!feet);
+                  }}
+                >
+                  {feet ? <Ruler size={18} strokeWidth={1.25} /> : <Footprints size={18} strokeWidth={1.25} />}
+                  {feet ? units.m : units.ft}
+                </Button>
               </div>
             </div>
             <div className="flex flex-col w-full sm:w-3/4">
               <div className="flex flex-col w-full gap-3">
                 <div className="text-lg sm:text-xl">{roomsTitle}</div>
-                <div className="flex gap-3">
-                  <BedDouble size={18} />
-                  <span>{formatNumber(home.bedrooms, numerals)}</span>{" "}
+                <div className="flex gap-3 items-center">
+                  <BedDouble size={18} strokeWidth={1.25} />
+                  <span className="w-[1rem]">{formatNumber(home.bedrooms, numerals)}</span>{" "}
                   <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
                 </div>
-                <div className="flex gap-3">
-                  <Bath size={18} />
-                  <span>{formatNumber(home.bathrooms, numerals)}</span>
+                <div className="flex gap-3 items-center">
+                  <Bath size={18} strokeWidth={1.25} />
+                  <span className="w-[1rem]">{formatNumber(home.bathrooms, numerals)}</span>
                   <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
                 </div>
-                <div className="flex gap-3">
-                  <Sofa size={18} />
-                  <span>{formatNumber(home.livingrooms, numerals)}</span>
+                <div className="flex gap-3 items-center">
+                  <Sofa size={18} strokeWidth={1.25} />
+                  <span className="w-[1rem]">{formatNumber(home.livingrooms, numerals)}</span>
                   <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
                 </div>
-                <div className="flex gap-3">
-                  <CookingPot size={18} />
-                  <span>{formatNumber(home.kitchens, numerals)}</span>
+                <div className="flex gap-3 items-center">
+                  <CookingPot size={18} strokeWidth={1.25} />
+                  <span className="w-[1rem]">{formatNumber(home.kitchens, numerals)}</span>
                   <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
                 </div>
               </div>
@@ -246,6 +269,12 @@ export default function HomeText({
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 max-w-xs h-full items-end rounded-xl gap-10">
+          {user && user.id === home.ownerId && (
+            <Button className="flex justify-center w-full gap-3" size={"lg"}>
+              <Pencil size={18} />
+              {edit}
+            </Button>
+          )}
           <Card className="w-full max-w-xs shadow-lg">
             <CardHeader>
               <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>

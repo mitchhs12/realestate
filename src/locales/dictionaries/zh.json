@@ -6,6 +6,10 @@
         "search-button": "搜索"
       },
       "filters": "筛选器",
+      "filters-button": {
+        "categories": "类别",
+        "features": "特征"
+      },
       "guides": "指南",
       "construction": "该网站正在建设中。",
       "construction-sub": "请创建一个帐户，准备就绪后我们会给您发送电子邮件。",
@@ -134,9 +138,10 @@
         "2": "卡拉斯科"
       }
     },
-    "Recommended": "推荐城市区域",
-    "Popular": "受欢迎的",
-    "Newest": "最新",
+    "cities": "推荐城市区域",
+    "recommended": "受到推崇的",
+    "cheapest": "最便宜的",
+    "newest": "最新",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。"
     }
@@ -450,6 +455,7 @@
       "hide": "隐藏价格！",
       "mobile": "揭晓价格！"
     },
+    "edit": "编辑房产详情",
     "contact": {
       "contact-title": "联系信息",
       "contact-title-mobile": "业主联系信息",
@@ -460,6 +466,9 @@
     },
     "translate-button": "翻译",
     "show-original-button": "显示原始内容"
+  },
+  "my-properties": {
+    "title": "我的房产"
   },
   "settings": {
     "title": "帐户设置",

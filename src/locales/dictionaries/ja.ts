@@ -6,6 +6,10 @@ export default {
         "search-button": "検索"
       },
       "filters": "フィルター",
+      "filters-button": {
+        "categories": "カテゴリー",
+        "features": "特徴"
+      },
       "guides": "ガイド",
       "construction": "このサイトは現在構築中です。",
       "construction-sub": "アカウントを作成してください。準備が整い次第、メールをお送りします。",
@@ -134,9 +138,10 @@ export default {
         "2": "カラスコ"
       }
     },
-    "Recommended": "おすすめの市区町村",
-    "Popular": "人気のある",
-    "Newest": "最新",
+    "cities": "おすすめの市区町村",
+    "recommended": "推奨",
+    "cheapest": "最も安い",
+    "newest": "最新",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal。無断複写・転載を禁じます。"
     }
@@ -450,6 +455,7 @@ export default {
       "hide": "価格を隠せ！",
       "mobile": "価格を公開！"
     },
+    "edit": "物件詳細の編集",
     "contact": {
       "contact-title": "連絡先",
       "contact-title-mobile": "不動産所有者の連絡先情報",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "翻訳する",
     "show-original-button": "オリジナルを表示"
+  },
+  "my-properties": {
+    "title": "私のプロパティ"
   },
   "settings": {
     "title": "アカウント設定",

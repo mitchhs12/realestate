@@ -6,6 +6,10 @@ export default {
         "search-button": "Procurar"
       },
       "filters": "Filtros",
+      "filters-button": {
+        "categories": "Categorias",
+        "features": "Características"
+      },
       "guides": "Guias",
       "construction": "Este site está em construção.",
       "construction-sub": "Crie uma conta e lhe enviaremos um e-mail quando estiver pronta.",
@@ -134,9 +138,10 @@ export default {
         "2": "Carrasco"
       }
     },
-    "Recommended": "Distritos da cidade recomendados",
-    "Popular": "Popular",
-    "Newest": "Mais novo",
+    "cities": "Distritos da cidade recomendados",
+    "recommended": "Recomendado",
+    "cheapest": "Mais barato",
+    "newest": "Mais novo",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Todos os direitos reservados."
     }
@@ -450,6 +455,7 @@ export default {
       "hide": "Esconda o preço!",
       "mobile": "Revelar preço!"
     },
+    "edit": "Editar detalhes da propriedade",
     "contact": {
       "contact-title": "Informações de contato",
       "contact-title-mobile": "Informações de contato do proprietário do imóvel",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "Traduzir",
     "show-original-button": "Mostrar original"
+  },
+  "my-properties": {
+    "title": "Minhas Propriedades"
   },
   "settings": {
     "title": "Configurações de Conta",

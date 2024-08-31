@@ -6,6 +6,10 @@ export default {
         "search-button": "Search"
       },
       "filters": "Filters",
+      "filters-button": {
+        "categories": "Categories",
+        "features": "Features"
+      },
       "guides": "Guides",
       "construction": "This site is under construction.",
       "construction-sub": "Please create an account, and we'll email you when it's ready.",
@@ -134,9 +138,10 @@ export default {
         "Carrasco"
       ]
     },
-    "Recommended": "Recommended City Destricts",
-    "Popular": "Popular",
-    "Newest": "Newest",
+    "cities": "Recommended City Destricts",
+    "recommended": "Recommended",
+    "cheapest": "Cheapest",
+    "newest": "Newest",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. All rights reserved."
     }
@@ -413,19 +418,19 @@ export default {
   },
   "homes": {
     "units": {
-      "m": "m²",
-      "ft": "ft²"
+      "m": "Convert to m²",
+      "ft": "Convert to ft²"
     },
     "capacity": {
-      "single": "Person.",
-      "plural": "People."
+      "single": "person",
+      "plural": "people"
     },
-    "capacity-title": "Capacity:",
-    "rooms-title": "Rooms:",
-    "features-title": "Features:",
-    "location-title": "Location:",
+    "capacity-title": "Capacity",
+    "rooms-title": "Rooms",
+    "features-title": "Features",
+    "location-title": "Location",
     "price-title": "Price",
-    "size-title": "Property size:",
+    "size-title": "Size",
     "show-all-photos": "Show all photos",
     "original-price": "Original Price",
     "negotiable": "Price Negotiable?",
@@ -450,6 +455,7 @@ export default {
       "hide": "Hide the Price!",
       "mobile": "Reveal Price!"
     },
+    "edit": "Edit Property Details",
     "contact": {
       "contact-title": "Contact Information",
       "contact-title-mobile": "Property Owner Contact Information",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "Translate",
     "show-original-button": "Show Original"
+  },
+  "my-properties": {
+    "title": "My Properties"
   },
   "settings": {
     "title": "Account Settings",

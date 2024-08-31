@@ -6,6 +6,10 @@ export default {
         "search-button": "Soek"
       },
       "filters": "Filters",
+      "filters-button": {
+        "categories": "Kategorieë",
+        "features": "Kenmerke"
+      },
       "guides": "Gidse",
       "construction": "Hierdie webwerf is onder konstruksie.",
       "construction-sub": "Skep asseblief 'n rekening, en ons sal vir jou 'n e-pos stuur wanneer dit gereed is.",
@@ -134,9 +138,10 @@ export default {
         "2": "Carrasco"
       }
     },
-    "Recommended": "Aanbevole stadsdele",
-    "Popular": "Gewild",
-    "Newest": "Nuutste",
+    "cities": "Aanbevole stadsdele",
+    "recommended": "Aanbeveel",
+    "cheapest": "Goedkoopste",
+    "newest": "Nuutste",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideaal. Alle regte voorbehou."
     }
@@ -450,6 +455,7 @@ export default {
       "hide": "Versteek die prys!",
       "mobile": "Onthul prys!"
     },
+    "edit": "Wysig eiendomsbesonderhede",
     "contact": {
       "contact-title": "Kontakinligting",
       "contact-title-mobile": "Eiendomseienaar se kontakinligting",
@@ -460,6 +466,9 @@ export default {
     },
     "translate-button": "Vertaal",
     "show-original-button": "Wys oorspronklike"
+  },
+  "my-properties": {
+    "title": "My Eienskappe"
   },
   "settings": {
     "title": "Rekeninginstellings",
