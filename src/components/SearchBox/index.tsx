@@ -154,7 +154,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                   ref={inputRef}
                   type="search"
                   placeholder={placeholder}
-                  className="z-100 bg-popover text-sm md:text-base"
+                  className="z-100 bg-popover text-base"
                   value={query}
                   onFocus={getGeolocation}
                   onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)} // Open Popover on mouse down if there are results
