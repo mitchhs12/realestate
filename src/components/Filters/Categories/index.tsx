@@ -62,6 +62,7 @@ export default function Categories({ selectedTypes, setSelectedTypes, modal }: P
       {categoriesObject.map((feature, index) => {
         return (
           <div
+            key={feature.id}
             className="flex items-center justify-between gap-3 w-full cursor-pointer hover:bg-secondary rounded-sm p-2 px-3"
             onClick={() => {
               handleCheckedChange(index);

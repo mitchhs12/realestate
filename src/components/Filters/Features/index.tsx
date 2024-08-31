@@ -63,6 +63,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures, moda
         if (index !== 0) {
           return (
             <div
+              key={feature.id}
               className="flex items-center justify-between gap-3 w-full cursor-pointer hover:bg-secondary rounded-sm p-2 px-3"
               onClick={() => {
                 handleCheckedChange(index);
