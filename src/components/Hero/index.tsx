@@ -7,8 +7,8 @@ export default async function Hero() {
   const scopedT = await getScopedI18n("home.hero");
 
   return (
-    <div className="relative h-[20vh] flex w-full">
-      <Image
+    <div className="relative h-[10vh] flex w-full">
+      {/* <Image
         src="https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/banners/banner.avif"
         alt="background"
         fill={true}
@@ -24,7 +24,7 @@ export default async function Hero() {
         (max-width: 1920px) 1920px,
         100vw"
         className="-z-10 opacity-30 dark:opacity-20"
-      />
+      /> */}
       <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
         <div className="flex flex-col gap-y-4">
           <h1

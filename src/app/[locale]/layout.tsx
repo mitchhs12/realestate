@@ -45,7 +45,6 @@ export default async function RootLayout({
 
   if (acceptLanguage) {
     const language = acceptLanguage.split(",");
-    console.log("language", language);
     const primaryLanguage = language[0];
     const matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
     currency = getCurrency(currencies, matchedCurrency);
