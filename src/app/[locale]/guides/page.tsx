@@ -8,8 +8,9 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 
 export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
-  const scopedT = await getScopedI18n("guides");
   setStaticParamsLocale(locale);
+
+  const scopedT = await getScopedI18n("guides");
 
   return (
     <div className="flex flex-col h-full w-full items-center">
