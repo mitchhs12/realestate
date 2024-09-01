@@ -4,6 +4,8 @@ import { PortableText } from "@portabletext/react";
 import { getReadingTime } from "@/lib/utils";
 import Image from "next/image";
 
+export const revalidate = 30;
+
 async function getData(slug: string) {
   const query = `
   *[_type=="article" && slug.current == '${slug}'] {

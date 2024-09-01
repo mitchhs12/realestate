@@ -1,4 +1,3 @@
-import GuideSelection from "@/components/GuideSelection";
 import Image from "next/image";
 import { poppins } from "@/app/[locale]/fonts";
 import { sellGuides } from "@/lib/validations";
@@ -11,6 +10,8 @@ import { BlogType } from "@/lib/validations";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+export const revalidate = 30;
 
 async function getData() {
   const query = `
