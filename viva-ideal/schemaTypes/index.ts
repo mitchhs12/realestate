@@ -1,2 +1,3 @@
 import {article} from './article'
-export const schemaTypes = [article]
+import {author} from './author'
+export const schemaTypes = [article, author]

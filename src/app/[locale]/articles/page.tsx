@@ -19,7 +19,8 @@ async function getData() {
     title,
       smallDescription,
       "currentSlug": slug.current,
-      titleImage
+      thumbnailImage,
+      _createdAt
   }`;
 
   const data = await client.fetch(query);
@@ -66,27 +67,29 @@ export default async function Page({ params: { locale } }: { params: { locale: L
       </div>
 
       <div className="flex flex-col justify-center items-center w-full flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full justify-start p-8 items-start max-w-8xl">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full gap-4 justify-start p-8 items-start max-w-8xl">
           {data.map((blog, idx) => (
-            <Card key={idx} className="flex flex-col items-center shadow-xl">
-              <div className="flex items-center justify-center min-h-[10vh] p-6 w-full h-[20vh]">
+            <Card key={idx} className="flex flex-col items-center shadow-xl h-[380px]">
+              <div className="relative items-center justify-center h-[200px] w-full">
                 <Image
-                  src={urlFor(blog.titleImage).url()}
+                  src={urlFor(blog.thumbnailImage).url()}
                   alt="image"
-                  width={300}
-                  height={300}
-                  className="rounded-lg object-fit"
+                  fill={true}
+                  objectFit="cover"
+                  className="rounded-t-lg"
                 />
               </div>
 
-              <CardContent className="mt-5">
-                <h3 className="text-primary text-lg line-clamp-2 font-bold">{blog.title}</h3>
-                <p className="line-clamp-3 text-sm mt-2 text-gray-600 dark:text-gray-300 pose">
+              <CardContent className="flex flex-col justify-between w-full h-[180px] px-3 gap-2 py-2">
+                <h3 className="mt-2 text-primary text-lg line-clamp-1 font-bold">{blog.title}</h3>
+                <div className="items-start flex-grow line-clamp-3 text-sm text-gray-600 dark:text-gray-300 pose">
                   {blog.smallDescription}
-                </p>
-                <Button asChild className="w-full mt-7">
-                  <Link href={`/articles/${blog.currentSlug}`}>Read More</Link>
-                </Button>
+                </div>
+                <div className="flex items-end">
+                  <Button asChild className="w-full mb-1">
+                    <Link href={`/articles/${blog.currentSlug}`}>Read More</Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}

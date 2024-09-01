@@ -339,6 +339,8 @@ export type BlogType = {
   smallDescription: string;
   currentSlug: string;
   titleImage: any;
+  thumbnailImage: any;
+  _createdAt: string;
 };
 
 export type FullBlog = {

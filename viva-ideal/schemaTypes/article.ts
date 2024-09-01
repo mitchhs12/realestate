@@ -20,13 +20,22 @@ export const article = defineType({
     }),
     defineField({
       name: 'author',
-      type: 'string',
-      title: 'Your name (this will appear as the author of the article).',
+      type: 'reference',
+      to: [{type: 'author'}],
+      title: 'Author of the article',
+      description: 'Select the author of this article',
+    }),
+    defineField({
+      name: 'thumbnailImage',
+      type: 'image',
+      title:
+        'Thumbnail image of your article (this will be displayed on the articles page). Your image should be a square at least 500px x 500px.',
     }),
     defineField({
       name: 'titleImage',
       type: 'image',
-      title: 'Main image of your article',
+      title:
+        'Main image of your article (this will be displayed on the top of your article). Your image should be at least 720px wide.',
     }),
     defineField({
       name: 'smallDescription',

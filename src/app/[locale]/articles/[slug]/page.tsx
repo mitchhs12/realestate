@@ -26,7 +26,7 @@ export default async function Article({ params }: { params: { locale: string; sl
   return (
     <div className="flex flex-col items-center h-full mt-8 p-8">
       <h1 className="w-full max-w-[720px]">
-        <span className="block text-base text-start font-semibold tracking-wide uppercase">{data.author}</span>
+        {/* <span className="block text-base text-start font-semibold tracking-wide uppercase">{data.author}</span> */}
         <span className="mt-2 block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">{data.title}</span>
         <span className="w-full text-right text-md leading-8 tracking-tight sm:text-lg">{`${getReadingTime(
           data.content
@@ -38,7 +38,7 @@ export default async function Article({ params }: { params: { locale: string; sl
         width={720}
         height={720}
         priority={true}
-        className="rounded-lg mt-8 shadow-md p-8"
+        className="rounded-lg mt-8 shadow-md dark:shadow-white/10 p-8"
       />
       <div className="mt-8 prose prose-stone prose-blockquote:font-charter text-base md:text-lg prose-base prose-p:font-charter prose-ol:font-charter prose-strong:font-charter prose-li:font-charter dark:prose-invert prose-li:marker:text-primary prose-a:text-primary pb-10">
         <PortableText value={data.content} />
