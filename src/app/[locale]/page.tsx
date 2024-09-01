@@ -5,14 +5,14 @@ import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
-import { getFeatured, getNew, getCheapest } from "./actions";
+import { getRecommended, getNew, getCheapest } from "./actions";
 import { locationImageIds } from "@/lib/validations";
 
 export default async function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
   const [t, recommendedHomesData, cheapestHomesData, newHomesData] = await Promise.all([
     getScopedI18n("home"),
-    getFeatured(),
+    getRecommended(),
     getCheapest(),
     getNew(),
   ]);

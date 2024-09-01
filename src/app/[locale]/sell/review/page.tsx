@@ -9,12 +9,15 @@ import { headers } from "next/headers";
 import { getPath, findMatching, findMatchingItem } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
 import { types, features, listingType } from "@/lib/sellFlowData";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Review",
 };
 
 export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  setStaticParamsLocale(locale);
+
   const session = await getSession();
   const user = session?.user;
   if (!user) {

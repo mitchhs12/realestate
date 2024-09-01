@@ -4,12 +4,14 @@ import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getMyHomes } from "./actions";
 import MyHomes from "./MyHomes";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "My Properties",
 };
 
-export default async function Page({ params: { locale } }: any) {
+export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;
   if (!user) {

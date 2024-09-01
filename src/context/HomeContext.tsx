@@ -162,6 +162,10 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
       }),
     });
     const responseData = await response.json();
+    if (responseData.error) {
+      console.log("Error translating text:", responseData.error);
+      return;
+    }
     isTitle ? setTranslatedTitle(responseData.text) : setTranslatedDescription(responseData.text);
     isTitle ? setTitleLoading(false) : setDescriptionLoading(false);
   };

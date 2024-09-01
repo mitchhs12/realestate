@@ -14,8 +14,8 @@ import { headers } from "next/headers";
 import { getCurrency } from "@/lib/utils";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
-import { getStaticParams } from "@/locales/server"; // Adjust the path as needed
-import { getPhoneLocale } from "@/lib/utils";
+import { getStaticParams } from "@/locales/server";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
@@ -31,7 +31,13 @@ type Props = {
   params: { locale: LanguageType };
 };
 
-export default async function RootLayout({ children, params: { locale } }: Readonly<Props>) {
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: LanguageType };
+}) {
   const currencies = await getCurrencies();
 
   const acceptLanguage = headers().get("Accept-Language");
@@ -39,18 +45,19 @@ export default async function RootLayout({ children, params: { locale } }: Reado
 
   if (acceptLanguage) {
     const language = acceptLanguage.split(",");
+    console.log("language", language);
     const primaryLanguage = language[0];
     const matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
     currency = getCurrency(currencies, matchedCurrency);
   }
-  const { direction: dir } = new Locale(locale).textInfo;
+  const { direction: dir } = new Locale(params.locale).textInfo;
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
-            <LocaleContextProvider currencies={currencies} lang={locale} currency={currency}>
+            <LocaleContextProvider currencies={currencies} lang={params.locale} currency={currency}>
               <QueryContextProvider>
                 <MainLayout>{children}</MainLayout>
               </QueryContextProvider>

@@ -6,12 +6,14 @@ import StickyPrice from "@/components/StickyPrice";
 import { Separator } from "@/components/ui/separator";
 import { getScopedI18n } from "@/locales/server";
 import SmallMapWrapper from "@/components/SmallMap/SmallMapWrapper";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Homes",
 };
 
 export default async function Page({ params }: { params: { locale: string } }) {
+  setStaticParamsLocale(params.locale);
   const [h] = await Promise.all([getScopedI18n("homes")]);
 
   const capacityText = { single: h("capacity.single"), plural: h("capacity.plural") };

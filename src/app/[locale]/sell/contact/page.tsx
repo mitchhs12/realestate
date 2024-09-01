@@ -9,12 +9,15 @@ import { getPhoneLocale } from "@/lib/utils";
 import { getUnfinishedHome } from "../actions";
 import { getPath } from "@/lib/utils";
 import { headers } from "next/headers";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Contact",
 };
 
 export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  setStaticParamsLocale(locale);
+
   const session = await getSession();
   const user = session?.user;
   if (!user) {

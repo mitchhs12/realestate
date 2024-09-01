@@ -114,7 +114,6 @@ export default function CombinedSearchPage({
       setIsOpen(false);
       setMapFocused(true);
     }
-    console.log("homes", homes);
   }, [homes]);
 
   return (

@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import AdminPage from "./AdminPage";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Admin",
 };
 
-export default async function Page() {
+export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;
   if (!user) {

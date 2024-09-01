@@ -9,12 +9,15 @@ import { features } from "@/lib/sellFlowData";
 import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { getPath } from "@/lib/utils";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Features",
 };
 
 export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  setStaticParamsLocale(locale);
+
   const session = await getSession();
   const user = session?.user;
   if (!user) {

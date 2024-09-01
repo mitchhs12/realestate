@@ -5,12 +5,14 @@ import { getScopedI18n } from "@/locales/server";
 import { types } from "@/lib/sellFlowData";
 import { features } from "@/lib/sellFlowData";
 import { getAllHomes } from "../actions";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Search",
 };
 
-export default async function Page({ params }: { params: { search: string } }) {
+export default async function Page({ params }: { params: { locale: string; search: string } }) {
+  setStaticParamsLocale(params.locale);
   const AWS_LOCATION_SERVICE_ENDPOINT = process.env.AWS_LOCATION_SERVICE_ENDPOINT;
   const INDEX_NAME = process.env.AWS_LOCATION_INDEX_NAME;
   const API_KEY = process.env.AWS_MAPS_API_KEY; // Replace with your API key

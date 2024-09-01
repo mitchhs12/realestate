@@ -58,6 +58,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(responseObj, { status: 200 });
   } catch (error) {
     console.error("Error detecting language:", error);
-    return NextResponse.json({ error: "Failed to detect language" }, { status: 500 });
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }

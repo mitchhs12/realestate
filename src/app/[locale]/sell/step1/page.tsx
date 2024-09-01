@@ -8,12 +8,14 @@ import { getScopedI18n } from "@/locales/server";
 import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { getPath } from "@/lib/utils";
+import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
   title: "Step 1",
 };
 
 export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;
   if (!user) {
