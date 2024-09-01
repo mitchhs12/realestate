@@ -10,6 +10,7 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        "8xl": "1440px",
       },
     },
     extend: {
@@ -30,10 +31,14 @@ const config = {
         "screen-minus-header-dvh": "calc(100dvh - 86px)",
         "screen-minus-header-svh": "calc(100svh - 86px)",
       },
+      maxWidth: {
+        "8xl": "1440px",
+      },
       screens: {
         "2xs": "400px",
         xs: "510px",
         "3xl": "1920px",
+        "8xl": "1440px",
       },
       colors: {
         border: "hsl(var(--border))",

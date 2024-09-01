@@ -6,7 +6,7 @@ import { HomeType } from "@/lib/validations";
 import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
-import { types, features } from "@/lib/sellFlowData";
+import { types, features, rooms } from "@/lib/sellFlowData";
 import { LocaleContext } from "@/context/LocaleContext";
 
 interface QueryContextProps {
@@ -43,6 +43,20 @@ interface QueryContextProps {
   setSelectedFeatures: (value: string[]) => void;
   selectedFeatures: string[];
   setSelectedTypes: (value: string[]) => void;
+  selectedRooms: {
+    bedrooms: number[];
+    bathrooms: number[];
+    livingrooms: number[];
+    kitchens: number[];
+    maxRooms: number;
+  };
+  setSelectedRooms: (value: {
+    bedrooms: number[];
+    bathrooms: number[];
+    livingrooms: number[];
+    kitchens: number[];
+    maxRooms: number;
+  }) => void;
   isFiltering: boolean;
   setIsFiltering: (value: boolean) => void;
   allSelectedFeatures: boolean;
@@ -54,15 +68,26 @@ interface QueryContextProps {
   convertedPriceRange: number[];
   setConvertedPriceRange: (value: number[]) => void;
   initialMaxPrice: number;
+  initialMaxRooms: number;
   originalFilters: string;
   lockModal: () => void;
 }
 
 const initialMaxPrice = 10000000;
+const initialMaxCapacity = 100;
+const initialMaxSize = 100000;
+const initialMaxRooms = 30;
 const originalFilters = JSON.stringify({
-  features: [],
-  types: [],
   convertedPriceRange: [],
+  types: [],
+  features: [],
+  rooms: {
+    bedrooms: [0, initialMaxRooms],
+    bathrooms: [0, initialMaxRooms],
+    livingrooms: [0, initialMaxRooms],
+    kitchens: [0, initialMaxRooms],
+    maxRooms: initialMaxRooms,
+  },
 });
 
 const QueryContext = createContext<QueryContextProps>({
@@ -99,6 +124,14 @@ const QueryContext = createContext<QueryContextProps>({
   setSelectedFeatures: () => {},
   selectedFeatures: [],
   setSelectedTypes: () => {},
+  selectedRooms: {
+    bedrooms: [0, initialMaxRooms],
+    bathrooms: [0, initialMaxRooms],
+    livingrooms: [0, initialMaxRooms],
+    kitchens: [0, initialMaxRooms],
+    maxRooms: initialMaxRooms,
+  },
+  setSelectedRooms: () => {},
   isFiltering: false,
   setIsFiltering: () => {},
   allSelectedFeatures: true,
@@ -106,20 +139,36 @@ const QueryContext = createContext<QueryContextProps>({
   handleAllFeatures: () => {},
   handleAllTypes: () => {},
   newFilters: JSON.stringify({
-    features: [],
-    types: [],
     priceRange: [1, Math.round(initialMaxPrice)],
+    types: [],
+    features: [],
+    rooms: {
+      bedrooms: [0, initialMaxRooms],
+      bathrooms: [0, initialMaxRooms],
+      livingrooms: [0, initialMaxRooms],
+      kitchens: [0, initialMaxRooms],
+      maxRooms: initialMaxRooms,
+    },
   }),
   setNewFilters: () => {},
   convertedPriceRange: [1, initialMaxPrice],
   setConvertedPriceRange: () => {},
   initialMaxPrice: initialMaxPrice,
+  initialMaxRooms: initialMaxRooms,
   originalFilters: originalFilters,
   lockModal: () => {},
 });
 
 interface QueryProviderProps {
   children: ReactNode;
+}
+
+interface SelectedRooms {
+  bedrooms: number[];
+  bathrooms: number[];
+  livingrooms: number[];
+  kitchens: number[];
+  maxRooms: number;
 }
 
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
@@ -136,14 +185,28 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [priceRange, setPriceRange] = useState<number[]>([1, initialMaxPrice]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedRooms, setSelectedRooms] = useState<SelectedRooms>({
+    bedrooms: [0, initialMaxRooms],
+    bathrooms: [0, initialMaxRooms],
+    livingrooms: [0, initialMaxRooms],
+    kitchens: [0, initialMaxRooms],
+    maxRooms: initialMaxRooms,
+  });
   const [isFiltering, setIsFiltering] = useState(false);
   const [allSelectedFeatures, setAllSelectedFeatures] = useState(true);
   const [allSelectedTypes, setAllSelectedTypes] = useState(true);
   const [newFilters, setNewFilters] = useState(
     JSON.stringify({
-      features: [],
-      types: [],
       convertedPriceRange: [1, Math.round(initialMaxPrice / defaultCurrency.usdPrice)],
+      types: [],
+      features: [],
+      rooms: {
+        bedrooms: [0, initialMaxRooms],
+        bathrooms: [0, initialMaxRooms],
+        livingrooms: [0, initialMaxRooms],
+        kitchens: [0, initialMaxRooms],
+        maxRooms: initialMaxRooms,
+      },
     })
   );
   const [convertedPriceRange, setConvertedPriceRange] = useState<number[]>([]);
@@ -255,6 +318,8 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         setSelectedFeatures,
         selectedFeatures,
         setSelectedTypes,
+        selectedRooms,
+        setSelectedRooms,
         isFiltering,
         setIsFiltering,
         allSelectedFeatures,
@@ -266,6 +331,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         convertedPriceRange,
         setConvertedPriceRange,
         initialMaxPrice,
+        initialMaxRooms,
         originalFilters,
         lockModal,
       }}

@@ -15,10 +15,9 @@ interface CategoriesObject {
 interface Props {
   selectedTypes: string[];
   setSelectedTypes: (selectedIds: string[]) => void;
-  modal?: boolean;
 }
 
-export default function Categories({ selectedTypes, setSelectedTypes, modal }: Props) {
+export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
   const t = useScopedI18n("sell.type");
   const [categoriesObject, setCategoriesObject] = useState<CategoriesObject[]>([]);
 

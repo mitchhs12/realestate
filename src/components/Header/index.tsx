@@ -38,6 +38,17 @@ interface Props {
   exit: string;
   exit_short: string;
   filters: string;
+  myproperties: string;
+  features: string;
+  featuresSub: string;
+  categories: string;
+  categoriesSub: string;
+  rooms: string;
+  roomsSub: string;
+  apply: string;
+  reset: string;
+  selectAll: string;
+  deselectAll: string;
 }
 
 export default function Header({
@@ -59,6 +70,17 @@ export default function Header({
   exit,
   exit_short,
   filters,
+  myproperties,
+  features,
+  featuresSub,
+  categories,
+  categoriesSub,
+  rooms,
+  roomsSub,
+  apply,
+  reset,
+  selectAll,
+  deselectAll,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
@@ -142,10 +164,33 @@ export default function Header({
         {isSearchPage && (
           <div className="flex items-center justify-center gap-3 px-3 w-full">
             <div className="hidden sm:flex">
-              <Filters filters={filters} locale={locale} />
+              <Filters
+                filters={filters}
+                locale={locale}
+                categories={categories}
+                categoriesSub={categoriesSub}
+                features={features}
+                featuresSub={featuresSub}
+                rooms={rooms}
+                roomsSub={roomsSub}
+                apply={apply}
+                reset={reset}
+                selectAll={selectAll}
+                deselectAll={deselectAll}
+              />
             </div>
             <div className="flex sm:hidden">
-              <FiltersDialog filters={filters} locale={locale} />
+              <FiltersDialog
+                filters={filters}
+                locale={locale}
+                categories={categories}
+                features={features}
+                rooms={rooms}
+                apply={apply}
+                reset={reset}
+                selectAll={selectAll}
+                deselectAll={deselectAll}
+              />
             </div>
             <div className="flex flex-grow xs:flex-grow-0 ">
               <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
@@ -201,6 +246,7 @@ export default function Header({
                 language={language}
                 currency={currency}
                 settings={settings}
+                myproperties={myproperties}
               />
             </div>
           </div>

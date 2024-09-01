@@ -6,9 +6,21 @@
         "search-button": "Tìm kiếm"
       },
       "filters": "Bộ lọc",
+      "categories": "Thể loại",
+      "features": "Đặc trưng",
+      "rooms": "Phòng",
       "filters-button": {
         "categories": "Thể loại",
         "features": "Đặc trưng"
+      },
+      "apply": "Áp dụng bộ lọc",
+      "reset": "Đặt lại bộ lọc",
+      "select-all": "Chọn tất cả",
+      "deselect-all": "Bỏ chọn tất cả",
+      "subtitles": {
+        "rooms": "Với các phòng nằm giữa các dãy này",
+        "categories": "Chỉ cho tôi xem",
+        "features": "Hiển thị cho tôi các thuộc tính với"
       },
       "guides": "Hướng dẫn",
       "construction": "Trang web này đang được xây dựng.",
@@ -27,6 +39,7 @@
           "system": "Hệ thống"
         },
         "language": "Ngôn ngữ",
+        "my-properties": "Tài sản của tôi",
         "currency": "Tiền tệ",
         "settings": "Cài đặt",
         "exit": "Lưu và thoát",

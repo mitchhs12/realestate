@@ -53,6 +53,8 @@ export const features = [
   "Walk-in closet",
 ];
 
+export const rooms = ["Bedrooms", "Bathrooms", "Living rooms", "Kitchens"];
+
 export const listingType = ["standard", "premium"];
 
 export const totalLengthOfAllSteps = sellSteps.reduce((acc, step) => acc + step.length, 0);

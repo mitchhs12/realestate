@@ -6,9 +6,21 @@
         "search-button": "Mencari"
       },
       "filters": "Filternya",
+      "categories": "Kategori",
+      "features": "Fitur",
+      "rooms": "Kamar",
       "filters-button": {
         "categories": "Kategori",
         "features": "Fitur"
+      },
+      "apply": "Terapkan Filter",
+      "reset": "Setel Ulang Filter",
+      "select-all": "Pilih Semua",
+      "deselect-all": "Batalkan Pilihan Semua",
+      "subtitles": {
+        "rooms": "Dengan ruangan di antara rentang ini",
+        "categories": "Tunjukkan padaku saja",
+        "features": "Tunjukkan saya properti dengan"
       },
       "guides": "Panduan",
       "construction": "Situs ini sedang dalam pembangunan.",
@@ -27,6 +39,7 @@
           "system": "Sistem"
         },
         "language": "Bahasa",
+        "my-properties": "Properti saya",
         "currency": "Mata uang",
         "settings": "Pengaturan",
         "exit": "Simpan dan keluar",

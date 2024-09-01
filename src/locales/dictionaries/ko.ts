@@ -6,9 +6,21 @@ export default {
         "search-button": "찾다"
       },
       "filters": "필터",
+      "categories": "카테고리",
+      "features": "특징",
+      "rooms": "객실",
       "filters-button": {
         "categories": "카테고리",
         "features": "특징"
+      },
+      "apply": "필터 적용",
+      "reset": "필터 재설정",
+      "select-all": "모두 선택",
+      "deselect-all": "모두 선택 해제",
+      "subtitles": {
+        "rooms": "이 범위 사이의 객실",
+        "categories": "나에게만 보여줘",
+        "features": "나에게 속성을 보여주세요"
       },
       "guides": "가이드",
       "construction": "이 사이트는 현재 공사 중입니다.",
@@ -27,6 +39,7 @@ export default {
           "system": "체계"
         },
         "language": "언어",
+        "my-properties": "내 속성",
         "currency": "통화",
         "settings": "설정",
         "exit": "저장하고 종료",

@@ -6,9 +6,21 @@ export default {
         "search-button": "Aramak"
       },
       "filters": "Filtreler",
+      "categories": "Kategoriler",
+      "features": "Özellikler",
+      "rooms": "Odalar",
       "filters-button": {
         "categories": "Kategoriler",
         "features": "Özellikler"
+      },
+      "apply": "Filtreleri Uygula",
+      "reset": "Filtreleri Sıfırla",
+      "select-all": "Tümünü Seç",
+      "deselect-all": "Tümünü Seçimden Çıkar",
+      "subtitles": {
+        "rooms": "Bu aralıklar arasındaki odalarla",
+        "categories": "Sadece bana göster",
+        "features": "Bana şu özellikleri göster:"
       },
       "guides": "Rehberler",
       "construction": "Bu site yapım aşamasındadır.",
@@ -27,6 +39,7 @@ export default {
           "system": "Sistem"
         },
         "language": "Dil",
+        "my-properties": "Benim mülklerim",
         "currency": "Para birimi",
         "settings": "Ayarlar",
         "exit": "Kaydet ve çık",

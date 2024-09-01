@@ -18,7 +18,7 @@ export default async function MyHomes({ myHomes }: Props) {
   }));
 
   return (
-    <div className="flex flex-col max-w-7xl h-full w-full">
+    <div className="flex flex-col max-w-8xl h-full w-full">
       <div className="flex w-full h-full justify-center text-2xl items-center py-8">
         <h1>{mh("title")}</h1>
       </div>

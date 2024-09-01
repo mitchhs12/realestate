@@ -38,6 +38,17 @@ export default async function MainLayout({ children }: Props) {
         exit={p("exit")}
         exit_short={p("exit-short")}
         filters={h("filters")}
+        myproperties={p("my-properties")}
+        features={h("features")}
+        featuresSub={h("subtitles.features")}
+        categories={h("categories")}
+        categoriesSub={h("subtitles.categories")}
+        rooms={h("rooms")}
+        roomsSub={h("subtitles.rooms")}
+        apply={h("apply")}
+        reset={h("reset")}
+        selectAll={h("select-all")}
+        deselectAll={h("deselect-all")}
       />
       {children}
     </>

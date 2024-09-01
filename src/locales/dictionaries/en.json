@@ -6,9 +6,21 @@
         "search-button": "Search"
       },
       "filters": "Filters",
+      "categories": "Categories",
+      "features": "Features",
+      "rooms": "Rooms",
       "filters-button": {
         "categories": "Categories",
         "features": "Features"
+      },
+      "apply": "Apply Filters",
+      "reset": "Reset Filters",
+      "select-all": "Select All",
+      "deselect-all": "Deselect All",
+      "subtitles": {
+        "rooms": "With rooms between these ranges",
+        "categories": "Show me only",
+        "features": "Show me properties with"
       },
       "guides": "Guides",
       "construction": "This site is under construction.",
@@ -27,6 +39,7 @@
           "system": "System"
         },
         "language": "Language",
+        "my-properties": "My properties",
         "currency": "Currency",
         "settings": "Settings",
         "exit": "Save and exit",

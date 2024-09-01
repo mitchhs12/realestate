@@ -6,9 +6,21 @@
         "search-button": "Suchen"
       },
       "filters": "Filter",
+      "categories": "Kategorien",
+      "features": "Merkmale",
+      "rooms": "Zimmer",
       "filters-button": {
         "categories": "Kategorien",
         "features": "Merkmale"
+      },
+      "apply": "Filter anwenden",
+      "reset": "Filter zurücksetzen",
+      "select-all": "Alles auswählen",
+      "deselect-all": "Auswahl aufheben",
+      "subtitles": {
+        "rooms": "Mit Zimmern zwischen diesen Bereichen",
+        "categories": "Zeige mir nur",
+        "features": "Zeigen Sie mir Immobilien mit"
       },
       "guides": "Anleitungen",
       "construction": "Diese Site befindet sich im Aufbau.",
@@ -27,6 +39,7 @@
           "system": "System"
         },
         "language": "Sprache",
+        "my-properties": "Meine Immobilien",
         "currency": "Währung",
         "settings": "Einstellungen",
         "exit": "Speichern und beenden",

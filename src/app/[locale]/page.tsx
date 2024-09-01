@@ -91,42 +91,42 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       <main className="w-full">
         <Hero />
       </main>
-      <div className="flex flex-col justify-start h-full w-full">
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
-          <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-7xl">
+      <div className="flex flex-col justify-start h-full w-full bg-background">
+        <section className="flex flex-col justify-center items-center w-full h-full">
+          <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-8xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {t("cities")}
             </h2>
             <Locations countries={countries} />
           </div>
         </section>
-        <section className="flex flex-col justify-center items-center w-full h-full bg-background dark:bg-background">
-          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
+        <section className="flex flex-col justify-center items-center w-full h-full">
+          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {t("recommended")}
             </h2>
             <Listings homes={recommended} />
           </div>
         </section>
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
-          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
-            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
-              {t("newest")}
-            </h2>
-            <Listings homes={newest} />
-          </div>
-        </section>
-        <section className="flex flex-col justify-center items-center w-full h-full bg-zinc-100 dark:bg-zinc-900">
-          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-7xl">
+        <section className="flex flex-col justify-center items-center w-full h-full">
+          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
             <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
               {t("cheapest")}
             </h2>
             <Listings homes={cheapest} />
           </div>
         </section>
+        <section className="flex flex-col justify-center items-center w-full h-full">
+          <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
+            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
+              {t("newest")}
+            </h2>
+            <Listings homes={newest} />
+          </div>
+        </section>
       </div>
 
-      <footer className="flex justify-center items-center p-6 w-full">
+      <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
         <Footer />
       </footer>
     </div>

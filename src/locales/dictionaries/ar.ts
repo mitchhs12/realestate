@@ -6,9 +6,21 @@ export default {
         "search-button": "يبحث"
       },
       "filters": "المرشحات",
+      "categories": "فئات",
+      "features": "سمات",
+      "rooms": "الغرف",
       "filters-button": {
         "categories": "فئات",
         "features": "سمات"
+      },
+      "apply": "تطبيق المرشحات",
+      "reset": "إعادة تعيين المرشحات",
+      "select-all": "حدد الكل",
+      "deselect-all": "إلغاء تحديد الكل",
+      "subtitles": {
+        "rooms": "مع غرف بين هذه النطاقات",
+        "categories": "أرني فقط",
+        "features": "أظهر لي العقارات مع"
       },
       "guides": "أدلة",
       "construction": "هذا الموقع قيد الإنشاء.",
@@ -27,6 +39,7 @@ export default {
           "system": "نظام"
         },
         "language": "لغة",
+        "my-properties": "ممتلكاتي",
         "currency": "عملة",
         "settings": "إعدادات",
         "exit": "حفظ وخروج",

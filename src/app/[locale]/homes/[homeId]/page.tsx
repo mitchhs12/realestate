@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
 
   return (
     <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
-      <main className="flex flex-col items-center justify-start max-w-7xl w-full">
+      <main className="flex flex-col items-center justify-start max-w-8xl w-full">
         <div className="flex flex-col text-center h-full w-full pt-2 pb-2">
           <HomePhotos
             showAllPhotos={showAllPhotos}
@@ -87,9 +87,9 @@ export default async function Page({ params }: { params: { locale: string } }) {
             <Separator />
           </div>
         </div>
-        <div className="flex flex-col max-w-7xl w-full h-[40vh] px-8 py-2 gap-3 mb-16">
+        <div className="flex flex-col max-w-8xl w-full h-[40vh] px-8 py-2 gap-3 mb-16">
           <div className="text-lg sm:text-xl">{locationTitle}</div>
-          <div className="flex w-full max-w-7xl h-[40vh]">
+          <div className="flex w-full max-w-8xl h-[50vh]">
             <SmallMapWrapper />
           </div>
         </div>

@@ -6,9 +6,21 @@ export default {
         "search-button": "Pretraživanje"
       },
       "filters": "Filteri",
+      "categories": "kategorije",
+      "features": "Značajke",
+      "rooms": "Sobe",
       "filters-button": {
         "categories": "kategorije",
         "features": "Značajke"
+      },
+      "apply": "Primijeni filtre",
+      "reset": "Poništi filtre",
+      "select-all": "Odaberite sve",
+      "deselect-all": "Odznačite sve",
+      "subtitles": {
+        "rooms": "Sa sobama između ovih raspona",
+        "categories": "Pokaži mi samo",
+        "features": "Prikaži mi svojstva s"
       },
       "guides": "Vodiči",
       "construction": "Ova stranica je u izradi.",
@@ -27,6 +39,7 @@ export default {
           "system": "sustav"
         },
         "language": "Jezik",
+        "my-properties": "Moja svojstva",
         "currency": "Valuta",
         "settings": "postavke",
         "exit": "Spremi i izađi",

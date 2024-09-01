@@ -44,6 +44,7 @@ export default function CombinedSearchPage({
     setMapFocused,
     selectedTypes,
     selectedFeatures,
+    selectedRooms,
     isFiltering,
     setIsFiltering,
     setNewFilters,
@@ -73,20 +74,27 @@ export default function CombinedSearchPage({
       console.log("selectedTypes", selectedTypes);
       console.log("selectedFeatures", selectedFeatures);
 
-      getSearchResults("search", bounds, convertedPriceRange, selectedTypes, selectedFeatures, defaultCurrency).then(
-        (data) => {
-          setHomes(data);
-          setIsSearchLoading(false);
-          setIsFiltering(false);
-          setNewFilters(
-            JSON.stringify({
-              features: selectedFeatures,
-              types: selectedTypes,
-              convertedPriceRange: convertedPriceRange,
-            })
-          );
-        }
-      );
+      getSearchResults(
+        "search",
+        bounds,
+        convertedPriceRange,
+        selectedTypes,
+        selectedFeatures,
+        selectedRooms,
+        defaultCurrency
+      ).then((data) => {
+        setHomes(data);
+        setIsSearchLoading(false);
+        setIsFiltering(false);
+        setNewFilters(
+          JSON.stringify({
+            convertedPriceRange: convertedPriceRange,
+            types: selectedTypes,
+            features: selectedFeatures,
+            rooms: selectedRooms,
+          })
+        );
+      });
     }
   }, [isFiltering, bounds]);
 

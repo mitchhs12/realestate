@@ -13,6 +13,13 @@ export async function getSearchResults(
   priceRange: number[] = [],
   types: string[] = [],
   features: string[] = [],
+  rooms: {
+    bedrooms: number[];
+    bathrooms: number[];
+    livingrooms: number[];
+    kitchens: number[];
+    maxRooms: number;
+  },
   defaultCurrency: CurrencyType
 ) {
   let homes = [];
@@ -56,6 +63,46 @@ export async function getSearchResults(
       ...commonFilters,
       features: {
         hasSome: features,
+      },
+    };
+  }
+
+  if (rooms.bedrooms[0] > 0 || rooms.bedrooms[1] < rooms.maxRooms) {
+    commonFilters = {
+      ...commonFilters,
+      bedrooms: {
+        gte: rooms.bedrooms[0],
+        lte: rooms.bedrooms[1],
+      },
+    };
+  }
+
+  if (rooms.bathrooms[0] > 0 || rooms.bathrooms[1] < rooms.maxRooms) {
+    commonFilters = {
+      ...commonFilters,
+      bathrooms: {
+        gte: rooms.bathrooms[0],
+        lte: rooms.bathrooms[1],
+      },
+    };
+  }
+
+  if (rooms.livingrooms[0] > 0 || rooms.livingrooms[1] < rooms.maxRooms) {
+    commonFilters = {
+      ...commonFilters,
+      livingrooms: {
+        gte: rooms.livingrooms[0],
+        lte: rooms.livingrooms[1],
+      },
+    };
+  }
+
+  if (rooms.kitchens[0] > 0 || rooms.kitchens[1] < rooms.maxRooms) {
+    commonFilters = {
+      ...commonFilters,
+      kitchens: {
+        gte: rooms.kitchens[0],
+        lte: rooms.kitchens[1],
       },
     };
   }

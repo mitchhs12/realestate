@@ -15,10 +15,9 @@ interface FeaturesObject {
 interface Props {
   selectedFeatures: string[];
   setSelectedFeatures: (selectedIds: string[]) => void;
-  modal?: boolean;
 }
 
-export default function Categories({ selectedFeatures, setSelectedFeatures, modal }: Props) {
+export default function Categories({ selectedFeatures, setSelectedFeatures }: Props) {
   const t = useScopedI18n("sell.features");
   const [featuresObject, setFeaturesObject] = useState<FeaturesObject[]>([]);
 

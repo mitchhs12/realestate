@@ -45,6 +45,7 @@ interface Props {
   language: string;
   currency: string;
   settings: string;
+  myproperties: string;
 }
 
 export function ProfileButton({
@@ -58,6 +59,7 @@ export function ProfileButton({
   language,
   currency,
   settings,
+  myproperties,
 }: Props) {
   const { defaultCurrency, setDefaultCurrency, currencies } = useContext(LocaleContext);
   const { user, session } = useContext(QueryContext);
@@ -113,7 +115,7 @@ export function ProfileButton({
                 }}
               >
                 <House width={20} height={20} strokeWidth={1.25} />
-                My Properties
+                {myproperties}
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </>

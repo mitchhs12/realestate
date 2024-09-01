@@ -6,9 +6,21 @@ export default {
         "search-button": "検索"
       },
       "filters": "フィルター",
+      "categories": "カテゴリー",
+      "features": "特徴",
+      "rooms": "客室",
       "filters-button": {
         "categories": "カテゴリー",
         "features": "特徴"
+      },
+      "apply": "フィルターを適用する",
+      "reset": "フィルターをリセット",
+      "select-all": "すべて選択",
+      "deselect-all": "すべて選択解除",
+      "subtitles": {
+        "rooms": "これらの範囲の部屋の場合",
+        "categories": "表示のみ",
+        "features": "次の物件を表示"
       },
       "guides": "ガイド",
       "construction": "このサイトは現在構築中です。",
@@ -27,6 +39,7 @@ export default {
           "system": "システム"
         },
         "language": "言語",
+        "my-properties": "私の財産",
         "currency": "通貨",
         "settings": "設定",
         "exit": "保存して終了",

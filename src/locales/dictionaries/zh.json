@@ -6,9 +6,21 @@
         "search-button": "搜索"
       },
       "filters": "筛选器",
+      "categories": "类别",
+      "features": "特征",
+      "rooms": "客房",
       "filters-button": {
         "categories": "类别",
         "features": "特征"
+      },
+      "apply": "应用过滤器",
+      "reset": "重置筛选条件",
+      "select-all": "选择全部",
+      "deselect-all": "取消全部选择",
+      "subtitles": {
+        "rooms": "在这些范围之间的房间",
+        "categories": "仅显示我",
+        "features": "显示具有以下属性的属性"
       },
       "guides": "指南",
       "construction": "该网站正在建设中。",
@@ -27,6 +39,7 @@
           "system": "系统"
         },
         "language": "语言",
+        "my-properties": "我的房产",
         "currency": "货币",
         "settings": "设置",
         "exit": "保存并退出",

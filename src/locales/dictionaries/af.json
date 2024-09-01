@@ -6,9 +6,21 @@
         "search-button": "Soek"
       },
       "filters": "Filters",
+      "categories": "Kategorieë",
+      "features": "Kenmerke",
+      "rooms": "Kamers",
       "filters-button": {
         "categories": "Kategorieë",
         "features": "Kenmerke"
+      },
+      "apply": "Pas filters toe",
+      "reset": "Stel filters terug",
+      "select-all": "Kies Alles",
+      "deselect-all": "Ontkies Alles",
+      "subtitles": {
+        "rooms": "Met kamers tussen hierdie reekse",
+        "categories": "Wys my net",
+        "features": "Wys my eiendomme met"
       },
       "guides": "Gidse",
       "construction": "Hierdie webwerf is onder konstruksie.",
@@ -27,6 +39,7 @@
           "system": "Stelsel"
         },
         "language": "Taal",
+        "my-properties": "My eiendomme",
         "currency": "Geldeenheid",
         "settings": "Instellings",
         "exit": "Stoor en gaan uit",

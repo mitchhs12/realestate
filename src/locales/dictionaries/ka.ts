@@ -6,9 +6,21 @@ export default {
         "search-button": "ძიება"
       },
       "filters": "ფილტრები",
+      "categories": "კატეგორიები",
+      "features": "მახასიათებლები",
+      "rooms": "ოთახები",
       "filters-button": {
         "categories": "კატეგორიები",
         "features": "მახასიათებლები"
+      },
+      "apply": "ფილტრების გამოყენება",
+      "reset": "ფილტრების გადატვირთვა",
+      "select-all": "აირჩიეთ ყველა",
+      "deselect-all": "გააუქმეთ ყველა",
+      "subtitles": {
+        "rooms": "ოთახებით ამ დიაპაზონებს შორის",
+        "categories": "მაჩვენე მხოლოდ",
+        "features": "მაჩვენე თვისებები"
       },
       "guides": "გიდები",
       "construction": "ეს საიტი მშენებლობის პროცესშია.",
@@ -27,6 +39,7 @@ export default {
           "system": "სისტემა"
         },
         "language": "ენა",
+        "my-properties": "ჩემი თვისებები",
         "currency": "ვალუტა",
         "settings": "პარამეტრები",
         "exit": "შენახვა და გამოსვლა",

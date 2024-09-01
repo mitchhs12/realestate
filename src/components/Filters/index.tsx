@@ -15,19 +15,54 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useContext, useEffect, useState } from "react";
 import { I18nProviderClient } from "@/locales/client";
-import { SlidersHorizontal, House, Sparkles, DollarSign } from "lucide-react";
-import { Slider } from "@/components/ui/slider";
+import {
+  SlidersHorizontal,
+  House,
+  Sparkles,
+  DollarSign,
+  DoorOpen,
+  BedDouble,
+  Bath,
+  Sofa,
+  CookingPot,
+} from "lucide-react";
+import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
 import Categories from "@/components/Filters/Categories";
 import { LocaleContext } from "@/context/LocaleContext";
+import Rooms from "./Rooms";
+import { features } from "process";
 
 interface Props {
   filters: string;
   locale: string;
+  categories: string;
+  categoriesSub: string;
+  features: string;
+  featuresSub: string;
+  rooms: string;
+  roomsSub: string;
+  apply: string;
+  reset: string;
+  selectAll: string;
+  deselectAll: string;
 }
 
-export default function Filters({ filters, locale }: Props) {
+export default function Filters({
+  filters,
+  locale,
+  categories,
+  categoriesSub,
+  features,
+  featuresSub,
+  rooms,
+  roomsSub,
+  apply,
+  reset,
+  selectAll,
+  deselectAll,
+}: Props) {
   const {
     setConvertedPriceRange,
     convertedPriceRange,
@@ -45,7 +80,8 @@ export default function Filters({ filters, locale }: Props) {
     newFilters,
     initialMaxPrice,
     originalFilters,
-    setNewFilters,
+    selectedRooms,
+    setSelectedRooms,
   } = useContext(QueryContext);
   const { defaultCurrency } = useContext(LocaleContext);
   const [isReady, setIsReady] = useState(false);
@@ -101,18 +137,20 @@ export default function Filters({ filters, locale }: Props) {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
               <House width={20} height={20} strokeWidth={1.25} />
-              Categories
+              {categories}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={locale}>
-                  <DropdownMenuLabel className="flex items-center justify-center pb-3">Show me only</DropdownMenuLabel>
+                  <DropdownMenuLabel className="flex items-center justify-center pb-3">
+                    {categoriesSub} {selectedTypes.length > 0 && `(${selectedTypes.length})`}
+                  </DropdownMenuLabel>
                   <div className="overflow-y-auto">
                     <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
                   </div>
                 </I18nProviderClient>
                 <Button variant={"outline"} size={"default"} onClick={handleAllTypes}>
-                  {allSelectedTypes ? "Deselect All" : "Select All"}
+                  {allSelectedTypes ? deselectAll : selectAll}
                 </Button>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
@@ -122,21 +160,47 @@ export default function Filters({ filters, locale }: Props) {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex justify-center items-center gap-2">
               <Sparkles width={20} height={20} strokeWidth={1.25} />
-              <span>Features</span>
+              {features} {selectedFeatures.length > 0 && `(${selectedFeatures.length})`}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={locale}>
-                  <DropdownMenuLabel className="flex justify-center items-center pb-3">
-                    Show me properties with
-                  </DropdownMenuLabel>
+                  <DropdownMenuLabel className="flex justify-center items-center pb-3">{featuresSub}</DropdownMenuLabel>
                   <div className="overflow-y-auto">
                     <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
                   </div>
                 </I18nProviderClient>
                 <Button variant={"outline"} size={"default"} onClick={handleAllFeatures}>
-                  {allSelectedFeatures ? "Deselect All" : "Select All"}
+                  {allSelectedFeatures ? deselectAll : selectAll}
                 </Button>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuGroup>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger className="flex justify-center items-center gap-2">
+              <DoorOpen width={20} height={20} strokeWidth={1.25} />
+              {rooms}
+              {selectedRooms.bedrooms[0] !== 0 ||
+                (selectedRooms.bedrooms[1] !== selectedRooms.maxRooms && <BedDouble size={18} strokeWidth={1} />)}
+              {selectedRooms.bathrooms[0] !== 0 ||
+                (selectedRooms.bathrooms[1] !== selectedRooms.maxRooms && <Bath size={18} strokeWidth={1} />)}
+              {selectedRooms.livingrooms[0] !== 0 ||
+                (selectedRooms.livingrooms[1] !== selectedRooms.maxRooms && <Sofa size={18} strokeWidth={1} />)}
+              {selectedRooms.kitchens[0] !== 0 ||
+                (selectedRooms.kitchens[1] !== selectedRooms.maxRooms && <CookingPot size={18} strokeWidth={1} />)}
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent className="flex flex-col p-2 max-h-80 w-full">
+                <I18nProviderClient locale={locale}>
+                  <DropdownMenuLabel className="flex justify-center items-center pb-3 w-full">
+                    {roomsSub}
+                  </DropdownMenuLabel>
+                  <div className="flex w-full h-full">
+                    <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
+                  </div>
+                </I18nProviderClient>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
@@ -151,14 +215,15 @@ export default function Filters({ filters, locale }: Props) {
             disabled={
               newFilters ===
               JSON.stringify({
-                features: selectedFeatures,
-                types: selectedTypes,
                 convertedPriceRange: convertedPriceRange,
+                types: selectedTypes,
+                features: selectedFeatures,
+                rooms: selectedRooms,
               })
             }
             onClick={() => setIsFiltering(true)}
           >
-            <span>Apply New Filters</span>
+            {apply}
           </Button>
           <Button
             variant={"outline"}
@@ -167,20 +232,20 @@ export default function Filters({ filters, locale }: Props) {
             className="flex"
             disabled={originalFilters === newFilters}
             onClick={() => {
-              setNewFilters(
-                JSON.stringify({
-                  features: [],
-                  types: [],
-                  convertedPriceRange: [],
-                })
-              );
-              setSelectedFeatures([]);
-              setSelectedTypes([]);
               setConvertedPriceRange([]);
+              setSelectedTypes([]);
+              setSelectedFeatures([]);
+              setSelectedRooms({
+                bedrooms: [0, selectedRooms.maxRooms],
+                bathrooms: [0, selectedRooms.maxRooms],
+                livingrooms: [0, selectedRooms.maxRooms],
+                kitchens: [0, selectedRooms.maxRooms],
+                maxRooms: selectedRooms.maxRooms,
+              });
               setIsFiltering(true);
             }}
           >
-            <span>Reset Filters</span>
+            {reset}
           </Button>
         </div>
       </DropdownMenuContent>

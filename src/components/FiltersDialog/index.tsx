@@ -3,21 +3,39 @@
 import { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import { SlidersHorizontal, House, Sparkles, DollarSign } from "lucide-react";
-import { Slider } from "@/components/ui/slider";
+import { SlidersHorizontal, House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp } from "lucide-react";
+import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
 import Categories from "@/components/Filters/Categories";
+import Rooms from "@/components/Filters/Rooms";
 import { LocaleContext } from "@/context/LocaleContext";
 import { I18nProviderClient } from "@/locales/client";
-import { Separator } from "@/components/ui/separator";
+import { CookingPot, Bath, Sofa, BedDouble } from "lucide-react";
 
 interface Props {
   filters: string;
   locale: string;
+  categories: string;
+  features: string;
+  rooms: string;
+  apply: string;
+  reset: string;
+  selectAll: string;
+  deselectAll: string;
 }
 
-export default function Filters({ filters, locale }: Props) {
+export default function FiltersDialog({
+  filters,
+  locale,
+  categories,
+  features,
+  rooms,
+  apply,
+  reset,
+  selectAll,
+  deselectAll,
+}: Props) {
   const {
     setConvertedPriceRange,
     convertedPriceRange,
@@ -27,6 +45,8 @@ export default function Filters({ filters, locale }: Props) {
     selectedTypes,
     selectedFeatures,
     setSelectedFeatures,
+    selectedRooms,
+    setSelectedRooms,
     setIsFiltering,
     allSelectedFeatures,
     allSelectedTypes,
@@ -35,12 +55,30 @@ export default function Filters({ filters, locale }: Props) {
     newFilters,
     initialMaxPrice,
     originalFilters,
-    setNewFilters,
   } = useContext(QueryContext);
 
   const { defaultCurrency } = useContext(LocaleContext);
   const [isReady, setIsReady] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isRoomsOpen, setIsRoomsOpen] = useState(true);
+
+  const toggleFeatures = () => {
+    isCategoriesOpen && setIsCategoriesOpen(false);
+    isRoomsOpen && setIsRoomsOpen(false);
+    setIsFeaturesOpen(!isFeaturesOpen);
+  };
+  const toggleCategories = () => {
+    isFeaturesOpen && setIsFeaturesOpen(false);
+    isRoomsOpen && setIsRoomsOpen(false);
+    setIsCategoriesOpen(!isCategoriesOpen);
+  };
+  const toggleRooms = () => {
+    isFeaturesOpen && setIsFeaturesOpen(false);
+    isCategoriesOpen && setIsCategoriesOpen(false);
+    setIsRoomsOpen(!isRoomsOpen);
+  };
 
   useEffect(() => {
     if (selectedFeatures && selectedTypes) {
@@ -60,13 +98,15 @@ export default function Filters({ filters, locale }: Props) {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="w-80 p-4 rounded-md">
           <DialogHeader>
-            <DialogTitle>Filters</DialogTitle>
+            <DialogTitle>{filters}</DialogTitle>
             <DialogClose asChild />
           </DialogHeader>
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <DollarSign width={20} height={20} strokeWidth={1.25} />
+              <div className="flex items-center justify-center">
+                <DollarSign width={15} height={15} strokeWidth={1.25} />
+              </div>
               <Slider
                 value={priceRange}
                 onValueChange={(newValue) => setPriceRange(newValue)}
@@ -79,10 +119,10 @@ export default function Filters({ filters, locale }: Props) {
                 newCurrencySymbol={defaultCurrency.symbol}
                 newCurrencyUsdPrice={defaultCurrency.usdPrice}
               />
-              <div className="flex">
-                <DollarSign width={20} height={20} strokeWidth={1.25} />
-                <DollarSign width={20} height={20} strokeWidth={1.25} />
-                <DollarSign width={20} height={20} strokeWidth={1.25} />
+              <div className="flex items-center justify-center">
+                <DollarSign width={15} height={15} strokeWidth={1.25} />
+                <DollarSign width={15} height={15} strokeWidth={1.25} />
+                <DollarSign width={15} height={15} strokeWidth={1.25} />
               </div>
             </div>
 
@@ -90,38 +130,79 @@ export default function Filters({ filters, locale }: Props) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <House width={20} height={20} strokeWidth={1.25} />
-                  Categories
+                  {categories}{" "}
+                  {selectedTypes.length > 0 && <span className="text-[#16A34A]">({selectedTypes.length})</span>}
                 </div>
-                <Button variant={"outline"} size={"sm"} onClick={handleAllTypes}>
-                  {allSelectedTypes ? "Deselect All" : "Select All"}
+                <Button variant={"outline"} size={"icon"} onClick={toggleCategories}>
+                  {isCategoriesOpen ? <ChevronUp /> : <ChevronDown />}
                 </Button>
               </div>
-              <I18nProviderClient locale={locale}>
-                <div className="overflow-y-auto max-h-40">
-                  <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} modal={true} />
-                </div>
-              </I18nProviderClient>
+              {isCategoriesOpen && (
+                <I18nProviderClient locale={locale}>
+                  <div className="flex flex-col items-center overflow-y-auto max-h-52">
+                    <Button className="flex justify end" variant={"outline"} size={"sm"} onClick={handleAllTypes}>
+                      {allSelectedTypes ? deselectAll : selectAll}
+                    </Button>
+                    <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
+                  </div>
+                </I18nProviderClient>
+              )}
             </div>
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Sparkles width={20} height={20} strokeWidth={1.25} />
-                  Features
+                  {features}{" "}
+                  {selectedFeatures.length > 0 && <span className="text-[#16A34A]">({selectedFeatures.length})</span>}
                 </div>
-                <Button variant={"outline"} size={"sm"} onClick={handleAllFeatures}>
-                  {allSelectedFeatures ? "Deselect All" : "Select All"}
+                <Button variant={"outline"} size={"icon"} onClick={toggleFeatures}>
+                  {isFeaturesOpen ? <ChevronUp /> : <ChevronDown />}
                 </Button>
               </div>
-              <I18nProviderClient locale={locale}>
-                <div className="overflow-y-auto max-h-40">
-                  <Features
-                    selectedFeatures={selectedFeatures}
-                    setSelectedFeatures={setSelectedFeatures}
-                    modal={true}
-                  />
+              {isFeaturesOpen && (
+                <I18nProviderClient locale={locale}>
+                  <div className="flex flex-col items-center overflow-y-auto max-h-52">
+                    <Button variant={"outline"} size={"sm"} onClick={handleAllFeatures}>
+                      {allSelectedFeatures ? deselectAll : selectAll}
+                    </Button>
+                    <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
+                  </div>
+                </I18nProviderClient>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <DoorOpen width={20} height={20} strokeWidth={1.25} />
+                  {rooms}
+                  {selectedRooms.bedrooms[0] !== 0 ||
+                    (selectedRooms.bedrooms[1] !== selectedRooms.maxRooms && (
+                      <BedDouble size={18} strokeWidth={1.25} color={"#16A34A"} />
+                    ))}
+                  {selectedRooms.bathrooms[0] !== 0 ||
+                    (selectedRooms.bathrooms[1] !== selectedRooms.maxRooms && (
+                      <Bath size={18} strokeWidth={1.25} color={"#16A34A"} />
+                    ))}
+                  {selectedRooms.livingrooms[0] !== 0 ||
+                    (selectedRooms.livingrooms[1] !== selectedRooms.maxRooms && (
+                      <Sofa size={18} strokeWidth={1.25} color={"#16A34A"} />
+                    ))}
+                  {selectedRooms.kitchens[0] !== 0 ||
+                    (selectedRooms.kitchens[1] !== selectedRooms.maxRooms && (
+                      <CookingPot size={18} strokeWidth={1.25} color={"#16A34A"} />
+                    ))}
                 </div>
-              </I18nProviderClient>
+                <Button variant={"outline"} size={"icon"} onClick={toggleRooms}>
+                  {isRoomsOpen ? <ChevronUp /> : <ChevronDown />}
+                </Button>
+              </div>
+              {isRoomsOpen && (
+                <I18nProviderClient locale={locale}>
+                  <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
+                </I18nProviderClient>
+              )}
             </div>
 
             <div className="flex items-center gap-4 justify-center">
@@ -133,14 +214,15 @@ export default function Filters({ filters, locale }: Props) {
                 disabled={
                   newFilters ===
                   JSON.stringify({
-                    features: selectedFeatures,
-                    types: selectedTypes,
                     convertedPriceRange: convertedPriceRange,
+                    types: selectedTypes,
+                    features: selectedFeatures,
+                    rooms: selectedRooms,
                   })
                 }
                 onClick={() => setIsFiltering(true)}
               >
-                <span>Apply New Filters</span>
+                <span>{apply}</span>
               </Button>
               <Button
                 variant={"outline"}
@@ -149,20 +231,20 @@ export default function Filters({ filters, locale }: Props) {
                 className="flex"
                 disabled={originalFilters === newFilters}
                 onClick={() => {
-                  setNewFilters(
-                    JSON.stringify({
-                      features: [],
-                      types: [],
-                      convertedPriceRange: [],
-                    })
-                  );
                   setSelectedFeatures([]);
                   setSelectedTypes([]);
                   setConvertedPriceRange([]);
+                  setSelectedRooms({
+                    bedrooms: [0, selectedRooms.maxRooms],
+                    bathrooms: [0, selectedRooms.maxRooms],
+                    livingrooms: [0, selectedRooms.maxRooms],
+                    kitchens: [0, selectedRooms.maxRooms],
+                    maxRooms: selectedRooms.maxRooms,
+                  });
                   setIsFiltering(true);
                 }}
               >
-                <span>Reset Filters</span>
+                <span>{reset}</span>
               </Button>
             </div>
           </div>

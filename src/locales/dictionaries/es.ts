@@ -6,9 +6,21 @@ export default {
         "search-button": "Buscar"
       },
       "filters": "Filtros",
+      "categories": "Categorías",
+      "features": "Características",
+      "rooms": "Alojamiento",
       "filters-button": {
         "categories": "Categorías",
         "features": "Características"
+      },
+      "apply": "Aplicar filtros",
+      "reset": "Restablecer filtros",
+      "select-all": "Seleccionar todo",
+      "deselect-all": "Deseleccionar todo",
+      "subtitles": {
+        "rooms": "Con habitaciones entre estos rangos",
+        "categories": "Muéstrame solo",
+        "features": "Muéstrame propiedades con"
       },
       "guides": "Guías",
       "construction": "Este sitio está en construcción.",
@@ -27,6 +39,7 @@ export default {
           "system": "Sistema"
         },
         "language": "Idioma",
+        "my-properties": "Mis propiedades",
         "currency": "Divisa",
         "settings": "Ajustes",
         "exit": "Guardar y salir",
