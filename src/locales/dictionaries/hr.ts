@@ -22,7 +22,7 @@ export default {
         "categories": "Pokaži mi samo",
         "features": "Prikaži mi svojstva s"
       },
-      "guides": "Vodiči",
+      "articles": "Članci",
       "construction": "Ova stranica je u izradi.",
       "construction-sub": "Izradite račun, a mi ćemo vam poslati e-poštu kada bude spreman.",
       "sell-button-big": "Prodaj svoju nekretninu",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana."
     }
   },
-  "guides": {
-    "title": "Kako kupiti i prodati",
+  "articles": {
+    "title": "Članci",
     "buy": {
       "title": "Ne znam kako kupiti",
       "title-short": "Kako kupiti",

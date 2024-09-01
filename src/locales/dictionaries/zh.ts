@@ -22,7 +22,7 @@ export default {
         "categories": "仅显示我",
         "features": "显示具有以下属性的属性"
       },
-      "guides": "指南",
+      "articles": "文章",
       "construction": "该网站正在建设中。",
       "construction-sub": "请创建一个帐户，准备就绪后我们会给您发送电子邮件。",
       "sell-button-big": "出售您的房产",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。"
     }
   },
-  "guides": {
-    "title": "如何购买和出售",
+  "articles": {
+    "title": "文章",
     "buy": {
       "title": "我不知道如何购买",
       "title-short": "如何购买",
@@ -172,7 +172,7 @@ export default {
         "co": "如何在哥伦比亚购物",
         "ve": "如何在委内瑞拉购物",
         "vn": "如何在越南购物",
-        "id": "如何在印度尼西亚购物",
+        "id": "如何在印度尼西亚购买",
         "nz": "如何在新西兰购物",
         "ky": "如何在开曼群岛买房"
       }

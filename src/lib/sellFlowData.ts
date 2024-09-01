@@ -5,52 +5,101 @@ export const sellSteps = [
 ];
 
 export const types = [
-  "House", //X
-  "Apartment", //X
-  "Cabin", //X
+  "House", //X House
+  "Apartment" /* */,
+  "Cabin" /* */,
   "Casa particular", //
-  "Castle", //X
-  "Commercial building", //X
-  "Container", // (cube)
+  "Castle", //X Castle
+  "Commercial building", //X City or Domain
+  "Container", // container
   "Cycladic home", //
-  "Earth home", //
+  "Earth home", // Home eco from Tabler
   "Farm", // argriculture
-  "Houseboat", //X
-  "Land", //landscape
-  "Mansion", //
-  "Tiny home", //
-  "Tower", //fort
-  "Warehouse", //X
-  "Windmill", //energy?
+  "Houseboat", //X Houseboat
+  "Land", //landscape or Forest
+  "Mansion", // Fort
+  "Tiny home", // Cottage?
+  "Tower", //Tower from tabler
+  "Warehouse", //Warehouse Tabler icons
+  "Windmill", //Windmill tabler
 ];
 
 export const features = [
   "None",
-  "Air-conditioning",
-  "Attic",
-  "Balcony",
-  "Basement",
-  "BBQ",
-  "Beach access",
-  "Car parking",
-  "Exercise Equipment",
-  "Fire Pit",
-  "Garage",
-  "Garden/Yard",
-  "Heating system",
-  "Home office",
-  "Hot Tub",
-  "Indoor Fireplace",
-  "Lake access",
-  "Laundry room",
-  "Outdoor Dining Area",
-  "Patio",
-  "Pool",
-  "Security system",
-  "Ski-in/Ski-out",
-  "Solar panels",
-  "Terrace",
-  "Walk-in closet",
+  "Air-conditioning", // Air vent lucide
+  "Attic", // Lamp Ceiling lucide
+  "Balcony", // Balcony MUI
+  "Basement", // Dungeon Font Awesome?
+  "BBQ" /* */,
+  "Beach access" /* */,
+  "Car parking", // Parking Lucide
+  "Exercise Equipment", // Dumbbell lucide
+  "Fire Pit", // Flame kindling lucide
+  "Garage", // Car Garage Tabler
+  "Garden/Yard", // Sprout lucide
+  "Heating system", // Heater lucide
+  "Home office", // office chair phosphor
+  "Hot Tub", // Hot tub MUI
+  "Indoor Fireplace", // Fireplace either mui or google
+  "Lake access", // fishing-rod font awesome
+  "Laundry room", // washing machine lucide
+  "Outdoor Dining Area", // maybe park phosphor
+  "Patio", // patio heater
+  "Pool", // pool MUI
+  "Security system", // cctv lucide
+  "Ski-in/Ski-out", // person skiing font awesome
+  "Solar panels", // solar panel tabler
+  "Terrace", // Deck google
+  "Walk-in closet", // Hanger Tabler
+];
+
+export const typesMap = [
+  { id: "house", name: "House" },
+  { id: "apartment", name: "Apartment" },
+  { id: "cabin", name: "Cabin" },
+  { id: "casa-particular", name: "Casa particular" },
+  { id: "castle", name: "Castle" },
+  { id: "commercial-building", name: "Commercial building" },
+  { id: "container", name: "Container" },
+  { id: "cycladic-home", name: "Cycladic home" },
+  { id: "earth-home", name: "Earth home" },
+  { id: "farm", name: "Farm" },
+  { id: "houseboat", name: "Houseboat" },
+  { id: "land", name: "Land" },
+  { id: "mansion", name: "Mansion" },
+  { id: "tiny-home", name: "Tiny hoome" },
+  { id: "tower", name: "Tower" },
+  { id: "warehouse", name: "Warehouse" },
+  { id: "windmill", name: "Windmill" },
+];
+
+export const featuresMap = [
+  { id: "none", name: "None" },
+  { id: "air-conditioning", name: "Air-conditioning" },
+  { id: "attic", name: "Attic" },
+  { id: "balcony", name: "Balcony" },
+  { id: "basement", name: "Basement" },
+  { id: "bbq", name: "BBQ" },
+  { id: "beach-access", name: "Beach access" }, // done
+  { id: "car-parking", name: "Car parking" },
+  { id: "exercise-equipment", name: "Exercise Equipment" },
+  { id: "fire-pit", name: "Fire Pit" },
+  { id: "garage", name: "Garage" },
+  { id: "garden-yard", name: "Garden/Yard" },
+  { id: "heating-system", name: "Heating system" },
+  { id: "home-office", name: "Home office" },
+  { id: "hot-tub", name: "Hot Tub" },
+  { id: "indoor-fireplace", name: "Indoor Fireplace" },
+  { id: "lake-access", name: "Lake access" },
+  { id: "laundry-room", name: "Laundry room" },
+  { id: "outdoor-dining-area", name: "Outdoor Dining Area" },
+  { id: "patio", name: "Patio" },
+  { id: "pool", name: "Pool" },
+  { id: "security-system", name: "Security system" },
+  { id: "ski-in-ski-out", name: "Ski-in/Ski-out" },
+  { id: "solar-panels", name: "Solar panels" },
+  { id: "terrace", name: "Terrace" },
+  { id: "walk-in-closet", name: "Walk-in closet" },
 ];
 
 export const rooms = ["Bedrooms", "Bathrooms", "Living rooms", "Kitchens"];

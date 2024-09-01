@@ -22,7 +22,7 @@ export default {
         "categories": "Montre-moi seulement",
         "features": "Montrez-moi des propriétés avec"
       },
-      "guides": "Guides",
+      "articles": "Articles",
       "construction": "Ce site est en construction.",
       "construction-sub": "Veuillez créer un compte et nous vous enverrons un e-mail dès qu'il sera prêt.",
       "sell-button-big": "Vendez votre propriété",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Tous droits réservés."
     }
   },
-  "guides": {
-    "title": "Comment acheter et vendre",
+  "articles": {
+    "title": "Articles",
     "buy": {
       "title": "Je ne sais pas comment acheter",
       "title-short": "Comment acheter",

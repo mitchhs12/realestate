@@ -23,6 +23,27 @@ export const formatPrice = (currency: string, value: number, decimals: number): 
   return formattedPrice;
 };
 
+export const calculateReadingTime = (text: string) => {
+  const wordsPerMinute = 200; // Average reading speed
+  const words = text.split(/\s+/).filter((word) => word).length; // Count words
+  const readingTimeMinutes = Math.ceil(words / wordsPerMinute); // Round up to the nearest minute
+  return readingTimeMinutes;
+};
+
+export const getReadingTime = (portableText: any) => {
+  const plainText = portableText
+    .map((block: any) => {
+      if (block._type === "block" && block.children) {
+        return block.children.map((child: any) => child.text).join(" ");
+      }
+      return "";
+    })
+    .join(" ");
+
+  const readingTime = calculateReadingTime(plainText);
+  return readingTime;
+};
+
 export const formatBrokenPrice = (
   currency: string,
   value: number,
@@ -195,6 +216,8 @@ export function getPath(headers: any) {
   // Fallback to root if the path cannot be determined
   return "/";
 }
+
+export const fetchTypeImage = () => {};
 
 export const resizeImageToMinDimensions = async (
   file: File,

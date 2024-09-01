@@ -22,7 +22,7 @@ export default {
         "categories": "Sadece bana göster",
         "features": "Bana şu özellikleri göster:"
       },
-      "guides": "Rehberler",
+      "articles": "Makaleler",
       "construction": "Bu site yapım aşamasındadır.",
       "construction-sub": "Lütfen bir hesap oluşturun, hazır olduğunda size e-posta göndereceğiz.",
       "sell-button-big": "Mülkünüzü satın",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Tüm hakları saklıdır."
     }
   },
-  "guides": {
-    "title": "Nasıl Alınır ve Satılır",
+  "articles": {
+    "title": "Makaleler",
     "buy": {
       "title": "Nasıl satın alacağımı bilmiyorum",
       "title-short": "Nasıl Satın Alınır",

@@ -10,7 +10,7 @@ import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/Icons/icons";
 import { useRouter } from "next/navigation";
 import { useCurrentLocale } from "@/locales/client";
 import { ChevronLeft } from "lucide-react";
@@ -20,7 +20,7 @@ import { I18nProviderClient } from "@/locales/client";
 import FiltersDialog from "@/components/FiltersDialog";
 
 interface Props {
-  guides: string;
+  articles: string;
   searchPlaceholder: string;
   searchText: string;
   construction: string;
@@ -52,7 +52,7 @@ interface Props {
 }
 
 export default function Header({
-  guides,
+  articles,
   searchPlaceholder,
   searchText,
   construction,
@@ -89,7 +89,7 @@ export default function Header({
 
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
-  const isGuidesPage = pathname.includes("/guides");
+  const isGuidesPage = pathname.includes("/articles");
 
   const [previousPath, setPreviousPath] = useState("");
 
@@ -142,22 +142,25 @@ export default function Header({
                 </h1>
               </div>
             </Button>
-            {pathname === "/" && (
-              // <Link href="/guides">
+            {(pathname === "/" || pathname.includes("articles")) && (
               <Button
+                asChild
                 size={"largeIcon"}
                 variant="outline"
-                className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                className="flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
                 disabled={true}
               >
-                <div className="flex justify-center text-center items-center gap-2 p-1">
-                  <div className="flex justify-center items-center">
-                    <Icons.book_icon width={"22"} height={"22"} />
+                <Link href="/articles">
+                  <div className="flex justify-center text-center items-center gap-2 p-1">
+                    <div className="flex justify-center items-center">
+                      <Icons.book_icon width={"22"} height={"22"} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>
+                      {articles}
+                    </h1>
                   </div>
-                  <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>{guides}</h1>
-                </div>
+                </Link>
               </Button>
-              // </Link>
             )}
           </div>
         )}

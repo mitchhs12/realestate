@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { signIn } from "next-auth/react";
 import { useState, useEffect, useContext } from "react";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/Icons/icons";
 import { useTheme } from "next-themes";
 import { useScopedI18n } from "@/locales/client";
 import { QueryContext } from "@/context/QueryContext";

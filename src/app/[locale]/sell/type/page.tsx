@@ -5,7 +5,7 @@ import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 import { getScopedI18n } from "@/locales/server";
-import { types } from "@/lib/sellFlowData";
+import { typesMap } from "@/lib/sellFlowData";
 import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { getPath } from "@/lib/utils";
@@ -35,7 +35,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const title = t("title");
   const subtitle = t("subtitle");
   const options = Array.from({ length: 17 }, (_, index) => ({
-    id: types[index],
+    id: typesMap[index].id,
+    name: typesMap[index].name,
     translation: t(`options.${index}` as keyof typeof t),
   }));
 

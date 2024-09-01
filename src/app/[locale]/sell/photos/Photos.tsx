@@ -5,7 +5,7 @@ import { Form, FormItem, FormField, FormControl } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/Icons/icons";
 import { getPhotoUrls, deletePhoto } from "@/app/[locale]/sell/actions";
 import { uploadPhotos } from "@/app/[locale]/sell/sell-actions";
 import { ReloadIcon, TrashIcon } from "@radix-ui/react-icons";

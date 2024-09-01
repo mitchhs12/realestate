@@ -22,7 +22,7 @@ export default {
         "categories": "나에게만 보여줘",
         "features": "나에게 속성을 보여주세요"
       },
-      "guides": "가이드",
+      "articles": "조항",
       "construction": "이 사이트는 현재 공사 중입니다.",
       "construction-sub": "계정을 만들어 주세요. 계정이 준비되면 이메일로 알려드리겠습니다.",
       "sell-button-big": "귀하의 부동산을 판매하세요",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. 모든 권리 보유."
     }
   },
-  "guides": {
-    "title": "구매 및 판매 방법",
+  "articles": {
+    "title": "조항",
     "buy": {
       "title": "구매방법을 모르겠어요",
       "title-short": "구매 방법",

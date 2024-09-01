@@ -22,7 +22,7 @@ export default {
         "categories": "Wys my net",
         "features": "Wys my eiendomme met"
       },
-      "guides": "Gidse",
+      "articles": "Artikels",
       "construction": "Hierdie webwerf is onder konstruksie.",
       "construction-sub": "Skep asseblief 'n rekening, en ons sal vir jou 'n e-pos stuur wanneer dit gereed is.",
       "sell-button-big": "Verkoop jou eiendom",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideaal. Alle regte voorbehou."
     }
   },
-  "guides": {
-    "title": "Hoe om te koop en te verkoop",
+  "articles": {
+    "title": "Artikels",
     "buy": {
       "title": "Ek weet nie hoe om te koop nie",
       "title-short": "Hoe om te koop",

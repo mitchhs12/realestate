@@ -22,7 +22,7 @@
         "categories": "表示のみ",
         "features": "次の物件を表示"
       },
-      "guides": "ガイド",
+      "articles": "記事",
       "construction": "このサイトは現在構築中です。",
       "construction-sub": "アカウントを作成してください。準備が整い次第、メールをお送りします。",
       "sell-button-big": "不動産を売る",
@@ -159,8 +159,8 @@
       "allRightsReserved": "© 2024 Viva Ideal。無断複写・転載を禁じます。"
     }
   },
-  "guides": {
-    "title": "購入と販売の方法",
+  "articles": {
+    "title": "記事",
     "buy": {
       "title": "購入方法が分からない",
       "title-short": "購入方法",

@@ -17,6 +17,7 @@ const config = {
       fontFamily: {
         montserrat: ["montserrat"],
         comfortaa: ["comfortaa"],
+        charter: ["charter"],
         poppins: ["poppins"],
       },
       height: {
@@ -96,7 +97,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
 
 export default config;

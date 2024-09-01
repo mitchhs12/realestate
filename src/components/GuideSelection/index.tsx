@@ -1,4 +1,4 @@
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/Icons/icons";
 import { Button } from "@/components/ui/button";
 import { getFlagEmoji } from "@/lib/utils";
 import Link from "next/link";

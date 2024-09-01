@@ -22,7 +22,7 @@ export default {
         "categories": "Tunjukkan padaku saja",
         "features": "Tunjukkan saya properti dengan"
       },
-      "guides": "Panduan",
+      "articles": "Artikel",
       "construction": "Situs ini sedang dalam pembangunan.",
       "construction-sub": "Silakan buat akun, dan kami akan mengirimkan email kepada Anda ketika akun sudah siap.",
       "sell-button-big": "Jual properti Anda",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Semua hak dilindungi undang-undang."
     }
   },
-  "guides": {
-    "title": "Cara Membeli dan Menjual",
+  "articles": {
+    "title": "Artikel",
     "buy": {
       "title": "Saya tidak tahu cara membeli",
       "title-short": "Cara Membeli",

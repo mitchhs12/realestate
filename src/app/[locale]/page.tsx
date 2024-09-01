@@ -7,6 +7,7 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { getRecommended, getNew, getCheapest } from "./actions";
 import { locationImageIds } from "@/lib/validations";
+import { Newspaper, Gem, HandCoins } from "lucide-react";
 
 export default async function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
@@ -94,7 +95,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       <div className="flex flex-col justify-start h-full w-full bg-background">
         <section className="flex flex-col justify-center items-center w-full h-full">
           <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-8xl">
-            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
+            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
               {t("cities")}
             </h2>
             <Locations countries={countries} />
@@ -102,7 +103,8 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full">
           <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
-            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
+            <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
+              <Gem size={24} strokeWidth={1.5} />
               {t("recommended")}
             </h2>
             <Listings homes={recommended} />
@@ -110,7 +112,8 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full">
           <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
-            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
+            <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
+              <HandCoins size={26} strokeWidth={1.5} />
               {t("cheapest")}
             </h2>
             <Listings homes={cheapest} />
@@ -118,7 +121,8 @@ export default async function Home({ params: { locale } }: { params: { locale: L
         </section>
         <section className="flex flex-col justify-center items-center w-full h-full">
           <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
-            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg font-normal">
+            <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
+              <Newspaper size={24} strokeWidth={1.5} />
               {t("newest")}
             </h2>
             <Listings homes={newest} />

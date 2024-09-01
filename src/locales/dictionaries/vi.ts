@@ -22,7 +22,7 @@ export default {
         "categories": "Chỉ cho tôi xem",
         "features": "Hiển thị cho tôi các thuộc tính với"
       },
-      "guides": "Hướng dẫn",
+      "articles": "Bài viết",
       "construction": "Trang web này đang được xây dựng.",
       "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi email cho bạn khi tài khoản đã sẵn sàng.",
       "sell-button-big": "Bán tài sản của bạn",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền."
     }
   },
-  "guides": {
-    "title": "Cách mua và bán",
+  "articles": {
+    "title": "Bài viết",
     "buy": {
       "title": "Tôi không biết cách mua",
       "title-short": "Cách mua",

@@ -15,7 +15,7 @@ export default async function MainLayout({ children }: Props) {
   return (
     <>
       <Header
-        guides={h("guides")}
+        articles={h("articles")}
         searchPlaceholder={h("search.placeholder")}
         searchText={h("search.search-button")}
         construction={h("construction")}

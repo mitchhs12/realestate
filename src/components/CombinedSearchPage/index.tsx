@@ -118,6 +118,25 @@ export default function CombinedSearchPage({
 
   return (
     <>
+      <section className={`flex w-full h-full ${!mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
+        {homesGeoJson ? (
+          <MapComponent
+            coordinates={coordinates}
+            existingBounds={bounds}
+            setBounds={setBounds}
+            homesGeoJson={homesGeoJson}
+            isMapLoading={isMapLoading}
+            setIsMapLoading={setIsMapLoading}
+            initZoom={initZoom}
+          />
+        ) : (
+          // <Skeleton className="w-full h-full" />
+          <div className="flex w-full h-full items-center justify-center text-lg lg:text-3xl">
+            <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
+            Loading...
+          </div>
+        )}
+      </section>
       <section
         className={`hidden md:flex flex-col w-full h-full ${
           mapFocused && "md:hidden"
@@ -172,25 +191,7 @@ export default function CombinedSearchPage({
           </DrawerContent>
         </Drawer>
       </div>
-      <section className={`flex w-full h-full ${!mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
-        {homesGeoJson ? (
-          <MapComponent
-            coordinates={coordinates}
-            existingBounds={bounds}
-            setBounds={setBounds}
-            homesGeoJson={homesGeoJson}
-            isMapLoading={isMapLoading}
-            setIsMapLoading={setIsMapLoading}
-            initZoom={initZoom}
-          />
-        ) : (
-          // <Skeleton className="w-full h-full" />
-          <div className="flex w-full h-full items-center justify-center text-lg lg:text-3xl">
-            <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
-            Loading...
-          </div>
-        )}
-      </section>
+
       <FloatingButton showMap={showMap} showList={showList} />
     </>
   );

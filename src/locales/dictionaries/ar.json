@@ -22,7 +22,7 @@
         "categories": "أرني فقط",
         "features": "أظهر لي العقارات مع"
       },
-      "guides": "أدلة",
+      "articles": "المقالات",
       "construction": "هذا الموقع قيد الإنشاء.",
       "construction-sub": "يرجى إنشاء حساب، وسنرسل إليك بريدًا إلكترونيًا عندما يكون جاهزًا.",
       "sell-button-big": "بيع ممتلكاتك",
@@ -159,8 +159,8 @@
       "allRightsReserved": "© 2024 Viva Ideal. جميع الحقوق محفوظة."
     }
   },
-  "guides": {
-    "title": "كيفية الشراء والبيع",
+  "articles": {
+    "title": "المقالات",
     "buy": {
       "title": "لا أعرف كيفية الشراء",
       "title-short": "كيفية الشراء",

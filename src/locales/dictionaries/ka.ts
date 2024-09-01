@@ -22,7 +22,7 @@ export default {
         "categories": "მაჩვენე მხოლოდ",
         "features": "მაჩვენე თვისებები"
       },
-      "guides": "გიდები",
+      "articles": "სტატიები",
       "construction": "ეს საიტი მშენებლობის პროცესშია.",
       "construction-sub": "გთხოვთ, შექმენით ანგარიში და ჩვენ გამოგიგზავნით ელფოსტას, როცა ის მზად იქნება.",
       "sell-button-big": "გაყიდე შენი ქონება",
@@ -159,8 +159,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. ყველა უფლება დაცულია."
     }
   },
-  "guides": {
-    "title": "როგორ ვიყიდოთ და გავყიდოთ",
+  "articles": {
+    "title": "სტატიები",
     "buy": {
       "title": "არ ვიცი როგორ ვიყიდო",
       "title-short": "როგორ ვიყიდოთ",
