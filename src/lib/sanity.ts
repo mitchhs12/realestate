@@ -2,7 +2,7 @@ import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
 export const client = createClient({
-  projectId: "cik4bgx3",
+  projectId: "71vkn2m9",
   dataset: "production",
   useCdn: false, // we don't need this because next-14 has built in caching
 });
