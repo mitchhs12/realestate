@@ -346,9 +346,13 @@ export type BlogType = {
 export type FullBlog = {
   title: string;
   titleImage: any;
-  author: string;
   content: any;
   currentSlug: string;
+  author: {
+    name: string;
+    bio: string;
+    image: any;
+  };
 };
 
 export type LanguageType =
