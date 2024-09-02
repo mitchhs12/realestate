@@ -43,16 +43,9 @@ const Logo = ({
       d="M316.362 524.559C317.447 530.264 316.644 537.49 316.634 543.363L316.536 584.397L316.54 732.865Q281.303 732.346 246.063 732.537C245.776 726.531 246.125 720.511 246.197 714.502L246.267 687.484L246.211 586.943C254.612 578.752 263.74 571.087 272.445 563.203C286.824 550.183 301.307 536.789 316.362 524.559Z"
     />
     <defs>
-      <linearGradient
-        id="gradient_0"
-        gradientUnits="userSpaceOnUse"
-        x1="529.05945"
-        y1="777.80322"
-        x2="509.065"
-        y2="400.91287"
-      >
-        <stop offset="0" stopColor={dark ? darkGradientStartColor : gradientStartColor} />
-        <stop offset="1" stopColor={dark ? darkGradientEndColor : gradientEndColor} />
+      <linearGradient id="gradient_0" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor={dark ? darkGradientStartColor : gradientStartColor} />
+        <stop offset="100%" stopColor={dark ? darkGradientEndColor : gradientEndColor} />
       </linearGradient>
     </defs>
     <path
