@@ -90,6 +90,7 @@ export default function Header({
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
   const isGuidesPage = pathname.includes("/articles");
+  const isStudioPage = pathname.includes("/studio");
 
   const [previousPath, setPreviousPath] = useState("");
 
@@ -100,7 +101,7 @@ export default function Header({
   return (
     <>
       <header
-        className={`sticky top-0 flex ${
+        className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "justify-center shadow-lg dark:shadow-white/5 xs:justify-between"
         } items-center h-[86px] z-[40] px-6 bg-background`}
       >

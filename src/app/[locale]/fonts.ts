@@ -1,4 +1,4 @@
-import { Inter, Montserrat, Comfortaa, Poppins } from "next/font/google";
+import { Inter, Montserrat, Poppins } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -10,13 +10,6 @@ export const montserrat = Montserrat({
   display: "swap",
   style: ["normal", "italic"],
   weight: ["400", "500", "600", "700"],
-});
-
-export const comfortaa = Comfortaa({
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal"],
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const poppins = Poppins({
