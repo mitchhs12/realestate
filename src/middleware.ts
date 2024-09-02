@@ -9,7 +9,11 @@ const I18nMiddleware = createI18nMiddleware({
 });
 
 export function middleware(request: NextRequest) {
-  return I18nMiddleware(request);
+  console.log("Request URL:", request.url);
+  const response = I18nMiddleware(request);
+  console.log("Response URL:", response.url);
+
+  return response;
 }
 
 export const config = {
