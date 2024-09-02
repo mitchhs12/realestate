@@ -34,7 +34,6 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { HomeType } from "@/lib/validations";
-import { encode } from "@jsquash/avif";
 
 interface Props {
   currentHome: HomeType | null;
