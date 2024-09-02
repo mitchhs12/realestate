@@ -16,7 +16,7 @@ const config = {
     extend: {
       fontFamily: {
         montserrat: ["montserrat"],
-        charter: ["charter"],
+        // charter: ["charter"],
         poppins: ["poppins"],
       },
       height: {
