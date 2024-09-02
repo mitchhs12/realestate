@@ -9,13 +9,9 @@ const I18nMiddleware = createI18nMiddleware({
 });
 
 export function middleware(request: NextRequest) {
-  console.log("Request URL:", request.url);
-  const response = I18nMiddleware(request);
-  console.log("Response URL:", response.url);
-
-  return response;
+  return I18nMiddleware(request);
 }
 
 export const config = {
-  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|studio|auth|login|callback|logout).*)"],
+  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|[^/]+/studio).*)"],
 };

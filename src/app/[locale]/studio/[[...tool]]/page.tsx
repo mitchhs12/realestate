@@ -6,9 +6,9 @@
  * You can learn more about the next-sanity package here:
  * https://github.com/sanity-io/next-sanity
  */
+
 import React from "react";
 import { setStaticParamsLocale } from "next-international/server";
-import { LanguageType } from "@/lib/validations";
 import { NextStudio } from "next-sanity/studio";
 import config from "../../../../../sanity.config";
 import { Metadata, Viewport } from "next";
@@ -30,7 +30,7 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 
-export default function StudioPage({ params: { locale } }: { params: { locale: LanguageType } }) {
+export default function StudioPage({ params: { locale } }: { params: { locale: string } }) {
   setStaticParamsLocale(locale);
   return <NextStudio config={config} />;
 }
