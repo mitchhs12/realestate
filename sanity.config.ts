@@ -23,6 +23,7 @@ export default defineConfig({
   projectId,
   dataset,
   icon: CustomLogo,
+  ignoreBrowserWarning: true,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [

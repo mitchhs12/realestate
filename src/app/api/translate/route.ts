@@ -27,7 +27,8 @@ if (!authClient) {
   throw new Error("Failed to create authClient");
 }
 
-const translationClient = new TranslationServiceClient({ authClient: authClient });
+//@ts-ignore
+const translationClient = new TranslationServiceClient({ googleAuthOptions: authClient });
 
 export async function POST(req: NextRequest) {
   try {
