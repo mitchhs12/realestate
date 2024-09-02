@@ -125,9 +125,7 @@ export default function Header({
             >
               <div className="flex justify-center items-center gap-1">
                 <div className="flex justify-center items-center">
-                  <div className="flex">
-                    <Logo width={"40"} height={"40"} />
-                  </div>
+                  <div className="flex">{!isStudioPage && <Logo width={"40"} height={"40"} />}</div>
                   {pathname !== "/" && (
                     <div className="flex sm:hidden">
                       <ChevronLeft />

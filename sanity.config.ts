@@ -14,15 +14,11 @@ import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 import Logo from "@/components/ui/logo";
 
-const CustomLogo = () => {
-  return Logo({ width: "100px", height: "100px", circle: true });
-};
-
 export default defineConfig({
   basePath: "/studio",
   projectId,
   dataset,
-  icon: CustomLogo,
+  icon: Logo,
   ignoreBrowserWarning: true,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
