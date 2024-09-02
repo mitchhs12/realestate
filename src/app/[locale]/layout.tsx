@@ -3,7 +3,7 @@ import { poppins } from "./fonts";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
 import { QueryContextProvider } from "@/context/QueryContext";
 import { LocaleContextProvider } from "@/context/LocaleContext";
@@ -54,17 +54,17 @@ export default async function RootLayout({
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <body className={`${poppins.className} h-full`}>
-        <SessionProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
-            <LocaleContextProvider currencies={currencies} lang={params.locale} currency={currency}>
-              <QueryContextProvider>
-                <MainLayout>{children}</MainLayout>
-              </QueryContextProvider>
-            </LocaleContextProvider>
-          </ThemeProvider>
-          <SpeedInsights />
-          <Analytics />
-        </SessionProvider>
+        {/* <SessionProvider> */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
+          <LocaleContextProvider currencies={currencies} lang={params.locale} currency={currency}>
+            <QueryContextProvider>
+              <MainLayout>{children}</MainLayout>
+            </QueryContextProvider>
+          </LocaleContextProvider>
+        </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
+        {/* </SessionProvider> */}
       </body>
     </html>
   );
