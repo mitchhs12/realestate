@@ -8,7 +8,7 @@
  */
 import React from "react";
 import { setStaticParamsLocale } from "next-international/server";
-
+import { LanguageType } from "@/lib/validations";
 import { NextStudio } from "next-sanity/studio";
 import config from "../../../../../sanity.config";
 import { Metadata, Viewport } from "next";
@@ -30,11 +30,7 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 
-export default function StudioPage({ params: { locale } }) {
+export default function StudioPage({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
-  return (
-    <div className="w-full h-[900px] min-h-screen-minus-header-dvh">
-      <NextStudio config={config} />
-    </div>
-  );
+  return <NextStudio config={config} />;
 }
