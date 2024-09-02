@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { HomeType, homeSchema } from "@/lib/validations";
-// import { auth } from "@/auth";
+import { auth } from "@/auth";
 
 // Admin Page Actions
 
