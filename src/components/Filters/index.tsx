@@ -15,24 +15,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useContext, useEffect, useState } from "react";
 import { I18nProviderClient } from "@/locales/client";
-import {
-  SlidersHorizontal,
-  House,
-  Sparkles,
-  DollarSign,
-  DoorOpen,
-  BedDouble,
-  Bath,
-  Sofa,
-  CookingPot,
-} from "lucide-react";
+import { Filter, House, Sparkles, DollarSign, DoorOpen, BedDouble, Bath, Sofa, CookingPot } from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
 import Categories from "@/components/Filters/Categories";
 import { LocaleContext } from "@/context/LocaleContext";
 import Rooms from "./Rooms";
-import { features } from "process";
 
 interface Props {
   filters: string;
@@ -95,9 +84,9 @@ export default function Filters({
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button className="h-12" variant={"outline"} disabled={!isReady}>
+        <Button className="h-12 text-md font-medium" variant={"outline"} disabled={!isReady}>
           <div className="inline-flex items-center gap-2">
-            <SlidersHorizontal width={18} height={18} strokeWidth={1.5} />
+            <Filter width={20} height={20} strokeWidth={1.75} />
             <span className="items-center">{filters}</span>
           </div>
         </Button>

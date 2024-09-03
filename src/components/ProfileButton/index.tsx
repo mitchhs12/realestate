@@ -16,7 +16,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
-import { PersonIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { CircleUser, Menu } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
@@ -86,7 +86,7 @@ export function ProfileButton({
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button className="h-12" variant="outline">
-          <HamburgerMenuIcon className="hidden sm:flex mr-2 ml-1 h-4 w-4" />
+          <Menu width={20} height={20} strokeWidth={1.75} className="hidden sm:flex mr-2 ml-1" />
           {user && user.email ? (
             <Avatar className="h-6 w-6">
               {user.image ? (
@@ -96,7 +96,7 @@ export function ProfileButton({
               )}
             </Avatar>
           ) : session.status !== "loading" ? (
-            <PersonIcon className="h-6 w-6" />
+            <CircleUser width={24} height={24} strokeWidth={1.5} />
           ) : (
             <Skeleton className="h-6 w-6 rounded-full" />
           )}
