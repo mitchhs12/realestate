@@ -82,6 +82,8 @@ export function ProfileButton({
       .toUpperCase();
   };
 
+  console.log("user image", user?.image);
+
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>

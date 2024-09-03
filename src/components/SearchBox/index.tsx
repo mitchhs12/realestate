@@ -190,9 +190,9 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                               handleSearch(entry.Text, entry.PlaceId);
                             }}
                           >
-                            <p className="flex gap-x-2 px-2 justify-start items-center">
-                              <Search size={16} />
-                              <span className="block truncate">{entry.Text}</span>
+                            <p className="flex gap-x-3 px-2 justify-start items-center">
+                              <Search size={16} className="text-gray-400" />
+                              <span className="block truncate text-gray-400">{entry.Text}</span>
                             </p>
                           </div>
                         ))}
