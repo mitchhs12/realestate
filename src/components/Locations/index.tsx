@@ -124,7 +124,6 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                       "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px, (max-width: 1024px) 1024px"
                     }
                     fill={true}
-                    priority={true}
                     onLoad={() => handleImageLoad(getUrl(country.folder, country.city.id))}
                   />
                   <div className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg">
@@ -165,7 +164,6 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                       alt="Location Image"
                       sizes={"(max-width: 200px), (max-height: 200px)"}
                       fill={true}
-                      priority={true}
                       onLoad={() => handleImageLoad(getUrl(country.folder, neighborhood.id))}
                     />
 
@@ -229,7 +227,6 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             alt="Location Image"
             fill={true}
             className="object-cover rounded-lg absolute inset-0 z-0" // opacity-65 dark:opacity-60"
-            priority={true}
             sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
