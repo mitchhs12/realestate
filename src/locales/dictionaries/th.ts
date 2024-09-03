@@ -25,7 +25,7 @@ export default {
       "articles": "บทความ",
       "construction": "เว็บไซต์นี้กำลังอยู่ในระหว่างการก่อสร้าง",
       "construction-sub": "โปรดสร้างบัญชี และเราจะส่งอีเมลถึงคุณเมื่อพร้อม",
-      "sell-button-big": "ขายทรัพย์สินของคุณ",
+      "sell-button-big": "ขายอสังหาฯ",
       "sell-button-small": "ขาย",
       "profile-button": {
         "greeting": "สวัสดี",

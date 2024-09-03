@@ -25,7 +25,7 @@ export default {
       "articles": "조항",
       "construction": "이 사이트는 현재 공사 중입니다.",
       "construction-sub": "계정을 만들어 주세요. 계정이 준비되면 이메일로 알려드리겠습니다.",
-      "sell-button-big": "귀하의 부동산을 판매하세요",
+      "sell-button-big": "부동산 판매",
       "sell-button-small": "팔다",
       "profile-button": {
         "greeting": "안녕",

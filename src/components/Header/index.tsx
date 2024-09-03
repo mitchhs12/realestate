@@ -17,6 +17,7 @@ import { QueryContext } from "@/context/QueryContext";
 import Filters from "@/components/Filters";
 import { I18nProviderClient } from "@/locales/client";
 import FiltersDialog from "@/components/FiltersDialog";
+import { HousePlus } from "lucide-react";
 
 interface Props {
   articles: string;
@@ -129,7 +130,7 @@ export default function Header({
                 <h1
                   className={`${poppins.className} ${
                     isSearchPage ? "hidden 2xl:flex" : "hidden sm:flex"
-                  } text-lg pr-2 font-normal align-middle`}
+                  } text-lg pr-2 font-medium align-middle`}
                 >
                   Viva Ideal
                 </h1>
@@ -148,7 +149,9 @@ export default function Header({
                     <div className="flex justify-center items-center">
                       <Icons.book_icon width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle`}>{articles}</h1>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                      {articles}
+                    </h1>
                   </div>
                 </Link>
               </Button>
@@ -204,12 +207,12 @@ export default function Header({
           >
             {!isSearchPage && (
               <Button
-                className="flex h-12 gap-2 items-center"
+                className="flex h-12 gap-2 items-center text-sm font-medium"
                 onClick={() => {
                   user ? router.push("/sell") : openSignUpModal();
                 }}
               >
-                <Icons.sell_home />
+                <HousePlus width={22} height={22} strokeWidth={2} />
                 <span className="flex md:hidden">{sellButtonSmall}</span>
                 <span className="hidden md:inline">{sellButtonBig}</span>
               </Button>

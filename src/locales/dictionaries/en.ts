@@ -25,7 +25,7 @@ export default {
       "articles": "Articles",
       "construction": "This site is under construction.",
       "construction-sub": "Please create an account, and we'll email you when it's ready.",
-      "sell-button-big": "Sell your property",
+      "sell-button-big": "Sell Property",
       "sell-button-small": "Sell",
       "profile-button": {
         "greeting": "Hi",
@@ -151,7 +151,7 @@ export default {
         "Carrasco"
       ]
     },
-    "cities": "Get started by selecting a city destrict below.",
+    "cities": "Get started by selecting a city destrict below",
     "recommended": "Recommended",
     "cheapest": "Cheapest",
     "newest": "Newest",

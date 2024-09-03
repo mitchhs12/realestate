@@ -25,7 +25,7 @@ export default {
       "articles": "المقالات",
       "construction": "هذا الموقع قيد الإنشاء.",
       "construction-sub": "يرجى إنشاء حساب، وسنرسل إليك بريدًا إلكترونيًا عندما يكون جاهزًا.",
-      "sell-button-big": "بيع ممتلكاتك",
+      "sell-button-big": "بيع الممتلكات",
       "sell-button-small": "يبيع",
       "profile-button": {
         "greeting": "أهلاً",

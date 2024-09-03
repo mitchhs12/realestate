@@ -25,7 +25,7 @@ export default {
       "articles": "Artículos",
       "construction": "Este sitio está en construcción.",
       "construction-sub": "Cree una cuenta y le enviaremos un correo electrónico cuando esté lista.",
-      "sell-button-big": "Vende tu propiedad",
+      "sell-button-big": "Vender propiedad",
       "sell-button-small": "Vender",
       "profile-button": {
         "greeting": "Hola",

@@ -20,7 +20,7 @@ interface Props {
   home: HomeType | null;
   isLoading?: boolean;
   types: { id: string; translation: string }[];
-  loginToViewPrice: string;
+  loginToViewPrice?: string;
 }
 
 export default function ResizableCard({ home, isLoading, types, loginToViewPrice }: Props) {

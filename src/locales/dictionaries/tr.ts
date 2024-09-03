@@ -25,7 +25,7 @@ export default {
       "articles": "Makaleler",
       "construction": "Bu site yapım aşamasındadır.",
       "construction-sub": "Lütfen bir hesap oluşturun, hazır olduğunda size e-posta göndereceğiz.",
-      "sell-button-big": "Mülkünüzü satın",
+      "sell-button-big": "Emlak Satışı",
       "sell-button-small": "Satmak",
       "profile-button": {
         "greeting": "MERHABA",

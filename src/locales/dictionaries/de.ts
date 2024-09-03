@@ -25,7 +25,7 @@ export default {
       "articles": "Artikel",
       "construction": "Diese Site befindet sich im Aufbau.",
       "construction-sub": "Bitte erstellen Sie ein Konto. Wir senden Ihnen eine E-Mail, wenn es fertig ist.",
-      "sell-button-big": "Verkaufen Sie Ihre Immobilie",
+      "sell-button-big": "Immobilie verkaufen",
       "sell-button-small": "Verkaufen",
       "profile-button": {
         "greeting": "Hallo",

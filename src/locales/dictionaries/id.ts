@@ -25,7 +25,7 @@ export default {
       "articles": "Artikel",
       "construction": "Situs ini sedang dalam pembangunan.",
       "construction-sub": "Silakan buat akun, dan kami akan mengirimkan email kepada Anda ketika akun sudah siap.",
-      "sell-button-big": "Jual properti Anda",
+      "sell-button-big": "Jual Properti",
       "sell-button-small": "Menjual",
       "profile-button": {
         "greeting": "Hai",
