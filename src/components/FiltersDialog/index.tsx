@@ -89,14 +89,14 @@ export default function FiltersDialog({
   return (
     <>
       <Button
-        variant={"outline"}
-        className="h-12 font-medium text-md"
+        variant={"secondary"}
+        className="h-12 rounded-r-full"
         disabled={!isReady}
         onClick={() => setDialogOpen(true)}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pr-1">
           <Filter className="items-center" width={20} height={20} strokeWidth={1.75} />
-          <span className="items-center">{filters}</span>
+          <span className="hidden sm:flex items-center">{filters}</span>
         </div>
       </Button>
 

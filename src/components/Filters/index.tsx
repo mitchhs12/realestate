@@ -84,7 +84,7 @@ export default function Filters({
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button className="h-12 text-md font-medium" variant={"outline"} disabled={!isReady}>
+        <Button className="h-12 text-md rounded-l-none rounded-r-full" variant={"secondary"} disabled={!isReady}>
           <div className="inline-flex items-center gap-2">
             <Filter width={20} height={20} strokeWidth={1.75} />
             <span className="items-center">{filters}</span>

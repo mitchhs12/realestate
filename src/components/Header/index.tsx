@@ -159,39 +159,25 @@ export default function Header({
           </div>
         )}
         {isSearchPage && (
-          <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
-            <div className="flex flex-grow">
-              <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
-            </div>
-            <div className="hidden sm:flex">
-              <Filters
-                filters={filters}
-                locale={locale}
-                categories={categories}
-                categoriesSub={categoriesSub}
-                features={features}
-                featuresSub={featuresSub}
-                rooms={rooms}
-                roomsSub={roomsSub}
-                apply={apply}
-                reset={reset}
-                selectAll={selectAll}
-                deselectAll={deselectAll}
-              />
-            </div>
-            <div className="flex sm:hidden">
-              <FiltersDialog
-                filters={filters}
-                locale={locale}
-                categories={categories}
-                features={features}
-                rooms={rooms}
-                apply={apply}
-                reset={reset}
-                selectAll={selectAll}
-                deselectAll={deselectAll}
-              />
-            </div>
+          // <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
+          <div className="flex flex-grow">
+            <SearchBox
+              isSmallMap={false}
+              placeholder={searchPlaceholder}
+              text={searchText}
+              filters={filters}
+              locale={locale}
+              categories={categories}
+              categoriesSub={categoriesSub}
+              features={features}
+              featuresSub={featuresSub}
+              rooms={rooms}
+              roomsSub={roomsSub}
+              apply={apply}
+              reset={reset}
+              selectAll={selectAll}
+              deselectAll={deselectAll}
+            />
           </div>
         )}
 

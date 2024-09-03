@@ -9,6 +9,8 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { Search } from "lucide-react";
+import Filters from "@/components/Filters";
+import FiltersDialog from "@/components/FiltersDialog";
 
 interface Result {
   Text: string;
@@ -20,9 +22,38 @@ interface Props {
   setSearchResult?: (text: string, placeId: string) => void;
   text: string;
   placeholder: string;
+  filters?: string;
+  locale?: string;
+  categories?: string;
+  categoriesSub?: string;
+  features?: string;
+  featuresSub?: string;
+  rooms?: string;
+  roomsSub?: string;
+  apply?: string;
+  reset?: string;
+  selectAll?: string;
+  deselectAll?: string;
 }
 
-export default function SearchBox({ isSmallMap = false, setSearchResult, text, placeholder }: Props) {
+export default function SearchBox({
+  isSmallMap = false,
+  setSearchResult,
+  text,
+  placeholder,
+  filters,
+  locale,
+  categories,
+  categoriesSub,
+  features,
+  featuresSub,
+  rooms,
+  roomsSub,
+  apply,
+  reset,
+  selectAll,
+  deselectAll,
+}: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
@@ -151,13 +182,13 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
           <Popover open={popoverOpen}>
             <div className="flex justify-center items-center w-full gap-x-2">
               <div className="relative w-full justify-center items-center">
-                <Search size={16} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <Search size={16} className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <PopoverTrigger asChild>
                   <Input
                     ref={inputRef}
                     type="search"
                     placeholder={placeholder}
-                    className="z-100 bg-popover text-base pl-11" // Add padding-left to create space for the icon
+                    className="rounded-full bg-popover text-base pl-12" // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -172,25 +203,71 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                     }}
                   />
                 </PopoverTrigger>
+                {filters &&
+                  locale &&
+                  categories &&
+                  categoriesSub &&
+                  features &&
+                  featuresSub &&
+                  rooms &&
+                  roomsSub &&
+                  apply &&
+                  reset &&
+                  selectAll &&
+                  deselectAll && (
+                    <>
+                      <div className="absolute inset-y-0 right-0 flex items-center">
+                        <div className="hidden sm:flex">
+                          <Filters
+                            filters={filters}
+                            locale={locale}
+                            categories={categories}
+                            categoriesSub={categoriesSub}
+                            features={features}
+                            featuresSub={featuresSub}
+                            rooms={rooms}
+                            roomsSub={roomsSub}
+                            apply={apply}
+                            reset={reset}
+                            selectAll={selectAll}
+                            deselectAll={deselectAll}
+                          />
+                        </div>
+                        <div className="flex sm:hidden">
+                          <FiltersDialog
+                            filters={filters}
+                            locale={locale}
+                            categories={categories}
+                            features={features}
+                            rooms={rooms}
+                            apply={apply}
+                            reset={reset}
+                            selectAll={selectAll}
+                            deselectAll={deselectAll}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
                 {(!loading || results.length > 0) && (
                   <div className="w-full">
                     <PopoverContent
                       ref={popoverRef}
                       sideOffset={2}
                       onOpenAutoFocus={(e) => e.preventDefault()}
-                      className="PopoverContent"
+                      className="PopoverContent rounded-3xl"
                     >
                       {results.length === 0 && "No results found."}
                       {results.length > 0 &&
                         results.map((entry: any, index) => (
                           <div
                             key={index}
-                            className="py-1 md:py-2 cursor-pointer hover:bg-muted rounded-md text-sm md:text-base"
+                            className={`${index === 0 ? (results.length === 1 ? "rounded-2xl" : "rounded-t-2xl") : index === results.length - 1 && "rounded-b-2xl"} py-1 md:py-2 cursor-pointer hover:bg-muted text-sm md:text-base`}
                             onClick={() => {
                               handleSearch(entry.Text, entry.PlaceId);
                             }}
                           >
-                            <p className="flex gap-x-3 px-2 justify-start items-center">
+                            <p className="flex gap-x-3 px-3 justify-start items-center">
                               <Search size={16} className="text-gray-400" />
                               <span className="block truncate text-gray-400">{entry.Text}</span>
                             </p>
