@@ -76,7 +76,7 @@
     "hero": {
       "title": "ابحث عن منزل أحلامك",
       "search": {
-        "placeholder": "ابحث عن أي عنوان أو مكان...",
+        "placeholder": "ابحث عن أي موقع...",
         "search-button": "يبحث"
       }
     },

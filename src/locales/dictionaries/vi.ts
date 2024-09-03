@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Tìm ngôi nhà mơ ước của bạn.",
       "search": {
-        "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",
+        "placeholder": "Tìm kiếm bất kỳ vị trí nào...",
         "search-button": "Tìm kiếm"
       }
     },

@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Finden Sie Ihr Traumhaus.",
       "search": {
-        "placeholder": "Suche nach einer beliebigen Adresse oder einem beliebigen Ort...",
+        "placeholder": "Suche nach einem beliebigen Ort...",
         "search-button": "Suchen"
       }
     },

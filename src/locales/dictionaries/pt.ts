@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Encontre a casa dos seus sonhos.",
       "search": {
-        "placeholder": "Pesquise qualquer endereço ou lugar...",
+        "placeholder": "Pesquise qualquer local...",
         "search-button": "Procurar"
       }
     },

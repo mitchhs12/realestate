@@ -184,10 +184,10 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
 }
 
 export async function getAllHomesFiltered(
+  defaultCurrency: CurrencyType,
   typesFilter: string[] = [],
   featuresFilter: string[] = [],
-  convertedPriceRange: number[] = [],
-  defaultCurrency: CurrencyType
+  convertedPriceRange: number[] = []
 ): Promise<HomesGeoJson> {
   // Base filters for active homes
   let commonFilters: any = {

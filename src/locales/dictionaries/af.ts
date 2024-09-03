@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Vind jou droomhuis.",
       "search": {
-        "placeholder": "Soek vir enige adres of plek...",
+        "placeholder": "Soek vir enige ligging...",
         "search-button": "Soek"
       }
     },

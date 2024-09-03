@@ -62,20 +62,16 @@ export default function CombinedSearchPage({
   const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
 
   // INITIAL GET ALL HOMES ON FIRST RENDER
-  useEffect(() => {
-    getAllHomes().then((allHomes) => {
-      setHomesGeoJson(allHomes);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
+  //     setHomesGeoJson(allHomes);
+  //   });
+  // }, []);
 
   // SEARCH COMPONENT
   useEffect(() => {
     if (bounds) {
       setIsSearchLoading(true);
-      console.log("priceRange in local currency", convertedPriceRange);
-      console.log("selectedTypes", selectedTypes);
-      console.log("selectedFeatures", selectedFeatures);
-
       getSearchResults(
         "search",
         bounds,
@@ -103,7 +99,7 @@ export default function CombinedSearchPage({
   // GETS THE FILTERED HOMES FOR THE MAP
   useEffect(() => {
     if (isFiltering) {
-      getAllHomesFiltered(selectedTypes, selectedFeatures, convertedPriceRange, defaultCurrency).then((fixedHomes) => {
+      getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((fixedHomes) => {
         setHomesGeoJson(fixedHomes);
       });
     }

@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Temukan rumah impian Anda.",
       "search": {
-        "placeholder": "Cari alamat atau tempat apa pun...",
+        "placeholder": "Cari lokasi mana saja...",
         "search-button": "Mencari"
       }
     },

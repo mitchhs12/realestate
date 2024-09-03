@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
-import { QueryContextProvider } from "@/context/QueryContext";
 import { LocaleContextProvider } from "@/context/LocaleContext";
 import { getCurrencies } from "@/app/[locale]/sell/actions";
 import { LanguageType } from "@/lib/validations";
@@ -57,9 +56,7 @@ export default async function RootLayout({
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
             <LocaleContextProvider currencies={currencies} lang={params.locale} currency={currency}>
-              <QueryContextProvider>
-                <MainLayout>{children}</MainLayout>
-              </QueryContextProvider>
+              <MainLayout>{children}</MainLayout>
             </LocaleContextProvider>
           </ThemeProvider>
           <SpeedInsights />

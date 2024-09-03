@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, ReactNode, useEffect, useContext } from "react";
 import { usePathname } from "next/navigation";
-import { HomeType } from "@/lib/validations";
+import { defaultCurrency, HomeType } from "@/lib/validations";
 import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
@@ -71,6 +71,7 @@ interface QueryContextProps {
   initialMaxRooms: number;
   originalFilters: string;
   lockModal: () => void;
+  headerValues: any;
 }
 
 const initialMaxPrice = 10000000;
@@ -139,7 +140,7 @@ const QueryContext = createContext<QueryContextProps>({
   handleAllFeatures: () => {},
   handleAllTypes: () => {},
   newFilters: JSON.stringify({
-    priceRange: [1, Math.round(initialMaxPrice)],
+    convertedPriceRange: [],
     types: [],
     features: [],
     rooms: {
@@ -157,10 +158,12 @@ const QueryContext = createContext<QueryContextProps>({
   initialMaxRooms: initialMaxRooms,
   originalFilters: originalFilters,
   lockModal: () => {},
+  headerValues: {},
 });
 
 interface QueryProviderProps {
   children: ReactNode;
+  headerValues: any;
 }
 
 interface SelectedRooms {
@@ -171,8 +174,7 @@ interface SelectedRooms {
   maxRooms: number;
 }
 
-const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
-  const { defaultCurrency } = useContext(LocaleContext);
+const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerValues }) => {
   const [query, setQuery] = useState("");
   const [mapFocused, setMapFocused] = useState(true);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
@@ -197,7 +199,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
   const [allSelectedTypes, setAllSelectedTypes] = useState(true);
   const [newFilters, setNewFilters] = useState(
     JSON.stringify({
-      convertedPriceRange: [1, Math.round(initialMaxPrice / defaultCurrency.usdPrice)],
+      convertedPriceRange: [],
       types: [],
       features: [],
       rooms: {
@@ -334,6 +336,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children }) => {
         initialMaxRooms,
         originalFilters,
         lockModal,
+        headerValues,
       }}
     >
       {children}

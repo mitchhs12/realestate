@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Hayalinizdeki evi bulun.",
       "search": {
-        "placeholder": "Herhangi bir adresi veya yeri arayın...",
+        "placeholder": "Herhangi bir lokasyonu arayın...",
         "search-button": "Aramak"
       }
     },

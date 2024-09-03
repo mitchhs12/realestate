@@ -76,7 +76,7 @@
     "hero": {
       "title": "Encuentra la casa de tus sueños.",
       "search": {
-        "placeholder": "Busca cualquier dirección o lugar...",
+        "placeholder": "Buscar cualquier ubicación...",
         "search-button": "Buscar"
       }
     },

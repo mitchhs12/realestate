@@ -22,37 +22,11 @@ import Features from "@/components/Filters/Features";
 import Categories from "@/components/Filters/Categories";
 import { LocaleContext } from "@/context/LocaleContext";
 import Rooms from "./Rooms";
+import { usePathname } from "next/navigation";
 
-interface Props {
-  filters: string;
-  locale: string;
-  categories: string;
-  categoriesSub: string;
-  features: string;
-  featuresSub: string;
-  rooms: string;
-  roomsSub: string;
-  apply: string;
-  reset: string;
-  selectAll: string;
-  deselectAll: string;
-}
-
-export default function Filters({
-  filters,
-  locale,
-  categories,
-  categoriesSub,
-  features,
-  featuresSub,
-  rooms,
-  roomsSub,
-  apply,
-  reset,
-  selectAll,
-  deselectAll,
-}: Props) {
+export default function Filters() {
   const {
+    headerValues,
     setConvertedPriceRange,
     convertedPriceRange,
     setPriceRange,
@@ -72,8 +46,23 @@ export default function Filters({
     selectedRooms,
     setSelectedRooms,
   } = useContext(QueryContext);
-  const { defaultCurrency } = useContext(LocaleContext);
+  const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [isReady, setIsReady] = useState(false);
+  const pathname = usePathname();
+
+  const {
+    filters,
+    categories,
+    categoriesSub,
+    features,
+    featuresSub,
+    rooms,
+    roomsSub,
+    apply,
+    reset,
+    selectAll,
+    deselectAll,
+  } = headerValues;
 
   useEffect(() => {
     if (selectedFeatures && selectedTypes) {
@@ -84,14 +73,18 @@ export default function Filters({
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button className="h-12 text-md rounded-l-none rounded-r-full" variant={"secondary"} disabled={!isReady}>
-          <div className="inline-flex items-center gap-2">
+        <Button
+          className="h-12 text-md rounded-l-none border-l-0 rounded-r-full"
+          variant={"secondary"}
+          disabled={!isReady}
+        >
+          <div className={`flex items-center gap-2 ${originalFilters !== newFilters && "text-primary"}`}>
             <Filter width={20} height={20} strokeWidth={1.75} />
             <span className="items-center">{filters}</span>
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80 p-2" side="bottom" align="center">
+      <DropdownMenuContent className="w-80" side="bottom" align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem
             className="cursor-pointer flex items-center gap-2"
@@ -130,7 +123,7 @@ export default function Filters({
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
-                <I18nProviderClient locale={locale}>
+                <I18nProviderClient locale={defaultLanguage}>
                   <DropdownMenuLabel className="flex items-center justify-center pb-3">
                     {categoriesSub} {selectedTypes.length > 0 && `(${selectedTypes.length})`}
                   </DropdownMenuLabel>
@@ -153,7 +146,7 @@ export default function Filters({
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
-                <I18nProviderClient locale={locale}>
+                <I18nProviderClient locale={defaultLanguage}>
                   <DropdownMenuLabel className="flex justify-center items-center pb-3">{featuresSub}</DropdownMenuLabel>
                   <div className="overflow-y-auto">
                     <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
@@ -171,18 +164,22 @@ export default function Filters({
             <DropdownMenuSubTrigger className="flex justify-center items-center gap-2">
               <DoorOpen width={20} height={20} strokeWidth={1.25} />
               {rooms}
-              {selectedRooms.bedrooms[0] !== 0 ||
-                (selectedRooms.bedrooms[1] !== selectedRooms.maxRooms && <BedDouble size={18} strokeWidth={1} />)}
-              {selectedRooms.bathrooms[0] !== 0 ||
-                (selectedRooms.bathrooms[1] !== selectedRooms.maxRooms && <Bath size={18} strokeWidth={1} />)}
-              {selectedRooms.livingrooms[0] !== 0 ||
-                (selectedRooms.livingrooms[1] !== selectedRooms.maxRooms && <Sofa size={18} strokeWidth={1} />)}
-              {selectedRooms.kitchens[0] !== 0 ||
-                (selectedRooms.kitchens[1] !== selectedRooms.maxRooms && <CookingPot size={18} strokeWidth={1} />)}
+              {(selectedRooms.bedrooms[0] !== 0 || selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
+                <BedDouble size={18} strokeWidth={1} />
+              )}
+              {(selectedRooms.bathrooms[0] !== 0 || selectedRooms.bathrooms[1] !== selectedRooms.maxRooms) && (
+                <Bath size={18} strokeWidth={1} />
+              )}
+              {(selectedRooms.livingrooms[0] !== 0 || selectedRooms.livingrooms[1] !== selectedRooms.maxRooms) && (
+                <Sofa size={18} strokeWidth={1} />
+              )}
+              {(selectedRooms.kitchens[0] !== 0 || selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
+                <CookingPot size={18} strokeWidth={1} />
+              )}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80 w-full">
-                <I18nProviderClient locale={locale}>
+                <I18nProviderClient locale={defaultLanguage}>
                   <DropdownMenuLabel className="flex justify-center items-center pb-3 w-full">
                     {roomsSub}
                   </DropdownMenuLabel>
@@ -196,24 +193,26 @@ export default function Filters({
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <div className="flex items-center gap-4 justify-center">
-          <Button
-            variant={"default"}
-            size={"sm"}
-            type={"submit"}
-            className="flex"
-            disabled={
-              newFilters ===
-              JSON.stringify({
-                convertedPriceRange: convertedPriceRange,
-                types: selectedTypes,
-                features: selectedFeatures,
-                rooms: selectedRooms,
-              })
-            }
-            onClick={() => setIsFiltering(true)}
-          >
-            {apply}
-          </Button>
+          {pathname !== "/" && (
+            <Button
+              variant={"default"}
+              size={"sm"}
+              type={"submit"}
+              className="flex"
+              disabled={
+                newFilters ===
+                JSON.stringify({
+                  convertedPriceRange: convertedPriceRange,
+                  types: selectedTypes,
+                  features: selectedFeatures,
+                  rooms: selectedRooms,
+                })
+              }
+              onClick={() => setIsFiltering(true)}
+            >
+              {apply}
+            </Button>
+          )}
           <Button
             variant={"outline"}
             size={"sm"}

@@ -13,10 +13,9 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/Icons/icons";
 import { useRouter } from "next/navigation";
 import { useCurrentLocale } from "@/locales/client";
+import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
-import Filters from "@/components/Filters";
 import { I18nProviderClient } from "@/locales/client";
-import FiltersDialog from "@/components/FiltersDialog";
 import { HousePlus } from "lucide-react";
 
 interface Props {
@@ -27,28 +26,8 @@ interface Props {
   construction_sub: string;
   sellButtonBig: string;
   sellButtonSmall: string;
-  greeting: string;
-  log_in: string;
-  sign_up: string;
-  log_out: string;
-  theme: { theme: string; light: string; dark: string; system: string };
-  language: string;
-  currency: string;
-  settings: string;
   exit: string;
   exit_short: string;
-  filters: string;
-  myproperties: string;
-  features: string;
-  featuresSub: string;
-  categories: string;
-  categoriesSub: string;
-  rooms: string;
-  roomsSub: string;
-  apply: string;
-  reset: string;
-  selectAll: string;
-  deselectAll: string;
 }
 
 export default function Header({
@@ -59,34 +38,13 @@ export default function Header({
   construction_sub,
   sellButtonBig,
   sellButtonSmall,
-  greeting,
-  log_in,
-  sign_up,
-  log_out,
-  theme,
-  language,
-  currency,
-  settings,
   exit,
   exit_short,
-  filters,
-  myproperties,
-  features,
-  featuresSub,
-  categories,
-  categoriesSub,
-  rooms,
-  roomsSub,
-  apply,
-  reset,
-  selectAll,
-  deselectAll,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const locale = useCurrentLocale();
   const { currentHome, isSmallScreen, openLogInModal, openSignUpModal, user } = useContext(QueryContext);
-
+  const { defaultLanguage } = useContext(LocaleContext);
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
   const isGuidesPage = pathname.includes("/articles");
@@ -106,7 +64,7 @@ export default function Header({
         } items-center h-[86px] z-[40] px-5 bg-background gap-5`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-5"}`}>
+          <div className={`${isSearchPage ? "flex" : "flex w-1/3 md:flex gap-5"}`}>
             <Button
               size={"largeIcon"}
               variant="outline"
@@ -159,25 +117,8 @@ export default function Header({
           </div>
         )}
         {isSearchPage && (
-          // <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
-          <div className="flex flex-grow">
-            <SearchBox
-              isSmallMap={false}
-              placeholder={searchPlaceholder}
-              text={searchText}
-              filters={filters}
-              locale={locale}
-              categories={categories}
-              categoriesSub={categoriesSub}
-              features={features}
-              featuresSub={featuresSub}
-              rooms={rooms}
-              roomsSub={roomsSub}
-              apply={apply}
-              reset={reset}
-              selectAll={selectAll}
-              deselectAll={deselectAll}
-            />
+          <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
+            <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
           </div>
         )}
 
@@ -204,19 +145,7 @@ export default function Header({
               </Button>
             )}
             <div className={`justify-between gap-3 items-center`}>
-              <ProfileButton
-                openSignUpModal={openSignUpModal}
-                openLogInModal={openLogInModal}
-                greeting={greeting}
-                log_in={log_in}
-                sign_up={sign_up}
-                log_out={log_out}
-                theme={theme}
-                language={language}
-                currency={currency}
-                settings={settings}
-                myproperties={myproperties}
-              />
+              <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
             </div>
           </div>
         )}
@@ -234,7 +163,7 @@ export default function Header({
       </header>
 
       <div className="flex relative z-100">
-        <I18nProviderClient locale={locale}>
+        <I18nProviderClient locale={defaultLanguage}>
           <ModalPortal>
             <Modal />
           </ModalPortal>

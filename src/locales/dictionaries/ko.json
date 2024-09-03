@@ -76,7 +76,7 @@
     "hero": {
       "title": "당신의 꿈의 집을 찾아보세요.",
       "search": {
-        "placeholder": "모든 주소나 장소를 검색해 보세요...",
+        "placeholder": "모든 위치를 검색하세요...",
         "search-button": "찾다"
       }
     },

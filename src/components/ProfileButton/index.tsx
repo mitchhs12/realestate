@@ -24,7 +24,7 @@ import { useTheme } from "next-themes";
 import { languages, LanguageType, locales } from "@/lib/validations";
 import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
-import { getFlagEmoji, getFullLanguageName } from "@/lib/utils";
+import { getFullLanguageName } from "@/lib/utils";
 import { useChangeLocale, useCurrentLocale } from "@/locales/client";
 import { getCurrency } from "@/lib/utils";
 import { updateLanguage } from "@/app/[locale]/settings/actions";
@@ -37,36 +37,29 @@ import { Languages, CircleDollarSign, Settings, SunMoon, LogOut, Sun, Moon, Lapt
 interface Props {
   openSignUpModal: () => void;
   openLogInModal: () => void;
-  greeting: string;
-  log_in: string;
-  sign_up: string;
-  log_out: string;
-  theme: { theme: string; light: string; dark: string; system: string };
-  language: string;
-  currency: string;
-  settings: string;
-  myproperties: string;
 }
 
-export function ProfileButton({
-  openSignUpModal,
-  openLogInModal,
-  greeting,
-  log_in,
-  sign_up,
-  log_out,
-  theme,
-  language,
-  currency,
-  settings,
-  myproperties,
-}: Props) {
+export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
   const { defaultCurrency, setDefaultCurrency, currencies } = useContext(LocaleContext);
-  const { user, session } = useContext(QueryContext);
+  const { user, session, headerValues } = useContext(QueryContext);
   const router = useRouter();
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();
   const lang = useCurrentLocale();
+  const {
+    greeting,
+    log_in,
+    sign_up,
+    log_out,
+    theme_theme,
+    theme_light,
+    theme_dark,
+    theme_system,
+    language,
+    currency,
+    settings,
+    myproperties,
+  } = headerValues;
 
   const handleUpdateLanguage = async (newLang: LanguageType) => {
     await updateLanguage({ language: newLang });
@@ -81,8 +74,6 @@ export function ProfileButton({
       .join("")
       .toUpperCase();
   };
-
-  console.log("user image", user?.image);
 
   return (
     <DropdownMenu modal={false}>
@@ -209,21 +200,21 @@ export function ProfileButton({
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
               <SunMoon width={20} height={20} strokeWidth={1.25} />
-              {theme.theme}
+              {theme_theme}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2">
                 <DropdownMenuRadioGroup value={useTheme().theme} onValueChange={setTheme}>
                   <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="light">
-                    {theme.light}
+                    {theme_light}
                     <Sun width={20} height={20} strokeWidth={1.25} />
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="dark">
-                    {theme.dark}
+                    {theme_dark}
                     <Moon width={20} height={20} strokeWidth={1.25} />
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem className="cursor-pointer justify-end flex gap-2 items-center" value="system">
-                    {theme.system}
+                    {theme_system}
                     <Laptop width={20} height={20} strokeWidth={1.25} />
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>

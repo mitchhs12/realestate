@@ -12,31 +12,11 @@ import Rooms from "@/components/Filters/Rooms";
 import { LocaleContext } from "@/context/LocaleContext";
 import { I18nProviderClient } from "@/locales/client";
 import { CookingPot, Bath, Sofa, BedDouble } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-interface Props {
-  filters: string;
-  locale: string;
-  categories: string;
-  features: string;
-  rooms: string;
-  apply: string;
-  reset: string;
-  selectAll: string;
-  deselectAll: string;
-}
-
-export default function FiltersDialog({
-  filters,
-  locale,
-  categories,
-  features,
-  rooms,
-  apply,
-  reset,
-  selectAll,
-  deselectAll,
-}: Props) {
+export default function FiltersDialog() {
   const {
+    headerValues,
     setConvertedPriceRange,
     convertedPriceRange,
     setPriceRange,
@@ -55,14 +35,17 @@ export default function FiltersDialog({
     newFilters,
     initialMaxPrice,
     originalFilters,
+    setNewFilters,
   } = useContext(QueryContext);
 
-  const { defaultCurrency } = useContext(LocaleContext);
+  const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [isReady, setIsReady] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isRoomsOpen, setIsRoomsOpen] = useState(true);
+  const { filters, categories, features, rooms, apply, reset, selectAll, deselectAll } = headerValues;
+  const pathname = usePathname();
 
   const toggleFeatures = () => {
     isCategoriesOpen && setIsCategoriesOpen(false);
@@ -86,15 +69,21 @@ export default function FiltersDialog({
     }
   }, [selectedFeatures, selectedTypes]);
 
+  console.log("HERE IS THE ORIGINAL FILTERS", originalFilters);
+  console.log("HERE IS THE NEW FILTERS", newFilters);
+
   return (
     <>
       <Button
         variant={"secondary"}
-        className="h-12 rounded-r-full"
+        className="h-12 text-md rounded-l-none rounded-r-full"
         disabled={!isReady}
-        onClick={() => setDialogOpen(true)}
+        onClick={(e) => {
+          e.preventDefault();
+          setDialogOpen(true);
+        }}
       >
-        <div className="flex items-center gap-2 pr-1">
+        <div className={`flex items-center gap-2 pr-1 ${originalFilters !== newFilters && "text-primary"}`}>
           <Filter className="items-center" width={20} height={20} strokeWidth={1.75} />
           <span className="hidden sm:flex items-center">{filters}</span>
         </div>
@@ -143,7 +132,7 @@ export default function FiltersDialog({
                 </Button>
               </div>
               {isCategoriesOpen && (
-                <I18nProviderClient locale={locale}>
+                <I18nProviderClient locale={defaultLanguage}>
                   <div className="flex flex-col items-center overflow-y-auto max-h-52">
                     <Button className="flex justify end" variant={"outline"} size={"sm"} onClick={handleAllTypes}>
                       {allSelectedTypes ? deselectAll : selectAll}
@@ -166,7 +155,7 @@ export default function FiltersDialog({
                 </Button>
               </div>
               {isFeaturesOpen && (
-                <I18nProviderClient locale={locale}>
+                <I18nProviderClient locale={defaultLanguage}>
                   <div className="flex flex-col items-center overflow-y-auto max-h-52">
                     <Button variant={"outline"} size={"sm"} onClick={handleAllFeatures}>
                       {allSelectedFeatures ? deselectAll : selectAll}
@@ -182,29 +171,25 @@ export default function FiltersDialog({
                 <div className="flex items-center gap-2">
                   <DoorOpen width={20} height={20} strokeWidth={1.25} />
                   {rooms}
-                  {selectedRooms.bedrooms[0] !== 0 ||
-                    (selectedRooms.bedrooms[1] !== selectedRooms.maxRooms && (
-                      <BedDouble size={18} strokeWidth={1.25} color={"#16A34A"} />
-                    ))}
-                  {selectedRooms.bathrooms[0] !== 0 ||
-                    (selectedRooms.bathrooms[1] !== selectedRooms.maxRooms && (
-                      <Bath size={18} strokeWidth={1.25} color={"#16A34A"} />
-                    ))}
-                  {selectedRooms.livingrooms[0] !== 0 ||
-                    (selectedRooms.livingrooms[1] !== selectedRooms.maxRooms && (
-                      <Sofa size={18} strokeWidth={1.25} color={"#16A34A"} />
-                    ))}
-                  {selectedRooms.kitchens[0] !== 0 ||
-                    (selectedRooms.kitchens[1] !== selectedRooms.maxRooms && (
-                      <CookingPot size={18} strokeWidth={1.25} color={"#16A34A"} />
-                    ))}
+                  {(selectedRooms.bedrooms[0] !== 0 || selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
+                    <BedDouble size={18} strokeWidth={1.25} color={"#16A34A"} />
+                  )}
+                  {(selectedRooms.bathrooms[0] !== 0 || selectedRooms.bathrooms[1] !== selectedRooms.maxRooms) && (
+                    <Bath size={18} strokeWidth={1.25} color={"#16A34A"} />
+                  )}
+                  {(selectedRooms.livingrooms[0] !== 0 || selectedRooms.livingrooms[1] !== selectedRooms.maxRooms) && (
+                    <Sofa size={18} strokeWidth={1.25} color={"#16A34A"} />
+                  )}
+                  {(selectedRooms.kitchens[0] !== 0 || selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
+                    <CookingPot size={18} strokeWidth={1.25} color={"#16A34A"} />
+                  )}
                 </div>
                 <Button variant={"outline"} size={"icon"} onClick={toggleRooms}>
                   {isRoomsOpen ? <ChevronUp /> : <ChevronDown />}
                 </Button>
               </div>
               {isRoomsOpen && (
-                <I18nProviderClient locale={locale}>
+                <I18nProviderClient locale={defaultLanguage}>
                   <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
                 </I18nProviderClient>
               )}
@@ -225,7 +210,21 @@ export default function FiltersDialog({
                     rooms: selectedRooms,
                   })
                 }
-                onClick={() => setIsFiltering(true)}
+                onClick={() => {
+                  if (pathname !== "/") {
+                    setIsFiltering(true);
+                  } else {
+                    setNewFilters(
+                      JSON.stringify({
+                        convertedPriceRange: convertedPriceRange,
+                        types: selectedTypes,
+                        features: selectedFeatures,
+                        rooms: selectedRooms,
+                      })
+                    );
+                  }
+                  setDialogOpen(false);
+                }}
               >
                 <span>{apply}</span>
               </Button>
@@ -236,6 +235,8 @@ export default function FiltersDialog({
                 className="flex"
                 disabled={originalFilters === newFilters}
                 onClick={() => {
+                  console.log("originalFilters", originalFilters);
+                  console.log("newFilters", newFilters);
                   setSelectedFeatures([]);
                   setSelectedTypes([]);
                   setConvertedPriceRange([]);
@@ -246,6 +247,7 @@ export default function FiltersDialog({
                     kitchens: [0, selectedRooms.maxRooms],
                     maxRooms: selectedRooms.maxRooms,
                   });
+                  setNewFilters(originalFilters);
                   setIsFiltering(true);
                 }}
               >

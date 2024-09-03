@@ -76,7 +76,7 @@ export default {
     "hero": {
       "title": "Pronađite svoj dom iz snova.",
       "search": {
-        "placeholder": "Potražite bilo koju adresu ili mjesto...",
+        "placeholder": "Potražite bilo koju lokaciju...",
         "search-button": "Pretraživanje"
       }
     },

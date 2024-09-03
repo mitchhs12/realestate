@@ -22,38 +22,9 @@ interface Props {
   setSearchResult?: (text: string, placeId: string) => void;
   text: string;
   placeholder: string;
-  filters?: string;
-  locale?: string;
-  categories?: string;
-  categoriesSub?: string;
-  features?: string;
-  featuresSub?: string;
-  rooms?: string;
-  roomsSub?: string;
-  apply?: string;
-  reset?: string;
-  selectAll?: string;
-  deselectAll?: string;
 }
 
-export default function SearchBox({
-  isSmallMap = false,
-  setSearchResult,
-  text,
-  placeholder,
-  filters,
-  locale,
-  categories,
-  categoriesSub,
-  features,
-  featuresSub,
-  rooms,
-  roomsSub,
-  apply,
-  reset,
-  selectAll,
-  deselectAll,
-}: Props) {
+export default function SearchBox({ isSmallMap = false, setSearchResult, text, placeholder }: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
@@ -180,15 +151,15 @@ export default function SearchBox({
       >
         <div className="flex flex-col w-full items-center">
           <Popover open={popoverOpen}>
-            <div className="flex justify-center items-center w-full gap-x-2">
-              <div className="relative w-full justify-center items-center">
-                <Search size={16} className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <PopoverTrigger asChild>
+            <PopoverTrigger asChild>
+              <div className="flex justify-center items-center w-full border border-input rounded-full">
+                <div className="relative w-full justify-center items-center">
+                  <Search size={16} className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <Input
                     ref={inputRef}
                     type="search"
                     placeholder={placeholder}
-                    className="rounded-full bg-popover text-base pl-12" // Add padding-left to create space for the icon
+                    className="rounded-l-full bg-popover border-0 pl-12" // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -202,82 +173,18 @@ export default function SearchBox({
                       }
                     }}
                   />
-                </PopoverTrigger>
-                {filters &&
-                  locale &&
-                  categories &&
-                  categoriesSub &&
-                  features &&
-                  featuresSub &&
-                  rooms &&
-                  roomsSub &&
-                  apply &&
-                  reset &&
-                  selectAll &&
-                  deselectAll && (
-                    <>
-                      <div className="absolute inset-y-0 right-0 flex items-center">
-                        <div className="hidden sm:flex">
-                          <Filters
-                            filters={filters}
-                            locale={locale}
-                            categories={categories}
-                            categoriesSub={categoriesSub}
-                            features={features}
-                            featuresSub={featuresSub}
-                            rooms={rooms}
-                            roomsSub={roomsSub}
-                            apply={apply}
-                            reset={reset}
-                            selectAll={selectAll}
-                            deselectAll={deselectAll}
-                          />
-                        </div>
-                        <div className="flex sm:hidden">
-                          <FiltersDialog
-                            filters={filters}
-                            locale={locale}
-                            categories={categories}
-                            features={features}
-                            rooms={rooms}
-                            apply={apply}
-                            reset={reset}
-                            selectAll={selectAll}
-                            deselectAll={deselectAll}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  )}
-                {(!loading || results.length > 0) && (
-                  <div className="w-full">
-                    <PopoverContent
-                      ref={popoverRef}
-                      sideOffset={2}
-                      onOpenAutoFocus={(e) => e.preventDefault()}
-                      className="PopoverContent rounded-3xl"
-                    >
-                      {results.length === 0 && "No results found."}
-                      {results.length > 0 &&
-                        results.map((entry: any, index) => (
-                          <div
-                            key={index}
-                            className={`${index === 0 ? (results.length === 1 ? "rounded-2xl" : "rounded-t-2xl") : index === results.length - 1 && "rounded-b-2xl"} py-1 md:py-2 cursor-pointer hover:bg-muted text-sm md:text-base`}
-                            onClick={() => {
-                              handleSearch(entry.Text, entry.PlaceId);
-                            }}
-                          >
-                            <p className="flex gap-x-3 px-3 justify-start items-center">
-                              <Search size={16} className="text-gray-400" />
-                              <span className="block truncate text-gray-400">{entry.Text}</span>
-                            </p>
-                          </div>
-                        ))}
-                    </PopoverContent>
+                </div>
+
+                <div className="flex justify-end items-center">
+                  <div className="hidden sm:flex">
+                    <Filters />
                   </div>
-                )}
-              </div>
-              {/* <Button
+                  <div className="flex sm:hidden">
+                    <FiltersDialog />
+                  </div>
+                </div>
+
+                {/* <Button
                 variant="default"
                 type="submit"
                 disabled={loading}
@@ -289,7 +196,38 @@ export default function SearchBox({
                   {loading && <ReloadIcon className="absolute h-5 w-auto animate-spin" />}
                 </div>
               </Button> */}
-            </div>
+              </div>
+            </PopoverTrigger>
+
+            {(!loading || results.length > 0) && (
+              <div className="w-full">
+                <PopoverContent
+                  ref={popoverRef}
+                  sideOffset={2}
+                  onOpenAutoFocus={(e) => e.preventDefault()}
+                  className="PopoverContent rounded-3xl"
+                >
+                  {results.length === 0 && "No results found."}
+                  {results.length > 0 &&
+                    results.map((entry: any, index) => (
+                      <div
+                        key={index}
+                        className={`${index === 0 ? (results.length === 1 ? "rounded-2xl" : "rounded-t-2xl") : index === results.length - 1 && "rounded-b-2xl"} py-1 md:py-2 cursor-pointer hover:bg-muted`}
+                        onClick={() => {
+                          handleSearch(entry.Text, entry.PlaceId);
+                        }}
+                      >
+                        <p className="flex gap-x-3 px-3 justify-start items-center">
+                          <span>
+                            <Search size={16} className="text-gray-400" />
+                          </span>
+                          <span className="block truncate text-gray-400">{entry.Text}</span>
+                        </p>
+                      </div>
+                    ))}
+                </PopoverContent>
+              </div>
+            )}
           </Popover>
         </div>
       </form>
