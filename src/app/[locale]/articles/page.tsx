@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getFullLanguageName } from "@/lib/utils";
+import { promise } from "zod";
 
 export const revalidate = 30;
 
@@ -24,16 +25,14 @@ async function getData(locale: string) {
   }`;
 
   const data = await client.fetch(query);
-
   return data;
 }
 
 export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
 
-  const data: ArticleType[] = await getData(locale);
+  const [data, t]: [ArticleType[], any] = await Promise.all([getData(locale), getScopedI18n("articles")]);
 
-  const t = await getScopedI18n("articles");
   const readMore = t("readMore");
   const title = t("title");
   const changeLanguage = t("changeLanguage");
@@ -94,9 +93,14 @@ export default async function Page({ params: { locale } }: { params: { locale: L
                 <div className="items-start flex-grow line-clamp-3 text-sm text-gray-600 dark:text-gray-300 pose">
                   {article.thumbnailDescription ? article.thumbnailDescription : unavailableWarning}
                 </div>
-                <div className="flex items-end">
-                  <Button className="w-full mb-1" disabled={article.thumbnailDescription ? false : true}>
-                    <Link href={`/articles/${article.currentSlug}`}>
+                <div className="flex items-end w-full">
+                  <Button asChild className="flex w-full mb-1" disabled={article.thumbnailDescription ? false : true}>
+                    <Link
+                      className={`${!article.thumbnailDescription ? "pointer-events-none opacity-50" : ""}`}
+                      href={article.thumbnailDescription ? `/articles/${article.currentSlug}` : "#"}
+                      tabIndex={article.thumbnailDescription ? 0 : -1}
+                      aria-disabled={!article.thumbnailDescription}
+                    >
                       {article.localizedTitle ? readMore : changeLanguage}
                     </Link>
                   </Button>

@@ -48,8 +48,10 @@ async function getData(locale: string, slug: string) {
 }
 
 export default async function Article({ params }: { params: { locale: string; slug: string } }) {
-  const data: FullArticle = await getData(params.locale, params.slug);
-  const t = await getScopedI18n("articles");
+  const [data, t]: [FullArticle, any] = await Promise.all([
+    getData(params.locale, params.slug),
+    getScopedI18n("articles"),
+  ]);
 
   const titleError = t("titleError");
   const readingTimeError = t("readingTimeError");
