@@ -1,8 +1,9 @@
 import { client, urlFor } from "@/lib/sanity";
-import { FullBlog } from "@/lib/validations";
+import { FullArticle } from "@/lib/validations";
 import { PortableText } from "@portabletext/react";
 import { getReadingTime } from "@/lib/utils";
 import Image from "next/image";
+import { getScopedI18n } from "@/locales/server";
 
 const components = {
   types: {
@@ -28,12 +29,12 @@ const components = {
 
 export const revalidate = 30;
 
-async function getData(slug: string) {
+async function getData(locale: string, slug: string) {
   const query = `
-  *[_type=="article" && slug.current == '${slug}'] {
+  *[_type=="article" && slug.current == "${slug}"] {
     "currentSlug": slug.current,
-      title,
-      content,
+      "localizedTitle":localizedTitle.${locale},
+      "content":content[_key == "${locale}"][0],
       titleImage,
       author->{
       name,
@@ -47,15 +48,23 @@ async function getData(slug: string) {
 }
 
 export default async function Article({ params }: { params: { locale: string; slug: string } }) {
-  const data: FullBlog = await getData(params.slug);
+  const data: FullArticle = await getData(params.locale, params.slug);
+  const t = await getScopedI18n("articles");
+
+  const titleError = t("titleError");
+  const readingTimeError = t("readingTimeError");
+  const errorLine1 = t("errorLine1");
+  const errorLine2 = t("errorLine2");
 
   return (
     <div className="flex flex-col items-center h-full mt-6 p-8">
       <h1 className="w-full max-w-[720px]">
-        <span className="block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">{data.title}</span>
-        <span className="w-full text-right text-md leading-8 tracking-tight sm:text-lg">{`${getReadingTime(
-          data.content
-        )} minute read`}</span>
+        <span className="block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
+          {data.localizedTitle ? data.localizedTitle : "Unknown Language"}
+        </span>
+        <span className="w-full text-right text-md leading-8 tracking-tight sm:text-lg">
+          {data.content ? `${getReadingTime(data.content.value)} minute read` : "Unable to calculate reading time!"}
+        </span>
         <div className="flex justify-start items-center mt-6">
           <Image
             src={urlFor(data.author.image).url()}
@@ -74,12 +83,19 @@ export default async function Article({ params }: { params: { locale: string; sl
         src={urlFor(data.titleImage).url()}
         alt="Title Image"
         width={720}
-        height={480}
-        priority={true}
+        height={308}
+        priority
         className="rounded-lg mt-12 shadow-md dark:shadow-white/10"
       />
       <div className="mt-10 prose prose-stone prose-blockquote:font-charter text-base md:text-lg prose-base prose-p:font-charter prose-ol:font-charter prose-strong:font-charter prose-li:font-charter dark:prose-invert prose-li:marker:text-primary prose-a:text-primary pb-10">
-        <PortableText value={data.content} components={components} />
+        {data.content ? (
+          <PortableText value={data.content.value} components={components} />
+        ) : (
+          <div className="flex flex-col justify-center items-center text-center">
+            <div>This article is not available in your language!</div>
+            <div>Please try switching your language to read this article!</div>
+          </div>
+        )}
       </div>
     </div>
   );

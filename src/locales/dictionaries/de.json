@@ -161,6 +161,11 @@
   },
   "articles": {
     "title": "Artikel",
+    "titleError": "Titel konnte nicht abgerufen werden.",
+    "readingTimeError": "Die Lesezeit kann nicht berechnet werden.",
+    "errorLine1": "Dieser Artikel ist nicht in Ihrer Sprache verfügbar!",
+    "errorLine2": "Bitte versuchen Sie, Ihre Sprache zu ändern, um diesen Artikel zu lesen.",
+    "subtitle": "Lesen Sie die neuesten Artikel zum Thema Immobilien",
     "buy": {
       "title": "Ich weiß nicht, wie ich kaufen soll",
       "title-short": "So kaufen Sie",

@@ -1,23 +1,22 @@
 import Image from "next/image";
 import { poppins } from "@/app/[locale]/fonts";
-import { sellGuides } from "@/lib/validations";
+import { ArticleType, sellGuides } from "@/lib/validations";
 import { buyGuides } from "@/lib/validations";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { client, urlFor } from "@/lib/sanity";
-import { BlogType } from "@/lib/validations";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const revalidate = 30;
 
-async function getData() {
+async function getData(locale: string) {
   const query = `
   *[_type=="article"] | order(_createdAt desc) {
-    title,
-      smallDescription,
+    "localizedTitle":localizedTitle.${locale},
+      "thumbnailDescription":thumbnailDescription.${locale},
       "currentSlug": slug.current,
       thumbnailImage,
       _createdAt
@@ -31,7 +30,7 @@ async function getData() {
 export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
 
-  const data: BlogType[] = await getData();
+  const data: ArticleType[] = await getData(locale);
 
   const scopedT = await getScopedI18n("articles");
 
@@ -68,26 +67,26 @@ export default async function Page({ params: { locale } }: { params: { locale: L
 
       <div className="flex flex-col justify-center items-center w-full flex-grow">
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full gap-4 justify-start p-8 items-start max-w-8xl">
-          {data.map((blog, idx) => (
+          {data.map((article, idx) => (
             <Card key={idx} className="flex flex-col items-center shadow-xl h-[380px]">
               <div className="relative items-center justify-center h-[200px] w-full">
                 <Image
-                  src={urlFor(blog.thumbnailImage).url()}
+                  src={urlFor(article.thumbnailImage).url()}
                   alt="image"
                   fill={true}
-                  objectFit="cover"
+                  objectFit={"cover"}
                   className="rounded-t-lg"
                 />
               </div>
 
               <CardContent className="flex flex-col justify-between w-full h-[180px] px-3 gap-2 py-2">
-                <h3 className="mt-2 text-primary text-lg line-clamp-1 font-bold">{blog.title}</h3>
+                <h3 className="mt-2 text-primary text-lg line-clamp-1 font-bold">{article.localizedTitle}</h3>
                 <div className="items-start flex-grow line-clamp-3 text-sm text-gray-600 dark:text-gray-300 pose">
-                  {blog.smallDescription}
+                  {article.thumbnailDescription}
                 </div>
                 <div className="flex items-end">
                   <Button asChild className="w-full mb-1">
-                    <Link href={`/articles/${blog.currentSlug}`}>Read More</Link>
+                    <Link href={`/articles/${article.currentSlug}`}>Read More</Link>
                   </Button>
                 </div>
               </CardContent>

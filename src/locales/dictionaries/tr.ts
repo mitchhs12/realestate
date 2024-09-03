@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Makaleler",
+    "titleError": "Başlık alınamadı.",
+    "readingTimeError": "Okuma süresi hesaplanamadı.",
+    "errorLine1": "Bu makale dilinizde mevcut değil!",
+    "errorLine2": "Bu makaleyi okumak için lütfen dilinizi değiştirmeyi deneyin.",
+    "subtitle": "Emlakla ilgili en son makaleleri okuyun",
     "buy": {
       "title": "Nasıl satın alacağımı bilmiyorum",
       "title-short": "Nasıl Satın Alınır",

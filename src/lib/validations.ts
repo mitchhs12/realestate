@@ -334,17 +334,16 @@ export const numeralMap: { [key in LanguageType]: string } = {
   zh: "zh", // Chinese uses Arabic numerals
 };
 
-export type BlogType = {
-  title: string;
-  smallDescription: string;
+export type ArticleType = {
+  localizedTitle: string;
+  thumbnailDescription: string;
   currentSlug: string;
-  titleImage: any;
   thumbnailImage: any;
   _createdAt: string;
 };
 
-export type FullBlog = {
-  title: string;
+export type FullArticle = {
+  localizedTitle: string;
   titleImage: any;
   content: any;
   currentSlug: string;

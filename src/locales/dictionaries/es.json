@@ -161,6 +161,11 @@
   },
   "articles": {
     "title": "Artículos",
+    "titleError": "No se puede obtener el título.",
+    "readingTimeError": "No se puede calcular el tiempo de lectura.",
+    "errorLine1": "¡Este artículo no está disponible en tu idioma!",
+    "errorLine2": "Intente cambiar su idioma para leer este artículo.",
+    "subtitle": "Lea los últimos artículos sobre bienes raíces",
     "buy": {
       "title": "No sé cómo comprar",
       "title-short": "Cómo comprar",

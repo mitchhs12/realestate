@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Articles",
+    "titleError": "Unable to get title.",
+    "readingTimeError": "Unable to calculate reading time.",
+    "errorLine1": "This article is not available in your language!",
+    "errorLine2": "Please try switching your language to read this article.",
+    "subtitle": "Read the latest articles on real estate",
     "buy": {
       "title": "I don't know how to Buy",
       "title-short": "How to Buy",

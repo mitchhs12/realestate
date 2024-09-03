@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "文章",
+    "titleError": "无法獲得軸权。",
+    "readingTimeError": "无法计算阅读时间。",
+    "errorLine1": "此文章不提供您所用语言的版本！",
+    "errorLine2": "请尝试切换您的语言来阅读本文。",
+    "subtitle": "阅读有关房地产的最新文章",
     "buy": {
       "title": "我不知道如何购买",
       "title-short": "如何购买",

@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Artikel",
+    "titleError": "Tidak dapat memperoleh judul.",
+    "readingTimeError": "Tidak dapat menghitung waktu membaca.",
+    "errorLine1": "Artikel ini tidak tersedia dalam bahasa Anda!",
+    "errorLine2": "Silakan coba ganti bahasa Anda untuk membaca artikel ini.",
+    "subtitle": "Baca artikel terbaru tentang real estate",
     "buy": {
       "title": "Saya tidak tahu cara membeli",
       "title-short": "Cara Membeli",

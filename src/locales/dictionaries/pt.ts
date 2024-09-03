@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Artigos",
+    "titleError": "Não foi possível obter o título.",
+    "readingTimeError": "Não é possível calcular o tempo de leitura.",
+    "errorLine1": "Este artigo não está disponível no seu idioma!",
+    "errorLine2": "Tente mudar seu idioma para ler este artigo.",
+    "subtitle": "Leia os últimos artigos sobre imóveis",
     "buy": {
       "title": "Não sei como comprar",
       "title-short": "Como comprar",

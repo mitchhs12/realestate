@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Članci",
+    "titleError": "Nije moguće dobiti naslov.",
+    "readingTimeError": "Nije moguće izračunati vrijeme čitanja.",
+    "errorLine1": "Ovaj članak nije dostupan na vašem jeziku!",
+    "errorLine2": "Pokušajte promijeniti jezik da biste pročitali ovaj članak.",
+    "subtitle": "Pročitajte najnovije članke o nekretninama",
     "buy": {
       "title": "Ne znam kako kupiti",
       "title-short": "Kako kupiti",

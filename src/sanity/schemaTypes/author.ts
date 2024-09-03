@@ -1,9 +1,14 @@
 import { defineField, defineType } from "sanity";
 
+const bioWordLimit = 100;
+
 export const author = defineType({
   name: "author",
   type: "document",
   title: "Author",
+  options: {
+    languageFilter: false,
+  },
   fields: [
     defineField({
       name: "name",
@@ -13,13 +18,12 @@ export const author = defineType({
     defineField({
       name: "bio",
       type: "text",
-      title: "Write a short bio (50 words max).",
+      title: "Write a short bio (100 words max).",
       validation: (Rule) =>
         Rule.custom((bio) => {
-          const wordLimit = 50; // Set your word limit here
           const wordCount = bio ? bio.trim().split(/\s+/).length : 0;
-          if (wordCount > wordLimit) {
-            return `Biography must be under ${wordLimit} words. You have used ${wordCount} words.`;
+          if (wordCount > bioWordLimit) {
+            return `Biography must be under ${bioWordLimit} words. You have used ${wordCount} words.`;
           }
           return true;
         }),

@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { locales, CurrencyType } from "@/lib/validations";
+import { locales, CurrencyType } from "./validations";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -31,6 +31,7 @@ export const calculateReadingTime = (text: string) => {
 };
 
 export const getReadingTime = (portableText: any) => {
+  console.log("PORTABLE", portableText);
   const plainText = portableText
     .map((block: any) => {
       if (block._type === "block" && block.children) {

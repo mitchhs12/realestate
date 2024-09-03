@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Artikels",
+    "titleError": "Kan nie titel kry nie.",
+    "readingTimeError": "Kan nie leestyd bereken nie.",
+    "errorLine1": "Hierdie artikel is nie in jou taal beskikbaar nie!",
+    "errorLine2": "Probeer asseblief om jou taal te verander om hierdie artikel te lees.",
+    "subtitle": "Lees die nuutste artikels oor vaste eiendom",
     "buy": {
       "title": "Ek weet nie hoe om te koop nie",
       "title-short": "Hoe om te koop",

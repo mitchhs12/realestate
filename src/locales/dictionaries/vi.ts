@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "Bài viết",
+    "titleError": "Không thể có được tiêu đề.",
+    "readingTimeError": "Không thể tính toán thời gian đọc.",
+    "errorLine1": "Bài viết này không có sẵn bằng ngôn ngữ của bạn!",
+    "errorLine2": "Vui lòng thử đổi ngôn ngữ của bạn để đọc bài viết này.",
+    "subtitle": "Đọc những bài viết mới nhất về bất động sản",
     "buy": {
       "title": "Tôi không biết cách mua",
       "title-short": "Cách mua",

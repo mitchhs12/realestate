@@ -8,12 +8,12 @@ export const article = defineType({
     defineField({
       name: "title",
       type: "string",
-      title: "Title of your article",
+      title: "Identifier of this article",
     }),
     defineField({
       name: "slug",
       type: "slug",
-      title: "Slug of your article (this will be used in the URL of your article).",
+      title: "Slug of your article (this will be the URL of your article).",
       options: {
         source: "title",
       },
@@ -29,24 +29,32 @@ export const article = defineType({
       name: "thumbnailImage",
       type: "image",
       title:
-        "Thumbnail image of your article (this will be displayed on the articles page). Your image should be a square at least 500px x 500px.",
+        "Thumbnail image of your article (this will be displayed on the articles page). Your image should be a square at least 500px X 500px.",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: "thumbnailDescription",
+      type: "localeText",
+      title: "Write a few lines about what readers can expect from your article.",
     }),
     defineField({
       name: "titleImage",
       type: "image",
       title:
         "Main image of your article (this will be displayed on the top of your article). Your image should be at least 720px wide.",
+      options: { hotspot: true },
     }),
     defineField({
-      name: "smallDescription",
-      type: "text",
-      title: "Small description of your article",
+      name: "localizedTitle",
+      type: "localeString",
+      title: "Title of your article",
     }),
     defineField({
       name: "content",
-      type: "array",
+      type: "internationalizedArrayLocalizedBlockContent",
       title: "Content of your article",
-      of: [{ type: "block" }, { type: "image", options: { hotspot: true } }],
     }),
   ],
 });

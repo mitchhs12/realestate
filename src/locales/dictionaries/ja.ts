@@ -161,6 +161,11 @@ export default {
   },
   "articles": {
     "title": "記事",
+    "titleError": "タイトルを取得できません。",
+    "readingTimeError": "読書時間を計算できません。",
+    "errorLine1": "この記事はあなたの言語ではご利用いただけません。",
+    "errorLine2": "この記事を読むには、言語を切り替えてみてください。",
+    "subtitle": "不動産に関する最新の記事を読む",
     "buy": {
       "title": "購入方法が分からない",
       "title-short": "購入方法",
