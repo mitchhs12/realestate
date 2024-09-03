@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "المقالات",
+    "reading": "دقائق للقراءة.",
     "titleError": "غير قادر على الحصول على العنوان.",
     "readingTimeError": "غير قادر على حساب وقت القراءة.",
     "errorLine1": "هذه المقالة غير متوفرة بلغتك!",

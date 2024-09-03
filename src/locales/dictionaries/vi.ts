@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Bài viết",
+    "reading": "phút để đọc.",
     "titleError": "Không thể có được tiêu đề.",
     "readingTimeError": "Không thể tính toán thời gian đọc.",
     "errorLine1": "Bài viết này không có sẵn bằng ngôn ngữ của bạn!",

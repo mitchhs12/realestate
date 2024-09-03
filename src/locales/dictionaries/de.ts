@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Artikel",
+    "reading": "Minuten zum Lesen.",
     "titleError": "Titel konnte nicht abgerufen werden.",
     "readingTimeError": "Die Lesezeit kann nicht berechnet werden.",
     "errorLine1": "Dieser Artikel ist nicht in Ihrer Sprache verfügbar!",

@@ -55,15 +55,16 @@ export default async function Article({ params }: { params: { locale: string; sl
   const readingTimeError = t("readingTimeError");
   const errorLine1 = t("errorLine1");
   const errorLine2 = t("errorLine2");
+  const reading = t("reading");
 
   return (
     <div className="flex flex-col items-center h-full mt-6 p-8">
       <h1 className="w-full max-w-[720px]">
         <span className="block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
-          {data.localizedTitle ? data.localizedTitle : "Unknown Language"}
+          {data.localizedTitle ? data.localizedTitle : titleError}
         </span>
         <span className="w-full text-right text-md leading-8 tracking-tight sm:text-lg">
-          {data.content ? `${getReadingTime(data.content.value)} minute read` : "Unable to calculate reading time!"}
+          {data.content ? `${getReadingTime(data.content.value)} ${reading}` : readingTimeError}
         </span>
         <div className="flex justify-start items-center mt-6">
           <Image
@@ -92,8 +93,8 @@ export default async function Article({ params }: { params: { locale: string; sl
           <PortableText value={data.content.value} components={components} />
         ) : (
           <div className="flex flex-col justify-center items-center text-center">
-            <div>This article is not available in your language!</div>
-            <div>Please try switching your language to read this article!</div>
+            <div>{errorLine1}</div>
+            <div>{errorLine2}</div>
           </div>
         )}
       </div>

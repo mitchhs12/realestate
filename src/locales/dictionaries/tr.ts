@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Makaleler",
+    "reading": "okumak için dakikalar.",
     "titleError": "Başlık alınamadı.",
     "readingTimeError": "Okuma süresi hesaplanamadı.",
     "errorLine1": "Bu makale dilinizde mevcut değil!",

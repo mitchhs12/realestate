@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Artikels",
+    "reading": "minute om te lees.",
     "titleError": "Kan nie titel kry nie.",
     "readingTimeError": "Kan nie leestyd bereken nie.",
     "errorLine1": "Hierdie artikel is nie in jou taal beskikbaar nie!",

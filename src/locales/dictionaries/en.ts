@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Articles",
+    "reading": "minutes to read.",
     "titleError": "Unable to get title.",
     "readingTimeError": "Unable to calculate reading time.",
     "errorLine1": "This article is not available in your language!",

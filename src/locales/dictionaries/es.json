@@ -161,6 +161,7 @@
   },
   "articles": {
     "title": "Artículos",
+    "reading": "Minutos para leer.",
     "titleError": "No se puede obtener el título.",
     "readingTimeError": "No se puede calcular el tiempo de lectura.",
     "errorLine1": "¡Este artículo no está disponible en tu idioma!",

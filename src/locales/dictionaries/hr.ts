@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Članci",
+    "reading": "minuta za čitanje.",
     "titleError": "Nije moguće dobiti naslov.",
     "readingTimeError": "Nije moguće izračunati vrijeme čitanja.",
     "errorLine1": "Ovaj članak nije dostupan na vašem jeziku!",

@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "文章",
+    "reading": "分钟阅读。",
     "titleError": "无法獲得軸权。",
     "readingTimeError": "无法计算阅读时间。",
     "errorLine1": "此文章不提供您所用语言的版本！",

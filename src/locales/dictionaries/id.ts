@@ -161,6 +161,7 @@ export default {
   },
   "articles": {
     "title": "Artikel",
+    "reading": "menit untuk membaca.",
     "titleError": "Tidak dapat memperoleh judul.",
     "readingTimeError": "Tidak dapat menghitung waktu membaca.",
     "errorLine1": "Artikel ini tidak tersedia dalam bahasa Anda!",
