@@ -151,7 +151,7 @@ export default {
         "2": "카라스코"
       }
     },
-    "cities": "추천 도시 구역",
+    "cities": "아래에서 도시 구역을 선택하여 시작하세요.",
     "recommended": "추천",
     "cheapest": "가장 저렴한",
     "newest": "최신",
@@ -437,7 +437,8 @@ export default {
     "results": "결과",
     "show-map": "지도 표시",
     "show-list": "목록 표시",
-    "no-homes-found": "집을 찾을 수 없습니다!"
+    "no-homes-found": "집을 찾을 수 없습니다!",
+    "loginToViewPrices": "가격을 보려면 로그인하세요"
   },
   "homes": {
     "units": {

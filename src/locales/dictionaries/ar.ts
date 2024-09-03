@@ -151,7 +151,7 @@ export default {
         "2": "كاراسكو"
       }
     },
-    "cities": "المناطق الحضرية الموصى بها",
+    "cities": "ابدأ باختيار منطقة المدينة أدناه.",
     "recommended": "مُستَحسَن",
     "cheapest": "أرخص",
     "newest": "الأحدث",
@@ -437,7 +437,8 @@ export default {
     "results": "نتائج",
     "show-map": "إظهار الخريطة",
     "show-list": "إظهار القائمة",
-    "no-homes-found": "لم يتم العثور على منازل!"
+    "no-homes-found": "لم يتم العثور على منازل!",
+    "loginToViewPrices": "قم بتسجيل الدخول لعرض الأسعار"
   },
   "homes": {
     "units": {

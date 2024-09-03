@@ -102,14 +102,14 @@ export default function Header({
       <header
         className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "justify-center shadow-lg dark:shadow-white/5 xs:justify-between"
-        } items-center h-[86px] z-[40] px-6 bg-background`}
+        } items-center h-[86px] z-[40] px-5 bg-background gap-5`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-3 lg:gap-6"}`}>
+          <div className={`${isSearchPage ? "hidden xs:flex" : "flex w-1/3 md:flex gap-5"}`}>
             <Button
               size={"largeIcon"}
               variant="outline"
-              className={`flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+              className={`flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
               onClick={() => {
                 pathname === "/"
                   ? router.refresh()
@@ -122,7 +122,7 @@ export default function Header({
                     : router.push("/");
               }}
             >
-              <div className="flex justify-center items-center gap-1">
+              <div className="flex px-1 justify-center items-center gap-1">
                 <div className="flex justify-center items-center">
                   {!isStudioPage && <Logo width={"40"} height={"40"} />}
                 </div>
@@ -140,17 +140,15 @@ export default function Header({
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className="flex text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
+                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
                 disabled={true}
               >
                 <Link href="/articles">
-                  <div className="flex justify-center text-center items-center gap-2 p-1">
+                  <div className="flex px-2 justify-center text-center items-center gap-2">
                     <div className="flex justify-center items-center">
                       <Icons.book_icon width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline pr-1 align-middle`}>
-                      {articles}
-                    </h1>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle`}>{articles}</h1>
                   </div>
                 </Link>
               </Button>
@@ -158,7 +156,10 @@ export default function Header({
           </div>
         )}
         {isSearchPage && (
-          <div className="flex items-center justify-center gap-3 px-3 w-full">
+          <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
+            <div className="flex flex-grow">
+              <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+            </div>
             <div className="hidden sm:flex">
               <Filters
                 filters={filters}
@@ -188,27 +189,8 @@ export default function Header({
                 deselectAll={deselectAll}
               />
             </div>
-            <div className="flex flex-grow xs:flex-grow-0 ">
-              <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
-            </div>
           </div>
         )}
-
-        {/* This is the home page specific
-        {!isSearchPage && !isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3"} xs:hidden justify-center`}>
-            <Button
-              className="gap-2 items-center"
-              onClick={() => {
-                user ? router.push("/sell") : openSignUpModal();
-              }}
-            >
-              <Icons.sell_home />
-              <span className="xs:hidden lg:hidden">Sell</span>
-              <span className="hidden xs:inline">Sell your property</span>
-            </Button>
-          </div>
-        )} */}
 
         {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
@@ -217,10 +199,12 @@ export default function Header({
           </h1>
         )}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-3 lg:gap-6 justify-end`}>
+          <div
+            className={`flex ${!isSearchPage ? "w-1/3 flex-grow md:flex-grow-0" : "hidden xs:flex"} gap-5 justify-end`}
+          >
             {!isSearchPage && (
               <Button
-                className="flex gap-2 items-center"
+                className="flex h-12 gap-2 items-center"
                 onClick={() => {
                   user ? router.push("/sell") : openSignUpModal();
                 }}
@@ -230,7 +214,7 @@ export default function Header({
                 <span className="hidden md:inline">{sellButtonBig}</span>
               </Button>
             )}
-            <div className={`${isSearchPage && "hidden xs:flex"} justify-between gap-3 items-center`}>
+            <div className={`justify-between gap-3 items-center`}>
               <ProfileButton
                 openSignUpModal={openSignUpModal}
                 openLogInModal={openLogInModal}

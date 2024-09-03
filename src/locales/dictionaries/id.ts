@@ -151,7 +151,7 @@ export default {
         "2": "Karasak"
       }
     },
-    "cities": "Destinasi Kota yang Direkomendasikan",
+    "cities": "Mulailah dengan memilih distrik kota di bawah ini.",
     "recommended": "Direkomendasikan",
     "cheapest": "Termurah",
     "newest": "Terbaru",
@@ -437,7 +437,8 @@ export default {
     "results": "Hasil",
     "show-map": "Tampilkan Peta",
     "show-list": "Tampilkan Daftar",
-    "no-homes-found": "Tidak Ada Rumah yang Ditemukan!"
+    "no-homes-found": "Tidak Ada Rumah yang Ditemukan!",
+    "loginToViewPrices": "Masuk untuk melihat harga"
   },
   "homes": {
     "units": {

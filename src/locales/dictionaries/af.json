@@ -151,7 +151,7 @@
         "2": "Carrasco"
       }
     },
-    "cities": "Aanbevole stadsdele",
+    "cities": "Begin deur 'n stadgrens hieronder te kies.",
     "recommended": "Aanbeveel",
     "cheapest": "Goedkoopste",
     "newest": "Nuutste",
@@ -437,7 +437,8 @@
     "results": "Resultate",
     "show-map": "Wys kaart",
     "show-list": "Wys lys",
-    "no-homes-found": "Geen huise gevind nie!"
+    "no-homes-found": "Geen huise gevind nie!",
+    "loginToViewPrices": "Meld aan om pryse te sien"
   },
   "homes": {
     "units": {

@@ -95,10 +95,10 @@ export default function Filters({
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant={"outline"} size={"default"} disabled={!isReady}>
+        <Button className="h-12" variant={"outline"} disabled={!isReady}>
           <div className="inline-flex items-center gap-2">
-            <SlidersHorizontal width={16} height={16} strokeWidth={1.25} />
-            <span className="hidden md:flex items-center">{filters}</span>
+            <SlidersHorizontal width={18} height={18} strokeWidth={1.5} />
+            <span className="items-center">{filters}</span>
           </div>
         </Button>
       </DropdownMenuTrigger>

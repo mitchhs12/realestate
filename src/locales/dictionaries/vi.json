@@ -151,7 +151,7 @@
         "2": "Carrasco"
       }
     },
-    "cities": "Các quận thành phố được đề xuất",
+    "cities": "Bắt đầu bằng cách chọn một quận thành phố bên dưới.",
     "recommended": "Khuyến khích",
     "cheapest": "Rẻ nhất",
     "newest": "Mới nhất",
@@ -437,7 +437,8 @@
     "results": "Kết quả",
     "show-map": "Hiển thị bản đồ",
     "show-list": "Hiển thị danh sách",
-    "no-homes-found": "Không tìm thấy nhà nào!"
+    "no-homes-found": "Không tìm thấy nhà nào!",
+    "loginToViewPrices": "Đăng nhập để xem giá"
   },
   "homes": {
     "units": {

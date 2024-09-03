@@ -151,7 +151,7 @@ export default {
         "2": "卡拉斯科"
       }
     },
-    "cities": "推荐城市区域",
+    "cities": "从下面选择一个城市区域开始。",
     "recommended": "受到推崇的",
     "cheapest": "最便宜的",
     "newest": "最新",
@@ -437,7 +437,8 @@ export default {
     "results": "结果",
     "show-map": "显示地图",
     "show-list": "显示列表",
-    "no-homes-found": "未找到任何房源！"
+    "no-homes-found": "未找到任何房源！",
+    "loginToViewPrices": "登录查看价格"
   },
   "homes": {
     "units": {

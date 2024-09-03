@@ -13,9 +13,18 @@ interface Props {
   bounds: BoundsType | null;
   typesObject: { id: string; translation: string }[];
   noHomesFound: string;
+  loginToViewPrice: string;
 }
 
-export default function SearchResults({ homes, isSearchLoading, label, bounds, typesObject, noHomesFound }: Props) {
+export default function SearchResults({
+  homes,
+  isSearchLoading,
+  label,
+  bounds,
+  typesObject,
+  noHomesFound,
+  loginToViewPrice,
+}: Props) {
   const { query } = useContext(QueryContext);
   const [currentQuery, setCurrentQuery] = useState(query);
   const [boundsChanged, setBoundsChanged] = useState(false);
@@ -51,7 +60,12 @@ export default function SearchResults({ homes, isSearchLoading, label, bounds, t
                     isSearchLoading && index >= 6 && "lg:hidden xl:block"
                   } ${isSearchLoading && index >= 9 && "xl:hidden 2xl:block"}`}
                 >
-                  <ResizableCard home={home} isLoading={isSearchLoading} types={matchingTypes} />
+                  <ResizableCard
+                    home={home}
+                    isLoading={isSearchLoading}
+                    types={matchingTypes}
+                    loginToViewPrice={loginToViewPrice}
+                  />
                 </div>
               </div>
             );

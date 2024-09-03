@@ -95,9 +95,9 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       <div className="flex flex-col justify-start h-full w-full bg-background">
         <section className="flex flex-col justify-center items-center w-full h-full">
           <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-8xl">
-            <h2 className="flex justify-center items-start text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
+            <div className="flex justify-center items-start px-8 sm:px-0 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl w-full font-normal text-center">
               {t("cities")}
-            </h2>
+            </div>
             <Locations countries={countries} />
           </div>
         </section>

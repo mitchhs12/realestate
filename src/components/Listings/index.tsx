@@ -9,7 +9,8 @@ interface Props {
 }
 
 export default async function Listings({ homes }: Props) {
-  const t = await getScopedI18n("sell.type");
+  const [t, p] = await Promise.all([getScopedI18n("sell.type"), getScopedI18n("search")]);
+  const loginToViewPrice = p("loginToViewPrices");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: types[index],
@@ -31,7 +32,7 @@ export default async function Listings({ homes }: Props) {
                 ${index >= 4 && "lg:hidden xl:block"}
               `}
             >
-              <ResizableCard home={home} types={matchingTypes} />
+              <ResizableCard home={home} types={matchingTypes} loginToViewPrice={loginToViewPrice} />
             </div>
           );
         })}

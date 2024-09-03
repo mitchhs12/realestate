@@ -151,7 +151,7 @@
         "2": "Karakova"
       }
     },
-    "cities": "Önerilen Şehir Bölgeleri",
+    "cities": "Aşağıdan bir şehir bölgesi seçerek başlayabilirsiniz.",
     "recommended": "Tavsiye edilen",
     "cheapest": "En ucuz",
     "newest": "En yeni",
@@ -437,7 +437,8 @@
     "results": "Sonuçlar",
     "show-map": "Haritayı Göster",
     "show-list": "Listeyi Göster",
-    "no-homes-found": "Ev Bulunamadı!"
+    "no-homes-found": "Ev Bulunamadı!",
+    "loginToViewPrices": "Fiyatları görmek için giriş yapın"
   },
   "homes": {
     "units": {

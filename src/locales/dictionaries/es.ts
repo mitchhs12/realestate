@@ -151,7 +151,7 @@ export default {
         "2": "Carrasco"
       }
     },
-    "cities": "Distritos de la ciudad recomendados",
+    "cities": "Comience seleccionando un distrito de ciudad a continuación.",
     "recommended": "Recomendado",
     "cheapest": "El más barato",
     "newest": "El más nuevo",
@@ -437,7 +437,8 @@ export default {
     "results": "Resultados",
     "show-map": "Mostrar mapa",
     "show-list": "Mostrar lista",
-    "no-homes-found": "¡No se encontraron casas!"
+    "no-homes-found": "¡No se encontraron casas!",
+    "loginToViewPrices": "Inicie sesión para ver los precios"
   },
   "homes": {
     "units": {

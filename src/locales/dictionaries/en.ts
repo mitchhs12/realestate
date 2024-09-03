@@ -151,7 +151,7 @@ export default {
         "Carrasco"
       ]
     },
-    "cities": "Recommended City Destricts",
+    "cities": "Get started by selecting a city destrict below.",
     "recommended": "Recommended",
     "cheapest": "Cheapest",
     "newest": "Newest",
@@ -437,7 +437,8 @@ export default {
     "results": "Results",
     "show-map": "Show Map",
     "show-list": "Show List",
-    "no-homes-found": "No Homes Found!"
+    "no-homes-found": "No Homes Found!",
+    "loginToViewPrices": "Login to view prices"
   },
   "homes": {
     "units": {

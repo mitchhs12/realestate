@@ -88,10 +88,10 @@ export default function FiltersDialog({
 
   return (
     <>
-      <Button variant={"outline"} size={"default"} disabled={!isReady} onClick={() => setDialogOpen(true)}>
+      <Button variant={"outline"} className="h-12" disabled={!isReady} onClick={() => setDialogOpen(true)}>
         <div className="inline-flex items-center gap-2">
           <SlidersHorizontal width={16} height={16} strokeWidth={1.25} />
-          <span className="hidden md:flex items-center">{filters}</span>
+          <span className="items-center">{filters}</span>
         </div>
       </Button>
 

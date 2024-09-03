@@ -29,6 +29,8 @@ export default async function Page({ params }: { params: { locale: string; searc
   const resultsText = t("results");
   const showMap = t("show-map");
   const showList = t("show-list");
+  const loginToViewPrice = t("loginToViewPrices");
+  console.log(loginToViewPrice);
   const noHomesFound = t("no-homes-found");
   const fullResponse = await response.json();
   const longLatArray = fullResponse.Place.Geometry.Point;
@@ -96,6 +98,7 @@ export default async function Page({ params }: { params: { locale: string; searc
           showList={showList}
           typesObject={typesObject}
           noHomesFound={noHomesFound}
+          loginToViewPrice={loginToViewPrice}
         />
       </main>
     );

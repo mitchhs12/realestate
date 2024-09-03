@@ -96,11 +96,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
     <div className="flex flex-col items-center w-full gap-6">
       <div className="grid p-8 w-full grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {Object.entries(countries).map(([isoCode, country], countryIndex) => (
-          <Carousel
-            key={countryIndex}
-            className="w-full h-full hover:cursor-pointer"
-            onMouseLeave={() => setUnderlinedImage("")}
-          >
+          <Carousel key={countryIndex} className="w-full h-full" onMouseLeave={() => setUnderlinedImage("")}>
             <CarouselContent>
               <CarouselItem
                 key={country.city.id}
@@ -109,13 +105,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                   handleHover(getUrl(country.folder, country.city.id), country.city, country.city.id);
                 }}
               >
-                <div
-                  className="relative flex justify-center items-center h-40 w-full"
-                  onClick={() => {
-                    setClickedLocation(true);
-                    setQuery(country.city.translation);
-                  }}
-                >
+                <div className="relative flex justify-center items-center h-40 w-full">
                   <Image
                     className="object-cover object-center rounded-lg"
                     src={getUrl(country.folder, country.city.id)}
@@ -128,11 +118,21 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                   />
                   <div className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg">
                     <div className="flex flex-col justify-center items-center">
-                      <p className={`flex items-center gap-x-2 ${underlinedImage === country.city.id && "underline"}`}>
+                      <p
+                        onClick={() => {
+                          setClickedLocation(true);
+                          setQuery(country.city.translation);
+                        }}
+                        className={`flex items-center hover:cursor-pointer gap-x-2 ${underlinedImage === country.city.id && "underline"}`}
+                      >
                         {country.city.translation}{" "}
                       </p>
                       <p
-                        className={`flex items-center gap-x-2 font-medium text-sm ${
+                        onClick={() => {
+                          setClickedLocation(true);
+                          setQuery(country.city.translation);
+                        }}
+                        className={`flex items-center gap-x-2 hover:cursor-pointer font-medium text-sm ${
                           underlinedImage === country.city.id && "underline"
                         }`}
                       >
@@ -151,13 +151,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                     handleHover(getUrl(country.folder, neighborhood.id), neighborhood, neighborhood.id);
                   }}
                 >
-                  <div
-                    className="relative flex justify-center items-center h-40 w-full"
-                    onClick={() => {
-                      setClickedLocation(true);
-                      setQuery(neighborhood.translation);
-                    }}
-                  >
+                  <div className="relative flex justify-center items-center h-40 w-full">
                     <Image
                       className="object-cover object-center rounded-lg" //opacity-65 dark:opacity-60"
                       src={getUrl(country.folder, neighborhood.id)}
@@ -172,7 +166,13 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                         underlinedImage === neighborhood.id && "underline"
                       }`}
                     >
-                      <p className="flex justify-center items-center gap-2">
+                      <p
+                        onClick={() => {
+                          setClickedLocation(true);
+                          setQuery(neighborhood.translation);
+                        }}
+                        className="flex justify-center items-center hover:cursor-pointer gap-2"
+                      >
                         {neighborhood.translation}
                         {<FlagComponent country={isoCode as Country} countryName={isoCode} />}
                       </p>

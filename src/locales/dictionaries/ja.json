@@ -151,7 +151,7 @@
         "2": "カラスコ"
       }
     },
-    "cities": "おすすめの市区町村",
+    "cities": "以下の市区町村を選択して開始してください。",
     "recommended": "推奨",
     "cheapest": "最も安い",
     "newest": "最新",
@@ -437,7 +437,8 @@
     "results": "結果",
     "show-map": "地図を表示",
     "show-list": "リストを表示",
-    "no-homes-found": "家が見つかりません!"
+    "no-homes-found": "家が見つかりません!",
+    "loginToViewPrices": "価格を見るにはログインしてください"
   },
   "homes": {
     "units": {

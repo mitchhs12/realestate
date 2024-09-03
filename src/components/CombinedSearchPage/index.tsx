@@ -25,6 +25,7 @@ interface Props {
   showList: string;
   typesObject: { id: string; translation: string }[];
   noHomesFound: string;
+  loginToViewPrice: string;
 }
 
 export default function CombinedSearchPage({
@@ -38,6 +39,7 @@ export default function CombinedSearchPage({
   showList,
   typesObject,
   noHomesFound,
+  loginToViewPrice,
 }: Props) {
   const {
     mapFocused,
@@ -156,6 +158,7 @@ export default function CombinedSearchPage({
           label={label}
           typesObject={typesObject}
           noHomesFound={noHomesFound}
+          loginToViewPrice={loginToViewPrice}
         />
       </section>
       <div className="flex md:hidden">
@@ -185,6 +188,7 @@ export default function CombinedSearchPage({
                   label={label}
                   typesObject={typesObject}
                   noHomesFound={noHomesFound}
+                  loginToViewPrice={loginToViewPrice}
                 />
               </div>
             </div>

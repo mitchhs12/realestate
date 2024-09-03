@@ -85,7 +85,7 @@ export function ProfileButton({
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
+        <Button className="h-12" variant="outline">
           <HamburgerMenuIcon className="hidden sm:flex mr-2 ml-1 h-4 w-4" />
           {user && user.email ? (
             <Avatar className="h-6 w-6">

@@ -151,7 +151,7 @@ export default {
         "2": "คาร์ราสโก้"
       }
     },
-    "cities": "เขตพื้นที่เมืองที่แนะนำ",
+    "cities": "เริ่มต้นด้วยการเลือกเขตเมืองด้านล่าง",
     "recommended": "ที่แนะนำ",
     "cheapest": "ถูกที่สุด",
     "newest": "ใหม่ล่าสุด",
@@ -437,7 +437,8 @@ export default {
     "results": "ผลลัพธ์",
     "show-map": "แสดงแผนที่",
     "show-list": "แสดงรายการ",
-    "no-homes-found": "ไม่พบบ้าน!"
+    "no-homes-found": "ไม่พบบ้าน!",
+    "loginToViewPrices": "เข้าสู่ระบบเพื่อดูราคา"
   },
   "homes": {
     "units": {

@@ -151,7 +151,7 @@
         "2": "Carrasco"
       }
     },
-    "cities": "Preporučene gradske četvrti",
+    "cities": "Započnite odabirom gradskog okruga u nastavku.",
     "recommended": "Preporučeno",
     "cheapest": "Najjeftiniji",
     "newest": "Najnoviji",
@@ -437,7 +437,8 @@
     "results": "Rezultati",
     "show-map": "Prikaži kartu",
     "show-list": "Prikaži popis",
-    "no-homes-found": "Nema pronađenih domova!"
+    "no-homes-found": "Nema pronađenih domova!",
+    "loginToViewPrices": "Prijavite se za pregled cijena"
   },
   "homes": {
     "units": {

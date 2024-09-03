@@ -151,7 +151,7 @@
         "2": "Carrasco"
       }
     },
-    "cities": "Quartiers recommandés de la ville",
+    "cities": "Commencez par sélectionner un quartier de la ville ci-dessous.",
     "recommended": "Recommandé",
     "cheapest": "Le moins cher",
     "newest": "Le plus récent",
@@ -437,7 +437,8 @@
     "results": "Résultats",
     "show-map": "Afficher la carte",
     "show-list": "Afficher la liste",
-    "no-homes-found": "Aucune maison trouvée !"
+    "no-homes-found": "Aucune maison trouvée !",
+    "loginToViewPrices": "Connectez-vous pour voir les prix"
   },
   "homes": {
     "units": {

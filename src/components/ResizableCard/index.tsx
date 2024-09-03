@@ -14,14 +14,16 @@ import { Country } from "react-phone-number-input";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface Props {
   home: HomeType | null;
   isLoading?: boolean;
   types: { id: string; translation: string }[];
+  loginToViewPrice: string;
 }
 
-export default function ResizableCard({ home, isLoading, types }: Props) {
+export default function ResizableCard({ home, isLoading, types, loginToViewPrice }: Props) {
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
@@ -95,14 +97,23 @@ export default function ResizableCard({ home, isLoading, types }: Props) {
             {session.status === "loading" ? (
               <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
             ) : (
-              <BrokenPrice
-                home={home}
-                newCurrencySymbol={defaultCurrency.symbol}
-                newCurrencyUsdPrice={defaultCurrency.usdPrice}
-                reveal={user ? true : false}
-                blurAmount="blur-sm"
-                className="text-sm md:text-md lg:text-lg"
-              />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <BrokenPrice
+                      home={home}
+                      newCurrencySymbol={defaultCurrency.symbol}
+                      newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                      reveal={user ? true : false}
+                      blurAmount="blur-sm"
+                      className="text-sm md:text-md lg:text-lg"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{loginToViewPrice}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             )}
           </div>
         </div>

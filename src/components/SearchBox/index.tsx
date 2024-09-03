@@ -8,6 +8,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
+import { Search } from "lucide-react";
 
 interface Result {
   Text: string;
@@ -148,66 +149,70 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
       >
         <div className="flex flex-col w-full items-center">
           <Popover open={popoverOpen}>
-            <div className="flex justify-center items-center w-[260px] xs:w-[230px] sm:w-[340px] md:w-[420px] lg:w-[680px] xl:w-[900px] gap-x-2">
-              <PopoverTrigger asChild>
-                <Input
-                  ref={inputRef}
-                  type="search"
-                  placeholder={placeholder}
-                  className="z-100 bg-popover text-base"
-                  value={query}
-                  onFocus={getGeolocation}
-                  onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)} // Open Popover on mouse down if there are results
-                  onChange={(e) => {
-                    setQuery(e.target.value);
-                  }}
-                  onKeyDown={(e) => {
-                    if (!loading && e.key === "Enter") {
-                      e.preventDefault();
-                      results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
-                    }
-                  }}
-                />
-              </PopoverTrigger>
-              <Button
+            <div className="flex justify-center items-center w-full gap-x-2">
+              <div className="relative w-full justify-center items-center">
+                <Search size={16} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <PopoverTrigger asChild>
+                  <Input
+                    ref={inputRef}
+                    type="search"
+                    placeholder={placeholder}
+                    className="z-100 bg-popover text-base pl-11" // Add padding-left to create space for the icon
+                    value={query}
+                    onFocus={getGeolocation}
+                    onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
+                    onChange={(e) => {
+                      setQuery(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (!loading && e.key === "Enter") {
+                        e.preventDefault();
+                        results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
+                      }
+                    }}
+                  />
+                </PopoverTrigger>
+                {(!loading || results.length > 0) && (
+                  <div className="w-full">
+                    <PopoverContent
+                      ref={popoverRef}
+                      sideOffset={2}
+                      onOpenAutoFocus={(e) => e.preventDefault()}
+                      className="PopoverContent"
+                    >
+                      {results.length === 0 && "No results found."}
+                      {results.length > 0 &&
+                        results.map((entry: any, index) => (
+                          <div
+                            key={index}
+                            className="py-1 md:py-2 cursor-pointer hover:bg-muted rounded-md text-sm md:text-base"
+                            onClick={() => {
+                              handleSearch(entry.Text, entry.PlaceId);
+                            }}
+                          >
+                            <p className="flex gap-x-2 px-2 justify-start items-center">
+                              <Search size={16} />
+                              <span className="block truncate">{entry.Text}</span>
+                            </p>
+                          </div>
+                        ))}
+                    </PopoverContent>
+                  </div>
+                )}
+              </div>
+              {/* <Button
                 variant="default"
                 type="submit"
                 disabled={loading}
                 size="default"
-                className="hidden lg:flex items-center justify-center min-w-[100px]"
+                className="hidden lg:flex items-center justify-center min-w-[100px] h-full"
               >
                 <div className="inline-flex items-center justify-center">
                   <span className={`block ${loading ? "invisible" : "visible"}`}>{text}</span>
                   {loading && <ReloadIcon className="absolute h-5 w-auto animate-spin" />}
                 </div>
-              </Button>
+              </Button> */}
             </div>
-            {(!loading || results.length > 0) && (
-              <div className="flex w-full">
-                <PopoverContent
-                  ref={popoverRef}
-                  onOpenAutoFocus={(e) => e.preventDefault()}
-                  className="w-[260px] xs:w-[230px] sm:w-[340px] md:w-[420px] lg:w-[572px] xl:w-[792px]"
-                >
-                  {results.length === 0 && <div>No results found.</div>}
-                  {results.length > 0 && (
-                    <div className="w-full h-full">
-                      {results.map((entry: any, index) => (
-                        <div
-                          key={index}
-                          className="py-1 md:py-2 cursor-pointer hover:bg-muted rounded-md text-sm md:text-base"
-                          onClick={() => {
-                            handleSearch(entry.Text, entry.PlaceId);
-                          }}
-                        >
-                          <span className="block truncate">{entry.Text}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </PopoverContent>
-              </div>
-            )}
           </Popover>
         </div>
       </form>
