@@ -44,6 +44,7 @@ export default function Filters() {
     initialMaxPrice,
     originalFilters,
     selectedRooms,
+    setNewFilters,
     setSelectedRooms,
   } = useContext(QueryContext);
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
@@ -208,7 +209,20 @@ export default function Filters() {
                   rooms: selectedRooms,
                 })
               }
-              onClick={() => setIsFiltering(true)}
+              onClick={() => {
+                if (pathname !== "/") {
+                  setIsFiltering(true);
+                } else {
+                  setNewFilters(
+                    JSON.stringify({
+                      convertedPriceRange: convertedPriceRange,
+                      types: selectedTypes,
+                      features: selectedFeatures,
+                      rooms: selectedRooms,
+                    })
+                  );
+                }
+              }}
             >
               {apply}
             </Button>
@@ -230,6 +244,7 @@ export default function Filters() {
                 kitchens: [0, selectedRooms.maxRooms],
                 maxRooms: selectedRooms.maxRooms,
               });
+              setNewFilters(originalFilters);
               setIsFiltering(true);
             }}
           >
