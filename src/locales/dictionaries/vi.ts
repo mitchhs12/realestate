@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "Bài viết không có sẵn trong",
+    "changeLanguage": "Thay đổi ngôn ngữ!",
+    "unavailableWarning": "Bài viết này không có sẵn bằng ngôn ngữ của bạn!",
+    "readMore": "Đọc thêm",
     "title": "Bài viết",
     "reading": "phút để đọc.",
     "titleError": "Không thể có được tiêu đề.",

@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "المقال غير متاح في",
+    "changeLanguage": "تغيير اللغة!",
+    "unavailableWarning": "هذه المقالة غير متوفرة بلغتك!",
+    "readMore": "اقرأ المزيد",
     "title": "المقالات",
     "reading": "دقائق للقراءة.",
     "titleError": "غير قادر على الحصول على العنوان.",

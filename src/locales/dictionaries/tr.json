@@ -160,6 +160,10 @@
     }
   },
   "articles": {
+    "articleUnavailable": "Makale şurada mevcut değil:",
+    "changeLanguage": "Dili değiştir!",
+    "unavailableWarning": "Bu makale dilinizde mevcut değil!",
+    "readMore": "Devamını oku",
     "title": "Makaleler",
     "reading": "okumak için dakikalar.",
     "titleError": "Başlık alınamadı.",

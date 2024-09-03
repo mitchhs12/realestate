@@ -160,6 +160,10 @@
     }
   },
   "articles": {
+    "articleUnavailable": "Artikel nie beskikbaar in",
+    "changeLanguage": "Verander taal!",
+    "unavailableWarning": "Hierdie artikel is nie in jou taal beskikbaar nie!",
+    "readMore": "Lees meer",
     "title": "Artikels",
     "reading": "minute om te lees.",
     "titleError": "Kan nie titel kry nie.",

@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "სტატია მიუწვდომელია",
+    "changeLanguage": "ენის შეცვლა!",
+    "unavailableWarning": "ეს სტატია არ არის ხელმისაწვდომი თქვენს ენაზე!",
+    "readMore": "დაწვრილებით",
     "title": "სტატიები",
     "reading": "წუთი წასაკითხად.",
     "titleError": "ტიტულის მიღება შეუძლებელია.",

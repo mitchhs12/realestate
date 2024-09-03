@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "記事は利用できません",
+    "changeLanguage": "言語を変更してください!",
+    "unavailableWarning": "この記事はあなたの言語ではご利用いただけません。",
+    "readMore": "続きを読む",
     "title": "記事",
     "reading": "読むのに数分かかります。",
     "titleError": "タイトルを取得できません。",

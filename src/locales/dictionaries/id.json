@@ -160,6 +160,10 @@
     }
   },
   "articles": {
+    "articleUnavailable": "Artikel tidak tersedia di",
+    "changeLanguage": "Ubah bahasa!",
+    "unavailableWarning": "Artikel ini tidak tersedia dalam bahasa Anda!",
+    "readMore": "Baca selengkapnya",
     "title": "Artikel",
     "reading": "menit untuk membaca.",
     "titleError": "Tidak dapat memperoleh judul.",

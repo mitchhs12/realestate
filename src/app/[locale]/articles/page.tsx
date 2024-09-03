@@ -9,6 +9,7 @@ import { client, urlFor } from "@/lib/sanity";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { getFullLanguageName } from "@/lib/utils";
 
 export const revalidate = 30;
 
@@ -32,7 +33,12 @@ export default async function Page({ params: { locale } }: { params: { locale: L
 
   const data: ArticleType[] = await getData(locale);
 
-  const scopedT = await getScopedI18n("articles");
+  const t = await getScopedI18n("articles");
+  const readMore = t("readMore");
+  const title = t("title");
+  const changeLanguage = t("changeLanguage");
+  const unavailableWarning = t("unavailableWarning");
+  const articleUnavailable = t("articleUnavailable");
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -59,7 +65,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
             <h1
               className={`${poppins.className} flex text-center justify-center text-xl sm:text-2xl md:text-2xl lg:text-3xl font-light tracking-wider`}
             >
-              {scopedT("title")}
+              {title}
             </h1>
           </div>
         </div>
@@ -80,13 +86,19 @@ export default async function Page({ params: { locale } }: { params: { locale: L
               </div>
 
               <CardContent className="flex flex-col justify-between w-full h-[180px] px-3 gap-2 py-2">
-                <h3 className="mt-2 text-primary text-lg line-clamp-1 font-bold">{article.localizedTitle}</h3>
+                <h3 className="mt-2 text-primary text-lg line-clamp-1 font-bold">
+                  {article.localizedTitle
+                    ? article.localizedTitle
+                    : `${articleUnavailable} ${getFullLanguageName(locale)}`}
+                </h3>
                 <div className="items-start flex-grow line-clamp-3 text-sm text-gray-600 dark:text-gray-300 pose">
-                  {article.thumbnailDescription}
+                  {article.thumbnailDescription ? article.thumbnailDescription : unavailableWarning}
                 </div>
                 <div className="flex items-end">
-                  <Button asChild className="w-full mb-1">
-                    <Link href={`/articles/${article.currentSlug}`}>Read More</Link>
+                  <Button className="w-full mb-1" disabled={article.thumbnailDescription ? false : true}>
+                    <Link href={`/articles/${article.currentSlug}`}>
+                      {article.localizedTitle ? readMore : changeLanguage}
+                    </Link>
                   </Button>
                 </div>
               </CardContent>

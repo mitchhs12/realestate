@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "文章不可用",
+    "changeLanguage": "更改语言！",
+    "unavailableWarning": "此文章不提供您所用语言的版本！",
+    "readMore": "阅读更多",
     "title": "文章",
     "reading": "分钟阅读。",
     "titleError": "无法獲得軸权。",

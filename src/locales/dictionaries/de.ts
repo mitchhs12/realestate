@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "Artikel nicht verfügbar in",
+    "changeLanguage": "Sprache ändern!",
+    "unavailableWarning": "Dieser Artikel ist in Ihrer Sprache nicht verfügbar!",
+    "readMore": "Mehr lesen",
     "title": "Artikel",
     "reading": "Minuten zum Lesen.",
     "titleError": "Titel konnte nicht abgerufen werden.",

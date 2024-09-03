@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "บทความนี้ไม่พร้อมใช้งานใน",
+    "changeLanguage": "เปลี่ยนภาษา!",
+    "unavailableWarning": "บทความนี้ไม่พร้อมใช้งานในภาษาของคุณ!",
+    "readMore": "อ่านเพิ่มเติม",
     "title": "บทความ",
     "reading": "นาทีในการอ่าน",
     "titleError": "ไม่สามารถรับชื่อเรื่องได้",

@@ -160,6 +160,10 @@ export default {
     }
   },
   "articles": {
+    "articleUnavailable": "Članak nije dostupan u",
+    "changeLanguage": "Promijeni jezik!",
+    "unavailableWarning": "Ovaj članak nije dostupan na vašem jeziku!",
+    "readMore": "Pročitajte više",
     "title": "Članci",
     "reading": "minuta za čitanje.",
     "titleError": "Nije moguće dobiti naslov.",
