@@ -15,6 +15,7 @@ export default async function Hero() {
         style={{ objectFit: "cover" }}
         quality={70}
         priority={true}
+        loading={"eager"}
         sizes="(max-width: 400px) 400px,
         (max-width: 510px) 510px,
         (max-width: 768px) 768px, 

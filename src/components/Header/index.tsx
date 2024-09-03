@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/Icons/icons";
 import { useRouter } from "next/navigation";
 import { useCurrentLocale } from "@/locales/client";
-import { ChevronLeft } from "lucide-react";
 import { QueryContext } from "@/context/QueryContext";
 import Filters from "@/components/Filters";
 import { I18nProviderClient } from "@/locales/client";
@@ -115,22 +114,17 @@ export default function Header({
                 pathname === "/"
                   ? router.refresh()
                   : pathname.includes("/homes")
-                  ? currentHome
-                    ? isSmallScreen
-                      ? router.back()
+                    ? currentHome
+                      ? isSmallScreen
+                        ? router.back()
+                        : router.push("/")
                       : router.push("/")
-                    : router.push("/")
-                  : router.push("/");
+                    : router.push("/");
               }}
             >
               <div className="flex justify-center items-center gap-1">
                 <div className="flex justify-center items-center">
-                  <div className="flex">{!isStudioPage && <Logo width={"40"} height={"40"} />}</div>
-                  {pathname !== "/" && (
-                    <div className="flex sm:hidden">
-                      <ChevronLeft />
-                    </div>
-                  )}
+                  {!isStudioPage && <Logo width={"40"} height={"40"} />}
                 </div>
                 <h1
                   className={`${poppins.className} ${
