@@ -62,11 +62,11 @@ export default function CombinedSearchPage({
   const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
 
   // INITIAL GET ALL HOMES ON FIRST RENDER
-  // useEffect(() => {
-  //   getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
-  //     setHomesGeoJson(allHomes);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
+      setHomesGeoJson(allHomes);
+    });
+  }, []);
 
   // SEARCH COMPONENT
   useEffect(() => {

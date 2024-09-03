@@ -120,7 +120,7 @@ export default function Filters() {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2">
               <House width={20} height={20} strokeWidth={1.25} />
-              {categories}
+              {categories} {selectedTypes.length > 0 && `(${selectedTypes.length})`}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
