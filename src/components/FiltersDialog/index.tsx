@@ -69,9 +69,6 @@ export default function FiltersDialog() {
     }
   }, [selectedFeatures, selectedTypes]);
 
-  console.log("HERE IS THE ORIGINAL FILTERS", originalFilters);
-  console.log("HERE IS THE NEW FILTERS", newFilters);
-
   return (
     <>
       <Button
@@ -83,7 +80,9 @@ export default function FiltersDialog() {
           setDialogOpen(true);
         }}
       >
-        <div className={`flex items-center gap-2 pr-1 ${originalFilters !== newFilters && "text-primary"}`}>
+        <div
+          className={`flex items-center gap-2 pr-1 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
+        >
           <Filter className="items-center" width={20} height={20} strokeWidth={1.75} />
           <span className="hidden sm:flex items-center">{filters}</span>
         </div>
@@ -235,8 +234,6 @@ export default function FiltersDialog() {
                 className="flex"
                 disabled={originalFilters === newFilters}
                 onClick={() => {
-                  console.log("originalFilters", originalFilters);
-                  console.log("newFilters", newFilters);
                   setSelectedFeatures([]);
                   setSelectedTypes([]);
                   setConvertedPriceRange([]);

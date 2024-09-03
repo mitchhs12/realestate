@@ -79,7 +79,9 @@ export default function Filters() {
           variant={"secondary"}
           disabled={!isReady}
         >
-          <div className={`flex items-center gap-2 ${originalFilters !== newFilters && "text-primary"}`}>
+          <div
+            className={`flex items-center gap-2 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
+          >
             <Filter width={20} height={20} strokeWidth={1.75} />
             <span className="items-center">{filters}</span>
           </div>
@@ -148,7 +150,9 @@ export default function Filters() {
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={defaultLanguage}>
-                  <DropdownMenuLabel className="flex justify-center items-center pb-3">{featuresSub}</DropdownMenuLabel>
+                  <DropdownMenuLabel className="flex justify-center items-center pb-3">
+                    {featuresSub} {selectedFeatures.length > 0 && `(${selectedFeatures.length})`}
+                  </DropdownMenuLabel>
                   <div className="overflow-y-auto">
                     <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
                   </div>
