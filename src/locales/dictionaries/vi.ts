@@ -24,7 +24,7 @@ export default {
       },
       "articles": "Bài viết",
       "construction": "Trang web này đang được xây dựng.",
-      "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi email cho bạn khi tài khoản đã sẵn sàng.",
+      "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi cho bạn email khi tài khoản đã sẵn sàng.",
       "sell-button-big": "Bán Bất Động Sản",
       "sell-button-small": "Bán",
       "profile-button": {
@@ -411,7 +411,7 @@ export default {
         "5": "Tòa nhà thương mại",
         "6": "Thùng chứa",
         "7": "Nhà Cycladic",
-        "8": "Nhà đất",
+        "8": "Nhà sinh thái",
         "9": "Nông trại",
         "10": "Nhà thuyền",
         "11": "Đất",

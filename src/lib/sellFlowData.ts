@@ -13,7 +13,7 @@ export const types = [
   "Commercial building", //X City or Domain
   "Container", // container
   "Cycladic home", //
-  "Earth home", // Home eco from Tabler
+  "Eco home", // Home eco from Tabler
   "Farm", // argriculture
   "Houseboat", //X Houseboat
   "Land", //landscape or Forest
@@ -62,7 +62,7 @@ export const typesMap = [
   { id: "commercial-building", name: "Commercial building" },
   { id: "container", name: "Container" },
   { id: "cycladic-home", name: "Cycladic home" },
-  { id: "earth-home", name: "Earth home" },
+  { id: "eco-home", name: "Eco home" },
   { id: "farm", name: "Farm" },
   { id: "houseboat", name: "Houseboat" },
   { id: "land", name: "Land" },

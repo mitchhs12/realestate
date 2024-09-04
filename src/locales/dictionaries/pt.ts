@@ -24,7 +24,7 @@ export default {
       },
       "articles": "Artigos",
       "construction": "Este site está em construção.",
-      "construction-sub": "Crie uma conta e lhe enviaremos um e-mail quando estiver pronta.",
+      "construction-sub": "Crie uma conta e lhe enviaremos um e-mail quando estiver pronto.",
       "sell-button-big": "Vender Propriedade",
       "sell-button-small": "Vender",
       "profile-button": {
@@ -411,7 +411,7 @@ export default {
         "5": "Edifício comercial",
         "6": "Recipiente",
         "7": "Casa das Cíclades",
-        "8": "casa da terra",
+        "8": "Casa ecológica",
         "9": "Fazenda",
         "10": "Casa flutuante",
         "11": "Terra",

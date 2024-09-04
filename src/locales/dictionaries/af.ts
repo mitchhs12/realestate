@@ -411,7 +411,7 @@ export default {
         "5": "Kommersiële gebou",
         "6": "Houer",
         "7": "Sikladiese huis",
-        "8": "Aarde huis",
+        "8": "Eko-huis",
         "9": "Plaas",
         "10": "Huisboot",
         "11": "Grond",

@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { capitalizeFirstLetter } from "@/lib/utils";
@@ -16,15 +16,6 @@ interface Props {
   subtitle: string;
   options: { id: string; name: string; translation: string }[];
 }
-
-const IconWrapper: React.FC<{ Component: React.FC<IconProps>; color: string; width: number; height: number }> = ({
-  Component,
-  color,
-  width,
-  height,
-}) => {
-  return <Component color={color} width={width} height={height} />;
-};
 
 export default function Type({
   currentHome,
@@ -73,7 +64,7 @@ export default function Type({
             <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
         </div>
-        <div className="grid w-full h-full px-8 justify-center items-center py-8 overflow-auto">
+        <div className="grid w-full h-full px-4 justify-center items-center py-8 overflow-auto">
           <ToggleGroup
             type="multiple"
             value={selection}
@@ -82,7 +73,7 @@ export default function Type({
               if (value) setSelection(value.map(capitalizeFirstLetter));
             }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 xl:gap-8 items-center justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
               {options.map((type, index) => {
                 const IconComponent = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
                 return (
@@ -90,11 +81,15 @@ export default function Type({
                     variant={"outline"}
                     key={index}
                     value={type.name}
-                    className="flex h-[50px] md:h-[80px] xl:h-[120px] items-center justify-center border-2 text-sm md:text-lg"
+                    className="flex h-[50px] md:h-[100px] items-center justify-center text-sm md:text-lg"
                   >
-                    <div className="flex gap-2 items-center justify-center text-bottom border-2">
-                      {/* {IconComponent && <IconWrapper Component={IconComponent} color="white" width={10} height={10} />} */}
-                      {type.translation}
+                    <div className="flex w-full justify-center gap-2 items-center text-center text-xs sm:text-sm md:text-md lg:text-lg">
+                      {IconComponent && (
+                        <div className="flex w-1/3 justify-center items-center">
+                          <IconComponent color="gray" width={40} height={40} />
+                        </div>
+                      )}
+                      <div className="flex w-2/3 justify-start text-start">{type.translation}</div>
                     </div>
                   </ToggleGroupItem>
                 );

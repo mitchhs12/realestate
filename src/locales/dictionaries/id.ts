@@ -411,7 +411,7 @@ export default {
         "5": "Bangunan komersial",
         "6": "Wadah",
         "7": "Rumah Cycladic",
-        "8": "Rumah Bumi",
+        "8": "Rumah ramah lingkungan",
         "9": "Peternakan",
         "10": "Rumah perahu",
         "11": "Tanah",

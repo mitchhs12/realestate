@@ -109,9 +109,11 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
                       className="text-sm md:text-md lg:text-lg"
                     />
                   </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{loginToViewPrice}</p>
-                  </TooltipContent>
+                  {!user && (
+                    <TooltipContent>
+                      <p>{loginToViewPrice}</p>
+                    </TooltipContent>
+                  )}
                 </Tooltip>
               </TooltipProvider>
             )}

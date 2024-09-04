@@ -24,7 +24,7 @@
       },
       "articles": "Artikel",
       "construction": "Diese Site befindet sich im Aufbau.",
-      "construction-sub": "Bitte erstellen Sie ein Konto. Wir senden Ihnen eine E-Mail, wenn es fertig ist.",
+      "construction-sub": "Bitte erstellen Sie ein Konto und wir senden Ihnen eine E-Mail, wenn es fertig ist.",
       "sell-button-big": "Immobilie verkaufen",
       "sell-button-small": "Verkaufen",
       "profile-button": {
@@ -411,7 +411,7 @@
         "5": "Geschäftshaus",
         "6": "Container",
         "7": "Kykladenhaus",
-        "8": "Erde zu Hause",
+        "8": "Öko-Haus",
         "9": "Bauernhof",
         "10": "Hausboot",
         "11": "Land",

@@ -24,7 +24,7 @@ export default {
       },
       "articles": "Articles",
       "construction": "This site is under construction.",
-      "construction-sub": "Please create an account, and we'll email you when it's ready.",
+      "construction-sub": "Please create an account, and we'll send you an email when it's ready.",
       "sell-button-big": "Sell Property",
       "sell-button-small": "Sell",
       "profile-button": {
@@ -411,7 +411,7 @@ export default {
         "5": "Commercial building",
         "6": "Container",
         "7": "Cycladic home",
-        "8": "Earth home",
+        "8": "Eco home",
         "9": "Farm",
         "10": "Houseboat",
         "11": "Land",
