@@ -77,8 +77,8 @@ export default function Location({
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
-        <div className="flex flex-col">
+      <div className="flex flex-col mb-20 w-full px-8 max-w-8xl h-full justify-start items-center text-center">
+        <div className="flex flex-col w-full">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
@@ -95,7 +95,7 @@ export default function Location({
           </div>
         </div>
         {currentCoords.lat !== 0 && currentCoords.long !== 0 ? (
-          <div className="flex w-[80vw] h-full">
+          <div className="flex w-full h-full">
             <SmallMap coordinates={currentCoords} currentHome={currentHome} />
           </div>
         ) : null}

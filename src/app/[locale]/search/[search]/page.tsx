@@ -2,9 +2,8 @@ import CombinedSearchPage from "@/components/CombinedSearchPage";
 import { CoordinatesType } from "@/lib/validations";
 import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
-import { types } from "@/lib/sellFlowData";
+import { typesMap } from "@/lib/sellFlowData";
 import { features } from "@/lib/sellFlowData";
-import { getAllHomes } from "../actions";
 import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
@@ -23,6 +22,7 @@ export default async function Page({ params }: { params: { locale: string; searc
   );
 
   const t = await getScopedI18n("search");
+  const types = await getScopedI18n("sell.type");
 
   const propertiesText = t("properties");
   const propertyText = t("property");
@@ -37,11 +37,10 @@ export default async function Page({ params }: { params: { locale: string; searc
   const coordinates: CoordinatesType = { lat: longLatArray[1], long: longLatArray[0] };
   const category = fullResponse.Place.Categories[0];
 
-  const typesT = await getScopedI18n("sell.type");
-
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
-    id: types[index],
-    translation: typesT(`options.${index}` as keyof typeof typesT),
+    id: typesMap[index].id,
+    name: typesMap[index].name,
+    translation: types(`options.${index}` as keyof typeof types),
   }));
 
   let initZoom: number | null;

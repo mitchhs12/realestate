@@ -218,14 +218,14 @@
       "title": "Kapasiteit",
       "subtitle": "Hoe groot is jou eiendom?",
       "size": "Voer die grootte van jou eiendom hier in.",
-      "metres": "meter",
       "m-placeholder": "Grootte in m²...",
       "ft-placeholder": "Grootte in ft²...",
+      "change-to-feet": "Verander na ft²",
+      "change-to-metres": "Verander na m²",
       "units": {
         "m": "m",
         "ft": "ft"
       },
-      "feet": "voete",
       "capacity": "Skat nou hoeveel mense gemaklik in jou eiendom kan woon."
     },
     "checkout": {
@@ -302,18 +302,18 @@
         "8": "Oefentoerusting",
         "9": "Vuurput",
         "10": "Motorhuis",
-        "11": "Tuin/werf",
+        "11": "Tuin / Erf",
         "12": "Verhittingstelsel",
         "13": "Huiskantoor",
         "14": "Warmbad",
         "15": "Binne kaggel",
         "16": "Toegang tot meer",
         "17": "Waskamer",
-        "18": "Buitelug eetarea",
+        "18": "Eet buitelug",
         "19": "Patio",
         "20": "Swembad",
         "21": "Sekuriteitstelsel",
-        "22": "Ski-in/Ski-out",
+        "22": "Ski-in / Ski-out",
         "23": "Sonpanele",
         "24": "Terras",
         "25": "Inloopkas"

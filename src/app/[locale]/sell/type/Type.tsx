@@ -5,7 +5,6 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
 import { typeIcons } from "@/components/Icons/typeIcons";
-import { IconProps } from "@/components/Icons/typeIcons";
 
 interface Props {
   currentHome: HomeType | null;

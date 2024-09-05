@@ -33,17 +33,18 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const { array, innerIndex, outerIndex } = await getStepData("/sell/capacity");
   const sellFlatIndex = await getSellFlowIndex("/sell/capacity");
   const t = await getScopedI18n("sell.capacity");
+  const h = await getScopedI18n("homes.units");
 
   const title = t("title");
   const subtitle = t("subtitle");
   const size = t("size");
-  const metres = t("metres");
-  const feet = t("feet");
   const capacity = t("capacity");
-  const m = t("units.m");
-  const ft = t("units.ft");
+  const m = h("m");
+  const ft = h("ft");
   const mPlaceholder = t("m-placeholder");
   const ftPlaceholder = t("ft-placeholder");
+  const changeToFeet = t("change-to-feet");
+  const changeToMetres = t("change-to-metres");
 
   return (
     <Capacity
@@ -54,13 +55,13 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       title={title}
       subtitle={subtitle}
       size={size}
-      metres={metres}
-      feet={feet}
       capacity={capacity}
       m={m}
       ft={ft}
       mPlaceholder={mPlaceholder}
       ftPlaceholder={ftPlaceholder}
+      changeToFeet={changeToFeet}
+      changeToMetres={changeToMetres}
     />
   );
 }

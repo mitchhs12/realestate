@@ -234,6 +234,7 @@ export default function FiltersDialog() {
                 className="flex"
                 disabled={originalFilters === newFilters}
                 onClick={() => {
+                  setPriceRange([1, initialMaxPrice]);
                   setSelectedFeatures([]);
                   setSelectedTypes([]);
                   setConvertedPriceRange([]);

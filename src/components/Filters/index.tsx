@@ -198,39 +198,37 @@ export default function Filters() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <div className="flex items-center gap-4 justify-center">
-          {pathname !== "/" && (
-            <Button
-              variant={"default"}
-              size={"sm"}
-              type={"submit"}
-              className="flex"
-              disabled={
-                newFilters ===
-                JSON.stringify({
-                  convertedPriceRange: convertedPriceRange,
-                  types: selectedTypes,
-                  features: selectedFeatures,
-                  rooms: selectedRooms,
-                })
+          <Button
+            variant={"default"}
+            size={"sm"}
+            type={"submit"}
+            className="flex"
+            disabled={
+              newFilters ===
+              JSON.stringify({
+                convertedPriceRange: convertedPriceRange,
+                types: selectedTypes,
+                features: selectedFeatures,
+                rooms: selectedRooms,
+              })
+            }
+            onClick={() => {
+              if (pathname !== "/") {
+                setIsFiltering(true);
+              } else {
+                setNewFilters(
+                  JSON.stringify({
+                    convertedPriceRange: convertedPriceRange,
+                    types: selectedTypes,
+                    features: selectedFeatures,
+                    rooms: selectedRooms,
+                  })
+                );
               }
-              onClick={() => {
-                if (pathname !== "/") {
-                  setIsFiltering(true);
-                } else {
-                  setNewFilters(
-                    JSON.stringify({
-                      convertedPriceRange: convertedPriceRange,
-                      types: selectedTypes,
-                      features: selectedFeatures,
-                      rooms: selectedRooms,
-                    })
-                  );
-                }
-              }}
-            >
-              {apply}
-            </Button>
-          )}
+            }}
+          >
+            {apply}
+          </Button>
           <Button
             variant={"outline"}
             size={"sm"}
@@ -238,6 +236,7 @@ export default function Filters() {
             className="flex"
             disabled={originalFilters === newFilters}
             onClick={() => {
+              setPriceRange([1, initialMaxPrice]);
               setConvertedPriceRange([]);
               setSelectedTypes([]);
               setSelectedFeatures([]);

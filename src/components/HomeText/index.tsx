@@ -37,6 +37,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { handleCopy } from "@/lib/utils";
 import { HomeContext } from "@/context/HomeContext";
+import { typeIcons } from "../Icons/typeIcons";
+import { useTheme } from "next-themes";
 
 interface Props {
   units: { m: string; ft: string };
@@ -118,6 +120,9 @@ export default function HomeText({
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [currentType, setCurrentType] = useState(matchingTypes[0]);
+  const [index, setIndex] = useState(0);
+  const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -131,10 +136,12 @@ export default function HomeText({
     }
   }, [home]);
 
+  const IconComponent = typeIcons[currentType.id as keyof typeof typeIcons]; // Get the corresponding icon
+
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
 
   return (
-    <div className="flex flex-col w-full h-full justify-center px-8 py-4">
+    <div className="flex flex-col w-full h-full justify-center px-8 py-3">
       <div className="flex flex-row w-full h-full justify-between gap-8">
         <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-6 h-auto">
           {translationLoading ? (
@@ -142,16 +149,27 @@ export default function HomeText({
               <Skeleton className="h-[6vh] sm:h-[6vh] md:h-[6.5vh] lg:h-[6.5vh] w-11/12" />
             </div>
           ) : (
-            <div className="flex flex-col items-center sm:items-start gap-2">
-              <div className="flex gap-2 text-2xl md:text-3xl lg:text-3xl">
-                {matchingTypes.map((type, index) => (
-                  <span key={index}>
-                    {index > 0 && <span className="text-gray-300">| </span>}
-                    {type.translation}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-2 flex-wrap justify-center sm:justify-start text-lg sm:text-xl md:text-2xl lg:text-2xl">
+            <div className="flex flex-col items-center sm:items-start gap-5">
+              {IconComponent && (
+                <Button
+                  className="flex items-center justify-center h-12 gap-2 pl-2 pr-3"
+                  variant={"outline"}
+                  disabled={matchingTypes.length > 1 ? false : true}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const newIndex = (index + 1) % matchingTypes.length;
+                    setIndex(newIndex);
+                    setCurrentType(matchingTypes[newIndex]);
+                  }}
+                >
+                  <div className="flex">
+                    <IconComponent color={theme === "dark" ? "white" : "black"} width={42} height={42} />
+                  </div>
+                  <h3 className="flex w-full text-3xl font-normal">{currentType.translation}</h3>
+                </Button>
+              )}
+              <div className="flex gap-2 flex-wrap justify-center sm:justify-start text-2xl lg:text-2xl">
                 <div>{translatedMunicipality ? translatedMunicipality : home.municipality}</div>
                 <div className="flex items-center gap-3">
                   <span className="text-gray-300">| </span>

@@ -8,6 +8,8 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
 import NumberInput from "@/components/ui/numberinput";
 import { formatNumber } from "@/lib/utils";
+import { Footprints, LandPlot, Ruler } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   currentHome: HomeType | null;
@@ -17,13 +19,13 @@ interface Props {
   title: string;
   subtitle: string;
   size: string;
-  metres: string;
-  feet: string;
   capacity: string;
   m: string;
   ft: string;
   mPlaceholder: string;
   ftPlaceholder: string;
+  changeToFeet: string;
+  changeToMetres: string;
 }
 
 export default function Capacity({
@@ -34,13 +36,13 @@ export default function Capacity({
   title,
   subtitle,
   size,
-  metres,
-  feet,
   capacity,
   m,
   ft,
   mPlaceholder,
   ftPlaceholder,
+  changeToFeet,
+  changeToMetres,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -113,24 +115,27 @@ export default function Capacity({
           </div>
           <div className="flex flex-col h-full items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl py-8">
             <div className="flex w-full justify-center">{size}</div>
-            <div className="flex flex-col md:flex-row h-1/2 w-full justify-between items-center">
-              <div className="flex w-full h-full justify-center items-center">
-                <div className="flex w-4/5 h-full justify-start items-center gap-4">
-                  <NumberInput
-                    component={Input}
-                    value={sqLabel}
-                    locales={numerals}
-                    onNumberFormat={(e: any) => handleSqSizeChange(e.detail)}
-                    placeholder={metresOn ? mPlaceholder : ftPlaceholder}
-                  />
-                  <div className="flex justify-start items-center">{metresOn ? `${m}²` : `${ft}²`}</div>
+            <div className="flex flex-col w-full h-full">
+              <div className="flex flex-col md:flex-row h-1/2 pt-10 w-full justify-between items-center">
+                <div className="flex w-full h-full justify-center items-center">
+                  <div className="flex w-full h-full justify-start items-center gap-4">
+                    <NumberInput
+                      component={Input}
+                      value={sqLabel}
+                      locales={numerals}
+                      onNumberFormat={(e: any) => handleSqSizeChange(e.detail)}
+                      placeholder={metresOn ? mPlaceholder : ftPlaceholder}
+                    />
+                    <div className="flex justify-start items-start">{metresOn ? m : ft}</div>
+                  </div>
                 </div>
               </div>
-              <div className="flex w-full h-full items-center justify-center gap-4">
-                {metres}
-                <Switch
-                  checked={!metresOn}
-                  onCheckedChange={() => {
+              <div className="flex justify-center w-full">
+                <Button
+                  className="flex items-center gap-3"
+                  variant={"outline"}
+                  size={"default"}
+                  onClick={() => {
                     if (metresOn) {
                       setSqLabel(formatNumber(Math.round(sqSize * ftConversion), numerals));
                     } else {
@@ -138,8 +143,21 @@ export default function Capacity({
                     }
                     setMetresOn(!metresOn);
                   }}
-                />
-                {feet}
+                >
+                  {metresOn ? <Footprints size={18} strokeWidth={1.25} /> : <Ruler size={18} strokeWidth={1.25} />}
+                  {metresOn ? changeToFeet : changeToMetres}
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-3 items-center">
+                <div className="flex">
+                  <LandPlot size={20} strokeWidth={1} />
+                </div>
+                <div className="flex flex-col">
+                  {sqLabel} {metresOn ? m : ft}
+                </div>
               </div>
             </div>
             <div className="flex flex-col h-full w-full justify-center items-center gap-4 md:gap-8">

@@ -23,7 +23,7 @@ interface Props {
   resultsText: string;
   showMap: string;
   showList: string;
-  typesObject: { id: string; translation: string }[];
+  typesObject: { id: string; name: string; translation: string }[];
   noHomesFound: string;
   loginToViewPrice: string;
 }

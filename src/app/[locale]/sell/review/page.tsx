@@ -8,7 +8,7 @@ import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { getPath, findMatching, findMatchingItem } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
-import { types, features, listingType } from "@/lib/sellFlowData";
+import { typesMap, features, listingType } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
@@ -58,11 +58,13 @@ export default async function Page({ params: { locale } }: { params: { locale: s
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
     id: features[index],
+    name: features[index],
     translation: f(`options.${index}` as keyof typeof f),
   }));
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
-    id: types[index],
+    id: typesMap[index].id,
+    name: typesMap[index].name,
     translation: t(`options.${index}` as keyof typeof t),
   }));
 

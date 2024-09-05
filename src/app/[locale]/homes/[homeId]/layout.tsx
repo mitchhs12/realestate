@@ -3,10 +3,7 @@ import { getHomeById } from "@/app/[locale]/homes/actions";
 import Footer from "@/components/Footer";
 import { getScopedI18n } from "@/locales/server";
 import { findMatching } from "@/lib/utils";
-import { features, types } from "@/lib/sellFlowData";
-import lookup from "country-code-lookup";
-import { Country } from "react-phone-number-input";
-import { getPhoneLocale, PhoneLocale } from "@/lib/utils";
+import { features, typesMap } from "@/lib/sellFlowData";
 
 type Props = {
   children: React.ReactNode;
@@ -22,11 +19,13 @@ export default async function HomeLayout({ children, params: { homeId, locale } 
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
     id: features[index],
+    name: features[index],
     translation: f(`options.${index}` as keyof typeof f),
   }));
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
-    id: types[index],
+    id: typesMap[index].id,
+    name: typesMap[index].name,
     translation: t(`options.${index}` as keyof typeof t),
   }));
 

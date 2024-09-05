@@ -218,14 +218,14 @@ export default {
       "title": "Capacidade",
       "subtitle": "Qual é o tamanho da sua propriedade?",
       "size": "Insira o tamanho da sua propriedade aqui.",
-      "metres": "metros",
       "m-placeholder": "Tamanho em m²...",
       "ft-placeholder": "Tamanho em pés²...",
+      "change-to-feet": "Alterar para ft²",
+      "change-to-metres": "Alterar para m²",
       "units": {
         "m": "eu",
         "ft": "pés"
       },
-      "feet": "pés",
       "capacity": "Agora estime quantas pessoas poderiam viver confortavelmente em sua propriedade."
     },
     "checkout": {
@@ -302,18 +302,18 @@ export default {
         "8": "Equipamento de exercício",
         "9": "Fogueira",
         "10": "Garagem",
-        "11": "Jardim/Quintal",
+        "11": "Jardim / Quintal",
         "12": "Sistema de aquecimento",
         "13": "Escritório em casa",
         "14": "Banheira de hidromassagem",
         "15": "Lareira interna",
         "16": "Acesso ao lago",
         "17": "Lavanderia",
-        "18": "Área de jantar ao ar livre",
+        "18": "Jantar ao ar livre",
         "19": "Pátio",
         "20": "Piscina",
         "21": "Sistema de segurança",
-        "22": "Entrada/saída de esqui",
+        "22": "Entrada e saída de esqui",
         "23": "Painéis solares",
         "24": "Terraço",
         "25": "Closet"

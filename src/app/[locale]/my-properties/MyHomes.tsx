@@ -1,7 +1,7 @@
 import { HomeType } from "@/lib/validations";
 import { findMatching } from "@/lib/utils";
 import ResizableCard from "@/components/ResizableCard";
-import { types } from "@/lib/sellFlowData";
+import { typesMap } from "@/lib/sellFlowData";
 import { getScopedI18n } from "@/locales/server";
 
 interface Props {
@@ -13,7 +13,8 @@ export default async function MyHomes({ myHomes }: Props) {
   const mh = await getScopedI18n("my-properties");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
-    id: types[index],
+    id: typesMap[index].id,
+    name: typesMap[index].name,
     translation: t(`options.${index}` as keyof typeof t),
   }));
 

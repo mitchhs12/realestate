@@ -218,14 +218,14 @@ export default {
       "title": "Dung tích",
       "subtitle": "Bất động sản của bạn có diện tích bao nhiêu?",
       "size": "Nhập kích thước bất động sản của bạn vào đây.",
-      "metres": "mét",
       "m-placeholder": "Diện tích tính bằng m²...",
       "ft-placeholder": "Kích thước tính bằng ft²...",
+      "change-to-feet": "Đổi sang ft²",
+      "change-to-metres": "Đổi sang m²",
       "units": {
         "m": "tôi",
         "ft": "ft"
       },
-      "feet": "bàn chân",
       "capacity": "Bây giờ hãy ước tính có bao nhiêu người có thể sống thoải mái trong ngôi nhà của bạn."
     },
     "checkout": {
@@ -302,14 +302,14 @@ export default {
         "8": "Thiết bị tập thể dục",
         "9": "Hố lửa",
         "10": "Ga-ra",
-        "11": "Vườn/Sân",
+        "11": "Vườn / Sân",
         "12": "Hệ thống sưởi ấm",
         "13": "Văn phòng tại nhà",
         "14": "Bồn tắm nước nóng",
         "15": "Lò sưởi trong nhà",
         "16": "Tiếp cận hồ",
         "17": "Phòng giặt ủi",
-        "18": "Khu vực ăn uống ngoài trời",
+        "18": "Ăn uống ngoài trời",
         "19": "Sân trong",
         "20": "Hồ bơi",
         "21": "Hệ thống an ninh",

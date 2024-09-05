@@ -15,11 +15,19 @@ import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { typeIcons } from "@/components/Icons/typeIcons";
+import { useTheme } from "next-themes";
+
+interface TypeObject {
+  id: string;
+  name: string;
+  translation: string;
+}
 
 interface Props {
   home: HomeType | null;
   isLoading?: boolean;
-  types: { id: string; translation: string }[];
+  types: TypeObject[];
   loginToViewPrice?: string;
 }
 
@@ -28,10 +36,9 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { isSmallScreen, user, session } = useContext(QueryContext);
-  const [currentType, setCurrentType] = useState(
-    types.length > 0 ? types[0].translation : home ? home.type[0] : "Unknown Type"
-  );
+  const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const [index, setIndex] = useState(0);
+  const { resolvedTheme: theme } = useTheme();
 
   const target = isSmallScreen ? "_self" : "_blank";
 
@@ -41,11 +48,21 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
     }
   }, [home]);
 
+  useEffect(() => {
+    if (types.length > 0) {
+      setCurrentType(types[0]);
+    } else {
+      setCurrentType(null);
+    }
+  }, [types]);
+
   const iso = home && home.country && lookup.byIso(home.country);
   const countryName =
     iso && typeof iso !== "string"
       ? getCountryNameForLocale(iso.iso2, defaultLanguage || home.country || "")
       : home?.country;
+
+  const IconComponent = currentType ? typeIcons[currentType?.id as keyof typeof typeIcons] : null; // Get the corresponding icon
 
   return !home || isLoading ? (
     <div className="flex flex-col h-full w-full space-y-2">
@@ -53,7 +70,6 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
       <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />
-        <Skeleton className="h-4 sm:h-3 lg:h-4 w-24" />
         <Skeleton className="h-4 sm:h-3 lg:h-5 w-28" />
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-36 font-semibold" />
       </div>
@@ -71,13 +87,13 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
       <ResizableCarousel home={home} />
       <Link href={`/homes/${home.id}`} target={target}>
         <div className="flex flex-col justify-center items-center w-full gap-2 px-2 relative">
-          <div className="w-full flex flex-col justify-center items-center">
+          <div className="flex items-center justify-center gap-2 w-full">
             <h2
-              className={`w-full flex-grow max-w-full text-md md:text-lg lg:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
+              className={`text-md md:text-lg lg:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
                 titleUnderlined ? "underline" : ""
               }`}
             >
-              {types.length > 1 ? currentType : types[0]?.translation || home.type[0] || "Unknown Type"}
+              {types.length > 1 ? currentType?.translation : types.length > 0 && types[0].translation}
             </h2>
           </div>
 
@@ -120,22 +136,25 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
           </div>
         </div>
       </Link>
-      {types.length > 1 && (
+
+      {IconComponent && (
         <Button
-          className="absolute bottom-2 right-2"
-          variant={"outline"}
-          size={"icon"}
+          variant={types.length > 1 ? "outline" : "ghost"}
+          disabled={types.length > 1 ? false : true}
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
             const newIndex = (index + 1) % types.length;
             setIndex(newIndex);
-            setCurrentType(types[newIndex].translation);
+            setCurrentType(types[newIndex]);
           }}
+          size={"icon"}
+          className="absolute bottom-2 left-2"
         >
-          <ArrowUpDown className="w-5 h-5" />
+          <IconComponent color={theme === "dark" ? "white" : "black"} width={40} height={40} />
         </Button>
       )}
+      {/* <div className="absolute items-center justify-center bottom-2 left-2"></div> */}
     </div>
   );
 }

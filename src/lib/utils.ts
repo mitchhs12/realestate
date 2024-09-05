@@ -121,14 +121,18 @@ export const isValidEmail = (email: string): boolean => {
   return emailRegex.test(email);
 };
 
-export const findMatching = (object: Array<{ id: string; translation: string }>, array: any, key: string) => {
+export const findMatching = (
+  object: Array<{ id: string; name: string; translation: string }>,
+  array: any,
+  key: string
+) => {
   if (!array) {
     return [];
   }
 
   return object.filter((item) => {
     if (Array.isArray(array[key])) {
-      return array[key].includes(item.id);
+      return array[key].includes(item.name);
     }
     return array[key] === item.id;
   });

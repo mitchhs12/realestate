@@ -218,14 +218,14 @@
       "title": "Capacidad",
       "subtitle": "¿Qué tan grande es su propiedad?",
       "size": "Introduzca aquí el tamaño de su propiedad.",
-      "metres": "metros",
       "m-placeholder": "Tamaño en m²...",
       "ft-placeholder": "Tamaño en ft²...",
+      "change-to-feet": "Cambiar a ft²",
+      "change-to-metres": "Cambiar a m²",
       "units": {
         "m": "metro",
         "ft": "pie"
       },
-      "feet": "pies",
       "capacity": "Ahora calcule cuántas personas podrían vivir cómodamente en su propiedad."
     },
     "checkout": {
@@ -302,18 +302,18 @@
         "8": "Equipo de ejercicio",
         "9": "Pozo de fuego",
         "10": "Cochera",
-        "11": "Jardín/Patio",
+        "11": "Jardín / Patio",
         "12": "Sistema de calefacción",
         "13": "Oficina en casa",
         "14": "Bañera de hidromasaje",
         "15": "Chimenea de interior",
         "16": "Acceso al lago",
         "17": "Cuarto de lavado",
-        "18": "Área de comedor al aire libre",
+        "18": "Comedor al aire libre",
         "19": "Patio",
         "20": "Piscina",
         "21": "Sistema de seguridad",
-        "22": "Acceso directo a pistas de esquí",
+        "22": "Entrada y salida de esquí",
         "23": "Paneles solares",
         "24": "Terraza",
         "25": "Vestidor"

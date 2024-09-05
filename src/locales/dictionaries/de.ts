@@ -218,14 +218,14 @@ export default {
       "title": "Kapazität",
       "subtitle": "Wie groß ist Ihr Grundstück?",
       "size": "Geben Sie hier die Größe Ihres Grundstückes ein.",
-      "metres": "Meter",
       "m-placeholder": "Größe in m²...",
       "ft-placeholder": "Größe in ft²...",
+      "change-to-feet": "Umrechnung auf ft²",
+      "change-to-metres": "Umrechnung auf m²",
       "units": {
         "m": "M",
         "ft": "Fuß"
       },
-      "feet": "Füße",
       "capacity": "Schätzen Sie nun, wie viele Personen bequem in Ihrer Immobilie leben könnten."
     },
     "checkout": {
@@ -302,18 +302,18 @@ export default {
         "8": "Trainingsgeräte",
         "9": "Feuerstelle",
         "10": "Garage",
-        "11": "Garten/Hof",
+        "11": "Garten / Hof",
         "12": "Heizungssystem",
         "13": "Innenministerium",
         "14": "Whirlpool",
         "15": "Innenkamin",
         "16": "Zugang zum See",
         "17": "Waschküche",
-        "18": "Essbereich im Freien",
+        "18": "Essen im Freien",
         "19": "Terrasse",
         "20": "Pool",
         "21": "Sicherheitssystem",
-        "22": "Ski-in/Ski-out",
+        "22": "Ski-in / Ski-out",
         "23": "Sonnenkollektoren",
         "24": "Terrasse",
         "25": "Begehbarer Kleiderschrank"

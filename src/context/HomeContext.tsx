@@ -89,8 +89,8 @@ const HomeContext = createContext<HomeContextProps>({
 interface HomeProviderProps {
   children: ReactNode;
   home: HomeType;
-  matchingTypes: { id: string; translation: string }[];
-  matchingFeatures: { id: string; translation: string }[];
+  matchingTypes: { id: string; name: string; translation: string }[];
+  matchingFeatures: { id: string; name: string; translation: string }[];
 }
 
 const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matchingTypes, matchingFeatures }) => {
