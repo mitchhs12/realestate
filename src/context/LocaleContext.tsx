@@ -5,6 +5,7 @@ import { CurrencyType, LanguageType, numeralMap } from "@/lib/validations";
 import { useSession } from "next-auth/react";
 import { getCurrency } from "@/lib/utils";
 import { useChangeLocale } from "@/locales/client";
+import { getCurrencies } from "@/app/[locale]/sell/actions";
 
 interface LocaleContextProps {
   defaultCurrency: CurrencyType;
@@ -26,22 +27,34 @@ const LocaleContext = createContext<LocaleContextProps>({
 
 interface LocaleProviderProps {
   children: ReactNode;
-  currencies: CurrencyType[];
   lang: LanguageType;
-  currency: CurrencyType;
+  matchedCurrency: string;
 }
 
 const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   children,
-  currencies,
   lang,
-  currency,
+  matchedCurrency,
 }: LocaleProviderProps) => {
   const session = useSession();
   const changeLocale = useChangeLocale();
-  const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(currency);
+  const startingCurrency = { symbol: "USD", usdPrice: 1 };
+  const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(startingCurrency);
+  const [currencies, setCurrencies] = useState<CurrencyType[]>([startingCurrency]);
   const [numerals, setNumerals] = useState<string>(numeralMap[lang]);
   const defaultLanguage = lang || "en";
+
+  useEffect(() => {
+    const _getCurrency = async () => {
+      const currencies = await getCurrencies();
+      if (currencies) {
+        setCurrencies(currencies);
+        const currency = getCurrency(currencies, matchedCurrency);
+        setDefaultCurrency(currency);
+      }
+    };
+    _getCurrency();
+  }, [lang]);
 
   useEffect(() => {
     // useEffect that runs when the user has successfully authenticated and changes the default currency and language if it exists

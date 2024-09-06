@@ -11,7 +11,7 @@ type FeatureComponent = (props: IconProps) => JSX.Element;
 export const featureIcons: Record<string, FeatureComponent> = {
   "air-conditioning": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
-      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}>
+      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}>
         <path d="M8 16a3 3 0 0 1-3 3m11-3a3 3 0 0 0 3 3m-7-3v4M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <path d="M7 13v-3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3" />
       </g>
@@ -30,11 +30,8 @@ export const featureIcons: Record<string, FeatureComponent> = {
     </svg>
   ),
   balcony: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
-      <path
-        fill={color}
-        d="M10 10v2H8v-2zm6 2v-2h-2v2zm5 2v8H3v-8h1v-4c0-4.42 3.58-8 8-8s8 3.58 8 8v4zM7 16H5v4h2zm4 0H9v4h2zm0-11.92C8.16 4.56 6 7.03 6 10v4h5zM13 14h5v-4c0-2.97-2.16-5.44-5-5.92zm2 2h-2v4h2zm4 0h-2v4h2z"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 -960 960 960" width={width} fill={color}>
+      <path d="M345.23-489.23v-53.54h53.54v53.54h-53.54Zm216 0v-53.54h53.54v53.54h-53.54ZM184-136v-231.08h48V-576q0-51.82 19.42-96.87 19.43-45.05 53-78.73 33.56-33.69 78.71-53.04Q428.27-824 480-824q52.31 0 97.13 19.36 44.82 19.37 78.48 53.03 33.66 33.66 53.03 78.48Q728-628.31 728-576v208.92h48V-136H184Zm32-32h98v-167.08h-98V-168Zm130 0h118v-167.08H346V-168Zm-82-199.08h200v-423.46q-77.23 4.77-139.12 64.77Q263-665.77 264-576v208.92Zm232 0h200V-576q0-89.77-61.38-149.77-61.39-60-138.62-64.77v423.46ZM496-168h118v-167.08H496V-168Zm150 0h98v-167.08h-98V-168Z" />
     </svg>
   ),
   basement: ({ color, width = 45, height = 45 }: IconProps) => (
@@ -159,7 +156,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
   ),
   "heating-system": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="-5.5 -5 34 34" height={height}>
-      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.25}>
+      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}>
         <path d="M11 8c2-3-2-3 0-6m4.5 6c2-3-2-3 0-6M6 10h.01M6 14h.01M10 16v-4m4 4v-4m4 4v-4" />
         <path d="M20 6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3M5 20v2m14-2v2" />
       </g>
@@ -167,19 +164,19 @@ export const featureIcons: Record<string, FeatureComponent> = {
   ),
   "home-office": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg width={width} height={height} viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 22.375H38" stroke={color} stroke-width={2} stroke-linejoin="round" />
-      <path d="M11 36.375V22.375" stroke={color} stroke-width={2} stroke-linejoin="round" />
-      <path d="M35 36.375V22.375" stroke={color} stroke-width={2} stroke-linejoin="round" />
+      <path d="M8 22.375H38" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M11 36.375V22.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M35 36.375V22.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
       <path
         d="M11 22.375H35V30.375C35 32.032 33.657 33.375 32 33.375H14C12.343 33.375 11 32.032 11 30.375V22.375Z"
         stroke={color}
-        stroke-width={2}
+        stroke-width={1.5}
         stroke-linejoin="round"
       />
-      <path d="M31 21.375V15.375" stroke={color} stroke-width={2} stroke-linejoin="round" />
-      <path d="M29 9.375H33L35 16.375H27L29 9.375Z" stroke={color} stroke-width={2} stroke-linejoin="round" />
-      <path d="M14 17.375H19V22.375H14V17.375Z" stroke={color} stroke-width={2} stroke-linejoin="round" />
-      <path d="M15.792 17.403L14 13.375" stroke={color} stroke-width={2} stroke-linejoin="round" />
+      <path d="M31 21.375V15.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M29 9.375H33L35 16.375H27L29 9.375Z" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M14 17.375H19V22.375H14V17.375Z" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M15.792 17.403L14 13.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
     </svg>
   ),
   "hot-tub": ({ color, width = 45, height = 45 }: IconProps) => (
@@ -334,21 +331,21 @@ export const featureIcons: Record<string, FeatureComponent> = {
       <path
         d="M22.917 18.926H31M23 8V10.801V26.926M23 8.926C27.418 8.926 31 12.508 31 16.926V26.926H23C23 26.926 23 12.051 23 8.926Z"
         stroke={color}
-        stroke-width={2}
+        stroke-width={1.5}
       />
       <path
         d="M23.083 18.926H15M23 8V10.801V26.926M23 8.926C18.582 8.926 15 12.508 15 16.926V26.926H23C23 26.926 23 12.051 23 8.926Z"
         stroke={color}
-        stroke-width={2}
+        stroke-width={1.5}
       />
-      <path d="M33 26.926V36.926" stroke={color} stroke-width={2} />
-      <path d="M29 26.926V36.926" stroke={color} stroke-width={2} />
-      <path d="M25 26.926V36.926" stroke={color} stroke-width={2} />
-      <path d="M21 26.926V36.926" stroke={color} stroke-width={2} />
-      <path d="M17 26.926V36.926" stroke={color} stroke-width={2} />
-      <path d="M13 26.926V36.926" stroke={color} stroke-width={2} />
-      <path d="M10 36.926H36" stroke={color} stroke-width={2} />
-      <path d="M10 26.926H36" stroke={color} stroke-width={2} />
+      <path d="M33 26.926V36.926" stroke={color} stroke-width={1.5} />
+      <path d="M29 26.926V36.926" stroke={color} stroke-width={1.5} />
+      <path d="M25 26.926V36.926" stroke={color} stroke-width={1.5} />
+      <path d="M21 26.926V36.926" stroke={color} stroke-width={1.5} />
+      <path d="M17 26.926V36.926" stroke={color} stroke-width={1.5} />
+      <path d="M13 26.926V36.926" stroke={color} stroke-width={1.5} />
+      <path d="M10 36.926H36" stroke={color} stroke-width={1.5} />
+      <path d="M10 26.926H36" stroke={color} stroke-width={1.5} />
     </svg>
   ),
   pool: ({ color, width = 45, height = 45 }: IconProps) => (

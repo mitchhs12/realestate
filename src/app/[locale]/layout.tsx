@@ -6,11 +6,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
 import { LocaleContextProvider } from "@/context/LocaleContext";
-import { getCurrencies } from "@/app/[locale]/sell/actions";
 import { LanguageType } from "@/lib/validations";
 import { locales } from "@/lib/validations";
 import { headers } from "next/headers";
-import { getCurrency } from "@/lib/utils";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
 import { getStaticParams } from "@/locales/server";
@@ -30,23 +28,13 @@ type Props = {
   params: { locale: LanguageType };
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: LanguageType };
-}) {
-  const currencies = await getCurrencies();
-
+export default async function RootLayout({ children, params }: Props) {
   const acceptLanguage = headers().get("Accept-Language");
-  let currency = { symbol: "USD", usdPrice: 1 };
-
+  let matchedCurrency = "USD";
   if (acceptLanguage) {
     const language = acceptLanguage.split(",");
     const primaryLanguage = language[0];
-    const matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
-    currency = getCurrency(currencies, matchedCurrency);
+    matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
   }
   const { direction: dir } = new Locale(params.locale).textInfo;
 
@@ -55,7 +43,7 @@ export default async function RootLayout({
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme">
-            <LocaleContextProvider currencies={currencies} lang={params.locale} currency={currency}>
+            <LocaleContextProvider lang={params.locale} matchedCurrency={matchedCurrency}>
               <MainLayout>{children}</MainLayout>
             </LocaleContextProvider>
           </ThemeProvider>
