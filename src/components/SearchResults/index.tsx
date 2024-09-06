@@ -49,10 +49,7 @@ export default function SearchResults({
       {homes && homes.length > 0 ? (
         <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
           {homes.map((home, index) => {
-            console.log("typesObject", typesObject);
-            console.log("home", home);
             const matchingTypes = findMatching(typesObject, home, "type");
-            console.log("matchingTypes", matchingTypes);
 
             return (
               <div key={index} className="flex p-4 justify-center items-start h-full w-full">

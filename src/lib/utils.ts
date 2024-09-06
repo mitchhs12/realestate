@@ -31,7 +31,6 @@ export const calculateReadingTime = (text: string) => {
 };
 
 export const getReadingTime = (portableText: any) => {
-  console.log("PORTABLE", portableText);
   const plainText = portableText
     .map((block: any) => {
       if (block._type === "block" && block.children) {
