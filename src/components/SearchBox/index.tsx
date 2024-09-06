@@ -121,14 +121,16 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
   };
 
   useEffect(() => {
-    if (clickedLocation) {
-      setClickedLocation(false);
-      handleSearch(results[0].Text, results[0].PlaceId);
-      return;
-    }
-    if (results.length > 0 && !loading && !isNavigating.current) {
-      if (results.length !== 1 && query !== results[0].Text) {
-        setPopoverOpen(true);
+    if (results.length > 0) {
+      if (clickedLocation) {
+        setClickedLocation(false);
+        handleSearch(results[0].Text, results[0].PlaceId);
+        return;
+      }
+      if (!loading && !isNavigating.current) {
+        if (results.length !== 1 && query !== results[0].Text) {
+          setPopoverOpen(true);
+        }
       }
     }
   }, [results]);
@@ -144,8 +146,8 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
         className="flex w-full justify-center space-x-2"
         onSubmit={(e) => {
           e.preventDefault();
-          {
-            results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
+          if (results.length > 0) {
+            handleSearch(results[0].Text, results[0].PlaceId);
           }
         }}
       >
@@ -169,6 +171,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                     onKeyDown={(e) => {
                       if (!loading && e.key === "Enter") {
                         e.preventDefault();
+                        e.stopPropagation();
                         results.length > 0 && handleSearch(results[0].Text, results[0].PlaceId);
                       }
                     }}
