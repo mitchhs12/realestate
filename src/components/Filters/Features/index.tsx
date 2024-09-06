@@ -2,13 +2,14 @@
 
 import { useScopedI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
-import { features, featuresMap } from "@/lib/sellFlowData";
+import { featuresMap } from "@/lib/sellFlowData";
 import { Checkbox } from "@/components/ui/checkbox";
 import { featureIcons } from "@/components/Icons/featureIcons";
 import { useTheme } from "next-themes";
 
 interface FeaturesObject {
   id: string;
+  name: string;
   translation: string;
   checked: boolean;
 }
@@ -27,8 +28,9 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
     if (t) {
       const newFeaturesObject = Array.from({ length: 26 }, (_, index) => ({
         id: featuresMap[index].id,
+        name: featuresMap[index].name,
         translation: t(`options.${index}` as keyof typeof t),
-        checked: selectedFeatures.includes(featuresMap[index].id),
+        checked: selectedFeatures.includes(featuresMap[index].name),
       }));
 
       setFeaturesObject(newFeaturesObject);
@@ -43,7 +45,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
     setFeaturesObject(updatedFeaturesObject);
 
     // Update the selected types
-    const selectedIds = updatedFeaturesObject.filter((feature) => feature.checked).map((feature) => feature.id);
+    const selectedIds = updatedFeaturesObject.filter((feature) => feature.checked).map((feature) => feature.name);
 
     setSelectedFeatures(selectedIds);
   };
@@ -52,8 +54,9 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
     // resync selectedFeatures with the selectedFeatures in the parent component
     const newFeaturesObject = Array.from({ length: 26 }, (_, index) => ({
       id: featuresMap[index].id,
+      name: featuresMap[index].name,
       translation: t(`options.${index}` as keyof typeof t),
-      checked: selectedFeatures.includes(featuresMap[index].id),
+      checked: selectedFeatures.includes(featuresMap[index].name),
     }));
     setFeaturesObject(newFeaturesObject);
   }, [selectedFeatures]);
@@ -65,7 +68,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
           const FeatureIcon = featureIcons[feature.id];
           return (
             <div
-              key={feature.id}
+              key={feature.name}
               className="flex items-center justify-between gap-3 w-full cursor-pointer hover:bg-secondary rounded-sm p-2 px-3"
               onClick={() => {
                 handleCheckedChange(index);
@@ -74,7 +77,12 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
               {FeatureIcon && <FeatureIcon color={theme === "dark" ? "white" : "black"} width={36} height={36} />}
               <div className="flex items-center text-sm gap-3 w-full">{feature.translation}</div>
 
-              <Checkbox id={feature.id} className="h-4 w-4 cursor-pointer" key={feature.id} checked={feature.checked} />
+              <Checkbox
+                id={feature.name}
+                className="h-4 w-4 cursor-pointer"
+                key={feature.name}
+                checked={feature.checked}
+              />
             </div>
           );
         } else return null;

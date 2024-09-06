@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 
 interface CategoriesObject {
   id: string;
+  name: string;
   translation: string;
   checked: boolean;
 }
@@ -27,8 +28,9 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
     if (t) {
       const newCategoriesObject = Array.from({ length: 17 }, (_, index) => ({
         id: typesMap[index].id,
+        name: typesMap[index].name,
         translation: t(`options.${index}` as keyof typeof t),
-        checked: selectedTypes.includes(typesMap[index].id),
+        checked: selectedTypes.includes(typesMap[index].name),
       }));
 
       setCategoriesObject(newCategoriesObject);
@@ -43,7 +45,7 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
     setCategoriesObject(updatedCategoriesObject);
 
     // Update the selected types
-    const selectedIds = updatedCategoriesObject.filter((feature) => feature.checked).map((feature) => feature.id);
+    const selectedIds = updatedCategoriesObject.filter((feature) => feature.checked).map((feature) => feature.name);
 
     setSelectedTypes(selectedIds);
   };
@@ -52,8 +54,9 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
     // resync selectedFeatures with the selectedFeatures in the parent component
     const newCategoriesObject = Array.from({ length: 17 }, (_, index) => ({
       id: typesMap[index].id,
+      name: typesMap[index].name,
       translation: t(`options.${index}` as keyof typeof t),
-      checked: selectedTypes.includes(typesMap[index].id),
+      checked: selectedTypes.includes(typesMap[index].name),
     }));
     setCategoriesObject(newCategoriesObject);
   }, [selectedTypes]);
@@ -64,7 +67,7 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
         const TypeIcon = typeIcons[type.id]; // Get the corresponding icon
         return (
           <div
-            key={type.id}
+            key={type.name}
             className="flex items-center justify-between gap-3 w-full cursor-pointer hover:bg-secondary rounded-sm p-2 px-3"
             onClick={() => {
               handleCheckedChange(index);
@@ -73,7 +76,7 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
             {TypeIcon && <TypeIcon color={theme === "dark" ? "white" : "black"} width={36} height={36} />}
             <div className="flex items-center text-sm gap-3 w-full">{type.translation}</div>
 
-            <Checkbox id={type.id} className="h-4 w-4 cursor-pointer" key={type.id} checked={type.checked} />
+            <Checkbox id={type.name} className="h-4 w-4 cursor-pointer" key={type.name} checked={type.checked} />
           </div>
         );
       })}

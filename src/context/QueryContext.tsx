@@ -6,7 +6,7 @@ import { defaultCurrency, HomeType } from "@/lib/validations";
 import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
-import { types, features, rooms } from "@/lib/sellFlowData";
+import { types, features, typesMap, featuresMap, rooms } from "@/lib/sellFlowData";
 import { LocaleContext } from "@/context/LocaleContext";
 
 interface QueryContextProps {

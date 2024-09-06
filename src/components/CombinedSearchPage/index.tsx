@@ -99,6 +99,7 @@ export default function CombinedSearchPage({
   // GETS THE FILTERED HOMES FOR THE MAP
   useEffect(() => {
     if (isFiltering) {
+      console.log("selectedTypes", selectedTypes);
       getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((fixedHomes) => {
         setHomesGeoJson(fixedHomes);
       });

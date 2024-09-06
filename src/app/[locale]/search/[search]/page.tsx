@@ -2,8 +2,7 @@ import CombinedSearchPage from "@/components/CombinedSearchPage";
 import { CoordinatesType } from "@/lib/validations";
 import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
-import { typesMap } from "@/lib/sellFlowData";
-import { features } from "@/lib/sellFlowData";
+import { typesMap, featuresMap } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
