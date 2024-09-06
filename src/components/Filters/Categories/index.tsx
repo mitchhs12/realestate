@@ -2,9 +2,10 @@
 
 import { useScopedI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
-import { types } from "@/lib/sellFlowData";
-import { DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
+import { typesMap } from "@/lib/sellFlowData";
 import { Checkbox } from "@/components/ui/checkbox";
+import { typeIcons } from "@/components/Icons/typeIcons";
+import { useTheme } from "next-themes";
 
 interface CategoriesObject {
   id: string;
@@ -20,13 +21,14 @@ interface Props {
 export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
   const t = useScopedI18n("sell.type");
   const [categoriesObject, setCategoriesObject] = useState<CategoriesObject[]>([]);
+  const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
     if (t) {
       const newCategoriesObject = Array.from({ length: 17 }, (_, index) => ({
-        id: types[index],
+        id: typesMap[index].id,
         translation: t(`options.${index}` as keyof typeof t),
-        checked: selectedTypes.includes(types[index]),
+        checked: selectedTypes.includes(typesMap[index].id),
       }));
 
       setCategoriesObject(newCategoriesObject);
@@ -49,27 +51,29 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
   useEffect(() => {
     // resync selectedFeatures with the selectedFeatures in the parent component
     const newCategoriesObject = Array.from({ length: 17 }, (_, index) => ({
-      id: types[index],
+      id: typesMap[index].id,
       translation: t(`options.${index}` as keyof typeof t),
-      checked: selectedTypes.includes(types[index]),
+      checked: selectedTypes.includes(typesMap[index].id),
     }));
     setCategoriesObject(newCategoriesObject);
   }, [selectedTypes]);
 
   return (
     <>
-      {categoriesObject.map((feature, index) => {
+      {categoriesObject.map((type, index) => {
+        const TypeIcon = typeIcons[type.id]; // Get the corresponding icon
         return (
           <div
-            key={feature.id}
+            key={type.id}
             className="flex items-center justify-between gap-3 w-full cursor-pointer hover:bg-secondary rounded-sm p-2 px-3"
             onClick={() => {
               handleCheckedChange(index);
             }}
           >
-            <div className="flex items-center text-sm gap-3 w-full">{feature.translation}</div>
+            {TypeIcon && <TypeIcon color={theme === "dark" ? "white" : "black"} width={36} height={36} />}
+            <div className="flex items-center text-sm gap-3 w-full">{type.translation}</div>
 
-            <Checkbox id={feature.id} className="h-4 w-4 cursor-pointer" key={feature.id} checked={feature.checked} />
+            <Checkbox id={type.id} className="h-4 w-4 cursor-pointer" key={type.id} checked={type.checked} />
           </div>
         );
       })}

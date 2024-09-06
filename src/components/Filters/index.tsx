@@ -90,7 +90,7 @@ export default function Filters() {
       <DropdownMenuContent className="w-80" side="bottom" align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem
-            className="cursor-pointer flex items-center gap-2"
+            className="cursor-pointer flex items-center gap-2 h-12"
             onSelect={(event) => {
               event.preventDefault();
             }}
@@ -120,7 +120,7 @@ export default function Filters() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="flex items-center gap-2">
+            <DropdownMenuSubTrigger className="flex items-center gap-2 h-12">
               <House width={20} height={20} strokeWidth={1.25} />
               {categories} {selectedTypes.length > 0 && `(${selectedTypes.length})`}
             </DropdownMenuSubTrigger>
@@ -143,7 +143,7 @@ export default function Filters() {
         </DropdownMenuGroup>
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="flex justify-center items-center gap-2">
+            <DropdownMenuSubTrigger className="flex justify-center items-center gap-2 h-12">
               <Sparkles width={20} height={20} strokeWidth={1.25} />
               {features} {selectedFeatures.length > 0 && `(${selectedFeatures.length})`}
             </DropdownMenuSubTrigger>
@@ -166,7 +166,7 @@ export default function Filters() {
         </DropdownMenuGroup>
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="flex justify-center items-center gap-2">
+            <DropdownMenuSubTrigger className="flex justify-center items-center gap-2 h-12">
               <DoorOpen width={20} height={20} strokeWidth={1.25} />
               {rooms}
               {(selectedRooms.bedrooms[0] !== 0 || selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (

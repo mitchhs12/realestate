@@ -10,6 +10,10 @@ import { formatPrice } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { formatNumber } from "@/lib/utils";
+import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
+import { typeIcons } from "@/components/Icons/typeIcons";
+import { featureIcons } from "@/components/Icons/featureIcons";
+import { useTheme } from "next-themes";
 
 interface Props {
   currentHome: HomeType | null;
@@ -107,6 +111,7 @@ export default function Review({
   const [loadingStates, setLoadingStates] = useState(photos.map(() => true));
   const [sqSize, setSqSize] = useState(areaSqm);
   const { numerals } = useContext(LocaleContext);
+  const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -165,8 +170,8 @@ export default function Review({
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-col text-center justify-center items-center w-full h-full sm:shadow-md p-2 xs:p-4 sm:p-8 gap-8 rounded-2xl">
-                  <div className="flex flex-col w-full h-full max-w-5xl text-center gap-8">
+                <div className="flex flex-col text-center justify-center items-center w-full h-full p-2 xs:p-4 sm:p-8 gap-8 rounded-2xl">
+                  <div className="flex flex-col w-full h-full max-w-4xl text-center gap-8">
                     <div className="flex flex-col gap-8">
                       <div className="flex flex-col w-full justify-center items-center overflow-auto text-xs sm:text-sm md:text-md lg:text-lg gap-y-4">
                         <div className="flex flex-col w-full">
@@ -178,17 +183,21 @@ export default function Review({
                         </div>
                         <div className="grid grid-rows-2 grid-cols-2 sm:flex sm:flex-row justify-between w-full gap-2 py-4">
                           <div className="flex flex-row gap-3 text-center">
+                            <BedDouble className="w-6 h-6" />
                             <strong>{bedrooms_text}</strong>
                             <span>{formatNumber(bedrooms, numerals)}</span>
                           </div>
                           <div className="flex flex-row justify-end gap-3 text-center">
+                            <Bath className="w-6 h-6" />
                             <strong className="justify-start">{bathrooms_text}</strong>
                             <span>{formatNumber(bathrooms, numerals)}</span>
                           </div>
                           <div className="flex flex-row gap-3 text-center">
+                            <Sofa className="w-6 h-6" />
                             <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
                           </div>
                           <div className="flex flex-row justify-end gap-3 text-center">
+                            <CookingPot className="w-6 h-6" />
                             <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
                           </div>
                         </div>
@@ -207,7 +216,7 @@ export default function Review({
                                   setFeet(!feet);
                                 }}
                               >
-                                {!feet ? `${m_text}²` : `${ft_text}²`}
+                                {!feet ? m_text : ft_text}
                               </button>
                             </span>
                           </div>
@@ -220,9 +229,19 @@ export default function Review({
                               <strong>{type_text}</strong>
                             </p>
                             <ul className="list-disc list-inside">
-                              {matchingTypes.map((type, index) => (
-                                <li key={index}>{type.translation}</li>
-                              ))}
+                              {matchingTypes.map((type, index) => {
+                                const TypeIcon = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
+                                return (
+                                  <li key={index} className="flex w-full items-center gap-3 mb-4">
+                                    {TypeIcon && (
+                                      <div className="flex justify-center items-center">
+                                        <TypeIcon color={theme === "dark" ? "white" : "black"} width={40} height={40} />
+                                      </div>
+                                    )}
+                                    {type.translation}
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
 
@@ -231,9 +250,23 @@ export default function Review({
                               <strong>{features_text}</strong>
                             </p>
                             <ul className="list-disc list-inside">
-                              {matchingFeatures.map((feature, index) => (
-                                <li key={index}>{feature.translation}</li>
-                              ))}
+                              {matchingFeatures.map((feature, index) => {
+                                const FeatureIcon = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
+                                return (
+                                  <li key={index} className="flex w-full items-center gap-3 mb-4">
+                                    {FeatureIcon && (
+                                      <div className="flex justify-center items-center">
+                                        <FeatureIcon
+                                          color={theme === "dark" ? "white" : "black"}
+                                          width={40}
+                                          height={40}
+                                        />
+                                      </div>
+                                    )}
+                                    {feature.translation}
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
                         </div>

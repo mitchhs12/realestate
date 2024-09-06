@@ -88,6 +88,23 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
       <Link href={`/homes/${home.id}`} target={target}>
         <div className="flex flex-col justify-center items-center w-full gap-2 px-2 relative">
           <div className="flex items-center justify-center gap-2 w-full">
+            {/* {IconComponent && (
+              <Button
+                variant={types.length > 1 ? "outline" : "ghost"}
+                disabled={types.length > 1 ? false : true}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  const newIndex = (index + 1) % types.length;
+                  setIndex(newIndex);
+                  setCurrentType(types[newIndex]);
+                }}
+                size={"icon"}
+                className="flex"
+              >
+                <IconComponent color={theme === "dark" ? "white" : "black"} width={40} height={40} />
+              </Button>
+            )} */}
             <h2
               className={`text-md md:text-lg lg:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
                 titleUnderlined ? "underline" : ""

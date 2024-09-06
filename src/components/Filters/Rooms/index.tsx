@@ -98,19 +98,19 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
     <div className="flex flex-col gap-1 w-full">
       <div className="flex items-center justify-between gap-2 w-full rounded-sm p-2">
         <div className="flex flex-col items-start text-sm gap-3 h-full">
-          <div className="flex gap-2">
+          <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.bedrooms.image}</div>
             <div className="flex text-nowrap">{roomsObject.bedrooms.translation}</div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.bathrooms.image}</div>
             <div className="flex text-nowrap">{roomsObject.bathrooms.translation}</div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.livingrooms.image}</div>
             <div className="flex text-nowrap">{roomsObject.livingrooms.translation}</div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.kitchens.image}</div>
             <div className="flex text-nowrap">{roomsObject.kitchens.translation}</div>
           </div>

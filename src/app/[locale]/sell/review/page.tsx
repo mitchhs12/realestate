@@ -3,12 +3,11 @@ import Review from "./Review";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
-import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
+import { getStepData, getSellFlowIndex, featuresMap, typesMap, listingType } from "@/lib/sellFlowData";
 import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { getPath, findMatching, findMatchingItem } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
-import { typesMap, features, listingType } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
@@ -57,8 +56,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const negotiable = c("negotiable");
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
-    id: features[index],
-    name: features[index],
+    id: featuresMap[index].id,
+    name: featuresMap[index].name,
     translation: f(`options.${index}` as keyof typeof f),
   }));
 

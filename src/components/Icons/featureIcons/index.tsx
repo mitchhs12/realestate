@@ -9,70 +9,90 @@ export type IconProps = React.HTMLAttributes<SVGElement> & {
 type FeatureComponent = (props: IconProps) => JSX.Element;
 
 export const featureIcons: Record<string, FeatureComponent> = {
+  none: ({ color, width = 45, height = 45 }: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox="-5 -4 33 33"
+      fill="none"
+      stroke={color}
+      stroke-width={1.5}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="m4.9 4.9 14.2 14.2" />
+    </svg>
+  ),
   "air-conditioning": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
-      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}>
+      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.3}>
         <path d="M8 16a3 3 0 0 1-3 3m11-3a3 3 0 0 0 3 3m-7-3v4M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <path d="M7 13v-3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3" />
       </g>
     </svg>
   ),
   attic: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 29 29" height={height}>
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
       <path
         fill={"none"}
         stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={1.15}
-        d="M12 2v5M6 7h12l4 9H2zm3.17 9a3 3 0 1 0 5.66 0"
+        strokeWidth={1}
+        d="M22 6h-5v5h-5v5H7v5H2m4-11V3M3 6l3-3l3 3"
       />
     </svg>
   ),
   balcony: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 -960 960 960" width={width} fill={color}>
-      <path d="M345.23-489.23v-53.54h53.54v53.54h-53.54Zm216 0v-53.54h53.54v53.54h-53.54ZM184-136v-231.08h48V-576q0-51.82 19.42-96.87 19.43-45.05 53-78.73 33.56-33.69 78.71-53.04Q428.27-824 480-824q52.31 0 97.13 19.36 44.82 19.37 78.48 53.03 33.66 33.66 53.03 78.48Q728-628.31 728-576v208.92h48V-136H184Zm32-32h98v-167.08h-98V-168Zm130 0h118v-167.08H346V-168Zm-82-199.08h200v-423.46q-77.23 4.77-139.12 64.77Q263-665.77 264-576v208.92Zm232 0h200V-576q0-89.77-61.38-149.77-61.39-60-138.62-64.77v423.46ZM496-168h118v-167.08H496V-168Zm150 0h98v-167.08h-98V-168Z" />
+      <path d="M330.96-490.96v-58.46h58.46v58.46h-58.46Zm240 0v-58.46h58.46v58.46h-58.46ZM161.73-121.73v-260h40V-560q0-57.77 21.73-108.48T283.03-757q37.84-37.81 88.71-59.73 50.87-21.92 108.26-21.92 57.79 0 108.53 21.92 50.73 21.92 88.51 59.69 37.77 37.78 59.69 88.51 21.92 50.74 21.92 108.53v178.27h40v260H161.73Zm36.92-36.92h103.08v-186.16H198.65v186.16Zm140 0h123.08v-186.16H338.65v186.16Zm-100-223.08h223.08v-418.65q-86.96 5.26-155.02 72.19-68.06 66.92-68.06 168.19v178.27Zm260 0h223.08V-560q0-101.27-68.25-168.19-68.25-66.93-154.83-72.19v418.65Zm0 223.08h123.08v-186.16H498.65v186.16Zm160 0h103.08v-186.16H658.65v186.16Z" />
     </svg>
   ),
   basement: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="-22 -29 300 300" height={height}>
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
       <path
-        fill={color}
-        d="M200 26H56a14 14 0 0 0-14 14v176a14 14 0 0 0 14 14h144a14 14 0 0 0 14-14V40a14 14 0 0 0-14-14m-48 116h50v28h-92v-28Zm6-12v-28h44v28ZM56 38h144a2 2 0 0 1 2 2v50h-50a6 6 0 0 0-6 6v34h-42a6 6 0 0 0-6 6v34H54V40a2 2 0 0 1 2-2m144 180H56a2 2 0 0 1-2-2v-34h148v34a2 2 0 0 1-2 2"
+        fill={"none"}
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1}
+        d="M22 21h-5v-5h-5v-5H7V6H2m16-3v7m-3-3l3 3l3-3"
       />
     </svg>
   ),
   bbq: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg width={width} height={height} viewBox="0 -2 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_2_1364)">
-        <path d="M19 25.875L14 36.875" stroke={color} stroke-width={2} stroke-linejoin="round" />
-        <path d="M27 25.875L32 36.875" stroke={color} stroke-width={2} stroke-linejoin="round" />
-        <path d="M23 36.875V25.875" stroke={color} stroke-width={2} stroke-linejoin="round" />
+        <path d="M19 25.875L14 36.875" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
+        <path d="M27 25.875L32 36.875" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
+        <path d="M23 36.875V25.875" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
         <path
           d="M12 15.875C12 21.95 16.925 26.875 23 26.875C29.075 26.875 34 21.95 34 15.875"
           stroke={color}
-          stroke-width="2"
+          stroke-width={1.75}
           stroke-linejoin="round"
         />
-        <path d="M30 31.875H16" stroke={color} stroke-width={2} stroke-linejoin="round" />
-        <path d="M13 18.875H9" stroke={color} stroke-width={2} stroke-linejoin="round" />
-        <path d="M37 18.875H33" stroke={color} stroke-width={2} stroke-linejoin="round" />
+        <path d="M30 31.875H16" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
+        <path d="M13 18.875H9" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
+        <path d="M37 18.875H33" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
         <path
           d="M19.705 14.875C16.152 14.875 11 14.875 11 14.875"
           stroke={color}
-          stroke-width={2}
+          stroke-width={1.75}
           stroke-linejoin="round"
         />
         <path
           d="M35 14.875C35 14.875 32.307 14.875 29.527 14.875"
           stroke={color}
-          stroke-width={2}
+          stroke-width={1.75}
           stroke-linejoin="round"
         />
         <path
           d="M30.994 -13.125C30.999 -8.292 27 -7.042 27 -2.125C27 2.792 30.999 4.042 30.994 8.875C30.989 13.708 27 15.042 27 19.875M25.994 -13.125C25.999 -8.292 22 -7.042 22 -2.125C22 2.792 25.999 4.042 25.994 8.875C25.989 13.708 22 15.042 22 19.875M20.994 -13.125C20.999 -8.292 17 -7.042 17 -2.125C17 2.792 20.999 4.042 20.994 8.875C20.989 13.708 17 15.042 17 19.875M30.994 -35.191C30.999 -30.358 27 -29.108 27 -24.191C27 -19.274 30.999 -18.024 30.994 -13.191V-13.125C30.999 -8.292 27 -7.042 27 -2.125C27 2.792 30.999 4.042 30.994 8.875C30.989 13.708 27 15.042 27 19.875M25.994 -35.191C25.999 -30.358 22 -29.108 22 -24.191C22 -19.274 25.999 -18.024 25.994 -13.191V-13.125C25.999 -8.292 22 -7.042 22 -2.125C22 2.792 25.999 4.042 25.994 8.875C25.989 13.708 22 15.042 22 19.875M20.994 -35.191C20.999 -30.358 17 -29.108 17 -24.191C17 -19.274 20.999 -18.024 20.994 -13.191V-13.125C20.999 -8.292 17 -7.042 17 -2.125C17 2.792 20.999 4.042 20.994 8.875C20.989 13.708 17 15.042 17 19.875"
           stroke={color}
-          stroke-width={2}
+          stroke-width={1.75}
           stroke-linejoin="round"
         />
       </g>
@@ -104,26 +124,26 @@ export const featureIcons: Record<string, FeatureComponent> = {
       <path
         d="M33 16.5H35C35.552 16.5 36 16.948 36 17.5V27.5C36 28.052 35.552 28.5 35 28.5H33C32.448 28.5 32 28.052 32 27.5V17.5C32 16.948 32.448 16.5 33 16.5Z"
         stroke={color}
-        stroke-width="2"
+        stroke-width={1.75}
       />
       <path
         d="M29 12.5H31C31.552 12.5 32 12.948 32 13.5V31.5C32 32.052 31.552 32.5 31 32.5H29C28.448 32.5 28 32.052 28 31.5V13.5C28 12.948 28.448 12.5 29 12.5Z"
         stroke={color}
-        stroke-width="2"
+        stroke-width={1.75}
       />
       <path
         d="M15 12.5H17C17.552 12.5 18 12.948 18 13.5V31.5C18 32.052 17.552 32.5 17 32.5H15C14.448 32.5 14 32.052 14 31.5V13.5C14 12.948 14.448 12.5 15 12.5Z"
         stroke={color}
-        stroke-width="2"
+        stroke-width={1.75}
       />
       <path
         d="M11 16.5H13C13.552 16.5 14 16.948 14 17.5V27.5C14 28.052 13.552 28.5 13 28.5H11C10.448 28.5 10 28.052 10 27.5V17.5C10 16.948 10.448 16.5 11 16.5Z"
         stroke={color}
-        stroke-width="2"
+        stroke-width={1.75}
       />
-      <path d="M36 22.5H39" stroke={color} stroke-width="2" />
-      <path d="M18 22.5H28" stroke={color} stroke-width="2" />
-      <path d="M7 22.5H10" stroke={color} stroke-width="2" />
+      <path d="M36 22.5H39" stroke={color} stroke-width={1.75} />
+      <path d="M18 22.5H28" stroke={color} stroke-width={1.75} />
+      <path d="M7 22.5H10" stroke={color} stroke-width={1.75} />
     </svg>
   ),
   "fire-pit": ({ color, width = 45, height = 45 }: IconProps) => (
@@ -148,7 +168,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
   ),
   "garden-yard": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
-      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.25}>
+      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}>
         <path d="M7 20h10m-7 0c5.5-2.5.8-6.4 3-10" />
         <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7c-2 .4-3.5.4-4.8-.3c-1.2-.6-2.3-1.9-3-4.2c2.8-.5 4.4 0 5.5.8M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4c1-1 1.6-2.3 1.7-4.6c-2.7.1-4 1-4.9 2" />
       </g>
@@ -327,25 +347,30 @@ export const featureIcons: Record<string, FeatureComponent> = {
     </svg>
   ),
   patio: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg width={width} height={height} viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="-3 -3 30 30"
+      width={width}
+      height={height}
+      color={color}
+      fill="none"
+    >
       <path
-        d="M22.917 18.926H31M23 8V10.801V26.926M23 8.926C27.418 8.926 31 12.508 31 16.926V26.926H23C23 26.926 23 12.051 23 8.926Z"
+        d="M22 16C21.6936 15.3871 21.0672 15 20.382 15H3.61803C2.93283 15 2.30643 15.3871 2 16"
         stroke={color}
-        stroke-width={1.5}
+        stroke-width="1.5"
+        stroke-linecap="round"
       />
+      <path d="M3 22H21" stroke={color} stroke-width={1.25} stroke-linecap="round" />
+      <path d="M5 15V22M9.5 15V22M14.5 15V22M19 15V22" stroke={color} stroke-width={1.25} stroke-linecap="round" />
+      <path d="M12 7L15 3M12 7H6.5M12 7H17.5M12 7L9 3" stroke={color} stroke-width={1.25} stroke-linecap="round" />
       <path
-        d="M23.083 18.926H15M23 8V10.801V26.926M23 8.926C18.582 8.926 15 12.508 15 16.926V26.926H23C23 26.926 23 12.051 23 8.926Z"
+        d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8V15H6V8Z"
         stroke={color}
-        stroke-width={1.5}
+        stroke-width={1.25}
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
-      <path d="M33 26.926V36.926" stroke={color} stroke-width={1.5} />
-      <path d="M29 26.926V36.926" stroke={color} stroke-width={1.5} />
-      <path d="M25 26.926V36.926" stroke={color} stroke-width={1.5} />
-      <path d="M21 26.926V36.926" stroke={color} stroke-width={1.5} />
-      <path d="M17 26.926V36.926" stroke={color} stroke-width={1.5} />
-      <path d="M13 26.926V36.926" stroke={color} stroke-width={1.5} />
-      <path d="M10 36.926H36" stroke={color} stroke-width={1.5} />
-      <path d="M10 26.926H36" stroke={color} stroke-width={1.5} />
     </svg>
   ),
   pool: ({ color, width = 45, height = 45 }: IconProps) => (
@@ -377,7 +402,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
     </svg>
   ),
   "security-system": ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="-7 -4 34 33" height={height}>
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="-6 -3 33 30" height={height}>
       <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.55}>
         <path d="M7 9h.01m9.74 3H22l-3.5 7l-3.09-4.32" />
         <path d="m18 9.5l-4 8l-10.39-5.2a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3ZM2 19h3.76a2 2 0 0 0 1.8-1.1L9 15m-7 6v-4" />

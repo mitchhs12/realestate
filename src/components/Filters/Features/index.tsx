@@ -2,9 +2,10 @@
 
 import { useScopedI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
-import { features } from "@/lib/sellFlowData";
-import { DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
+import { features, featuresMap } from "@/lib/sellFlowData";
 import { Checkbox } from "@/components/ui/checkbox";
+import { featureIcons } from "@/components/Icons/featureIcons";
+import { useTheme } from "next-themes";
 
 interface FeaturesObject {
   id: string;
@@ -20,13 +21,14 @@ interface Props {
 export default function Categories({ selectedFeatures, setSelectedFeatures }: Props) {
   const t = useScopedI18n("sell.features");
   const [featuresObject, setFeaturesObject] = useState<FeaturesObject[]>([]);
+  const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
     if (t) {
       const newFeaturesObject = Array.from({ length: 26 }, (_, index) => ({
-        id: features[index],
+        id: featuresMap[index].id,
         translation: t(`options.${index}` as keyof typeof t),
-        checked: selectedFeatures.includes(features[index]),
+        checked: selectedFeatures.includes(featuresMap[index].id),
       }));
 
       setFeaturesObject(newFeaturesObject);
@@ -49,9 +51,9 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
   useEffect(() => {
     // resync selectedFeatures with the selectedFeatures in the parent component
     const newFeaturesObject = Array.from({ length: 26 }, (_, index) => ({
-      id: features[index],
+      id: featuresMap[index].id,
       translation: t(`options.${index}` as keyof typeof t),
-      checked: selectedFeatures.includes(features[index]),
+      checked: selectedFeatures.includes(featuresMap[index].id),
     }));
     setFeaturesObject(newFeaturesObject);
   }, [selectedFeatures]);
@@ -60,6 +62,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
     <>
       {featuresObject.map((feature, index) => {
         if (index !== 0) {
+          const FeatureIcon = featureIcons[feature.id];
           return (
             <div
               key={feature.id}
@@ -68,6 +71,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
                 handleCheckedChange(index);
               }}
             >
+              {FeatureIcon && <FeatureIcon color={theme === "dark" ? "white" : "black"} width={36} height={36} />}
               <div className="flex items-center text-sm gap-3 w-full">{feature.translation}</div>
 
               <Checkbox id={feature.id} className="h-4 w-4 cursor-pointer" key={feature.id} checked={feature.checked} />

@@ -86,11 +86,11 @@ export default function Type({
                   <ToggleGroupItem
                     key={index}
                     value={feature.name}
-                    className="h-[50px] md:h-[80px] xl:h-[120px] border-2 text-xs sm:text-sm md:text-md"
+                    className="h-[50px] md:h-[80px] xl:h-[120px] text-xs sm:text-sm md:text-md"
                   >
-                    <div className="flex w-full justify-center border-2 gap-2 items-center text-center text-xs sm:text-sm md:text-md lg:text-lg">
+                    <div className="flex w-full justify-center gap-2 items-center text-center text-xs sm:text-sm md:text-md lg:text-lg">
                       {IconComponent && (
-                        <div className="flex w-1/3 justify-center items-center border-2">
+                        <div className="flex w-1/3 justify-center items-center">
                           <IconComponent color="gray" width={40} height={40} />
                         </div>
                       )}

@@ -39,6 +39,7 @@ import { handleCopy } from "@/lib/utils";
 import { HomeContext } from "@/context/HomeContext";
 import { typeIcons } from "../Icons/typeIcons";
 import { useTheme } from "next-themes";
+import { featureIcons } from "../Icons/featureIcons";
 
 interface Props {
   units: { m: string; ft: string };
@@ -211,8 +212,8 @@ export default function HomeText({
 
             <div className="flex flex-col gap-3">
               <div className="text-lg sm:text-xl">{capacityTitle}</div>
-              <div className="flex items-center gap-3">
-                <Users size={20} strokeWidth={1.25} />
+              <div className="flex items-center gap-3 pl-1">
+                <Users size={20} strokeWidth={1.5} />
                 <div className="flex items-center gap-1">
                   <span>{formatNumber(home.capacity, numerals)}</span>
                   {home.capacity === 0 ? capacityText.single : capacityText.plural}
@@ -220,69 +221,77 @@ export default function HomeText({
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
-              <div className="flex gap-3 items-center">
+              <div className="flex items-center gap-5">
+                <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
+                <div className="flex items-center">
+                  <Button
+                    className="flex items-center gap-3"
+                    variant={"outline"}
+                    size={"default"}
+                    onClick={() => {
+                      if (feet) {
+                        setFeet(true);
+                      } else {
+                        setFeet(false);
+                      }
+                      setFeet(!feet);
+                    }}
+                  >
+                    {feet ? <Ruler size={18} strokeWidth={1.25} /> : <Footprints size={18} strokeWidth={1.25} />}
+                    {feet ? units.m : units.ft}
+                  </Button>
+                </div>
+              </div>
+              <div className="flex gap-3 items-center pl-1">
                 <div className="flex">
-                  <LandPlot size={20} strokeWidth={1} />
+                  <LandPlot size={20} strokeWidth={1.25} />
                 </div>
                 <div className="flex flex-col">
                   {formatNumber(sqSize, numerals)} {feet ? units.ft : units.m}
                 </div>
               </div>
-              <div className="flex items-center">
-                <Button
-                  className="flex items-center gap-3"
-                  variant={"outline"}
-                  size={"default"}
-                  onClick={() => {
-                    if (feet) {
-                      setFeet(true);
-                    } else {
-                      setFeet(false);
-                    }
-                    setFeet(!feet);
-                  }}
-                >
-                  {feet ? <Ruler size={18} strokeWidth={1.25} /> : <Footprints size={18} strokeWidth={1.25} />}
-                  {feet ? units.m : units.ft}
-                </Button>
-              </div>
             </div>
             <div className="flex flex-col w-full sm:w-3/4">
-              <div className="flex flex-col w-full gap-3">
-                <div className="text-lg sm:text-xl">{roomsTitle}</div>
+              <div className="text-lg sm:text-xl mb-3">{roomsTitle}</div>
+              <div className="flex flex-col w-full gap-3 pl-1">
                 <div className="flex gap-3 items-center">
-                  <BedDouble size={18} strokeWidth={1.25} />
+                  <BedDouble size={18} strokeWidth={1.5} />
                   <span className="w-[1rem]">{formatNumber(home.bedrooms, numerals)}</span>{" "}
                   <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
                 </div>
                 <div className="flex gap-3 items-center">
-                  <Bath size={18} strokeWidth={1.25} />
+                  <Bath size={18} strokeWidth={1.5} />
                   <span className="w-[1rem]">{formatNumber(home.bathrooms, numerals)}</span>
                   <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
                 </div>
                 <div className="flex gap-3 items-center">
-                  <Sofa size={18} strokeWidth={1.25} />
+                  <Sofa size={18} strokeWidth={1.5} />
                   <span className="w-[1rem]">{formatNumber(home.livingrooms, numerals)}</span>
                   <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
                 </div>
                 <div className="flex gap-3 items-center">
-                  <CookingPot size={18} strokeWidth={1.25} />
+                  <CookingPot size={18} strokeWidth={1.5} />
                   <span className="w-[1rem]">{formatNumber(home.kitchens, numerals)}</span>
                   <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="text-lg sm:text-xl">{featuresTitle}</div>
-              {matchingFeatures.map((feature, index) => {
-                return (
-                  <div key={index} className="flex items-center gap-2">
-                    <Check size={18} />
-                    {feature.translation}
-                  </div>
-                );
-              })}
+            <div className="flex flex-col h-full">
+              <div className="text-lg sm:text-xl mb-3">{featuresTitle}</div>
+              <div className="gap-3 grid grid-cols-2 lg:grid-cols-3 text-sm sm:text-lg">
+                {matchingFeatures.map((feature, index) => {
+                  const FeatureIcon = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
+
+                  return (
+                    FeatureIcon && (
+                      <div key={index} className="flex items-center gap-2">
+                        <FeatureIcon color={theme === "dark" ? "white" : "black"} width={25} height={25} />
+                        {feature.translation}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

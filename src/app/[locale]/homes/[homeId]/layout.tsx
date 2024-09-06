@@ -3,7 +3,7 @@ import { getHomeById } from "@/app/[locale]/homes/actions";
 import Footer from "@/components/Footer";
 import { getScopedI18n } from "@/locales/server";
 import { findMatching } from "@/lib/utils";
-import { features, typesMap } from "@/lib/sellFlowData";
+import { featuresMap, typesMap } from "@/lib/sellFlowData";
 
 type Props = {
   children: React.ReactNode;
@@ -18,8 +18,8 @@ export default async function HomeLayout({ children, params: { homeId, locale } 
   ]);
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
-    id: features[index],
-    name: features[index],
+    id: featuresMap[index].id,
+    name: featuresMap[index].name,
     translation: f(`options.${index}` as keyof typeof f),
   }));
 
