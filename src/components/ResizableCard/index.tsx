@@ -11,12 +11,13 @@ import { QueryContext } from "@/context/QueryContext";
 import BrokenPrice from "@/components/BrokenPrice";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
-import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { typeIcons } from "@/components/Icons/typeIcons";
 import { useTheme } from "next-themes";
+import { Eye, EyeOff } from "lucide-react";
+import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 
 interface TypeObject {
   id: string;
@@ -26,12 +27,23 @@ interface TypeObject {
 
 interface Props {
   home: HomeType | null;
+  finishSelling: string;
+  incompleteListing: string;
   isLoading?: boolean;
   types: TypeObject[];
   loginToViewPrice?: string;
+  userId?: string;
 }
 
-export default function ResizableCard({ home, isLoading, types, loginToViewPrice }: Props) {
+export default function ResizableCard({
+  home,
+  finishSelling,
+  incompleteListing,
+  isLoading,
+  types,
+  loginToViewPrice,
+  userId,
+}: Props) {
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
@@ -84,8 +96,8 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
         setTitleUnderlined(false);
       }}
     >
-      <ResizableCarousel home={home} />
-      <Link href={`/homes/${home.id}`} target={target}>
+      <ResizableCarousel home={home} hovering={titleUnderlined} />
+      <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={target}>
         <div className="flex flex-col justify-center items-center w-full gap-2 px-2 relative">
           <div className="flex items-center justify-center gap-2 w-full">
             {/* {IconComponent && (
@@ -110,18 +122,22 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
                 titleUnderlined ? "underline" : ""
               }`}
             >
-              {types.length > 1 ? currentType?.translation : types.length > 0 && types[0].translation}
+              {home.isComplete
+                ? types.length > 1
+                  ? currentType?.translation
+                  : types.length > 0 && types[0].translation
+                : finishSelling}
             </h2>
           </div>
 
           <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
-            {home.municipality}
+            {home.municipality ? home.municipality : "-"}
           </div>
           {/* <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
             {home.region}
           </div> */}
           <div className="flex text-center gap-2 items-center text-sm sm:text-sm lg:text-md">
-            {countryName}
+            {home.country ? countryName : "-"}
             {home.country && (
               <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
             )}
@@ -134,6 +150,7 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
                 <Tooltip>
                   <TooltipTrigger>
                     <BrokenPrice
+                      incompleteListing={incompleteListing}
                       home={home}
                       newCurrencySymbol={defaultCurrency.symbol}
                       newCurrencyUsdPrice={defaultCurrency.usdPrice}
@@ -169,6 +186,20 @@ export default function ResizableCard({ home, isLoading, types, loginToViewPrice
           className="absolute bottom-2 left-2"
         >
           <IconComponent color={theme === "dark" ? "white" : "black"} width={40} height={40} />
+        </Button>
+      )}
+      {home.isComplete && user?.id === home.ownerId && (
+        <Button
+          variant={home.isActive ? "default" : "destructive"}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            changeHomeVisibility(home.id, home.isActive);
+          }}
+          size={"icon"}
+          className="absolute bottom-2 right-2"
+        >
+          {home.isActive ? <Eye /> : <EyeOff />}
         </Button>
       )}
       {/* <div className="absolute items-center justify-center bottom-2 left-2"></div> */}

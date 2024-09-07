@@ -492,7 +492,11 @@
     "show-original-button": "Afficher l'original"
   },
   "my-properties": {
-    "title": "Mes propriétés"
+    "title": "Mes propriétés",
+    "incompleteListing": "Liste incomplète !",
+    "finishSelling": "Terminer la vente !",
+    "hideAllText": "Masquer toutes les propriétés",
+    "showAllText": "Afficher toutes les propriétés"
   },
   "settings": {
     "title": "Paramètres du compte",

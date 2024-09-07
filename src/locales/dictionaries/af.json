@@ -492,7 +492,11 @@
     "show-original-button": "Wys oorspronklike"
   },
   "my-properties": {
-    "title": "My Eienskappe"
+    "title": "My Eienskappe",
+    "incompleteListing": "Onvolledige lys!",
+    "finishSelling": "Voltooi verkoop!",
+    "hideAllText": "Versteek alle eienskappe",
+    "showAllText": "Wys alle eienskappe"
   },
   "settings": {
     "title": "Rekeninginstellings",

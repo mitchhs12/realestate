@@ -492,7 +492,11 @@ export default {
     "show-original-button": "Hiển thị bản gốc"
   },
   "my-properties": {
-    "title": "Thuộc tính của tôi"
+    "title": "Thuộc tính của tôi",
+    "incompleteListing": "Danh sách chưa đầy đủ!",
+    "finishSelling": "Hoàn tất việc bán!",
+    "hideAllText": "Ẩn tất cả các thuộc tính",
+    "showAllText": "Hiển thị tất cả các thuộc tính"
   },
   "settings": {
     "title": "Cài đặt tài khoản",

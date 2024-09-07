@@ -62,7 +62,7 @@ export async function getUnfinishedHome(url?: string) {
   const homes = await prisma.home.findFirst({
     where: {
       ownerId: userId,
-      isActive: { not: true },
+      isComplete: { not: true },
     },
     orderBy: {
       createdAt: "asc",
@@ -123,7 +123,7 @@ export async function sellHome(currentLocale: string, url: string): Promise<Resp
 
   const { id, ...homeData } = homeSchema.parse(home);
 
-  const newData = { ...homeData, language: currentLocale, isActive: true };
+  const newData = { ...homeData, language: currentLocale, isActive: true, isComplete: true };
 
   await prisma.home.update({
     where: { id: id },

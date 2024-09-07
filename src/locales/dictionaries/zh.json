@@ -492,7 +492,11 @@
     "show-original-button": "显示原始内容"
   },
   "my-properties": {
-    "title": "我的房产"
+    "title": "我的房产",
+    "incompleteListing": "列表不完整！",
+    "finishSelling": "完成销售！",
+    "hideAllText": "隐藏所有属性",
+    "showAllText": "显示所有属性"
   },
   "settings": {
     "title": "帐户设置",

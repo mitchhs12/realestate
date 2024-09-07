@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { HomeType } from "@/lib/validations";
+import { useState } from "react";
 
 interface Props {
   home: HomeType;
@@ -8,9 +9,10 @@ interface Props {
   rounded?: string;
   isLoading?: boolean;
   openModal?: (index: number) => void;
+  hovering?: boolean;
 }
 
-export default function ResizableCard({ home, height, rounded, openModal }: Props) {
+export default function ResizableCard({ home, height, rounded, openModal, hovering }: Props) {
   return (
     <Carousel className="h-full w-full">
       <CarouselContent>
@@ -42,8 +44,8 @@ export default function ResizableCard({ home, height, rounded, openModal }: Prop
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="hidden sm:flex absolute left-6 size-8" />
-      <CarouselNext className="hidden sm:flex absolute right-6 size-8" />
+      <CarouselPrevious className={`${hovering ? "flex" : "hidden"} absolute left-6 size-8`} />
+      <CarouselNext className={`${hovering ? "flex" : "hidden"} absolute right-6 size-8 border-2`} />
     </Carousel>
   );
 }

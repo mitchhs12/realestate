@@ -492,7 +492,11 @@ export default {
     "show-original-button": "Prikaži izvornik"
   },
   "my-properties": {
-    "title": "Moja svojstva"
+    "title": "Moja svojstva",
+    "incompleteListing": "Nepotpun popis!",
+    "finishSelling": "Završite prodaju!",
+    "hideAllText": "Sakrij sva svojstva",
+    "showAllText": "Prikaži sva svojstva"
   },
   "settings": {
     "title": "Postavke računa",

@@ -4,6 +4,7 @@ import { User } from "next-auth";
 import { Skeleton } from "../ui/skeleton";
 
 interface Props {
+  incompleteListing: string;
   home: HomeType;
   newCurrencySymbol: string;
   newCurrencyUsdPrice: number;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function BrokenPrice({
+  incompleteListing,
   home,
   newCurrencySymbol,
   newCurrencyUsdPrice,
@@ -20,6 +22,10 @@ export default function BrokenPrice({
   blurAmount,
   className,
 }: Props) {
+  if (!home.priceUsd) {
+    return <span className={`flex items-center text-center ${className} font-semibold mb-2`}>{incompleteListing}</span>;
+  }
+
   return (
     <>
       {home.priceUsd &&

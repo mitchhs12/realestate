@@ -492,7 +492,11 @@
     "show-original-button": "オリジナルを表示"
   },
   "my-properties": {
-    "title": "私のプロパティ"
+    "title": "私のプロパティ",
+    "incompleteListing": "リストが不完全です!",
+    "finishSelling": "販売終了！",
+    "hideAllText": "すべてのプロパティを非表示",
+    "showAllText": "すべてのプロパティを表示"
   },
   "settings": {
     "title": "アカウント設定",

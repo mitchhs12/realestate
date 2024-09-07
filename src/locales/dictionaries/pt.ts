@@ -492,7 +492,11 @@ export default {
     "show-original-button": "Mostrar original"
   },
   "my-properties": {
-    "title": "Minhas Propriedades"
+    "title": "Minhas Propriedades",
+    "incompleteListing": "Listagem incompleta!",
+    "finishSelling": "Termine de vender!",
+    "hideAllText": "Ocultar todas as propriedades",
+    "showAllText": "Mostrar todas as propriedades"
   },
   "settings": {
     "title": "Configurações de Conta",

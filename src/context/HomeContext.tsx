@@ -5,7 +5,6 @@ import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 import lookup from "country-code-lookup";
-import { Country } from "react-phone-number-input";
 import { getCountryNameForLocale } from "@/lib/utils";
 
 interface HomeContextProps {
@@ -63,6 +62,7 @@ const HomeContext = createContext<HomeContextProps>({
     listingType: "",
     areaSqm: 0,
     isActive: false,
+    isComplete: false,
     listingFlowStep: 0,
   },
   matchingTypes: [],

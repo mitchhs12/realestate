@@ -492,7 +492,11 @@ export default {
     "show-original-button": "ორიგინალის ჩვენება"
   },
   "my-properties": {
-    "title": "ჩემი თვისებები"
+    "title": "ჩემი თვისებები",
+    "incompleteListing": "არასრული ჩამონათვალი!",
+    "finishSelling": "დაასრულეთ გაყიდვა!",
+    "hideAllText": "დამალე ყველა თვისება",
+    "showAllText": "ყველა თვისების ჩვენება"
   },
   "settings": {
     "title": "ანგარიშის პარამეტრები",

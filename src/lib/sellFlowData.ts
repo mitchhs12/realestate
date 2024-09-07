@@ -67,7 +67,7 @@ export const typesMap = [
   { id: "houseboat", name: "Houseboat" },
   { id: "land", name: "Land" },
   { id: "mansion", name: "Mansion" },
-  { id: "tiny-home", name: "Tiny hoome" },
+  { id: "tiny-home", name: "Tiny home" },
   { id: "tower", name: "Tower" },
   { id: "warehouse", name: "Warehouse" },
   { id: "windmill", name: "Windmill" },

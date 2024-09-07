@@ -160,6 +160,7 @@ export const homeSchema = z.object({
   listingType: z.string().nullable(),
   areaSqm: z.number(),
   isActive: z.boolean(),
+  isComplete: z.boolean(),
   listingFlowStep: z.number().min(0, "Cannot be empty"),
 });
 

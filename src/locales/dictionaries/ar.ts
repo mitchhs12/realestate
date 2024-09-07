@@ -492,7 +492,11 @@ export default {
     "show-original-button": "عرض الأصل"
   },
   "my-properties": {
-    "title": "ممتلكاتي"
+    "title": "ممتلكاتي",
+    "incompleteListing": "قائمة غير كاملة!",
+    "finishSelling": "إنهاء البيع!",
+    "hideAllText": "إخفاء كافة الخصائص",
+    "showAllText": "عرض جميع الخصائص"
   },
   "settings": {
     "title": "إعدادات الحساب",

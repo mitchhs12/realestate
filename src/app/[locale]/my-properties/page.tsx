@@ -22,11 +22,11 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       redirect("/");
     }
   } else if (user && user.id) {
-    const myHomes = await getMyHomes(user.id);
+    const myHomes = await getMyHomes();
 
     return (
       <div className="flex flex-col items-center h-full">
-        <MyHomes myHomes={myHomes} />
+        <MyHomes myHomes={myHomes} userId={user.id} />
       </div>
     );
   }

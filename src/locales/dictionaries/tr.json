@@ -492,7 +492,11 @@
     "show-original-button": "Orijinali göster"
   },
   "my-properties": {
-    "title": "Benim Özelliklerim"
+    "title": "Benim Özelliklerim",
+    "incompleteListing": "Eksik Listeleme!",
+    "finishSelling": "Satışı Bitir!",
+    "hideAllText": "Tüm Özellikleri Gizle",
+    "showAllText": "Tüm Özellikleri Göster"
   },
   "settings": {
     "title": "Hesap Ayarları",

@@ -492,7 +492,11 @@
     "show-original-button": "원본보기"
   },
   "my-properties": {
-    "title": "내 속성"
+    "title": "내 속성",
+    "incompleteListing": "목록이 불완전합니다!",
+    "finishSelling": "판매를 완료하세요!",
+    "hideAllText": "모든 속성 숨기기",
+    "showAllText": "모든 속성 표시"
   },
   "settings": {
     "title": "계정 설정",

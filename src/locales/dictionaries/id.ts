@@ -492,7 +492,11 @@ export default {
     "show-original-button": "Tampilkan Aslinya"
   },
   "my-properties": {
-    "title": "Properti Saya"
+    "title": "Properti Saya",
+    "incompleteListing": "Daftar Tidak Lengkap!",
+    "finishSelling": "Selesai Menjual!",
+    "hideAllText": "Sembunyikan Semua Properti",
+    "showAllText": "Tampilkan Semua Properti"
   },
   "settings": {
     "title": "Pengaturan Akun",

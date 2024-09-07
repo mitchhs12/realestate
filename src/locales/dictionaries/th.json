@@ -492,7 +492,11 @@
     "show-original-button": "แสดงต้นฉบับ"
   },
   "my-properties": {
-    "title": "คุณสมบัติของฉัน"
+    "title": "คุณสมบัติของฉัน",
+    "incompleteListing": "รายการไม่สมบูรณ์!",
+    "finishSelling": "เสร็จสิ้นการขาย!",
+    "hideAllText": "ซ่อนคุณสมบัติทั้งหมด",
+    "showAllText": "แสดงคุณสมบัติทั้งหมด"
   },
   "settings": {
     "title": "การตั้งค่าบัญชี",

@@ -492,7 +492,11 @@
     "show-original-button": "Zeige Original"
   },
   "my-properties": {
-    "title": "Meine Immobilien"
+    "title": "Meine Immobilien",
+    "incompleteListing": "Unvollständige Auflistung!",
+    "finishSelling": "Verkauf abschließen!",
+    "hideAllText": "Alle Eigenschaften ausblenden",
+    "showAllText": "Alle Eigenschaften anzeigen"
   },
   "settings": {
     "title": "Kontoeinstellungen",
