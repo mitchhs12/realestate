@@ -27,8 +27,8 @@ interface TypeObject {
 
 interface Props {
   home: HomeType | null;
-  finishSelling: string;
-  incompleteListing: string;
+  finishSelling?: string;
+  incompleteListing?: string;
   isLoading?: boolean;
   types: TypeObject[];
   loginToViewPrice?: string;
@@ -42,7 +42,6 @@ export default function ResizableCard({
   isLoading,
   types,
   loginToViewPrice,
-  userId,
 }: Props) {
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);

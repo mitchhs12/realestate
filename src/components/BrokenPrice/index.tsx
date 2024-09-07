@@ -4,7 +4,7 @@ import { User } from "next-auth";
 import { Skeleton } from "../ui/skeleton";
 
 interface Props {
-  incompleteListing: string;
+  incompleteListing?: string;
   home: HomeType;
   newCurrencySymbol: string;
   newCurrencyUsdPrice: number;
