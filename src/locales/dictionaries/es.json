@@ -495,8 +495,8 @@
     "title": "Mis propiedades",
     "incompleteListing": "¡Listado incompleto!",
     "finishSelling": "¡Termina de vender!",
-    "hideAllText": "Ocultar todas las propiedades",
-    "showAllText": "Mostrar todas las propiedades"
+    "hideAllText": "Hacer que todas las propiedades sean privadas",
+    "showAllText": "Hacer públicas todas las propiedades"
   },
   "settings": {
     "title": "Configuraciones de la cuenta",

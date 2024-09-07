@@ -495,8 +495,8 @@ export default {
     "title": "私のプロパティ",
     "incompleteListing": "リストが不完全です!",
     "finishSelling": "販売終了！",
-    "hideAllText": "すべてのプロパティを非表示",
-    "showAllText": "すべてのプロパティを表示"
+    "hideAllText": "すべてのプロパティを非公開にする",
+    "showAllText": "すべてのプロパティを公開する"
   },
   "settings": {
     "title": "アカウント設定",

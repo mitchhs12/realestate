@@ -11,7 +11,7 @@ export async function getRecommended(): Promise<HomeType[]> {
     orderBy: {
       price: "asc",
     },
-    take: 5,
+    take: 6,
   });
 
   return homes;
@@ -25,7 +25,7 @@ export async function getNew(): Promise<HomeType[]> {
     orderBy: {
       createdAt: "desc",
     },
-    take: 5,
+    take: 6,
   });
 
   return homes;
@@ -39,7 +39,7 @@ export async function getCheapest(): Promise<HomeType[]> {
     orderBy: {
       price: "asc",
     },
-    take: 5,
+    take: 6,
   });
 
   return homes;

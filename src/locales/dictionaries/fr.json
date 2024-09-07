@@ -495,8 +495,8 @@
     "title": "Mes propriétés",
     "incompleteListing": "Liste incomplète !",
     "finishSelling": "Terminer la vente !",
-    "hideAllText": "Masquer toutes les propriétés",
-    "showAllText": "Afficher toutes les propriétés"
+    "hideAllText": "Rendre toutes les propriétés privées",
+    "showAllText": "Rendre toutes les propriétés publiques"
   },
   "settings": {
     "title": "Paramètres du compte",

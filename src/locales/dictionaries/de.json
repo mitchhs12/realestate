@@ -495,8 +495,8 @@
     "title": "Meine Immobilien",
     "incompleteListing": "Unvollständige Auflistung!",
     "finishSelling": "Verkauf abschließen!",
-    "hideAllText": "Alle Eigenschaften ausblenden",
-    "showAllText": "Alle Eigenschaften anzeigen"
+    "hideAllText": "Alle Eigenschaften als privat festlegen",
+    "showAllText": "Alle Eigenschaften öffentlich machen"
   },
   "settings": {
     "title": "Kontoeinstellungen",

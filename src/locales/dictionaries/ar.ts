@@ -495,8 +495,8 @@ export default {
     "title": "ممتلكاتي",
     "incompleteListing": "قائمة غير كاملة!",
     "finishSelling": "إنهاء البيع!",
-    "hideAllText": "إخفاء كافة الخصائص",
-    "showAllText": "عرض جميع الخصائص"
+    "hideAllText": "جعل جميع الخصائص خاصة",
+    "showAllText": "جعل جميع الخصائص عامة"
   },
   "settings": {
     "title": "إعدادات الحساب",

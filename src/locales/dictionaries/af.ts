@@ -495,8 +495,8 @@ export default {
     "title": "My Eienskappe",
     "incompleteListing": "Onvolledige lys!",
     "finishSelling": "Voltooi verkoop!",
-    "hideAllText": "Versteek alle eienskappe",
-    "showAllText": "Wys alle eienskappe"
+    "hideAllText": "Maak alle eiendomme privaat",
+    "showAllText": "Maak alle eiendomme publiek"
   },
   "settings": {
     "title": "Rekeninginstellings",

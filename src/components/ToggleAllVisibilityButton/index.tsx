@@ -1,7 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
+import { useEffect, useState } from "react";
 import { changeAllHomeVisibilities } from "@/app/[locale]/my-properties/actions";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface Props {
   hideAllText: string;
@@ -10,23 +12,37 @@ interface Props {
 }
 
 export default function ToggleAllVisbilityButton({ hideAllText, showAllText, allCompletedHomesActive }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [allCompletedHomesActive]);
+
   return (
     <Button
       onClick={() => {
+        setIsLoading(true);
         changeAllHomeVisibilities(allCompletedHomesActive);
       }}
+      disabled={isLoading}
       className="gap-3"
       variant={allCompletedHomesActive ? "destructive" : "default"}
     >
-      {allCompletedHomesActive ? (
-        <>
-          <EyeOff />
-          {hideAllText}
-        </>
+      {!isLoading ? (
+        allCompletedHomesActive ? (
+          <>
+            <EyeOff />
+            {hideAllText}
+          </>
+        ) : (
+          <>
+            <Eye />
+            {showAllText}
+          </>
+        )
       ) : (
         <>
-          <Eye />
-          {showAllText}
+          <ReloadIcon className="animate-spin w-5 h-5" /> Loading...
         </>
       )}
     </Button>

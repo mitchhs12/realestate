@@ -495,8 +495,8 @@
     "title": "Moja svojstva",
     "incompleteListing": "Nepotpun popis!",
     "finishSelling": "Završite prodaju!",
-    "hideAllText": "Sakrij sva svojstva",
-    "showAllText": "Prikaži sva svojstva"
+    "hideAllText": "Učini sva svojstva privatnima",
+    "showAllText": "Učini sva svojstva javnima"
   },
   "settings": {
     "title": "Postavke računa",

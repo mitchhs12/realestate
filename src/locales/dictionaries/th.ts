@@ -495,8 +495,8 @@ export default {
     "title": "คุณสมบัติของฉัน",
     "incompleteListing": "รายการไม่สมบูรณ์!",
     "finishSelling": "เสร็จสิ้นการขาย!",
-    "hideAllText": "ซ่อนคุณสมบัติทั้งหมด",
-    "showAllText": "แสดงคุณสมบัติทั้งหมด"
+    "hideAllText": "ทำให้คุณสมบัติทั้งหมดเป็นส่วนตัว",
+    "showAllText": "ทำให้คุณสมบัติทั้งหมดเป็นสาธารณะ"
   },
   "settings": {
     "title": "การตั้งค่าบัญชี",
