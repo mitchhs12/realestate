@@ -171,7 +171,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                     ref={inputRef}
                     type="search"
                     placeholder={placeholder}
-                    className={`${pathname === "/sell/location" ? "rounded-full" : "rounded-r-full"} rounded-none bg-popover pl-11`} // Add padding-left to create space for the icon
+                    className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : "rounded-none"} bg-popover pl-11`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -196,7 +196,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                   ref={popoverRef}
                   sideOffset={1}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className="PopoverContent rounded-b-3xl"
+                  className={`PopoverContent rounded-b-3xl ${pathname === "/sell/location" && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
                 >
                   {results.length === 0 && "No results found."}
                   {results.length > 0 &&
