@@ -39,8 +39,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const subtitle = t("subtitle");
   const size = t("size");
   const capacity = t("capacity");
-  const m = h("m");
-  const ft = h("ft");
+  const m = t("units.m");
+  const ft = t("units.ft");
   const mPlaceholder = t("m-placeholder");
   const ftPlaceholder = t("ft-placeholder");
   const changeToFeet = t("change-to-feet");

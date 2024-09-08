@@ -115,7 +115,7 @@ export default function Capacity({
           </div>
           <div className="flex flex-col h-full items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl py-8">
             <div className="flex w-full justify-center">{size}</div>
-            <div className="flex flex-col w-full h-full">
+            <div className="flex flex-col w-full h-full gap-3">
               <div className="flex flex-col md:flex-row h-1/2 pt-10 w-full justify-between items-center">
                 <div className="flex w-full h-full justify-center items-center">
                   <div className="flex w-full h-full justify-start items-center gap-4">
@@ -130,7 +130,7 @@ export default function Capacity({
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center w-full">
+              <div className="flex justify-start w-full">
                 <Button
                   className="flex items-center gap-3"
                   variant={"outline"}

@@ -77,25 +77,30 @@ export default function Type({
             <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
         </div>
-        <div className="grid w-full h-full px-8 justify-center items-center py-8 overflow-auto">
+        <div className="w-full h-full justify-center items-center py-8 px-4 sm:px-8 overflow-auto">
           <ToggleGroup type="multiple" value={selection} defaultValue={selection} onValueChange={handleValueChange}>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 xl:gap-8 items-center justify-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 xl:gap-8 items-center justify-center">
               {options.map((feature, index) => {
                 const IconComponent = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
                 return (
                   <ToggleGroupItem
+                    variant={"outline"}
                     key={index}
                     value={feature.name}
-                    className="h-[50px] md:h-[80px] xl:h-[120px] text-xs sm:text-sm md:text-md"
+                    className="flex px-2 gap-3 justify-center items-center h-[50px] md:h-[80px] xl:h-[120px] text-xs md:text-sm lg:text-md"
                   >
-                    <div className="flex w-full justify-center gap-2 items-center text-center text-xs sm:text-sm md:text-md lg:text-lg">
+                    <div className="flex lg:w-1/2 justify-start lg:justify-center lg:items-center items-start">
                       {IconComponent && (
-                        <div className="flex w-1/3 justify-center items-center">
+                        <div className="flex justify-center items-center">
                           <IconComponent color="gray" width={40} height={40} />
                         </div>
                       )}
                     </div>
-                    <div className="flex w-2/3 justify-start text-start">{feature.translation}</div>
+                    <div className="flex w-1/2 h-full">
+                      <div className="flex w-full h-full items-center justify-start text-start">
+                        {feature.translation}
+                      </div>
+                    </div>
                   </ToggleGroupItem>
                 );
               })}

@@ -100,12 +100,6 @@ export default function Location({
             <div className="flex w-full h-full">
               <SmallMap coordinates={currentCoords} currentHome={currentHome} />
             </div>
-            <div className="flex flex-col justify-center items-center border-2 w-full">
-              <div className="flex items-center gap-3">
-                <span>Nearby Locations</span>
-                <Button variant={"default"}>Populate</Button>
-              </div>
-            </div>
           </div>
         )}
       </div>
