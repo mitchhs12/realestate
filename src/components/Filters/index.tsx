@@ -75,14 +75,14 @@ export default function Filters() {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
-          className="h-12 text-md rounded-l-none border-l-0 rounded-r-full"
+          className="h-12 text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
           variant={"secondary"}
           disabled={!isReady}
         >
           <div
             className={`flex items-center gap-2 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
           >
-            <Filter width={20} height={20} strokeWidth={1.75} />
+            <Filter width={20} height={20} strokeWidth={1.5} />
             <span className="items-center">{filters}</span>
           </div>
         </Button>

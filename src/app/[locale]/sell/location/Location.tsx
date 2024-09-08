@@ -5,6 +5,7 @@ import { SellContext } from "@/context/SellContext";
 import SearchBox from "@/components/SearchBox";
 import SmallMap from "@/components/SmallMap";
 import { HomeType } from "@/lib/validations";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   currentHome: HomeType | null;
@@ -77,7 +78,7 @@ export default function Location({
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-20 w-full px-8 max-w-8xl h-full justify-start items-center text-center">
+      <div className="flex flex-col mb-8 w-full px-8 max-w-8xl h-full overflow-y-auto justify-start items-center text-center">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{title}</h1>
@@ -94,11 +95,19 @@ export default function Location({
             />
           </div>
         </div>
-        {currentCoords.lat !== 0 && currentCoords.long !== 0 ? (
-          <div className="flex w-full h-full">
-            <SmallMap coordinates={currentCoords} currentHome={currentHome} />
+        {currentCoords.lat !== 0 && currentCoords.long !== 0 && (
+          <div className="flex flex-col items-start justify-center h-full w-full gap-8">
+            <div className="flex w-full h-full">
+              <SmallMap coordinates={currentCoords} currentHome={currentHome} />
+            </div>
+            <div className="flex flex-col justify-center items-center border-2 w-full">
+              <div className="flex items-center gap-3">
+                <span>Nearby Locations</span>
+                <Button variant={"default"}>Populate</Button>
+              </div>
+            </div>
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );

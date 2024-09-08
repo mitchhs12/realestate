@@ -73,7 +73,7 @@ export default function FiltersDialog() {
     <>
       <Button
         variant={"secondary"}
-        className="h-12 text-md rounded-l-none rounded-r-full"
+        className="h-12 text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
         disabled={!isReady}
         onClick={(e) => {
           e.preventDefault();
@@ -81,9 +81,9 @@ export default function FiltersDialog() {
         }}
       >
         <div
-          className={`flex items-center gap-2 pr-1 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
+          className={`flex items-center text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
         >
-          <Filter className="items-center" width={20} height={20} strokeWidth={1.75} />
+          <Filter className="items-center" width={20} height={20} strokeWidth={1.5} />
           <span className="hidden sm:flex items-center">{filters}</span>
         </div>
       </Button>

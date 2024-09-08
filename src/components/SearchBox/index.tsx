@@ -151,17 +151,27 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
           }
         }}
       >
-        <div className="flex flex-col w-full items-center">
+        <div className="flex w-full items-center">
+          {pathname !== "/sell/location" && (
+            <div className="flex justify-start items-center">
+              <div className="hidden sm:flex">
+                <Filters />
+              </div>
+              <div className="flex sm:hidden">
+                <FiltersDialog />
+              </div>
+            </div>
+          )}
           <Popover open={popoverOpen}>
             <PopoverTrigger asChild>
-              <div className="flex justify-center items-center w-full border border-input rounded-full">
+              <div className="flex justify-center items-center w-full rounded-full">
                 <div className="relative w-full justify-center items-center">
-                  <Search size={16} className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <Search size={16} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <Input
                     ref={inputRef}
                     type="search"
                     placeholder={placeholder}
-                    className="rounded-l-full bg-popover border-0 pl-12" // Add padding-left to create space for the icon
+                    className={`${pathname === "/sell/location" ? "rounded-full" : "rounded-r-full"} rounded-none bg-popover pl-11`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -177,50 +187,28 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                     }}
                   />
                 </div>
-
-                <div className="flex justify-end items-center">
-                  <div className="hidden sm:flex">
-                    <Filters />
-                  </div>
-                  <div className="flex sm:hidden">
-                    <FiltersDialog />
-                  </div>
-                </div>
-
-                {/* <Button
-                variant="default"
-                type="submit"
-                disabled={loading}
-                size="default"
-                className="hidden lg:flex items-center justify-center min-w-[100px] h-full"
-              >
-                <div className="inline-flex items-center justify-center">
-                  <span className={`block ${loading ? "invisible" : "visible"}`}>{text}</span>
-                  {loading && <ReloadIcon className="absolute h-5 w-auto animate-spin" />}
-                </div>
-              </Button> */}
               </div>
             </PopoverTrigger>
 
             {(!loading || results.length > 0) && (
-              <div className="w-full">
+              <div>
                 <PopoverContent
                   ref={popoverRef}
-                  sideOffset={2}
+                  sideOffset={1}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className="PopoverContent rounded-3xl"
+                  className="PopoverContent rounded-b-3xl"
                 >
                   {results.length === 0 && "No results found."}
                   {results.length > 0 &&
                     results.map((entry: any, index) => (
                       <div
                         key={index}
-                        className={`${index === 0 ? (results.length === 1 ? "rounded-2xl" : "rounded-t-2xl") : index === results.length - 1 && "rounded-b-2xl"} py-1 md:py-2 cursor-pointer hover:bg-muted`}
+                        className={`${index === 0 ? (results.length === 1 ? "rounded-b-2xl" : "rounded-b-2xl") : index === results.length - 1 && "rounded-b-2xl"} py-1 md:py-2 cursor-pointer hover:bg-muted`}
                         onClick={() => {
                           handleSearch(entry.Text, entry.PlaceId);
                         }}
                       >
-                        <p className="flex gap-x-3 px-3 justify-start items-center">
+                        <p className="flex gap-x-3 px-2 justify-start items-center">
                           <span>
                             <Search size={16} className="text-gray-400" />
                           </span>
@@ -232,6 +220,19 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
               </div>
             )}
           </Popover>
+          <Button
+            variant="default"
+            type="submit"
+            disabled={loading}
+            size="default"
+            className="hidden rounded-r-full h-12 lg:flex items-center justify-center shadow-sm shadow-secondary border border-primary"
+          >
+            <div className="inline-flex items-center justify-center">
+              <span className={`flex items-center gap-2`}>
+                {loading ? <ReloadIcon className="w-5 h-5 animate-spin" /> : <Search size={20} />} {text}
+              </span>
+            </div>
+          </Button>
         </div>
       </form>
     </div>
