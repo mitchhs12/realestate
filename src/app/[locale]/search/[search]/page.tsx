@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
 import { typesMap, featuresMap } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
+import { getSingleHome } from "../actions";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -15,34 +16,36 @@ export default async function Page({ params }: { params: { locale: string; searc
   const INDEX_NAME = process.env.AWS_LOCATION_INDEX_NAME;
   const API_KEY = process.env.AWS_MAPS_API_KEY; // Replace with your API key
   const language = "en";
-
-  const response = await fetch(
-    `${AWS_LOCATION_SERVICE_ENDPOINT}/places/v0/indexes/${INDEX_NAME}/places/${params.search}?key=${API_KEY}&language=${language}`
-  );
-
-  const t = await getScopedI18n("search");
-  const types = await getScopedI18n("sell.type");
-
-  const propertiesText = t("properties");
-  const propertyText = t("property");
-  const resultsText = t("results");
-  const showMap = t("show-map");
-  const showList = t("show-list");
-  const loginToViewPrice = t("loginToViewPrices");
-  const noHomesFound = t("no-homes-found");
-  const fullResponse = await response.json();
-  const longLatArray = fullResponse.Place.Geometry.Point;
-  const label = fullResponse.Place.Label;
-  const coordinates: CoordinatesType = { lat: longLatArray[1], long: longLatArray[0] };
-  const category = fullResponse.Place.Categories[0];
-
-  const typesObject = Array.from({ length: 17 }, (_, index) => ({
-    id: typesMap[index].id,
-    name: typesMap[index].name,
-    translation: types(`options.${index}` as keyof typeof types),
-  }));
-
   let initZoom: number | null;
+  let coordinates: CoordinatesType | null = null;
+  let label = "";
+  let category = "";
+
+  if (params.search.startsWith("home-")) {
+    const singleHome = await getSingleHome(Number(params.search.replace("home-", "")));
+    if (singleHome) {
+      coordinates = { lat: singleHome.latitude, long: singleHome.longitude };
+      label = singleHome.title || "";
+    }
+  } else {
+    const response = await fetch(
+      `${AWS_LOCATION_SERVICE_ENDPOINT}/places/v0/indexes/${INDEX_NAME}/places/${params.search}?key=${API_KEY}&language=${language}`
+    );
+    // check the response
+    if (!response.ok) {
+      return (
+        <div className="flex justify-center text-xl">
+          Something went wrong fetching your location: {(response.status, response.statusText)}
+        </div>
+      );
+    }
+    const fullResponse = await response.json();
+    const longLatArray = fullResponse.Place.Geometry.Point;
+    label = fullResponse.Place.Label;
+    coordinates = { lat: longLatArray[1], long: longLatArray[0] };
+    category = fullResponse.Place.Categories[0];
+  }
+
   switch (category) {
     case "AddressType":
       initZoom = 17; // Very close, focusing on a specific address
@@ -79,9 +82,26 @@ export default async function Page({ params }: { params: { locale: string; searc
       break;
   }
 
+  const t = await getScopedI18n("search");
+  const types = await getScopedI18n("sell.type");
+
+  const propertiesText = t("properties");
+  const propertyText = t("property");
+  const resultsText = t("results");
+  const showMap = t("show-map");
+  const showList = t("show-list");
+  const loginToViewPrice = t("loginToViewPrices");
+  const noHomesFound = t("no-homes-found");
+
+  const typesObject = Array.from({ length: 17 }, (_, index) => ({
+    id: typesMap[index].id,
+    name: typesMap[index].name,
+    translation: types(`options.${index}` as keyof typeof types),
+  }));
+
   // case for different categories set initZoom:
 
-  if (response.status === 200) {
+  if (coordinates && label && initZoom) {
     return (
       <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end ">
         <CombinedSearchPage
@@ -98,12 +118,6 @@ export default async function Page({ params }: { params: { locale: string; searc
           loginToViewPrice={loginToViewPrice}
         />
       </main>
-    );
-  } else {
-    return (
-      <div className="flex justify-center text-xl">
-        Something went wrong fetching your location: {(response.status, response.statusText)}
-      </div>
     );
   }
 }

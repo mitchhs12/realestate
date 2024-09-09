@@ -183,6 +183,16 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
   };
 }
 
+export async function getSingleHome(id: number) {
+  const home = await prisma.home.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  return home;
+}
+
 export async function getAllHomesFiltered(
   defaultCurrency: CurrencyType,
   typesFilter: string[] = [],

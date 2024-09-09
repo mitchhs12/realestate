@@ -225,12 +225,13 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
             type="submit"
             disabled={loading}
             size="default"
-            className="hidden rounded-r-full h-12 lg:flex items-center justify-center shadow-sm shadow-secondary border border-primary"
+            className="rounded-r-full pr-5 h-12 flex items-center justify-center border border-primary"
           >
-            <div className="inline-flex items-center justify-center">
-              <span className={`flex items-center gap-2`}>
-                {loading ? <ReloadIcon className="w-5 h-5 animate-spin" /> : <Search size={20} />} {text}
+            <div className="flex items-center justify-center gap-2">
+              <span className={`flex justify-center items-center`}>
+                {loading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : <Search size={20} />}
               </span>
+              <span className="hidden md:flex">{text}</span>
             </div>
           </Button>
         </div>

@@ -16,7 +16,7 @@ import { useCurrentLocale } from "@/locales/client";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
-import { HousePlus } from "lucide-react";
+import { ChevronLeft, HousePlus, Map } from "lucide-react";
 
 interface Props {
   articles: string;
@@ -45,16 +45,12 @@ export default function Header({
   const router = useRouter();
   const { currentHome, openLogInModal, openSignUpModal, user } = useContext(QueryContext);
   const { defaultLanguage } = useContext(LocaleContext);
-  const isSearchPage = pathname.includes("/search/");
+  const isSearchPage = pathname.includes("/search");
+  const isRootPage = pathname === "/";
+  const isHomesPage = pathname.includes("/homes");
   const isSellPage = pathname.includes("/sell");
-  const isGuidesPage = pathname.includes("/articles");
+  const isArticlesPage = pathname.includes("/articles");
   const isStudioPage = pathname.includes("/studio");
-
-  const [previousPath, setPreviousPath] = useState("");
-
-  useEffect(() => {
-    setPreviousPath(pathname);
-  }, [pathname, router]);
 
   return (
     <>
@@ -70,7 +66,7 @@ export default function Header({
               variant="outline"
               className={`flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
               onClick={() => {
-                pathname === "/" ? router.refresh() : router.push("/");
+                isRootPage ? router.refresh() : router.push("/");
               }}
             >
               <div className="flex px-1 justify-center items-center gap-1">
@@ -86,7 +82,7 @@ export default function Header({
                 </h1>
               </div>
             </Button>
-            {(pathname === "/" || pathname.includes("articles")) && (
+            {(isRootPage || isArticlesPage) && (
               <Button
                 asChild
                 size={"largeIcon"}
@@ -102,6 +98,29 @@ export default function Header({
                     <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
                       {articles}
                     </h1>
+                  </div>
+                </Link>
+              </Button>
+            )}
+            {isHomesPage && (
+              <Button
+                asChild
+                size={"largeIcon"}
+                variant={"outline"}
+                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
+                disabled={true}
+              >
+                <Link href={`/search/home-${currentHome?.id}`}>
+                  <div>
+                    <div className="flex px-2 justify-center text-center items-center">
+                      <div className="flex justify-center items-center">
+                        <Map width={"22"} height={"22"} />
+                        <ChevronLeft width={"22"} height={"22"} />
+                      </div>
+                      <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                        View on Map
+                      </h1>
+                    </div>
                   </div>
                 </Link>
               </Button>

@@ -15,7 +15,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useContext, useEffect, useState } from "react";
 import { I18nProviderClient } from "@/locales/client";
-import { Filter, House, Sparkles, DollarSign, DoorOpen, BedDouble, Bath, Sofa, CookingPot } from "lucide-react";
+import {
+  Filter,
+  House,
+  Sparkles,
+  DollarSign,
+  DoorOpen,
+  BedDouble,
+  Bath,
+  Sofa,
+  CookingPot,
+  SlidersHorizontal,
+} from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
@@ -75,19 +86,19 @@ export default function Filters() {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
-          className="h-12 text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
+          className="h-12 pl-5 justify-center items-center text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
           variant={"secondary"}
           disabled={!isReady}
         >
           <div
             className={`flex items-center gap-2 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
           >
-            <Filter width={20} height={20} strokeWidth={1.5} />
+            <SlidersHorizontal width={20} height={20} strokeWidth={1.5} />
             <span className="items-center">{filters}</span>
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80" side="bottom" align="end">
+      <DropdownMenuContent className="w-80" side="bottom" align="center">
         <DropdownMenuGroup>
           <DropdownMenuItem
             className="cursor-pointer flex items-center gap-2 h-12"

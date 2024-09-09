@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import { Filter, House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp } from "lucide-react";
+import { Filter, House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
@@ -73,7 +73,7 @@ export default function FiltersDialog() {
     <>
       <Button
         variant={"secondary"}
-        className="h-12 text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
+        className="h-12 pl-5 justify-center items-center text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
         disabled={!isReady}
         onClick={(e) => {
           e.preventDefault();
@@ -83,7 +83,7 @@ export default function FiltersDialog() {
         <div
           className={`flex items-center text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
         >
-          <Filter className="items-center" width={20} height={20} strokeWidth={1.5} />
+          <SlidersHorizontal className="items-center" width={20} height={20} strokeWidth={1.5} />
           <span className="hidden sm:flex items-center">{filters}</span>
         </div>
       </Button>
