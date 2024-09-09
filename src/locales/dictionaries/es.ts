@@ -285,6 +285,7 @@ export default {
     "description": {
       "title": "Descripción",
       "subtitle": "Escriba una breve descripción de su propiedad.",
+      "placeholder": "Proporcione una breve descripción general e incluya cualquier detalle adicional que crea que otros deberían saber.",
       "warning": "Por favor escriba una descripción más corta."
     },
     "features": {
@@ -352,14 +353,14 @@ export default {
         "living-rooms": "Salas de estar:",
         "kitchens": "Cocinas:",
         "listing": "Listado:",
-        "type": "Propiedad:",
+        "type": "Categoría:",
         "capacity": "Capacidad:",
-        "area": "Área:",
+        "area": "Área",
         "units": {
-          "m": "metro",
-          "ft": "pie"
+          "m": "metros cuadrados",
+          "ft": "pies cuadrados"
         },
-        "features": "Características",
+        "features": "Características:",
         "contactName": "Nombre de contacto:",
         "contactEmail": "Correo electrónico de contacto:",
         "contactPhone": "Teléfono de contacto:",

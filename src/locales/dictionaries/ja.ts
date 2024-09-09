@@ -285,6 +285,7 @@ export default {
     "description": {
       "title": "説明",
       "subtitle": "あなたの物件の簡単な説明を書いてください。",
+      "placeholder": "簡単な概要を提供し、他の人が知っておくべきと思われる追加の詳細を含めます。",
       "warning": "もっと短い説明を書いてください。"
     },
     "features": {
@@ -352,14 +353,14 @@ export default {
         "living-rooms": "リビングルーム:",
         "kitchens": "キッチン:",
         "listing": "リスト:",
-        "type": "財産：",
+        "type": "カテゴリ：",
         "capacity": "容量：",
-        "area": "エリア：",
+        "area": "エリア",
         "units": {
-          "m": "メートル",
-          "ft": "フィート"
+          "m": "平方メートル",
+          "ft": "平方フィート"
         },
-        "features": "特徴",
+        "features": "特徴：",
         "contactName": "連絡先名:",
         "contactEmail": "連絡先メールアドレス:",
         "contactPhone": "連絡先電話番号:",

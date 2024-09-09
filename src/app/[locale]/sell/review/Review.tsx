@@ -14,6 +14,7 @@ import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
 import { typeIcons } from "@/components/Icons/typeIcons";
 import { featureIcons } from "@/components/Icons/featureIcons";
 import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   currentHome: HomeType | null;
@@ -41,6 +42,8 @@ interface Props {
   matchingFeatures: { id: string; translation: string }[];
   matchingTypes: { id: string; translation: string }[];
   matchingListingType: { id: string; translation: string } | undefined;
+  change_to_feet: string;
+  change_to_metres: string;
 }
 
 export default function Review({
@@ -69,6 +72,8 @@ export default function Review({
   matchingFeatures,
   matchingTypes,
   matchingListingType,
+  change_to_feet,
+  change_to_metres,
 }: Props) {
   const {
     setNewHome,
@@ -173,7 +178,7 @@ export default function Review({
                 <div className="flex flex-col text-center justify-center items-center w-full h-full p-2 xs:p-4 sm:p-8 gap-8 rounded-2xl">
                   <div className="flex flex-col w-full h-full max-w-4xl text-center gap-8">
                     <div className="flex flex-col gap-8">
-                      <div className="flex flex-col w-full justify-center items-center overflow-auto text-xs sm:text-sm md:text-md lg:text-lg gap-y-4">
+                      <div className="flex flex-col w-full justify-center items-center overflow-auto text-sm md:text-md lg:text-lg gap-y-4">
                         <div className="flex flex-col w-full">
                           <div className="flex justify-center w-full text-lg py-4">
                             <strong>{listing_text}</strong>
@@ -181,49 +186,61 @@ export default function Review({
                           </div>
                           <Separator />
                         </div>
-                        <div className="grid grid-rows-2 grid-cols-2 sm:flex sm:flex-row justify-between w-full gap-2 py-4">
-                          <div className="flex flex-row gap-3 text-center">
+                        <div className="grid grid-rows-4 grid-cols-1 xs:grid-rows-2 xs:grid-cols-2 lg:grid-cols-4 lg:grid-rows-1 justify-between w-full gap-2 py-4">
+                          <div className="flex justify-center lg:justify-center items-center gap-3 w-full">
                             <BedDouble className="w-6 h-6" />
-                            <strong>{bedrooms_text}</strong>
-                            <span>{formatNumber(bedrooms, numerals)}</span>
+                            <div className="flex gap-3 w-full lg:w-auto">
+                              <strong>{bedrooms_text}</strong>
+                              <span>{formatNumber(bedrooms, numerals)}</span>
+                            </div>
                           </div>
-                          <div className="flex flex-row justify-end gap-3 text-center">
+                          <div className="flex flex-row justify-center gap-3 text-center">
                             <Bath className="w-6 h-6" />
-                            <strong className="justify-start">{bathrooms_text}</strong>
-                            <span>{formatNumber(bathrooms, numerals)}</span>
+                            <div className="flex gap-3 w-full lg:w-auto">
+                              <strong className="justify-start">{bathrooms_text}</strong>
+                              <span>{formatNumber(bathrooms, numerals)}</span>
+                            </div>
                           </div>
-                          <div className="flex flex-row gap-3 text-center">
+                          <div className="flex flex-row justify-center gap-3 text-center">
                             <Sofa className="w-6 h-6" />
-                            <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
+                            <div className="flex gap-3 w-full lg:w-auto">
+                              <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
+                            </div>
                           </div>
-                          <div className="flex flex-row justify-end gap-3 text-center">
+                          <div className="flex flex-row justify-center gap-3 text-center">
                             <CookingPot className="w-6 h-6" />
-                            <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
+                            <div className="flex gap-3 w-full lg:w-auto">
+                              <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
+                            </div>
                           </div>
                         </div>
-                        <div className="flex w-full text-end text-sm md:text-md lg:text-lg gap-y-8">
-                          <div className="flex justify-start w-full">
+                        <div className="flex flex-col xs:flex-row w-full text-end text-sm md:text-md lg:text-lg gap-y-4">
+                          <div className="flex justify-start w-full xs:w-1/2">
                             <strong>{capacity_text}</strong>
                             <span className="ml-2">{formatNumber(capacity, numerals)}</span>
                           </div>
-                          <div className="flex justify-end w-full">
-                            <strong className="flex justify-start">{area_text} </strong>
-                            <span className="ml-2">
-                              {formatNumber(sqSize, numerals)}{" "}
-                              <button
-                                className="hover:bg-accent hover:text-accent-foreground underline"
+                          <div className="flex flex-col w-full xs:w-1/2">
+                            <div className="flex items-center xs:justify-end w-full">
+                              <strong className="flex justify-start">{area_text}</strong>
+                              <span className="flex items-center ml-2">
+                                {formatNumber(sqSize, numerals)} {!feet ? m_text : ft_text}
+                              </span>
+                            </div>
+                            <div className="flex items-center xs:justify-end">
+                              <Button
+                                variant={"outline"}
                                 onClick={() => {
                                   setFeet(!feet);
                                 }}
                               >
-                                {!feet ? m_text : ft_text}
-                              </button>
-                            </span>
+                                {!feet ? change_to_metres : change_to_feet}
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div className="flex flex-col justify-center gap-8">
-                        <div className="flex text-sm md:text-md lg:text-lg justify-between">
+                        <div className="flex flex-col xs:flex-row text-sm md:text-md lg:text-lg justify-between">
                           <div className="flex flex-col text-left">
                             <p>
                               <strong>{type_text}</strong>
@@ -235,7 +252,7 @@ export default function Review({
                                   <li key={index} className="flex w-full items-center gap-3 mb-4">
                                     {TypeIcon && (
                                       <div className="flex justify-center items-center">
-                                        <TypeIcon color={theme === "dark" ? "white" : "black"} width={40} height={40} />
+                                        <TypeIcon color={theme === "dark" ? "white" : "black"} width={32} height={32} />
                                       </div>
                                     )}
                                     {type.translation}
@@ -258,8 +275,8 @@ export default function Review({
                                       <div className="flex justify-center items-center">
                                         <FeatureIcon
                                           color={theme === "dark" ? "white" : "black"}
-                                          width={40}
-                                          height={40}
+                                          width={32}
+                                          height={32}
                                         />
                                       </div>
                                     )}
@@ -270,20 +287,9 @@ export default function Review({
                             </ul>
                           </div>
                         </div>
-                        <div className="flex flex-col text-center gap-2 text-sm md:text-md lg:text-lg">
-                          <div className="flex flex-col xs:gap-3 xs:flex-row">
-                            <strong>{contactName_text}</strong> {contactName}
-                          </div>
-                          <div className="flex flex-col xs:gap-3 xs:flex-row">
-                            <strong>{contactEmail_text}</strong> {contactEmail}
-                          </div>
-                          <div className="flex flex-col xs:gap-3 xs:flex-row">
-                            <strong>{contactPhone_text}</strong> {contactPhone}
-                          </div>
-                        </div>
                       </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row w-full justify-between items-center gap-4 pb-4">
+                    <div className="flex flex-col w-full justify-between items-center md:items-start gap-4 pb-4">
                       <strong className="flex justify-center items-center gap-x-4 text-md sm:text-xl overflow-auto">
                         {price_text}
                         <p>{formatPrice(currency, price, 0)}</p>
@@ -298,6 +304,20 @@ export default function Review({
                             <CrossCircledIcon className="text-red-500 w-4 h-4 sm:w-6 sm:h-6" />
                           )}
                         </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col text-center xs:text-start gap-2 text-md lg:text-lg">
+                      <div className="flex flex-col xs:gap-3 xs:flex-row">
+                        <strong className="xs:text-end xs:w-1/2">{contactName_text}</strong>{" "}
+                        <span className="xs:w-1/2">{contactName}</span>
+                      </div>
+                      <div className="flex flex-col xs:gap-3 xs:flex-row">
+                        <strong className="xs:text-end xs:w-1/2">{contactEmail_text}</strong>{" "}
+                        <span className="xs:w-1/2">{contactEmail}</span>
+                      </div>
+                      <div className="flex flex-col xs:gap-3 xs:flex-row">
+                        <strong className="xs:text-end xs:w-1/2">{contactPhone_text}</strong>{" "}
+                        <span className="xs:w-1/2">{contactPhone}</span>
                       </div>
                     </div>
                   </div>

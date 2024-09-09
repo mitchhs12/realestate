@@ -285,6 +285,7 @@ export default {
     "description": {
       "title": "설명",
       "subtitle": "귀하의 부동산에 대한 간략한 설명을 작성하세요.",
+      "placeholder": "간략한 개요를 제공하고, 다른 사람들이 알아야 할 추가 세부 정보가 있으면 포함하세요.",
       "warning": "좀 더 짧은 설명을 적어주세요."
     },
     "features": {
@@ -352,14 +353,14 @@ export default {
         "living-rooms": "거실:",
         "kitchens": "주방:",
         "listing": "리스트:",
-        "type": "재산:",
+        "type": "범주:",
         "capacity": "용량:",
-        "area": "영역:",
+        "area": "영역",
         "units": {
-          "m": "중",
-          "ft": "피트"
+          "m": "평방미터",
+          "ft": "평방 피트"
         },
-        "features": "특징",
+        "features": "특징:",
         "contactName": "연락처 이름:",
         "contactEmail": "연락처 이메일:",
         "contactPhone": "연락처 전화번호:",

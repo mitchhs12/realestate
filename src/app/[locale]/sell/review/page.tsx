@@ -33,6 +33,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const sellFlatIndex = await getSellFlowIndex("/sell/review");
   const r = await getScopedI18n("sell.review");
   const c = await getScopedI18n("sell.review.content");
+  const cap = await getScopedI18n("sell.capacity");
   const f = await getScopedI18n("sell.features");
   const t = await getScopedI18n("sell.type");
 
@@ -46,8 +47,10 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const type_text = c("type");
   const capacity = c("capacity");
   const area = c("area");
-  const m = c("units.m");
-  const ft = c("units.ft");
+  const ft = cap("units.ft");
+  const m = cap("units.m");
+  const changeToFeet = cap("change-to-feet");
+  const changeToMetres = cap("change-to-metres");
   const features_text = c("features");
   const contactName = c("contactName");
   const contactEmail = c("contactEmail");
@@ -104,6 +107,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       matchingFeatures={matchingFeatures}
       matchingTypes={matchingTypes}
       matchingListingType={matchingListingType}
+      change_to_metres={changeToFeet}
+      change_to_feet={changeToMetres}
     />
   );
 }

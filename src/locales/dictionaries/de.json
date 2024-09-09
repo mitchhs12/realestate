@@ -285,6 +285,7 @@
     "description": {
       "title": "Beschreibung",
       "subtitle": "Schreiben Sie eine kurze Beschreibung Ihrer Immobilie.",
+      "placeholder": "Geben Sie einen kurzen Überblick und fügen Sie alle zusätzlichen Details hinzu, die Ihrer Meinung nach andere wissen sollten.",
       "warning": "Bitte schreiben Sie eine kürzere Beschreibung."
     },
     "features": {
@@ -352,14 +353,14 @@
         "living-rooms": "Wohnzimmer:",
         "kitchens": "Küchen:",
         "listing": "Auflistung:",
-        "type": "Eigentum:",
+        "type": "Kategorie:",
         "capacity": "Kapazität:",
-        "area": "Bereich:",
+        "area": "Bereich",
         "units": {
-          "m": "M",
-          "ft": "Fuß"
+          "m": "m²",
+          "ft": "Quadratfuß"
         },
-        "features": "Merkmale",
+        "features": "Merkmale:",
         "contactName": "Kontaktname:",
         "contactEmail": "Kontakt-E-Mail:",
         "contactPhone": "Kontakttelefon:",

@@ -285,6 +285,7 @@
     "description": {
       "title": "Descrição",
       "subtitle": "Escreva uma breve descrição da sua propriedade.",
+      "placeholder": "Forneça uma breve visão geral e inclua quaisquer detalhes adicionais que você acha que outros deveriam saber.",
       "warning": "Por favor, escreva uma descrição mais curta."
     },
     "features": {
@@ -352,14 +353,14 @@
         "living-rooms": "Salas de estar:",
         "kitchens": "Cozinhas:",
         "listing": "Listagem:",
-        "type": "Propriedade:",
+        "type": "Categoria:",
         "capacity": "Capacidade:",
-        "area": "Área:",
+        "area": "Área",
         "units": {
-          "m": "eu",
-          "ft": "pés"
+          "m": "m²",
+          "ft": "pés²"
         },
-        "features": "Características",
+        "features": "Características:",
         "contactName": "Nome do contato:",
         "contactEmail": "E-mail de contato:",
         "contactPhone": "Telefone de contato:",

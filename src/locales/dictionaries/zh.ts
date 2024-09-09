@@ -285,6 +285,7 @@ export default {
     "description": {
       "title": "描述",
       "subtitle": "简要描述一下您的财产。",
+      "placeholder": "提供简要概述并包括您认为其他人应该知道的任何其他详细信息。",
       "warning": "请写一个更简短的描述。"
     },
     "features": {
@@ -352,14 +353,14 @@ export default {
         "living-rooms": "客厅：",
         "kitchens": "厨房：",
         "listing": "清单：",
-        "type": "财产：",
+        "type": "类别：",
         "capacity": "容量：",
-        "area": "区域：",
+        "area": "区域",
         "units": {
-          "m": "米",
-          "ft": "英尺"
+          "m": "平方米",
+          "ft": "平方英尺"
         },
-        "features": "特征",
+        "features": "特征：",
         "contactName": "联系人姓名：",
         "contactEmail": "联系电子邮箱:",
         "contactPhone": "联系电话:",

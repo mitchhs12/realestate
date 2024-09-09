@@ -285,6 +285,7 @@ export default {
     "description": {
       "title": "Opis",
       "subtitle": "Napišite kratak opis vaše nekretnine.",
+      "placeholder": "Navedite kratak pregled i uključite sve dodatne pojedinosti za koje mislite da bi ih drugi trebali znati.",
       "warning": "Molimo napišite kraći opis."
     },
     "features": {
@@ -352,14 +353,14 @@ export default {
         "living-rooms": "Dnevne sobe:",
         "kitchens": "kuhinje:",
         "listing": "popis:",
-        "type": "Svojstvo:",
+        "type": "Kategorija:",
         "capacity": "Kapacitet:",
-        "area": "područje:",
+        "area": "Područje",
         "units": {
-          "m": "m",
-          "ft": "ft"
+          "m": "m²",
+          "ft": "ft²"
         },
-        "features": "Značajke",
+        "features": "Značajke:",
         "contactName": "Ime kontakta:",
         "contactEmail": "E-mail za kontakt:",
         "contactPhone": "Kontakt telefon:",

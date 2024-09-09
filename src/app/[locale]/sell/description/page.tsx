@@ -32,6 +32,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const sellFlatIndex = await getSellFlowIndex("/sell/description");
   const t = await getScopedI18n("sell.description");
   const title = t("title");
+  const placeholder = t("placeholder");
   const subtitle = t("subtitle");
   const warning = t("warning");
 
@@ -44,6 +45,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       title={title}
       subtitle={subtitle}
       warning={warning}
+      placeholder={placeholder}
     />
   );
 }

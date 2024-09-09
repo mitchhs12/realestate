@@ -285,6 +285,7 @@ export default {
     "description": {
       "title": "Keterangan",
       "subtitle": "Tulis deskripsi singkat tentang properti Anda.",
+      "placeholder": "Berikan ikhtisar singkat dan sertakan detail tambahan yang menurut Anda harus diketahui orang lain.",
       "warning": "Harap tulis deskripsi yang lebih singkat."
     },
     "features": {
@@ -352,14 +353,14 @@ export default {
         "living-rooms": "Ruang tamu:",
         "kitchens": "Dapur:",
         "listing": "Daftar:",
-        "type": "Milik:",
+        "type": "Kategori:",
         "capacity": "Kapasitas:",
-        "area": "Daerah:",
+        "area": "Daerah",
         "units": {
-          "m": "M",
-          "ft": "kaki"
+          "m": "meter persegi",
+          "ft": "kaki persegi"
         },
-        "features": "Fitur",
+        "features": "Fitur:",
         "contactName": "Nama Kontak:",
         "contactEmail": "Email Kontak:",
         "contactPhone": "Kontak Telepon:",

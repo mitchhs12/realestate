@@ -285,6 +285,7 @@
     "description": {
       "title": "Sự miêu tả",
       "subtitle": "Viết mô tả ngắn gọn về bất động sản của bạn.",
+      "placeholder": "Cung cấp bản tóm tắt ngắn gọn và bao gồm bất kỳ thông tin chi tiết bổ sung nào mà bạn nghĩ người khác nên biết.",
       "warning": "Vui lòng viết mô tả ngắn hơn."
     },
     "features": {
@@ -352,14 +353,14 @@
         "living-rooms": "Phòng khách:",
         "kitchens": "Nhà bếp:",
         "listing": "Liệt kê:",
-        "type": "Tài sản:",
+        "type": "Loại:",
         "capacity": "Dung tích:",
-        "area": "Khu vực:",
+        "area": "Khu vực",
         "units": {
-          "m": "tôi",
-          "ft": "ft"
+          "m": "mét vuông",
+          "ft": "ft²"
         },
-        "features": "Đặc trưng",
+        "features": "Đặc trưng:",
         "contactName": "Tên liên lạc:",
         "contactEmail": "Email liên hệ:",
         "contactPhone": "Điện thoại liên hệ:",

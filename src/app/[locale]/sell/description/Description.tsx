@@ -1,5 +1,4 @@
 "use client";
-import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,6 +12,7 @@ interface Props {
   title: string;
   subtitle: string;
   warning: string;
+  placeholder: string;
 }
 
 export default function Description({
@@ -23,6 +23,7 @@ export default function Description({
   title,
   subtitle,
   warning,
+  placeholder,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -74,7 +75,7 @@ export default function Description({
         <div className="flex flex-col max-w-7xl w-full h-full px-12 justify-center mt-10">
           <Textarea
             value={description}
-            placeholder="Provide a brief overview of your property..."
+            placeholder={placeholder}
             className={`border-2 text-start ${description.length === 3000 && "border-red-500"}`}
             onChange={(e) => setDescription(e.target.value)}
             maxLength={3000}

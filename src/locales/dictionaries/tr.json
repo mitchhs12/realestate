@@ -285,6 +285,7 @@
     "description": {
       "title": "Tanım",
       "subtitle": "Emlakınızın kısa bir açıklamasını yazın.",
+      "placeholder": "Kısa bir genel bakış sunun ve başkalarının bilmesi gerektiğini düşündüğünüz ek ayrıntıları ekleyin.",
       "warning": "Lütfen daha kısa bir açıklama yazın."
     },
     "features": {
@@ -352,14 +353,14 @@
         "living-rooms": "Oturma odaları:",
         "kitchens": "Mutfaklar:",
         "listing": "Listeleme:",
-        "type": "Mülk:",
+        "type": "Kategori:",
         "capacity": "Kapasite:",
-        "area": "Alan:",
+        "area": "Alan",
         "units": {
-          "m": "M",
-          "ft": "ft"
+          "m": "m²",
+          "ft": "ft²"
         },
-        "features": "Özellikler",
+        "features": "Özellikler:",
         "contactName": "İletişim Adı:",
         "contactEmail": "İletişim E-postası:",
         "contactPhone": "İletişim Telefonu:",

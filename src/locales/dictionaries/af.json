@@ -285,6 +285,7 @@
     "description": {
       "title": "Beskrywing",
       "subtitle": "Skryf 'n kort beskrywing van jou eiendom.",
+      "placeholder": "Gee 'n kort oorsig en sluit enige bykomende besonderhede in wat jy dink ander behoort te weet.",
       "warning": "Skryf asseblief 'n korter beskrywing."
     },
     "features": {
@@ -352,14 +353,14 @@
         "living-rooms": "Woonkamers:",
         "kitchens": "Kombuise:",
         "listing": "Lysinskrywing:",
-        "type": "Eiendom:",
+        "type": "Kategorie:",
         "capacity": "Kapasiteit:",
-        "area": "Area:",
+        "area": "Gebied",
         "units": {
-          "m": "m",
-          "ft": "ft"
+          "m": "m²",
+          "ft": "ft²"
         },
-        "features": "Kenmerke",
+        "features": "Kenmerke:",
         "contactName": "Kontak Naam:",
         "contactEmail": "Kontak e-pos:",
         "contactPhone": "Kontak foon:",

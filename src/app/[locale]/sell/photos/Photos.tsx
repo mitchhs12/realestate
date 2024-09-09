@@ -18,7 +18,7 @@ import {
   DndContext,
   closestCenter,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
   TouchSensor,
   useSensor,
   useSensors,
@@ -264,7 +264,7 @@ export default function Photos({
     setIsUploading(false);
   };
 
-  const mouseSensor = useSensor(PointerSensor, {
+  const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
       distance: 1,
     },
@@ -274,7 +274,7 @@ export default function Photos({
   });
   const touchSensor = useSensor(TouchSensor, {
     activationConstraint: {
-      delay: 1000,
+      delay: 250,
       tolerance: 5,
     },
   });
@@ -342,9 +342,14 @@ export default function Photos({
                     />
                   ))}
                 </SortableContext>
-                <DragOverlay>
+                <DragOverlay
+                  dropAnimation={{
+                    duration: 250,
+                    easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+                  }}
+                >
                   {activeId && (
-                    <div className="relative flex w-full h-full items-center justify-center">
+                    <div className="relative flex w-full h-full shadow-2xl dark:shadow-white/15 items-center justify-center">
                       <Image src={activeId} alt={`Dragged ${activeId}`} fill={true} className="object-cover" />
                     </div>
                   )}
