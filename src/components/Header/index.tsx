@@ -43,7 +43,7 @@ export default function Header({
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const { currentHome, isSmallScreen, openLogInModal, openSignUpModal, user } = useContext(QueryContext);
+  const { currentHome, openLogInModal, openSignUpModal, user } = useContext(QueryContext);
   const { defaultLanguage } = useContext(LocaleContext);
   const isSearchPage = pathname.includes("/search/");
   const isSellPage = pathname.includes("/sell");
@@ -70,15 +70,7 @@ export default function Header({
               variant="outline"
               className={`flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
               onClick={() => {
-                pathname === "/"
-                  ? router.refresh()
-                  : pathname.includes("/homes")
-                    ? currentHome
-                      ? isSmallScreen
-                        ? router.back()
-                        : router.push("/")
-                      : router.push("/")
-                    : router.push("/");
+                pathname === "/" ? router.refresh() : router.push("/");
               }}
             >
               <div className="flex px-1 justify-center items-center gap-1">

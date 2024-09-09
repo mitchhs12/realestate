@@ -7,7 +7,6 @@ import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
 import { types, features, typesMap, featuresMap, rooms } from "@/lib/sellFlowData";
-import { LocaleContext } from "@/context/LocaleContext";
 
 interface QueryContextProps {
   query: string;
@@ -18,8 +17,6 @@ interface QueryContextProps {
   setClickedLocation: (value: boolean) => void;
   currentHome: HomeType | null;
   setCurrentHome: (value: HomeType | null) => void;
-  isSmallScreen: boolean;
-  setIsSmallScreen: (value: boolean) => void;
   openSignUpModal: () => void;
   openLogInModal: () => void;
   closeModal: () => void;
@@ -100,8 +97,6 @@ const QueryContext = createContext<QueryContextProps>({
   setClickedLocation: () => {},
   currentHome: null,
   setCurrentHome: () => {},
-  isSmallScreen: false,
-  setIsSmallScreen: () => {},
   openSignUpModal: () => {},
   openLogInModal: () => {},
   closeModal: () => {},
@@ -179,7 +174,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
   const [mapFocused, setMapFocused] = useState(true);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
   const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [revealPrice, setRevealPrice] = useState(false);
@@ -277,17 +271,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
     }
   }, [pathname]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 640); // 640px corresponds to the 'sm' breakpoint in Tailwind
-    };
-
-    handleResize(); // Set the initial value
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <QueryContext.Provider
       value={{
@@ -299,8 +282,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
         setClickedLocation,
         currentHome,
         setCurrentHome,
-        isSmallScreen,
-        setIsSmallScreen,
         openSignUpModal,
         openLogInModal,
         closeModal,

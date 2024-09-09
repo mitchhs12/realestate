@@ -23,9 +23,7 @@ export default function Card({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { isSmallScreen, session, user } = useContext(QueryContext);
-
-  const target = isSmallScreen ? "_self" : "_blank";
+  const { session, user } = useContext(QueryContext);
 
   useEffect(() => {
     if (home && home.language) {
@@ -58,7 +56,7 @@ export default function Card({ home, isLoading }: Props) {
         <CarouselContent className="rounded-t-lg">
           {home.photos.map((photo: string, index) => (
             <div key={index}>
-              <Link href={`/homes/${home.id}`} target={target}>
+              <Link href={`/homes/${home.id}`} target={"_blank"}>
                 <CarouselItem className="flex relative justify-center items-center rounded-t-lg">
                   <div className="relative flex justify-center items-center h-40 w-44 md:w-52 xl:w-48 2xl:w-52 rounded-t-xl">
                     <Image

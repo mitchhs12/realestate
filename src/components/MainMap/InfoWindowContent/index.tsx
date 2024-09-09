@@ -2,7 +2,6 @@ import React, { memo, useContext } from "react";
 import { Feature, Point } from "geojson";
 import { HomeFeatureProps } from "@/lib/validations";
 import Link from "next/link";
-import { QueryContext } from "@/context/QueryContext";
 
 type InfowindowContentProps = {
   features: Feature<Point>[];
@@ -12,9 +11,6 @@ type InfowindowContentProps = {
 const numFmt = new Intl.NumberFormat();
 
 const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
-  const { isSmallScreen } = useContext(QueryContext);
-  const linkTarget = isSmallScreen ? "_self" : "_blank";
-
   if (features.length === 1) {
     const f = features[0];
     const props = f.properties! as HomeFeatureProps;
@@ -22,7 +18,7 @@ const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
     return (
       <div className="flex flex-col text-sm p-5">
         <p>
-          <Link href={getDetailsUrl(f.id)} target={linkTarget}>
+          <Link href={getDetailsUrl(f.id)} target={"_blank"}>
             View details
           </Link>
         </p>
@@ -38,7 +34,7 @@ const InfoWindowContent = memo(({ features }: InfowindowContentProps) => {
 
           return (
             <li key={feature.id}>
-              <Link href={getDetailsUrl(feature.id)} target={linkTarget}>
+              <Link href={getDetailsUrl(feature.id)} target={"_blank"}>
                 {props.name}
               </Link>
             </li>

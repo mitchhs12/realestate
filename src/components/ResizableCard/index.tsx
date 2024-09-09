@@ -48,14 +48,13 @@ export default function ResizableCard({
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { isSmallScreen, user, session } = useContext(QueryContext);
+  const { user, session } = useContext(QueryContext);
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const [index, setIndex] = useState(0);
   const { resolvedTheme: theme } = useTheme();
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
   const isMyProperties = path === "/my-properties";
-  const target = isSmallScreen ? "_self" : "_blank";
 
   useEffect(() => {
     if (home && home.language) {
@@ -101,7 +100,7 @@ export default function ResizableCard({
       }}
     >
       <ResizableCarousel home={home} hovering={titleUnderlined} />
-      <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={target}>
+      <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
         <div className="flex flex-col justify-center items-center w-full pt-1 gap-1 px-2 relative">
           <h3
             className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
