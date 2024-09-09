@@ -84,7 +84,6 @@ export default function FiltersDialog() {
           className={`flex items-center text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
         >
           <SlidersHorizontal className="items-center" width={20} height={20} strokeWidth={1.5} />
-          <span className="hidden sm:flex items-center">{filters}</span>
         </div>
       </Button>
 

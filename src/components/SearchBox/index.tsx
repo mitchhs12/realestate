@@ -18,13 +18,14 @@ interface Result {
 }
 
 interface Props {
+  rawBox?: boolean;
   isSmallMap: boolean;
   setSearchResult?: (text: string, placeId: string) => void;
   text: string;
   placeholder: string;
 }
 
-export default function SearchBox({ isSmallMap = false, setSearchResult, text, placeholder }: Props) {
+export default function SearchBox({ rawBox = false, isSmallMap = false, setSearchResult, text, placeholder }: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
@@ -152,12 +153,12 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
         }}
       >
         <div className="flex w-full items-center">
-          {pathname !== "/sell/location" && (
+          {pathname !== "/sell/location" && !rawBox && (
             <div className="flex justify-start items-center">
-              <div className="hidden sm:flex">
+              <div className="hidden md:flex">
                 <Filters />
               </div>
-              <div className="flex sm:hidden">
+              <div className="flex md:hidden">
                 <FiltersDialog />
               </div>
             </div>
@@ -171,7 +172,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                     ref={inputRef}
                     type="search"
                     placeholder={placeholder}
-                    className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : "rounded-none"} bg-popover pl-11`} // Add padding-left to create space for the icon
+                    className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -196,7 +197,7 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
                   ref={popoverRef}
                   sideOffset={1}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className={`PopoverContent rounded-b-3xl ${pathname === "/sell/location" && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
+                  className={`${rawBox ? "flex" : "hidden sm:flex"} flex-col PopoverContent rounded-b-3xl ${pathname === "/sell/location" && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
                 >
                   {results.length === 0 && "No results found."}
                   {results.length > 0 &&
@@ -220,20 +221,22 @@ export default function SearchBox({ isSmallMap = false, setSearchResult, text, p
               </div>
             )}
           </Popover>
-          <Button
-            variant="default"
-            type="submit"
-            disabled={loading}
-            size="default"
-            className="rounded-r-full pr-5 h-12 flex items-center justify-center border border-primary"
-          >
-            <div className="flex items-center justify-center gap-2">
-              <span className={`flex justify-center items-center`}>
-                {loading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : <Search size={20} />}
-              </span>
-              <span className="hidden md:flex">{text}</span>
-            </div>
-          </Button>
+          {!rawBox && (
+            <Button
+              variant="default"
+              type="submit"
+              disabled={loading}
+              size="default"
+              className={`rounded-r-full pr-5 h-12 flex items-center justify-center border border-primary`}
+            >
+              <div className="flex items-center justify-center gap-2">
+                <span className={`flex justify-center items-center`}>
+                  {loading ? <ReloadIcon className="w-5 h-5 animate-spin" /> : <Search size={20} />}
+                </span>
+                <span className="hidden md:flex">{text}</span>
+              </div>
+            </Button>
+          )}
         </div>
       </form>
     </div>

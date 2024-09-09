@@ -23,6 +23,7 @@ export default {
         "features": "次の物件を表示"
       },
       "articles": "記事",
+      "map": "地図で見る",
       "construction": "このサイトは現在構築中です。",
       "construction-sub": "アカウントを作成してください。準備が整い次第、メールをお送りします。",
       "sell-button-big": "不動産を売る",

@@ -23,6 +23,7 @@ export default {
         "features": "Show me properties with"
       },
       "articles": "Articles",
+      "map": "View on Map",
       "construction": "This site is under construction.",
       "construction-sub": "Please create an account, and we'll send you an email when it's ready.",
       "sell-button-big": "Sell Property",

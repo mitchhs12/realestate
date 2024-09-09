@@ -16,9 +16,11 @@ import { useCurrentLocale } from "@/locales/client";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
-import { ChevronLeft, HousePlus, Map } from "lucide-react";
+import { ChevronLeft, HousePlus, Map, Search } from "lucide-react";
+import SearchDialog from "@/components/SearchDialog";
 
 interface Props {
+  map: string;
   articles: string;
   searchPlaceholder: string;
   searchText: string;
@@ -31,6 +33,7 @@ interface Props {
 }
 
 export default function Header({
+  map,
   articles,
   searchPlaceholder,
   searchText,
@@ -118,7 +121,7 @@ export default function Header({
                         <ChevronLeft width={"22"} height={"22"} />
                       </div>
                       <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
-                        View on Map
+                        {map}
                       </h1>
                     </div>
                   </div>
@@ -128,9 +131,14 @@ export default function Header({
           </div>
         )}
         {isSearchPage && (
-          <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
-            <SearchBox isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
-          </div>
+          <>
+            <div className="hidden sm:flex items-center justify-center gap-5 w-full max-w-5xl">
+              <SearchBox rawBox={false} isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+            </div>
+            <div className="flex sm:hidden items-center justify-center gap-5 w-full">
+              <SearchDialog isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+            </div>
+          </>
         )}
 
         {!isSearchPage && !isSellPage && (
@@ -140,9 +148,7 @@ export default function Header({
           </h1>
         )}
         {!isSellPage && (
-          <div
-            className={`flex ${!isSearchPage ? "w-1/3 flex-grow md:flex-grow-0" : "hidden xs:flex"} gap-5 justify-end`}
-          >
+          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-5 justify-end`}>
             {!isSearchPage && (
               <Button
                 className="flex h-12 gap-2 items-center text-sm font-medium"

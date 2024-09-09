@@ -23,6 +23,7 @@ export default {
         "features": "Tunjukkan saya properti dengan"
       },
       "articles": "Artikel",
+      "map": "Lihat di Peta",
       "construction": "Situs ini sedang dalam pembangunan.",
       "construction-sub": "Silakan buat akun, dan kami akan mengirimkan email kepada Anda ketika akun sudah siap.",
       "sell-button-big": "Jual Properti",

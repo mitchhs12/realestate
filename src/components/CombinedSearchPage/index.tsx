@@ -160,7 +160,7 @@ export default function CombinedSearchPage({
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1]}
+          snapPoints={[0.1, 0.2, 0.5, 0.88]}
           activeSnapPoint={snap}
           setActiveSnapPoint={setSnap}
           open={isOpen}

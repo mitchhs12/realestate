@@ -23,6 +23,7 @@ export default {
         "features": "Bana şu özellikleri göster:"
       },
       "articles": "Makaleler",
+      "map": "Haritada Görüntüle",
       "construction": "Bu site yapım aşamasındadır.",
       "construction-sub": "Lütfen bir hesap oluşturun, hazır olduğunda size e-posta göndereceğiz.",
       "sell-button-big": "Emlak Satışı",
