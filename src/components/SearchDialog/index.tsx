@@ -1,10 +1,9 @@
 import { useState, useContext } from "react";
 import { Button } from "../ui/button";
 import { Search } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "../ui/dialog";
+import { Dialog } from "../ui/dialog";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import FilterContent from "@/components/FiltersDialog/Content";
-import SearchBox from "@/components/SearchBox";
-import FiltersDialog from "../FiltersDialog";
 import { QueryContext } from "@/context/QueryContext";
 
 interface Props {
@@ -15,7 +14,7 @@ interface Props {
 
 export default function SearchDialog({ isSmallMap, placeholder, text }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const { headerValues } = useContext(QueryContext);
+  const { headerValues, isFiltering } = useContext(QueryContext);
 
   const { searchText } = headerValues;
 
@@ -25,12 +24,13 @@ export default function SearchDialog({ isSmallMap, placeholder, text }: Props) {
         className="rounded-full h-12 gap-3"
         size={"default"}
         variant={"default"}
+        disabled={isFiltering}
         onClick={(e) => {
           e.preventDefault();
           setIsOpen(true);
         }}
       >
-        <Search size={20} />
+        {isFiltering ? <ReloadIcon className="animate-spin w-5 h-5" /> : <Search size={20} />}
         {searchText}
       </Button>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>

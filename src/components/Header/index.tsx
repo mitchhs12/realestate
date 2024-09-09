@@ -116,7 +116,7 @@ export default function Header({
                 <Link href={`/search/home-${currentHome?.id}`}>
                   <div>
                     <div className="flex px-2 justify-center text-center items-center">
-                      <div className="flex justify-center items-center">
+                      <div className="flex justify-between items-center gap-2">
                         <Map width={"22"} height={"22"} />
                         <ChevronLeft width={"22"} height={"22"} />
                       </div>
@@ -157,7 +157,7 @@ export default function Header({
                 }}
               >
                 <HousePlus width={22} height={22} strokeWidth={2} />
-                <span className="flex md:hidden">{sellButtonSmall}</span>
+                <span className="hidden xs:flex md:hidden">{sellButtonSmall}</span>
                 <span className="hidden md:inline">{sellButtonBig}</span>
               </Button>
             )}
