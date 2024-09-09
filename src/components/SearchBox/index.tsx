@@ -197,7 +197,7 @@ export default function SearchBox({ rawBox = false, isSmallMap = false, setSearc
                   ref={popoverRef}
                   sideOffset={1}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className={`${rawBox ? "flex" : "hidden sm:flex"} flex-col PopoverContent rounded-b-3xl ${pathname === "/sell/location" && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
+                  className={`${pathname.startsWith("/search") ? (rawBox ? "flex" : "hidden sm:flex") : "flex"} flex-col PopoverContent rounded-b-3xl ${pathname === "/sell/location" && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
                 >
                   {results.length === 0 && "No results found."}
                   {results.length > 0 &&
