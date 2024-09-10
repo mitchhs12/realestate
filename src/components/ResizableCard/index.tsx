@@ -66,7 +66,7 @@ export default function ResizableCard({
   return !home || isLoading ? (
     <div className="flex flex-col h-full w-full space-y-2">
       <Skeleton className="rounded-none rounded-t-xl h-[200px] w-full" />
-      <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-3">
+      <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-2">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />
         <Skeleton className="h-4 sm:h-3 lg:h-5 w-28" />
@@ -85,7 +85,7 @@ export default function ResizableCard({
     >
       <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
-        <div className="flex flex-col justify-center items-center w-full pt-1 gap-1 px-2 relative">
+        <div className="flex flex-col justify-center items-center w-full pt-2 gap-2 px-2 relative">
           <h3
             className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
               titleUnderlined ? "underline" : ""

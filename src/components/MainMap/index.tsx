@@ -17,6 +17,7 @@ import { Country } from "react-phone-number-input";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import BrokenPrice from "../BrokenPrice";
 import { LocaleContext } from "@/context/LocaleContext";
+import Link from "next/link";
 
 export type MapConfig = {
   id: string;
@@ -162,37 +163,37 @@ export default function MapComponent({
 
             {infowindowData && (
               <InfoWindow
-                //@ts-ignore
-                headerDisabled={false}
                 headerContent={
                   infowindowData.features.length === 1 ? (
-                    <div className="flex items-center gap-3">
-                      <FlagComponent
-                        width={"w-10"}
-                        height={"h-7"}
-                        country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
-                        countryName={infowindowData.features[0].properties?.country}
-                      />
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <BrokenPrice
-                              priceUsd={infowindowData.features[0].properties?.priceUsd}
-                              newCurrencySymbol={defaultCurrency.symbol}
-                              newCurrencyUsdPrice={defaultCurrency.usdPrice}
-                              reveal={user ? true : false}
-                              blurAmount="blur-sm"
-                              className="text-xl"
-                            />
-                          </TooltipTrigger>
-                          {!user && (
-                            <TooltipContent className="flex justify-center items-center">
-                              <p>{loginToViewPrice}</p>
-                            </TooltipContent>
-                          )}
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
+                    <Link href={`/homes/${infowindowData.features[0].properties?.id}`} target={"_blank"}>
+                      <div className="flex items-center gap-3">
+                        <FlagComponent
+                          width={"w-10"}
+                          height={"h-7"}
+                          country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
+                          countryName={infowindowData.features[0].properties?.country}
+                        />
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <BrokenPrice
+                                priceUsd={infowindowData.features[0].properties?.priceUsd}
+                                newCurrencySymbol={defaultCurrency.symbol}
+                                newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                                reveal={user ? true : false}
+                                blurAmount="blur-sm"
+                                className="text-xl hover:cursor-pointer"
+                              />
+                            </TooltipTrigger>
+                            {!user && (
+                              <TooltipContent className="flex justify-center items-center">
+                                <p>{loginToViewPrice}</p>
+                              </TooltipContent>
+                            )}
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </Link>
                   ) : (
                     `${new Intl.NumberFormat().format(infowindowData.features.length)} ${propertiesText}`
                   )

@@ -1,7 +1,4 @@
-import { HomeType } from "@/lib/validations";
 import { formatBrokenPrice } from "@/lib/utils";
-import { User } from "next-auth";
-import { Skeleton } from "../ui/skeleton";
 
 interface Props {
   incompleteListing?: string;

@@ -247,6 +247,7 @@ export async function getAllHomesFiltered(
       coordinates: [home.longitude, home.latitude],
     },
     properties: {
+      id: home.id,
       name: home.title,
       address: home.address,
       country: home.country,

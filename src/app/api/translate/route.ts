@@ -28,7 +28,7 @@ if (!authClient) {
 }
 
 //@ts-ignore
-const translationClient = new TranslationServiceClient({ googleAuthOptions: authClient });
+const translationClient = new TranslationServiceClient({ authClient: authClient });
 
 export async function POST(req: NextRequest) {
   try {

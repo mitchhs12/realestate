@@ -34,7 +34,7 @@ const InfoWindowContent = memo(({ features, otherCategories, typesObject }: Info
     const props = f.properties! as HomeFeatureProps;
 
     return (
-      <div className="flex flex-col justify-center items-center w-full min-w-[200px] text-sm p-1">
+      <div className="flex flex-col justify-center items-center w-full min-w-[200px] text-sm">
         <Carousel className="h-full w-full">
           <CarouselContent>
             {props.photos.map((photo: string, index) => (
