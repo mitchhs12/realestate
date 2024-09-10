@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
-import { CoordinatesType, BoundsType } from "@/lib/validations";
+import { CoordinatesType, BoundsType, TypeObject } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
@@ -18,6 +18,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/
 import BrokenPrice from "../BrokenPrice";
 import { LocaleContext } from "@/context/LocaleContext";
 import Link from "next/link";
+import { findMatching } from "@/lib/utils";
+import MultiTypeButton from "../MultiTypeButton";
+import { typeIcons } from "../Icons/typeIcons";
+import InteractiveIcon from "./InteractiveIcon";
 
 export type MapConfig = {
   id: string;
@@ -165,35 +169,52 @@ export default function MapComponent({
               <InfoWindow
                 headerContent={
                   infowindowData.features.length === 1 ? (
-                    <Link href={`/homes/${infowindowData.features[0].properties?.id}`} target={"_blank"}>
-                      <div className="flex items-center gap-3">
-                        <FlagComponent
-                          width={"w-10"}
-                          height={"h-7"}
-                          country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
-                          countryName={infowindowData.features[0].properties?.country}
-                        />
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <BrokenPrice
-                                priceUsd={infowindowData.features[0].properties?.priceUsd}
-                                newCurrencySymbol={defaultCurrency.symbol}
-                                newCurrencyUsdPrice={defaultCurrency.usdPrice}
-                                reveal={user ? true : false}
-                                blurAmount="blur-sm"
-                                className="text-xl hover:cursor-pointer"
-                              />
-                            </TooltipTrigger>
-                            {!user && (
-                              <TooltipContent className="flex justify-center items-center">
-                                <p>{loginToViewPrice}</p>
-                              </TooltipContent>
-                            )}
-                          </Tooltip>
-                        </TooltipProvider>
-                      </div>
-                    </Link>
+                    <div className="flex items-center gap-3">
+                      <FlagComponent
+                        width={"w-15"}
+                        height={"h-10"}
+                        country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
+                        countryName={infowindowData.features[0].properties?.country}
+                      />
+                      <Link href={`/homes/${infowindowData.features[0].properties?.id}`} target={"_blank"}>
+                        <div className="flex flex-col justify-between">
+                          {(() => {
+                            console.log(typesObject);
+                            const matchingTypes = findMatching(
+                              typesObject,
+                              infowindowData.features[0].properties,
+                              "type"
+                            );
+                            return (
+                              <span className="text-sm">
+                                {matchingTypes[0].translation}
+                                {matchingTypes.length > 1 &&
+                                  ` (+${new Intl.NumberFormat().format(matchingTypes.length - 1)})`}
+                              </span>
+                            );
+                          })()}
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <BrokenPrice
+                                  priceUsd={infowindowData.features[0].properties?.priceUsd}
+                                  newCurrencySymbol={defaultCurrency.symbol}
+                                  newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                                  reveal={user ? true : false}
+                                  blurAmount="blur-sm"
+                                  className="text-md hover:cursor-pointer font-light"
+                                />
+                              </TooltipTrigger>
+                              {!user && (
+                                <TooltipContent className="flex justify-center items-center">
+                                  <p>{loginToViewPrice}</p>
+                                </TooltipContent>
+                              )}
+                            </Tooltip>
+                          </TooltipProvider>
+                        </div>
+                      </Link>
+                    </div>
                   ) : (
                     `${new Intl.NumberFormat().format(infowindowData.features.length)} ${propertiesText}`
                   )

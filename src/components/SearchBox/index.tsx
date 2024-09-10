@@ -169,6 +169,7 @@ export default function SearchBox({ rawBox = false, isSmallMap = false, setSearc
                 <div className="relative w-full justify-center items-center">
                   <Search size={16} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <Input
+                    autoFocus={false}
                     ref={inputRef}
                     type="search"
                     placeholder={placeholder}

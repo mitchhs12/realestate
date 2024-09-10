@@ -19,7 +19,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
       stroke={color}
       stroke-width={1.5}
       stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinejoin="round"
     >
       <circle cx="12" cy="12" r="10" />
       <path d="m4.9 4.9 14.2 14.2" />
@@ -65,35 +65,35 @@ export const featureIcons: Record<string, FeatureComponent> = {
   bbq: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg width={width} height={height} viewBox="0 -2 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_2_1364)">
-        <path d="M19 25.875L14 36.875" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
-        <path d="M27 25.875L32 36.875" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
-        <path d="M23 36.875V25.875" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
+        <path d="M19 25.875L14 36.875" stroke={color} stroke-width={1.75} strokeLinejoin="round" />
+        <path d="M27 25.875L32 36.875" stroke={color} stroke-width={1.75} strokeLinejoin="round" />
+        <path d="M23 36.875V25.875" stroke={color} stroke-width={1.75} strokeLinejoin="round" />
         <path
           d="M12 15.875C12 21.95 16.925 26.875 23 26.875C29.075 26.875 34 21.95 34 15.875"
           stroke={color}
           stroke-width={1.75}
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
-        <path d="M30 31.875H16" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
-        <path d="M13 18.875H9" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
-        <path d="M37 18.875H33" stroke={color} stroke-width={1.75} stroke-linejoin="round" />
+        <path d="M30 31.875H16" stroke={color} stroke-width={1.75} strokeLinejoin="round" />
+        <path d="M13 18.875H9" stroke={color} stroke-width={1.75} strokeLinejoin="round" />
+        <path d="M37 18.875H33" stroke={color} stroke-width={1.75} strokeLinejoin="round" />
         <path
           d="M19.705 14.875C16.152 14.875 11 14.875 11 14.875"
           stroke={color}
           stroke-width={1.75}
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M35 14.875C35 14.875 32.307 14.875 29.527 14.875"
           stroke={color}
           stroke-width={1.75}
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M30.994 -13.125C30.999 -8.292 27 -7.042 27 -2.125C27 2.792 30.999 4.042 30.994 8.875C30.989 13.708 27 15.042 27 19.875M25.994 -13.125C25.999 -8.292 22 -7.042 22 -2.125C22 2.792 25.999 4.042 25.994 8.875C25.989 13.708 22 15.042 22 19.875M20.994 -13.125C20.999 -8.292 17 -7.042 17 -2.125C17 2.792 20.999 4.042 20.994 8.875C20.989 13.708 17 15.042 17 19.875M30.994 -35.191C30.999 -30.358 27 -29.108 27 -24.191C27 -19.274 30.999 -18.024 30.994 -13.191V-13.125C30.999 -8.292 27 -7.042 27 -2.125C27 2.792 30.999 4.042 30.994 8.875C30.989 13.708 27 15.042 27 19.875M25.994 -35.191C25.999 -30.358 22 -29.108 22 -24.191C22 -19.274 25.999 -18.024 25.994 -13.191V-13.125C25.999 -8.292 22 -7.042 22 -2.125C22 2.792 25.999 4.042 25.994 8.875C25.989 13.708 22 15.042 22 19.875M20.994 -35.191C20.999 -30.358 17 -29.108 17 -24.191C17 -19.274 20.999 -18.024 20.994 -13.191V-13.125C20.999 -8.292 17 -7.042 17 -2.125C17 2.792 20.999 4.042 20.994 8.875C20.989 13.708 17 15.042 17 19.875"
           stroke={color}
           stroke-width={1.75}
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -184,19 +184,19 @@ export const featureIcons: Record<string, FeatureComponent> = {
   ),
   "home-office": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg width={width} height={height} viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 22.375H38" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
-      <path d="M11 36.375V22.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
-      <path d="M35 36.375V22.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M8 22.375H38" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
+      <path d="M11 36.375V22.375" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
+      <path d="M35 36.375V22.375" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
       <path
         d="M11 22.375H35V30.375C35 32.032 33.657 33.375 32 33.375H14C12.343 33.375 11 32.032 11 30.375V22.375Z"
         stroke={color}
         stroke-width={1.5}
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
-      <path d="M31 21.375V15.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
-      <path d="M29 9.375H33L35 16.375H27L29 9.375Z" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
-      <path d="M14 17.375H19V22.375H14V17.375Z" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
-      <path d="M15.792 17.403L14 13.375" stroke={color} stroke-width={1.5} stroke-linejoin="round" />
+      <path d="M31 21.375V15.375" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
+      <path d="M29 9.375H33L35 16.375H27L29 9.375Z" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
+      <path d="M14 17.375H19V22.375H14V17.375Z" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
+      <path d="M15.792 17.403L14 13.375" stroke={color} stroke-width={1.5} strokeLinejoin="round" />
     </svg>
   ),
   "hot-tub": ({ color, width = 45, height = 45 }: IconProps) => (
@@ -219,13 +219,13 @@ export const featureIcons: Record<string, FeatureComponent> = {
           d="M34.869 -14.375C34.874 -9.54201 30.875 -8.29201 30.875 -3.37501C30.875 1.54199 34.874 2.79199 34.869 7.62499C34.864 12.458 30.875 13.792 30.875 18.625M34.869 -36.441C34.874 -31.608 30.875 -30.358 30.875 -25.441C30.875 -20.524 34.874 -19.274 34.869 -14.441V-14.375C34.874 -9.54201 30.875 -8.29201 30.875 -3.37501C30.875 1.54199 34.874 2.79199 34.869 7.62499C34.864 12.458 30.875 13.792 30.875 18.625"
           stroke={color}
           stroke-width={2}
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M30.669 -15.575C30.674 -10.742 26.675 -9.492 26.675 -4.575C26.675 0.341995 30.674 1.59199 30.669 6.425C30.664 11.258 26.675 12.592 26.675 17.425M30.669 -37.641C30.674 -32.808 26.675 -31.558 26.675 -26.641C26.675 -21.724 30.674 -20.474 30.669 -15.641V-15.575C30.674 -10.742 26.675 -9.492 26.675 -4.575C26.675 0.341995 30.674 1.59199 30.669 6.425C30.664 11.258 26.675 12.592 26.675 17.425"
           stroke={color}
           stroke-width={2}
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
       </g>
     </svg>
@@ -237,8 +237,8 @@ export const featureIcons: Record<string, FeatureComponent> = {
         stroke={color}
         stroke-width={2}
       />
-      <path d="M8 13H38" stroke={color} stroke-width="2" stroke-linejoin="round" />
-      <path d="M8 9H38" stroke={color} stroke-width="2" stroke-linejoin="round" />
+      <path d="M8 13H38" stroke={color} stroke-width="2" strokeLinejoin="round" />
+      <path d="M8 9H38" stroke={color} stroke-width="2" strokeLinejoin="round" />
       <path
         d="M23 24.27C25.667 26.573 27 28.816 27 30.998C27 33.207 25.209 34.998 23 34.998C20.791 34.998 19 33.18 19 30.998C19 28.816 20.333 26.573 23 24.27Z"
         stroke={color}
@@ -248,7 +248,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
         d="M23 30.75C24.243 30.75 25.25 31.757 25.25 33C25.25 34.243 24.243 35.25 23 35.25C21.757 35.25 20.75 34.243 20.75 33C20.75 31.757 21.757 30.75 23 30.75Z"
         stroke={color}
         stroke-width={2}
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -369,7 +369,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
         stroke={color}
         stroke-width={1.25}
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -448,7 +448,7 @@ export const featureIcons: Record<string, FeatureComponent> = {
         d="M22.653 8C28.238 8 33.059 11.27 35.306 16H10C12.247 11.27 17.068 8 22.653 8Z"
         stroke={color}
         stroke-width={2}
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path d="M22.653 16V37" stroke={color} stroke-width={2} />
       <path d="M34.653 37V21" stroke={color} stroke-width={2} />

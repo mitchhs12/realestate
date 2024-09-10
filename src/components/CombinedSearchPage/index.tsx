@@ -3,14 +3,15 @@
 import SearchResults from "@/components/SearchResults";
 import MapComponent from "@/components/MainMap";
 import { getAllHomes, getSearchResults, getAllHomesFiltered } from "@/app/[locale]/search/actions";
-import FloatingButton from "@/components/FloatingButton";
+import FloatingButton from "@/components/FloatingButtons";
+import FloatingDrawerButton from "@/components/FloatingButtons/FloatingDrawerButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatNumber } from "@/lib/utils";
-import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { LocaleContext } from "@/context/LocaleContext";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
@@ -64,6 +65,7 @@ export default function CombinedSearchPage({
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [snap, setSnap] = useState<number | string | null>(0.5);
   const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
+  const [maxDrawerHeight, setMaxDrawerHeight] = useState(0);
 
   // INITIAL GET ALL HOMES ON FIRST RENDER
   useEffect(() => {
@@ -111,8 +113,8 @@ export default function CombinedSearchPage({
   }, [isFiltering]);
 
   useEffect(() => {
-    if (homes[0] !== null && homes.length > 0 && window.innerWidth < 768) {
-      setIsOpen(true);
+    if (window.innerWidth < 768) {
+      setMaxDrawerHeight(window.innerHeight - 86);
     } else if (window.innerWidth >= 768) {
       setIsOpen(false);
       setMapFocused(true);
@@ -168,14 +170,15 @@ export default function CombinedSearchPage({
       </section>
       <div className="flex md:hidden">
         <Drawer
-          snapPoints={[0.1, 0.5, 0.85]}
-          setBackgroundColorOnScale={false}
+          snapPoints={[`${maxDrawerHeight}`]}
           activeSnapPoint={snap}
-          // handleOnly={true}
-          setActiveSnapPoint={setSnap}
+          handleOnly={true}
+          // setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
-          dismissible={false}
+          onClose={() => {
+            setIsOpen(false);
+          }}
         >
           <DrawerContent className="flex flex-col justify-center text-center items-start w-full h-full outline-none gap-y-2 py-2 p-4">
             <DrawerTitle className="w-full">{resultsText}</DrawerTitle>
@@ -187,7 +190,7 @@ export default function CombinedSearchPage({
               )}
             </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>
-              <div className={`flex w-full h-full overflow-y-auto`}>
+              <div className={`flex w-full h-full pb-12`}>
                 <SearchResults
                   homes={homes}
                   isSearchLoading={isSearchLoading}
@@ -200,6 +203,16 @@ export default function CombinedSearchPage({
               </div>
             </div>
           </DrawerContent>
+          {!isMapLoading && homes.length > 0 && !isSearchLoading && (
+            <DrawerTrigger asChild>
+              <FloatingDrawerButton
+                showMap={showMap}
+                showList={showList}
+                drawerOpen={isOpen}
+                setDrawerOpen={setIsOpen}
+              />
+            </DrawerTrigger>
+          )}
         </Drawer>
       </div>
 

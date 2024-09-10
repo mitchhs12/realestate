@@ -89,7 +89,7 @@ export const typeIcons: Record<string, IconComponent> = {
       stroke={color}
       stroke-width="1.3"
       stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M20 11l-8 -8l-9 9h2v7a2 2 0 0 0 2 2h5" />
@@ -167,14 +167,14 @@ export const typeIcons: Record<string, IconComponent> = {
         stroke={color}
         stroke-width="2"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M30.733 39.762L26.426 22.1151L26.4427 22.1833"
         stroke={color}
         stroke-width="2"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path d="M16.0811 34.4861H29.1381" stroke={color} stroke-width="2" stroke-miterlimit="10" />
       <path
@@ -182,7 +182,7 @@ export const typeIcons: Record<string, IconComponent> = {
         stroke={color}
         stroke-width="2"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),

@@ -27,6 +27,7 @@ export default function SearchDialog({ isSmallMap, placeholder, text }: Props) {
         disabled={isFiltering}
         onClick={(e) => {
           e.preventDefault();
+          e.stopPropagation();
           setIsOpen(true);
         }}
       >
