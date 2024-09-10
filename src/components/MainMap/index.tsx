@@ -171,8 +171,8 @@ export default function MapComponent({
                         infowindowData.features[0].properties &&
                         infowindowData.features[0].properties.country && (
                           <FlagComponent
-                            width={"w-9"}
-                            height={"h-6"}
+                            width={"w-12"}
+                            height={"h-8"}
                             country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
                             countryName={infowindowData.features[0].properties?.country}
                           />
