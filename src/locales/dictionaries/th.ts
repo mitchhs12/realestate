@@ -440,7 +440,9 @@ export default {
     "show-map": "แสดงแผนที่",
     "show-list": "แสดงรายการ",
     "no-homes-found": "ไม่พบบ้าน!",
-    "loginToViewPrices": "เข้าสู่ระบบเพื่อดูราคา"
+    "loginToViewPrices": "เข้าสู่ระบบเพื่อดูราคา",
+    "propertiesText": "คุณสมบัติ",
+    "otherCategories": "หมวดหมู่อื่นๆ..."
   },
   "homes": {
     "units": {

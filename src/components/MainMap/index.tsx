@@ -3,7 +3,6 @@ import React, { useEffect, useCallback, useContext } from "react";
 import { APIProvider, Map, InfoWindow } from "@vis.gl/react-google-maps";
 import { InfoWindowContent } from "@/components/MainMap/InfoWindowContent";
 import { useState } from "react";
-import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
@@ -11,8 +10,13 @@ import { CoordinatesType, BoundsType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
-
+import lookup from "country-code-lookup";
 import { QueryContext } from "@/context/QueryContext";
+import { FlagComponent } from "../ui/phone-input";
+import { Country } from "react-phone-number-input";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import BrokenPrice from "../BrokenPrice";
+import { LocaleContext } from "@/context/LocaleContext";
 
 export type MapConfig = {
   id: string;
@@ -37,6 +41,10 @@ interface Props {
   isMapLoading: boolean;
   setIsMapLoading: React.Dispatch<React.SetStateAction<boolean>>;
   initZoom: number | null;
+  typesObject: { id: string; name: string; translation: string }[];
+  loginToViewPrice: string;
+  propertiesText: string;
+  otherCategories: string;
 }
 
 export default function MapComponent({
@@ -47,6 +55,10 @@ export default function MapComponent({
   isMapLoading,
   setIsMapLoading,
   initZoom,
+  typesObject,
+  loginToViewPrice,
+  propertiesText,
+  otherCategories,
 }: Props) {
   const MAP_CONFIGS: MapConfig[] = [
     {
@@ -68,7 +80,8 @@ export default function MapComponent({
   const { resolvedTheme: theme } = useTheme();
   const [numClusters, setNumClusters] = useState(0);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
-  const { currentHome, query } = useContext(QueryContext);
+  const { currentHome, query, user } = useContext(QueryContext);
+  const { defaultCurrency } = useContext(LocaleContext);
 
   const areBoundsEqual = (bounds1: BoundsType | null, bounds2: BoundsType | null): boolean => {
     if (bounds1 === bounds2) return true;
@@ -143,20 +156,55 @@ export default function MapComponent({
                 setNumClusters={setNumClusters}
                 setInfowindowData={setInfowindowData}
                 theme={theme}
+                typesObject={typesObject}
               />
             )}
 
             {infowindowData && (
               <InfoWindow
-                headerContent={`${
-                  infowindowData.features.length === 1
-                    ? infowindowData.features[0].properties?.name
-                    : `${new Intl.NumberFormat().format(infowindowData.features.length)} Properties`
-                }`}
+                //@ts-ignore
+                headerDisabled={false}
+                headerContent={
+                  infowindowData.features.length === 1 ? (
+                    <div className="flex items-center gap-3">
+                      <FlagComponent
+                        width={"w-10"}
+                        height={"h-7"}
+                        country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
+                        countryName={infowindowData.features[0].properties?.country}
+                      />
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <BrokenPrice
+                              priceUsd={infowindowData.features[0].properties?.priceUsd}
+                              newCurrencySymbol={defaultCurrency.symbol}
+                              newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                              reveal={user ? true : false}
+                              blurAmount="blur-sm"
+                              className="text-xl"
+                            />
+                          </TooltipTrigger>
+                          {!user && (
+                            <TooltipContent className="flex justify-center items-center">
+                              <p>{loginToViewPrice}</p>
+                            </TooltipContent>
+                          )}
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                  ) : (
+                    `${new Intl.NumberFormat().format(infowindowData.features.length)} ${propertiesText}`
+                  )
+                }
                 onClose={hamdleInfoWindowClose}
                 anchor={infowindowData.anchor}
               >
-                <InfoWindowContent features={infowindowData.features} theme={theme} />
+                <InfoWindowContent
+                  features={infowindowData.features}
+                  otherCategories={otherCategories}
+                  typesObject={typesObject}
+                />
               </InfoWindow>
             )}
           </Map>

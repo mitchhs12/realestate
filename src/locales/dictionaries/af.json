@@ -440,7 +440,9 @@
     "show-map": "Wys kaart",
     "show-list": "Wys lys",
     "no-homes-found": "Geen huise gevind nie!",
-    "loginToViewPrices": "Meld aan om pryse te sien"
+    "loginToViewPrices": "Meld aan om pryse te sien",
+    "propertiesText": "Eienskappe",
+    "otherCategories": "ander kategorieë..."
   },
   "homes": {
     "units": {

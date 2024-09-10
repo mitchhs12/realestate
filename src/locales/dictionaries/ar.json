@@ -440,7 +440,9 @@
     "show-map": "إظهار الخريطة",
     "show-list": "إظهار القائمة",
     "no-homes-found": "لم يتم العثور على منازل!",
-    "loginToViewPrices": "قم بتسجيل الدخول لعرض الأسعار"
+    "loginToViewPrices": "قم بتسجيل الدخول لعرض الأسعار",
+    "propertiesText": "ملكيات",
+    "otherCategories": "فئات أخرى..."
   },
   "homes": {
     "units": {

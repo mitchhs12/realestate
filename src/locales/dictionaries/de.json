@@ -440,7 +440,9 @@
     "show-map": "Karte anzeigen",
     "show-list": "Liste anzeigen",
     "no-homes-found": "Keine Häuser gefunden!",
-    "loginToViewPrices": "Melden Sie sich an, um die Preise anzuzeigen"
+    "loginToViewPrices": "Melden Sie sich an, um die Preise anzuzeigen",
+    "propertiesText": "Eigenschaften",
+    "otherCategories": "andere Kategorien..."
   },
   "homes": {
     "units": {

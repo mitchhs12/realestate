@@ -1,6 +1,6 @@
 "use client";
 import { Skeleton } from "@/components/ui/skeleton";
-import { HomeType } from "@/lib/validations";
+import { HomeType, TypeObject } from "@/lib/validations";
 import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
@@ -20,12 +20,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 import { usePathname } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
-
-interface TypeObject {
-  id: string;
-  name: string;
-  translation: string;
-}
+import MultiTypeButton from "../MultiTypeButton";
 
 interface Props {
   home: HomeType | null;
@@ -49,12 +44,11 @@ export default function ResizableCard({
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { user, session } = useContext(QueryContext);
-  const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
-  const [index, setIndex] = useState(0);
   const { resolvedTheme: theme } = useTheme();
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
   const isMyProperties = path === "/my-properties";
+  const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
 
   useEffect(() => {
     if (home && home.language) {
@@ -63,21 +57,11 @@ export default function ResizableCard({
     setVisibilityChanging(false);
   }, [home]);
 
-  useEffect(() => {
-    if (types.length > 0) {
-      setCurrentType(types[0]);
-    } else {
-      setCurrentType(null);
-    }
-  }, [types]);
-
   const iso = home && home.country && lookup.byIso(home.country);
   const countryName =
     iso && typeof iso !== "string"
       ? getCountryNameForLocale(iso.iso2, defaultLanguage || home.country || "")
       : home?.country;
-
-  const IconComponent = currentType ? typeIcons[currentType?.id as keyof typeof typeIcons] : null; // Get the corresponding icon
 
   return !home || isLoading ? (
     <div className="flex flex-col h-full w-full space-y-2">
@@ -99,7 +83,7 @@ export default function ResizableCard({
         setTitleUnderlined(false);
       }}
     >
-      <ResizableCarousel home={home} hovering={titleUnderlined} />
+      <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
         <div className="flex flex-col justify-center items-center w-full pt-1 gap-1 px-2 relative">
           <h3
@@ -132,12 +116,12 @@ export default function ResizableCard({
                   <TooltipTrigger>
                     <BrokenPrice
                       incompleteListing={incompleteListing}
-                      home={home}
+                      priceUsd={home.priceUsd}
                       newCurrencySymbol={defaultCurrency.symbol}
                       newCurrencyUsdPrice={defaultCurrency.usdPrice}
                       reveal={user ? true : false}
                       blurAmount="blur-sm"
-                      className="text-sm md:text-md lg:text-lg"
+                      className="text-sm md:text-md lg:text-lg mb-2"
                     />
                   </TooltipTrigger>
                   {!user && (
@@ -152,23 +136,7 @@ export default function ResizableCard({
         </div>
       </Link>
 
-      {IconComponent && (
-        <Button
-          variant={types.length > 1 ? "outline" : "ghost"}
-          disabled={types.length > 1 ? false : true}
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            const newIndex = (index + 1) % types.length;
-            setIndex(newIndex);
-            setCurrentType(types[newIndex]);
-          }}
-          size={"icon"}
-          className="absolute bottom-2 left-2"
-        >
-          <IconComponent color={theme === "dark" ? "white" : "black"} width={40} height={40} />
-        </Button>
-      )}
+      <MultiTypeButton types={types} currentType={currentType} setCurrentType={setCurrentType} disabled={true} />
       {isMyProperties && home.isComplete && user?.id === home.ownerId && (
         <Button
           variant={home.isActive ? "default" : "destructive"}

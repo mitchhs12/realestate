@@ -440,7 +440,9 @@ export default {
     "show-map": "რუკის ჩვენება",
     "show-list": "სიის ჩვენება",
     "no-homes-found": "სახლები ვერ მოიძებნა!",
-    "loginToViewPrices": "ფასების სანახავად შედით სისტემაში"
+    "loginToViewPrices": "ფასების სანახავად შედით სისტემაში",
+    "propertiesText": "თვისებები",
+    "otherCategories": "სხვა კატეგორიები..."
   },
   "homes": {
     "units": {

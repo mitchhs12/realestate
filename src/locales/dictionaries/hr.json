@@ -440,7 +440,9 @@
     "show-map": "Prikaži kartu",
     "show-list": "Prikaži popis",
     "no-homes-found": "Nema pronađenih domova!",
-    "loginToViewPrices": "Prijavite se za pregled cijena"
+    "loginToViewPrices": "Prijavite se za pregled cijena",
+    "propertiesText": "Svojstva",
+    "otherCategories": "ostale kategorije..."
   },
   "homes": {
     "units": {

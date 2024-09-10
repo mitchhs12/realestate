@@ -26,6 +26,8 @@ interface Props {
   typesObject: { id: string; name: string; translation: string }[];
   noHomesFound: string;
   loginToViewPrice: string;
+  propertiesMapText: string;
+  otherCategories: string;
 }
 
 export default function CombinedSearchPage({
@@ -40,6 +42,8 @@ export default function CombinedSearchPage({
   typesObject,
   noHomesFound,
   loginToViewPrice,
+  propertiesMapText,
+  otherCategories,
 }: Props) {
   const {
     mapFocused,
@@ -64,6 +68,7 @@ export default function CombinedSearchPage({
   // INITIAL GET ALL HOMES ON FIRST RENDER
   useEffect(() => {
     getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
+      console.log(allHomes);
       setHomesGeoJson(allHomes);
     });
   }, []);
@@ -99,7 +104,6 @@ export default function CombinedSearchPage({
   // GETS THE FILTERED HOMES FOR THE MAP
   useEffect(() => {
     if (isFiltering) {
-      console.log("selectedTypes", selectedTypes);
       getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((fixedHomes) => {
         setHomesGeoJson(fixedHomes);
       });
@@ -127,6 +131,10 @@ export default function CombinedSearchPage({
             isMapLoading={isMapLoading}
             setIsMapLoading={setIsMapLoading}
             initZoom={initZoom}
+            typesObject={typesObject}
+            loginToViewPrice={loginToViewPrice}
+            propertiesText={propertiesMapText}
+            otherCategories={otherCategories}
           />
         ) : (
           // <Skeleton className="w-full h-full" />

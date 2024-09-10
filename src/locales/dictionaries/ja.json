@@ -440,7 +440,9 @@
     "show-map": "地図を表示",
     "show-list": "リストを表示",
     "no-homes-found": "家が見つかりません!",
-    "loginToViewPrices": "価格を見るにはログインしてください"
+    "loginToViewPrices": "価格を見るにはログインしてください",
+    "propertiesText": "プロパティ",
+    "otherCategories": "その他のカテゴリー..."
   },
   "homes": {
     "units": {

@@ -440,7 +440,9 @@ export default {
     "show-map": "Hiển thị bản đồ",
     "show-list": "Hiển thị danh sách",
     "no-homes-found": "Không tìm thấy nhà nào!",
-    "loginToViewPrices": "Đăng nhập để xem giá"
+    "loginToViewPrices": "Đăng nhập để xem giá",
+    "propertiesText": "Của cải",
+    "otherCategories": "các danh mục khác..."
   },
   "homes": {
     "units": {

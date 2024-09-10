@@ -5,7 +5,7 @@ import { Skeleton } from "../ui/skeleton";
 
 interface Props {
   incompleteListing?: string;
-  home: HomeType;
+  priceUsd: number;
   newCurrencySymbol: string;
   newCurrencyUsdPrice: number;
   reveal: boolean;
@@ -15,30 +15,30 @@ interface Props {
 
 export default function BrokenPrice({
   incompleteListing,
-  home,
+  priceUsd,
   newCurrencySymbol,
   newCurrencyUsdPrice,
   reveal,
   blurAmount,
   className,
 }: Props) {
-  if (!home.priceUsd) {
-    return <span className={`flex items-center text-center ${className} font-semibold mb-2`}>{incompleteListing}</span>;
+  if (!priceUsd) {
+    return <span className={`flex items-center text-center font-semibold ${className}`}>{incompleteListing}</span>;
   }
 
   return (
     <>
-      {home.priceUsd &&
+      {priceUsd &&
         // Destructure the formatted price
         (() => {
           const { symbol, number, symbolFirst } = formatBrokenPrice(
             newCurrencySymbol,
-            home.priceUsd * newCurrencyUsdPrice,
+            priceUsd * newCurrencyUsdPrice,
             0
           );
 
           return (
-            <span className={`flex items-center text-center ${className} font-semibold mb-2`}>
+            <span className={`flex items-center text-center font-semibold ${className} `}>
               {symbolFirst ? (
                 <>
                   <span>{symbol}</span>

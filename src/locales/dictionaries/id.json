@@ -440,7 +440,9 @@
     "show-map": "Tampilkan Peta",
     "show-list": "Tampilkan Daftar",
     "no-homes-found": "Tidak Ada Rumah yang Ditemukan!",
-    "loginToViewPrices": "Masuk untuk melihat harga"
+    "loginToViewPrices": "Masuk untuk melihat harga",
+    "propertiesText": "Properti",
+    "otherCategories": "kategori lainnya..."
   },
   "homes": {
     "units": {

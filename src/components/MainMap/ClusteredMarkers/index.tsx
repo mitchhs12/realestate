@@ -4,6 +4,8 @@ import { FeaturesClusterMarker } from "@/components/MainMap/FeaturesClusterMarke
 import { FeatureMarker } from "@/components/MainMap/FeatureMarker";
 import { useSupercluster } from "@/hooks/use-supercluster";
 import { Feature, FeatureCollection, GeoJsonProperties, Point } from "geojson";
+import { typeIcons } from "@/components/Icons/typeIcons";
+import { findMatching } from "@/lib/utils";
 
 type ClusteredMarkersProps = {
   geojson: FeatureCollection<Point>;
@@ -15,6 +17,7 @@ type ClusteredMarkersProps = {
     } | null
   ) => void;
   theme?: string;
+  typesObject: { id: string; name: string; translation: string }[];
 };
 
 const superclusterOptions: Supercluster.Options<GeoJsonProperties, ClusterProperties> = {
@@ -23,7 +26,13 @@ const superclusterOptions: Supercluster.Options<GeoJsonProperties, ClusterProper
   maxZoom: 12,
 };
 
-export const ClusteredMarkers = ({ geojson, setNumClusters, setInfowindowData, theme }: ClusteredMarkersProps) => {
+export const ClusteredMarkers = ({
+  geojson,
+  setNumClusters,
+  setInfowindowData,
+  theme,
+  typesObject,
+}: ClusteredMarkersProps) => {
   const { clusters, getLeaves } = useSupercluster(geojson, superclusterOptions);
 
   useEffect(() => {
@@ -56,24 +65,30 @@ export const ClusteredMarkers = ({ geojson, setNumClusters, setInfowindowData, t
         const clusterProperties = feature.properties as ClusterProperties;
         const isCluster: boolean = clusterProperties.cluster;
 
-        return isCluster ? (
-          <FeaturesClusterMarker
-            key={feature.id}
-            clusterId={clusterProperties.cluster_id}
-            position={{ lat, lng }}
-            size={clusterProperties.point_count}
-            sizeAsText={String(clusterProperties.point_count_abbreviated)}
-            onMarkerClick={handleClusterClick}
-            theme={theme}
-          />
-        ) : (
-          <FeatureMarker
-            key={feature.id}
-            featureId={feature.id as string}
-            position={{ lat, lng }}
-            onMarkerClick={handleMarkerClick}
-          />
-        );
+        if (isCluster) {
+          return (
+            <FeaturesClusterMarker
+              key={feature.id}
+              clusterId={clusterProperties.cluster_id}
+              position={{ lat, lng }}
+              size={clusterProperties.point_count}
+              sizeAsText={String(clusterProperties.point_count_abbreviated)}
+              onMarkerClick={handleClusterClick}
+              theme={theme}
+            />
+          );
+        } else {
+          const matchingTypes = findMatching(typesObject, feature.properties, "type");
+          return (
+            <FeatureMarker
+              key={feature.id}
+              featureId={feature.id as string}
+              position={{ lat, lng }}
+              onMarkerClick={handleMarkerClick}
+              matchingTypes={matchingTypes}
+            />
+          );
+        }
       })}
     </>
   );

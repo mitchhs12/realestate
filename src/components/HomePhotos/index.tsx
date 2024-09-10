@@ -9,7 +9,6 @@ import { HomeContext } from "@/context/HomeContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Languages } from "lucide-react";
 import { LocaleContext } from "@/context/LocaleContext";
-import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 
 interface Props {
   showAllPhotos: string;
@@ -94,7 +93,13 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
 
         {/* Carousel for smaller screens */}
         <div className="md:hidden w-full hover:cursor-pointer">
-          <ResizableCarousel home={home} height={`h-[320px]`} openModal={openModal} rounded={"rounded-xl"} />
+          <ResizableCarousel
+            photos={home.photos}
+            title={home.title!}
+            height={`h-[320px]`}
+            openModal={openModal}
+            rounded={"rounded-xl"}
+          />
         </div>
       </div>
 

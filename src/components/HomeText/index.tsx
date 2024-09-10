@@ -316,7 +316,7 @@ export default function HomeText({
                 </div>
               ) : (
                 <BrokenPrice
-                  home={home}
+                  priceUsd={home.priceUsd}
                   newCurrencySymbol={defaultCurrency.symbol}
                   newCurrencyUsdPrice={defaultCurrency.usdPrice}
                   reveal={user ? true : false}
@@ -335,7 +335,7 @@ export default function HomeText({
                     </div>
                   ) : (
                     <BrokenPrice
-                      home={home}
+                      priceUsd={home.priceUsd}
                       newCurrencySymbol={home.currency}
                       newCurrencyUsdPrice={originalCurrencyRate}
                       reveal={user ? true : false}

@@ -249,6 +249,9 @@ export async function getAllHomesFiltered(
     properties: {
       name: home.title,
       address: home.address,
+      country: home.country,
+      priceUsd: home.priceUsd,
+      currency: home.currency,
       description: home.description,
       type: home.type, // Include type from home object
       features: home.features, // Include features from home object

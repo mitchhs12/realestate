@@ -440,7 +440,9 @@ export default {
     "show-map": "Afficher la carte",
     "show-list": "Afficher la liste",
     "no-homes-found": "Aucune maison trouvée !",
-    "loginToViewPrices": "Connectez-vous pour voir les prix"
+    "loginToViewPrices": "Connectez-vous pour voir les prix",
+    "propertiesText": "Propriétés",
+    "otherCategories": "autres catégories..."
   },
   "homes": {
     "units": {

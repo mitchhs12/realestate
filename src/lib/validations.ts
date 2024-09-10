@@ -355,6 +355,12 @@ export type FullArticle = {
   };
 };
 
+export type TypeObject = {
+  id: string;
+  name: string;
+  translation: string;
+};
+
 export type LanguageType =
   | "af"
   | "ar"

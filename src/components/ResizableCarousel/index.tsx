@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { HomeType } from "@/lib/validations";
-import { useState } from "react";
 
 interface Props {
-  home: HomeType;
+  photos: string[];
+  title: string;
   height?: string;
   rounded?: string;
   isLoading?: boolean;
@@ -12,11 +11,11 @@ interface Props {
   hovering?: boolean;
 }
 
-export default function ResizableCard({ home, height, rounded, openModal, hovering }: Props) {
+export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering }: Props) {
   return (
     <Carousel className="h-full w-full">
       <CarouselContent>
-        {home.photos.map((photo: string, index) => (
+        {photos.map((photo: string, index) => (
           <CarouselItem key={index} className="flex justify-center items-center h-full w-full">
             <div
               onClick={openModal && (() => openModal(index))}
@@ -25,7 +24,7 @@ export default function ResizableCard({ home, height, rounded, openModal, hoveri
               <Image
                 src={photo}
                 className={`object-cover object-center ${rounded ? rounded : "rounded-t-lg"}`}
-                alt={`${home.title} photo ${index}`}
+                alt={`${title} photo ${index}`}
                 fill={true}
                 loading={"lazy"}
                 placeholder={"blur"}

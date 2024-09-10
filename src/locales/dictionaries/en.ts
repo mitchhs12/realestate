@@ -440,7 +440,9 @@ export default {
     "show-map": "Show Map",
     "show-list": "Show List",
     "no-homes-found": "No Homes Found!",
-    "loginToViewPrices": "Login to view prices"
+    "loginToViewPrices": "Login to view prices",
+    "propertiesText": "Properties",
+    "otherCategories": "other categories..."
   },
   "homes": {
     "units": {

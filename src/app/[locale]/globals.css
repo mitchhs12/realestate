@@ -227,6 +227,24 @@ section.progress-section {
   background-color: #000000 !important; /* Override background color */
 }
 
+.gm-style .gm-style-iw-c {
+  padding: 0 !important;
+}
+
+.gm-style .gm-style-iw-d {
+  padding: 0 !important;
+}
+
+.gm-style-iw-ch {
+  display: flex;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  padding: 10px;
+  font-weight: 400;
+  align-items: center;
+  justify-content: start;
+}
+
 .gm-style-iw-d {
   overflow: hidden !important;
   max-height: none !important;

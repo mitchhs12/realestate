@@ -440,7 +440,9 @@
     "show-map": "显示地图",
     "show-list": "显示列表",
     "no-homes-found": "未找到任何房源！",
-    "loginToViewPrices": "登录查看价格"
+    "loginToViewPrices": "登录查看价格",
+    "propertiesText": "特性",
+    "otherCategories": "其他类别..."
   },
   "homes": {
     "units": {
