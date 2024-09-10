@@ -122,17 +122,11 @@ interface FlagComponentProps extends RPNInput.FlagProps {
   width?: string;
 }
 
-export const FlagComponent = ({ country, countryName, height, width }: FlagComponentProps) => {
+export const FlagComponent = ({ country, countryName, height = "h-4", width = "h-6" }: FlagComponentProps) => {
   const Flag = flags[country];
 
   return (
-    <span
-      className={`bg-foreground/20 flex overflow-hidden rounded-sm ${height || "h-4"} ${width || "w-6"}`}
-      style={{
-        height: height || undefined,
-        width: width || undefined,
-      }}
-    >
+    <span className={`bg-foreground/20 flex overflow-hidden rounded-sm ${height} ${width}`}>
       {Flag && <Flag title={countryName} />}
     </span>
   );
