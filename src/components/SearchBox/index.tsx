@@ -23,9 +23,17 @@ interface Props {
   setSearchResult?: (text: string, placeId: string) => void;
   text: string;
   placeholder: string;
+  placeholderShort: string;
 }
 
-export default function SearchBox({ rawBox = false, isSmallMap = false, setSearchResult, text, placeholder }: Props) {
+export default function SearchBox({
+  rawBox = false,
+  isSmallMap = false,
+  setSearchResult,
+  text,
+  placeholder,
+  placeholderShort,
+}: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
@@ -38,6 +46,27 @@ export default function SearchBox({ rawBox = false, isSmallMap = false, setSearc
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
   const pathname = usePathname();
+  const [translatedPlaceholder, setTranslatedPlaceholder] = useState(placeholder);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Update placeholder based on the window width
+    if (windowWidth < 768) {
+      setTranslatedPlaceholder(placeholderShort);
+    } else {
+      setTranslatedPlaceholder(placeholder);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowWidth, placeholder, placeholderShort]);
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
@@ -172,7 +201,7 @@ export default function SearchBox({ rawBox = false, isSmallMap = false, setSearc
                     autoFocus={false}
                     ref={inputRef}
                     type="search"
-                    placeholder={placeholder}
+                    placeholder={translatedPlaceholder}
                     className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}

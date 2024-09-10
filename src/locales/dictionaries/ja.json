@@ -3,6 +3,7 @@
     "header": {
       "search": {
         "placeholder": "任意の住所または場所を検索します...",
+        "placeholder-short": "検索...",
         "search-button": "検索"
       },
       "filters": "フィルター",
@@ -78,6 +79,7 @@
       "title": "あなたの夢の家を見つけてください。",
       "search": {
         "placeholder": "任意の場所を検索...",
+        "placeholderShort": "検索...",
         "search-button": "検索"
       }
     },
@@ -442,7 +444,8 @@
     "no-homes-found": "家が見つかりません!",
     "loginToViewPrices": "価格を見るにはログインしてください",
     "propertiesText": "プロパティ",
-    "otherCategories": "その他のカテゴリー..."
+    "otherCategories": "その他のカテゴリー...",
+    "loading": "読み込み中..."
   },
   "homes": {
     "units": {

@@ -88,7 +88,7 @@ export const typeIcons: Record<string, IconComponent> = {
       fill="none"
       stroke={color}
       stroke-width="1.3"
-      stroke-linecap="round"
+      strokeLinecap="round"
       strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -166,14 +166,14 @@ export const typeIcons: Record<string, IconComponent> = {
         d="M14.875 39.5373L19.184 22"
         stroke={color}
         stroke-width="2"
-        stroke-linecap="round"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M30.733 39.762L26.426 22.1151L26.4427 22.1833"
         stroke={color}
         stroke-width="2"
-        stroke-linecap="round"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path d="M16.0811 34.4861H29.1381" stroke={color} stroke-width="2" stroke-miterlimit="10" />
@@ -181,7 +181,7 @@ export const typeIcons: Record<string, IconComponent> = {
         d="M31.675 8.83L28.845 6L22.776 12.069L16.705 6L13.875 8.83L19.944 14.899L13.875 20.97L16.705 23.8L22.776 17.729L28.845 23.8L31.675 20.97L25.606 14.899L31.675 8.83Z"
         stroke={color}
         stroke-width="2"
-        stroke-linecap="round"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>

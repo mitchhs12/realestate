@@ -3,6 +3,7 @@
     "header": {
       "search": {
         "placeholder": "Herhangi bir adresi veya yeri arayın...",
+        "placeholder-short": "Aramak...",
         "search-button": "Aramak"
       },
       "filters": "Filtreler",
@@ -78,6 +79,7 @@
       "title": "Hayalinizdeki evi bulun.",
       "search": {
         "placeholder": "Herhangi bir lokasyonu arayın...",
+        "placeholderShort": "Aramak...",
         "search-button": "Aramak"
       }
     },
@@ -442,7 +444,8 @@
     "no-homes-found": "Ev Bulunamadı!",
     "loginToViewPrices": "Fiyatları görmek için giriş yapın",
     "propertiesText": "Özellikler",
-    "otherCategories": "diğer kategoriler..."
+    "otherCategories": "diğer kategoriler...",
+    "loading": "Yükleniyor..."
   },
   "homes": {
     "units": {

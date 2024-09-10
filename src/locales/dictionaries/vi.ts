@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",
+        "placeholder-short": "Tìm kiếm...",
         "search-button": "Tìm kiếm"
       },
       "filters": "Bộ lọc",
@@ -78,6 +79,7 @@ export default {
       "title": "Tìm ngôi nhà mơ ước của bạn.",
       "search": {
         "placeholder": "Tìm kiếm bất kỳ vị trí nào...",
+        "placeholderShort": "Tìm kiếm...",
         "search-button": "Tìm kiếm"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "Không tìm thấy nhà nào!",
     "loginToViewPrices": "Đăng nhập để xem giá",
     "propertiesText": "Của cải",
-    "otherCategories": "các danh mục khác..."
+    "otherCategories": "các danh mục khác...",
+    "loading": "Đang tải..."
   },
   "homes": {
     "units": {

@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "Pesquise qualquer endereço ou lugar...",
+        "placeholder-short": "Procurar...",
         "search-button": "Procurar"
       },
       "filters": "Filtros",
@@ -78,6 +79,7 @@ export default {
       "title": "Encontre a casa dos seus sonhos.",
       "search": {
         "placeholder": "Pesquise qualquer local...",
+        "placeholderShort": "Procurar...",
         "search-button": "Procurar"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "Nenhuma casa encontrada!",
     "loginToViewPrices": "Faça login para ver os preços",
     "propertiesText": "Propriedades",
-    "otherCategories": "outras categorias..."
+    "otherCategories": "outras categorias...",
+    "loading": "Carregando..."
   },
   "homes": {
     "units": {

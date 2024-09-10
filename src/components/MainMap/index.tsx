@@ -19,9 +19,6 @@ import BrokenPrice from "../BrokenPrice";
 import { LocaleContext } from "@/context/LocaleContext";
 import Link from "next/link";
 import { findMatching } from "@/lib/utils";
-import MultiTypeButton from "../MultiTypeButton";
-import { typeIcons } from "../Icons/typeIcons";
-import InteractiveIcon from "./InteractiveIcon";
 
 export type MapConfig = {
   id: string;

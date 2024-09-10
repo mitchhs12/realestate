@@ -3,6 +3,7 @@
     "header": {
       "search": {
         "placeholder": "Soek vir enige adres of plek...",
+        "placeholder-short": "Soek...",
         "search-button": "Soek"
       },
       "filters": "Filters",
@@ -78,6 +79,7 @@
       "title": "Vind jou droomhuis.",
       "search": {
         "placeholder": "Soek vir enige ligging...",
+        "placeholderShort": "Soek...",
         "search-button": "Soek"
       }
     },
@@ -442,7 +444,8 @@
     "no-homes-found": "Geen huise gevind nie!",
     "loginToViewPrices": "Meld aan om pryse te sien",
     "propertiesText": "Eienskappe",
-    "otherCategories": "ander kategorieë..."
+    "otherCategories": "ander kategorieë...",
+    "loading": "Laai tans..."
   },
   "homes": {
     "units": {

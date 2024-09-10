@@ -3,6 +3,7 @@
     "header": {
       "search": {
         "placeholder": "搜索任何地址或地点...",
+        "placeholder-short": "搜索...",
         "search-button": "搜索"
       },
       "filters": "筛选器",
@@ -78,6 +79,7 @@
       "title": "找到您梦想的家。",
       "search": {
         "placeholder": "搜索任意位置...",
+        "placeholderShort": "搜索...",
         "search-button": "搜索"
       }
     },
@@ -442,7 +444,8 @@
     "no-homes-found": "未找到任何房源！",
     "loginToViewPrices": "登录查看价格",
     "propertiesText": "特性",
-    "otherCategories": "其他类别..."
+    "otherCategories": "其他类别...",
+    "loading": "加载中..."
   },
   "homes": {
     "units": {

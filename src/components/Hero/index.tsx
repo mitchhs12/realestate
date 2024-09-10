@@ -37,6 +37,7 @@ export default async function Hero() {
               isSmallMap={false}
               text={scopedT("search.search-button")}
               placeholder={scopedT("search.placeholder")}
+              placeholderShort={scopedT("search.placeholderShort")}
             />
           </div>
         </div>

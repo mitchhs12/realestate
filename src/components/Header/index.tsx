@@ -23,6 +23,7 @@ interface Props {
   map: string;
   articles: string;
   searchPlaceholder: string;
+  searchPlaceholderShort: string;
   searchText: string;
   construction: string;
   construction_sub: string;
@@ -36,6 +37,7 @@ export default function Header({
   map,
   articles,
   searchPlaceholder,
+  searchPlaceholderShort,
   searchText,
   construction,
   construction_sub,
@@ -133,10 +135,21 @@ export default function Header({
         {isSearchPage && (
           <>
             <div className="hidden sm:flex items-center justify-center gap-5 w-full max-w-5xl">
-              <SearchBox rawBox={false} isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+              <SearchBox
+                rawBox={false}
+                isSmallMap={false}
+                placeholder={searchPlaceholder}
+                placeholderShort={searchPlaceholderShort}
+                text={searchText}
+              />
             </div>
             <div className="flex sm:hidden items-center justify-center gap-5 w-full">
-              <SearchDialog isSmallMap={false} placeholder={searchPlaceholder} text={searchText} />
+              <SearchDialog
+                isSmallMap={false}
+                placeholder={searchPlaceholder}
+                placeholderShort={searchPlaceholderShort}
+                text={searchText}
+              />
             </div>
           </>
         )}

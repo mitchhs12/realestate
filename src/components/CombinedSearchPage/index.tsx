@@ -29,6 +29,7 @@ interface Props {
   loginToViewPrice: string;
   propertiesMapText: string;
   otherCategories: string;
+  loadingText: string;
 }
 
 export default function CombinedSearchPage({
@@ -45,6 +46,7 @@ export default function CombinedSearchPage({
   loginToViewPrice,
   propertiesMapText,
   otherCategories,
+  loadingText,
 }: Props) {
   const {
     mapFocused,
@@ -142,7 +144,7 @@ export default function CombinedSearchPage({
           // <Skeleton className="w-full h-full" />
           <div className="flex w-full h-full items-center justify-center text-lg lg:text-3xl">
             <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
-            Loading...
+            {loadingText}
           </div>
         )}
       </section>
@@ -203,16 +205,16 @@ export default function CombinedSearchPage({
               </div>
             </div>
           </DrawerContent>
-          {!isMapLoading && homes.length > 0 && !isSearchLoading && (
-            <DrawerTrigger asChild>
-              <FloatingDrawerButton
-                showMap={showMap}
-                showList={showList}
-                drawerOpen={isOpen}
-                setDrawerOpen={setIsOpen}
-              />
-            </DrawerTrigger>
-          )}
+          <DrawerTrigger asChild>
+            <FloatingDrawerButton
+              isLoading={!isSearchLoading && homes.length > 0 ? false : true}
+              loadingText={loadingText}
+              showMap={showMap}
+              showList={showList}
+              drawerOpen={isOpen}
+              setDrawerOpen={setIsOpen}
+            />
+          </DrawerTrigger>
         </Drawer>
       </div>
 

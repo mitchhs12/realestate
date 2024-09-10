@@ -3,6 +3,7 @@
     "header": {
       "search": {
         "placeholder": "მოძებნეთ ნებისმიერი მისამართი ან ადგილი...",
+        "placeholder-short": "ძიება...",
         "search-button": "ძიება"
       },
       "filters": "ფილტრები",
@@ -78,6 +79,7 @@
       "title": "იპოვე შენი ოცნების სახლი.",
       "search": {
         "placeholder": "მოძებნეთ ნებისმიერი ადგილი...",
+        "placeholderShort": "ძიება...",
         "search-button": "ძიება"
       }
     },
@@ -442,7 +444,8 @@
     "no-homes-found": "სახლები ვერ მოიძებნა!",
     "loginToViewPrices": "ფასების სანახავად შედით სისტემაში",
     "propertiesText": "თვისებები",
-    "otherCategories": "სხვა კატეგორიები..."
+    "otherCategories": "სხვა კატეგორიები...",
+    "loading": "იტვირთება..."
   },
   "homes": {
     "units": {

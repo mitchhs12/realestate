@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "Potražite bilo koju adresu ili mjesto...",
+        "placeholder-short": "Pretraživanje...",
         "search-button": "Pretraživanje"
       },
       "filters": "Filteri",
@@ -78,6 +79,7 @@ export default {
       "title": "Pronađite svoj dom iz snova.",
       "search": {
         "placeholder": "Potražite bilo koju lokaciju...",
+        "placeholderShort": "Pretraživanje...",
         "search-button": "Pretraživanje"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "Nema pronađenih domova!",
     "loginToViewPrices": "Prijavite se za pregled cijena",
     "propertiesText": "Svojstva",
-    "otherCategories": "ostale kategorije..."
+    "otherCategories": "ostale kategorije...",
+    "loading": "Učitavanje..."
   },
   "homes": {
     "units": {

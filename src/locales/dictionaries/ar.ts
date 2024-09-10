@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "ابحث عن أي عنوان أو مكان...",
+        "placeholder-short": "يبحث...",
         "search-button": "يبحث"
       },
       "filters": "المرشحات",
@@ -78,6 +79,7 @@ export default {
       "title": "ابحث عن منزل أحلامك",
       "search": {
         "placeholder": "ابحث عن أي موقع...",
+        "placeholderShort": "يبحث...",
         "search-button": "يبحث"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "لم يتم العثور على منازل!",
     "loginToViewPrices": "قم بتسجيل الدخول لعرض الأسعار",
     "propertiesText": "ملكيات",
-    "otherCategories": "فئات أخرى..."
+    "otherCategories": "فئات أخرى...",
+    "loading": "تحميل..."
   },
   "homes": {
     "units": {

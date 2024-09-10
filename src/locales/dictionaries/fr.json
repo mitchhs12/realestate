@@ -3,6 +3,7 @@
     "header": {
       "search": {
         "placeholder": "Rechercher n'importe quelle adresse ou lieu...",
+        "placeholder-short": "Recherche...",
         "search-button": "Recherche"
       },
       "filters": "Filtres",
@@ -78,6 +79,7 @@
       "title": "Trouvez la maison de vos rêves.",
       "search": {
         "placeholder": "Rechercher n'importe quel emplacement...",
+        "placeholderShort": "Recherche...",
         "search-button": "Recherche"
       }
     },
@@ -442,7 +444,8 @@
     "no-homes-found": "Aucune maison trouvée !",
     "loginToViewPrices": "Connectez-vous pour voir les prix",
     "propertiesText": "Propriétés",
-    "otherCategories": "autres catégories..."
+    "otherCategories": "autres catégories...",
+    "loading": "Chargement..."
   },
   "homes": {
     "units": {

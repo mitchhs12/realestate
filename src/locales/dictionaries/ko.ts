@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "모든 주소나 장소를 검색해 보세요...",
+        "placeholder-short": "찾다...",
         "search-button": "찾다"
       },
       "filters": "필터",
@@ -78,6 +79,7 @@ export default {
       "title": "당신의 꿈의 집을 찾아보세요.",
       "search": {
         "placeholder": "모든 위치를 검색하세요...",
+        "placeholderShort": "찾다...",
         "search-button": "찾다"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "집을 찾을 수 없습니다!",
     "loginToViewPrices": "가격을 보려면 로그인하세요",
     "propertiesText": "속성",
-    "otherCategories": "다른 카테고리..."
+    "otherCategories": "다른 카테고리...",
+    "loading": "로딩중..."
   },
   "homes": {
     "units": {

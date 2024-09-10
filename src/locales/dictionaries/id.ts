@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "Cari alamat atau tempat apa pun...",
+        "placeholder-short": "Mencari...",
         "search-button": "Mencari"
       },
       "filters": "Filternya",
@@ -78,6 +79,7 @@ export default {
       "title": "Temukan rumah impian Anda.",
       "search": {
         "placeholder": "Cari lokasi mana saja...",
+        "placeholderShort": "Mencari...",
         "search-button": "Mencari"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "Tidak Ada Rumah yang Ditemukan!",
     "loginToViewPrices": "Masuk untuk melihat harga",
     "propertiesText": "Properti",
-    "otherCategories": "kategori lainnya..."
+    "otherCategories": "kategori lainnya...",
+    "loading": "Memuat..."
   },
   "homes": {
     "units": {

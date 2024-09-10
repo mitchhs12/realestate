@@ -94,6 +94,7 @@ export default async function Page({ params }: { params: { locale: string; searc
   const noHomesFound = t("no-homes-found");
   const propertiesMapText = t("propertiesText");
   const otherCategories = t("otherCategories");
+  const loadingText = t("loading");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -120,6 +121,7 @@ export default async function Page({ params }: { params: { locale: string; searc
           loginToViewPrice={loginToViewPrice}
           propertiesMapText={propertiesMapText}
           otherCategories={otherCategories}
+          loadingText={loadingText}
         />
       </main>
     );

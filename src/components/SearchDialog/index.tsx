@@ -9,10 +9,11 @@ import { QueryContext } from "@/context/QueryContext";
 interface Props {
   isSmallMap: boolean;
   placeholder: string;
+  placeholderShort: string;
   text: string;
 }
 
-export default function SearchDialog({ isSmallMap, placeholder, text }: Props) {
+export default function SearchDialog({ isSmallMap, placeholder, placeholderShort, text }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const { headerValues, isFiltering } = useContext(QueryContext);
 
@@ -35,7 +36,12 @@ export default function SearchDialog({ isSmallMap, placeholder, text }: Props) {
         {searchText}
       </Button>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <FilterContent isSmallMap={isSmallMap} placeholder={placeholder} text={text} />
+        <FilterContent
+          isSmallMap={isSmallMap}
+          placeholder={placeholder}
+          placeholderShort={placeholderShort}
+          text={text}
+        />
       </Dialog>
     </>
   );

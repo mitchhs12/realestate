@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "Search for any address or place...",
+        "placeholder-short": "Search...",
         "search-button": "Search"
       },
       "filters": "Filters",
@@ -78,6 +79,7 @@ export default {
       "title": "Find your dream home",
       "search": {
         "placeholder": "Search for any location...",
+        "placeholderShort": "Search...",
         "search-button": "Search"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "No Homes Found!",
     "loginToViewPrices": "Login to view prices",
     "propertiesText": "Properties",
-    "otherCategories": "other categories..."
+    "otherCategories": "other categories...",
+    "loading": "Loading..."
   },
   "homes": {
     "units": {

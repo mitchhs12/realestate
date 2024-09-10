@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "Suche nach einer beliebigen Adresse oder einem beliebigen Ort...",
+        "placeholder-short": "Suchen...",
         "search-button": "Suchen"
       },
       "filters": "Filter",
@@ -78,6 +79,7 @@ export default {
       "title": "Finden Sie Ihr Traumhaus.",
       "search": {
         "placeholder": "Suche nach einem beliebigen Ort...",
+        "placeholderShort": "Suchen...",
         "search-button": "Suchen"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "Keine Häuser gefunden!",
     "loginToViewPrices": "Melden Sie sich an, um die Preise anzuzeigen",
     "propertiesText": "Eigenschaften",
-    "otherCategories": "andere Kategorien..."
+    "otherCategories": "andere Kategorien...",
+    "loading": "Laden..."
   },
   "homes": {
     "units": {

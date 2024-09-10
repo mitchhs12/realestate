@@ -152,28 +152,30 @@ export default function HomeText({
           ) : (
             <div className="flex flex-col items-center sm:items-start gap-5">
               {IconComponent && (
-                <Button
-                  className="flex items-center justify-center h-12 gap-2 pl-2 pr-3"
-                  variant={"outline"}
-                  disabled={matchingTypes.length > 1 ? false : true}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    const newIndex = (index + 1) % matchingTypes.length;
-                    setIndex(newIndex);
-                    setCurrentType(matchingTypes[newIndex]);
-                  }}
-                >
-                  <div className="flex">
-                    <IconComponent color={theme === "dark" ? "white" : "black"} width={42} height={42} />
-                  </div>
-                  <h3 className="flex w-full text-3xl font-normal">{currentType.translation}</h3>
-                </Button>
+                <div className="relative flex items-center justify-center h-12 w-full">
+                  <Button
+                    className="flex sm:absolute -left-3 items-center justify-center h-12 gap-2 pl-2 pr-2 disabled:opacity-70"
+                    variant={"ghost"}
+                    disabled={matchingTypes.length > 1 ? false : true}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      const newIndex = (index + 1) % matchingTypes.length;
+                      setIndex(newIndex);
+                      setCurrentType(matchingTypes[newIndex]);
+                    }}
+                  >
+                    <div className="flex">
+                      <IconComponent color={theme === "dark" ? "white" : "black"} width={42} height={42} />
+                    </div>
+                    <h3 className="flex w-full text-3xl font-normal">{currentType.translation}</h3>
+                  </Button>
+                </div>
               )}
-              <div className="flex gap-2 flex-wrap justify-center sm:justify-start text-2xl lg:text-2xl">
+              <div className="flex flex-col sm:flex-row text-center sm:text-start gap-2 flex-wrap justify-center sm:justify-start text-2xl lg:text-2xl">
                 <div>{translatedMunicipality ? translatedMunicipality : home.municipality}</div>
                 <div className="flex items-center gap-3">
-                  <span className="text-gray-300">| </span>
+                  <span className="hidden sm:flex text-gray-300"> |</span>
                   {countryName}
                   {home.country && (
                     <FlagComponent

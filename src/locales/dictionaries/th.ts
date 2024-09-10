@@ -3,6 +3,7 @@ export default {
     "header": {
       "search": {
         "placeholder": "ค้นหาที่อยู่หรือสถานที่ใดๆ...",
+        "placeholder-short": "ค้นหา...",
         "search-button": "ค้นหา"
       },
       "filters": "ตัวกรอง",
@@ -78,6 +79,7 @@ export default {
       "title": "ค้นหาบ้านในฝันของคุณ",
       "search": {
         "placeholder": "ค้นหาสถานที่ใดๆ...",
+        "placeholderShort": "ค้นหา...",
         "search-button": "ค้นหา"
       }
     },
@@ -442,7 +444,8 @@ export default {
     "no-homes-found": "ไม่พบบ้าน!",
     "loginToViewPrices": "เข้าสู่ระบบเพื่อดูราคา",
     "propertiesText": "คุณสมบัติ",
-    "otherCategories": "หมวดหมู่อื่นๆ..."
+    "otherCategories": "หมวดหมู่อื่นๆ...",
+    "loading": "กำลังโหลด..."
   },
   "homes": {
     "units": {

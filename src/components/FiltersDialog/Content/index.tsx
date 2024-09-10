@@ -18,10 +18,11 @@ import SearchBox from "@/components/SearchBox";
 interface Props {
   isSmallMap: boolean;
   placeholder: string;
+  placeholderShort: string;
   text: string;
 }
 
-export default function FiltersDialog({ isSmallMap, placeholder, text }: Props) {
+export default function FiltersDialog({ isSmallMap, placeholder, placeholderShort, text }: Props) {
   const {
     headerValues,
     setConvertedPriceRange,
@@ -71,7 +72,13 @@ export default function FiltersDialog({ isSmallMap, placeholder, text }: Props) 
   return (
     <>
       <DialogContent close={false} className="w-80 p-4 rounded-md">
-        <SearchBox rawBox={true} isSmallMap={isSmallMap} placeholder={placeholder} text={text} />
+        <SearchBox
+          rawBox={true}
+          isSmallMap={isSmallMap}
+          placeholder={placeholder}
+          placeholderShort={placeholderShort}
+          text={text}
+        />
 
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
