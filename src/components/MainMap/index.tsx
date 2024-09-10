@@ -167,12 +167,14 @@ export default function MapComponent({
                 headerContent={
                   infowindowData.features.length === 1 ? (
                     <div className="flex items-center gap-3">
-                      <FlagComponent
-                        width={"w-15"}
-                        height={"h-10"}
-                        country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
-                        countryName={infowindowData.features[0].properties?.country}
-                      />
+                      {infowindowData && infowindowData.features[0].properties?.country && (
+                        <FlagComponent
+                          width={"w-15"}
+                          height={"h-10"}
+                          country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
+                          countryName={infowindowData.features[0].properties?.country}
+                        />
+                      )}
                       <Link href={`/homes/${infowindowData.features[0].properties?.id}`} target={"_blank"}>
                         <div className="flex flex-col justify-between">
                           {(() => {
