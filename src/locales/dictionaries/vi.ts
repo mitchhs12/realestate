@@ -499,8 +499,8 @@ export default {
     "title": "Thuộc tính của tôi",
     "incompleteListing": "Danh sách chưa đầy đủ!",
     "finishSelling": "Hoàn tất việc bán!",
-    "hideAllText": "Làm cho tất cả các thuộc tính riêng tư",
-    "showAllText": "Làm cho tất cả các thuộc tính công khai"
+    "hideAllText": "Tất cả riêng tư",
+    "showAllText": "Tất cả công cộng"
   },
   "settings": {
     "title": "Cài đặt tài khoản",

@@ -499,8 +499,8 @@ export default {
     "title": "ჩემი თვისებები",
     "incompleteListing": "არასრული ჩამონათვალი!",
     "finishSelling": "დაასრულეთ გაყიდვა!",
-    "hideAllText": "გახადე ყველა თვისება პირადი",
-    "showAllText": "გახადე ყველა თვისება საჯარო"
+    "hideAllText": "ყველა პირადი",
+    "showAllText": "ყველა საჯარო"
   },
   "settings": {
     "title": "ანგარიშის პარამეტრები",

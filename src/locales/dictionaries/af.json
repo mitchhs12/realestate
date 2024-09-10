@@ -499,8 +499,8 @@
     "title": "My Eienskappe",
     "incompleteListing": "Onvolledige lys!",
     "finishSelling": "Voltooi verkoop!",
-    "hideAllText": "Maak alle eiendomme privaat",
-    "showAllText": "Maak alle eiendomme publiek"
+    "hideAllText": "Alles privaat",
+    "showAllText": "Alle publiek"
   },
   "settings": {
     "title": "Rekeninginstellings",

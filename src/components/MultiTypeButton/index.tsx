@@ -14,6 +14,8 @@ export default function MultiTypeButton({
   className,
   variant,
   disabled,
+  width,
+  height,
 }: {
   types: TypeObject[];
   currentType: TypeObject | null;
@@ -21,6 +23,8 @@ export default function MultiTypeButton({
   color?: string;
   className?: string;
   disabled?: boolean | null;
+  width?: number;
+  height?: number;
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "none" | null | undefined;
 }) {
   const [index, setIndex] = useState(0);
@@ -50,9 +54,13 @@ export default function MultiTypeButton({
           setCurrentType(types[newIndex]);
         }}
         size={"icon"}
-        className={className ? className : "absolute bottom-2 left-2"}
+        className={className ? `${className}` : "absolute bottom-2 left-2"}
       >
-        <IconComponent color={color ? color : theme === "dark" ? "white" : "black"} width={40} height={40} />
+        <IconComponent
+          color={color ? color : theme === "dark" ? "white" : "black"}
+          width={width ? width : 40}
+          height={height ? height : 40}
+        />
       </Button>
     )
   );

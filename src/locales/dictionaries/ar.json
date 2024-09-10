@@ -499,8 +499,8 @@
     "title": "ممتلكاتي",
     "incompleteListing": "قائمة غير كاملة!",
     "finishSelling": "إنهاء البيع!",
-    "hideAllText": "جعل جميع الخصائص خاصة",
-    "showAllText": "جعل جميع الخصائص عامة"
+    "hideAllText": "كل خاص",
+    "showAllText": "كل العامة"
   },
   "settings": {
     "title": "إعدادات الحساب",

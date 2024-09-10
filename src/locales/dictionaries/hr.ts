@@ -499,8 +499,8 @@ export default {
     "title": "Moja svojstva",
     "incompleteListing": "Nepotpun popis!",
     "finishSelling": "Završite prodaju!",
-    "hideAllText": "Učini sva svojstva privatnima",
-    "showAllText": "Učini sva svojstva javnima"
+    "hideAllText": "Sve privatno",
+    "showAllText": "Sve javno"
   },
   "settings": {
     "title": "Postavke računa",

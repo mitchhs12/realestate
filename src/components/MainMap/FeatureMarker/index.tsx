@@ -25,15 +25,19 @@ export const FeatureMarker = ({ position, featureId, onMarkerClick, matchingType
 
   return (
     <AdvancedMarker ref={markerRef} position={position} onClick={handleClick} className={"marker feature"}>
-      <MultiTypeButton
-        types={matchingTypes}
-        currentType={currentType}
-        setCurrentType={setCurrentType}
-        className="absolute top-0.5 rounded-full disabled:opacity-100"
-        color={"#16A34A"}
-        variant={"none"}
-        disabled={null}
-      />
+      <div className="flex justify-center items-center border-2">
+        <MultiTypeButton
+          types={matchingTypes}
+          currentType={currentType}
+          setCurrentType={setCurrentType}
+          className="absolute bottom-0.5 rounded-full disabled:opacity-100"
+          width={30}
+          height={30}
+          color={"#16A34A"}
+          variant={"none"}
+          disabled={null}
+        />
+      </div>
     </AdvancedMarker>
   );
 };

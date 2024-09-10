@@ -499,8 +499,8 @@ export default {
     "title": "我的房产",
     "incompleteListing": "列表不完整！",
     "finishSelling": "完成销售！",
-    "hideAllText": "将所有属性设为私有",
-    "showAllText": "将所有属性公开"
+    "hideAllText": "全部私人",
+    "showAllText": "全部公开"
   },
   "settings": {
     "title": "帐户设置",

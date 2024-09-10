@@ -499,8 +499,8 @@ export default {
     "title": "Benim Özelliklerim",
     "incompleteListing": "Eksik Listeleme!",
     "finishSelling": "Satışı Bitir!",
-    "hideAllText": "Tüm Özellikleri Özel Yap",
-    "showAllText": "Tüm Özellikleri Herkese Açık Yap"
+    "hideAllText": "Tüm Özel",
+    "showAllText": "Tüm Kamu"
   },
   "settings": {
     "title": "Hesap Ayarları",

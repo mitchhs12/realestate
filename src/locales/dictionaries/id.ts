@@ -499,8 +499,8 @@ export default {
     "title": "Properti Saya",
     "incompleteListing": "Daftar Tidak Lengkap!",
     "finishSelling": "Selesai Menjual!",
-    "hideAllText": "Jadikan Semua Properti Menjadi Pribadi",
-    "showAllText": "Jadikan Semua Properti Publik"
+    "hideAllText": "Semua Pribadi",
+    "showAllText": "Semua Publik"
   },
   "settings": {
     "title": "Pengaturan Akun",

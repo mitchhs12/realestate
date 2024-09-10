@@ -499,8 +499,8 @@ export default {
     "title": "Minhas Propriedades",
     "incompleteListing": "Listagem incompleta!",
     "finishSelling": "Termine de vender!",
-    "hideAllText": "Tornar todas as propriedades privadas",
-    "showAllText": "Tornar todas as propriedades públicas"
+    "hideAllText": "Tudo privado",
+    "showAllText": "Todos os públicos"
   },
   "settings": {
     "title": "Configurações de Conta",

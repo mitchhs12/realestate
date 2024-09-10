@@ -499,8 +499,8 @@
     "title": "내 속성",
     "incompleteListing": "목록이 불완전합니다!",
     "finishSelling": "판매를 완료하세요!",
-    "hideAllText": "모든 속성을 비공개로 설정",
-    "showAllText": "모든 속성을 공개로 설정"
+    "hideAllText": "모든 개인",
+    "showAllText": "전체 공개"
   },
   "settings": {
     "title": "계정 설정",
