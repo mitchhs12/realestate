@@ -39,6 +39,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   ]);
   const text = s("search-button");
   const placeholder = s("placeholder");
+  const placeholderShort = s("placeholder-short");
   const title = t("title");
   const subtitle = t("subtitle");
 
@@ -50,6 +51,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       stepPercentage={stepData.array}
       text={text}
       placeholder={placeholder}
+      placeholderShort={placeholderShort}
       title={title}
       subtitle={subtitle}
     />

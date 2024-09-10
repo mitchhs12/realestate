@@ -14,6 +14,7 @@ interface Props {
   stepPercentage: number[];
   text: string;
   placeholder: string;
+  placeholderShort: string;
   title: string;
   subtitle: string;
 }
@@ -30,6 +31,7 @@ export default function Location({
   stepPercentage,
   text,
   placeholder,
+  placeholderShort,
   title,
   subtitle,
 }: Props) {
@@ -88,6 +90,7 @@ export default function Location({
           </div>
           <div className="flex flex-col h-full justify-center items-center w-full text-lg md:text-xl xl:text-2xl py-8">
             <SearchBox
+              placeholderShort={placeholderShort}
               isSmallMap={true}
               setSearchResult={(text, placeId) => setSearchResult({ text: text, placeId: placeId })}
               placeholder={placeholder}
