@@ -105,7 +105,7 @@ export default function Card({ home, isLoading }: Props) {
               <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
             ) : (
               <BrokenPrice
-                home={home}
+                priceUsd={home.priceUsd}
                 newCurrencySymbol={defaultCurrency.symbol}
                 newCurrencyUsdPrice={defaultCurrency.usdPrice}
                 reveal={user ? true : false}
