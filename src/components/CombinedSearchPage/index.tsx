@@ -207,7 +207,7 @@ export default function CombinedSearchPage({
           </DrawerContent>
           <DrawerTrigger asChild>
             <FloatingDrawerButton
-              isLoading={!isSearchLoading && homes.length > 0 ? false : true}
+              isLoading={!isSearchLoading && !isMapLoading ? false : true}
               loadingText={loadingText}
               showMap={showMap}
               showList={showList}
