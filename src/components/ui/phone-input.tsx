@@ -122,7 +122,7 @@ interface FlagComponentProps extends RPNInput.FlagProps {
   width?: string;
 }
 
-export const FlagComponent = ({ country, countryName, height = "h-4", width = "h-6" }: FlagComponentProps) => {
+export const FlagComponent = ({ country, countryName, height = "h-4", width = "w-6" }: FlagComponentProps) => {
   const Flag = flags[country];
 
   return (
