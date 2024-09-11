@@ -15,7 +15,7 @@ import { getStaticParams } from "@/locales/server";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Viva Ideal - Buy and sell global properties on the world's best real estate marketplace.",
+  title: "Viva Ideal | Buy and sell global properties on the world's best real estate marketplace.",
   description: "A marketplace for buying and renting houses, apartments, land and property",
 };
 

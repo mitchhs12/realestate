@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { getReadingTime } from "@/lib/utils";
 import Image from "next/image";
 import { getScopedI18n } from "@/locales/server";
+import { setStaticParamsLocale } from "next-international/server";
 
 const components = {
   types: {
@@ -48,6 +49,8 @@ async function getData(locale: string, slug: string) {
 }
 
 export default async function Article({ params }: { params: { locale: string; slug: string } }) {
+  setStaticParamsLocale(params.locale);
+
   const [data, t]: [FullArticle, any] = await Promise.all([
     getData(params.locale, params.slug),
     getScopedI18n("articles"),
