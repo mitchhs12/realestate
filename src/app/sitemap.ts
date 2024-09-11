@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { languages } from "../lib/validations"; // Assuming this is an array like ['es', 'en', 'fr']
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const url = "https://vivaideal.com";
+  const url = "https://www.vivaideal.com";
   const routes = ["/articles", "/client", "/homes", "/legal", "/my-properties", "/search", "/sell", "/settings"];
 
   // Helper function to dynamically create alternates in the expected format
