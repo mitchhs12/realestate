@@ -24,7 +24,7 @@ interface Neighborhood {
 
 export default function Locations({ countries }: { countries: CountryProps }) {
   function getUrl(folder: string, place: string) {
-    const baseUrl = "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home";
+    const baseUrl = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home`;
     return `${baseUrl}/${folder}/${place}.webp`;
   }
 

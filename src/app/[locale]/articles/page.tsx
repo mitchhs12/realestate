@@ -12,7 +12,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
     <div className="flex flex-col h-full w-full items-center">
       <div className="relative h-[20vh] flex w-full">
         <Image
-          src="https://d3pkwgsrr79pi4.cloudfront.net/home/banners/banner4.webp"
+          src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner4.webp`}
           alt="background"
           fill={true}
           style={{ objectFit: "cover" }}

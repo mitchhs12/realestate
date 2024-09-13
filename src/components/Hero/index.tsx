@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative h-[20vh] flex w-full">
       <Image
-        src="https://d3pkwgsrr79pi4.cloudfront.net/home/banners/banner1.webp"
+        src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner1.webp`}
         alt="background"
         fill={true}
         style={{ objectFit: "cover" }}
