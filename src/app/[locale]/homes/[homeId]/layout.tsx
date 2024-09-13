@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { getScopedI18n } from "@/locales/server";
 import { findMatching } from "@/lib/utils";
 import { featuresMap, typesMap } from "@/lib/sellFlowData";
+import { Metadata } from "next";
 
 type Props = {
   children: React.ReactNode;

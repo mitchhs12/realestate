@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import HomePhotos from "@/components/HomePhotos";
 import HomeText from "@/components/HomeText";
 import Footer from "@/components/Footer";
@@ -7,10 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { getScopedI18n } from "@/locales/server";
 import SmallMapWrapper from "@/components/SmallMap/SmallMapWrapper";
 import { setStaticParamsLocale } from "next-international/server";
-
-export const metadata: Metadata = {
-  title: "Homes",
-};
 
 export default async function Page({ params }: { params: { locale: string } }) {
   setStaticParamsLocale(params.locale);

@@ -11,7 +11,9 @@ import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
 
 export const metadata: Metadata = {
-  title: "Sell",
+  title: "Sell Your Property",
+  description:
+    "List your property for sale on Viva Ideal and reach buyers globally. Start selling your home, apartment, or land with ease and get discovered by potential buyers.",
 };
 
 export default async function Page({ params: { locale } }: any) {

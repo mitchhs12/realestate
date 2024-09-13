@@ -7,7 +7,9 @@ import { setStaticParamsLocale } from "next-international/server";
 import { getSingleHome } from "../actions";
 
 export const metadata: Metadata = {
-  title: "Search",
+  title: "Search for Properties",
+  description:
+    "Find your ideal home, apartment, or land on Viva Ideal. Search properties across Latin America and discover your dream property today.",
 };
 
 export default async function Page({ params }: { params: { locale: string; search: string } }) {
