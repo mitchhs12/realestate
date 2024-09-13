@@ -32,7 +32,7 @@ type Props = {
   params: { locale: LanguageType };
 };
 
-export default async function RootLayout({ children, params }: Props) {
+export default function RootLayout({ children, params }: Props) {
   const acceptLanguage = headers().get("Accept-Language");
   let matchedCurrency = "USD";
   if (acceptLanguage) {
