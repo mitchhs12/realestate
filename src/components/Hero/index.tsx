@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative h-[20vh] flex w-full">
       <Image
-        src="https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/banners/banner1.webp"
+        src="https://d3pkwgsrr79pi4.cloudfront.net/home/banners/banner1.webp"
         alt="background"
         fill={true}
         style={{ objectFit: "cover" }}
