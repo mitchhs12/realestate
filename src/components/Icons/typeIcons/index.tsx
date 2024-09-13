@@ -87,7 +87,7 @@ export const typeIcons: Record<string, IconComponent> = {
       viewBox="-3 -2 29 29"
       fill="none"
       stroke={color}
-      stroke-width="1.3"
+      strokeWidth="1.3"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -161,26 +161,20 @@ export const typeIcons: Record<string, IconComponent> = {
   ),
   windmill: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg width={width} height={height} viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9 39.997H37" stroke={color} stroke-width="2" stroke-miterlimit="10" />
-      <path
-        d="M14.875 39.5373L19.184 22"
-        stroke={color}
-        stroke-width="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M9 39.997H37" stroke={color} strokeWidth="2" strokeMiterlimit="10" />
+      <path d="M14.875 39.5373L19.184 22" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       <path
         d="M30.733 39.762L26.426 22.1151L26.4427 22.1833"
         stroke={color}
-        stroke-width="2"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M16.0811 34.4861H29.1381" stroke={color} stroke-width="2" stroke-miterlimit="10" />
+      <path d="M16.0811 34.4861H29.1381" stroke={color} strokeWidth="2" strokeMiterlimit="10" />
       <path
         d="M31.675 8.83L28.845 6L22.776 12.069L16.705 6L13.875 8.83L19.944 14.899L13.875 20.97L16.705 23.8L22.776 17.729L28.845 23.8L31.675 20.97L25.606 14.899L31.675 8.83Z"
         stroke={color}
-        stroke-width="2"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
