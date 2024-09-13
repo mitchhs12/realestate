@@ -46,13 +46,7 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem={true}
-            storageKey="theme"
-            disableTransitionOnChange={true}
-          >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
             <LocaleContextProvider lang={params.locale} matchedCurrency={matchedCurrency}>
               <MainLayout>{children}</MainLayout>
             </LocaleContextProvider>
