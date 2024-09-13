@@ -12,6 +12,7 @@ export default function Hero() {
         quality={70}
         priority={true}
         placeholder="blur"
+        loading={"eager"}
         blurDataURL={
           "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
         }
