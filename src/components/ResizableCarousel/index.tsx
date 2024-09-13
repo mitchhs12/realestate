@@ -22,7 +22,7 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
               className={`relative justify-center items-center ${height ? height : "h-[200px]"} w-full`}
             >
               <Image
-                src={photo}
+                src={photo.replace(process.env.NEXT_PUBLIC_AWS_S3_URL!, process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL!)}
                 className={`object-cover object-center ${rounded ? rounded : "rounded-t-lg"}`}
                 alt={`${title} photo ${index}`}
                 fill={true}
