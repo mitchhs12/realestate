@@ -14,8 +14,6 @@ import { Country } from "react-phone-number-input";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { typeIcons } from "@/components/Icons/typeIcons";
-import { useTheme } from "next-themes";
 import { Eye, EyeOff } from "lucide-react";
 import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 import { usePathname } from "next/navigation";
@@ -23,7 +21,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiTypeButton from "../MultiTypeButton";
 
 interface Props {
-  home: HomeType | null;
+  home: (HomeType & { isFavoritedByUser: boolean }) | HomeType;
   finishSelling?: string;
   incompleteListing?: string;
   isLoading?: boolean;
@@ -44,7 +42,6 @@ export default function ResizableCard({
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
   const { user, session } = useContext(QueryContext);
-  const { resolvedTheme: theme } = useTheme();
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
   const isMyProperties = path === "/my-properties";
@@ -83,7 +80,7 @@ export default function ResizableCard({
         setTitleUnderlined(false);
       }}
     >
-      <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} />
+      <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} user={user} home={home} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
         <div className="flex flex-col justify-center items-center w-full pt-2 gap-2 px-2 relative">
           <h3

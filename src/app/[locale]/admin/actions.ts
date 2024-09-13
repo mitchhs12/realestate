@@ -9,7 +9,6 @@ import { auth } from "@/auth";
 
 export async function createListing(values: HomeType) {
   const session = await auth();
-  const user = session?.user;
   const userId = session?.user?.id;
 
   if (!userId) {

@@ -2,11 +2,11 @@
 
 import React, { createContext, useState, ReactNode, useEffect, useContext } from "react";
 import { usePathname } from "next/navigation";
-import { defaultCurrency, HomeType } from "@/lib/validations";
+import { HomeType } from "@/lib/validations";
 import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
-import { types, features, typesMap, featuresMap, rooms } from "@/lib/sellFlowData";
+import { types, features } from "@/lib/sellFlowData";
 
 interface QueryContextProps {
   query: string;
@@ -208,6 +208,10 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
   const [convertedPriceRange, setConvertedPriceRange] = useState<number[]>([]);
   const [isModalLocked, setIsModalLocked] = useState(false);
 
+  const session = useSession();
+  const user = session.data?.user;
+  const pathname = usePathname();
+
   const handleAllFeatures = () => {
     if (allSelectedFeatures) {
       setSelectedFeatures([]);
@@ -239,10 +243,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
       setAllSelectedTypes(false);
     }
   }, [selectedTypes]);
-
-  const session = useSession();
-  const user = session.data?.user;
-  const pathname = usePathname();
 
   const closeModal = () => {
     if (!isModalLocked) {

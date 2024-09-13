@@ -1,5 +1,6 @@
 import { DefaultSession } from "next-auth";
 import { LanguageType } from "next-international";
+import { Home, FavoriteList } from "@prisma/client";
 
 declare module "next-auth" {
   interface Session {
@@ -11,5 +12,7 @@ declare module "next-auth" {
     currency: string;
     language: LanguageType;
     phoneNumber: string | null;
+    favoritedLists: FavoriteList[];
+    homes: HomeType[];
   }
 }

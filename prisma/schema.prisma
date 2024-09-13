@@ -17,8 +17,8 @@ model User {
   phoneNumber   String?         
   emailVerified DateTime?       @map("email_verified")
   image         String?
-  favorites     UserFavorites[]
   role          String?
+  favoritedLists  FavoriteList[]
   accounts      Account[]
   sessions      Session[]
   homes         Home[]
@@ -103,21 +103,23 @@ model Home {
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   listingFlowStep Int
-  favoritedBy     UserFavorites[]
+  favoritedLists  FavoriteList[]  @relation("HomesInFavoriteLists")
   ownerId         String
 
   @@index([ownerId])
   @@map("homes")
 }
 
-model UserFavorites {
-  userId String
-  homeId Int
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  home   Home   @relation(fields: [homeId], references: [id], onUpdate: Cascade)
+model FavoriteList {
+  id        Int @id @default(autoincrement())
+  name      String
+  userId    String
+  user      User                  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  homes     Home[]                @relation("HomesInFavoriteLists")
+  createdAt DateTime              @default(now())
+  updatedAt DateTime              @updatedAt
 
-  @@id([userId, homeId])
-  @@map("userFavorites")
+  @@map("favorite_lists")
 }
 
 model Currencies {

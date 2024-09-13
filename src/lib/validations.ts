@@ -129,6 +129,12 @@ export const locationImageIds = {
   },
 };
 
+export const userFavoritesSchema = z.object({
+  userId: z.string().trim().min(1, "User ID is required"), // Validates user ID
+  homeId: z.number().int().positive("Home ID must be a positive integer"), // Validates home ID
+  favoritedAt: z.date().optional(), // Optional favorited date; defaults to now()
+});
+
 export const homeSchema = z.object({
   id: z.number().int(),
   ownerId: z.string().trim().min(1, "Cannot be empty"),

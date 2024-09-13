@@ -157,6 +157,9 @@ export async function updateHome(
       data: {
         ownerId: userId,
         listingFlowStep: 1, // Default value
+        favoritedLists: {
+          connect: [],
+        },
       },
     });
   } else {

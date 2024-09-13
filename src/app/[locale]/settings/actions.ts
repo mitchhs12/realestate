@@ -81,7 +81,6 @@ export async function updateEmail(values: UpdateEmailValues) {
 }
 
 export async function updatePhone(values: UpdatePhoneValues) {
-  console.log("values", values);
   const session = await auth();
   const userId = session?.user?.id;
 

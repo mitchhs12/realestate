@@ -33,11 +33,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   adapter: PrismaAdapter(prisma) as Adapter,
   callbacks: {
-    session({ session, user }) {
+    async session({ session, user }) {
+      const dbUser = await prisma.user.findUnique({
+        where: { id: user.id },
+        include: {
+          favoritedLists: {
+            include: {
+              homes: true, // Include homes in the favorite lists
+            },
+          },
+          homes: true, // Include homes owned by the user
+        },
+      });
       session.user.role = user.role;
       session.user.phoneNumber = user.phoneNumber as string | null;
       session.user.currency = user.currency as string;
       session.user.language = user.language as string;
+      session.user.favoritedLists = dbUser?.favoritedLists || [];
+      session.user.homes = dbUser?.homes || [];
       return session;
     },
   },

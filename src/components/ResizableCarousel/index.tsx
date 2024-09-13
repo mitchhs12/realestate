@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { User } from "next-auth";
+import { HomeType } from "@/lib/validations";
+import { FavoriteComponent } from "@/components/FavoriteComponent";
 
 interface Props {
   photos: string[];
@@ -8,10 +11,13 @@ interface Props {
   rounded?: string;
   isLoading?: boolean;
   openModal?: (index: number) => void;
+  handleFavorite?: () => void;
   hovering?: boolean;
+  user?: User | undefined;
+  home: (HomeType & { isFavoritedByUser: boolean }) | HomeType;
 }
 
-export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering }: Props) {
+export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, user, home }: Props) {
   return (
     <Carousel className="h-full w-full">
       <CarouselContent>
@@ -43,6 +49,9 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
           </CarouselItem>
         ))}
       </CarouselContent>
+      {user && user.id !== home.ownerId && (
+        <FavoriteComponent user={user} home={home as HomeType & { isFavoritedByUser: boolean }} />
+      )}
       <CarouselPrevious className={`${hovering ? "flex" : "hidden"} absolute left-6 size-8`} />
       <CarouselNext className={`${hovering ? "flex" : "hidden"} absolute right-6 size-8 border-2`} />
     </Carousel>
