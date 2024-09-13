@@ -1,7 +1,6 @@
 import Listings from "@/components/Listings";
 import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
-
 import { getRecommended, getNew, getCheapest } from "@/app/[locale]/actions";
 import { locationImageIds } from "@/lib/validations";
 import { Newspaper, Gem, HandCoins } from "lucide-react";
