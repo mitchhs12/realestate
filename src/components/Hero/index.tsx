@@ -11,6 +11,10 @@ export default function Hero() {
         style={{ objectFit: "cover" }}
         quality={70}
         priority={true}
+        placeholder="blur"
+        blurDataURL={
+          "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
+        }
         sizes="(max-width: 400px) 400px,
         (max-width: 510px) 510px,
         (max-width: 768px) 768px, 
