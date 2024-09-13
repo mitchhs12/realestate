@@ -4,6 +4,7 @@ import { getScopedI18n } from "@/locales/server";
 import { getRecommended, getNew, getCheapest } from "@/app/[locale]/actions";
 import { locationImageIds } from "@/lib/validations";
 import { Newspaper, Gem, HandCoins } from "lucide-react";
+import { Suspense } from "react";
 
 export default async function HomePageContent() {
   const [t, recommendedHomesData, cheapestHomesData, newHomesData] = await Promise.all([
@@ -90,7 +91,9 @@ export default async function HomePageContent() {
           <div className="flex justify-center items-start px-8 sm:px-0 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl w-full font-normal text-center">
             {t("cities")}
           </div>
-          <Locations countries={countries} />
+          <Suspense fallback={<span>Loading...</span>}>
+            <Locations countries={countries} />
+          </Suspense>
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">
@@ -99,7 +102,9 @@ export default async function HomePageContent() {
             <Gem size={24} strokeWidth={1.5} />
             {t("recommended")}
           </h2>
-          <Listings homes={recommended} />
+          <Suspense fallback={<span>Loading...</span>}>
+            <Listings homes={recommended} />
+          </Suspense>
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">
@@ -108,7 +113,9 @@ export default async function HomePageContent() {
             <HandCoins size={26} strokeWidth={1.5} />
             {t("cheapest")}
           </h2>
-          <Listings homes={cheapest} />
+          <Suspense fallback={<span>Loading...</span>}>
+            <Listings homes={cheapest} />
+          </Suspense>
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">
@@ -117,7 +124,9 @@ export default async function HomePageContent() {
             <Newspaper size={24} strokeWidth={1.5} />
             {t("newest")}
           </h2>
-          <Listings homes={newest} />
+          <Suspense fallback={<span>Loading...</span>}>
+            <Listings homes={newest} />
+          </Suspense>
         </div>
       </section>
     </div>
