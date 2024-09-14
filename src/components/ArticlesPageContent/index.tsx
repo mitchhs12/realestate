@@ -7,8 +7,6 @@ import { ArticleType } from "@/lib/validations";
 import { getScopedI18n } from "@/locales/server";
 import Image from "next/image";
 
-export const revalidate = 30;
-
 async function getData(locale: string) {
   const query = `
   *[_type=="article"] | order(_createdAt desc) {
@@ -30,6 +28,7 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
   const changeLanguage = t("changeLanguage");
   const unavailableWarning = t("unavailableWarning");
   const articleUnavailable = t("articleUnavailable");
+
   return (
     <div className="flex flex-col justify-center items-center w-full flex-grow">
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full gap-4 justify-start p-8 items-start max-w-8xl">
