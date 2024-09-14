@@ -42,6 +42,7 @@ export default {
         },
         "language": "لغة",
         "my-properties": "ممتلكاتي",
+        "my-lists": "قوائمي",
         "currency": "عملة",
         "settings": "إعدادات",
         "exit": "حفظ وخروج",

@@ -42,6 +42,7 @@ export default {
         },
         "language": "Jezik",
         "my-properties": "Moja svojstva",
+        "my-lists": "Moje liste",
         "currency": "Valuta",
         "settings": "postavke",
         "exit": "Spremi i izađi",

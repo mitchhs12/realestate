@@ -42,6 +42,7 @@ export default {
         },
         "language": "Language",
         "my-properties": "My properties",
+        "my-lists": "My lists",
         "currency": "Currency",
         "settings": "Settings",
         "exit": "Save and exit",

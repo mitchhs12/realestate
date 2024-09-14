@@ -42,6 +42,7 @@ export default {
         },
         "language": "Bahasa",
         "my-properties": "Properti saya",
+        "my-lists": "Daftar saya",
         "currency": "Mata uang",
         "settings": "Pengaturan",
         "exit": "Simpan dan keluar",

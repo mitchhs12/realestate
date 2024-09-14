@@ -42,6 +42,7 @@ export default {
         },
         "language": "言語",
         "my-properties": "私の財産",
+        "my-lists": "私のリスト",
         "currency": "通貨",
         "settings": "設定",
         "exit": "保存して終了",

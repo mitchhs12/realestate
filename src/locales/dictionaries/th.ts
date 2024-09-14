@@ -42,6 +42,7 @@ export default {
         },
         "language": "ภาษา",
         "my-properties": "คุณสมบัติของฉัน",
+        "my-lists": "รายการของฉัน",
         "currency": "สกุลเงิน",
         "settings": "การตั้งค่า",
         "exit": "บันทึกและออก",

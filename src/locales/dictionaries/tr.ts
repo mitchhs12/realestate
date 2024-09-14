@@ -42,6 +42,7 @@ export default {
         },
         "language": "Dil",
         "my-properties": "Benim mülklerim",
+        "my-lists": "Listelerim",
         "currency": "Para birimi",
         "settings": "Ayarlar",
         "exit": "Kaydet ve çık",

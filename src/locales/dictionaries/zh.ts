@@ -42,6 +42,7 @@ export default {
         },
         "language": "语言",
         "my-properties": "我的房产",
+        "my-lists": "我的列表",
         "currency": "货币",
         "settings": "设置",
         "exit": "保存并退出",

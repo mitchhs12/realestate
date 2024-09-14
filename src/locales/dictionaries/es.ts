@@ -42,6 +42,7 @@ export default {
         },
         "language": "Idioma",
         "my-properties": "Mis propiedades",
+        "my-lists": "Mis listas",
         "currency": "Divisa",
         "settings": "Ajustes",
         "exit": "Guardar y salir",

@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 
-export default async function SellFlowLayout({
+export default async function ArticleLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

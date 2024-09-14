@@ -4,7 +4,6 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import HomePageContent from "@/components/HomePageContent";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Home | Viva Ideal - International Property Marketplace",

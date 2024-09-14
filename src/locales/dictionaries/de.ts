@@ -42,6 +42,7 @@ export default {
         },
         "language": "Sprache",
         "my-properties": "Meine Immobilien",
+        "my-lists": "Meine Listen",
         "currency": "Währung",
         "settings": "Einstellungen",
         "exit": "Speichern und beenden",

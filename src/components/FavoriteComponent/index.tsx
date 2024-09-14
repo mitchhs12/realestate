@@ -23,9 +23,10 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 interface Props {
   home: HomeType & { isFavoritedByUser: boolean };
   user: User;
+  session: any;
 }
 
-export function FavoriteComponent({ home, user }: Props) {
+export function FavoriteComponent({ home, user, session }: Props) {
   const handleFavorite = () => {
     createFavoriteList(listName, home.id);
     setDialogOpen(false);
@@ -50,12 +51,14 @@ export function FavoriteComponent({ home, user }: Props) {
     handleLoadingState(listId, true);
     await updateFavoriteList(listId, home.id);
     handleLoadingState(listId, false);
+    session.update();
   };
 
   const handleRemoveFromList = async (listId: number) => {
     handleLoadingState(listId, true);
     await removeHomeFromFavoriteList(listId, home.id);
     handleLoadingState(listId, false);
+    session.update();
   };
 
   return (

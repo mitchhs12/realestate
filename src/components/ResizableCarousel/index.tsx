@@ -3,6 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { User } from "next-auth";
 import { HomeType } from "@/lib/validations";
 import { FavoriteComponent } from "@/components/FavoriteComponent";
+import { Heart } from "lucide-react";
 
 interface Props {
   photos: string[];
@@ -14,10 +15,21 @@ interface Props {
   handleFavorite?: () => void;
   hovering?: boolean;
   user?: User | undefined;
+  session?: any;
   home: HomeType;
 }
 
-export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, user, home }: Props) {
+export default function ResizableCarousel({
+  photos,
+  title,
+  height,
+  rounded,
+  openModal,
+  hovering,
+  user,
+  session,
+  home,
+}: Props) {
   return (
     <Carousel className="h-full w-full">
       <CarouselContent>
@@ -49,8 +61,16 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
           </CarouselItem>
         ))}
       </CarouselContent>
-      {user && user.id !== home.ownerId && (
-        <FavoriteComponent user={user} home={home as HomeType & { isFavoritedByUser: boolean }} />
+      {session?.status === "loading" ? (
+        <Heart
+          strokeWidth={"1.5"}
+          className={`flex shadow-lg absolute hover:cursor-pointer right-2 top-2 size-8 text-white animate-pulse fill-primary/40`}
+        />
+      ) : (
+        user &&
+        user.id !== home.ownerId && (
+          <FavoriteComponent user={user} home={home as HomeType & { isFavoritedByUser: boolean }} session={session} />
+        )
       )}
       <CarouselPrevious className={`${hovering ? "flex" : "hidden"} absolute left-6 size-8`} />
       <CarouselNext className={`${hovering ? "flex" : "hidden"} absolute right-6 size-8 border-2`} />

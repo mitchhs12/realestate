@@ -27,11 +27,14 @@ export async function getRecommended(): Promise<HomeType[] | (HomeType & { isFav
         }
       : undefined,
   });
-
-  return homes.map((home) => ({
-    ...home,
-    isFavoritedByUser: (home as typeof home & { favoritedLists: { id: number }[] }).favoritedLists.length > 0,
-  })) as (HomeType & { isFavoritedByUser: boolean })[];
+  if (!userId) {
+    return homes;
+  } else {
+    return homes.map((home) => ({
+      ...home,
+      isFavoritedByUser: (home as typeof home & { favoritedLists: { id: number }[] }).favoritedLists.length > 0,
+    })) as (HomeType & { isFavoritedByUser: boolean })[];
+  }
 }
 
 export async function getNew(): Promise<HomeType[] | (HomeType & { isFavoritedByUser: boolean })[]> {

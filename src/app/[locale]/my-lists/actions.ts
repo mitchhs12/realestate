@@ -24,41 +24,20 @@ export async function getMyHomes(): Promise<HomeType[]> {
   return homes;
 }
 
-export async function changeHomeVisibility(homeId: number, currentState: boolean) {
+export async function deleteFavoriteList(listId: number) {
   const session = await auth();
   const userId = session?.user?.id;
+
   if (!userId) {
     throw new Error("User not found");
   }
 
-  const home = await prisma.home.update({
+  await prisma.favoriteList.delete({
     where: {
-      id: Number(homeId),
-      ownerId: userId,
-    },
-    data: {
-      isActive: !currentState,
+      id: listId,
+      userId: userId,
     },
   });
-  revalidatePath(`/my-properties`);
-}
 
-export async function changeAllHomeVisibilities(currentState: boolean) {
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) {
-    throw new Error("User not found");
-  }
-
-  const homes = await prisma.home.updateMany({
-    where: {
-      ownerId: userId,
-      isComplete: true,
-      isActive: currentState,
-    },
-    data: {
-      isActive: !currentState,
-    },
-  });
-  revalidatePath(`/my-properties`);
+  revalidatePath("/my-lists");
 }
