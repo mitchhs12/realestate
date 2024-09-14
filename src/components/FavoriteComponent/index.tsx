@@ -89,7 +89,10 @@ export function FavoriteComponent({ home, user }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-10 pb-10">
                 {user.favoritedLists.map((list) => {
                   return (
-                    <div className="flex flex-col gap-3 rounded-lg justify-center items-center h-full w-full">
+                    <div
+                      key={list.id}
+                      className="flex flex-col gap-3 rounded-lg justify-center items-center h-full w-full"
+                    >
                       <div className="relative w-full h-[200px] rounded-lg overflow-hidden shadow-lg dark:shadow-white/15">
                         <Image
                           className="rounded-xl"

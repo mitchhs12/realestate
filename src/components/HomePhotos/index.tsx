@@ -99,6 +99,7 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
             height={`h-[320px]`}
             openModal={openModal}
             rounded={"rounded-xl"}
+            home={home}
           />
         </div>
       </div>

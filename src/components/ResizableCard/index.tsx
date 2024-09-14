@@ -21,7 +21,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiTypeButton from "../MultiTypeButton";
 
 interface Props {
-  home: (HomeType & { isFavoritedByUser: boolean }) | HomeType;
+  home: HomeType | null;
   finishSelling?: string;
   incompleteListing?: string;
   isLoading?: boolean;

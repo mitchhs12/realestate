@@ -14,7 +14,7 @@ interface Props {
   handleFavorite?: () => void;
   hovering?: boolean;
   user?: User | undefined;
-  home: (HomeType & { isFavoritedByUser: boolean }) | HomeType;
+  home: HomeType;
 }
 
 export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, user, home }: Props) {
