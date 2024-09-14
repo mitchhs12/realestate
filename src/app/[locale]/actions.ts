@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { HomeType } from "@/lib/validations";
 
-export async function getRecommended(): Promise<HomeType[]> {
+export async function getRecommended(): Promise<HomeType[] | (HomeType & { isFavoritedByUser: boolean })[]> {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -17,22 +17,24 @@ export async function getRecommended(): Promise<HomeType[]> {
       price: "asc",
     },
     take: 6,
-    include: {
-      favoritedLists: {
-        where: {
-          userId,
-        },
-      },
-    },
+    include: userId
+      ? {
+          favoritedLists: {
+            where: {
+              userId,
+            },
+          },
+        }
+      : undefined,
   });
 
   return homes.map((home) => ({
     ...home,
-    isFavoritedByUser: home.favoritedLists.length > 0,
-  }));
+    isFavoritedByUser: (home as typeof home & { favoritedLists: { id: number }[] }).favoritedLists.length > 0,
+  })) as (HomeType & { isFavoritedByUser: boolean })[];
 }
 
-export async function getNew(): Promise<HomeType[]> {
+export async function getNew(): Promise<HomeType[] | (HomeType & { isFavoritedByUser: boolean })[]> {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -44,22 +46,28 @@ export async function getNew(): Promise<HomeType[]> {
       createdAt: "desc",
     },
     take: 6,
-    include: {
-      favoritedLists: {
-        where: {
-          userId,
-        },
-      },
-    },
+    include: userId
+      ? {
+          favoritedLists: {
+            where: {
+              userId,
+            },
+          },
+        }
+      : undefined,
   });
 
-  return homes.map((home) => ({
-    ...home,
-    isFavoritedByUser: home.favoritedLists.length > 0,
-  }));
+  if (!userId) {
+    return homes;
+  } else {
+    return homes.map((home) => ({
+      ...home,
+      isFavoritedByUser: (home as typeof home & { favoritedLists: { id: number }[] }).favoritedLists.length > 0,
+    })) as (HomeType & { isFavoritedByUser: boolean })[];
+  }
 }
 
-export async function getCheapest(): Promise<HomeType[]> {
+export async function getCheapest(): Promise<HomeType[] | (HomeType & { isFavoritedByUser: boolean })[]> {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -71,19 +79,25 @@ export async function getCheapest(): Promise<HomeType[]> {
       price: "asc",
     },
     take: 6,
-    include: {
-      favoritedLists: {
-        where: {
-          userId,
-        },
-      },
-    },
+    include: userId
+      ? {
+          favoritedLists: {
+            where: {
+              userId,
+            },
+          },
+        }
+      : undefined,
   });
 
-  return homes.map((home) => ({
-    ...home,
-    isFavoritedByUser: home.favoritedLists.length > 0,
-  }));
+  if (!userId) {
+    return homes; // HomeType[]
+  } else {
+    return homes.map((home) => ({
+      ...home,
+      isFavoritedByUser: (home as typeof home & { favoritedLists: { id: number }[] }).favoritedLists.length > 0,
+    })) as (HomeType & { isFavoritedByUser: boolean })[];
+  }
 }
 
 export async function createFavoriteList(name: string, homeId: number) {
@@ -138,6 +152,7 @@ export async function updateFavoriteList(listId: number, homeId: number) {
     console.error("Error updating favorite list:", error);
     throw new Error("Failed to update favorite list.");
   }
+  revalidatePath("/");
 }
 
 export async function removeHomeFromFavoriteList(listId: number, homeId: number) {
@@ -165,6 +180,7 @@ export async function removeHomeFromFavoriteList(listId: number, homeId: number)
     console.error("Error removing home from favorite list:", error);
     throw new Error("Failed to remove home from favorite list.");
   }
+  revalidatePath("/");
 }
 
 export async function deleteFavoriteList(listId: number) {
@@ -185,4 +201,5 @@ export async function deleteFavoriteList(listId: number) {
     console.error("Error deleting favorite list:", error);
     throw new Error("Failed to delete favorite list.");
   }
+  revalidatePath("/");
 }

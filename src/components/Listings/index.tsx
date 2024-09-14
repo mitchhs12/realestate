@@ -5,7 +5,7 @@ import { findMatching } from "@/lib/utils";
 import { typesMap } from "@/lib/sellFlowData";
 
 interface Props {
-  homes: (HomeType & { isFavoritedByUser: boolean })[];
+  homes: (HomeType | (HomeType & { isFavoritedByUser: boolean }))[];
 }
 
 export default async function Listings({ homes }: Props) {

@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Heart } from "lucide-react";
+import { Heart, Trash2 } from "lucide-react";
 import { useState } from "react";
 import {
   createFavoriteList,
@@ -21,7 +21,8 @@ import { HomeType } from "@/lib/validations";
 import { User } from "next-auth";
 import Image from "next/image";
 import CreateDialog from "./CreateDialog";
-import { ChevronLeft, Minus, Plus } from "lucide-react";
+import { ChevronLeft, Minus, Plus, List, ListPlus } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   home: HomeType & { isFavoritedByUser: boolean };
@@ -56,7 +57,7 @@ export function FavoriteComponent({ home, user }: Props) {
           className={`flex shadow-lg absolute hover:cursor-pointer right-2 top-2 size-8 ${dialogOpen && "fill-pink-500"} text-white ${home.isFavoritedByUser && "fill-pink-500"} hover:fill-pink-500`}
         />
       </DialogTrigger>
-      <DialogContent className="w-[80%] max-w-5xl h-full max-h-[500px] rounded-md p-0" close={false}>
+      <DialogContent className="w-[85%] max-w-5xl h-full max-h-[500px] rounded-md p-0" close={false}>
         {user.favoritedLists.length === 0 ? (
           <CreateDialog
             listName={listName}
@@ -66,13 +67,19 @@ export function FavoriteComponent({ home, user }: Props) {
           />
         ) : existingDialog ? (
           <div className="flex flex-col w-full overflow-y-auto">
-            <div className="flex p-4 w-full justify-end pb-8">
+            <div className="flex p-4 w-full justify-between pb-8">
               <Button className="flex gap-2" onClick={() => setExistingDialog(!existingDialog)}>
                 <Plus size={20} />
                 <span>Create</span>
               </Button>
+              <Button variant={"outline"} className="flex gap-2" asChild>
+                <Link href={"/my-lists"}>
+                  <List />
+                  <span>Manage</span>
+                </Link>
+              </Button>
             </div>
-            <DialogHeader className="sticky top-0 z-10 bg-background pb-8 px-6">
+            <DialogHeader className="sticky top-0 z-10 bg-background pb-8 px-6 shadow-lg dark:shadow-white/10">
               <DialogTitle className="text-lg lg:text-xl">Existing Lists</DialogTitle>
               <DialogDescription className="text-md lg:text-lg">
                 Save this property to one of your existing lists.
@@ -86,7 +93,7 @@ export function FavoriteComponent({ home, user }: Props) {
                       <div className="relative w-full h-[200px] rounded-lg overflow-hidden shadow-lg dark:shadow-white/15">
                         <Image
                           className="rounded-xl"
-                          alt={list.homes[0].title}
+                          alt={list.homes[0].title!}
                           src={list.homes[0].photos[0]}
                           fill={true}
                           objectFit={"cover"}
