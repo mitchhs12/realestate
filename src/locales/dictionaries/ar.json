@@ -505,6 +505,10 @@
     "hideAllText": "كل خاص",
     "showAllText": "كل العامة"
   },
+  "my-lists": {
+    "title": "قوائمي",
+    "delete": "حذف القائمة"
+  },
   "settings": {
     "title": "إعدادات الحساب",
     "name": {

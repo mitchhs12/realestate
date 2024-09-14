@@ -125,6 +125,7 @@ export async function createFavoriteList(name: string, homeId: number) {
     throw new Error("Failed to create favorite list.");
   }
   revalidatePath("/");
+  return;
 }
 
 export async function updateFavoriteList(listId: number, homeId: number) {
@@ -153,6 +154,7 @@ export async function updateFavoriteList(listId: number, homeId: number) {
     throw new Error("Failed to update favorite list.");
   }
   revalidatePath("/");
+  return;
 }
 
 export async function removeHomeFromFavoriteList(listId: number, homeId: number) {
@@ -181,6 +183,7 @@ export async function removeHomeFromFavoriteList(listId: number, homeId: number)
     throw new Error("Failed to remove home from favorite list.");
   }
   revalidatePath("/");
+  return;
 }
 
 export async function deleteFavoriteList(listId: number) {
@@ -202,4 +205,5 @@ export async function deleteFavoriteList(listId: number) {
     throw new Error("Failed to delete favorite list.");
   }
   revalidatePath("/");
+  return;
 }

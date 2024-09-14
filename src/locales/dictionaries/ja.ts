@@ -505,6 +505,10 @@ export default {
     "hideAllText": "すべてプライベート",
     "showAllText": "すべて公開"
   },
+  "my-lists": {
+    "title": "マイリスト",
+    "delete": "リストを削除"
+  },
   "settings": {
     "title": "アカウント設定",
     "name": {

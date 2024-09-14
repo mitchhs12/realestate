@@ -505,6 +505,10 @@
     "hideAllText": "Tất cả riêng tư",
     "showAllText": "Tất cả công cộng"
   },
+  "my-lists": {
+    "title": "Danh sách của tôi",
+    "delete": "Xóa danh sách"
+  },
   "settings": {
     "title": "Cài đặt tài khoản",
     "name": {

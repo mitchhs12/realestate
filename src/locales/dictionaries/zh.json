@@ -505,6 +505,10 @@
     "hideAllText": "全部私人",
     "showAllText": "全部公开"
   },
+  "my-lists": {
+    "title": "我的列表",
+    "delete": "删除列表"
+  },
   "settings": {
     "title": "帐户设置",
     "name": {

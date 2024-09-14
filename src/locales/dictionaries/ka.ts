@@ -505,6 +505,10 @@ export default {
     "hideAllText": "ყველა პირადი",
     "showAllText": "ყველა საჯარო"
   },
+  "my-lists": {
+    "title": "ჩემი სიები",
+    "delete": "სიის წაშლა"
+  },
   "settings": {
     "title": "ანგარიშის პარამეტრები",
     "name": {

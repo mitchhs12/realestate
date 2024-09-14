@@ -505,6 +505,10 @@
     "hideAllText": "모든 개인",
     "showAllText": "전체 공개"
   },
+  "my-lists": {
+    "title": "내 목록",
+    "delete": "목록 삭제"
+  },
   "settings": {
     "title": "계정 설정",
     "name": {

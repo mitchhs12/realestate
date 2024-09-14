@@ -505,6 +505,10 @@ export default {
     "hideAllText": "Semua Pribadi",
     "showAllText": "Semua Publik"
   },
+  "my-lists": {
+    "title": "Daftar Saya",
+    "delete": "Hapus Daftar"
+  },
   "settings": {
     "title": "Pengaturan Akun",
     "name": {

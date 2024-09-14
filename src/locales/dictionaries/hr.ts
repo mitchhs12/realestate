@@ -505,6 +505,10 @@ export default {
     "hideAllText": "Sve privatno",
     "showAllText": "Sve javno"
   },
+  "my-lists": {
+    "title": "Moji popisi",
+    "delete": "Izbriši popis"
+  },
   "settings": {
     "title": "Postavke računa",
     "name": {

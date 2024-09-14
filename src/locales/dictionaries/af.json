@@ -505,6 +505,10 @@
     "hideAllText": "Alles privaat",
     "showAllText": "Alle publiek"
   },
+  "my-lists": {
+    "title": "My lyste",
+    "delete": "Vee Lys uit"
+  },
   "settings": {
     "title": "Rekeninginstellings",
     "name": {

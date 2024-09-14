@@ -505,6 +505,10 @@ export default {
     "hideAllText": "Tüm Özel",
     "showAllText": "Tüm Kamu"
   },
+  "my-lists": {
+    "title": "Listelerim",
+    "delete": "Listeyi Sil"
+  },
   "settings": {
     "title": "Hesap Ayarları",
     "name": {

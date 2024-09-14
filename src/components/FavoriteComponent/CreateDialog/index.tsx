@@ -13,12 +13,12 @@ interface Props {
 
 export default function CreateDialog({ listName, updateName, handleFavorite, nameNotUnique }: Props) {
   return (
-    <div className="flex flex-col justify-center w-full p-4">
+    <div className="flex flex-col justify-start items-center w-full h-full p-4">
       <DialogHeader className="items-center pb-8">
         <DialogTitle className="text-lg lg:text-xl">Create new list</DialogTitle>
         <DialogDescription className="text-md lg:text-lg">Save this home to a new list.</DialogDescription>
       </DialogHeader>
-      <div className="flex flex-col justify-start items-center w-full">
+      <div className="flex flex-col justify-start items-center w-full h-full">
         <div className="flex gap-4 py-4 max-w-[600px] w-full">
           <div className="items-center gap-4 w-full">
             <Label htmlFor="name" className="text-right">
@@ -36,9 +36,9 @@ export default function CreateDialog({ listName, updateName, handleFavorite, nam
             />
           </div>
         </div>
-        <DialogFooter className="w-full">
-          <div className="flex flex-col items-center justify-center gap-3 w-full">
-            <Button disabled={nameNotUnique} className="w-full" onClick={handleFavorite}>
+        <DialogFooter className="w-full h-full">
+          <div className="flex flex-col items-center justify-end gap-3 w-full">
+            <Button disabled={nameNotUnique} className="max-w-[600px] w-full" onClick={handleFavorite}>
               Create New List
             </Button>
             {nameNotUnique && <p className="text-red-500 text-center">You already have a list with that name.</p>}

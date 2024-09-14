@@ -505,6 +505,10 @@ export default {
     "hideAllText": "All Private",
     "showAllText": "All Public"
   },
+  "my-lists": {
+    "title": "My Lists",
+    "delete": "Delete List"
+  },
   "settings": {
     "title": "Account Settings",
     "name": {
