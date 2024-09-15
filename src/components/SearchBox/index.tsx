@@ -31,7 +31,6 @@ export default function SearchBox({
   isSmallMap = false,
   setSearchResult,
   text,
-  placeholder,
   placeholderShort,
 }: Props) {
   const router = useRouter();
@@ -46,27 +45,6 @@ export default function SearchBox({
   const [longLatArray, setLongLatArray] = useState<number[]>([]); // State for longLatArray
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
   const pathname = usePathname();
-  const [translatedPlaceholder, setTranslatedPlaceholder] = useState(placeholder);
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Update placeholder based on the window width
-    if (windowWidth < 768) {
-      setTranslatedPlaceholder(placeholderShort);
-    } else {
-      setTranslatedPlaceholder(placeholder);
-    }
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [windowWidth, placeholder, placeholderShort]);
 
   const getGeolocation = () => {
     if (navigator.geolocation) {
@@ -195,13 +173,13 @@ export default function SearchBox({
           <Popover open={popoverOpen}>
             <PopoverTrigger asChild>
               <div className="flex justify-center items-center w-full rounded-full">
-                <div className="relative w-full justify-center items-center">
-                  <Search size={16} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <div className="relative w-full flex justify-center items-center">
+                  <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   <Input
                     autoFocus={false}
                     ref={inputRef}
                     type="search"
-                    placeholder={translatedPlaceholder}
+                    placeholder={placeholderShort}
                     className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
