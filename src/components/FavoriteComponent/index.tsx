@@ -10,23 +10,23 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Heart } from "lucide-react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { createFavoriteList, removeHomeFromFavoriteList, updateFavoriteList } from "@/app/[locale]/actions";
 import { HomeType } from "@/lib/validations";
-import { User } from "next-auth";
 import Image from "next/image";
 import CreateDialog from "./CreateDialog";
 import { ChevronLeft, Minus, Plus, List } from "lucide-react";
 import Link from "next/link";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { User } from "next-auth";
 
 interface Props {
-  home: HomeType & { isFavoritedByUser: boolean };
   user: User;
-  session: any;
+  setUser: (value: User) => void;
+  home: HomeType & { isFavoritedByUser: boolean };
 }
 
-export function FavoriteComponent({ home, user, session }: Props) {
+export function FavoriteComponent({ user, setUser, home }: Props) {
   const handleFavorite = () => {
     createFavoriteList(listName, home.id);
     setDialogOpen(false);
@@ -50,15 +50,24 @@ export function FavoriteComponent({ home, user, session }: Props) {
   const handleAddToList = async (listId: number) => {
     handleLoadingState(listId, true);
     await updateFavoriteList(listId, home.id);
+    const { isFavoritedByUser, ...homeWithoutFavoriteStatus } = home;
+
+    const updatedLists = user.favoritedLists.map((list) =>
+      list.id === listId ? { ...list, homes: [...list.homes, homeWithoutFavoriteStatus] } : list
+    );
+
+    setUser({ ...user, favoritedLists: updatedLists });
     handleLoadingState(listId, false);
-    session.update();
   };
 
   const handleRemoveFromList = async (listId: number) => {
     handleLoadingState(listId, true);
     await removeHomeFromFavoriteList(listId, home.id);
+    const updatedLists = user.favoritedLists.map((list) =>
+      list.id === listId ? { ...list, homes: list.homes.filter((h) => h.id !== home.id) } : list
+    );
+    setUser({ ...user, favoritedLists: updatedLists });
     handleLoadingState(listId, false);
-    session.update();
   };
 
   return (

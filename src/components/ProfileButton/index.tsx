@@ -40,8 +40,8 @@ interface Props {
 }
 
 export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
-  const { defaultCurrency, setDefaultCurrency, currencies } = useContext(LocaleContext);
-  const { user, session, headerValues } = useContext(QueryContext);
+  const { defaultCurrency, setDefaultCurrency, currencies, user, sessionLoading } = useContext(LocaleContext);
+  const { headerValues } = useContext(QueryContext);
   const router = useRouter();
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();
@@ -89,7 +89,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
                 <AvatarFallback>{user.name ? getInitials(user.name) : user.email[0]}</AvatarFallback>
               )}
             </Avatar>
-          ) : session.status !== "loading" ? (
+          ) : sessionLoading ? (
             <CircleUser width={24} height={24} strokeWidth={1.5} />
           ) : (
             <Skeleton className="h-6 w-6 rounded-full" />

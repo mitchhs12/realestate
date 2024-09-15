@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { User } from "next-auth";
 import { HomeType } from "@/lib/validations";
 import { FavoriteComponent } from "@/components/FavoriteComponent";
 import { Heart } from "lucide-react";
+import { useContext } from "react";
+import { LocaleContext } from "@/context/LocaleContext";
 
 interface Props {
   photos: string[];
@@ -14,22 +17,12 @@ interface Props {
   openModal?: (index: number) => void;
   handleFavorite?: () => void;
   hovering?: boolean;
-  user?: User | undefined;
-  session?: any;
   home: HomeType;
 }
 
-export default function ResizableCarousel({
-  photos,
-  title,
-  height,
-  rounded,
-  openModal,
-  hovering,
-  user,
-  session,
-  home,
-}: Props) {
+export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, home }: Props) {
+  const { user, setUser, sessionLoading } = useContext(LocaleContext);
+
   return (
     <Carousel className="h-full w-full">
       <CarouselContent>
@@ -61,7 +54,7 @@ export default function ResizableCarousel({
           </CarouselItem>
         ))}
       </CarouselContent>
-      {session?.status === "loading" ? (
+      {sessionLoading ? (
         <Heart
           strokeWidth={"1.5"}
           className={`flex shadow-lg absolute hover:cursor-pointer right-2 top-2 size-8 text-white animate-pulse fill-primary/40`}
@@ -69,7 +62,7 @@ export default function ResizableCarousel({
       ) : (
         user &&
         user.id !== home.ownerId && (
-          <FavoriteComponent user={user} home={home as HomeType & { isFavoritedByUser: boolean }} session={session} />
+          <FavoriteComponent user={user} setUser={setUser} home={home as HomeType & { isFavoritedByUser: boolean }} />
         )
       )}
       <CarouselPrevious className={`${hovering ? "flex" : "hidden"} absolute left-6 size-8`} />

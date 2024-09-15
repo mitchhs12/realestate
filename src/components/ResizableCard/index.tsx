@@ -2,12 +2,11 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeType, TypeObject } from "@/lib/validations";
 import { useContext, useEffect } from "react";
-import { LocaleContext } from "@/context/LocaleContext";
 import { useState } from "react";
 import Link from "next/link";
 import lookup from "country-code-lookup";
 import ResizableCarousel from "@/components/ResizableCarousel";
-import { QueryContext } from "@/context/QueryContext";
+import { LocaleContext } from "@/context/LocaleContext";
 import BrokenPrice from "@/components/BrokenPrice";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
@@ -41,7 +40,7 @@ export default function ResizableCard({
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { user, session } = useContext(QueryContext);
+  const { user, sessionLoading } = useContext(LocaleContext);
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
   const isMyProperties = path === "/my-properties";
@@ -80,14 +79,7 @@ export default function ResizableCard({
         setTitleUnderlined(false);
       }}
     >
-      <ResizableCarousel
-        photos={home.photos}
-        title={home.title!}
-        hovering={titleUnderlined}
-        user={user}
-        session={session}
-        home={home}
-      />
+      <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
         <div className="flex flex-col justify-center items-center w-full pt-2 gap-2 px-2 relative">
           <h3
@@ -112,7 +104,7 @@ export default function ResizableCard({
             )}
           </div>
           <div className="pt-1">
-            {session.status === "loading" ? (
+            {sessionLoading ? (
               <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
             ) : (
               <TooltipProvider>

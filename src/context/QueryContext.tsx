@@ -28,12 +28,6 @@ interface QueryContextProps {
   setRevealPrice: (value: boolean) => void;
   revealContact: boolean;
   setRevealContact: (value: boolean) => void;
-  user?: User;
-  session: {
-    update: UpdateSession;
-    data: Session | null;
-    status: "authenticated" | "unauthenticated" | "loading";
-  };
   priceRange: number[];
   setPriceRange: (value: number[]) => void;
   selectedTypes: string[];
@@ -108,12 +102,6 @@ const QueryContext = createContext<QueryContextProps>({
   setRevealPrice: () => {},
   revealContact: false,
   setRevealContact: () => {},
-  user: undefined,
-  session: {
-    update: async () => null,
-    data: null,
-    status: "loading",
-  },
   priceRange: [1, initialMaxPrice],
   setPriceRange: () => {},
   selectedTypes: [],
@@ -208,8 +196,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
   const [convertedPriceRange, setConvertedPriceRange] = useState<number[]>([]);
   const [isModalLocked, setIsModalLocked] = useState(false);
 
-  const session = useSession();
-  const user = session.data?.user;
   const pathname = usePathname();
 
   const handleAllFeatures = () => {
@@ -293,8 +279,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
         setRevealPrice,
         revealContact,
         setRevealContact,
-        user,
-        session,
         priceRange,
         setPriceRange,
         selectedTypes,

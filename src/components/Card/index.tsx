@@ -23,7 +23,7 @@ export default function Card({ home, isLoading }: Props) {
   const { defaultCurrency } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { session, user } = useContext(QueryContext);
+  const { user, sessionLoading } = useContext(LocaleContext);
 
   useEffect(() => {
     if (home && home.language) {
@@ -101,7 +101,7 @@ export default function Card({ home, isLoading }: Props) {
             )}
           </div>
           <div>
-            {session.status === "loading" ? (
+            {sessionLoading ? (
               <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
             ) : (
               <BrokenPrice

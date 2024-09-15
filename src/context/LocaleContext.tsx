@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { getCurrency } from "@/lib/utils";
 import { useChangeLocale } from "@/locales/client";
 import { getCurrencies } from "@/app/[locale]/sell/actions";
+import { User } from "next-auth";
 
 interface LocaleContextProps {
   defaultCurrency: CurrencyType;
@@ -14,6 +15,10 @@ interface LocaleContextProps {
   currencies: CurrencyType[];
   numerals: string;
   setNumerals: (value: string) => void;
+  user?: User;
+  setUser: (value: User) => void;
+  sessionLoading: boolean;
+  setSessionLoading: (value: boolean) => void;
 }
 
 const LocaleContext = createContext<LocaleContextProps>({
@@ -23,6 +28,10 @@ const LocaleContext = createContext<LocaleContextProps>({
   currencies: [],
   numerals: "en",
   setNumerals: () => {},
+  user: undefined,
+  setUser: () => {},
+  sessionLoading: true,
+  setSessionLoading: () => {},
 });
 
 interface LocaleProviderProps {
@@ -42,7 +51,16 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(startingCurrency);
   const [currencies, setCurrencies] = useState<CurrencyType[]>([startingCurrency]);
   const [numerals, setNumerals] = useState<string>(numeralMap[lang]);
+  const [user, setUser] = useState(session.data?.user);
+  const [sessionLoading, setSessionLoading] = useState(session.status === "loading");
   const defaultLanguage = lang || "en";
+
+  useEffect(() => {
+    if (session.data?.user) {
+      setUser(session.data?.user);
+    }
+    setSessionLoading(false);
+  }, [session]);
 
   useEffect(() => {
     const _getCurrency = async () => {
@@ -77,6 +95,10 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
         currencies,
         numerals,
         setNumerals,
+        user,
+        setUser,
+        sessionLoading,
+        setSessionLoading,
       }}
     >
       {children}
