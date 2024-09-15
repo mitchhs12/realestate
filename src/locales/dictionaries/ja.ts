@@ -42,7 +42,7 @@ export default {
         },
         "language": "言語",
         "my-properties": "私の財産",
-        "my-lists": "私のリスト",
+        "my-lists": "私のウィッシュリスト",
         "currency": "通貨",
         "settings": "設定",
         "exit": "保存して終了",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "すべて公開"
   },
   "my-lists": {
-    "title": "マイリスト",
-    "delete": "リストを削除"
+    "title": "私のウィッシュリスト",
+    "warning": "このウィッシュリストを削除してもよろしいですか?",
+    "action": "この操作は元に戻せません。",
+    "delete": "消去",
+    "cancel": "キャンセル",
+    "no-properties": "このリストにはまだプロパティが追加されていません。",
+    "modalTitle": "既存のウィッシュリスト",
+    "subtitle": "この物件を既存のウィッシュリストの 1 つに保存します。",
+    "create": "作成する",
+    "back": "戻る",
+    "manage": "管理",
+    "createTitle": "新しいリストを作成する",
+    "createSubtitle": "このプロパティを新しいリストに保存します。",
+    "name": "新しいリストの名前",
+    "placeholder": "お気に入り",
+    "createButton": "新しいリストに追加してください!",
+    "notUniqueWarning": "その名前のリストは既に存在します。"
   },
   "settings": {
     "title": "アカウント設定",

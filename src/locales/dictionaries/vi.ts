@@ -42,7 +42,7 @@ export default {
         },
         "language": "Ngôn ngữ",
         "my-properties": "Tài sản của tôi",
-        "my-lists": "Danh sách của tôi",
+        "my-lists": "Danh sách mong muốn của tôi",
         "currency": "Tiền tệ",
         "settings": "Cài đặt",
         "exit": "Lưu và thoát",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "Tất cả công cộng"
   },
   "my-lists": {
-    "title": "Danh sách của tôi",
-    "delete": "Xóa danh sách"
+    "title": "Danh sách mong muốn của tôi",
+    "warning": "Bạn có chắc chắn muốn xóa danh sách mong muốn này không?",
+    "action": "Không thể hoàn tác hành động này.",
+    "delete": "Xóa bỏ",
+    "cancel": "Hủy bỏ",
+    "no-properties": "Chưa có bất động sản nào được thêm vào danh sách này.",
+    "modalTitle": "Danh sách mong muốn hiện có",
+    "subtitle": "Lưu bất động sản này vào một trong những danh sách mong muốn hiện tại của bạn.",
+    "create": "Tạo nên",
+    "back": "Mặt sau",
+    "manage": "Quản lý",
+    "createTitle": "Tạo danh sách mới",
+    "createSubtitle": "Lưu thuộc tính này vào danh sách mới.",
+    "name": "Tên danh sách mới",
+    "placeholder": "Yêu thích",
+    "createButton": "Thêm vào danh sách mới!",
+    "notUniqueWarning": "Bạn đã có danh sách có tên đó."
   },
   "settings": {
     "title": "Cài đặt tài khoản",

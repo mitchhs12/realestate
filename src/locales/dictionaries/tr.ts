@@ -42,7 +42,7 @@ export default {
         },
         "language": "Dil",
         "my-properties": "Benim mülklerim",
-        "my-lists": "Listelerim",
+        "my-lists": "İstek listelerim",
         "currency": "Para birimi",
         "settings": "Ayarlar",
         "exit": "Kaydet ve çık",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "Tüm Kamu"
   },
   "my-lists": {
-    "title": "Listelerim",
-    "delete": "Listeyi Sil"
+    "title": "İstek Listelerim",
+    "warning": "Bu istek listesini silmek istediğinizden emin misiniz?",
+    "action": "Bu eylem geri alınamaz.",
+    "delete": "Silmek",
+    "cancel": "İptal etmek",
+    "no-properties": "Bu listeye henüz hiçbir mülk eklenmedi.",
+    "modalTitle": "Mevcut istek listeleri",
+    "subtitle": "Bu mülkü mevcut istek listelerinizden birine kaydedin.",
+    "create": "Yaratmak",
+    "back": "Geri",
+    "manage": "Üstesinden gelmek",
+    "createTitle": "Yeni bir liste oluştur",
+    "createSubtitle": "Bu mülkü yeni bir listeye kaydedin.",
+    "name": "Yeni listenin adı",
+    "placeholder": "Favoriler",
+    "createButton": "Yeni listeye ekle!",
+    "notUniqueWarning": "Zaten o isimde bir listeniz var."
   },
   "settings": {
     "title": "Hesap Ayarları",

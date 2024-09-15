@@ -39,5 +39,5 @@ export async function deleteFavoriteList(listId: number) {
     },
   });
 
-  revalidatePath("/my-lists");
+  revalidatePath("/my-wishlists");
 }

@@ -42,7 +42,7 @@
         },
         "language": "语言",
         "my-properties": "我的房产",
-        "my-lists": "我的列表",
+        "my-lists": "我的愿望清单",
         "currency": "货币",
         "settings": "设置",
         "exit": "保存并退出",
@@ -507,8 +507,23 @@
     "showAllText": "全部公开"
   },
   "my-lists": {
-    "title": "我的列表",
-    "delete": "删除列表"
+    "title": "我的愿望清单",
+    "warning": "您确定要删除该愿望清单吗？",
+    "action": "此操作无法撤消。",
+    "delete": "删除",
+    "cancel": "取消",
+    "no-properties": "尚未添加任何属性到此列表。",
+    "modalTitle": "现有愿望清单",
+    "subtitle": "将此房产保存至您现有的愿望清单之一。",
+    "create": "创造",
+    "back": "后退",
+    "manage": "管理",
+    "createTitle": "创建新列表",
+    "createSubtitle": "将此属性保存至新列表。",
+    "name": "新列表名称",
+    "placeholder": "收藏夹",
+    "createButton": "添加到新列表！",
+    "notUniqueWarning": "您已经有了一个同名的列表。"
   },
   "settings": {
     "title": "帐户设置",

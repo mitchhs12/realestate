@@ -42,7 +42,7 @@
         },
         "language": "Bahasa",
         "my-properties": "Properti saya",
-        "my-lists": "Daftar saya",
+        "my-lists": "Daftar keinginanku",
         "currency": "Mata uang",
         "settings": "Pengaturan",
         "exit": "Simpan dan keluar",
@@ -507,8 +507,23 @@
     "showAllText": "Semua Publik"
   },
   "my-lists": {
-    "title": "Daftar Saya",
-    "delete": "Hapus Daftar"
+    "title": "Daftar Keinginanku",
+    "warning": "Apakah Anda yakin ingin menghapus daftar keinginan ini?",
+    "action": "Tindakan ini tidak dapat dibatalkan.",
+    "delete": "Menghapus",
+    "cancel": "Membatalkan",
+    "no-properties": "Belum ada properti yang ditambahkan ke daftar ini.",
+    "modalTitle": "Daftar keinginan yang ada",
+    "subtitle": "Simpan properti ini ke salah satu daftar keinginan Anda yang ada.",
+    "create": "Membuat",
+    "back": "Kembali",
+    "manage": "Mengelola",
+    "createTitle": "Buat daftar baru",
+    "createSubtitle": "Simpan properti ini ke daftar baru.",
+    "name": "Nama daftar baru",
+    "placeholder": "Favorit",
+    "createButton": "Tambahkan ke daftar baru!",
+    "notUniqueWarning": "Anda sudah memiliki daftar dengan nama itu."
   },
   "settings": {
     "title": "Pengaturan Akun",

@@ -42,7 +42,7 @@
         },
         "language": "Idioma",
         "my-properties": "Mis propiedades",
-        "my-lists": "Mis listas",
+        "my-lists": "Mis listas de deseos",
         "currency": "Divisa",
         "settings": "Ajustes",
         "exit": "Guardar y salir",
@@ -507,8 +507,23 @@
     "showAllText": "Todo público"
   },
   "my-lists": {
-    "title": "Mis listas",
-    "delete": "Eliminar lista"
+    "title": "Mis listas de deseos",
+    "warning": "¿Estás seguro de que deseas eliminar esta lista de deseos?",
+    "action": "Esta acción no se puede deshacer.",
+    "delete": "Borrar",
+    "cancel": "Cancelar",
+    "no-properties": "Todavía no se han agregado propiedades a esta lista.",
+    "modalTitle": "Listas de deseos existentes",
+    "subtitle": "Guarde esta propiedad en una de sus listas de deseos existentes.",
+    "create": "Crear",
+    "back": "Atrás",
+    "manage": "Administrar",
+    "createTitle": "Crear una nueva lista",
+    "createSubtitle": "Guarde esta propiedad en una nueva lista.",
+    "name": "Nombre de la nueva lista",
+    "placeholder": "Favoritos",
+    "createButton": "¡Añadir a la nueva lista!",
+    "notUniqueWarning": "Ya tienes una lista con ese nombre."
   },
   "settings": {
     "title": "Configuraciones de la cuenta",

@@ -103,7 +103,7 @@ export async function getCheapest(): Promise<HomeType[] | (HomeType & { isFavori
   }
 }
 
-export async function createFavoriteList(name: string, homeId: number) {
+export async function createFavoriteList(name: string, homeId: number, url: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -127,11 +127,11 @@ export async function createFavoriteList(name: string, homeId: number) {
     console.error("Error creating favorite list:", error);
     throw new Error("Failed to create favorite list.");
   }
-  revalidatePath("/");
+  revalidatePath(url);
   return;
 }
 
-export async function updateFavoriteList(listId: number, homeId: number) {
+export async function updateFavoriteList(listId: number, homeId: number, url: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -156,11 +156,11 @@ export async function updateFavoriteList(listId: number, homeId: number) {
     console.error("Error updating favorite list:", error);
     throw new Error("Failed to update favorite list.");
   }
-  revalidatePath("/");
+  revalidatePath(url);
   return;
 }
 
-export async function removeHomeFromFavoriteList(listId: number, homeId: number) {
+export async function removeHomeFromFavoriteList(listId: number, homeId: number, url: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -185,7 +185,7 @@ export async function removeHomeFromFavoriteList(listId: number, homeId: number)
     console.error("Error removing home from favorite list:", error);
     throw new Error("Failed to remove home from favorite list.");
   }
-  revalidatePath("/");
+  revalidatePath(url);
   return;
 }
 

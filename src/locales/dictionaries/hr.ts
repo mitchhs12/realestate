@@ -42,7 +42,7 @@ export default {
         },
         "language": "Jezik",
         "my-properties": "Moja svojstva",
-        "my-lists": "Moje liste",
+        "my-lists": "Moje liste želja",
         "currency": "Valuta",
         "settings": "postavke",
         "exit": "Spremi i izađi",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "Sve javno"
   },
   "my-lists": {
-    "title": "Moji popisi",
-    "delete": "Izbriši popis"
+    "title": "Moje liste želja",
+    "warning": "Jeste li sigurni da želite izbrisati ovaj popis želja?",
+    "action": "Ova se radnja ne može poništiti.",
+    "delete": "Izbrisati",
+    "cancel": "Otkazati",
+    "no-properties": "Još nijedna nekretnina nije dodana na ovaj popis.",
+    "modalTitle": "Postojeće liste želja",
+    "subtitle": "Spremite ovu nekretninu na jednu od svojih postojećih lista želja.",
+    "create": "Stvoriti",
+    "back": "Nazad",
+    "manage": "Upravljati",
+    "createTitle": "Napravite novi popis",
+    "createSubtitle": "Spremite ovu nekretninu na novi popis.",
+    "name": "Naziv novog popisa",
+    "placeholder": "Favoriti",
+    "createButton": "Dodaj na novi popis!",
+    "notUniqueWarning": "Već imate popis s tim imenom."
   },
   "settings": {
     "title": "Postavke računa",

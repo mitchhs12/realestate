@@ -42,7 +42,7 @@ export default {
         },
         "language": "Sprache",
         "my-properties": "Meine Immobilien",
-        "my-lists": "Meine Listen",
+        "my-lists": "Meine Wunschlisten",
         "currency": "Währung",
         "settings": "Einstellungen",
         "exit": "Speichern und beenden",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "Alle öffentlich"
   },
   "my-lists": {
-    "title": "Meine Listen",
-    "delete": "Liste löschen"
+    "title": "Meine Wunschlisten",
+    "warning": "Sind Sie sicher, dass Sie diese Wunschliste löschen möchten?",
+    "action": "Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete": "Löschen",
+    "cancel": "Stornieren",
+    "no-properties": "Es wurden dieser Liste noch keine Immobilien hinzugefügt.",
+    "modalTitle": "Vorhandene Wunschlisten",
+    "subtitle": "Speichern Sie diese Immobilie in einer Ihrer bestehenden Wunschlisten.",
+    "create": "Erstellen",
+    "back": "Zurück",
+    "manage": "Verwalten",
+    "createTitle": "Erstellen einer neuen Liste",
+    "createSubtitle": "Speichern Sie diese Eigenschaft in einer neuen Liste.",
+    "name": "Name der neuen Liste",
+    "placeholder": "Favoriten",
+    "createButton": "Zur neuen Liste hinzufügen!",
+    "notUniqueWarning": "Sie haben bereits eine Liste mit diesem Namen."
   },
   "settings": {
     "title": "Kontoeinstellungen",

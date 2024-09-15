@@ -42,7 +42,7 @@ export default {
         },
         "language": "Taal",
         "my-properties": "My eiendomme",
-        "my-lists": "My lyste",
+        "my-lists": "My wenslyste",
         "currency": "Geldeenheid",
         "settings": "Instellings",
         "exit": "Stoor en gaan uit",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "Alle publiek"
   },
   "my-lists": {
-    "title": "My lyste",
-    "delete": "Vee Lys uit"
+    "title": "My wenslys",
+    "warning": "Is jy seker jy wil hierdie wenslys uitvee?",
+    "action": "Hierdie handeling kan nie ontdoen word nie.",
+    "delete": "Vee uit",
+    "cancel": "Kanselleer",
+    "no-properties": "Geen eiendomme is nog by hierdie lys gevoeg nie.",
+    "modalTitle": "Bestaande wenslyste",
+    "subtitle": "Stoor hierdie eiendom op een van jou bestaande wenslyste.",
+    "create": "Skep",
+    "back": "Terug",
+    "manage": "Bestuur",
+    "createTitle": "Skep 'n nuwe lys",
+    "createSubtitle": "Stoor hierdie eiendom na 'n nuwe lys.",
+    "name": "Naam van nuwe lys",
+    "placeholder": "Gunstelinge",
+    "createButton": "Voeg by nuwe lys!",
+    "notUniqueWarning": "Jy het reeds 'n lys met daardie naam."
   },
   "settings": {
     "title": "Rekeninginstellings",

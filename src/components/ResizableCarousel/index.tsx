@@ -21,7 +21,7 @@ interface Props {
 }
 
 export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, home }: Props) {
-  const { user, setUser, sessionLoading } = useContext(LocaleContext);
+  const { user, sessionLoading } = useContext(LocaleContext);
 
   return (
     <Carousel className="h-full w-full">
@@ -54,16 +54,8 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
           </CarouselItem>
         ))}
       </CarouselContent>
-      {sessionLoading ? (
-        <Heart
-          strokeWidth={"1.5"}
-          className={`flex shadow-lg absolute hover:cursor-pointer right-2 top-2 size-8 text-white animate-pulse fill-primary/40`}
-        />
-      ) : (
-        user &&
-        user.id !== home.ownerId && (
-          <FavoriteComponent user={user} setUser={setUser} home={home as HomeType & { isFavoritedByUser: boolean }} />
-        )
+      {user && user.id !== home.ownerId && (
+        <FavoriteComponent user={user} home={home as HomeType & { isFavoritedByUser: boolean }} />
       )}
       <CarouselPrevious className={`${hovering ? "flex" : "hidden"} absolute left-6 size-8`} />
       <CarouselNext className={`${hovering ? "flex" : "hidden"} absolute right-6 size-8 border-2`} />

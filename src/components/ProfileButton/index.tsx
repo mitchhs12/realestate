@@ -96,7 +96,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48 p-2" side="bottom" align="end">
+      <DropdownMenuContent className="w-52 p-2" side="bottom" align="end">
         {user ? (
           <>
             <DropdownMenuLabel>{user.name ? `${greeting} ${user.name.split(" ")[0]}!` : user.email}</DropdownMenuLabel>
@@ -114,7 +114,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
               <DropdownMenuItem
                 className="cursor-pointer flex items-center gap-2"
                 onClick={() => {
-                  router.push("/my-lists");
+                  router.push("/my-wishlists");
                 }}
               >
                 <Heart width={20} height={20} strokeWidth={1.25} />

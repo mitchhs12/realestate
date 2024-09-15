@@ -42,7 +42,7 @@ export default {
         },
         "language": "언어",
         "my-properties": "내 속성",
-        "my-lists": "내 목록",
+        "my-lists": "내 위시리스트",
         "currency": "통화",
         "settings": "설정",
         "exit": "저장하고 종료",
@@ -507,8 +507,23 @@ export default {
     "showAllText": "전체 공개"
   },
   "my-lists": {
-    "title": "내 목록",
-    "delete": "목록 삭제"
+    "title": "내 위시리스트",
+    "warning": "이 위시리스트를 삭제하시겠습니까?",
+    "action": "이 작업은 취소할 수 없습니다.",
+    "delete": "삭제",
+    "cancel": "취소",
+    "no-properties": "아직까지 이 목록에 추가된 속성이 없습니다.",
+    "modalTitle": "기존 위시리스트",
+    "subtitle": "기존 위시리스트 중 하나에 이 부동산을 저장하세요.",
+    "create": "만들다",
+    "back": "뒤쪽에",
+    "manage": "관리하다",
+    "createTitle": "새로운 목록을 만듭니다",
+    "createSubtitle": "이 속성을 새 목록에 저장합니다.",
+    "name": "새로운 목록의 이름",
+    "placeholder": "즐겨찾기",
+    "createButton": "새로운 목록에 추가하세요!",
+    "notUniqueWarning": "해당 이름의 목록이 이미 있습니다."
   },
   "settings": {
     "title": "계정 설정",
