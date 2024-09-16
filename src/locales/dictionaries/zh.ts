@@ -524,7 +524,9 @@ export default {
     "name": "新列表名称",
     "placeholder": "收藏夹",
     "createButton": "添加到新列表！",
-    "notUniqueWarning": "您已经有了一个同名的列表。"
+    "notUniqueWarning": "您已经有了一个同名的列表。",
+    "properties": "特性：",
+    "empty": "空的"
   },
   "settings": {
     "title": "帐户设置",

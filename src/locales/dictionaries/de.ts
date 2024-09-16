@@ -524,7 +524,9 @@ export default {
     "name": "Name der neuen Liste",
     "placeholder": "Favoriten",
     "createButton": "Zur neuen Liste hinzufügen!",
-    "notUniqueWarning": "Sie haben bereits eine Liste mit diesem Namen."
+    "notUniqueWarning": "Sie haben bereits eine Liste mit diesem Namen.",
+    "properties": "Eigenschaften:",
+    "empty": "Leer"
   },
   "settings": {
     "title": "Kontoeinstellungen",

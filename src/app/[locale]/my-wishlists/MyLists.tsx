@@ -18,6 +18,8 @@ export default async function MyLists({ user, title, typesObject }: Props) {
     cancel: t("cancel"),
     delete: t("delete"),
     noProperties: t("no-properties"),
+    properties: t("properties"),
+    empty: t("empty"),
   };
   return (
     <div className="flex flex-col max-w-8xl h-full w-full">

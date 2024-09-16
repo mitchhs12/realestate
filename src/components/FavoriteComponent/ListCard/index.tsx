@@ -32,13 +32,15 @@ interface Props {
     updatedAt: Date;
     homes: HomeType[];
   };
-  homeToBeFavorited?: HomeType & { isFavoritedByUser: boolean };
+  homeToBeFavorited?: HomeType;
   translations: {
     warning: string;
     action: string;
     cancel: string;
     delete: string;
     noProperties: string;
+    properties: string;
+    empty: string;
   };
 }
 
@@ -49,44 +51,39 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
   const { user, setUser } = useContext(LocaleContext);
   const pathname = usePathname();
 
-  const handleDelete = async (e: any, listId: number, user: User) => {
+  const handleDelete = async (listId: number, user: User) => {
+    setAlertOpen(false);
     setIsDeleting(true);
-    await deleteFavoriteList(listId);
-    const updatedLists = user.favoritedLists.filter((list) => list.id !== listId);
-    setUser({ ...user, favoritedLists: updatedLists });
+    const status = await deleteFavoriteList(listId, pathname);
+    if (status) {
+      const updatedLists = user.favoritedLists.filter((list) => list.id !== listId);
+      setUser({ ...user, favoritedLists: updatedLists });
+    }
     setIsDeleting(false);
   };
 
-  const handleAddToList = async (
-    e: any,
-    listId: number,
-    home: HomeType & { isFavoritedByUser: boolean },
-    user: User
-  ) => {
+  const handleAddToList = async (e: any, listId: number, home: HomeType, user: User) => {
     setIsLoading(true);
-    await updateFavoriteList(listId, home.id, pathname);
-    const { isFavoritedByUser, ...homeWithoutFavoriteStatus } = home;
+    const status = await updateFavoriteList(listId, home.id, pathname);
 
-    const updatedLists = user.favoritedLists.map((list) =>
-      list.id === listId ? { ...list, homes: [...list.homes, homeWithoutFavoriteStatus] } : list
-    );
-
-    setUser({ ...user, favoritedLists: updatedLists });
+    if (status) {
+      const updatedLists = user.favoritedLists.map((list) =>
+        list.id === listId ? { ...list, homes: [...list.homes, home] } : list
+      );
+      setUser({ ...user, favoritedLists: updatedLists });
+    }
     setIsLoading(false);
   };
 
-  const handleRemoveFromList = async (
-    e: any,
-    listId: number,
-    home: HomeType & { isFavoritedByUser: boolean },
-    user: User
-  ) => {
+  const handleRemoveFromList = async (e: any, listId: number, home: HomeType, user: User) => {
     setIsLoading(true);
-    await removeHomeFromFavoriteList(listId, home.id, pathname);
-    const updatedLists = user.favoritedLists.map((list) =>
-      list.id === listId ? { ...list, homes: list.homes.filter((h) => h.id !== home.id) } : list
-    );
-    setUser({ ...user, favoritedLists: updatedLists });
+    const status = await removeHomeFromFavoriteList(listId, home.id, pathname);
+    if (status) {
+      const updatedLists = user.favoritedLists.map((list) =>
+        list.id === listId ? { ...list, homes: list.homes.filter((h) => h.id !== home.id) } : list
+      );
+      setUser({ ...user, favoritedLists: updatedLists });
+    }
     setIsLoading(false);
   };
 
@@ -156,7 +153,9 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
             <div className="flex flex-col w-full items-start">
               <h1 className="font-medium">{list.name}</h1>
               <h3 className="text-sm text-muted-foreground">
-                {list.homes.length === 0 ? "Empty" : `Properties: ${list.homes.length}`}
+                {list.homes.length === 0
+                  ? translations.empty
+                  : `${translations.properties} ${new Intl.NumberFormat().format(list.homes.length)}`}
               </h3>{" "}
             </div>
             <div className="flex h-full justify-end items-center">
@@ -176,7 +175,12 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
                     {isDeleting ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Trash2 size={20} />}
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent>
+                <AlertDialogContent
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                  }}
+                >
                   <AlertDialogHeader>
                     <AlertDialogTitle>{translations.warning}</AlertDialogTitle>
                     <AlertDialogDescription>{translations.action}</AlertDialogDescription>
@@ -185,10 +189,8 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
                     <AlertDialogCancel>{translations.cancel}</AlertDialogCancel>
                     <AlertDialogAction
                       variant={"destructive"}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        handleDelete(e, list.id, user!);
+                      onClick={() => {
+                        handleDelete(list.id, user!);
                       }}
                     >
                       {translations.delete}

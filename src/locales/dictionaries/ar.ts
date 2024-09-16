@@ -524,7 +524,9 @@ export default {
     "name": "اسم القائمة الجديدة",
     "placeholder": "المفضلة",
     "createButton": "أضف إلى القائمة الجديدة!",
-    "notUniqueWarning": "لديك بالفعل قائمة بهذا الاسم."
+    "notUniqueWarning": "لديك بالفعل قائمة بهذا الاسم.",
+    "properties": "ملكيات:",
+    "empty": "فارغ"
   },
   "settings": {
     "title": "إعدادات الحساب",

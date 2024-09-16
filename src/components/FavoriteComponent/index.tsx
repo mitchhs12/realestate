@@ -11,7 +11,7 @@ import DialogContentComponent from "@/components/FavoriteComponent/DialogContent
 
 interface Props {
   user: User;
-  home: HomeType & { isFavoritedByUser: boolean };
+  home: HomeType;
 }
 
 export function FavoriteComponent({ user, home }: Props) {
@@ -19,6 +19,7 @@ export function FavoriteComponent({ user, home }: Props) {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [existingDialog, setExistingDialog] = useState(true);
+  const isFavorited = user.favoritedLists.some((list) => list.homes.some((h) => h.id === home.id));
 
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -29,7 +30,7 @@ export function FavoriteComponent({ user, home }: Props) {
             setDialogOpen(true);
             setExistingDialog(true);
           }}
-          className={`flex shadow-lg absolute hover:cursor-pointer right-2 top-2 size-8 ${dialogOpen && "animate-pulse fill-primary"} text-white ${home.isFavoritedByUser && "fill-pink-500"} hover:fill-pink-500`}
+          className={`flex shadow-lg absolute hover:cursor-pointer right-2 top-2 size-8 ${dialogOpen && "animate-pulse fill-primary"} text-white ${isFavorited && "fill-pink-500"} hover:fill-pink-500`}
         />
       </DialogTrigger>
       <DialogContent className="w-[85%] max-w-5xl h-full max-h-[540px] rounded-md p-0" close={false}>

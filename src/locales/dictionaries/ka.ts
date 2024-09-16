@@ -524,7 +524,9 @@ export default {
     "name": "ახალი სიის სახელი",
     "placeholder": "რჩეულები",
     "createButton": "დაამატეთ ახალ სიას!",
-    "notUniqueWarning": "თქვენ უკვე გაქვთ სია ამ სახელით."
+    "notUniqueWarning": "თქვენ უკვე გაქვთ სია ამ სახელით.",
+    "properties": "თვისებები:",
+    "empty": "ცარიელი"
   },
   "settings": {
     "title": "ანგარიშის პარამეტრები",

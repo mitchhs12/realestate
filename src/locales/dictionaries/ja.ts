@@ -524,7 +524,9 @@ export default {
     "name": "新しいリストの名前",
     "placeholder": "お気に入り",
     "createButton": "新しいリストに追加してください!",
-    "notUniqueWarning": "その名前のリストは既に存在します。"
+    "notUniqueWarning": "その名前のリストは既に存在します。",
+    "properties": "プロパティ:",
+    "empty": "空の"
   },
   "settings": {
     "title": "アカウント設定",

@@ -524,7 +524,9 @@
     "name": "Nom de la nouvelle liste",
     "placeholder": "Favoris",
     "createButton": "Ajouter à une nouvelle liste !",
-    "notUniqueWarning": "Vous avez déjà une liste avec ce nom."
+    "notUniqueWarning": "Vous avez déjà une liste avec ce nom.",
+    "properties": "Propriétés:",
+    "empty": "Vide"
   },
   "settings": {
     "title": "Paramètres du compte",

@@ -524,7 +524,9 @@ export default {
     "name": "Naam van nuwe lys",
     "placeholder": "Gunstelinge",
     "createButton": "Voeg by nuwe lys!",
-    "notUniqueWarning": "Jy het reeds 'n lys met daardie naam."
+    "notUniqueWarning": "Jy het reeds 'n lys met daardie naam.",
+    "properties": "Eienskappe:",
+    "empty": "Leeg"
   },
   "settings": {
     "title": "Rekeninginstellings",

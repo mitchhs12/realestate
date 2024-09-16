@@ -524,7 +524,9 @@ export default {
     "name": "Yeni listenin adı",
     "placeholder": "Favoriler",
     "createButton": "Yeni listeye ekle!",
-    "notUniqueWarning": "Zaten o isimde bir listeniz var."
+    "notUniqueWarning": "Zaten o isimde bir listeniz var.",
+    "properties": "Özellikler:",
+    "empty": "Boş"
   },
   "settings": {
     "title": "Hesap Ayarları",

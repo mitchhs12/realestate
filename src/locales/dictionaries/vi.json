@@ -524,7 +524,9 @@
     "name": "Tên danh sách mới",
     "placeholder": "Yêu thích",
     "createButton": "Thêm vào danh sách mới!",
-    "notUniqueWarning": "Bạn đã có danh sách có tên đó."
+    "notUniqueWarning": "Bạn đã có danh sách có tên đó.",
+    "properties": "Của cải:",
+    "empty": "Trống"
   },
   "settings": {
     "title": "Cài đặt tài khoản",

@@ -15,7 +15,7 @@ interface Props {
   existingDialog: boolean;
   setExistingDialog: (value: boolean) => void;
   user: User;
-  home: HomeType & { isFavoritedByUser: boolean };
+  home: HomeType;
 }
 
 export default function DialogContentComponent({ existingDialog, setExistingDialog, user, home }: Props) {
@@ -63,6 +63,8 @@ export default function DialogContentComponent({ existingDialog, setExistingDial
                 cancel: t("cancel"),
                 delete: t("delete"),
                 noProperties: t("no-properties"),
+                properties: t("properties"),
+                empty: t("empty"),
               }}
             />
           ))}

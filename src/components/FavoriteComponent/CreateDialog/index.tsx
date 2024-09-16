@@ -13,7 +13,7 @@ import { User } from "next-auth";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface Props {
-  home: HomeType & { isFavoritedByUser: boolean };
+  home: HomeType;
   translations: {
     createTitle: string;
     createSubtitle: string;
@@ -40,23 +40,24 @@ export default function CreateDialog({ home, translations, setExistingDialog }: 
   const handleCreate = async (user: User) => {
     setIsLoading(true);
     const newListId = await createFavoriteList(listName, home.id, pathname);
-    const { isFavoritedByUser, ...homeWithoutFavoriteStatus } = home;
-    setUser({
-      ...user,
-      favoritedLists: [
-        ...user.favoritedLists,
-        {
-          id: newListId,
-          name: listName,
-          userId: user.id as string,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          homes: [homeWithoutFavoriteStatus],
-        },
-      ],
-    });
-    setIsLoading(false);
+    newListId &&
+      setUser({
+        ...user,
+        favoritedLists: [
+          ...user.favoritedLists,
+          {
+            id: newListId,
+            name: listName,
+            userId: user.id as string,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            homes: [home],
+          },
+        ],
+      });
     setExistingDialog(true);
+
+    setIsLoading(false);
   };
 
   return (

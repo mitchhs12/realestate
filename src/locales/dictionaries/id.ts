@@ -524,7 +524,9 @@ export default {
     "name": "Nama daftar baru",
     "placeholder": "Favorit",
     "createButton": "Tambahkan ke daftar baru!",
-    "notUniqueWarning": "Anda sudah memiliki daftar dengan nama itu."
+    "notUniqueWarning": "Anda sudah memiliki daftar dengan nama itu.",
+    "properties": "Properti:",
+    "empty": "Kosong"
   },
   "settings": {
     "title": "Pengaturan Akun",

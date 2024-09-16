@@ -524,7 +524,9 @@ export default {
     "name": "Naziv novog popisa",
     "placeholder": "Favoriti",
     "createButton": "Dodaj na novi popis!",
-    "notUniqueWarning": "Već imate popis s tim imenom."
+    "notUniqueWarning": "Već imate popis s tim imenom.",
+    "properties": "Svojstva:",
+    "empty": "Prazan"
   },
   "settings": {
     "title": "Postavke računa",

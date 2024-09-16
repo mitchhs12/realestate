@@ -524,7 +524,9 @@
     "name": "새로운 목록의 이름",
     "placeholder": "즐겨찾기",
     "createButton": "새로운 목록에 추가하세요!",
-    "notUniqueWarning": "해당 이름의 목록이 이미 있습니다."
+    "notUniqueWarning": "해당 이름의 목록이 이미 있습니다.",
+    "properties": "속성:",
+    "empty": "비어 있는"
   },
   "settings": {
     "title": "계정 설정",
