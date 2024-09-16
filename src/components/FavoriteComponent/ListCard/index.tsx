@@ -45,6 +45,7 @@ interface Props {
 export default function ListCard({ list, homeToBeFavorited, translations }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [alertOpen, setAlertOpen] = useState<boolean>(false);
   const { user, setUser } = useContext(LocaleContext);
   const pathname = usePathname();
 
@@ -159,13 +160,18 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
               </h3>{" "}
             </div>
             <div className="flex h-full justify-end items-center">
-              <AlertDialog>
+              <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
                 <AlertDialogTrigger asChild>
                   <Button
                     className="flex-grow"
                     disabled={isDeleting || isLoading}
                     variant={"destructive"}
                     size={"icon"}
+                    onClick={(e) => {
+                      setAlertOpen(true);
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }}
                   >
                     {isDeleting ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Trash2 size={20} />}
                   </Button>

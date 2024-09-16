@@ -21,8 +21,8 @@ export default function List({
           const updatedHome = { ...home, isFavoritedByUser: true };
           const matchingTypes = findMatching(types, home, "type");
           return (
-            <div className="shadow-lg dark:shadow-white/10 rounded-lg">
-              <ResizableCard key={home.id} home={updatedHome} types={matchingTypes} />
+            <div key={home.id} className="shadow-lg dark:shadow-white/10 rounded-lg">
+              <ResizableCard home={updatedHome} types={matchingTypes} />
             </div>
           );
         })}
