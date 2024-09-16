@@ -33,25 +33,39 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   adapter: PrismaAdapter(prisma) as Adapter,
   callbacks: {
-    async session({ session, user }) {
-      const dbUser = await prisma.user.findUnique({
-        where: { id: user.id },
-        include: {
-          favoritedLists: {
-            include: {
-              homes: true, // Include homes in the favorite lists
-            },
-          },
-          homes: true, // Include homes owned by the user
-        },
-      });
+    session({ session, user }) {
+      // Return basic user information synchronously first
       session.user.role = user.role;
       session.user.phoneNumber = user.phoneNumber as string | null;
       session.user.currency = user.currency as string;
       session.user.language = user.language as string;
-      session.user.favoritedLists = dbUser?.favoritedLists || [];
-      session.user.homes = dbUser?.homes || [];
-      return session;
+
+      // Now fetch relational data asynchronously (favoritedLists and homes)
+      return prisma.user
+        .findUnique({
+          where: { id: user.id },
+          include: {
+            favoritedLists: {
+              include: {
+                homes: true,
+              },
+            },
+            homes: true, // Include homes owned by the user
+          },
+        })
+        .then((dbUser) => {
+          // Attach favoritedLists and homes to the session after fetching them
+          session.user.favoritedLists = dbUser?.favoritedLists || [];
+          session.user.homes = dbUser?.homes || [];
+          return session; // Return the session with all the user data
+        })
+        .catch((error) => {
+          console.error("Error fetching relational user data:", error);
+          // Return session without relational data in case of an error
+          session.user.favoritedLists = [];
+          session.user.homes = [];
+          return session;
+        });
     },
   },
   providers,

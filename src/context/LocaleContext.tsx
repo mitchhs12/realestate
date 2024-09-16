@@ -59,10 +59,11 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   useEffect(() => {
     if (session.data?.user) {
       setUser(session.data?.user);
-    } else {
+      setSessionUnauthenticated(false);
+      setSessionLoading(false);
+    } else if (session.status === "unauthenticated") {
       setSessionUnauthenticated(true);
     }
-    setSessionLoading(false);
   }, [session]);
 
   useEffect(() => {

@@ -40,7 +40,8 @@ interface Props {
 }
 
 export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
-  const { defaultCurrency, setDefaultCurrency, currencies, user, sessionLoading } = useContext(LocaleContext);
+  const { defaultCurrency, setDefaultCurrency, currencies, user, sessionLoading, sessionUnauthenticated } =
+    useContext(LocaleContext);
   const { headerValues } = useContext(QueryContext);
   const router = useRouter();
   const { setTheme } = useTheme();
@@ -81,18 +82,21 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
       <DropdownMenuTrigger asChild>
         <Button className="h-12" variant="outline">
           <Menu width={20} height={20} strokeWidth={1.75} className="hidden sm:flex mr-2 ml-1" />
-          {user && user.email ? (
-            <Avatar className="h-6 w-6">
-              {user.image ? (
-                <AvatarImage src={user.image} alt={user.name ? user.name : user.email} />
-              ) : (
-                <AvatarFallback>{user.name ? getInitials(user.name) : user.email[0]}</AvatarFallback>
-              )}
-            </Avatar>
+          {sessionUnauthenticated ? (
+            <CircleUser width={24} height={24} strokeWidth={1.5} />
           ) : sessionLoading ? (
             <Skeleton className="h-6 w-6 rounded-full" />
           ) : (
-            <CircleUser width={24} height={24} strokeWidth={1.5} />
+            user &&
+            user.email && (
+              <Avatar className="h-6 w-6">
+                {user.image ? (
+                  <AvatarImage src={user.image} alt={user.name ? user.name : user.email} />
+                ) : (
+                  <AvatarFallback>{user.name ? getInitials(user.name) : user.email[0]}</AvatarFallback>
+                )}
+              </Avatar>
+            )
           )}
         </Button>
       </DropdownMenuTrigger>

@@ -5,6 +5,38 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { HomeType } from "@/lib/validations";
 
+export async function getUserData(): Promise<any> {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    throw new Error("User not found");
+  }
+
+  const user = session.user;
+
+  try {
+    const dbUser = await prisma.user.findUnique({
+      where: { id: user.id },
+      include: {
+        favoritedLists: {
+          include: {
+            homes: true,
+          },
+        },
+        homes: true,
+      },
+    });
+
+    return {
+      favoritedLists: dbUser?.favoritedLists || [],
+      homes: dbUser?.homes || [],
+    };
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+}
+
 export async function getRecommended(): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
