@@ -32,8 +32,8 @@ export default function StickyPrice({
   contactButton,
 }: Props) {
   const { home } = useContext(HomeContext);
-  const { defaultCurrency, currencies } = useContext(LocaleContext);
-  const { openLogInModal, isModalOpen, revealPrice, setRevealPrice, user, session } = useContext(QueryContext);
+  const { defaultCurrency, currencies, sessionLoading, user } = useContext(LocaleContext);
+  const { openLogInModal, isModalOpen, revealPrice, setRevealPrice } = useContext(QueryContext);
   const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
@@ -73,7 +73,7 @@ export default function StickyPrice({
             </span>
           </div>
         </div>
-        {session.status === "loading" ? (
+        {sessionLoading ? (
           <Skeleton className="w-full h-9 md:h-10 lg:h-12" />
         ) : (
           <div className="flex w-full justify-center gap-4">

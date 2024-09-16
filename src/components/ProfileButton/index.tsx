@@ -90,9 +90,9 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
               )}
             </Avatar>
           ) : sessionLoading ? (
-            <CircleUser width={24} height={24} strokeWidth={1.5} />
-          ) : (
             <Skeleton className="h-6 w-6 rounded-full" />
+          ) : (
+            <CircleUser width={24} height={24} strokeWidth={1.5} />
           )}
         </Button>
       </DropdownMenuTrigger>

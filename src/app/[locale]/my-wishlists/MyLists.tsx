@@ -1,6 +1,7 @@
 import { User } from "next-auth";
 import ListCard from "@/components/FavoriteComponent/ListCard";
 import { getScopedI18n } from "@/locales/server";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   user: User;
@@ -27,7 +28,7 @@ export default async function MyLists({ user, title, typesObject }: Props) {
       </div>
       <div className="px-8 pb-4 overflow-y-auto grid grid-cols-1 2xs:grid-cols-1 grid-rows-2 w-full h-full xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-y-12 gap-x-6">
         {user.favoritedLists.map((list) => {
-          return <ListCard list={list} translations={translations} />;
+          return <ListCard key={list.id} list={list} translations={translations} />;
         })}
       </div>
     </div>

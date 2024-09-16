@@ -25,6 +25,7 @@ export default {
       },
       "articles": "文章",
       "map": "查看地图",
+      "list": "返回愿望清单",
       "construction": "该网站正在建设中。",
       "construction-sub": "请创建一个帐户，准备就绪后我们会向您发送电子邮件。",
       "sell-button-big": "出售房产",

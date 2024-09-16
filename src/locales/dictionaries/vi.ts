@@ -24,7 +24,8 @@ export default {
         "features": "Hiển thị cho tôi các thuộc tính với"
       },
       "articles": "Bài viết",
-      "map": "Xem trên bản đồ",
+      "map": "Xem trong bản đồ",
+      "list": "Quay lại danh sách mong muốn",
       "construction": "Trang web này đang được xây dựng.",
       "construction-sub": "Vui lòng tạo một tài khoản và chúng tôi sẽ gửi cho bạn email khi tài khoản đã sẵn sàng.",
       "sell-button-big": "Bán Bất Động Sản",

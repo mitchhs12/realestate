@@ -18,7 +18,7 @@ interface LocaleContextProps {
   user?: User;
   setUser: (value: User) => void;
   sessionLoading: boolean;
-  setSessionLoading: (value: boolean) => void;
+  sessionUnauthenticated: boolean;
 }
 
 const LocaleContext = createContext<LocaleContextProps>({
@@ -31,7 +31,7 @@ const LocaleContext = createContext<LocaleContextProps>({
   user: undefined,
   setUser: () => {},
   sessionLoading: true,
-  setSessionLoading: () => {},
+  sessionUnauthenticated: true,
 });
 
 interface LocaleProviderProps {
@@ -52,12 +52,15 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   const [currencies, setCurrencies] = useState<CurrencyType[]>([startingCurrency]);
   const [numerals, setNumerals] = useState<string>(numeralMap[lang]);
   const [user, setUser] = useState(session.data?.user);
-  const [sessionLoading, setSessionLoading] = useState(session.status === "loading");
+  const [sessionLoading, setSessionLoading] = useState(true);
+  const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
   const defaultLanguage = lang || "en";
 
   useEffect(() => {
     if (session.data?.user) {
       setUser(session.data?.user);
+    } else {
+      setSessionUnauthenticated(true);
     }
     setSessionLoading(false);
   }, [session]);
@@ -98,7 +101,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
         user,
         setUser,
         sessionLoading,
-        setSessionLoading,
+        sessionUnauthenticated,
       }}
     >
       {children}

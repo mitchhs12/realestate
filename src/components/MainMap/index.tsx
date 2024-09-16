@@ -82,8 +82,8 @@ export default function MapComponent({
   const { resolvedTheme: theme } = useTheme();
   const [numClusters, setNumClusters] = useState(0);
   const [boundsTimeout, setBoundsTimeout] = useState<NodeJS.Timeout | null>(null);
-  const { currentHome, query, user } = useContext(QueryContext);
-  const { defaultCurrency } = useContext(LocaleContext);
+  const { currentHome, query } = useContext(QueryContext);
+  const { defaultCurrency, user } = useContext(LocaleContext);
 
   const areBoundsEqual = (bounds1: BoundsType | null, bounds2: BoundsType | null): boolean => {
     if (bounds1 === bounds2) return true;

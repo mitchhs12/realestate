@@ -112,7 +112,7 @@ export async function createFavoriteList(name: string, homeId: number, url: stri
   }
 
   try {
-    await prisma.favoriteList.create({
+    const favoriteList = await prisma.favoriteList.create({
       data: {
         name,
         userId,
@@ -122,13 +122,14 @@ export async function createFavoriteList(name: string, homeId: number, url: stri
           },
         },
       },
+      select: { id: true },
     });
+    revalidatePath(url);
+    return favoriteList.id;
   } catch (error) {
     console.error("Error creating favorite list:", error);
     throw new Error("Failed to create favorite list.");
   }
-  revalidatePath(url);
-  return;
 }
 
 export async function updateFavoriteList(listId: number, homeId: number, url: string) {

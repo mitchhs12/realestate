@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   title: "Specific List",
 };
 
-export default async function Page({ params: { locale } }: { params: { locale: string } }) {
-  setStaticParamsLocale(locale);
+export default async function Page({ params }: { params: { locale: string; listId: number } }) {
+  setStaticParamsLocale(params.locale);
 
   const session = await getSession();
   const user = session?.user;
 
   if (!user) {
     try {
-      return <LockedLogin locale={locale} />;
+      return <LockedLogin locale={params.locale} />;
     } catch (error) {
       console.error("Failed to render LockedLogin component:", error);
       redirect("/");
@@ -33,9 +33,10 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       translation: t(`options.${index}` as keyof typeof t),
     }));
 
+    const list = user.favoritedLists.find((list: any) => list.id === Number(params.listId));
     return (
       <div className="flex flex-col items-center h-full">
-        <List user={user} typesObject={typesObject} />
+        <List list={list} types={typesObject} />
       </div>
     );
   }

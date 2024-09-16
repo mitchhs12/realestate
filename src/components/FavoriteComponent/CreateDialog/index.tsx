@@ -9,6 +9,8 @@ import { HomeType } from "@/lib/validations";
 import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
+import { User } from "next-auth";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface Props {
   home: HomeType & { isFavoritedByUser: boolean };
@@ -20,21 +22,41 @@ interface Props {
     createButton: string;
     notUniqueWarning: string;
   };
+  setExistingDialog: (value: boolean) => void;
 }
 
-export default function CreateDialog({ home, translations }: Props) {
+export default function CreateDialog({ home, translations, setExistingDialog }: Props) {
   const pathname = usePathname();
-  const { user } = useContext(LocaleContext);
+  const { user, setUser } = useContext(LocaleContext);
   const [listName, setListName] = useState("");
   const [nameNotUnique, setNameNotUnique] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const updateName = (value: string) => {
     setListName(value);
     user?.favoritedLists.some((l) => l.name === value) ? setNameNotUnique(true) : setNameNotUnique(false);
   };
 
-  const handleFavorite = () => {
-    createFavoriteList(listName, home.id, pathname);
+  const handleCreate = async (user: User) => {
+    setIsLoading(true);
+    const newListId = await createFavoriteList(listName, home.id, pathname);
+    const { isFavoritedByUser, ...homeWithoutFavoriteStatus } = home;
+    setUser({
+      ...user,
+      favoritedLists: [
+        ...user.favoritedLists,
+        {
+          id: newListId,
+          name: listName,
+          userId: user.id as string,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          homes: [homeWithoutFavoriteStatus],
+        },
+      ],
+    });
+    setIsLoading(false);
+    setExistingDialog(true);
   };
 
   return (
@@ -53,7 +75,7 @@ export default function CreateDialog({ home, translations }: Props) {
               type="text"
               placeholder={translations.placeholder}
               value={listName}
-              maxLength={50}
+              maxLength={30}
               onChange={(e) => {
                 updateName(e.target.value);
               }}
@@ -63,8 +85,12 @@ export default function CreateDialog({ home, translations }: Props) {
         </div>
         <DialogFooter className="w-full h-full">
           <div className="flex flex-col items-center justify-end gap-3 w-full">
-            <Button disabled={nameNotUnique} className="max-w-[600px] w-full" onClick={handleFavorite}>
-              {translations.createButton}
+            <Button
+              disabled={nameNotUnique || isLoading}
+              className="max-w-[600px] w-full"
+              onClick={() => user && handleCreate(user)}
+            >
+              {isLoading ? <ReloadIcon className="animate-spin h-5 w-5" /> : translations.createButton}
             </Button>
             {nameNotUnique && <p className="text-red-500 text-center">{translations.notUniqueWarning}</p>}
           </div>

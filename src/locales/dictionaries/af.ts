@@ -24,7 +24,8 @@ export default {
         "features": "Wys my eiendomme met"
       },
       "articles": "Artikels",
-      "map": "Bekyk op kaart",
+      "map": "Bekyk in kaart",
+      "list": "Terug na wenslys",
       "construction": "Hierdie webwerf is onder konstruksie.",
       "construction-sub": "Skep asseblief 'n rekening, en ons sal vir jou 'n e-pos stuur wanneer dit gereed is.",
       "sell-button-big": "Verkoop Eiendom",

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { HomeType } from "@/lib/validations";
 import { FavoriteComponent } from "@/components/FavoriteComponent";
-import { Heart } from "lucide-react";
 import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 

@@ -25,6 +25,7 @@ export default {
       },
       "articles": "Artículos",
       "map": "Ver en el mapa",
+      "list": "Volver a listas de deseos",
       "construction": "Este sitio está en construcción.",
       "construction-sub": "Cree una cuenta y le enviaremos un correo electrónico cuando esté lista.",
       "sell-button-big": "Vender propiedad",

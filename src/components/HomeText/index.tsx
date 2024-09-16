@@ -101,8 +101,6 @@ export default function HomeText({
     revealContact,
     setRevealContact,
     isModalOpen,
-    session,
-    user,
   } = useContext(QueryContext);
   const {
     home,
@@ -117,7 +115,8 @@ export default function HomeText({
     countryName,
   } = useContext(HomeContext);
 
-  const { defaultCurrency, currencies, numerals, defaultLanguage } = useContext(LocaleContext);
+  const { defaultCurrency, currencies, numerals, defaultLanguage, sessionLoading, sessionUnauthenticated, user } =
+    useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
   const [copiedField, setCopiedField] = useState<string | null>(null);
@@ -312,7 +311,7 @@ export default function HomeText({
             </CardHeader>
 
             <CardContent className="flex flex-col gap-3">
-              {session.status === "loading" ? (
+              {sessionLoading ? (
                 <div className="flex justify-center w-full">
                   <Skeleton className="h-10 md:h-11 lg:h-12 w-8/12" />
                 </div>
@@ -331,7 +330,7 @@ export default function HomeText({
                   {originalPrice} ({home.currency})
                 </span>
                 {originalCurrencyRate && home.currency ? (
-                  session.status === "loading" ? (
+                  sessionLoading ? (
                     <div className="flex justify-center w-full">
                       <Skeleton className="items-center h-8 md:h-9 lg:h-9 w-7/12" />
                     </div>
@@ -365,28 +364,29 @@ export default function HomeText({
                   </span>
                 </div>
               </div>
-              {session.status === ("unauthenticated" || "loading") && (
-                <div className="flex items-center justify-center mt-4">
-                  <Button
-                    onClick={() => {
-                      user ? setRevealPrice(!revealPrice) : openLogInModal();
-                    }}
-                    variant={"default"}
-                    className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
-                  >
-                    <div className="flex gap-3 justify-center text-lg items-center">
-                      {revealPrice || isModalOpen ? (
-                        <EyeOpenIcon className="w-5 h-5" />
-                      ) : (
-                        <EyeClosedIcon className="w-5 h-5" />
-                      )}
-                      <span className="text-xs md:text-sm lg:text-base">{`${
-                        revealPrice ? hidePrice : showPrice
-                      }`}</span>
-                    </div>
-                  </Button>
-                </div>
-              )}
+              {sessionLoading ||
+                (sessionUnauthenticated && (
+                  <div className="flex items-center justify-center mt-4">
+                    <Button
+                      onClick={() => {
+                        user ? setRevealPrice(!revealPrice) : openLogInModal();
+                      }}
+                      variant={"default"}
+                      className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
+                    >
+                      <div className="flex gap-3 justify-center text-lg items-center">
+                        {revealPrice || isModalOpen ? (
+                          <EyeOpenIcon className="w-5 h-5" />
+                        ) : (
+                          <EyeClosedIcon className="w-5 h-5" />
+                        )}
+                        <span className="text-xs md:text-sm lg:text-base">{`${
+                          revealPrice ? hidePrice : showPrice
+                        }`}</span>
+                      </div>
+                    </Button>
+                  </div>
+                ))}
             </CardContent>
           </Card>
           <Card className="w-full max-w-xs shadow-lg">

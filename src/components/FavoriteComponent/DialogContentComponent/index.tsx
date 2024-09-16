@@ -31,7 +31,7 @@ export default function DialogContentComponent({ existingDialog, setExistingDial
   };
 
   return user.favoritedLists.length === 0 ? (
-    <CreateDialog home={home} translations={createTranslations} />
+    <CreateDialog home={home} translations={createTranslations} setExistingDialog={setExistingDialog} />
   ) : existingDialog ? (
     <div className="flex flex-col w-full overflow-y-auto">
       <div className="flex p-4 w-full justify-between pb-8">
@@ -82,7 +82,7 @@ export default function DialogContentComponent({ existingDialog, setExistingDial
           </Link>
         </Button>
       </div>
-      <CreateDialog home={home} translations={createTranslations} />
+      <CreateDialog home={home} translations={createTranslations} setExistingDialog={setExistingDialog} />
     </div>
   );
 }

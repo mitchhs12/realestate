@@ -25,6 +25,7 @@ export default {
       },
       "articles": "조항",
       "map": "지도에서 보기",
+      "list": "위시리스트로 돌아가기",
       "construction": "이 사이트는 현재 공사 중입니다.",
       "construction-sub": "계정을 만들어 주세요. 계정이 준비되면 이메일을 보내드리겠습니다.",
       "sell-button-big": "부동산 판매",

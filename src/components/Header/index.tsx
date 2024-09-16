@@ -12,15 +12,15 @@ import Logo from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/Icons/icons";
 import { useRouter } from "next/navigation";
-import { useCurrentLocale } from "@/locales/client";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
-import { ChevronLeft, HousePlus, Map, Search } from "lucide-react";
+import { ChevronLeft, HousePlus, Heart, Map } from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
 interface Props {
   map: string;
+  list: string;
   articles: string;
   searchPlaceholder: string;
   searchPlaceholderShort: string;
@@ -35,6 +35,7 @@ interface Props {
 
 export default function Header({
   map,
+  list,
   articles,
   searchPlaceholder,
   searchPlaceholderShort,
@@ -48,14 +49,15 @@ export default function Header({
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const { currentHome, openLogInModal, openSignUpModal, user } = useContext(QueryContext);
-  const { defaultLanguage } = useContext(LocaleContext);
+  const { currentHome, openLogInModal, openSignUpModal } = useContext(QueryContext);
+  const { defaultLanguage, user } = useContext(LocaleContext);
   const isSearchPage = pathname.includes("/search");
   const isRootPage = pathname === "/";
   const isHomesPage = pathname.includes("/homes");
   const isSellPage = pathname.includes("/sell");
   const isArticlesPage = pathname.includes("/articles");
   const isStudioPage = pathname.includes("/studio");
+  const isSingleListPage = pathname.includes("/my-wishlists/");
 
   return (
     <>
@@ -124,6 +126,29 @@ export default function Header({
                       </div>
                       <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
                         {map}
+                      </h1>
+                    </div>
+                  </div>
+                </Link>
+              </Button>
+            )}
+            {isSingleListPage && (
+              <Button
+                asChild
+                size={"largeIcon"}
+                variant={"outline"}
+                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
+                disabled={true}
+              >
+                <Link href={`/my-wishlists`}>
+                  <div>
+                    <div className="flex px-2 justify-center text-center items-center">
+                      <div className="flex justify-between items-center gap-2">
+                        <Heart width={"22"} height={"22"} />
+                        <ChevronLeft width={"22"} height={"22"} />
+                      </div>
+                      <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                        {list}
                       </h1>
                     </div>
                   </div>
