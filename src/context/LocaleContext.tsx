@@ -63,6 +63,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
       setSessionLoading(false);
     } else if (session.status === "unauthenticated") {
       setSessionUnauthenticated(true);
+      setSessionLoading(false);
     }
   }, [session]);
 
