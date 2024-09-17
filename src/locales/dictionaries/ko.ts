@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "아래에서 도시 구역을 선택하여 시작하세요.",
-    "popular": "인기 있는",
+    "popular": "가장 인기 있는",
     "cheapest": "가장 저렴한",
     "newest": "최신",
     "footer": {

@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Begin deur 'n stadgrens hieronder te kies.",
-    "popular": "Gewild",
+    "popular": "Gewildste",
     "cheapest": "Goedkoopste",
     "newest": "Nuutste",
     "footer": {

@@ -4,11 +4,10 @@ import Image from "next/image";
 import ResizableCarousel from "@/components/ResizableCarousel";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect, useContext } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { HomeContext } from "@/context/HomeContext";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Languages } from "lucide-react";
 import { LocaleContext } from "@/context/LocaleContext";
+import { FavoriteComponent } from "../FavoriteComponent";
 
 interface Props {
   showAllPhotos: string;
@@ -20,25 +19,29 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const { translationLoading, home, titleLoading, originalTitle, title, handleTitleConvert } = useContext(HomeContext);
-  const { defaultLanguage } = useContext(LocaleContext);
+  const { home } = useContext(HomeContext);
+  const { user } = useContext(LocaleContext);
+
+  const nestedFavoriteComponent = () => {
+    return <FavoriteComponent user={user} home={home} large={true} />;
+  };
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
   };
-  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     if (isModalOpen) {
-      // Wait for the dialog to be fully open before scrolling
       requestAnimationFrame(() => {
-        if (imageRefs.current[selectedImageIndex]) {
-          imageRefs.current[selectedImageIndex]?.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-          });
-        }
+        setTimeout(() => {
+          if (imageRefs.current[selectedImageIndex] && selectedImageIndex > 0) {
+            imageRefs.current[selectedImageIndex]?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        }, 100); // Add a slight delay (100ms) to ensure content is rendered
       });
     }
   }, [isModalOpen, selectedImageIndex]);
@@ -70,7 +73,10 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
           {home.photos.slice(0, 5).map((photo, index) => (
             <div
               key={index}
-              onClick={() => openModal(index)} // Pass index here
+              onClick={(q) => {
+                q.stopPropagation();
+                openModal(index);
+              }}
               className={`relative ${index === 0 ? "row-span-2 col-span-2" : ""} h-full w-full`}
             >
               <Image
@@ -82,17 +88,26 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
               />
             </div>
           ))}
+          <div className="absolute top-1 left-[49%] -translate-x-1/2">
+            {user && user.id !== home.ownerId && <FavoriteComponent user={user} home={home} large={true} />}
+          </div>
         </div>
         {home.photos.length > 0 && (
           <div className="hidden md:flex absolute bottom-3 md:left-3">
-            <Button variant="outline" onClick={() => openModal(0)}>
+            <Button
+              variant="outline"
+              onClick={(e) => {
+                openModal(0);
+                e.stopPropagation();
+              }}
+            >
               {showAllPhotos}
             </Button>
           </div>
         )}
 
         {/* Carousel for smaller screens */}
-        <div className="md:hidden w-full hover:cursor-pointer">
+        <div className="relative md:hidden w-full hover:cursor-pointer">
           <ResizableCarousel
             photos={home.photos}
             title={home.title!}
@@ -100,6 +115,7 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
             openModal={openModal}
             rounded={"rounded-xl"}
             home={home}
+            large={true}
           />
         </div>
       </div>
@@ -109,11 +125,6 @@ export default function HomePhotos({ showAllPhotos, translateButton, showOrigina
         <DialogContent className="max-w-[85vw] sm:max-w-3xl rounded-md" onOpenAutoFocus={(e) => e.preventDefault()}>
           <DialogHeader>
             <DialogTitle>All Photos</DialogTitle>
-            <DialogClose asChild>
-              <Button variant="secondary" className="w-full" onClick={closeModal}>
-                Close
-              </Button>
-            </DialogClose>
           </DialogHeader>
           <div className="max-h-[85vh] overflow-y-auto grid grid-cols-1 gap-4 p-4">
             {home.photos.map((photo, index) => (

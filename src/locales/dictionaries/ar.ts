@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "ابدأ باختيار منطقة المدينة أدناه.",
-    "popular": "شائع",
+    "popular": "الأكثر شعبية",
     "cheapest": "أرخص",
     "newest": "الأحدث",
     "footer": {

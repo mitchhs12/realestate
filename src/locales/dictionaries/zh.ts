@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "从下面选择一个城市区域开始。",
-    "popular": "受欢迎的",
+    "popular": "最受欢迎",
     "cheapest": "最便宜的",
     "newest": "最新",
     "footer": {

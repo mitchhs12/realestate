@@ -17,10 +17,11 @@ interface Props {
   handleFavorite?: () => void;
   hovering?: boolean;
   home: HomeType;
+  large?: boolean;
 }
 
-export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, home }: Props) {
-  const { user, sessionLoading } = useContext(LocaleContext);
+export default function ResizableCarousel({ photos, title, height, rounded, openModal, hovering, home, large }: Props) {
+  const { user } = useContext(LocaleContext);
 
   return (
     <Carousel className="h-full w-full">
@@ -53,9 +54,7 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
           </CarouselItem>
         ))}
       </CarouselContent>
-      {user && user.id !== home.ownerId && (
-        <FavoriteComponent user={user} home={home as HomeType & { isFavoritedByUser: boolean }} />
-      )}
+      {user && user.id !== home.ownerId && <FavoriteComponent user={user} home={home} large={large} />}
       <CarouselPrevious className={`${hovering ? "flex" : "hidden"} absolute left-6 size-8`} />
       <CarouselNext className={`${hovering ? "flex" : "hidden"} absolute right-6 size-8 border-2`} />
     </Carousel>

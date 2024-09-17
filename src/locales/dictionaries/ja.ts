@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "以下の市区町村を選択して開始してください。",
-    "popular": "人気のある",
+    "popular": "最も人気",
     "cheapest": "最も安い",
     "newest": "最新",
     "footer": {

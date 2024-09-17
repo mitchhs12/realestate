@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Bắt đầu bằng cách chọn một quận thành phố bên dưới.",
-    "popular": "Phổ biến",
+    "popular": "Phổ biến nhất",
     "cheapest": "Rẻ nhất",
     "newest": "Mới nhất",
     "footer": {
