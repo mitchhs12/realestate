@@ -15,16 +15,12 @@ interface Props {
   showOriginalButton: string;
 }
 
-export default function HomePhotos({ showAllPhotos, translateButton, showOriginalButton }: Props) {
+export default function HomePhotos({ showAllPhotos }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { home } = useContext(HomeContext);
   const { user } = useContext(LocaleContext);
-
-  const nestedFavoriteComponent = () => {
-    return <FavoriteComponent user={user} home={home} large={true} />;
-  };
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);

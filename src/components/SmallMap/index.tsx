@@ -56,7 +56,7 @@ export default function MapComponent({
   const { setNewHome, setNextLoading, setPrevLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
-  const [newZoom, setNewZoom] = useState(17);
+  const [newZoom, setNewZoom] = useState(disabled ? 16 : 17);
 
   const INITIAL_CAMERA = {
     center: { lat: coordinates.lat, lng: coordinates.long },
@@ -157,7 +157,7 @@ export default function MapComponent({
             >
               {disabled ? (
                 <Circle
-                  radius={150}
+                  radius={170}
                   center={{ lat: coordinates.lat, lng: coordinates.long }}
                   strokeColor={"#16A34A"}
                   strokeOpacity={1}
