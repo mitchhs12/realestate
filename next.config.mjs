@@ -7,6 +7,7 @@ const nextConfig = {
       { protocol: "https", hostname: "vivaidealfinalbucket.s3.us-west-2.amazonaws.com", port: "" },
       { protocol: "https", hostname: "cdn.sanity.io", port: "" },
       { protocol: "https", hostname: "d3pkwgsrr79pi4.cloudfront.net", port: "" },
+      { protocol: "https", hostname: "images.vivaideal.com", port: "" },
     ],
   },
 };

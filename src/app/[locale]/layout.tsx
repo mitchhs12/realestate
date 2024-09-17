@@ -47,7 +47,7 @@ export default function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
-      <body className={`${poppins.className} h-full`}>
+      <body className={poppins.className}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
             <LocaleContextProvider lang={params.locale} matchedCurrency={matchedCurrency}>
