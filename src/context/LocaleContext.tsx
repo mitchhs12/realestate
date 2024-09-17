@@ -68,15 +68,11 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   }, [session]);
 
   useEffect(() => {
-    const _getCurrency = async () => {
-      const currencies = await getCurrencies();
-      if (currencies) {
-        setCurrencies(currencies);
-        const currency = getCurrency(currencies, matchedCurrency);
-        setDefaultCurrency(currency);
-      }
-    };
-    _getCurrency();
+    getCurrencies().then((currencies) => {
+      setCurrencies(currencies);
+      const currency = getCurrency(currencies, matchedCurrency);
+      setDefaultCurrency(currency);
+    });
   }, [lang]);
 
   useEffect(() => {

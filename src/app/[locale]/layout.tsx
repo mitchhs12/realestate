@@ -36,15 +36,6 @@ export default function RootLayout({ children, params }: Props) {
   const matchedCurrency = headers().get("x-currency") || "USD";
   const { direction: dir } = new Locale(locale).textInfo;
 
-  // const acceptLanguage = headers().get("Accept-Language");
-
-  // let matchedCurrency = "USD";
-  // if (acceptLanguage) {
-  //   const language = acceptLanguage.split(",");
-  //   const primaryLanguage = language[0];
-  //   matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
-  // }
-
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <body className={poppins.className}>

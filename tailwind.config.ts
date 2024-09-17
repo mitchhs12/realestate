@@ -15,9 +15,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        montserrat: ["montserrat"],
         charter: ["charter"],
-        poppins: ["poppins"],
       },
       height: {
         "screen-minus-header": "calc(100vh - 86px)",
