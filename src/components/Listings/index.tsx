@@ -1,28 +1,34 @@
-import { HomeType } from "@/lib/validations";
+"use client";
 import ResizableCard from "@/components/ResizableCard";
-import { getScopedI18n } from "@/locales/server";
 import { findMatching } from "@/lib/utils";
-import { typesMap } from "@/lib/sellFlowData";
+import { useEffect, useState } from "react";
+import { getCheapest, getNew, getPopular } from "@/app/[locale]/actions";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
-  homes: HomeType[];
+  listingKey: string;
+  typesObject: { id: string; name: string; translation: string }[];
+  loginToViewPrice: string;
 }
 
-export default async function Listings({ homes }: Props) {
-  const [t, p] = await Promise.all([getScopedI18n("sell.type"), getScopedI18n("search")]);
-  const loginToViewPrice = p("loginToViewPrices");
+export default function Listings({ listingKey, typesObject, loginToViewPrice }: Props) {
+  const [homes, setHomes] = useState<(HomeType | null)[]>([null, null, null, null, null, null]);
 
-  const options = Array.from({ length: 17 }, (_, index) => ({
-    id: typesMap[index].id,
-    name: typesMap[index].name,
-    translation: t(`options.${index}` as keyof typeof t),
-  }));
+  useEffect(() => {
+    if (listingKey === "popular") {
+      getPopular().then((homes) => setHomes(homes));
+    } else if (listingKey === "cheapest") {
+      getCheapest().then((homes) => setHomes(homes));
+    } else {
+      getNew().then((homes) => setHomes(homes));
+    }
+  }, [listingKey]);
 
   return (
     <div className="flex flex-col items-center h-full w-full">
       <div className="grid p-8 w-full h-full grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {homes.map((home, index) => {
-          const matchingTypes = findMatching(options, home, "type");
+          const matchingTypes = findMatching(typesObject, home, "type");
 
           return (
             <div

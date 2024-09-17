@@ -10,6 +10,19 @@ const nextConfig = {
       { protocol: "https", hostname: "images.vivaideal.com", port: "" },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=31536000, stale-while-revalidate=59", // Cache static files for 1 year
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withBundleAnalyzer({

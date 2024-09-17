@@ -3,19 +3,26 @@ import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
 import { getPopular, getNew, getCheapest } from "@/app/[locale]/actions";
 import { locationImageIds } from "@/lib/validations";
-import { Newspaper, Gem, HandCoins, Star } from "lucide-react";
+import { Newspaper, HandCoins, Star } from "lucide-react";
+import { typesMap } from "@/lib/sellFlowData";
+
+async function fetchWithCache(url: string) {
+  const res = await fetch(url, {
+    next: { revalidate: 360 },
+  });
+  return res.json();
+}
 
 export default async function HomePageContent() {
-  const [t, popularHomesData, cheapestHomesData, newHomesData] = await Promise.all([
-    getScopedI18n("home"),
-    getPopular(),
-    getCheapest(),
-    getNew(),
-  ]);
+  const [t, type, p] = await Promise.all([getScopedI18n("home"), getScopedI18n("sell.type"), getScopedI18n("search")]);
+  const loginToViewPrice = p("loginToViewPrices");
 
-  const popular = popularHomesData.map((home) => home || null);
-  const cheapest = cheapestHomesData.map((home) => home || null);
-  const newest = newHomesData.map((home) => home || null);
+  const typesObject = Array.from({ length: 17 }, (_, index) => ({
+    id: typesMap[index].id,
+    name: typesMap[index].name,
+    translation: type(`options.${index}` as keyof typeof t),
+  }));
+
   const countries = {
     AR: {
       folder: locationImageIds.AR.folder,
@@ -99,7 +106,7 @@ export default async function HomePageContent() {
             <Star size={24} strokeWidth={1.5} />
             {t("popular")}
           </h2>
-          <Listings homes={popular} />
+          <Listings listingKey={"popular"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">
@@ -108,7 +115,7 @@ export default async function HomePageContent() {
             <HandCoins size={26} strokeWidth={1.5} />
             {t("cheapest")}
           </h2>
-          <Listings homes={cheapest} />
+          <Listings listingKey={"cheap"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">
@@ -117,7 +124,7 @@ export default async function HomePageContent() {
             <Newspaper size={24} strokeWidth={1.5} />
             {t("newest")}
           </h2>
-          <Listings homes={newest} />
+          <Listings listingKey={"new"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
         </div>
       </section>
     </div>
