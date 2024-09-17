@@ -107,7 +107,17 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
             {list.homes.length > 0 ? (
               list.homes.slice(0, 4).map((home, index) => (
                 <div key={home.id} className="relative w-full h-full">
-                  <Image alt={home.title!} src={home.photos[0]} fill={true} style={{ objectFit: "cover" }} />
+                  <Image
+                    alt={home.title!}
+                    src={home.photos[0]}
+                    fill={true}
+                    placeholder={"blur"}
+                    className="object-cover"
+                    blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
+                    sizes="
+                    (max-width: 400px) 400px,
+                    (max-width: 510px) 510px"
+                  />
                 </div>
               ))
             ) : (
