@@ -41,7 +41,31 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.language = user.language as string;
 
       // Now fetch relational data asynchronously (favoritedLists and homes)
-      return session;
+      return prisma.user
+        .findUnique({
+          where: { id: user.id },
+          include: {
+            favoritedLists: {
+              include: {
+                homes: true,
+              },
+            },
+            homes: true, // Include homes owned by the user
+          },
+        })
+        .then((dbUser) => {
+          // Attach favoritedLists and homes to the session after fetching them
+          session.user.favoritedLists = dbUser?.favoritedLists || [];
+          session.user.homes = dbUser?.homes || [];
+          return session; // Return the session with all the user data
+        })
+        .catch((error) => {
+          console.error("Error fetching relational user data:", error);
+          // Return session without relational data in case of an error
+          session.user.favoritedLists = [];
+          session.user.homes = [];
+          return session;
+        });
     },
   },
   providers,

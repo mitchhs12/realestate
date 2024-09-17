@@ -9,6 +9,7 @@ export default function Hero() {
         alt="background"
         fill={true}
         style={{ objectFit: "cover" }}
+        loading={"eager"}
         quality={70}
         priority={true}
         placeholder="blur"
