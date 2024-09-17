@@ -4,12 +4,17 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import HomePageContent from "@/components/HomePageContent";
+import { getStaticParams } from "../../locales/server";
 
 export const metadata: Metadata = {
   title: "Home | Viva Ideal - International Property Marketplace",
   description:
     "Search and explore global properties on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
 };
+
+export function generateStaticParams() {
+  return getStaticParams();
+}
 
 export default function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
