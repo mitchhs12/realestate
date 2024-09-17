@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Comece selecionando um distrito da cidade abaixo.",
-    "recommended": "Recomendado",
+    "popular": "Popular",
     "cheapest": "Mais barato",
     "newest": "Mais novo",
     "footer": {

@@ -50,6 +50,21 @@ export async function getRecommended(): Promise<HomeType[]> {
   return homes;
 }
 
+export async function getPopular(): Promise<HomeType[]> {
+  const homes = await prisma.home.findMany({
+    where: {
+      isActive: true,
+    },
+    orderBy: {
+      favoritedLists: {
+        _count: "desc",
+      },
+    },
+    take: 6,
+  });
+  return homes;
+}
+
 export async function getNew(): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {

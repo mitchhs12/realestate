@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Commencez par sélectionner un quartier de la ville ci-dessous.",
-    "recommended": "Recommandé",
+    "popular": "Populaire",
     "cheapest": "Le moins cher",
     "newest": "Le plus récent",
     "footer": {

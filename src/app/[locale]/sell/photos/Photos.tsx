@@ -85,7 +85,14 @@ function SortableItem({
       {...listeners}
       className="draggable relative flex items-center justify-center h-[112px] sm:h-[184px] lg:h-[252px]"
     >
-      <Image src={url} alt={`Uploaded ${id}`} fill={true} className="object-cover" />
+      <Image
+        src={url}
+        alt={`Uploaded ${id}`}
+        fill={true}
+        className="object-cover"
+        placeholder={"blur"}
+        blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
+      />
       {isLoading && (
         <div className="absolute flex items-center justify-center inset-0 bg-black bg-opacity-50 rounded">
           <ReloadIcon className="animate-spin w-6 h-6" />

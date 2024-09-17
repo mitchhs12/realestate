@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Wählen Sie zunächst unten einen Stadtteil aus.",
-    "recommended": "Empfohlen",
+    "popular": "Beliebt",
     "cheapest": "Günstigste",
     "newest": "Neueste",
     "footer": {

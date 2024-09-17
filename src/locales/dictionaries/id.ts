@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Mulailah dengan memilih distrik kota di bawah ini.",
-    "recommended": "Direkomendasikan",
+    "popular": "Populer",
     "cheapest": "Termurah",
     "newest": "Terbaru",
     "footer": {

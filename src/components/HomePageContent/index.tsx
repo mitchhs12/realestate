@@ -1,19 +1,19 @@
 import Listings from "@/components/Listings";
 import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
-import { getRecommended, getNew, getCheapest } from "@/app/[locale]/actions";
+import { getPopular, getNew, getCheapest } from "@/app/[locale]/actions";
 import { locationImageIds } from "@/lib/validations";
-import { Newspaper, Gem, HandCoins } from "lucide-react";
+import { Newspaper, Gem, HandCoins, Star } from "lucide-react";
 
 export default async function HomePageContent() {
-  const [t, recommendedHomesData, cheapestHomesData, newHomesData] = await Promise.all([
+  const [t, popularHomesData, cheapestHomesData, newHomesData] = await Promise.all([
     getScopedI18n("home"),
-    getRecommended(),
+    getPopular(),
     getCheapest(),
     getNew(),
   ]);
 
-  const recommended = recommendedHomesData.map((home) => home || null);
+  const popular = popularHomesData.map((home) => home || null);
   const cheapest = cheapestHomesData.map((home) => home || null);
   const newest = newHomesData.map((home) => home || null);
   const countries = {
@@ -96,10 +96,10 @@ export default async function HomePageContent() {
       <section className="flex flex-col justify-center items-center w-full h-full">
         <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
           <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
-            <Gem size={24} strokeWidth={1.5} />
-            {t("recommended")}
+            <Star size={24} strokeWidth={1.5} />
+            {t("popular")}
           </h2>
-          <Listings homes={recommended} />
+          <Listings homes={popular} />
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">

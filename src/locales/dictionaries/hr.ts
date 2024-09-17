@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Započnite odabirom gradskog okruga u nastavku.",
-    "recommended": "Preporučeno",
+    "popular": "Popularan",
     "cheapest": "Najjeftiniji",
     "newest": "Najnoviji",
     "footer": {

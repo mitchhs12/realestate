@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "เริ่มต้นด้วยการเลือกเขตเมืองด้านล่าง",
-    "recommended": "ที่แนะนำ",
+    "popular": "เป็นที่นิยม",
     "cheapest": "ถูกที่สุด",
     "newest": "ใหม่ล่าสุด",
     "footer": {

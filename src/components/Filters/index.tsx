@@ -208,7 +208,7 @@ export default function Filters() {
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <div className="flex items-center gap-4 justify-center">
+        <div className="flex items-center gap-4 justify-between p-2">
           <Button
             variant={"default"}
             size={"sm"}

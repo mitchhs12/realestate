@@ -157,7 +157,7 @@ export default {
       }
     },
     "cities": "Aşağıdan bir şehir bölgesi seçerek başlayabilirsiniz.",
-    "recommended": "Tavsiye edilen",
+    "popular": "Popüler",
     "cheapest": "En ucuz",
     "newest": "En yeni",
     "footer": {

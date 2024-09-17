@@ -132,6 +132,8 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                     sizes={
                       "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px, (max-width: 1024px) 1024px"
                     }
+                    placeholder={"blur"}
+                    blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
                     fill={true}
                     onLoad={() => handleImageLoad(getUrl(country.folder, country.city.id))}
                   />
@@ -177,6 +179,8 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                       alt="Location Image"
                       sizes={"(max-width: 200px), (max-height: 200px)"}
                       fill={true}
+                      placeholder={"blur"}
+                      blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
                       onLoad={() => handleImageLoad(getUrl(country.folder, neighborhood.id))}
                     />
 
@@ -242,6 +246,8 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             alt="Location Image"
             fill={true}
             className="object-cover rounded-lg absolute inset-0 z-0" // opacity-65 dark:opacity-60"
+            placeholder={"blur"}
+            blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
             sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
             onLoad={() => handleImageLoad(hoveredImage)}
           />
