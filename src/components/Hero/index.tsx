@@ -4,7 +4,7 @@ import HeroContent from "@/components/Hero/HeroContent";
 export default function Hero() {
   return (
     <div className="relative h-[20vh] flex w-full">
-      <Image
+      {/* <Image
         src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner1.webp`}
         alt="background"
         fill={true}
@@ -25,7 +25,7 @@ export default function Hero() {
         (max-width: 1920px) 1920px,
         100vw"
         className="-z-10 opacity-30 dark:opacity-20"
-      />
+      /> */}
       <HeroContent />
     </div>
   );
