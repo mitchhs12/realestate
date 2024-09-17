@@ -7,7 +7,6 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
 import { LocaleContextProvider } from "@/context/LocaleContext";
 import { LanguageType } from "@/lib/validations";
-import { locales } from "@/lib/validations";
 import { headers } from "next/headers";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
@@ -33,14 +32,18 @@ type Props = {
 };
 
 export default function RootLayout({ children, params }: Props) {
-  const acceptLanguage = headers().get("Accept-Language");
-  let matchedCurrency = "USD";
-  if (acceptLanguage) {
-    const language = acceptLanguage.split(",");
-    const primaryLanguage = language[0];
-    matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
-  }
-  const { direction: dir } = new Locale(params.locale).textInfo;
+  const locale = headers().get("x-locale") || "en";
+  const matchedCurrency = headers().get("x-currency") || "USD";
+  const { direction: dir } = new Locale(locale).textInfo;
+
+  // const acceptLanguage = headers().get("Accept-Language");
+
+  // let matchedCurrency = "USD";
+  // if (acceptLanguage) {
+  //   const language = acceptLanguage.split(",");
+  //   const primaryLanguage = language[0];
+  //   matchedCurrency = locales.find((option) => option.locale === primaryLanguage)?.currency || "USD";
+  // }
 
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
