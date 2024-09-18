@@ -57,7 +57,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
     const response = await fetch("/api/getCurrencyData");
     const data = await response.json();
     setCurrencyData(data);
-    console.log("data", data);
+    setDefaultCurrency(getCurrency(data.prices, data.defaultCurrency));
   };
 
   useEffect(() => {
