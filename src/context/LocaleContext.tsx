@@ -83,12 +83,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
       if (userData.language && userData.language !== lang) {
         changeLocale(userData.language);
       }
-      if (
-        userData.currency &&
-        !defaultCurrency &&
-        currencyData &&
-        userData.currency !== currencyData.defaultCurrency.symbol
-      ) {
+      if (userData.currency && currencyData && userData.currency !== currencyData.defaultCurrency.symbol) {
         const newDefaultCurrency = getCurrency(currencyData.prices, userData.currency);
         if (newDefaultCurrency !== defaultCurrency) {
           setDefaultCurrency(newDefaultCurrency);
