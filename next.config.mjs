@@ -10,26 +10,6 @@ const nextConfig = {
       { protocol: "https", hostname: "images.vivaideal.com", port: "" },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: "/articles",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "s-maxage=1, stale-while-revalidate=59",
-          },
-        ],
-        source: "/[locale]/articles",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "s-maxage=1, stale-while-revalidate=59",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default withBundleAnalyzer({
