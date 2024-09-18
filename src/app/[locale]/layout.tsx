@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { poppins } from "./fonts";
 import "./globals.css";
-// import { Analytics } from "@vercel/analytics/react";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
-// // import { SessionProvider } from "next-auth/react";
-// import { ThemeProvider } from "@/providers/theme";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@/providers/theme";
 import { LocaleContextProvider } from "@/context/LocaleContext";
 import { LanguageType } from "@/lib/validations";
 import { headers } from "next/headers";
@@ -32,22 +32,22 @@ type Props = {
 };
 
 export default function RootLayout({ children, params }: Props) {
-  // const locale = headers().get("x-locale") || "en";
-  // const matchedCurrency = headers().get("x-currency") || "USD";
+  const locale = headers().get("x-locale") || "en";
+  const matchedCurrency = headers().get("x-currency") || "USD";
   const { direction: dir } = new Locale(params.locale).textInfo;
 
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <body className={`${poppins.className} h-full`}>
-        {/* <SessionProvider> */}
-        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}> */}
-        <LocaleContextProvider lang={params.locale} matchedCurrency={"USD"}>
-          <MainLayout>{children}</MainLayout>
-        </LocaleContextProvider>
-        {/* </ThemeProvider> */}
-        {/* <SpeedInsights /> */}
-        {/* <Analytics /> */}
-        {/* </SessionProvider> */}
+        <SessionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+            <LocaleContextProvider lang={params.locale} matchedCurrency={"USD"}>
+              <MainLayout>{children}</MainLayout>
+            </LocaleContextProvider>
+          </ThemeProvider>
+          <SpeedInsights />
+          <Analytics />
+        </SessionProvider>
       </body>
     </html>
   );
