@@ -1,4 +1,9 @@
-export default function Page() {
+import { setStaticParamsLocale } from "next-international/server";
+import { LanguageType } from "@/lib/validations";
+
+export default function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
+  setStaticParamsLocale(locale);
+
   return (
     <div className="flex flex-col justify-center items-center w-full h-full bg-white dark:bg-black">
       <div className="flex flex-col space-y-8 pt-8 pb-16 justify-start h-full">
