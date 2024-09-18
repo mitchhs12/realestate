@@ -73,6 +73,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
       .then((response) => response.json())
       .then((matchedCurrency) =>
         getCurrencies().then((currencies) => {
+          console.log("matched Currency", matchedCurrency);
           setCurrencies(currencies);
           const currency = getCurrency(currencies, matchedCurrency.currency);
           setDefaultCurrency(currency);
