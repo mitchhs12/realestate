@@ -59,7 +59,52 @@ export async function getHomeCreationDates(): Promise<{ date: Date; count: numbe
       count: creationMap.get(dateKey) || 0, // Default to 0 if no homes were created on that day
     };
   });
-  console.log(formattedResult);
+  return formattedResult;
+}
+
+export async function getUsersCreated(): Promise<{ date: Date; count: number }[]> {
+  // Get the home creation count grouped by date (ignore time)
+  const userCreationCounts = await prisma.user.groupBy({
+    by: ["createdAt"],
+    _count: {
+      createdAt: true,
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+
+  // Get the earliest and latest completion dates
+  const earliestDate =
+    userCreationCounts.length > 0
+      ? new Date(Math.min(...userCreationCounts.map((user) => user.createdAt!.getTime())))
+      : null;
+
+  if (!earliestDate) {
+    return [];
+  }
+
+  const today = new Date();
+
+  // Get all dates between the earliest creation date and today
+  const allDates = getDateRange(earliestDate, today);
+
+  // Create a map for quick lookup of homes created on specific dates (ignore time)
+  const creationMap = new Map<string, number>();
+  userCreationCounts.forEach((user) => {
+    const dateKey = user.createdAt!.toISOString().split("T")[0]; // Use only the date part
+    const currentCount = creationMap.get(dateKey) || 0;
+    creationMap.set(dateKey, currentCount + user._count.createdAt); // Increment the count for the date
+  });
+
+  // Format the result to include all dates, even those with 0 home creations
+  const formattedResult = allDates.map((date) => {
+    const dateKey = date.toISOString().split("T")[0];
+    return {
+      date: date,
+      count: creationMap.get(dateKey) || 0, // Default to 0 if no homes were created on that day
+    };
+  });
   return formattedResult;
 }
 

@@ -29,7 +29,6 @@ export default function FloatingDrawerButton({
       size={"default"}
       disabled={isLoading}
       onClick={() => {
-        console.log("test");
         setDrawerOpen(!drawerOpen);
       }}
       className={`md:hidden z-[30] fixed bottom-20 left-1/2 transform -translate-x-1/2 shadow-xl dark:shadow-white/10`}

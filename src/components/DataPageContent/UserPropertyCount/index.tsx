@@ -78,9 +78,10 @@ export default function UserPropertyCount() {
         <CardTitle>{`Top ${n} users with most published properties`}</CardTitle>
         <CardDescription>{`The top ${n} users that have published the greatest number of properties.`}</CardDescription>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
+      <CardContent className="flex flex-col w-full h-full">
+        <ChartContainer config={chartConfig} className="flex flex-col w-full h-full">
           <BarChart
+            className="flex flex-col w-full h-full"
             accessibilityLayer
             margin={{ right: 16 }}
             data={topUsers}

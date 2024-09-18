@@ -75,8 +75,8 @@ export default function PropertyDistribution() {
         <CardDescription>Distribution of property features across all active listings</CardDescription>
       </CardHeader>
       <CardContent className="flex h-full w-full">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square">
-          <PieChart className="flex justify-center items-center">
+        <ChartContainer config={chartConfig} className="flex w-full h-full mx-auto">
+          <PieChart className="flex w-full h-full justify-center items-center">
             <ChartTooltip content={<ChartTooltipContent nameKey="feature" hideLabel />} />
             {theme && (
               <Pie

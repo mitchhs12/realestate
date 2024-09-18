@@ -59,7 +59,6 @@ export default function PropertyDistribution() {
           })
           .filter((item) => item.count > 0); // Filter out items with count of 0
         setPropertyDistribution(formattedData); // Directly setting the data here
-        console.log(formattedData);
       } catch (error) {
         console.error("Failed to fetch property distribution:", error);
       }
@@ -75,11 +74,12 @@ export default function PropertyDistribution() {
         <CardDescription>Distribution of property types across active listings</CardDescription>
       </CardHeader>
       <CardContent className="flex w-full h-full">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square">
-          <PieChart className="flex justify-center items-center">
+        <ChartContainer config={chartConfig} className="flex flex-col w-full h-full mx-auto">
+          <PieChart className="flex w-full h-full">
             <ChartTooltip content={<ChartTooltipContent nameKey="type" hideLabel />} />
             {theme && (
               <Pie
+                className="flex flex-col w-full h-full"
                 data={propertyDistribution}
                 dataKey="count"
                 nameKey="type"

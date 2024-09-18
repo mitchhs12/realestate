@@ -72,7 +72,6 @@ export default function CombinedSearchPage({
   // INITIAL GET ALL HOMES ON FIRST RENDER
   useEffect(() => {
     getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
-      console.log(allHomes);
       setHomesGeoJson(allHomes);
     });
   }, []);

@@ -6,24 +6,24 @@ import { CartesianGrid, Line, LineChart, XAxis, YAxis, ResponsiveContainer } fro
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
-import { getHomeCreationDates } from "@/app/[locale]/data/actions";
+import { getUsersCreated } from "@/app/[locale]/data/actions";
 
 export const description = "An interactive line chart showing property creation dates";
 
 const chartConfig = {
   properties: {
-    label: "Properties Created",
+    label: "Users Created",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig;
 
-export default function PropertiesCreated() {
+export default function UserAccountsCreated() {
   const [chartData, setChartData] = useState<{ date: string; count: number }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getHomeCreationDates();
+        const data = await getUsersCreated();
         let cumulativeCount = 0;
         const formattedData = data.map((item) => {
           cumulativeCount += item.count;
@@ -47,12 +47,12 @@ export default function PropertiesCreated() {
     <Card className="flex flex-col w-full h-full">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Properties Created</CardTitle>
-          <CardDescription>All properties that were published on Viva Ideal</CardDescription>
+          <CardTitle>User Accounts Created</CardTitle>
+          <CardDescription>All users on Viva Ideal</CardDescription>
         </div>
         <div className="flex">
           <div className="flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left sm:border-l sm:border-t-0 sm:px-8 sm:py-6">
-            <span className="text-xs text-muted-foreground">Total Properties</span>
+            <span className="text-xs text-muted-foreground">Total Users</span>
             <span className="text-lg font-bold leading-none sm:text-3xl">{total.toLocaleString()}</span>
           </div>
         </div>

@@ -23,7 +23,6 @@ export async function updateSettings(values: UpdateSettingsValues) {
   if (!userId) {
     throw new Error("User not found");
   }
-  console.log("values", values);
   const { name, currency, language } = updateSettingsSchema.parse(values);
 
   await prisma.user.update({
