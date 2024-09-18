@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
-// import HomePageContent from "@/components/HomePageContent";
+import HomePageContent from "@/components/HomePageContent";
 
 export const metadata: Metadata = {
   title: "Home | Viva Ideal - International Property Marketplace",
@@ -19,7 +19,7 @@ export default function Home({ params: { locale } }: { params: { locale: Languag
       <main className="w-full">
         <Hero />
       </main>
-      {/* <HomePageContent /> */}
+      <HomePageContent />
       <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
         <Footer />
       </footer>
