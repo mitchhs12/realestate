@@ -70,7 +70,7 @@ export default function Header({
         } items-center h-[86px] z-[40] px-5 bg-background gap-5`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "flex" : "flex w-1/3 md:flex gap-5"}`}>
+          <div className={`${isSearchPage ? "flex" : "flex w-1/3 md:flex gap-3 md:gap-5"}`}>
             <Button
               size={"largeIcon"}
               variant="outline"
@@ -209,7 +209,7 @@ export default function Header({
           </h1>
         )}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-5 justify-end`}>
+          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-3 md:gap-5 justify-end`}>
             {!isSearchPage && (
               <Button
                 className="flex h-12 gap-2 items-center text-sm font-medium"
