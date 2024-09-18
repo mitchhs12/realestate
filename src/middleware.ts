@@ -25,22 +25,10 @@ export function middleware(request: NextRequest) {
     matchedCurrency = locales.find((option) => option.locale === detectedLocale)?.currency || "USD";
   }
 
-  console.log("Request Headers:", request.headers);
-  console.log("Detected Locale:", detectedLocale);
-  console.log("Matched Currency:", matchedCurrency);
-
   // Use custom headers to pass the locale and currency to the server-side
   const response = I18nMiddleware(request);
   response.headers.set("x-locale", detectedLocale);
   response.headers.set("x-currency", matchedCurrency);
-  response.headers.set("Cache-Control", "public, s-maxage=31536000, stale-while-revalidate=59");
-
-  // Log response headers to check for cache status
-  const cacheStatus = response.headers.get("x-vercel-cache") || "MISS";
-  const cacheControl = response.headers.get("cache-control");
-
-  console.log("Vercel Cache Status:", cacheStatus);
-  console.log("Cache-Control Header:", cacheControl);
 
   return response;
 }
