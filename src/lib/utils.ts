@@ -12,7 +12,7 @@ export function capitalizeFirstLetter(string: string) {
 
 export const formatPrice = (currency: string, value: number, decimals: number): string => {
   const option = locales.find((option) => option.currency === currency);
-  const locale = option?.locale || "en-US";
+  const locale = option?.locale || "US";
 
   const formattedPrice = new Intl.NumberFormat(locale, {
     style: "currency",
@@ -50,13 +50,7 @@ export const formatBrokenPrice = (
   decimals: number
 ): { symbol: string; number: string; symbolFirst: boolean } => {
   const option = locales.find((option) => option.currency === currency);
-  const locale = option?.locale || "en-US";
-
-  const formattedPrice = new Intl.NumberFormat(locale, {
-    style: "currency",
-    currency: currency,
-    maximumFractionDigits: decimals,
-  }).format(value);
+  const locale = option?.locale || "US";
 
   const parts = new Intl.NumberFormat(locale, {
     style: "currency",
@@ -73,6 +67,8 @@ export const formatBrokenPrice = (
 
   // Determine if the symbol is before or after the number
   const symbolFirst = parts[0].type === "currency";
+
+  console.log("test", symbol, number, symbolFirst);
 
   return {
     symbol,
