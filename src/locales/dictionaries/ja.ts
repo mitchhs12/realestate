@@ -24,6 +24,7 @@ export default {
         "features": "次の物件を表示"
       },
       "articles": "記事",
+      "data": "データ",
       "map": "地図で見る",
       "list": "ウィッシュリストに戻る",
       "construction": "このサイトは現在構築中です。",
@@ -206,6 +207,9 @@ export default {
         "br": "ブラジルでの販売方法"
       }
     }
+  },
+  "data": {
+    "title": "データ"
   },
   "sell": {
     "sell-flow": {

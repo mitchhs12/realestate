@@ -24,6 +24,7 @@ export default {
         "features": "Mostre-me propriedades com"
       },
       "articles": "Artigos",
+      "data": "Dados",
       "map": "Ver no mapa",
       "list": "Voltar para listas de desejos",
       "construction": "Este site está em construção.",
@@ -206,6 +207,9 @@ export default {
         "br": "Como vender no Brasil"
       }
     }
+  },
+  "data": {
+    "title": "Dados"
   },
   "sell": {
     "sell-flow": {

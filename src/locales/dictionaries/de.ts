@@ -24,6 +24,7 @@ export default {
         "features": "Zeigen Sie mir Immobilien mit"
       },
       "articles": "Artikel",
+      "data": "Daten",
       "map": "Auf der Karte anzeigen",
       "list": "Zurück zur Wunschliste",
       "construction": "Diese Site befindet sich im Aufbau.",
@@ -206,6 +207,9 @@ export default {
         "br": "So verkaufen Sie in Brasilien"
       }
     }
+  },
+  "data": {
+    "title": "Daten"
   },
   "sell": {
     "sell-flow": {

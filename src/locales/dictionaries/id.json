@@ -24,6 +24,7 @@
         "features": "Tunjukkan saya properti dengan"
       },
       "articles": "Artikel",
+      "data": "Data",
       "map": "Lihat di Peta",
       "list": "Kembali ke Daftar Keinginan",
       "construction": "Situs ini sedang dalam pembangunan.",
@@ -206,6 +207,9 @@
         "br": "Cara berjualan di Brasil"
       }
     }
+  },
+  "data": {
+    "title": "Data"
   },
   "sell": {
     "sell-flow": {

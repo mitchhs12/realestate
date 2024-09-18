@@ -24,6 +24,7 @@ export default {
         "features": "Bana şu özellikleri göster:"
       },
       "articles": "Makaleler",
+      "data": "Veri",
       "map": "Haritada Görüntüle",
       "list": "İstek Listelerine Geri Dön",
       "construction": "Bu site yapım aşamasındadır.",
@@ -206,6 +207,9 @@ export default {
         "br": "Brezilya'da nasıl satış yapılır"
       }
     }
+  },
+  "data": {
+    "title": "Veri"
   },
   "sell": {
     "sell-flow": {

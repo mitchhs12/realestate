@@ -19,7 +19,6 @@ import lookup from "country-code-lookup";
 import { formatNumber } from "@/lib/utils";
 import BrokenPrice from "@/components/BrokenPrice";
 import {
-  Check,
   Languages,
   Phone,
   PhoneCall,

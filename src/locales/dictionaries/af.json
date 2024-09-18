@@ -24,6 +24,7 @@
         "features": "Wys my eiendomme met"
       },
       "articles": "Artikels",
+      "data": "Data",
       "map": "Bekyk in kaart",
       "list": "Terug na wenslys",
       "construction": "Hierdie webwerf is onder konstruksie.",
@@ -206,6 +207,9 @@
         "br": "Hoe om te verkoop in Brasilië"
       }
     }
+  },
+  "data": {
+    "title": "Data"
   },
   "sell": {
     "sell-flow": {

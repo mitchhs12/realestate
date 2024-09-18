@@ -24,6 +24,7 @@
         "features": "显示具有以下属性的属性"
       },
       "articles": "文章",
+      "data": "数据",
       "map": "查看地图",
       "list": "返回愿望清单",
       "construction": "该网站正在建设中。",
@@ -206,6 +207,9 @@
         "br": "如何在巴西销售"
       }
     }
+  },
+  "data": {
+    "title": "数据"
   },
   "sell": {
     "sell-flow": {

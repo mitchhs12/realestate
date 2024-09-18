@@ -24,6 +24,7 @@ export default {
         "features": "Prikaži mi svojstva s"
       },
       "articles": "Članci",
+      "data": "Podaci",
       "map": "Pogledaj u karti",
       "list": "Povratak na popise želja",
       "construction": "Ova stranica je u izradi.",
@@ -206,6 +207,9 @@ export default {
         "br": "Kako prodavati u Brazilu"
       }
     }
+  },
+  "data": {
+    "title": "Podaci"
   },
   "sell": {
     "sell-flow": {

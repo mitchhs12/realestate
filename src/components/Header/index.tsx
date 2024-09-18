@@ -15,13 +15,14 @@ import { useRouter } from "next/navigation";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
-import { ChevronLeft, HousePlus, Heart, Map } from "lucide-react";
+import { ChevronLeft, HousePlus, Heart, Map, Gauge, ChartNoAxesCombined, ChartPie } from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
 interface Props {
   map: string;
   list: string;
   articles: string;
+  data: string;
   searchPlaceholder: string;
   searchPlaceholderShort: string;
   searchText: string;
@@ -37,6 +38,7 @@ export default function Header({
   map,
   list,
   articles,
+  data,
   searchPlaceholder,
   searchPlaceholderShort,
   searchText,
@@ -58,6 +60,7 @@ export default function Header({
   const isArticlesPage = pathname.includes("/articles");
   const isStudioPage = pathname.includes("/studio");
   const isSingleListPage = pathname.includes("/my-wishlists/");
+  const isDataPage = pathname.includes("/data");
 
   return (
     <>
@@ -89,7 +92,7 @@ export default function Header({
                 </h1>
               </div>
             </Button>
-            {(isRootPage || isArticlesPage) && (
+            {(isRootPage || isArticlesPage || isDataPage) && (
               <Button
                 asChild
                 size={"largeIcon"}
@@ -104,6 +107,26 @@ export default function Header({
                     </div>
                     <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
                       {articles}
+                    </h1>
+                  </div>
+                </Link>
+              </Button>
+            )}
+            {isDataPage && (
+              <Button
+                asChild
+                size={"largeIcon"}
+                variant="outline"
+                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
+                disabled={true}
+              >
+                <Link href="/data">
+                  <div className="flex px-2 justify-center text-center items-center gap-2">
+                    <div className="flex justify-center items-center">
+                      <ChartPie width={"22"} height={"22"} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                      {data}
                     </h1>
                   </div>
                 </Link>

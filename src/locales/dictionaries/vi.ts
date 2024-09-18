@@ -24,6 +24,7 @@ export default {
         "features": "Hiển thị cho tôi các thuộc tính với"
       },
       "articles": "Bài viết",
+      "data": "Dữ liệu",
       "map": "Xem trong bản đồ",
       "list": "Quay lại danh sách mong muốn",
       "construction": "Trang web này đang được xây dựng.",
@@ -206,6 +207,9 @@ export default {
         "br": "Làm thế nào để bán ở Brazil"
       }
     }
+  },
+  "data": {
+    "title": "Dữ liệu"
   },
   "sell": {
     "sell-flow": {

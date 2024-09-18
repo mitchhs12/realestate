@@ -24,6 +24,7 @@ export default {
         "features": "Show me properties with"
       },
       "articles": "Articles",
+      "data": "Data",
       "map": "View in Map",
       "list": "Back to Wishlists",
       "construction": "This site is under construction.",
@@ -206,6 +207,9 @@ export default {
         "br": "How to sell in Brazil"
       }
     }
+  },
+  "data": {
+    "title": "Data"
   },
   "sell": {
     "sell-flow": {
