@@ -17,7 +17,7 @@ export default function BrokenPrice({ incompleteListing, priceUsd, currency, rev
 
   if (!currency) {
     return (
-      <span className={`flex items-center text-center`}>
+      <span className={`flex items-center text-center pb-1`}>
         <Skeleton className={`h-4 sm:h-5 lg:h-6 w-36 font-semibold ${className}`} />
       </span>
     );
