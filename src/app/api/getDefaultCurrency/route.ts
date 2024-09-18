@@ -5,8 +5,7 @@ import { headers } from "next/headers";
 export async function GET(request: Request) {
   const language = request.headers.get("x-vercel-ip-country");
 
-  console.log(headers());
-  console.log("language", language);
+  console.log("language header", language);
 
   let matchedCurrency = "USD";
 
