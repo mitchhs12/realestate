@@ -50,11 +50,11 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   lang,
   matchedCurrency,
 }: LocaleProviderProps) => {
-  // const session = useSession();
-  const session: Session = {
-    data: null,
-    status: "unauthenticated",
-  };
+  const session = useSession();
+  // const session: Session = {
+  //   data: null,
+  //   status: "unauthenticated",
+  // };
   const changeLocale = useChangeLocale();
   const startingCurrency = { symbol: "USD", usdPrice: 1 };
   const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(startingCurrency);

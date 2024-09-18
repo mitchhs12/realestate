@@ -27,9 +27,6 @@ export function middleware(request: NextRequest) {
 
   // Use custom headers to pass the locale and currency to the server-side
   const response = I18nMiddleware(request);
-  response.headers.set("x-locale", detectedLocale);
-  response.headers.set("x-currency", matchedCurrency);
-
   return response;
 }
 
