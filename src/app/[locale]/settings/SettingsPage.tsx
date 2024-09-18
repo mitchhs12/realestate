@@ -27,13 +27,13 @@ interface Props {
 export default function SettingsPage({ user, title, name, currency, language, submit }: Props) {
   const session = useSession();
   const changeLocale = useChangeLocale();
-  const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencies } = useContext(LocaleContext);
+  const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } = useContext(LocaleContext);
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
     defaultValues: {
       name: user.name || "",
-      currency: user.currency || defaultCurrency.symbol,
+      currency: user.currency || defaultCurrency?.symbol,
       language: user.language || defaultLanguage,
     },
   });
@@ -41,7 +41,7 @@ export default function SettingsPage({ user, title, name, currency, language, su
   async function onSubmit(data: UpdateSettingsValues) {
     try {
       await updateSettings(data);
-      const newCurrency = currencies.find((currency) => currency.symbol === data.currency);
+      const newCurrency = currencyData?.prices.find((currency) => currency.symbol === data.currency);
       if (newCurrency) {
         setDefaultCurrency({ symbol: data.currency, usdPrice: newCurrency.usdPrice });
       } else {

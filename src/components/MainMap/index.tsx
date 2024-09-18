@@ -199,8 +199,7 @@ export default function MapComponent({
                               <TooltipTrigger>
                                 <BrokenPrice
                                   priceUsd={infowindowData.features[0].properties?.priceUsd}
-                                  newCurrencySymbol={defaultCurrency.symbol}
-                                  newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                                  currency={defaultCurrency}
                                   reveal={user ? true : false}
                                   blurAmount="blur-sm"
                                   className="text-md hover:cursor-pointer font-light"

@@ -14,6 +14,7 @@ import { I18nProviderClient } from "@/locales/client";
 import { CookingPot, Bath, Sofa, BedDouble } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SearchBox from "@/components/SearchBox";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   isSmallMap: boolean;
@@ -85,18 +86,22 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
             <div className="flex items-center justify-center">
               <DollarSign width={15} height={15} strokeWidth={1.25} />
             </div>
-            <Slider
-              value={priceRange}
-              onValueChange={(newValue) => setPriceRange(newValue)}
-              step={10000}
-              max={initialMaxPrice}
-              minValue={1}
-              maxValue={initialMaxPrice}
-              exponent={2}
-              onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
-              newCurrencySymbol={defaultCurrency.symbol}
-              newCurrencyUsdPrice={defaultCurrency.usdPrice}
-            />
+            {defaultCurrency ? (
+              <Slider
+                value={priceRange}
+                onValueChange={(newValue) => setPriceRange(newValue)}
+                step={10000}
+                max={initialMaxPrice}
+                minValue={1}
+                maxValue={initialMaxPrice}
+                exponent={2}
+                onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
+                newCurrencySymbol={defaultCurrency?.symbol}
+                newCurrencyUsdPrice={defaultCurrency?.usdPrice}
+              />
+            ) : (
+              <Skeleton className="w-full h-full" />
+            )}
             <div className="flex items-center justify-center">
               <DollarSign width={15} height={15} strokeWidth={1.25} />
               <DollarSign width={15} height={15} strokeWidth={1.25} />

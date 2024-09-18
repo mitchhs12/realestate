@@ -34,6 +34,7 @@ import Categories from "@/components/Filters/Categories";
 import { LocaleContext } from "@/context/LocaleContext";
 import Rooms from "./Rooms";
 import { usePathname } from "next/navigation";
+import { Skeleton } from "../ui/skeleton";
 
 export default function Filters() {
   const {
@@ -109,18 +110,22 @@ export default function Filters() {
             <span className="flex items-center">
               <DollarSign width={20} height={20} strokeWidth={1.25} />
             </span>
-            <Slider
-              value={priceRange}
-              onValueChange={(newValue) => setPriceRange(newValue)}
-              step={10000}
-              max={initialMaxPrice}
-              minValue={1}
-              maxValue={initialMaxPrice}
-              exponent={2}
-              onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
-              newCurrencySymbol={defaultCurrency.symbol}
-              newCurrencyUsdPrice={defaultCurrency.usdPrice}
-            />
+            {defaultCurrency ? (
+              <Slider
+                value={priceRange}
+                onValueChange={(newValue) => setPriceRange(newValue)}
+                step={10000}
+                max={initialMaxPrice}
+                minValue={1}
+                maxValue={initialMaxPrice}
+                exponent={2}
+                onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
+                newCurrencySymbol={defaultCurrency.symbol}
+                newCurrencyUsdPrice={defaultCurrency.usdPrice}
+              />
+            ) : (
+              <Skeleton className="w-full h-full" />
+            )}
             <div className="flex">
               <DollarSign width={20} height={20} strokeWidth={1.25} />
               <DollarSign width={20} height={20} strokeWidth={1.25} />

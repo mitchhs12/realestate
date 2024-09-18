@@ -113,8 +113,7 @@ export default function ResizableCard({
                     <BrokenPrice
                       incompleteListing={incompleteListing}
                       priceUsd={home.priceUsd}
-                      newCurrencySymbol={defaultCurrency.symbol}
-                      newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                      currency={defaultCurrency}
                       reveal={user ? true : false}
                       blurAmount="blur-sm"
                       className="text-sm md:text-md lg:text-lg mb-2"

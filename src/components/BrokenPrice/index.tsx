@@ -1,26 +1,26 @@
 import { formatBrokenPrice } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   incompleteListing?: string;
   priceUsd: number;
-  newCurrencySymbol: string;
-  newCurrencyUsdPrice: number;
+  currency: { symbol: string; usdPrice: number } | null;
   reveal: boolean;
   blurAmount?: string;
   className?: string;
 }
 
-export default function BrokenPrice({
-  incompleteListing,
-  priceUsd,
-  newCurrencySymbol,
-  newCurrencyUsdPrice,
-  reveal,
-  blurAmount,
-  className,
-}: Props) {
+export default function BrokenPrice({ incompleteListing, priceUsd, currency, reveal, blurAmount, className }: Props) {
   if (!priceUsd) {
     return <span className={`flex items-center text-center font-semibold ${className}`}>{incompleteListing}</span>;
+  }
+
+  if (!currency) {
+    return (
+      <span className={`flex items-center text-center`}>
+        <Skeleton className={`h-4 sm:h-5 lg:h-6 w-36 font-semibold ${className}`} />
+      </span>
+    );
   }
 
   return (
@@ -28,11 +28,7 @@ export default function BrokenPrice({
       {priceUsd &&
         // Destructure the formatted price
         (() => {
-          const { symbol, number, symbolFirst } = formatBrokenPrice(
-            newCurrencySymbol,
-            priceUsd * newCurrencyUsdPrice,
-            0
-          );
+          const { symbol, number, symbolFirst } = formatBrokenPrice(currency.symbol, priceUsd * currency.usdPrice, 0);
 
           return (
             <span className={`flex items-center text-center font-semibold ${className} `}>

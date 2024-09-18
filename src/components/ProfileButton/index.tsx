@@ -40,7 +40,7 @@ interface Props {
 }
 
 export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
-  const { defaultCurrency, setDefaultCurrency, currencies, user, sessionLoading, sessionUnauthenticated } =
+  const { defaultCurrency, setDefaultCurrency, currencyData, user, sessionLoading, sessionUnauthenticated } =
     useContext(LocaleContext);
   const { headerValues } = useContext(QueryContext);
   const router = useRouter();
@@ -188,24 +188,26 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
-                <DropdownMenuRadioGroup
-                  value={defaultCurrency.symbol}
-                  onValueChange={(symbol) => setDefaultCurrency(getCurrency(currencies, symbol))}
-                >
-                  {locales.map((config) => (
-                    <DropdownMenuRadioItem
-                      key={config.currency}
-                      className="flex cursor-pointer justify-end gap-3 text-start"
-                      value={config.currency}
-                    >
-                      {config.currency}
-                      <FlagComponent
-                        country={config.locale.toUpperCase() as Country}
-                        countryName={config.locale.toUpperCase() as string}
-                      />
-                    </DropdownMenuRadioItem>
-                  ))}
-                </DropdownMenuRadioGroup>
+                {currencyData && (
+                  <DropdownMenuRadioGroup
+                    value={defaultCurrency?.symbol}
+                    onValueChange={(symbol) => setDefaultCurrency(getCurrency(currencyData.prices, symbol))}
+                  >
+                    {locales.map((config) => (
+                      <DropdownMenuRadioItem
+                        key={config.currency}
+                        className="flex cursor-pointer justify-end gap-3 text-start"
+                        value={config.currency}
+                      >
+                        {config.currency}
+                        <FlagComponent
+                          country={config.locale.toUpperCase() as Country}
+                          countryName={config.locale.toUpperCase() as string}
+                        />
+                      </DropdownMenuRadioItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                )}
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

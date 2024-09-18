@@ -51,7 +51,7 @@ export default function Price({
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
-  const { defaultCurrency, currencies } = useContext(LocaleContext);
+  const { defaultCurrency, currencyData } = useContext(LocaleContext);
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
@@ -60,12 +60,12 @@ export default function Price({
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
   const initialIntlConfig = currentHome?.currency
     ? locales.find((option) => option.currency === currentHome.currency)
-    : locales.find((option) => option.currency === defaultCurrency.symbol);
+    : locales.find((option) => option.currency === defaultCurrency?.symbol);
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {
     if (currentHome && price !== null && intlConfig && intlConfig.currency) {
-      const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
+      const currentCurrency = currencyData?.prices.find((currency) => currency.symbol === intlConfig?.currency);
 
       if (currentCurrency && currentCurrency.usdPrice !== null) {
         const priceInUsd = price / currentCurrency.usdPrice;
@@ -83,7 +83,7 @@ export default function Price({
     } else {
       setNextDisabled(true);
     }
-  }, [price, isNegotiable, intlConfig, currencies]);
+  }, [price, isNegotiable, intlConfig, currencyData]);
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -121,10 +121,10 @@ export default function Price({
     setIntlConfig(selectedConfig);
 
     if (selectedConfig && selectedConfig.currency) {
-      const selectedCurrency = currencies.find((currency) => currency.symbol === selectedConfig.currency);
+      const selectedCurrency = currencyData?.prices.find((currency) => currency.symbol === selectedConfig.currency);
 
       if (selectedCurrency && selectedCurrency.usdPrice !== null && price !== null) {
-        const currentCurrency = currencies.find((currency) => currency.symbol === intlConfig?.currency);
+        const currentCurrency = currencyData?.prices.find((currency) => currency.symbol === intlConfig?.currency);
 
         if (currentCurrency && currentCurrency.usdPrice !== null) {
           const priceInUsd = price / currentCurrency.usdPrice;

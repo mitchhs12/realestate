@@ -71,14 +71,16 @@ export default function CombinedSearchPage({
 
   // INITIAL GET ALL HOMES ON FIRST RENDER
   useEffect(() => {
-    getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
-      setHomesGeoJson(allHomes);
-    });
+    if (defaultCurrency) {
+      getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
+        setHomesGeoJson(allHomes);
+      });
+    }
   }, []);
 
   // SEARCH COMPONENT
   useEffect(() => {
-    if (bounds) {
+    if (bounds && defaultCurrency) {
       setIsSearchLoading(true);
       getSearchResults(
         "search",
@@ -106,7 +108,7 @@ export default function CombinedSearchPage({
 
   // GETS THE FILTERED HOMES FOR THE MAP
   useEffect(() => {
-    if (isFiltering) {
+    if (isFiltering && defaultCurrency) {
       getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((fixedHomes) => {
         setHomesGeoJson(fixedHomes);
       });

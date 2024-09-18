@@ -13,6 +13,7 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { I18nProviderClient } from "@/locales/client";
 import { CookingPot, Bath, Sofa, BedDouble } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Skeleton } from "../ui/skeleton";
 
 export default function FiltersDialog() {
   const {
@@ -99,18 +100,22 @@ export default function FiltersDialog() {
               <div className="flex items-center justify-center">
                 <DollarSign width={15} height={15} strokeWidth={1.25} />
               </div>
-              <Slider
-                value={priceRange}
-                onValueChange={(newValue) => setPriceRange(newValue)}
-                step={10000}
-                max={initialMaxPrice}
-                minValue={1}
-                maxValue={initialMaxPrice}
-                exponent={2}
-                onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
-                newCurrencySymbol={defaultCurrency.symbol}
-                newCurrencyUsdPrice={defaultCurrency.usdPrice}
-              />
+              {defaultCurrency ? (
+                <Slider
+                  value={priceRange}
+                  onValueChange={(newValue) => setPriceRange(newValue)}
+                  step={10000}
+                  max={initialMaxPrice}
+                  minValue={1}
+                  maxValue={initialMaxPrice}
+                  exponent={2}
+                  onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
+                  newCurrencySymbol={defaultCurrency.symbol}
+                  newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                />
+              ) : (
+                <Skeleton className="w-full h-full" />
+              )}
               <div className="flex items-center justify-center">
                 <DollarSign width={15} height={15} strokeWidth={1.25} />
                 <DollarSign width={15} height={15} strokeWidth={1.25} />

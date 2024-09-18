@@ -80,31 +80,33 @@ export default function Checkout({
             <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
         </div>
-        <div className={`flex flex-col md:flex-row justify-center py-8 px-8 gap-8 `}>
-          <CheckoutCard
-            id={"premium"}
-            perks={premium.perks}
-            title={premium.title}
-            description={premium.subtitle}
-            button={premium.price}
-            buttonDisabled={false}
-            originalPrice={premium.anchor}
-            buttonFunction={() => setSelected("premium")}
-            selected={selected}
-            defaultCurrency={defaultCurrency}
-          />
-          <CheckoutCard
-            id={"standard"}
-            perks={standard.perks}
-            title={standard.title}
-            description={standard.subtitle}
-            button={standard.price}
-            buttonDisabled={false}
-            buttonFunction={() => setSelected("standard")}
-            selected={selected}
-            defaultCurrency={defaultCurrency}
-          />
-        </div>
+        {defaultCurrency && (
+          <div className={`flex flex-col md:flex-row justify-center py-8 px-8 gap-8 `}>
+            <CheckoutCard
+              id={"premium"}
+              perks={premium.perks}
+              title={premium.title}
+              description={premium.subtitle}
+              button={premium.price}
+              buttonDisabled={false}
+              originalPrice={premium.anchor}
+              buttonFunction={() => setSelected("premium")}
+              selected={selected}
+              defaultCurrency={defaultCurrency}
+            />
+            <CheckoutCard
+              id={"standard"}
+              perks={standard.perks}
+              title={standard.title}
+              description={standard.subtitle}
+              button={standard.price}
+              buttonDisabled={false}
+              buttonFunction={() => setSelected("standard")}
+              selected={selected}
+              defaultCurrency={defaultCurrency}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

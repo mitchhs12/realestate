@@ -114,7 +114,7 @@ export default function HomeText({
     countryName,
   } = useContext(HomeContext);
 
-  const { defaultCurrency, currencies, numerals, defaultLanguage, sessionLoading, sessionUnauthenticated, user } =
+  const { defaultCurrency, currencyData, numerals, defaultLanguage, sessionLoading, sessionUnauthenticated, user } =
     useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
@@ -137,7 +137,7 @@ export default function HomeText({
 
   const IconComponent = typeIcons[currentType.id as keyof typeof typeIcons]; // Get the corresponding icon
 
-  const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
+  const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
 
   return (
     <div className="flex flex-col w-full h-full justify-center px-8 py-3">
@@ -317,8 +317,7 @@ export default function HomeText({
               ) : (
                 <BrokenPrice
                   priceUsd={home.priceUsd}
-                  newCurrencySymbol={defaultCurrency.symbol}
-                  newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                  currency={defaultCurrency}
                   reveal={user ? true : false}
                   blurAmount={"blur-lg"}
                   className="text-primary justify-center text-2xl md:text-3xl lg:text-4xl"
@@ -336,8 +335,7 @@ export default function HomeText({
                   ) : (
                     <BrokenPrice
                       priceUsd={home.priceUsd}
-                      newCurrencySymbol={home.currency}
-                      newCurrencyUsdPrice={originalCurrencyRate}
+                      currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
                       reveal={user ? true : false}
                       blurAmount={"blur-md"}
                       className="text-primary justify-center text-base md:text-lg lg:text-xl"

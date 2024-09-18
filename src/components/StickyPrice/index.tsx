@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { CardHeader } from "@/components/ui/card";
 import { HomeType } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
 import { useContext, useEffect, useState } from "react";
@@ -32,9 +32,9 @@ export default function StickyPrice({
   contactButton,
 }: Props) {
   const { home } = useContext(HomeContext);
-  const { defaultCurrency, currencies, sessionLoading, user } = useContext(LocaleContext);
+  const { defaultCurrency, currencyData, sessionLoading, user } = useContext(LocaleContext);
   const { openLogInModal, isModalOpen, revealPrice, setRevealPrice } = useContext(QueryContext);
-  const originalCurrencyRate = currencies.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
+  const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -47,8 +47,7 @@ export default function StickyPrice({
             <span className="text-xl font-semibold text-primary">
               <BrokenPrice
                 priceUsd={home.priceUsd}
-                newCurrencySymbol={defaultCurrency.symbol}
-                newCurrencyUsdPrice={defaultCurrency.usdPrice}
+                currency={defaultCurrency}
                 reveal={user ? true : false}
                 blurAmount="blur-sm"
                 className="mb-0"
@@ -61,8 +60,7 @@ export default function StickyPrice({
               {originalCurrencyRate && home.currency ? (
                 <BrokenPrice
                   priceUsd={home.priceUsd}
-                  newCurrencySymbol={home.currency}
-                  newCurrencyUsdPrice={originalCurrencyRate}
+                  currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
                   reveal={user ? true : false}
                   blurAmount="blur-sm"
                   className="mb-0"
