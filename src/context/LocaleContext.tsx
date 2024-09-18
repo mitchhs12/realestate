@@ -74,7 +74,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
           setDefaultCurrency(currency);
         })
       );
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     // useEffect that runs when the user has successfully authenticated and changes the default currency and language if it exists
