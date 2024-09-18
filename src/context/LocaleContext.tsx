@@ -16,7 +16,7 @@ interface LocaleContextProps {
   numerals: string;
   setNumerals: (value: string) => void;
   user?: User;
-  setUser: (value: User) => void;
+  setUser: (value: any) => void;
   sessionLoading: boolean;
   sessionUnauthenticated: boolean;
 }
@@ -40,18 +40,27 @@ interface LocaleProviderProps {
   matchedCurrency: string;
 }
 
+interface Session {
+  data: { user?: User } | null;
+  status: "authenticated" | "unauthenticated";
+}
+
 const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   children,
   lang,
   matchedCurrency,
 }: LocaleProviderProps) => {
-  const session = useSession();
+  // const session = useSession();
+  const session: Session = {
+    data: null,
+    status: "unauthenticated",
+  };
   const changeLocale = useChangeLocale();
   const startingCurrency = { symbol: "USD", usdPrice: 1 };
   const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(startingCurrency);
   const [currencies, setCurrencies] = useState<CurrencyType[]>([startingCurrency]);
   const [numerals, setNumerals] = useState<string>(numeralMap[lang]);
-  const [user, setUser] = useState(session.data?.user);
+  const [user, setUser] = useState<User | undefined>(session.data?.user);
   const [sessionLoading, setSessionLoading] = useState(true);
   const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
   const defaultLanguage = lang || "en";
@@ -77,7 +86,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
 
   useEffect(() => {
     // useEffect that runs when the user has successfully authenticated and changes the default currency and language if it exists
-    if (session.data?.user.currency || session.data?.user.language) {
+    if (session.data?.user?.currency || session.data?.user?.language) {
       if (session.data?.user.currency && session.data?.user.currency !== defaultCurrency.symbol) {
         setDefaultCurrency(getCurrency(currencies, session.data?.user.currency));
       }
