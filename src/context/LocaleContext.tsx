@@ -37,7 +37,6 @@ const LocaleContext = createContext<LocaleContextProps>({
 interface LocaleProviderProps {
   children: ReactNode;
   lang: LanguageType;
-  matchedCurrency: string;
 }
 
 interface Session {
@@ -45,16 +44,9 @@ interface Session {
   status: "authenticated" | "unauthenticated";
 }
 
-const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
-  children,
-  lang,
-  matchedCurrency,
-}: LocaleProviderProps) => {
+const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }: LocaleProviderProps) => {
   const session = useSession();
-  // const session: Session = {
-  //   data: null,
-  //   status: "unauthenticated",
-  // };
+
   const changeLocale = useChangeLocale();
   const startingCurrency = { symbol: "USD", usdPrice: 1 };
   const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType>(startingCurrency);
@@ -63,7 +55,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   const [user, setUser] = useState<User | undefined>(session.data?.user);
   const [sessionLoading, setSessionLoading] = useState(true);
   const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
-  const defaultLanguage = lang || "en";
+  const defaultLanguage = lang;
 
   useEffect(() => {
     if (session.data?.user) {
@@ -77,12 +69,16 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
   }, [session]);
 
   useEffect(() => {
-    getCurrencies().then((currencies) => {
-      setCurrencies(currencies);
-      const currency = getCurrency(currencies, matchedCurrency);
-      setDefaultCurrency(currency);
-    });
-  }, [lang]);
+    fetch("/api/getDefaultCurrency")
+      .then((response) => response.json())
+      .then((matchedCurrency) =>
+        getCurrencies().then((currencies) => {
+          setCurrencies(currencies);
+          const currency = getCurrency(currencies, matchedCurrency.currency);
+          setDefaultCurrency(currency);
+        })
+      );
+  }, []);
 
   useEffect(() => {
     // useEffect that runs when the user has successfully authenticated and changes the default currency and language if it exists

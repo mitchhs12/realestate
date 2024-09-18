@@ -200,8 +200,8 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
                     >
                       {config.currency}
                       <FlagComponent
-                        country={config.locale.split("-")[1].toUpperCase() as Country}
-                        countryName={config.locale.split("-")[1].toUpperCase() as string}
+                        country={config.locale.toUpperCase() as Country}
+                        countryName={config.locale.toUpperCase() as string}
                       />
                     </DropdownMenuRadioItem>
                   ))}

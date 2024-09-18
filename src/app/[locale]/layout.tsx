@@ -31,8 +31,6 @@ type Props = {
 };
 
 export default function RootLayout({ children, params }: Props) {
-  // const locale = headers().get("x-locale") || "en";
-  // const matchedCurrency = headers().get("x-currency") || "USD";
   const { direction: dir } = new Locale(params.locale).textInfo;
 
   return (
@@ -40,7 +38,7 @@ export default function RootLayout({ children, params }: Props) {
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-            <LocaleContextProvider lang={params.locale} matchedCurrency={"USD"}>
+            <LocaleContextProvider lang={params.locale}>
               <MainLayout>{children}</MainLayout>
             </LocaleContextProvider>
           </ThemeProvider>

@@ -220,32 +220,32 @@ export const locales: ReadonlyArray<{
   language: string;
   flag: any;
 }> = [
-  { locale: "en-US", currency: "USD", decimalsLimit: 2, language: "en", flag: US },
-  { locale: "de-DE", currency: "EUR", decimalsLimit: 2, language: "de", flag: DE },
-  { locale: "en-GB", currency: "GBP", decimalsLimit: 2, language: "en", flag: GB },
-  { locale: "en-AU", currency: "AUD", decimalsLimit: 2, language: "en", flag: AU },
-  { locale: "ja-JP", currency: "JPY", decimalsLimit: 0, language: "ja", flag: JP }, // Japanese Yen has no decimal places
-  { locale: "fr-CH", currency: "CHF", decimalsLimit: 2, language: "fr", flag: CH },
-  { locale: "en-IN", currency: "INR", decimalsLimit: 2, language: "en", flag: IN },
-  { locale: "es-CO", currency: "COP", decimalsLimit: 2, language: "es", flag: CO },
-  { locale: "es-MX", currency: "MXN", decimalsLimit: 2, language: "es", flag: MX },
-  { locale: "es-PE", currency: "PEN", decimalsLimit: 2, language: "es", flag: PE },
-  { locale: "en-CA", currency: "CAD", decimalsLimit: 2, language: "en", flag: CA },
-  { locale: "zh-CN", currency: "CNY", decimalsLimit: 2, language: "zh", flag: CN },
-  { locale: "en-SG", currency: "SGD", decimalsLimit: 2, language: "en", flag: SG },
-  { locale: "ar-AE", currency: "AED", decimalsLimit: 2, language: "ar", flag: AE },
-  { locale: "pt-BR", currency: "BRL", decimalsLimit: 2, language: "pt", flag: BR },
-  { locale: "zh-HK", currency: "HKD", decimalsLimit: 2, language: "zh", flag: HK },
-  { locale: "af-ZA", currency: "ZAR", decimalsLimit: 2, language: "af", flag: ZA },
-  { locale: "ko-KR", currency: "KRW", decimalsLimit: 0, language: "ko", flag: KR }, // South Korean Won has no decimal places
-  { locale: "en-NZ", currency: "NZD", decimalsLimit: 2, language: "en", flag: NZ },
-  { locale: "tr-TR", currency: "TRY", decimalsLimit: 2, language: "tr", flag: TR },
-  { locale: "th-TH", currency: "THB", decimalsLimit: 2, language: "th", flag: TH },
-  { locale: "id-ID", currency: "IDR", decimalsLimit: 0, language: "id", flag: ID }, // Indonesian Rupiah has no decimal places
-  { locale: "vi-VN", currency: "VND", decimalsLimit: 0, language: "vi", flag: VN }, // Vietnamese Dong has no decimal places
-  { locale: "es-CR", currency: "CRC", decimalsLimit: 2, language: "es", flag: CR },
-  { locale: "hr-HR", currency: "HRK", decimalsLimit: 2, language: "hr", flag: HR },
-  { locale: "ka-GE", currency: "GEL", decimalsLimit: 2, language: "ka", flag: GE },
+  { locale: "US", currency: "USD", decimalsLimit: 2, language: "en", flag: US },
+  { locale: "DE", currency: "EUR", decimalsLimit: 2, language: "de", flag: DE },
+  { locale: "GB", currency: "GBP", decimalsLimit: 2, language: "en", flag: GB },
+  { locale: "AU", currency: "AUD", decimalsLimit: 2, language: "en", flag: AU },
+  { locale: "JP", currency: "JPY", decimalsLimit: 0, language: "ja", flag: JP }, // Japanese Yen has no decimal places
+  { locale: "CH", currency: "CHF", decimalsLimit: 2, language: "fr", flag: CH },
+  { locale: "IN", currency: "INR", decimalsLimit: 2, language: "en", flag: IN },
+  { locale: "CO", currency: "COP", decimalsLimit: 2, language: "es", flag: CO },
+  { locale: "MX", currency: "MXN", decimalsLimit: 2, language: "es", flag: MX },
+  { locale: "PE", currency: "PEN", decimalsLimit: 2, language: "es", flag: PE },
+  { locale: "CA", currency: "CAD", decimalsLimit: 2, language: "en", flag: CA },
+  { locale: "CN", currency: "CNY", decimalsLimit: 2, language: "zh", flag: CN },
+  { locale: "SG", currency: "SGD", decimalsLimit: 2, language: "en", flag: SG },
+  { locale: "AE", currency: "AED", decimalsLimit: 2, language: "ar", flag: AE },
+  { locale: "BR", currency: "BRL", decimalsLimit: 2, language: "pt", flag: BR },
+  { locale: "HK", currency: "HKD", decimalsLimit: 2, language: "zh", flag: HK },
+  { locale: "ZA", currency: "ZAR", decimalsLimit: 2, language: "af", flag: ZA },
+  { locale: "KR", currency: "KRW", decimalsLimit: 0, language: "ko", flag: KR }, // South Korean Won has no decimal places
+  { locale: "NZ", currency: "NZD", decimalsLimit: 2, language: "en", flag: NZ },
+  { locale: "TR", currency: "TRY", decimalsLimit: 2, language: "tr", flag: TR },
+  { locale: "TH", currency: "THB", decimalsLimit: 2, language: "th", flag: TH },
+  { locale: "ID", currency: "IDR", decimalsLimit: 0, language: "id", flag: ID }, // Indonesian Rupiah has no decimal places
+  { locale: "VN", currency: "VND", decimalsLimit: 0, language: "vi", flag: VN }, // Vietnamese Dong has no decimal places
+  { locale: "CR", currency: "CRC", decimalsLimit: 2, language: "es", flag: CR },
+  { locale: "HR", currency: "HRK", decimalsLimit: 2, language: "hr", flag: HR },
+  { locale: "GE", currency: "GEL", decimalsLimit: 2, language: "ka", flag: GE },
 ];
 
 export const localeToFlagMap: { [key: string]: React.ComponentType } = {
