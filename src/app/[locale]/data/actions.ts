@@ -69,7 +69,7 @@ export async function getHomeCreationDates(): Promise<{ date: Date; count: numbe
   return formattedResult;
 }
 
-export async function getPropertyDistribution(): Promise<{ type: string; count: number }[]> {
+export async function getTypeDistribution(): Promise<{ type: string; count: number }[]> {
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,
@@ -89,6 +89,32 @@ export async function getPropertyDistribution(): Promise<{ type: string; count: 
 
   const result = Array.from(typeCounts, ([type, count]) => ({
     type,
+    count,
+  }));
+
+  return result;
+}
+
+export async function getFeatureDistribution(): Promise<{ feature: string; count: number }[]> {
+  const homes = await prisma.home.findMany({
+    where: {
+      isActive: true,
+    },
+    select: {
+      features: true,
+    },
+  });
+
+  const featureCounts = new Map<string, number>();
+
+  homes.forEach((home) => {
+    home.features.forEach((tag) => {
+      featureCounts.set(tag, (featureCounts.get(tag) || 0) + 1); // Increment count for each tag
+    });
+  });
+
+  const result = Array.from(featureCounts, ([feature, count]) => ({
+    feature,
     count,
   }));
 

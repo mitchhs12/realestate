@@ -41,6 +41,10 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
                 fill={true}
                 objectFit={"cover"}
                 className="rounded-t-lg"
+                placeholder="blur"
+                blurDataURL={
+                  "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
+                }
               />
             </div>
 
