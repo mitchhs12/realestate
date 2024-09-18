@@ -80,6 +80,7 @@ export default function PropertiesCreated() {
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
+                width={24}
                 tickFormatter={(value) => `${value}`}
                 domain={[0, "dataMax"]}
               />

@@ -82,6 +82,7 @@ export default function UserAccountsCreated() {
                 tickMargin={8}
                 tickFormatter={(value) => `${value}`}
                 domain={[0, "dataMax"]}
+                width={24}
               />
               <ChartTooltip
                 content={
