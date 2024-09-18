@@ -33,6 +33,7 @@ export function middleware(request: NextRequest) {
   const response = I18nMiddleware(request);
   response.headers.set("x-locale", detectedLocale);
   response.headers.set("x-currency", matchedCurrency);
+  response.headers.set("Cache-Control", "public, s-maxage=31536000, stale-while-revalidate=59");
 
   // Log response headers to check for cache status
   const cacheStatus = response.headers.get("x-vercel-cache") || "MISS";
