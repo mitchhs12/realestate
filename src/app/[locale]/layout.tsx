@@ -7,7 +7,6 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
 import { LocaleContextProvider } from "@/context/LocaleContext";
 import { LanguageType } from "@/lib/validations";
-import { headers } from "next/headers";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
 import { getStaticParams } from "@/locales/server";
