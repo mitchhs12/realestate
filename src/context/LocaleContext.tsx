@@ -39,11 +39,6 @@ interface LocaleProviderProps {
   lang: LanguageType;
 }
 
-interface Session {
-  data: { user?: User } | null;
-  status: "authenticated" | "unauthenticated";
-}
-
 const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }: LocaleProviderProps) => {
   const session = useSession();
 
