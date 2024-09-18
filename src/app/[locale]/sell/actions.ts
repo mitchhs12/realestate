@@ -123,7 +123,7 @@ export async function sellHome(currentLocale: string, url: string): Promise<Resp
 
   const { id, ...homeData } = homeSchema.parse(home);
 
-  const newData = { ...homeData, language: currentLocale, isActive: true, isComplete: true };
+  const newData = { ...homeData, language: currentLocale, isActive: true, isComplete: true, completedAt: new Date() };
 
   await prisma.home.update({
     where: { id: id },
@@ -160,6 +160,7 @@ export async function updateHome(
         favoritedLists: {
           connect: [],
         },
+        completedAt: null,
       },
     });
   } else {

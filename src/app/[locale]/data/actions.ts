@@ -14,19 +14,26 @@ function getDateRange(startDate: Date, endDate: Date): Date[] {
 }
 
 export async function getHomeCreationDates(): Promise<{ date: Date; count: number }[]> {
-  // Make a single query to get the earliest date and the grouped home creation counts
-  const homeData = await prisma.home.aggregate({
-    _min: {
-      createdAt: true, // Get the earliest home creation date
+  // Get the home creation count grouped by date (ignore time)
+  const homeCreationCounts = await prisma.home.groupBy({
+    by: ["completedAt"],
+    _count: {
+      completedAt: true,
+    },
+    orderBy: {
+      completedAt: "asc",
     },
     where: {
       isComplete: true,
     },
-    _count: true, // Get the total number of homes
   });
 
-  // If no homes exist, return an empty array
-  const earliestDate = homeData._min.createdAt;
+  // Get the earliest and latest completion dates
+  const earliestDate =
+    homeCreationCounts.length > 0
+      ? new Date(Math.min(...homeCreationCounts.map((home) => home.completedAt!.getTime())))
+      : null;
+
   if (!earliestDate) {
     return [];
   }
@@ -36,25 +43,12 @@ export async function getHomeCreationDates(): Promise<{ date: Date; count: numbe
   // Get all dates between the earliest creation date and today
   const allDates = getDateRange(earliestDate, today);
 
-  // Get the home creation count grouped by date
-  const homeCreationCounts = await prisma.home.groupBy({
-    by: ["createdAt"], // Group by the createdAt field
-    _count: {
-      createdAt: true, // Count how many homes were created on each date
-    },
-    orderBy: {
-      createdAt: "asc", // Order by date, ascending
-    },
-    where: {
-      isActive: true,
-    },
-  });
-
-  // Create a map for quick lookup of homes created on specific dates
+  // Create a map for quick lookup of homes created on specific dates (ignore time)
   const creationMap = new Map<string, number>();
   homeCreationCounts.forEach((home) => {
-    const dateKey = home.createdAt.toISOString().split("T")[0]; // Use only the date part
-    creationMap.set(dateKey, home._count.createdAt);
+    const dateKey = home.completedAt!.toISOString().split("T")[0]; // Use only the date part
+    const currentCount = creationMap.get(dateKey) || 0;
+    creationMap.set(dateKey, currentCount + home._count.completedAt); // Increment the count for the date
   });
 
   // Format the result to include all dates, even those with 0 home creations
@@ -65,14 +59,50 @@ export async function getHomeCreationDates(): Promise<{ date: Date; count: numbe
       count: creationMap.get(dateKey) || 0, // Default to 0 if no homes were created on that day
     };
   });
-
+  console.log(formattedResult);
   return formattedResult;
+}
+
+export async function getTopUsersByCompletedProperties(
+  propertyCount: number = 30
+): Promise<{ id: string; name: string | null; email: string | null; count: number }[]> {
+  // Query the database to get the top 30 users with the most completed properties
+  const topUsers = await prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      _count: {
+        select: {
+          homes: {
+            where: {
+              isComplete: true, // Only count completed homes
+            },
+          },
+        },
+      },
+    },
+    orderBy: {
+      homes: {
+        _count: "desc", // Order by the count of completed homes in descending order
+      },
+    },
+    take: propertyCount, // Limit the result to the top 30 users by default
+  });
+
+  // Format the result to return userId and the count of completed properties
+  return topUsers.map((user) => ({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    count: user._count.homes,
+  }));
 }
 
 export async function getTypeDistribution(): Promise<{ type: string; count: number }[]> {
   const homes = await prisma.home.findMany({
     where: {
-      isActive: true,
+      isComplete: true,
     },
     select: {
       type: true,
@@ -98,7 +128,7 @@ export async function getTypeDistribution(): Promise<{ type: string; count: numb
 export async function getFeatureDistribution(): Promise<{ feature: string; count: number }[]> {
   const homes = await prisma.home.findMany({
     where: {
-      isActive: true,
+      isComplete: true,
     },
     select: {
       features: true,
@@ -152,7 +182,7 @@ export async function getPropertyValues(): Promise<{ date: Date; lowest: number;
       createdAt: "asc", // Order by date, ascending
     },
     where: {
-      isActive: true,
+      isComplete: true,
     },
   });
 

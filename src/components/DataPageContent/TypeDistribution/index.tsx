@@ -69,22 +69,22 @@ export default function PropertyDistribution() {
   }, []);
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
+    <Card className="flex flex-col h-full w-full">
+      <CardHeader className="items-center">
         <CardTitle>Property Type Distribution</CardTitle>
         <CardDescription>Distribution of property types across active listings</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0 h-full">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square h-full w-full">
-          <PieChart>
+      <CardContent className="flex w-full h-full">
+        <ChartContainer config={chartConfig} className="mx-auto aspect-square">
+          <PieChart className="flex justify-center items-center">
             <ChartTooltip content={<ChartTooltipContent nameKey="type" hideLabel />} />
             {theme && (
               <Pie
                 data={propertyDistribution}
                 dataKey="count"
                 nameKey="type"
-                outerRadius={"80%"}
-                innerRadius={"50%"}
+                outerRadius={"100%"}
+                innerRadius={"60%"}
                 labelLine={false} // Disable label lines
                 label={(props) => CustomLabel(props, theme)} // Use custom label for icons
               >

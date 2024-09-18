@@ -44,7 +44,7 @@ export default function PropertiesCreated() {
   const total = useMemo(() => (chartData.length > 0 ? chartData[chartData.length - 1].count : 0), [chartData]);
 
   return (
-    <Card>
+    <Card className="flex flex-col w-full h-full">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
           <CardTitle>Properties Created</CardTitle>
@@ -57,18 +57,10 @@ export default function PropertiesCreated() {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="px-2 sm:p-6 h-[400px]">
+      <CardContent className="sm:p-6 h-full">
         <ChartContainer config={chartConfig} className="aspect-auto h-full w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={chartData}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
+            <LineChart data={chartData} className="">
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
                 dataKey="date"

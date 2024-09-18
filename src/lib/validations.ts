@@ -167,6 +167,7 @@ export const homeSchema = z.object({
   areaSqm: z.number(),
   isActive: z.boolean(),
   isComplete: z.boolean(),
+  completedAt: z.date().nullable(),
   listingFlowStep: z.number().min(0, "Cannot be empty"),
 });
 

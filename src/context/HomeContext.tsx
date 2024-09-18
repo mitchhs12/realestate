@@ -64,6 +64,7 @@ const HomeContext = createContext<HomeContextProps>({
     isActive: false,
     isComplete: false,
     listingFlowStep: 0,
+    completedAt: null,
   },
   matchingTypes: [],
   matchingFeatures: [],
