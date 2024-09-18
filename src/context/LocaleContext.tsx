@@ -54,7 +54,6 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   const defaultLanguage = lang;
 
   const fetchCurrencies = async () => {
-    console.log("running this shit");
     const response = await fetch("/api/getCurrencyData");
     const data = await response.json();
     setCurrencyData(data);
@@ -62,11 +61,10 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   };
 
   useEffect(() => {
-    console.log("rerender detected", currencyData);
     if (!currencyData) {
       fetchCurrencies();
     }
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     if (session.data?.user) {
@@ -81,7 +79,6 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
 
   useEffect(() => {
     if (session.data && session.data.user) {
-      console.log("running this now");
       const userData = session.data.user;
       if (userData.language && userData.language !== lang) {
         changeLocale(userData.language);
@@ -94,7 +91,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
       ) {
         const newDefaultCurrency = getCurrency(currencyData.prices, userData.currency);
         if (newDefaultCurrency !== defaultCurrency) {
-          setDefaultCurrency(defaultCurrency);
+          setDefaultCurrency(newDefaultCurrency);
         }
       }
     }
