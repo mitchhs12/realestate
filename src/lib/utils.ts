@@ -68,8 +68,6 @@ export const formatBrokenPrice = (
   // Determine if the symbol is before or after the number
   const symbolFirst = parts[0].type === "currency";
 
-  console.log("test", symbol, number, symbolFirst);
-
   return {
     symbol,
     number,

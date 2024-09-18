@@ -42,7 +42,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   const session = useSession();
 
   const changeLocale = useChangeLocale();
-  const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType | null>(null);
+  const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType | null>({ symbol: "USD", usdPrice: 1 });
   const [currencyData, setCurrencyData] = useState<{ prices: CurrencyType[]; defaultCurrency: CurrencyType } | null>(
     null
   );
