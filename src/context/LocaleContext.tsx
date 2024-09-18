@@ -55,7 +55,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
 
   const fetchCurrencies = async () => {
     console.log("running this shit");
-    const response = await fetch("/api/getDefaultCurrency");
+    const response = await fetch("/api/getCurrencyData");
     const data = await response.json();
     setCurrencyData(data);
     console.log("data", data);
