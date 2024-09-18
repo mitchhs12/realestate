@@ -32,8 +32,8 @@ type Props = {
 };
 
 export default function RootLayout({ children, params }: Props) {
-  const locale = headers().get("x-locale") || "en";
-  const matchedCurrency = headers().get("x-currency") || "USD";
+  // const locale = headers().get("x-locale") || "en";
+  // const matchedCurrency = headers().get("x-currency") || "USD";
   const { direction: dir } = new Locale(params.locale).textInfo;
 
   return (
