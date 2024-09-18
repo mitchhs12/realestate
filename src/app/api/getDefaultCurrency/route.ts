@@ -6,13 +6,8 @@ export async function GET(request: Request) {
 
   console.log("language header", language);
 
-  // Match the detected language with supported locales
-  const detectedLocale = languages.includes(language as LanguageType) && language;
-
-  console.log("detectedLanguage", detectedLocale);
-
   // Get the matched currency for the detected locale
-  const localeData = locales.find((option) => option.locale === detectedLocale);
+  const localeData = locales.find((option) => option.locale === language);
   const matchedCurrency = localeData?.currency || "USD";
 
   // Return detected locale and currency in the response
