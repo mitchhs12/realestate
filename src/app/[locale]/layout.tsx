@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { poppins } from "./fonts";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-// import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "@/providers/theme";
+// import { Analytics } from "@vercel/analytics/react";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
+// // import { SessionProvider } from "next-auth/react";
+// import { ThemeProvider } from "@/providers/theme";
 import { LocaleContextProvider } from "@/context/LocaleContext";
 import { LanguageType } from "@/lib/validations";
 import { headers } from "next/headers";
@@ -40,13 +40,13 @@ export default function RootLayout({ children, params }: Props) {
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <body className={`${poppins.className} h-full`}>
         {/* <SessionProvider> */}
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-          <LocaleContextProvider lang={params.locale} matchedCurrency={matchedCurrency}>
-            <MainLayout>{children}</MainLayout>
-          </LocaleContextProvider>
-        </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
+        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}> */}
+        <LocaleContextProvider lang={params.locale} matchedCurrency={matchedCurrency}>
+          <MainLayout>{children}</MainLayout>
+        </LocaleContextProvider>
+        {/* </ThemeProvider> */}
+        {/* <SpeedInsights /> */}
+        {/* <Analytics /> */}
         {/* </SessionProvider> */}
       </body>
     </html>
