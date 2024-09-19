@@ -95,7 +95,7 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
         }
       }
     }
-  }, [session.data, defaultCurrency]);
+  }, [session.data, currencyData]);
 
   return (
     <LocaleContext.Provider
