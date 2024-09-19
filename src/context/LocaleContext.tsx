@@ -77,26 +77,26 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
     }
   }, [session]);
 
-  useEffect(() => {
-    if (session.data && session.data.user) {
-      const userData = session.data.user;
-      if (userData.language && userData.language !== lang) {
-        changeLocale(userData.language);
-      }
-      if (
-        userData.currency &&
-        defaultCurrency &&
-        defaultCurrency.symbol !== "USD" &&
-        currencyData &&
-        userData.currency !== currencyData.defaultCurrency.symbol
-      ) {
-        const newDefaultCurrency = getCurrency(currencyData.prices, userData.currency);
-        if (newDefaultCurrency !== defaultCurrency) {
-          setDefaultCurrency(newDefaultCurrency);
-        }
-      }
-    }
-  }, [session.data, defaultCurrency]);
+  // useEffect(() => {
+  //   if (session.data && session.data.user) {
+  //     const userData = session.data.user;
+  //     if (userData.language && userData.language !== lang) {
+  //       changeLocale(userData.language);
+  //     }
+  //     if (
+  //       userData.currency &&
+  //       defaultCurrency &&
+  //       defaultCurrency.symbol !== "USD" &&
+  //       currencyData &&
+  //       userData.currency !== currencyData.defaultCurrency.symbol
+  //     ) {
+  //       const newDefaultCurrency = getCurrency(currencyData.prices, userData.currency);
+  //       if (newDefaultCurrency !== defaultCurrency) {
+  //         setDefaultCurrency(newDefaultCurrency);
+  //       }
+  //     }
+  //   }
+  // }, [session.data, defaultCurrency]);
 
   return (
     <LocaleContext.Provider
