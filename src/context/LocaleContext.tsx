@@ -53,17 +53,14 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
   const defaultLanguage = lang;
 
-  const fetchCurrencies = async () => {
-    const response = await fetch("/api/getCurrencyData");
-    const data = await response.json();
-    setCurrencyData(data);
-    setDefaultCurrency(getCurrency(data.prices, data.defaultCurrency));
-  };
-
   useEffect(() => {
-    if (!currencyData) {
-      fetchCurrencies();
-    }
+    const fetchCurrencies = async () => {
+      const response = await fetch("/api/getCurrencyData");
+      const data = await response.json();
+      setCurrencyData(data);
+      setDefaultCurrency(getCurrency(data.prices, data.defaultCurrency));
+    };
+    fetchCurrencies();
   }, [lang]);
 
   useEffect(() => {
