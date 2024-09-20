@@ -11,7 +11,7 @@ import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatNumber } from "@/lib/utils";
-import { Drawer, DrawerContent, DrawerDescription, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
 import { LocaleContext } from "@/context/LocaleContext";
 import { ReloadIcon } from "@radix-ui/react-icons";
 

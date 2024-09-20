@@ -74,7 +74,7 @@ export default function Header({
             <Button
               size={"largeIcon"}
               variant="outline"
-              className={`flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+              className={`flex ${isRootPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
               onClick={() => {
                 isRootPage ? router.refresh() : router.push("/");
               }}
@@ -97,7 +97,7 @@ export default function Header({
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
+                className={`${isArticlesPage && "bg-secondary"} flex h-12 text-[#2dac5c] hover:text-primary/80 `}
                 disabled={true}
               >
                 <Link href="/articles">
