@@ -77,8 +77,6 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
     setIsRoomsOpen(!isRoomsOpen);
   };
 
-  console.log("Running this code");
-
   return (
     <>
       <DialogContent close={false} className="w-80 p-4 rounded-md top-0 translate-y-[5%] slide-in-from-top-0">

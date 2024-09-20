@@ -46,8 +46,6 @@ export default function SearchBox({
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
   const pathname = usePathname();
 
-  console.log("running this second code");
-
   const getGeolocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
