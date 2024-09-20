@@ -13,6 +13,56 @@ const providers: Provider[] = [
   Apple,
   Facebook,
   Resend({
+    sendVerificationRequest({ identifier: email, url, provider: { from } }) {
+      // Customize your email content
+      const subject = `Welcome to Viva Ideal! Let's get going.`;
+      const htmlContent = `
+        <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+        <table align="center" width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+          <tr>
+            <td style="padding: 20px; text-align: center; background-color: #16A34A; color: #ffffff;">
+              <h1 style="margin: 0;">Welcome to Viva Ideal!</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 20px; color: #333333;">
+              <p style="font-size: 18px;">Hi there,</p>
+              <p style="font-size: 16px;">We're excited to have you! Click the button below to sign in and get started with Viva Ideal.</p>
+              <p style="text-align: center;">
+                <a href="${url}" style="display: inline-block; padding: 12px 24px; background-color: #16A34A; color: #ffffff; text-decoration: none; border-radius: 4px; font-size: 16px;">Sign in</a>
+              </p>
+              <p style="font-size: 14px; color: #888888;">If you did not request this email, you can safely ignore it.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 20px; text-align: center; font-size: 12px; color: #aaaaaa; background-color: #f4f4f4;">
+              <p>&copy; 2024 Viva Ideal, All rights reserved.</p>
+            </td>
+          </tr>
+        </table>
+      </body>
+      `;
+
+      // Send the email using Resend API
+      console.log("API key:", process.env.AUTH_RESEND_KEY);
+      return fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.AUTH_RESEND_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: email,
+          subject,
+          html: htmlContent,
+        }),
+      }).then((res) => {
+        if (!res.ok) {
+          throw new Error(`Resend API error: ${res.statusText}`);
+        }
+      });
+    },
     from: "Alicia <alicia@vivaideal.com>",
   }),
 ];
