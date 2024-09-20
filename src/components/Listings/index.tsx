@@ -26,7 +26,7 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice }: 
 
   return (
     <div className="flex flex-col items-center h-full w-full">
-      <div className="grid p-5 w-full h-full grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+      <div className="grid p-4 w-full h-full grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {homes.map((home, index) => {
           const matchingTypes = findMatching(typesObject, home, "type");
 
