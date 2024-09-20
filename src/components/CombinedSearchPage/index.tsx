@@ -206,16 +206,14 @@ export default function CombinedSearchPage({
               </div>
             </div>
           </DrawerContent>
-          <DrawerTrigger asChild>
-            <FloatingDrawerButton
-              isLoading={!isSearchLoading && !isMapLoading ? false : true}
-              loadingText={loadingText}
-              showMap={showMap}
-              showList={showList}
-              drawerOpen={isOpen}
-              setDrawerOpen={setIsOpen}
-            />
-          </DrawerTrigger>
+          <FloatingDrawerButton
+            isLoading={!isSearchLoading && !isMapLoading ? false : true}
+            loadingText={loadingText}
+            showMap={showMap}
+            showList={showList}
+            drawerOpen={isOpen}
+            setDrawerOpen={setIsOpen}
+          />
         </Drawer>
       </div>
 

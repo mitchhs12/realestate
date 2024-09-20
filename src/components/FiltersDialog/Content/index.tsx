@@ -1,8 +1,15 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import {
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+  DialogDescription,
+  VisuallyHidden,
+} from "@/components/ui/dialog";
 import { House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
@@ -70,9 +77,16 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
     setIsRoomsOpen(!isRoomsOpen);
   };
 
+  console.log("Running this code");
+
   return (
     <>
-      <DialogContent close={false} className="w-80 p-4 rounded-md">
+      <DialogContent close={false} className="w-80 p-4 rounded-md top-0 translate-y-[5%] slide-in-from-top-0">
+        <VisuallyHidden.Root>
+          <DialogTitle />
+          <DialogDescription />
+        </VisuallyHidden.Root>
+
         <SearchBox
           rawBox={true}
           isSmallMap={isSmallMap}

@@ -46,6 +46,8 @@ export default function SearchBox({
   const isNavigating = useRef(false); // Flag to track if navigation is occurring
   const pathname = usePathname();
 
+  console.log("running this second code");
+
   const getGeolocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -147,6 +149,12 @@ export default function SearchBox({
   useEffect(() => {
     isNavigating.current = false;
   }, [pathname]);
+
+  useEffect(() => {
+    if (document.activeElement === inputRef.current) {
+      console.log("Input is focused!");
+    }
+  }, []);
 
   return (
     <div className="flex w-full">
