@@ -3,7 +3,18 @@
 import { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import { Filter, House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
+import {
+  Filter,
+  House,
+  Sparkles,
+  DollarSign,
+  DoorOpen,
+  ChevronDown,
+  ChevronUp,
+  SlidersHorizontal,
+  SlidersVertical,
+  Settings2,
+} from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
@@ -84,7 +95,7 @@ export default function FiltersDialog() {
         <div
           className={`flex items-center text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
         >
-          <SlidersHorizontal className="items-center" width={20} height={20} strokeWidth={1.5} />
+          <Settings2 className="items-center" width={20} height={20} strokeWidth={1.5} />
         </div>
       </Button>
 

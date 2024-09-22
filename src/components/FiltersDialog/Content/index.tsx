@@ -10,7 +10,7 @@ import {
   DialogDescription,
   VisuallyHidden,
 } from "@/components/ui/dialog";
-import { House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
+import { House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp } from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";

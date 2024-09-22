@@ -39,6 +39,7 @@ import { HomeContext } from "@/context/HomeContext";
 import { typeIcons } from "../Icons/typeIcons";
 import { useTheme } from "next-themes";
 import { featureIcons } from "../Icons/featureIcons";
+import { kv } from "@vercel/kv";
 
 interface Props {
   units: { m: string; ft: string };

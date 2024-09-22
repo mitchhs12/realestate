@@ -26,6 +26,7 @@ import {
   Sofa,
   CookingPot,
   SlidersHorizontal,
+  Settings2,
 } from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
@@ -94,7 +95,7 @@ export default function Filters() {
           <div
             className={`flex items-center gap-2 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
           >
-            <SlidersHorizontal width={20} height={20} strokeWidth={1.5} />
+            <Settings2 width={20} height={20} strokeWidth={1.5} />
             <span className="items-center">{filters}</span>
           </div>
         </Button>
