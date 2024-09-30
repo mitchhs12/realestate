@@ -48,6 +48,7 @@ export default async function MainLayout({ children }: Props) {
     reset: h("reset"),
     selectAll: h("select-all"),
     deselectAll: h("deselect-all"),
+    search: h("search.search-button-small"),
   };
 
   return (
@@ -67,6 +68,7 @@ export default async function MainLayout({ children }: Props) {
           sellButtonSmall={h("sell-button-small")}
           exit={p("exit")}
           exit_short={p("exit-short")}
+          searchButtonSmall={h("search.search-button-small")}
         />
         {children}
       </QueryContextProvider>

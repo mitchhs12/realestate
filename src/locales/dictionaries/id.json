@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "Cari alamat atau tempat apa pun...",
         "placeholder-short": "Mencari...",
-        "search-button": "Mencari"
+        "search-button": "Mencari",
+        "search-button-small": "Pencarian / Filter"
       },
       "filters": "Filternya",
       "categories": "Kategori",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "Mulailah dengan memilih distrik kota di bawah ini.",
-    "popular": "Paling Populer",
+    "popular": "Paling Disukai",
     "cheapest": "Termurah",
     "newest": "Terbaru",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. Semua hak dilindungi undang-undang."
+      "allRightsReserved": "© 2024 Viva Ideal. Semua hak dilindungi undang-undang.",
+      "legal": {
+        "title": "Legal",
+        "terms": "Ketentuan Layanan",
+        "privacy": "Kebijakan Privasi"
+      },
+      "pages": {
+        "title": "Hidup Ideal",
+        "home": "Rumah",
+        "about": "Tentang",
+        "articles": "Artikel",
+        "data": "Data"
+      }
     }
   },
   "articles": {

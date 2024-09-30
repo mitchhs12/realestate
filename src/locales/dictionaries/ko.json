@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "모든 주소나 장소를 검색해 보세요...",
         "placeholder-short": "찾다...",
-        "search-button": "찾다"
+        "search-button": "찾다",
+        "search-button-small": "검색 / 필터"
       },
       "filters": "필터",
       "categories": "카테고리",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "아래에서 도시 구역을 선택하여 시작하세요.",
-    "popular": "가장 인기 있는",
+    "popular": "가장 많이 좋아요",
     "cheapest": "가장 저렴한",
     "newest": "최신",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. 모든 권리 보유."
+      "allRightsReserved": "© 2024 Viva Ideal. 모든 권리 보유.",
+      "legal": {
+        "title": "합법적인",
+        "terms": "서비스 약관",
+        "privacy": "개인정보 보호정책"
+      },
+      "pages": {
+        "title": "비바 아이디얼",
+        "home": "집",
+        "about": "에 대한",
+        "articles": "조항",
+        "data": "데이터"
+      }
     }
   },
   "articles": {

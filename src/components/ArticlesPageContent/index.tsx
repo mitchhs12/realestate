@@ -9,12 +9,12 @@ import Image from "next/image";
 
 async function getData(locale: string) {
   const query = `
-  *[_type=="article"] | order(_createdAt desc) {
+  *[_type=="article"] | order(_updatedAt desc) {
     "localizedTitle":localizedTitle.${locale},
       "thumbnailDescription":thumbnailDescription.${locale},
       "currentSlug": slug.current,
       thumbnailImage,
-      _createdAt
+      _updatedAt
   }`;
 
   const data = await client.fetch(query);
@@ -31,7 +31,7 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
 
   return (
     <div className="flex flex-col justify-center items-center w-full flex-grow">
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full gap-4 justify-start pt-8 px-3 items-start max-w-8xl">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full gap-4 justify-start py-8 px-3 items-start max-w-8xl">
         {data.map((article, idx) => (
           <Card key={idx} className="flex flex-col items-center shadow-xl h-[380px]">
             <div className="relative items-center justify-center h-[200px] w-full">

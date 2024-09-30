@@ -17,12 +17,10 @@ export default function SearchDialog({ isSmallMap, placeholder, placeholderShort
   const [isOpen, setIsOpen] = useState(false);
   const { headerValues, isFiltering } = useContext(QueryContext);
 
-  const { searchText } = headerValues;
-
   return (
     <>
       <Button
-        className="rounded-full h-12 gap-3"
+        className="rounded-full h-12 gap-2"
         size={"default"}
         variant={"default"}
         disabled={isFiltering}
@@ -32,8 +30,8 @@ export default function SearchDialog({ isSmallMap, placeholder, placeholderShort
           setIsOpen(true);
         }}
       >
-        {isFiltering ? <ReloadIcon className="animate-spin w-5 h-5" /> : <Search size={20} />}
-        {searchText}
+        {isFiltering ? <ReloadIcon className="animate-spin w-5 h-5" /> : <Search size={16} />}
+        {text}
       </Button>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <FilterContent

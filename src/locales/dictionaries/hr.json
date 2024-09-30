@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "Potražite bilo koju adresu ili mjesto...",
         "placeholder-short": "Pretraživanje...",
-        "search-button": "Pretraživanje"
+        "search-button": "Pretraživanje",
+        "search-button-small": "Traži / Filtriraj"
       },
       "filters": "Filteri",
       "categories": "kategorije",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "Započnite odabirom gradskog okruga u nastavku.",
-    "popular": "Najpopularnije",
+    "popular": "Najviše lajkanih",
     "cheapest": "Najjeftiniji",
     "newest": "Najnoviji",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana."
+      "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana.",
+      "legal": {
+        "title": "Pravno",
+        "terms": "Uvjeti usluge",
+        "privacy": "Politika privatnosti"
+      },
+      "pages": {
+        "title": "Viva Ideal",
+        "home": "Dom",
+        "about": "Oko",
+        "articles": "Članci",
+        "data": "Podaci"
+      }
     }
   },
   "articles": {

@@ -32,6 +32,7 @@ interface Props {
   sellButtonSmall: string;
   exit: string;
   exit_short: string;
+  searchButtonSmall: string;
 }
 
 export default function Header({
@@ -48,6 +49,7 @@ export default function Header({
   sellButtonSmall,
   exit,
   exit_short,
+  searchButtonSmall,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
@@ -182,7 +184,7 @@ export default function Header({
         )}
         {isSearchPage && (
           <>
-            <div className="hidden sm:flex items-center justify-center gap-5 w-full max-w-5xl">
+            <div className="hidden sm:flex items-center justify-center gap-5 px-4 w-full max-w-5xl">
               <SearchBox
                 rawBox={false}
                 isSmallMap={false}
@@ -196,7 +198,7 @@ export default function Header({
                 isSmallMap={false}
                 placeholder={searchPlaceholder}
                 placeholderShort={searchPlaceholderShort}
-                text={searchText}
+                text={searchButtonSmall}
               />
             </div>
           </>

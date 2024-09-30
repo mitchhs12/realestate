@@ -4,7 +4,8 @@ export default {
       "search": {
         "placeholder": "ابحث عن أي عنوان أو مكان...",
         "placeholder-short": "يبحث...",
-        "search-button": "يبحث"
+        "search-button": "يبحث",
+        "search-button-small": "بحث / تصفية"
       },
       "filters": "المرشحات",
       "categories": "فئات",
@@ -158,11 +159,23 @@ export default {
       }
     },
     "cities": "ابدأ باختيار منطقة المدينة أدناه.",
-    "popular": "الأكثر شعبية",
+    "popular": "الأكثر اعجابا",
     "cheapest": "أرخص",
     "newest": "الأحدث",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. جميع الحقوق محفوظة."
+      "allRightsReserved": "© 2024 Viva Ideal. جميع الحقوق محفوظة.",
+      "legal": {
+        "title": "قانوني",
+        "terms": "شروط الخدمة",
+        "privacy": "سياسة الخصوصية"
+      },
+      "pages": {
+        "title": "فيفا ايديال",
+        "home": "بيت",
+        "about": "عن",
+        "articles": "المقالات",
+        "data": "بيانات"
+      }
     }
   },
   "articles": {

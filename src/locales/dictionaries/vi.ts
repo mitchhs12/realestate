@@ -4,7 +4,8 @@ export default {
       "search": {
         "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",
         "placeholder-short": "Tìm kiếm...",
-        "search-button": "Tìm kiếm"
+        "search-button": "Tìm kiếm",
+        "search-button-small": "Tìm kiếm / Lọc"
       },
       "filters": "Bộ lọc",
       "categories": "Thể loại",
@@ -158,11 +159,23 @@ export default {
       }
     },
     "cities": "Bắt đầu bằng cách chọn một quận thành phố bên dưới.",
-    "popular": "Phổ biến nhất",
+    "popular": "Được yêu thích nhất",
     "cheapest": "Rẻ nhất",
     "newest": "Mới nhất",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền."
+      "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền.",
+      "legal": {
+        "title": "Hợp pháp",
+        "terms": "Điều khoản dịch vụ",
+        "privacy": "Chính sách bảo mật"
+      },
+      "pages": {
+        "title": "Viva lý tưởng",
+        "home": "Trang chủ",
+        "about": "Về",
+        "articles": "Bài viết",
+        "data": "Dữ liệu"
+      }
     }
   },
   "articles": {

@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "მოძებნეთ ნებისმიერი მისამართი ან ადგილი...",
         "placeholder-short": "ძიება...",
-        "search-button": "ძიება"
+        "search-button": "ძიება",
+        "search-button-small": "ძიება / ფილტრი"
       },
       "filters": "ფილტრები",
       "categories": "კატეგორიები",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "დაიწყეთ ქვემოთ ქალაქის უბნის არჩევით.",
-    "popular": "ყველაზე პოპულარული",
+    "popular": "ყველაზე მოწონებული",
     "cheapest": "ყველაზე იაფად",
     "newest": "უახლესი",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. ყველა უფლება დაცულია."
+      "allRightsReserved": "© 2024 Viva Ideal. ყველა უფლება დაცულია.",
+      "legal": {
+        "title": "იურიდიული",
+        "terms": "მომსახურების პირობები",
+        "privacy": "კონფიდენციალურობის პოლიტიკა"
+      },
+      "pages": {
+        "title": "ვივა იდეალური",
+        "home": "მთავარი",
+        "about": "შესახებ",
+        "articles": "სტატიები",
+        "data": "მონაცემები"
+      }
     }
   },
   "articles": {

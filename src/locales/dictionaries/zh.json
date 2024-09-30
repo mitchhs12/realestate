@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "搜索任何地址或地点...",
         "placeholder-short": "搜索...",
-        "search-button": "搜索"
+        "search-button": "搜索",
+        "search-button-small": "搜索/过滤"
       },
       "filters": "筛选器",
       "categories": "类别",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "从下面选择一个城市区域开始。",
-    "popular": "最受欢迎",
+    "popular": "最受喜爱",
     "cheapest": "最便宜的",
     "newest": "最新",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。"
+      "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。",
+      "legal": {
+        "title": "合法的",
+        "terms": "服务条款",
+        "privacy": "隐私政策"
+      },
+      "pages": {
+        "title": "理想万岁",
+        "home": "家",
+        "about": "关于",
+        "articles": "文章",
+        "data": "数据"
+      }
     }
   },
   "articles": {

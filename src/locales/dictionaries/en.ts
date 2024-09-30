@@ -4,7 +4,8 @@ export default {
       "search": {
         "placeholder": "Search for any address or place...",
         "placeholder-short": "Search...",
-        "search-button": "Search"
+        "search-button": "Search",
+        "search-button-small": "Search / Filter"
       },
       "filters": "Filters",
       "categories": "Categories",
@@ -158,11 +159,23 @@ export default {
       ]
     },
     "cities": "Get started by selecting a city destrict below",
-    "popular": "Most Popular",
+    "popular": "Most Liked",
     "cheapest": "Cheapest",
     "newest": "Newest",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. All rights reserved."
+      "allRightsReserved": "© 2024 Viva Ideal PTE. LTD. All rights reserved.",
+      "legal": {
+        "title": "Legal",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy"
+      },
+      "pages": {
+        "title": "Pages",
+        "home": "Home",
+        "about": "About",
+        "articles": "Articles",
+        "data": "Data"
+      }
     }
   },
   "articles": {

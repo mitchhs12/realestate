@@ -4,7 +4,8 @@ export default {
       "search": {
         "placeholder": "Rechercher n'importe quelle adresse ou lieu...",
         "placeholder-short": "Recherche...",
-        "search-button": "Recherche"
+        "search-button": "Recherche",
+        "search-button-small": "Rechercher / Filtrer"
       },
       "filters": "Filtres",
       "categories": "Catégories",
@@ -158,11 +159,23 @@ export default {
       }
     },
     "cities": "Commencez par sélectionner un quartier de la ville ci-dessous.",
-    "popular": "Le plus populaire",
+    "popular": "Le plus aimé",
     "cheapest": "Le moins cher",
     "newest": "Le plus récent",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. Tous droits réservés."
+      "allRightsReserved": "© 2024 Viva Ideal. Tous droits réservés.",
+      "legal": {
+        "title": "Légal",
+        "terms": "Conditions d'utilisation",
+        "privacy": "politique de confidentialité"
+      },
+      "pages": {
+        "title": "Vive l'idéal",
+        "home": "Maison",
+        "about": "À propos",
+        "articles": "Articles",
+        "data": "Données"
+      }
     }
   },
   "articles": {

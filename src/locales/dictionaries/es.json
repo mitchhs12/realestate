@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "Busca cualquier dirección o lugar...",
         "placeholder-short": "Buscar...",
-        "search-button": "Buscar"
+        "search-button": "Buscar",
+        "search-button-small": "Buscar / Filtrar"
       },
       "filters": "Filtros",
       "categories": "Categorías",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "Comience seleccionando un distrito de ciudad a continuación.",
-    "popular": "Más populares",
+    "popular": "Lo más gustado",
     "cheapest": "El más barato",
     "newest": "El más nuevo",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. Todos los derechos reservados."
+      "allRightsReserved": "© 2024 Viva Ideal. Todos los derechos reservados.",
+      "legal": {
+        "title": "Legal",
+        "terms": "Condiciones de servicio",
+        "privacy": "política de privacidad"
+      },
+      "pages": {
+        "title": "Viva ideal",
+        "home": "Hogar",
+        "about": "Acerca de",
+        "articles": "Artículos",
+        "data": "Datos"
+      }
     }
   },
   "articles": {

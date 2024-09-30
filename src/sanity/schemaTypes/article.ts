@@ -54,7 +54,8 @@ export const article = defineType({
     defineField({
       name: "content",
       type: "internationalizedArrayLocalizedBlockContent",
-      title: "Content of your article",
+      title:
+        "Content of your article (make sure your images have a 3:2 aspect ratio because they will be cropped to 720px wide x 480px high).",
     }),
   ],
 });

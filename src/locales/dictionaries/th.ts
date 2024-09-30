@@ -4,7 +4,8 @@ export default {
       "search": {
         "placeholder": "ค้นหาที่อยู่หรือสถานที่ใดๆ...",
         "placeholder-short": "ค้นหา...",
-        "search-button": "ค้นหา"
+        "search-button": "ค้นหา",
+        "search-button-small": "ค้นหา / กรอง"
       },
       "filters": "ตัวกรอง",
       "categories": "หมวดหมู่",
@@ -158,11 +159,23 @@ export default {
       }
     },
     "cities": "เริ่มต้นด้วยการเลือกเขตเมืองด้านล่าง",
-    "popular": "ได้รับความนิยมมากที่สุด",
+    "popular": "ถูกใจมากที่สุด",
     "cheapest": "ถูกที่สุด",
     "newest": "ใหม่ล่าสุด",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. สงวนลิขสิทธิ์"
+      "allRightsReserved": "© 2024 Viva Ideal. สงวนลิขสิทธิ์",
+      "legal": {
+        "title": "ถูกกฎหมาย",
+        "terms": "เงื่อนไขการบริการ",
+        "privacy": "นโยบายความเป็นส่วนตัว"
+      },
+      "pages": {
+        "title": "วีว่าไอเดียล",
+        "home": "บ้าน",
+        "about": "เกี่ยวกับ",
+        "articles": "บทความ",
+        "data": "ข้อมูล"
+      }
     }
   },
   "articles": {

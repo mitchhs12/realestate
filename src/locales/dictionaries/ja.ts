@@ -4,7 +4,8 @@ export default {
       "search": {
         "placeholder": "任意の住所または場所を検索します...",
         "placeholder-short": "検索...",
-        "search-button": "検索"
+        "search-button": "検索",
+        "search-button-small": "検索 / フィルター"
       },
       "filters": "フィルター",
       "categories": "カテゴリー",
@@ -158,11 +159,23 @@ export default {
       }
     },
     "cities": "以下の市区町村を選択して開始してください。",
-    "popular": "最も人気",
+    "popular": "最も好まれた",
     "cheapest": "最も安い",
     "newest": "最新",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal。無断複写・転載を禁じます。"
+      "allRightsReserved": "© 2024 Viva Ideal。無断複写・転載を禁じます。",
+      "legal": {
+        "title": "法律上の",
+        "terms": "利用規約",
+        "privacy": "プライバシーポリシー"
+      },
+      "pages": {
+        "title": "ヴィヴァ・アイディアル",
+        "home": "家",
+        "about": "について",
+        "articles": "記事",
+        "data": "データ"
+      }
     }
   },
   "articles": {

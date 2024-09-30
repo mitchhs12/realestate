@@ -4,7 +4,8 @@
       "search": {
         "placeholder": "Herhangi bir adresi veya yeri arayın...",
         "placeholder-short": "Aramak...",
-        "search-button": "Aramak"
+        "search-button": "Aramak",
+        "search-button-small": "Ara / Filtrele"
       },
       "filters": "Filtreler",
       "categories": "Kategoriler",
@@ -158,11 +159,23 @@
       }
     },
     "cities": "Aşağıdan bir şehir bölgesi seçerek başlayabilirsiniz.",
-    "popular": "En Popüler",
+    "popular": "En Çok Beğenilen",
     "cheapest": "En ucuz",
     "newest": "En yeni",
     "footer": {
-      "allRightsReserved": "© 2024 Viva Ideal. Tüm hakları saklıdır."
+      "allRightsReserved": "© 2024 Viva Ideal. Tüm hakları saklıdır.",
+      "legal": {
+        "title": "Yasal",
+        "terms": "Hizmet Şartları",
+        "privacy": "Gizlilik Politikası"
+      },
+      "pages": {
+        "title": "Yaşasın İdeal",
+        "home": "Ev",
+        "about": "Hakkında",
+        "articles": "Makaleler",
+        "data": "Veri"
+      }
     }
   },
   "articles": {
