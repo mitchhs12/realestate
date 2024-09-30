@@ -3,7 +3,7 @@ import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
 import { getPopular, getNew, getCheapest } from "@/app/[locale]/actions";
 import { locationImageIds } from "@/lib/validations";
-import { Newspaper, HandCoins, Star } from "lucide-react";
+import { Newspaper, HandCoins, Star, Heart } from "lucide-react";
 import { typesMap } from "@/lib/sellFlowData";
 
 async function fetchWithCache(url: string) {
@@ -103,7 +103,7 @@ export default async function HomePageContent() {
       <section className="flex flex-col justify-center items-center w-full h-full">
         <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
           <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
-            <Star size={24} strokeWidth={1.5} />
+            <Heart size={24} strokeWidth={1.5} />
             {t("popular")}
           </h2>
           <Listings listingKey={"popular"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
@@ -112,7 +112,7 @@ export default async function HomePageContent() {
       <section className="flex flex-col justify-center items-center w-full h-full">
         <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
           <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
-            <HandCoins size={26} strokeWidth={1.5} />
+            <HandCoins size={24} strokeWidth={1.5} />
             {t("cheapest")}
           </h2>
           <Listings listingKey={"cheap"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
