@@ -30,7 +30,7 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
   const articleUnavailable = t("articleUnavailable");
 
   return (
-    <div className="flex flex-col justify-center items-center w-full flex-grow">
+    <div className="flex flex-col justify-center items-center w-full">
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-full gap-4 justify-start py-8 px-3 items-start max-w-8xl">
         {data.map((article, idx) => (
           <Card key={idx} className="flex flex-col items-center shadow-xl h-[380px]">
@@ -48,8 +48,8 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
               />
             </div>
 
-            <CardContent className="flex flex-col justify-between w-full h-[180px] px-3 gap-2 py-2">
-              <h3 className="mt-2 text-primary text-lg line-clamp-1 font-bold">
+            <CardContent className="flex flex-col justify-between w-full h-[190px] px-3 gap-2 py-2">
+              <h3 className="mt-2 text-primary text-lg line-clamp-2 font-bold">
                 {article.localizedTitle
                   ? article.localizedTitle
                   : `${articleUnavailable} ${getFullLanguageName(locale)}`}
