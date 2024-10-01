@@ -16,10 +16,12 @@ export default function Home({ params: { locale } }: { params: { locale: Languag
 
   return (
     <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
-      <main className="w-full">{/* <Hero /> */}</main>
-      {/* <HomePageContent /> */}
+      <main className="w-full">
+        <Hero />
+      </main>
+      <HomePageContent />
       <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
-        {/* <Footer /> */}
+        <Footer />
       </footer>
     </div>
   );
