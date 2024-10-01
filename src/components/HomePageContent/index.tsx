@@ -94,8 +94,8 @@ export default async function HomePageContent() {
     <div className="flex flex-col justify-start h-full w-full gap-1 sm:gap-2 bg-background">
       <section className="flex bg-gradient-to-b from-[#f4fbf6] to-[#f4f5fb] dark:from-[#100e02] dark:to-[#021003] flex-col justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 md:pb-4 justify-start w-full h-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
-            <Map size={32} strokeWidth={2} />
+          <h2 className="flex justify-center items-center gap-3 text-4xl py-4 font-normal">
+            <Map size={28} strokeWidth={2} />
             {t("locations")}
           </h2>
           <Locations countries={countries} />
@@ -103,8 +103,8 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#f4f5fb] to-[#fbf4f8] dark:from-[#021007] dark:to-[#020410] justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
-            <Heart size={32} strokeWidth={2.4} />
+          <h2 className="flex justify-center items-center gap-3 text-4xl py-4 font-normal">
+            <Heart size={28} strokeWidth={2.4} />
             {t("popular")}
           </h2>
           <Listings listingKey={"popular"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
@@ -112,8 +112,8 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4] dark:from-[#020410] dark:to-[#10020b] justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
-            <HandCoins size={32} strokeWidth={2} />
+          <h2 className="flex justify-center items-center gap-3 text-4xl py-4 font-normal">
+            <HandCoins size={28} strokeWidth={2} />
             {t("cheapest")}
           </h2>
           <Listings listingKey={"cheap"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
@@ -121,8 +121,8 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbfaf4] to-[#f4fbf6] dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
-            <Newspaper size={32} strokeWidth={2} />
+          <h2 className="flex justify-center items-center gap-3 text-4xl py-4 font-normal">
+            <Newspaper size={28} strokeWidth={2} />
             {t("newest")}
           </h2>
           <Listings listingKey={"new"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
