@@ -71,7 +71,7 @@ export default function Header({
           isSellPage ? "justify-end" : "justify-center shadow-lg dark:shadow-white/5 xs:justify-between"
         } items-center h-[86px] z-[40] px-4 bg-background`}
       >
-        {!isSellPage && (
+        {/* {!isSellPage && (
           <div className={`${isSearchPage ? "flex" : "flex w-1/3 md:flex gap-2 md:gap-5"}`}>
             <Button
               size={"largeIcon"}
@@ -181,8 +181,8 @@ export default function Header({
               </Button>
             )}
           </div>
-        )}
-        {isSearchPage && (
+        )} */}
+        {/* {isSearchPage && (
           <>
             <div className="hidden sm:flex items-center justify-center gap-5 px-4 w-full max-w-5xl">
               <SearchBox
@@ -202,15 +202,15 @@ export default function Header({
               />
             </div>
           </>
-        )}
+        )} */}
 
-        {!isSearchPage && !isSellPage && (
+        {/* {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
             <span className="text-sm md:text-lg">{construction}</span>
             <span className="text-xs md:text-md">{construction_sub}</span>
           </h1>
-        )}
-        {!isSellPage && (
+        )} */}
+        {/* {!isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-2 md:gap-5 justify-end`}>
             {!isSearchPage && (
               <Button
@@ -228,8 +228,8 @@ export default function Header({
               <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
             </div>
           </div>
-        )}
-        {isSellPage && (
+        )} */}
+        {/* {isSellPage && (
           <Button
             variant="outline"
             onClick={() => {
@@ -239,16 +239,16 @@ export default function Header({
             <span className="sm:hidden">{exit_short}</span>
             <span className="hidden sm:flex">{exit}</span>
           </Button>
-        )}
+        )} */}
       </header>
 
-      {/* <div className="flex relative z-100">
+      <div className="flex relative z-100">
         <I18nProviderClient locale={defaultLanguage}>
           <ModalPortal>
             <Modal />
           </ModalPortal>
         </I18nProviderClient>
-      </div> */}
+      </div>
     </>
   );
 }
