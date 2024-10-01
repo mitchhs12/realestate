@@ -229,7 +229,7 @@ export default function Header({
             </div>
           </div>
         )}
-        {/* {isSellPage && (
+        {isSellPage && (
           <Button
             variant="outline"
             onClick={() => {
@@ -239,7 +239,7 @@ export default function Header({
             <span className="sm:hidden">{exit_short}</span>
             <span className="hidden sm:flex">{exit}</span>
           </Button>
-        )} */}
+        )}
       </header>
 
       <div className="flex relative z-100">
