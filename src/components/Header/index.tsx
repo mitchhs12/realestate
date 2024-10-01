@@ -182,7 +182,7 @@ export default function Header({
             )}
           </div>
         )} */}
-        {/* {isSearchPage && (
+        {isSearchPage && (
           <>
             <div className="hidden sm:flex items-center justify-center gap-5 px-4 w-full max-w-5xl">
               <SearchBox
@@ -202,7 +202,7 @@ export default function Header({
               />
             </div>
           </>
-        )} */}
+        )}
 
         {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
