@@ -53,25 +53,25 @@ export default async function MainLayout({ children }: Props) {
 
   return (
     <>
-      <QueryContextProvider headerValues={headerValues}>
-        <Header
-          map={h("map")}
-          list={h("list")}
-          articles={h("articles")}
-          data={h("data")}
-          searchPlaceholder={h("search.placeholder")}
-          searchPlaceholderShort={h("search.placeholder-short")}
-          searchText={h("search.search-button")}
-          construction={h("construction")}
-          construction_sub={h("construction-sub")}
-          sellButtonBig={h("sell-button-big")}
-          sellButtonSmall={h("sell-button-small")}
-          exit={p("exit")}
-          exit_short={p("exit-short")}
-          searchButtonSmall={h("search.search-button-small")}
-        />
-        {children}
-      </QueryContextProvider>
+      {/* <QueryContextProvider headerValues={headerValues}> */}
+      <Header
+        map={h("map")}
+        list={h("list")}
+        articles={h("articles")}
+        data={h("data")}
+        searchPlaceholder={h("search.placeholder")}
+        searchPlaceholderShort={h("search.placeholder-short")}
+        searchText={h("search.search-button")}
+        construction={h("construction")}
+        construction_sub={h("construction-sub")}
+        sellButtonBig={h("sell-button-big")}
+        sellButtonSmall={h("sell-button-small")}
+        exit={p("exit")}
+        exit_short={p("exit-short")}
+        searchButtonSmall={h("search.search-button-small")}
+      />
+      {children}
+      {/* </QueryContextProvider> */}
     </>
   );
 }

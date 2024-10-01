@@ -39,8 +39,7 @@ export default function RootLayout({ children, params }: Props) {
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
             <LocaleContextProvider lang={params.locale}>
-              {children}
-              {/* <MainLayout>{children}</MainLayout> */}
+              <MainLayout>{children}</MainLayout>
             </LocaleContextProvider>
           </ThemeProvider>
           <SpeedInsights />
