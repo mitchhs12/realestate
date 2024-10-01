@@ -91,10 +91,10 @@ export default async function HomePageContent() {
   };
 
   return (
-    <div className="flex flex-col justify-start h-full w-full gap-1 sm:gap-2 px-1 sm:px-2 bg-background">
+    <div className="flex flex-col justify-start h-full w-full sm:gap-2 bg-background">
       <section className="flex bg-[#e8f6ed] dark:bg-[#021007] flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-4 pb-1 2xl:pb-4 justify-start w-full h-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-3 font-normal">
+        <div className="flex flex-col pt-3 pb-2 justify-start w-full h-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
             <Map size={32} strokeWidth={2} />
             {t("locations")}
           </h2>
@@ -102,8 +102,8 @@ export default async function HomePageContent() {
         </div>
       </section>
       <section className="flex flex-col bg-[#e8eaf6] dark:bg-[#020410] justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-4 pb-1 2xl:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-3 font-normal">
+        <div className="flex flex-col pt-3 pb-2 justify-start h-full w-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
             <Heart size={32} strokeWidth={2.2} />
             {t("popular")}
           </h2>
@@ -111,8 +111,8 @@ export default async function HomePageContent() {
         </div>
       </section>
       <section className="flex flex-col bg-[#f6e8f1] dark:bg-[#10020b] justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-4 pb-1 2xl:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-3 font-normal">
+        <div className="flex flex-col pt-3 pb-2 justify-start h-full w-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
             <HandCoins size={32} strokeWidth={2} />
             {t("cheapest")}
           </h2>
@@ -120,8 +120,8 @@ export default async function HomePageContent() {
         </div>
       </section>
       <section className="flex flex-col bg-[#f6f4e8] dark:bg-[#100e02] justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-4 pb-1 2xl:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-3 font-normal">
+        <div className="flex flex-col pt-3 pb-2 justify-start h-full w-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl sm:text-4xl py-4 font-normal">
             <Newspaper size={32} strokeWidth={2} />
             {t("newest")}
           </h2>
