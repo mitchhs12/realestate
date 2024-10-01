@@ -204,7 +204,7 @@ export default function Header({
           </>
         )}
 
-        {/* {!isSearchPage && !isSellPage && (
+        {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
             <span className="text-sm md:text-lg">{construction}</span>
             <span className="text-xs md:text-md">{construction_sub}</span>
@@ -239,16 +239,16 @@ export default function Header({
             <span className="sm:hidden">{exit_short}</span>
             <span className="hidden sm:flex">{exit}</span>
           </Button>
-        )} */}
+        )}
       </header>
 
-      <div className="flex relative z-100">
+      {/* <div className="flex relative z-100">
         <I18nProviderClient locale={defaultLanguage}>
           <ModalPortal>
             <Modal />
           </ModalPortal>
         </I18nProviderClient>
-      </div>
+      </div> */}
     </>
   );
 }
