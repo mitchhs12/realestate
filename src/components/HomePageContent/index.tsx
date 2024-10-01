@@ -91,37 +91,34 @@ export default async function HomePageContent() {
   };
 
   return (
-    <div className="flex flex-col justify-start h-full w-full bg-background">
-      <section className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-8 pb-4 justify-start w-full h-full max-w-8xl">
-          <div className="flex justify-center items-start px-8 sm:px-0 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl w-full font-normal text-center">
-            {t("cities")}
-          </div>
+    <div className="flex flex-col justify-start h-full w-full gap-2 bg-background">
+      <section className="flex bg-[#e8f6ed] dark:bg-[#021007] flex-col justify-center items-center w-full h-full">
+        <div className="flex flex-col pt-4 pb-4 justify-start w-full h-full max-w-8xl">
           <Locations countries={countries} />
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
-            <Heart size={24} strokeWidth={1.5} />
+      <section className="flex flex-col bg-[#e8eaf6] dark:bg-[#020410] justify-center items-center w-full h-full">
+        <div className="flex flex-col pt-4 pb-4 justify-start h-full w-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl py-4 font-normal">
+            <Heart size={30} strokeWidth={2.5} />
             {t("popular")}
           </h2>
           <Listings listingKey={"popular"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
-            <HandCoins size={24} strokeWidth={1.5} />
+      <section className="flex flex-col bg-[#f6e8f1] dark:bg-[#10020b] justify-center items-center w-full h-full">
+        <div className="flex flex-col pt-4 pb-4 justify-start h-full w-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl py-4 font-normal">
+            <HandCoins size={30} strokeWidth={2} />
             {t("cheapest")}
           </h2>
           <Listings listingKey={"cheap"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-8 pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-normal">
-            <Newspaper size={24} strokeWidth={1.5} />
+      <section className="flex flex-col bg-[#f6f4e8] dark:bg-[#100e02] justify-center items-center w-full h-full">
+        <div className="flex flex-col pt-4 pb-4 justify-start h-full w-full max-w-8xl">
+          <h2 className="flex justify-center items-center gap-3 text-3xl py-4 font-normal">
+            <Newspaper size={30} strokeWidth={2} />
             {t("newest")}
           </h2>
           <Listings listingKey={"new"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />

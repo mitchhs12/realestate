@@ -81,7 +81,7 @@ export default function ResizableCard({
     >
       <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
-        <div className="flex flex-col justify-center items-center w-full pt-2 gap-2 px-2 relative">
+        <div className="flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative">
           <h3
             className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${
               titleUnderlined ? "underline" : ""

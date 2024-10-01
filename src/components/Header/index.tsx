@@ -88,13 +88,13 @@ export default function Header({
                 <h1
                   className={`${poppins.className} ${
                     isSearchPage ? "hidden 2xl:flex" : "hidden sm:flex"
-                  } text-lg pr-2 font-medium align-middle`}
+                  } items-center text-lg font-medium align-middle`}
                 >
                   Viva Ideal
                 </h1>
               </div>
             </Button>
-            {
+            {!isSearchPage && !isHomesPage && (
               <Button
                 asChild
                 size={"largeIcon"}
@@ -113,13 +113,13 @@ export default function Header({
                   </div>
                 </Link>
               </Button>
-            }
-            {isDataPage && (
+            )}
+            {!isSearchPage && !isHomesPage && (
               <Button
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
+                className={`${isDataPage && "bg-secondary"} flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                 disabled={true}
               >
                 <Link href="/data">

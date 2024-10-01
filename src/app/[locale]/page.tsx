@@ -15,7 +15,7 @@ export default function Home({ params: { locale } }: { params: { locale: Languag
   setStaticParamsLocale(locale);
 
   return (
-    <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center">
+    <div className="flex flex-col justify-between min-h-screen-minus-header-svh items-center gap-2">
       <main className="w-full">
         <Hero />
       </main>

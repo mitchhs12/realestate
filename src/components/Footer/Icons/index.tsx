@@ -4,20 +4,41 @@ import { Button } from "@/components/ui/button";
 export default function Icons() {
   return (
     <div className="flex gap-5 justify-center">
-      <Button variant="ghost" size={"lgSqIcon"} className="rounded-full">
-        <SocialIcon url="https://x.com/viva_ideal" style={{ height: 40, width: 40 }} />
+      <Button variant="outline" size={"lgSqIcon"} className="rounded-xl">
+        <SocialIcon
+          url="https://x.com/viva_ideal"
+          className="bg-[#000000] rounded-lg"
+          style={{ height: 40, width: 40 }}
+        />
       </Button>
-      <Button variant="ghost" size={"lgSqIcon"} className="rounded-full">
-        <SocialIcon url="https://www.facebook.com/profile.php?id=61564984446949" style={{ height: 40, width: 40 }} />
+      <Button variant="outline" size={"lgSqIcon"} className="rounded-xl">
+        <SocialIcon
+          url="https://www.facebook.com/profile.php?id=61564984446949"
+          className="bg-[#3B5998] rounded-lg"
+          style={{ height: 40, width: 40 }}
+        />
       </Button>
-      <Button variant="ghost" size={"lgSqIcon"} className="rounded-full">
-        <SocialIcon url="https://www.instagram.com/viva.ideal" style={{ height: 40, width: 40 }} />
+      <Button variant="outline" size={"lgSqIcon"} className="rounded-xl">
+        <SocialIcon
+          url="https://www.instagram.com/viva.ideal"
+          className="bg-[#E94475] rounded-lg"
+          style={{ height: 40, width: 40 }}
+        />
       </Button>
-      <Button variant="ghost" size={"lgSqIcon"} className="rounded-full">
-        <SocialIcon url="https://www.tiktok.com/@vivaideal" style={{ height: 40, width: 40 }} />
+      <Button variant="outline" size={"lgSqIcon"} className="rounded-xl">
+        <SocialIcon
+          url="https://www.tiktok.com/@vivaideal"
+          className="bg-[#000000] rounded-lg"
+          style={{ height: 40, width: 40 }}
+        />
       </Button>
-      <Button variant="ghost" size={"lgSqIcon"} className="rounded-full">
-        <SocialIcon network={"whatsapp"} url="https://wa.me/message/PAJDSQEFHAE3F1" style={{ height: 40, width: 40 }} />
+      <Button variant="outline" size={"lgSqIcon"} className="rounded-xl">
+        <SocialIcon
+          network={"whatsapp"}
+          className="bg-[#25D366] rounded-lg"
+          url="https://wa.me/message/PAJDSQEFHAE3F1"
+          style={{ height: 40, width: 40 }}
+        />
       </Button>
     </div>
   );
