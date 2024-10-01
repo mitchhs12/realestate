@@ -182,7 +182,7 @@ export default function Header({
             )}
           </div>
         )}
-        {isSearchPage && (
+        {/* {isSearchPage && (
           <>
             <div className="hidden sm:flex items-center justify-center gap-5 px-4 w-full max-w-5xl">
               <SearchBox
@@ -239,7 +239,7 @@ export default function Header({
             <span className="sm:hidden">{exit_short}</span>
             <span className="hidden sm:flex">{exit}</span>
           </Button>
-        )}
+        )} */}
       </header>
 
       <div className="flex relative z-100">
