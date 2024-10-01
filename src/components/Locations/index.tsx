@@ -108,7 +108,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
 
   return (
     <div className="flex flex-col items-center w-full gap-6">
-      <div className="grid p-2 sm:p-4 w-full grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 sm:gap-4 lg:gap-5 xl:gap-5">
+      <div className="grid p-2 sm:p-4 md:px-8 w-full grid-cols-2 grid-rows-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3 xl:grid-cols-6 xl:grid-rows-2 gap-2 sm:gap-4 lg:gap-5 xl:gap-5">
         {Object.entries(countries).map(([isoCode, country], countryIndex) => (
           <Carousel
             key={countryIndex}
