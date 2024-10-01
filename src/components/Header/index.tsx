@@ -114,7 +114,7 @@ export default function Header({
                 </Link>
               </Button>
             )} */}
-            {/* {isDataPage && (
+            {isDataPage && (
               <Button
                 asChild
                 size={"largeIcon"}
@@ -133,7 +133,7 @@ export default function Header({
                   </div>
                 </Link>
               </Button>
-            )} */}
+            )}
             {/* {isHomesPage && (
               <Button
                 asChild
