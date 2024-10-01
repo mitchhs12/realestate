@@ -160,6 +160,7 @@ export default {
     },
     "cities": "Mulailah dengan memilih distrik kota di bawah ini.",
     "popular": "Paling Disukai",
+    "locations": "Lokasi",
     "cheapest": "Termurah",
     "newest": "Terbaru",
     "footer": {

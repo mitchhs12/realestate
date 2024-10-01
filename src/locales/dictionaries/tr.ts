@@ -160,6 +160,7 @@ export default {
     },
     "cities": "Aşağıdan bir şehir bölgesi seçerek başlayabilirsiniz.",
     "popular": "En Çok Beğenilen",
+    "locations": "Konumlar",
     "cheapest": "En ucuz",
     "newest": "En yeni",
     "footer": {

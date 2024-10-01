@@ -160,6 +160,7 @@ export default {
     },
     "cities": "Begin deur 'n stadgrens hieronder te kies.",
     "popular": "Mees gelaaik",
+    "locations": "Liggings",
     "cheapest": "Goedkoopste",
     "newest": "Nuutste",
     "footer": {

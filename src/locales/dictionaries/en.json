@@ -128,7 +128,8 @@
       "neighborhoods": ["Punta Carretas", "Pocitos", "Carrasco"]
     },
     "cities": "Get started by selecting a city destrict below",
-    "popular": "Most Liked",
+    "popular": "Popular",
+    "locations": "Locations",
     "cheapest": "Cheapest",
     "newest": "Newest",
     "footer": {

@@ -160,6 +160,7 @@ export default {
     },
     "cities": "Bắt đầu bằng cách chọn một quận thành phố bên dưới.",
     "popular": "Được yêu thích nhất",
+    "locations": "Địa điểm",
     "cheapest": "Rẻ nhất",
     "newest": "Mới nhất",
     "footer": {

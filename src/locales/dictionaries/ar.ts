@@ -160,6 +160,7 @@ export default {
     },
     "cities": "ابدأ باختيار منطقة المدينة أدناه.",
     "popular": "الأكثر اعجابا",
+    "locations": "المواقع",
     "cheapest": "أرخص",
     "newest": "الأحدث",
     "footer": {

@@ -160,6 +160,7 @@ export default {
     },
     "cities": "Wählen Sie zunächst unten einen Stadtteil aus.",
     "popular": "Meist gemocht",
+    "locations": "Standorte",
     "cheapest": "Günstigste",
     "newest": "Neueste",
     "footer": {

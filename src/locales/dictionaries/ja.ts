@@ -160,6 +160,7 @@ export default {
     },
     "cities": "以下の市区町村を選択して開始してください。",
     "popular": "最も好まれた",
+    "locations": "場所",
     "cheapest": "最も安い",
     "newest": "最新",
     "footer": {

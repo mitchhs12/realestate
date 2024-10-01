@@ -159,7 +159,8 @@ export default {
       ]
     },
     "cities": "Get started by selecting a city destrict below",
-    "popular": "Most Liked",
+    "popular": "Popular",
+    "locations": "Locations",
     "cheapest": "Cheapest",
     "newest": "Newest",
     "footer": {

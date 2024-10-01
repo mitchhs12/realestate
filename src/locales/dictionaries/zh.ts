@@ -160,6 +160,7 @@ export default {
     },
     "cities": "从下面选择一个城市区域开始。",
     "popular": "最受喜爱",
+    "locations": "位置",
     "cheapest": "最便宜的",
     "newest": "最新",
     "footer": {
