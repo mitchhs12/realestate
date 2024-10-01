@@ -8,7 +8,7 @@ export default async function HeroContent() {
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
       <div className="flex flex-col items-center gap-y-4 w-full max-w-8xl p-5">
         <h1
-          className={`${poppins.className} flex text-center justify-center text-lg sm:text-xl md:text-2xl font-light tracking-wider`}
+          className={`${poppins.className} flex text-center justify-center text-xl sm:text-2xl md:text-3xl font-light tracking-wider`}
         >
           {scopedT("title")}
         </h1>
