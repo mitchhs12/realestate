@@ -157,7 +157,7 @@ export default function Header({
                 </Link>
               </Button>
             )}
-            {/* {isSingleListPage && (
+            {isSingleListPage && (
               <Button
                 asChild
                 size={"largeIcon"}
@@ -179,7 +179,7 @@ export default function Header({
                   </div>
                 </Link>
               </Button>
-            )} */}
+            )}
           </div>
         )}
         {isSearchPage && (
