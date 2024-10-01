@@ -1,6 +1,5 @@
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
-import { PortableText } from "@portabletext/react";
 
 export default function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
