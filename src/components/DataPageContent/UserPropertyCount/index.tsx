@@ -101,7 +101,7 @@ export default function UserPropertyCount() {
             <XAxis dataKey="count" type="number" />
             <Tooltip content={<CustomTooltip />} />
             <Bar dataKey="count" layout="vertical" fill="var(--color-count)" radius={4}>
-              <LabelList dataKey="email" position="insideLeft" offset={8} className="fill-white" fontSize={12} />
+              <LabelList dataKey="name" position="insideLeft" offset={8} className="fill-white" fontSize={12} />
               {/* <LabelList dataKey="count" position="right" offset={8} className="fill-foreground" fontSize={12} /> */}
             </Bar>
           </BarChart>

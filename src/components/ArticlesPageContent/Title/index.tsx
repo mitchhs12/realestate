@@ -9,7 +9,7 @@ export default async function ArticlesTitle({ locale }: { locale: string }) {
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
       <div className="flex flex-col gap-y-4">
         <h1
-          className={`${poppins.className} flex text-center justify-center text-xl sm:text-2xl md:text-2xl lg:text-3xl font-light tracking-wider`}
+          className={`${poppins.className} flex text-center justify-center text-xl sm:text-2xl md:text-3xl font-light tracking-wider`}
         >
           {title}
         </h1>
