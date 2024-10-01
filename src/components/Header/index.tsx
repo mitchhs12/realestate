@@ -204,12 +204,12 @@ export default function Header({
           </>
         )} */}
 
-        {/* {!isSearchPage && !isSellPage && (
+        {!isSearchPage && !isSellPage && (
           <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
             <span className="text-sm md:text-lg">{construction}</span>
             <span className="text-xs md:text-md">{construction_sub}</span>
           </h1>
-        )} */}
+        )}
         {/* {!isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-2 md:gap-5 justify-end`}>
             {!isSearchPage && (
