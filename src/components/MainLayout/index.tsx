@@ -53,8 +53,8 @@ export default async function MainLayout({ children }: Props) {
 
   return (
     <>
-      {/* <QueryContextProvider headerValues={headerValues}> */}
-      {/* <Header
+      <QueryContextProvider headerValues={headerValues}>
+        {/* <Header
         map={h("map")}
         list={h("list")}
         articles={h("articles")}
@@ -70,8 +70,8 @@ export default async function MainLayout({ children }: Props) {
         exit_short={p("exit-short")}
         searchButtonSmall={h("search.search-button-small")}
       /> */}
-      {children}
-      {/* </QueryContextProvider> */}
+        {children}
+      </QueryContextProvider>
     </>
   );
 }
