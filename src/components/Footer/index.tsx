@@ -20,7 +20,6 @@ export default async function Footer() {
           <Link href={"/legal/privacy-policy"}>{scopedT("legal.privacy")}</Link>
         </div>
       </div>
-      <Separator />
       <Icons />
       <h3 className="text-xs text-center">{scopedT("allRightsReserved")}</h3>
     </div>
