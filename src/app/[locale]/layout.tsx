@@ -36,16 +36,16 @@ export default function RootLayout({ children, params }: Props) {
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning={true}>
       <body className={`${poppins.className} h-full`}>
-        <div>test</div>
-        {/* <SessionProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+        <SessionProvider>
+          test
+          {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
             <LocaleContextProvider lang={params.locale}>
               <MainLayout>{children}</MainLayout>
             </LocaleContextProvider>
-          </ThemeProvider>
-          <SpeedInsights />
-          <Analytics />
-        </SessionProvider> */}
+          </ThemeProvider> */}
+          {/* <SpeedInsights />
+          <Analytics /> */}
+        </SessionProvider>
       </body>
     </html>
   );
