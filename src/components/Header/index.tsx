@@ -210,7 +210,7 @@ export default function Header({
             <span className="text-xs md:text-md">{construction_sub}</span>
           </h1>
         )}
-        {/* {!isSellPage && (
+        {!isSellPage && (
           <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-2 md:gap-5 justify-end`}>
             {!isSearchPage && (
               <Button
@@ -228,7 +228,7 @@ export default function Header({
               <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
             </div>
           </div>
-        )} */}
+        )}
         {/* {isSellPage && (
           <Button
             variant="outline"
