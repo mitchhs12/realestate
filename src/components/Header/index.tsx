@@ -66,7 +66,7 @@ export default function Header({
 
   return (
     <>
-      <header
+      {/* <header
         className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "justify-center shadow-lg dark:shadow-white/5 xs:justify-between"
         } items-center h-[86px] z-[40] px-4 bg-background`}
@@ -182,7 +182,7 @@ export default function Header({
             )}
           </div>
         )}
-        {/* {isSearchPage && (
+        {isSearchPage && (
           <>
             <div className="hidden sm:flex items-center justify-center gap-5 px-4 w-full max-w-5xl">
               <SearchBox
@@ -239,8 +239,8 @@ export default function Header({
             <span className="sm:hidden">{exit_short}</span>
             <span className="hidden sm:flex">{exit}</span>
           </Button>
-        )} */}
-      </header>
+        )}
+      </header> */}
 
       <div className="flex relative z-100">
         <I18nProviderClient locale={defaultLanguage}>
