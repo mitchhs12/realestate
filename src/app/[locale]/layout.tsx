@@ -38,10 +38,10 @@ export default function RootLayout({ children, params }: Props) {
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-            {children}
-            {/* <LocaleContextProvider lang={params.locale}>
-              <MainLayout>{children}</MainLayout>
-            </LocaleContextProvider> */}
+            <LocaleContextProvider lang={params.locale}>
+              {children}
+              {/* <MainLayout>{children}</MainLayout> */}
+            </LocaleContextProvider>
           </ThemeProvider>
           <SpeedInsights />
           <Analytics />
