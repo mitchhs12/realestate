@@ -112,19 +112,19 @@ export default function Locations({ countries }: { countries: CountryProps }) {
         {Object.entries(countries).map(([isoCode, country], countryIndex) => (
           <Carousel
             key={countryIndex}
-            className="w-full h-full"
+            className="w-full h-full shadow-xl dark:shadow-white/10"
             onMouseEnter={() => handleMouseEnter(country.city.id)} // Show arrows on hover
             onMouseLeave={handleMouseLeave}
           >
             <CarouselContent>
               <CarouselItem
                 key={country.city.id}
-                className="flex justify-center items-center h-full w-full"
+                className="flex justify-center items-center h-full w-full "
                 onMouseOver={() => {
                   handleHover(getUrl(country.folder, country.city.id), country.city, country.city.id);
                 }}
               >
-                <div className="relative flex justify-center items-center h-40 w-full">
+                <div className="relative flex justify-center items-center h-40 w-full ">
                   <Image
                     className="object-cover object-center rounded-lg"
                     src={getUrl(country.folder, country.city.id)}
@@ -238,7 +238,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             setUnderlinedImage(key.id);
           }}
           onMouseLeave={() => setUnderlinedImage("")}
-          className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 hover:cursor-pointer"
+          className="hidden sm:relative sm:block col-span-2 row-span-2 row-start-1 row-end-3 sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-3 lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-3 hover:cursor-pointer shadow-xl dark:shadow-white/10"
         >
           {loadingImages.has(hoveredImage) && <Skeleton className="absolute inset-0" />}
           <Image
