@@ -34,8 +34,10 @@ export default function CheckoutCard({
   defaultCurrency,
 }: Props) {
   return (
-    <div className={`flex justify-center items-center ${selected === id && "border border-primary rounded-lg"}`}>
-      <Card className="w-[350px] md:[400px] h-[440px] flex flex-col">
+    <div className={`flex w-full h-full justify-center items-center`}>
+      <Card
+        className={`flex flex-col w-[340px] md:[400px] h-[440px] border-2 rounded-lg ${selected === id ? "border-primary" : ""}`}
+      >
         <CardHeader>
           <CardTitle className="flex justify-center items-center text-bold">{title}</CardTitle>
           <CardDescription className="flex justify-center items-center text-light">{description}</CardDescription>

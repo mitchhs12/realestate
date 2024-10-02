@@ -5,6 +5,8 @@ import { SellContext } from "@/context/SellContext";
 import CheckoutCard from "./CheckoutCard";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
+import Stripe from "./Stripe";
+import { Dialog } from "@/components/ui/dialog";
 
 interface Tier {
   title: string;
@@ -50,6 +52,7 @@ export default function Checkout({
 
   const [selected, setSelected] = useState<string>(currentHome?.listingType ? currentHome?.listingType : "");
   const { defaultCurrency } = useContext(LocaleContext);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -69,45 +72,56 @@ export default function Checkout({
     }
   }, [selected]);
 
+  const handlePremium = () => {
+    setSelected("premium");
+    setIsOpen(true);
+    console.log("open modal");
+  };
+
   return (
-    <div className="flex flex-col h-full w-full gap-y-20">
-      <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center gap-y-12">
-        <div className="flex flex-col">
-          <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">{title}</h1>
+    <>
+      <div className="flex flex-col h-full w-full gap-y-20">
+        <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
+          <div className="flex flex-col pb-4">
+            <div className="flex items-center justify-center py-3">
+              <h1 className="flex items-center text-3xl">{title}</h1>
+            </div>
+            <div className="flex flex-col px-8 mt-5">
+              <h3 className="text-lg w-full">{subtitle}</h3>
+            </div>
           </div>
-          <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">{subtitle}</h3>
-          </div>
+          {defaultCurrency && (
+            <div className={`flex flex-col md:flex-row justify-start w-full md:w-auto pb-6 gap-8 overflow-auto`}>
+              <CheckoutCard
+                id={"premium"}
+                perks={premium.perks}
+                title={premium.title}
+                description={premium.subtitle}
+                button={premium.price}
+                buttonDisabled={false}
+                originalPrice={premium.anchor}
+                buttonFunction={() => handlePremium()}
+                selected={selected}
+                defaultCurrency={defaultCurrency}
+              />
+              <CheckoutCard
+                id={"standard"}
+                perks={standard.perks}
+                title={standard.title}
+                description={standard.subtitle}
+                button={standard.price}
+                buttonDisabled={false}
+                buttonFunction={() => setSelected("standard")}
+                selected={selected}
+                defaultCurrency={defaultCurrency}
+              />
+            </div>
+          )}
         </div>
-        {defaultCurrency && (
-          <div className={`flex flex-col md:flex-row justify-center py-8 px-8 gap-8 `}>
-            <CheckoutCard
-              id={"premium"}
-              perks={premium.perks}
-              title={premium.title}
-              description={premium.subtitle}
-              button={premium.price}
-              buttonDisabled={false}
-              originalPrice={premium.anchor}
-              buttonFunction={() => setSelected("premium")}
-              selected={selected}
-              defaultCurrency={defaultCurrency}
-            />
-            <CheckoutCard
-              id={"standard"}
-              perks={standard.perks}
-              title={standard.title}
-              description={standard.subtitle}
-              button={standard.price}
-              buttonDisabled={false}
-              buttonFunction={() => setSelected("standard")}
-              selected={selected}
-              defaultCurrency={defaultCurrency}
-            />
-          </div>
-        )}
       </div>
-    </div>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <Stripe />
+      </Dialog>
+    </>
   );
 }

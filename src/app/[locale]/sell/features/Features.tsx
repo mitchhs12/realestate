@@ -69,7 +69,7 @@ export default function Type({
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
-        <div className="flex flex-col">
+        <div className="flex flex-col pb-4">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
@@ -77,7 +77,7 @@ export default function Type({
             <h3 className="text-lg w-full">{subtitle}</h3>
           </div>
         </div>
-        <div className="w-full h-full justify-center items-center py-8 px-4 sm:px-8 overflow-auto">
+        <div className="w-full h-full justify-center items-center px-4 sm:px-8 overflow-auto">
           <ToggleGroup type="multiple" value={selection} defaultValue={selection} onValueChange={handleValueChange}>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 xl:gap-8 items-center justify-center">
               {options.map((feature, index) => {

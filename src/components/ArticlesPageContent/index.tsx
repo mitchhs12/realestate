@@ -39,7 +39,7 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
                 src={urlFor(article.thumbnailImage).url()}
                 alt="image"
                 fill={true}
-                objectFit={"cover"}
+                style={{ objectFit: "cover" }}
                 className="rounded-t-lg"
                 placeholder="blur"
                 blurDataURL={

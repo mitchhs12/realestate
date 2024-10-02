@@ -61,6 +61,7 @@ export default function Price({
   const initialIntlConfig = currentHome?.currency
     ? locales.find((option) => option.currency === currentHome.currency)
     : locales.find((option) => option.currency === defaultCurrency?.symbol);
+  console.log("initialIntlConfig", initialIntlConfig);
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {
@@ -156,10 +157,7 @@ export default function Price({
               <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                   <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
-                    <FlagComponent
-                      country={intlConfig?.locale.split("-")[1].toUpperCase() as Country}
-                      countryName={intlConfig?.locale.split("-")[1].toUpperCase() as string}
-                    />
+                    <FlagComponent country={intlConfig?.locale as Country} countryName={intlConfig?.locale as string} />
                     {intlConfig ? locales.find((locales) => locales === intlConfig)?.currency : selectCurrency}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                   </Button>
@@ -181,8 +179,8 @@ export default function Price({
                           >
                             <span className="bg-foreground/20 flex h-4 w-6 overflow-hidden rounded-sm">
                               <FlagComponent
-                                country={option.locale.split("-")[1].toUpperCase() as Country}
-                                countryName={option.currency}
+                                country={option.locale as Country}
+                                countryName={option.currency as string}
                               />
                             </span>
                             {option.currency}

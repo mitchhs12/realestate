@@ -312,7 +312,7 @@ export default function Photos({
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-10">
       <div className="flex flex-col w-full h-full justify-start items-center text-center gap-y-5">
-        <div className="flex flex-col">
+        <div className="flex flex-col pb-4">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
@@ -324,7 +324,7 @@ export default function Photos({
             {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}
           </div>
         </div>
-        <div className="flex flex-col px-8 gap-4 w-full lg:h-full justify-center items-center h-full">
+        <div className="flex flex-col px-8 gap-4 w-full lg:h-full justify-center items-center h-full overflow-auto">
           <div className="flex justify-center text-center text-red-500 text-xs md:text-base lg:text-lg">
             {errorMessage}
           </div>

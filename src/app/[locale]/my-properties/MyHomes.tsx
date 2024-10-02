@@ -1,10 +1,7 @@
 "use client";
 import { findMatching } from "@/lib/utils";
 import ResizableCard from "@/components/ResizableCard";
-import { totalLengthOfAllSteps } from "@/lib/sellFlowData";
 import ToggleAllVisbilityButton from "@/components/ToggleAllVisibilityButton";
-import { QueryContext } from "@/context/QueryContext";
-import { useContext } from "react";
 import { User } from "next-auth";
 
 interface Props {
@@ -45,37 +42,20 @@ export default function MyHomes({
         {user.homes.map((home, index) => {
           const matchingTypes = findMatching(typesObject, home, "type");
 
-          if (home.listingFlowStep < totalLengthOfAllSteps - 1) {
-            return (
-              <div
-                key={index}
-                className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg`}
-              >
-                <ResizableCard
-                  home={home}
-                  finishSelling={finishSelling}
-                  incompleteListing={incompleteListing}
-                  types={matchingTypes}
-                  userId={user.id}
-                />
-              </div>
-            );
-          } else {
-            return (
-              <div
-                key={index}
-                className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg`}
-              >
-                <ResizableCard
-                  home={home}
-                  finishSelling={finishSelling}
-                  incompleteListing={incompleteListing}
-                  types={matchingTypes}
-                  userId={user.id}
-                />
-              </div>
-            );
-          }
+          return (
+            <div
+              key={index}
+              className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg`}
+            >
+              <ResizableCard
+                home={home}
+                finishSelling={finishSelling}
+                incompleteListing={incompleteListing}
+                types={matchingTypes}
+                userId={user.id}
+              />
+            </div>
+          );
         })}
       </div>
     </div>

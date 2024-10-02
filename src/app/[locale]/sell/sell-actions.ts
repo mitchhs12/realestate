@@ -3,7 +3,7 @@
 import { auth } from "@/auth";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
-import sharp from "sharp";
+import Stripe from "stripe";
 
 async function uploadToS3(file: Buffer, homeId: string, fileName: string, fileType: string) {
   const params = {

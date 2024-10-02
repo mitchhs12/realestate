@@ -106,14 +106,16 @@ export default function Capacity({
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
-        <div className="flex flex-col w-full justify-center items-center h-full gap-y-8">
-          <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">{title}</h1>
+        <div className="flex flex-col w-full justify-center items-center h-full">
+          <div className="flex flex-col pb-4">
+            <div className="flex items-center justify-center py-3">
+              <h1 className="flex items-center text-3xl">{title}</h1>
+            </div>
+            <div className="flex flex-col px-8 mt-5">
+              <h3 className="text-lg w-full">{subtitle}</h3>
+            </div>
           </div>
-          <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">{subtitle}</h3>
-          </div>
-          <div className="flex flex-col h-full items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl py-8">
+          <div className="flex flex-col h-full items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl overflow-auto">
             <div className="flex w-full justify-center">{size}</div>
             <div className="flex flex-col w-full h-full gap-3">
               <div className="flex flex-col md:flex-row h-1/2 pt-10 w-full justify-between items-center">
