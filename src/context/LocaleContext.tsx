@@ -21,7 +21,7 @@ interface LocaleContextProps {
 }
 
 const LocaleContext = createContext<LocaleContextProps>({
-  defaultCurrency: { symbol: "USD", usdPrice: 1 },
+  defaultCurrency: { symbol: "USD", usdPrice: 1, decimalsLimit: 2 },
   setDefaultCurrency: () => {},
   defaultLanguage: "en",
   currencyData: null,
@@ -42,7 +42,11 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   const session = useSession();
 
   const changeLocale = useChangeLocale();
-  const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType | null>({ symbol: "USD", usdPrice: 1 });
+  const [defaultCurrency, setDefaultCurrency] = useState<CurrencyType | null>({
+    symbol: "USD",
+    usdPrice: 1,
+    decimalsLimit: 2,
+  });
   const [currencyData, setCurrencyData] = useState<{ prices: CurrencyType[]; defaultCurrency: CurrencyType } | null>(
     null
   );

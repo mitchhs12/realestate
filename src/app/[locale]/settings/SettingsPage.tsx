@@ -12,8 +12,12 @@ import { Input } from "@/components/ui/input";
 import { locales, languages } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useContext } from "react";
-import { getFlagEmoji, getFullLanguageName } from "@/lib/utils";
+import { getFullLanguageName } from "@/lib/utils";
+import { FlagComponent } from "@/components/ui/phone-input";
 import { useChangeLocale } from "@/locales/client";
+import { Country } from "react-phone-number-input";
+import lookup from "country-code-lookup";
+import { languageToFlagMap } from "@/lib/validations";
 
 interface Props {
   user: User;
@@ -43,9 +47,13 @@ export default function SettingsPage({ user, title, name, currency, language, su
       await updateSettings(data);
       const newCurrency = currencyData?.prices.find((currency) => currency.symbol === data.currency);
       if (newCurrency) {
-        setDefaultCurrency({ symbol: data.currency, usdPrice: newCurrency.usdPrice });
+        setDefaultCurrency({
+          symbol: data.currency,
+          usdPrice: newCurrency.usdPrice,
+          decimalsLimit: newCurrency.decimalsLimit,
+        });
       } else {
-        setDefaultCurrency({ symbol: "USD", usdPrice: 1 });
+        setDefaultCurrency({ symbol: "USD", usdPrice: 1, decimalsLimit: 2 });
       }
       session.update();
       changeLocale(data.language);
@@ -105,7 +113,8 @@ export default function SettingsPage({ user, title, name, currency, language, su
                       <select className="block w-full mt-1" {...field}>
                         {locales.map((config) => (
                           <option key={`${config.locale}${config.currency}`} value={config.currency}>
-                            {config.currency} {getFlagEmoji(config.locale.split("-")[1])}
+                            {config.currency}{" "}
+                            {/* <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} /> */}
                           </option>
                         ))}
                       </select>

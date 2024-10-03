@@ -60,9 +60,9 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div className="flex flex-col h-full w-full space-y-2">
+    <div className="flex flex-col h-full w-full">
       <Skeleton className="rounded-none rounded-t-xl h-[200px] w-full" />
-      <div className="flex flex-col justify-center items-center w-full gap-3 px-2 pb-2">
+      <div className="pt-2 flex flex-col justify-center items-center w-full gap-3 px-2 pb-2 bg-white dark:bg-black rounded-b-lg">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />
         <Skeleton className="h-4 sm:h-3 lg:h-5 w-28" />

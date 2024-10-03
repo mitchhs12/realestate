@@ -211,6 +211,7 @@ export type HomeFeatureProps = {
 export type CurrencyType = {
   symbol: string;
   usdPrice: number;
+  decimalsLimit: number;
 };
 
 export const locales: ReadonlyArray<{

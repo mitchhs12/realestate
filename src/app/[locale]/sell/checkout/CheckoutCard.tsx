@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
+import { useEffect } from "react";
 
 interface Props {
   id: string;
@@ -56,12 +57,12 @@ export default function CheckoutCard({
         <CardFooter className="flex flex-col items-center h-[90px] justify-end">
           {originalPrice && (
             <span className="text-md text-muted-foreground line-through">
-              {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * originalPrice, 2)} per month
+              {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * originalPrice)} per month
             </span>
           )}
           <Button variant={"default"} className="w-full text-lg" disabled={buttonDisabled} onClick={buttonFunction}>
             {typeof button === "number"
-              ? formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * button, 2)
+              ? formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * button)
               : button}
           </Button>
         </CardFooter>

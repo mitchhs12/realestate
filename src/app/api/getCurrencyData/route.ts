@@ -21,6 +21,7 @@ export async function GET(request: Request) {
   // Get the matched currency for the detected locale
   const localeData = locales.find((option) => option.locale === language);
   const defaultCurrency = localeData?.currency || "USD";
+  const defaultDecimals = localeData?.decimalsLimit || 2;
 
   // Return detected locale and currency in the response
   return NextResponse.json({ prices: prices, defaultCurrency: defaultCurrency }, { status: 200 });

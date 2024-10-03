@@ -10,14 +10,16 @@ export function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const formatPrice = (currency: string, value: number, decimals: number): string => {
+export const formatPrice = (currency: string, value: number, decimals?: number): string => {
   const option = locales.find((option) => option.currency === currency);
+  console.log("option", option);
   const locale = option?.locale || "US";
+  const decimalsLimit = option?.decimalsLimit ?? 2;
 
   const formattedPrice = new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
-    maximumFractionDigits: decimals,
+    maximumFractionDigits: decimals || decimalsLimit,
   }).format(value);
 
   return formattedPrice;
@@ -95,7 +97,8 @@ export const getFlagEmoji = (countryCode: string) => {
 
 export const getCurrency = (currencies: CurrencyType[], symbol: string): CurrencyType => {
   const price = currencies.find((currency) => currency.symbol === symbol)?.usdPrice || 1;
-  return { symbol: symbol, usdPrice: price };
+  const decimalsLimit = locales.find((option) => option.currency === symbol)?.decimalsLimit ?? 2;
+  return { symbol: symbol, usdPrice: price, decimalsLimit: decimalsLimit };
 };
 
 export const formatNumber = (num: number, numerals: any) => {

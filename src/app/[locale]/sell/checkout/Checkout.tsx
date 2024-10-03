@@ -6,7 +6,7 @@ import CheckoutCard from "./CheckoutCard";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
 import Stripe from "./Stripe";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Tier {
   title: string;
@@ -75,8 +75,11 @@ export default function Checkout({
   const handlePremium = () => {
     setSelected("premium");
     setIsOpen(true);
-    console.log("open modal");
   };
+
+  useEffect(() => {
+    console.log("isOpen now!");
+  }, [isOpen]);
 
   return (
     <>
@@ -120,7 +123,15 @@ export default function Checkout({
         </div>
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <Stripe />
+        <DialogContent className="p-0 border-0 bg-none w-80" close={false}>
+          {defaultCurrency && currentHome && (
+            <Stripe
+              amount={defaultCurrency.usdPrice * (premium.price as number)}
+              defaultCurrency={defaultCurrency}
+              homeId={currentHome?.id}
+            />
+          )}
+        </DialogContent>
       </Dialog>
     </>
   );
