@@ -127,7 +127,7 @@ export default async function HomePageContent() {
             {t("cheapest").toUpperCase()}
           </h2>
           <Listings
-            listingKey={"cheap"}
+            listingKey={"cheapest"}
             typesObject={typesObject}
             loginToViewPrice={loginToViewPrice}
             premiumText={premium("title")}
@@ -141,7 +141,7 @@ export default async function HomePageContent() {
             {t("newest").toUpperCase()}
           </h2>
           <Listings
-            listingKey={"new"}
+            listingKey={"newest"}
             typesObject={typesObject}
             loginToViewPrice={loginToViewPrice}
             premiumText={premium("title")}

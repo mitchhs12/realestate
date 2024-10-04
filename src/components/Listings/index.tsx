@@ -14,7 +14,6 @@ interface Props {
 
 export default function Listings({ listingKey, typesObject, loginToViewPrice, premiumText }: Props) {
   const [homes, setHomes] = useState<(HomeType | null)[]>([null, null, null, null, null, null]);
-
   useEffect(() => {
     if (listingKey === "popular") {
       getPopular().then((homes) => setHomes(homes));
