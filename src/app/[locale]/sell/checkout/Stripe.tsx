@@ -20,7 +20,9 @@ export default function CheckoutButton({ amount, defaultCurrency, homeId }: Prop
     amount = amount * 100;
   }
 
-  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_TEST_PUBLISHABLE_KEY as string);
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_TEST_PUBLISHABLE_KEY || (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
+  );
 
   const fetchClientSecret = useCallback(() => {
     return fetch("/api/stripe", {

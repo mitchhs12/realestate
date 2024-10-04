@@ -25,7 +25,7 @@ export async function POST(req: Request, res: NextApiResponse) {
     event = stripe.webhooks.constructEvent(
       rawBody,
       sig,
-      process.env.STRIPE_TEST_WEBHOOK_SECRET as string // The webhook secret from the Stripe dashboard
+      process.env.STRIPE_TEST_WEBHOOK_SECRET || (process.env.STRIPE_WEBHOOK_SECRET as string) // The webhook secret from the Stripe dashboard
     );
 
     // Handle the event based on its type
