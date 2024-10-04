@@ -167,7 +167,7 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideaal. Alle regte voorbehou.",
       "legal": {
         "title": "Wettig",
-        "terms": "Diensbepalings",
+        "terms": "Bepalings en voorwaardes",
         "privacy": "Privaatheidsbeleid"
       },
       "pages": {

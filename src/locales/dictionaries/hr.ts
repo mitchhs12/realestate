@@ -167,7 +167,7 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana.",
       "legal": {
         "title": "Pravno",
-        "terms": "Uvjeti usluge",
+        "terms": "Odredbe i uvjeti",
         "privacy": "Politika privatnosti"
       },
       "pages": {

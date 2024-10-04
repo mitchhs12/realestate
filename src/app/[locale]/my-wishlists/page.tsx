@@ -6,6 +6,7 @@ import MyLists from "./MyLists";
 import { setStaticParamsLocale } from "next-international/server";
 import { getScopedI18n } from "@/locales/server";
 import { typesMap } from "@/lib/sellFlowData";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "My Lists",
@@ -32,9 +33,14 @@ export default async function Page({ params: { locale } }: { params: { locale: s
     }));
 
     return (
-      <div className="flex flex-col items-center h-full">
-        <MyLists user={user} title={ml("title")} typesObject={typesObject} />
-      </div>
+      <>
+        <div className="flex flex-col items-center h-full min-h-screen-minus-header-svh">
+          <MyLists user={user} title={ml("title")} typesObject={typesObject} />
+        </div>
+        <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
+          <Footer />
+        </footer>
+      </>
     );
   }
 }

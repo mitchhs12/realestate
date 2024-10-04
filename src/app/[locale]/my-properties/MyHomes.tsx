@@ -29,7 +29,7 @@ export default function MyHomes({
   const allCompletedHomesActive = activeHomes.every((home) => home.isActive);
 
   return (
-    <div className="flex flex-col max-w-8xl h-full w-full">
+    <div className="flex flex-col max-w-8xl h-full w-full pb-8">
       <div className="flex flex-col items-center w-full pb-8">
         <div className="flex w-full h-full justify-center text-2xl items-center py-8">
           <h1>{title}</h1>

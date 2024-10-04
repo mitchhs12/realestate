@@ -6,6 +6,7 @@ import MyHomes from "./MyHomes";
 import { setStaticParamsLocale } from "next-international/server";
 import { getScopedI18n } from "@/locales/server";
 import { typesMap } from "@/lib/sellFlowData";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "My Properties",
@@ -47,6 +48,9 @@ export default async function Page({ params: { locale } }: { params: { locale: s
           typesObject={typesObject}
           premiumText={p("title")}
         />
+        <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
+          <Footer />
+        </footer>
       </div>
     );
   }

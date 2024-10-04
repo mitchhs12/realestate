@@ -167,7 +167,7 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal PTE. LTD. All rights reserved.",
       "legal": {
         "title": "Legal",
-        "terms": "Terms of Service",
+        "terms": "Terms and Conditions",
         "privacy": "Privacy Policy"
       },
       "pages": {

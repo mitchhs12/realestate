@@ -167,7 +167,7 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền.",
       "legal": {
         "title": "Hợp pháp",
-        "terms": "Điều khoản dịch vụ",
+        "terms": "Điều khoản và điều kiện",
         "privacy": "Chính sách bảo mật"
       },
       "pages": {

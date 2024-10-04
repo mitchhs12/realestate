@@ -60,6 +60,26 @@
   }
 }
 
+.custom-ol {
+  counter-reset: item; /* Reset the counter for nested lists */
+}
+
+.custom-li {
+  display: block;
+  margin-bottom: 1em; /* Optional: Add space between list items */
+  padding-left: 2.5em; /* Indentation for the text */
+  position: relative; /* To position the custom list number */
+}
+
+.custom-li:before {
+  content: counters(item, ".") " "; /* Custom numbering */
+  counter-increment: item; /* Increment the counter for each list item */
+  position: absolute; /* Absolute positioning for the number */
+  left: 0; /* Align the number to the left */
+  width: 1.5em; /* Reserve space for the number */
+  text-align: right; /* Align the number to the right inside its box */
+}
+
 .leftCornerRibbonText {
   position: absolute;
   transform: rotate(-45deg);

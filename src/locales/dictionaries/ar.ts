@@ -167,7 +167,7 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. جميع الحقوق محفوظة.",
       "legal": {
         "title": "قانوني",
-        "terms": "شروط الخدمة",
+        "terms": "الشروط والأحكام",
         "privacy": "سياسة الخصوصية"
       },
       "pages": {

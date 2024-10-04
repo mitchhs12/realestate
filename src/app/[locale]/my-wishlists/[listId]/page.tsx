@@ -6,6 +6,7 @@ import { setStaticParamsLocale } from "next-international/server";
 import { getScopedI18n } from "@/locales/server";
 import { typesMap } from "@/lib/sellFlowData";
 import List from "@/app/[locale]/my-wishlists/[listId]/List";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Specific List",
@@ -36,9 +37,14 @@ export default async function Page({ params }: { params: { locale: string; listI
 
     const list = user.favoritedLists.find((list: any) => list.id === Number(params.listId));
     return (
-      <div className="flex flex-col items-center h-full">
-        <List list={list} types={typesObject} premiumText={p("title")} />
-      </div>
+      <>
+        <div className="flex flex-col items-center h-full min-h-screen-minus-header-svh">
+          <List list={list} types={typesObject} premiumText={p("title")} />
+        </div>
+        <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
+          <Footer />
+        </footer>
+      </>
     );
   }
 }

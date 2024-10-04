@@ -10,7 +10,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
     <div className="flex flex-col justify-center items-center w-full h-full bg-white dark:bg-black">
       <div className="flex flex-col space-y-8 pt-8 pb-16 justify-start items-center h-full">
         <div className="flex gap-10 justify-between w-full">
-          <Link href="/legal/terms-of-service">
+          <Link href="/legal/terms-and-conditions">
             <h2 className="flex justify-center items-start text-sm md:text-md lg:text-lg xl:text-lg font-light">
               {"Terms of Service"}
             </h2>
