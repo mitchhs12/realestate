@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const url = "https://www.vivaideal.com";
   const routes = [
     "/articles",
+    "/data",
     "/client",
     "/homes",
     "/legal",
