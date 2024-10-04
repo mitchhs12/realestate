@@ -44,12 +44,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   // console.log("newHome", JSON.stringify(newHome));
 
   const checkStepPositionForNextNavigation = () => {
-    if (currentHome) {
-      const databaseStep = currentHome.listingFlowStep;
-      return databaseStep;
-    } else {
-      return 1;
-    }
+    return currentHome ? currentHome.listingFlowStep : 1;
   };
 
   const shouldIncrementFlowStep = () => {
@@ -83,6 +78,8 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
         return false;
       } else if (pathname.startsWith("/sell/review")) {
         // console.log("button should be active because we are on the final page");
+        return false;
+      } else if (currentHome?.listingType === "premium") {
         return false;
       } else {
         // console.log("button should be DISABLED because new home is the same as current home");
@@ -179,8 +176,8 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
                 prevStep === "" && currentHome
                   ? currentArrayProgress[idx]
                   : idx <= currentAnimationStep
-                  ? stepPercentage[idx]
-                  : 0
+                    ? stepPercentage[idx]
+                    : 0
               }
             />
           </div>
@@ -201,8 +198,8 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
                     ? finish
                     : next
                   : currentHome
-                  ? cont
-                  : start
+                    ? cont
+                    : start
                 : loading}
             </Button>
           </div>

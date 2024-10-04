@@ -50,6 +50,7 @@ export default function Checkout({
     setPrevLoading,
     setCurrentHome,
     setNewHome,
+    setNextDisabled,
   } = useContext(SellContext);
 
   const [selected, setSelected] = useState<string>(currentHome?.listingType ? currentHome?.listingType : "");
@@ -70,6 +71,7 @@ export default function Checkout({
     if (currentHome && currentHome.listingType === "premium") {
       setSelected("premium");
       setHasPaid(true);
+      setNextDisabled(false);
     }
   }, [currentHome]);
 
@@ -124,7 +126,7 @@ export default function Checkout({
         </div>
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="p-0 border-0 bg-none w-80" close={false}>
+        <DialogContent className="p-0 border-0 bg-none w-80 md:w-full" close={false}>
           {defaultCurrency && currentHome && (
             <Stripe
               amount={defaultCurrency.usdPrice * (premium.price as number)}

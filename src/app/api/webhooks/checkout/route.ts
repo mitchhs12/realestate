@@ -7,12 +7,6 @@ import { NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import { headers } from "next/headers";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req: Request, res: NextApiResponse) {
   const sig = headers().get("stripe-signature");
 
