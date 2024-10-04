@@ -22,17 +22,13 @@ export async function getSearchResults(
   },
   defaultCurrency: CurrencyType
 ) {
-  let homes = [];
+  let homes: HomeType[] = [];
 
   let commonFilters: any = {
     isActive: true,
     latitude: {
       gte: bounds.south,
       lte: bounds.north,
-    },
-    longitude: {
-      gte: bounds.west,
-      lte: bounds.east,
     },
   };
 
@@ -109,37 +105,39 @@ export async function getSearchResults(
 
   // Case 1: Longitude wrap-around (crossing the International Date Line)
   if (bounds.west > bounds.east) {
-    // Query region 1: from west to 180
-    const region1 = await prisma.home.findMany({
+    homes = await prisma.home.findMany({
       where: {
         ...commonFilters,
-        longitude: {
-          gte: bounds.west,
-          lte: 180,
-        },
-        orderBy: { listingType: "asc" },
+
+        OR: [
+          {
+            longitude: {
+              gte: bounds.west,
+              lte: 180,
+            },
+          },
+          {
+            longitude: {
+              gte: -180,
+              lte: bounds.east,
+            },
+          },
+        ],
       },
     });
-
-    // Query region 2: from -180 to east
-    const region2 = await prisma.home.findMany({
-      where: {
-        ...commonFilters,
-        longitude: {
-          gte: -180,
-          lte: bounds.east,
-        },
-        orderBy: { listingType: "asc" },
-      },
-    });
-
-    homes = [...region1, ...region2];
+    console.log("homes", homes);
   }
   // Case 2: Normal longitude and latitude range
   else {
     console.log("RUNNING CASE 2");
     homes = await prisma.home.findMany({
-      where: commonFilters,
+      where: {
+        ...commonFilters,
+        longitude: {
+          gte: bounds.west,
+          lte: bounds.east,
+        },
+      },
       orderBy: { listingType: "asc" },
     });
   }
