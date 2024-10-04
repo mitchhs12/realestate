@@ -26,6 +26,7 @@ export default async function Page({ params }: { params: { locale: string; listI
     }
   } else if (user && user.id) {
     const t = await getScopedI18n("sell.type");
+    const p = await getScopedI18n("sell.checkout.premium");
 
     const typesObject = Array.from({ length: 17 }, (_, index) => ({
       id: typesMap[index].id,
@@ -36,7 +37,7 @@ export default async function Page({ params }: { params: { locale: string; listI
     const list = user.favoritedLists.find((list: any) => list.id === Number(params.listId));
     return (
       <div className="flex flex-col items-center h-full">
-        <List list={list} types={typesObject} />
+        <List list={list} types={typesObject} premiumText={p("title")} />
       </div>
     );
   }

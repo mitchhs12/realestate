@@ -109,7 +109,6 @@ export async function getSearchResults(
 
   // Case 1: Longitude wrap-around (crossing the International Date Line)
   if (bounds.west > bounds.east) {
-    console.log("RUNNING CASE 1");
     // Query region 1: from west to 180
     const region1 = await prisma.home.findMany({
       where: {
@@ -118,7 +117,7 @@ export async function getSearchResults(
           gte: bounds.west,
           lte: 180,
         },
-        orderBy: { listingType: "desc" },
+        orderBy: { listingType: "asc" },
       },
     });
 
@@ -130,7 +129,7 @@ export async function getSearchResults(
           gte: -180,
           lte: bounds.east,
         },
-        orderBy: { listingType: "desc" },
+        orderBy: { listingType: "asc" },
       },
     });
 
@@ -154,7 +153,7 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
     where: {
       isActive: true,
     },
-    orderBy: { listingType: "desc" },
+    orderBy: { listingType: "asc" },
   });
 
   const features: Feature<Point, HomeFeatureProps>[] = homes.map((home) => ({
@@ -244,7 +243,7 @@ export async function getAllHomesFiltered(
   const homes = await prisma.home.findMany({
     where: commonFilters,
     orderBy: {
-      listingType: "desc",
+      listingType: "asc",
     },
   });
 

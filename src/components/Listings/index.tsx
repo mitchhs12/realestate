@@ -9,9 +9,10 @@ interface Props {
   listingKey: string;
   typesObject: { id: string; name: string; translation: string }[];
   loginToViewPrice: string;
+  premiumText: string;
 }
 
-export default function Listings({ listingKey, typesObject, loginToViewPrice }: Props) {
+export default function Listings({ listingKey, typesObject, loginToViewPrice, premiumText }: Props) {
   const [homes, setHomes] = useState<(HomeType | null)[]>([null, null, null, null, null, null]);
 
   useEffect(() => {
@@ -42,7 +43,12 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice }: 
                 ${index >= 5 && "xl:hidden"}
               `}
             >
-              <ResizableCard home={home} types={matchingTypes} loginToViewPrice={loginToViewPrice} />
+              <ResizableCard
+                home={home}
+                types={matchingTypes}
+                loginToViewPrice={loginToViewPrice}
+                premiumText={premiumText}
+              />
             </div>
           );
         })}

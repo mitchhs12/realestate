@@ -14,7 +14,12 @@ async function fetchWithCache(url: string) {
 }
 
 export default async function HomePageContent() {
-  const [t, type, p] = await Promise.all([getScopedI18n("home"), getScopedI18n("sell.type"), getScopedI18n("search")]);
+  const [t, type, p, premium] = await Promise.all([
+    getScopedI18n("home"),
+    getScopedI18n("sell.type"),
+    getScopedI18n("search"),
+    getScopedI18n("sell.checkout.premium"),
+  ]);
   const loginToViewPrice = p("loginToViewPrices");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
@@ -107,7 +112,12 @@ export default async function HomePageContent() {
             <Heart size={28} strokeWidth={2.4} />
             {t("popular").toUpperCase()}
           </h2>
-          <Listings listingKey={"popular"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
+          <Listings
+            listingKey={"popular"}
+            typesObject={typesObject}
+            loginToViewPrice={loginToViewPrice}
+            premiumText={premium("title")}
+          />
         </div>
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
@@ -116,7 +126,12 @@ export default async function HomePageContent() {
             <PiggyBank size={34} strokeWidth={1.7} />
             {t("cheapest").toUpperCase()}
           </h2>
-          <Listings listingKey={"cheap"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
+          <Listings
+            listingKey={"cheap"}
+            typesObject={typesObject}
+            loginToViewPrice={loginToViewPrice}
+            premiumText={premium("title")}
+          />
         </div>
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbfaf4] to-[#f4fbf6] dark:from-[#100e02] dark:to-[#021003] justify-center items-center w-full h-full">
@@ -125,7 +140,12 @@ export default async function HomePageContent() {
             <Newspaper size={28} strokeWidth={2} />
             {t("newest").toUpperCase()}
           </h2>
-          <Listings listingKey={"new"} typesObject={typesObject} loginToViewPrice={loginToViewPrice} />
+          <Listings
+            listingKey={"new"}
+            typesObject={typesObject}
+            loginToViewPrice={loginToViewPrice}
+            premiumText={premium("title")}
+          />
         </div>
       </section>
     </div>

@@ -5,9 +5,11 @@ import { findMatching } from "@/lib/utils";
 export default function List({
   list,
   types,
+  premiumText,
 }: {
   list: any;
   types: { id: string; name: string; translation: string }[];
+  premiumText: string;
 }) {
   return (
     <div className="flex flex-col max-w-8xl h-full w-full">
@@ -22,7 +24,7 @@ export default function List({
           const matchingTypes = findMatching(types, home, "type");
           return (
             <div key={home.id} className="shadow-lg dark:shadow-white/10 rounded-lg">
-              <ResizableCard home={updatedHome} types={matchingTypes} />
+              <ResizableCard home={updatedHome} types={matchingTypes} premiumText={premiumText} />
             </div>
           );
         })}
