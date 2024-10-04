@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "გადახდა",
       "subtitle": "აირჩიეთ თქვენი განცხადების ტიპი",
+      "paidText": "გადახდილი",
       "premium": {
         "title": "პრემიუმი",
         "subtitle": "მიიღეთ მეტი ნახვა და გაყიდეთ უფრო სწრაფად",

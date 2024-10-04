@@ -254,8 +254,9 @@
     "checkout": {
       "title": "Verificar",
       "subtitle": "Seleccione su tipo de anuncio",
+      "paidText": "Pagado",
       "premium": {
-        "title": "De primera calidad",
+        "title": "Premium",
         "subtitle": "Obtenga más vistas y venda más rápido",
         "perks": {
           "0": {

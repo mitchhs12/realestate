@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Vérifier",
       "subtitle": "Sélectionnez votre type d'annonce",
+      "paidText": "Payé",
       "premium": {
         "title": "Prime",
         "subtitle": "Obtenez plus de vues et vendez plus rapidement",

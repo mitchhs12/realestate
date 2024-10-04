@@ -30,6 +30,7 @@ interface Props {
   propertiesMapText: string;
   otherCategories: string;
   loadingText: string;
+  premiumText: string;
 }
 
 export default function CombinedSearchPage({
@@ -47,6 +48,7 @@ export default function CombinedSearchPage({
   propertiesMapText,
   otherCategories,
   loadingText,
+  premiumText,
 }: Props) {
   const {
     mapFocused,
@@ -169,6 +171,7 @@ export default function CombinedSearchPage({
           typesObject={typesObject}
           noHomesFound={noHomesFound}
           loginToViewPrice={loginToViewPrice}
+          premiumText={premiumText}
         />
       </section>
       <div className="flex md:hidden">
@@ -202,6 +205,7 @@ export default function CombinedSearchPage({
                   typesObject={typesObject}
                   noHomesFound={noHomesFound}
                   loginToViewPrice={loginToViewPrice}
+                  premiumText={premiumText}
                 />
               </div>
             </div>

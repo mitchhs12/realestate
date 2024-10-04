@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "เช็คเอาท์",
       "subtitle": "เลือกประเภทรายการของคุณ",
+      "paidText": "จ่าย",
       "premium": {
         "title": "พรีเมี่ยม",
         "subtitle": "รับมุมมองมากขึ้นและขายได้เร็วขึ้น",

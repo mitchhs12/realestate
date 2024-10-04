@@ -254,6 +254,7 @@
     "checkout": {
       "title": "チェックアウト",
       "subtitle": "リストの種類を選択してください",
+      "paidText": "有料",
       "premium": {
         "title": "プレミアム",
         "subtitle": "より多くの閲覧数を獲得し、より早く販売する",

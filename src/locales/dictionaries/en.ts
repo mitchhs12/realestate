@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Checkout",
       "subtitle": "Select your listing type",
+      "paidText": "Paid",
       "premium": {
         "title": "Premium",
         "subtitle": "Get more views and sell faster",

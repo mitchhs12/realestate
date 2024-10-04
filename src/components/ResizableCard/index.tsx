@@ -13,7 +13,7 @@ import { Country } from "react-phone-number-input";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Star } from "lucide-react";
 import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 import { usePathname } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
@@ -27,6 +27,7 @@ interface Props {
   types: TypeObject[];
   loginToViewPrice?: string;
   userId?: string;
+  premiumText: string;
 }
 
 export default function ResizableCard({
@@ -36,6 +37,7 @@ export default function ResizableCard({
   isLoading,
   types,
   loginToViewPrice,
+  premiumText,
 }: Props) {
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
@@ -60,7 +62,7 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full" style={{ paddingTop: "12px" }}>
       <Skeleton className="rounded-none rounded-t-xl h-[200px] w-full" />
       <div className="pt-2 flex flex-col justify-center items-center w-full gap-3 px-2 pb-2 bg-white dark:bg-black rounded-b-lg">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
@@ -72,6 +74,7 @@ export default function ResizableCard({
   ) : (
     <div
       className="flex flex-col h-full w-full relative"
+      style={{ paddingTop: "12px" }}
       onMouseOver={() => {
         setTitleUnderlined(true);
       }}
@@ -79,6 +82,19 @@ export default function ResizableCard({
         setTitleUnderlined(false);
       }}
     >
+      {home.listingType === "premium" && (
+        // comment style={{ paddingTop: "12px" }} above and add style={{ marginTop:'-12' }} below
+        <div className="absolute" style={{ top: "0", left: "-12px", zIndex: 30 }}>
+          <svg height="84" width="84">
+            <g transform="rotate(-90, 42, 42)">
+              <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />
+              <polygon points="0 0, 84 84, 84 48, 36 0" fill={"rgb(251 191 36)"} />
+              <polygon points="72 72, 72 84, 84 84" fill={`${"rgb(180 83 9)"}`} />
+            </g>
+          </svg>
+          <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
+        </div>
+      )}
       <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
         <div className="flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative">

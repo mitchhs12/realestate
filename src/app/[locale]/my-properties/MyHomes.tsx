@@ -12,6 +12,7 @@ interface Props {
   hideAllText: string;
   showAllText: string;
   typesObject: { id: string; name: string; translation: string }[];
+  premiumText: string;
 }
 
 export default function MyHomes({
@@ -22,6 +23,7 @@ export default function MyHomes({
   hideAllText,
   showAllText,
   typesObject,
+  premiumText,
 }: Props) {
   const activeHomes = user.homes.filter((home) => home.isComplete);
   const allCompletedHomesActive = activeHomes.every((home) => home.isActive);
@@ -38,7 +40,7 @@ export default function MyHomes({
           allCompletedHomesActive={allCompletedHomesActive}
         />
       </div>
-      <div className="px-8 pb-4 overflow-y-auto grid grid-cols-1 2xs:grid-cols-1 grid-rows-2 w-full h-full xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+      <div className="p-2 sm:p-4 md:px-8 overflow-y-auto w-full h-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {user.homes.map((home, index) => {
           const matchingTypes = findMatching(typesObject, home, "type");
 
@@ -53,6 +55,7 @@ export default function MyHomes({
                 incompleteListing={incompleteListing}
                 types={matchingTypes}
                 userId={user.id}
+                premiumText={premiumText}
               />
             </div>
           );

@@ -28,6 +28,7 @@ interface Props {
   subtitle: string;
   premium: Tier;
   standard: Tier;
+  paidText: string;
 }
 
 export default function Checkout({
@@ -39,6 +40,7 @@ export default function Checkout({
   subtitle,
   premium,
   standard,
+  paidText,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -53,6 +55,7 @@ export default function Checkout({
   const [selected, setSelected] = useState<string>(currentHome?.listingType ? currentHome?.listingType : "");
   const { defaultCurrency } = useContext(LocaleContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [hasPaid, setHasPaid] = useState(false);
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -64,6 +67,13 @@ export default function Checkout({
   }, []);
 
   useEffect(() => {
+    if (currentHome && currentHome.listingType === "premium") {
+      setSelected("premium");
+      setHasPaid(true);
+    }
+  }, [currentHome]);
+
+  useEffect(() => {
     if (currentHome) {
       setNewHome({
         ...currentHome,
@@ -71,15 +81,6 @@ export default function Checkout({
       });
     }
   }, [selected]);
-
-  const handlePremium = () => {
-    setSelected("premium");
-    setIsOpen(true);
-  };
-
-  useEffect(() => {
-    console.log("isOpen now!");
-  }, [isOpen]);
 
   return (
     <>
@@ -100,10 +101,10 @@ export default function Checkout({
                 perks={premium.perks}
                 title={premium.title}
                 description={premium.subtitle}
-                button={premium.price}
-                buttonDisabled={false}
+                button={hasPaid ? paidText : premium.price}
+                buttonDisabled={hasPaid ? true : false}
                 originalPrice={premium.anchor}
-                buttonFunction={() => handlePremium()}
+                buttonFunction={() => setIsOpen(true)}
                 selected={selected}
                 defaultCurrency={defaultCurrency}
               />
@@ -113,7 +114,7 @@ export default function Checkout({
                 title={standard.title}
                 description={standard.subtitle}
                 button={standard.price}
-                buttonDisabled={false}
+                buttonDisabled={hasPaid ? true : false}
                 buttonFunction={() => setSelected("standard")}
                 selected={selected}
                 defaultCurrency={defaultCurrency}

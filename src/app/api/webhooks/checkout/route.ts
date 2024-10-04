@@ -3,8 +3,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 import prisma from "@/lib/prisma"; // Import your Prisma client
-
-const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY as string);
+import { NextResponse } from "next/server";
+import stripe from "@/lib/stripe";
+import { headers } from "next/headers";
 
 export const config = {
   api: {
@@ -12,39 +13,86 @@ export const config = {
   },
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const sig = req.headers["stripe-signature"] as string;
+export async function POST(req: Request, res: NextApiResponse) {
+  const sig = headers().get("stripe-signature");
+
+  if (!sig) {
+    console.error("No stripe-signature header value was provided.");
+    return NextResponse.json({ error: "Missing stripe-signature header" }, { status: 400 });
+  }
 
   let event: Stripe.Event;
 
   try {
+    // Get raw body using micro's buffer function
+    const rawBody = await req.text();
+
+    // Verify Stripe webhook signature
     event = stripe.webhooks.constructEvent(
-      req.body,
+      rawBody,
       sig,
-      process.env.STRIPE_WEBHOOK_SECRET as string // The webhook secret from the Stripe dashboard
+      process.env.STRIPE_TEST_WEBHOOK_SECRET as string // The webhook secret from the Stripe dashboard
     );
 
     // Handle the event based on its type
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object as Stripe.Checkout.Session;
-      if (session.metadata && session.metadata.homeId) {
-        const homeId = session.metadata.homeId;
+    switch (event.type) {
+      // When a checkout session completes (e.g., a subscription is purchased)
+      case "checkout.session.completed": {
+        const session = event.data.object;
+        const homeId = session.metadata?.homeId;
 
-        await prisma.home.update({
-          where: { id: parseInt(homeId) },
-          data: { listingType: "premium" },
-        });
-
-        res.status(200).json({ received: true });
-      } else {
-        console.error("Metadata or homeId is missing in the session.");
-        res.status(400).json({ error: "Missing homeId in metadata" });
+        if (homeId) {
+          // Update the home listing in the database to "premium"
+          await prisma.home.update({
+            where: { id: parseInt(homeId) },
+            data: { listingType: "premium" },
+          });
+        } else {
+          console.error("Missing homeId in subscription metadata.");
+        }
+        break;
       }
-    } else {
-      res.status(400).end();
+      case "customer.subscription.deleted": {
+        const subscription = event.data.object as Stripe.Subscription;
+        const homeId = subscription.metadata?.homeId;
+
+        if (homeId) {
+          // Update the home listing in the database back to "basic" (or another default)
+          await prisma.home.update({
+            where: { id: parseInt(homeId) },
+            data: { listingType: "basic" }, // Revert to the default listing type
+          });
+        } else {
+          console.error("Missing homeId in subscription metadata.");
+        }
+        break;
+      }
+      case "invoice.payment_failed": {
+        const invoice = event.data.object as Stripe.Invoice;
+        const subscription = invoice.subscription as string;
+
+        // You might want to use the subscription ID to update related data
+        const stripeSubscription = await stripe.subscriptions.retrieve(subscription);
+        const homeId = stripeSubscription.metadata?.homeId;
+
+        if (homeId) {
+          // Handle payment failure logic (e.g., notifying the user, downgrading the listing)
+          await prisma.home.update({
+            where: { id: parseInt(homeId) },
+            data: { listingType: "basic" }, // Revert to default if payment fails
+          });
+        } else {
+          console.error("Missing homeId in subscription metadata.");
+        }
+        break;
+      }
+      default:
+        console.log(`Unhandled Event Type: ${event.type}`);
     }
+
+    return NextResponse.json({ received: true });
   } catch (err) {
     console.error(`Webhook signature verification failed: ${err}`);
-    return res.status(400).send(`Webhook Error: ${err}`);
+    return NextResponse.json({ error: `Webhook Error: ${err}` }, { status: 400 });
   }
 }

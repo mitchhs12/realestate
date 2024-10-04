@@ -180,7 +180,6 @@ export default function MapComponent({
                       <Link href={`/homes/${infowindowData.features[0].properties?.id}`} target={"_blank"}>
                         <div className="flex flex-col justify-between">
                           {(() => {
-                            console.log(typesObject);
                             const matchingTypes = findMatching(
                               typesObject,
                               infowindowData.features[0].properties,

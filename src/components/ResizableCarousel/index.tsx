@@ -6,6 +6,7 @@ import { HomeType } from "@/lib/validations";
 import { FavoriteComponent } from "@/components/FavoriteComponent";
 import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
+import { Star } from "lucide-react";
 
 interface Props {
   photos: string[];
@@ -50,6 +51,18 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
                 (max-width: 1920px) 1920px,
                 100vw"
               />
+              {/* {home.listingType === "premium" && (
+                <div>
+                  <div className="relative flex justify-between w-full">
+                    <div className="flex gap-3 px-3 items-center bg-gradient-to-r rounded-l-lg rounded-b-none from-amber-400 via-yellow-400 to-amber-400 text-white py-1 font-semibold shadow-xl">
+                      <div className="flex">PREMIUM</div>
+                      <div className="flex w-full h-full items-center">
+                        <Star size={20} fill={"white"} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )} */}
             </div>
           </CarouselItem>
         ))}

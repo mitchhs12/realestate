@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Kasse",
       "subtitle": "Wählen Sie Ihren Inseratstyp aus",
+      "paidText": "Bezahlt",
       "premium": {
         "title": "Prämie",
         "subtitle": "Erhalten Sie mehr Aufrufe und verkaufen Sie schneller",

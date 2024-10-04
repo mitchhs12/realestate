@@ -220,8 +220,8 @@ export default function Header({
                 }}
               >
                 <HousePlus width={22} height={22} strokeWidth={2} />
-                <span className="hidden xs:flex md:hidden">{sellButtonSmall}</span>
-                <span className="hidden md:inline">{sellButtonBig}</span>
+                <span className="hidden xs:flex lg:hidden">{sellButtonSmall}</span>
+                <span className="hidden lg:inline">{sellButtonBig}</span>
               </Button>
             )}
             <div className={`justify-between gap-3 items-center`}>

@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Çıkış yapmak",
       "subtitle": "Listeleme türünüzü seçin",
+      "paidText": "Paralı",
       "premium": {
         "title": "prim",
         "subtitle": "Daha fazla görüntüleme alın ve daha hızlı satış yapın",

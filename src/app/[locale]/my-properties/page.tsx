@@ -23,7 +23,11 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       redirect("/");
     }
   } else if (user && user.id) {
-    const [t, mp] = await Promise.all([getScopedI18n("sell.type"), getScopedI18n("my-properties")]);
+    const [t, mp, p] = await Promise.all([
+      getScopedI18n("sell.type"),
+      getScopedI18n("my-properties"),
+      getScopedI18n("sell.checkout.premium"),
+    ]);
 
     const typesObject = Array.from({ length: 17 }, (_, index) => ({
       id: typesMap[index].id,
@@ -41,6 +45,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
           hideAllText={mp("hideAllText")}
           showAllText={mp("showAllText")}
           typesObject={typesObject}
+          premiumText={p("title")}
         />
       </div>
     );

@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Thanh toán",
       "subtitle": "Chọn loại danh sách của bạn",
+      "paidText": "Trả",
       "premium": {
         "title": "Phần thưởng",
         "subtitle": "Có nhiều lượt xem hơn và bán nhanh hơn",

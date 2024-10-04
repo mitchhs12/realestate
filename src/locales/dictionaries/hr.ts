@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Odjava",
       "subtitle": "Odaberite vrstu unosa",
+      "paidText": "Plaćeno",
       "premium": {
         "title": "Premija",
         "subtitle": "Dobijte više pregleda i prodajte brže",

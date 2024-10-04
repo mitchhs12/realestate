@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Check-out",
       "subtitle": "Pilih jenis listing Anda",
+      "paidText": "Dibayar",
       "premium": {
         "title": "Premi",
         "subtitle": "Dapatkan lebih banyak tampilan dan jual lebih cepat",

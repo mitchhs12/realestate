@@ -12,7 +12,6 @@ export function capitalizeFirstLetter(string: string) {
 
 export const formatPrice = (currency: string, value: number, decimals?: number): string => {
   const option = locales.find((option) => option.currency === currency);
-  console.log("option", option);
   const locale = option?.locale || "US";
   const decimalsLimit = option?.decimalsLimit ?? 2;
 

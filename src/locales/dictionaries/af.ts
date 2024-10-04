@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Betaal",
       "subtitle": "Kies jou lysinskrywing tipe",
+      "paidText": "Betaal",
       "premium": {
         "title": "Premie",
         "subtitle": "Kry meer kyke en verkoop vinniger",

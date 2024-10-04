@@ -44,7 +44,6 @@ const providers: Provider[] = [
       `;
 
       // Send the email using Resend API
-      console.log("API key:", process.env.AUTH_RESEND_KEY);
       return fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {

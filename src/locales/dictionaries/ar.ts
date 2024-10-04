@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "الدفع",
       "subtitle": "حدد نوع القائمة الخاصة بك",
+      "paidText": "مدفوع",
       "premium": {
         "title": "غالي",
         "subtitle": "احصل على المزيد من المشاهدات وبع بشكل أسرع",

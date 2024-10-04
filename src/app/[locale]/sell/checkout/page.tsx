@@ -87,6 +87,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       subtitle={checkoutData.subtitle}
       premium={checkoutData.premium}
       standard={checkoutData.standard}
+      paidText={t("paidText")}
     />
   );
 }

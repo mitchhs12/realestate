@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "Confira",
       "subtitle": "Selecione o seu tipo de listagem",
+      "paidText": "Pago",
       "premium": {
         "title": "Prêmio",
         "subtitle": "Obtenha mais visualizações e venda mais rápido",

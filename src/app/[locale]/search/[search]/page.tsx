@@ -86,6 +86,7 @@ export default async function Page({ params }: { params: { locale: string; searc
 
   const t = await getScopedI18n("search");
   const types = await getScopedI18n("sell.type");
+  const p = await getScopedI18n("sell.checkout.premium");
 
   const propertiesText = t("properties");
   const propertyText = t("property");
@@ -97,6 +98,7 @@ export default async function Page({ params }: { params: { locale: string; searc
   const propertiesMapText = t("propertiesText");
   const otherCategories = t("otherCategories");
   const loadingText = t("loading");
+  const premiumText = p("title");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -124,6 +126,7 @@ export default async function Page({ params }: { params: { locale: string; searc
           propertiesMapText={propertiesMapText}
           otherCategories={otherCategories}
           loadingText={loadingText}
+          premiumText={premiumText}
         />
       </main>
     );

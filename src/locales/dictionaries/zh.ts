@@ -254,6 +254,7 @@ export default {
     "checkout": {
       "title": "查看",
       "subtitle": "选择您的列表类型",
+      "paidText": "有薪酬的",
       "premium": {
         "title": "优质的",
         "subtitle": "获得更多浏览量并更快销售",
