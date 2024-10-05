@@ -58,6 +58,7 @@
         "subtitle": "Geben Sie unten Ihre E-Mail-Adresse ein, um sich anzumelden!",
         "already": "Hast du schon ein Konto?",
         "change": "Einloggen",
+        "email": "Mit E-Mail anmelden",
         "apple": "Mit Apple anmelden",
         "google": "Mit Google anmelden",
         "facebook": "Mit Facebook anmelden"
@@ -67,6 +68,7 @@
         "subtitle": "Geben Sie unten Ihre E-Mail-Adresse ein, um sich anzumelden.",
         "already": "Sie haben noch kein Konto?",
         "change": "Melden Sie sich an",
+        "email": "Mit E-Mail anmelden",
         "apple": "Mit Apple anmelden",
         "google": "Mit Google anmelden",
         "facebook": "Mit Facebook anmelden"
@@ -178,6 +180,11 @@
         "data": "Daten"
       }
     }
+  },
+  "legal": {
+    "title": "Rechtliches",
+    "documents": "Unterlagen",
+    "images": "Bilder"
   },
   "articles": {
     "articleUnavailable": "Artikel nicht verfügbar in",

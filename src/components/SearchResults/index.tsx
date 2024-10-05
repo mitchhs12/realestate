@@ -54,7 +54,7 @@ export default function SearchResults({
             const matchingTypes = findMatching(typesObject, home, "type");
 
             return (
-              <div key={index} className="flex justify-center items-start h-full w-full">
+              <div key={index} className="flex justify-center items-start h-full w-full pt-4">
                 <div
                   className={`flex justify-center rounded-xl h-full w-full space-y-2 shadow-lg dark:shadow-white/10 bg-zinc-100 dark:bg-zinc-900 ${
                     isSearchLoading && index >= 4 && "hidden sm:block"

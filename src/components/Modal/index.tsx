@@ -92,7 +92,7 @@ export function Modal() {
                 {g("loading")}
               </div>
             ) : (
-              g("submit")
+              t("email")
             )}
           </Button>
           <div className="relative my-2">

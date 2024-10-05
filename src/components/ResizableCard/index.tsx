@@ -62,7 +62,7 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div className="flex flex-col h-full w-full" style={{ paddingTop: "12px" }}>
+    <div className="flex flex-col h-full w-full">
       <Skeleton className="rounded-none rounded-t-xl h-[200px] w-full" />
       <div className="pt-2 flex flex-col justify-center items-center w-full gap-3 px-2 pb-2 bg-white dark:bg-black rounded-b-lg">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
@@ -74,7 +74,7 @@ export default function ResizableCard({
   ) : (
     <div
       className="flex flex-col h-full w-full relative"
-      style={{ paddingTop: "12px" }}
+      // style={{ paddingTop: "12px" }}
       onMouseOver={() => {
         setTitleUnderlined(true);
       }}
@@ -84,7 +84,7 @@ export default function ResizableCard({
     >
       {home.listingType === "premium" && (
         // comment style={{ paddingTop: "12px" }} above and add style={{ marginTop:'-12' }} below
-        <div className="absolute" style={{ top: "0", left: "-12px", zIndex: 30 }}>
+        <div className="absolute" style={{ top: "0", left: "-12px", zIndex: 30, marginTop: "-12px" }}>
           <svg height="84" width="84">
             <g transform="rotate(-90, 42, 42)">
               <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />

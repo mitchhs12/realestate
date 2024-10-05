@@ -58,6 +58,7 @@
         "subtitle": "Insira seu e-mail abaixo para se inscrever!",
         "already": "Já tem uma conta?",
         "change": "Conecte-se",
+        "email": "Cadastre-se com e-mail",
         "apple": "Inscreva-se na Apple",
         "google": "Cadastre-se com o Google",
         "facebook": "Cadastre-se com o Facebook"
@@ -67,6 +68,7 @@
         "subtitle": "Insira seu e-mail abaixo para efetuar login.",
         "already": "Não tem uma conta?",
         "change": "Inscrever-se",
+        "email": "Entrar com e-mail",
         "apple": "Entrar com a Apple",
         "google": "Entrar com o Google",
         "facebook": "Entrar com o Facebook"
@@ -178,6 +180,11 @@
         "data": "Dados"
       }
     }
+  },
+  "legal": {
+    "title": "Jurídico",
+    "documents": "Documentos",
+    "images": "Imagens"
   },
   "articles": {
     "articleUnavailable": "Artigo indisponível em",

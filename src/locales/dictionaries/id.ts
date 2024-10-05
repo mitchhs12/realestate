@@ -58,6 +58,7 @@ export default {
         "subtitle": "Masukkan email Anda di bawah ini untuk mendaftar!",
         "already": "Sudah punya akun?",
         "change": "Masuk",
+        "email": "Daftar dengan Email",
         "apple": "Daftar dengan Apple",
         "google": "Daftar dengan Google",
         "facebook": "Daftar dengan Facebook"
@@ -67,6 +68,7 @@ export default {
         "subtitle": "Masukkan email Anda di bawah ini untuk masuk.",
         "already": "Belum punya akun?",
         "change": "Mendaftar",
+        "email": "Masuk dengan Email",
         "apple": "Masuk dengan Apple",
         "google": "Masuk dengan Google",
         "facebook": "Masuk dengan Facebook"
@@ -178,6 +180,11 @@ export default {
         "data": "Data"
       }
     }
+  },
+  "legal": {
+    "title": "Legal",
+    "documents": "Dokumen",
+    "images": "Gambar"
   },
   "articles": {
     "articleUnavailable": "Artikel tidak tersedia di",

@@ -58,6 +58,7 @@
         "subtitle": "Nhập email của bạn bên dưới để đăng ký!",
         "already": "Bạn đã có tài khoản?",
         "change": "Đăng nhập",
+        "email": "Đăng ký bằng Email",
         "apple": "Đăng ký với Apple",
         "google": "Đăng ký với Google",
         "facebook": "Đăng ký bằng Facebook"
@@ -67,6 +68,7 @@
         "subtitle": "Nhập email của bạn bên dưới để đăng nhập.",
         "already": "Bạn chưa có tài khoản?",
         "change": "Đăng ký",
+        "email": "Đăng nhập bằng Email",
         "apple": "Đăng nhập bằng Apple",
         "google": "Đăng nhập bằng Google",
         "facebook": "Đăng nhập bằng Facebook"
@@ -178,6 +180,11 @@
         "data": "Dữ liệu"
       }
     }
+  },
+  "legal": {
+    "title": "Hợp pháp",
+    "documents": "Tài liệu",
+    "images": "Hình ảnh"
   },
   "articles": {
     "articleUnavailable": "Bài viết không có sẵn trong",

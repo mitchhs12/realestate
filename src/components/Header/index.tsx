@@ -69,10 +69,10 @@ export default function Header({
       <header
         className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "justify-center shadow-lg dark:shadow-white/5 xs:justify-between"
-        } items-center h-[86px] z-[40] px-4 bg-background`}
+        } items-center h-[86px] z-[40] p-2 px-4 sm:p-4 md:px-6 bg-background`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "flex" : "flex w-1/3 md:flex gap-2 md:gap-5"}`}>
+          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-6"}`}>
             <Button
               size={"largeIcon"}
               variant="outline"
@@ -204,14 +204,14 @@ export default function Header({
           </>
         )}
 
-        {!isSearchPage && !isSellPage && (
-          <h1 className="hidden lg:flex flex-col justify-center flex-grow items-center text-center pb-8 pt-8 p-8">
+        {/* {!isSearchPage && !isSellPage && (
+          <h1 className="hidden lg:flex flex-col justify-center items-center text-center pb-8 pt-8 p-8">
             <span className="text-sm md:text-lg">{construction}</span>
             <span className="text-xs md:text-md">{construction_sub}</span>
           </h1>
-        )}
+        )} */}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "w-1/3 flex-grow md:flex-grow-0"} gap-2 md:gap-5 justify-end`}>
+          <div className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-2 2xs:gap-4 md:gap-6 justify-end`}>
             {!isSearchPage && (
               <Button
                 className="flex h-12 gap-2 items-center text-sm font-medium"

@@ -58,6 +58,7 @@
         "subtitle": "Voer jou e-posadres hieronder in om aan te meld!",
         "already": "Het jy reeds 'n rekening?",
         "change": "Meld aan",
+        "email": "Teken in met e-pos",
         "apple": "Sluit aan by Apple",
         "google": "Sluit aan by Google",
         "facebook": "Sluit aan met Facebook"
@@ -67,6 +68,7 @@
         "subtitle": "Voer jou e-posadres hieronder in om aan te meld.",
         "already": "Het jy nie 'n rekening nie?",
         "change": "Teken in",
+        "email": "Meld aan met e-pos",
         "apple": "Meld aan met Apple",
         "google": "Meld aan met Google",
         "facebook": "Meld aan met Facebook"
@@ -178,6 +180,11 @@
         "data": "Data"
       }
     }
+  },
+  "legal": {
+    "title": "Wettig",
+    "documents": "Dokumente",
+    "images": "Beelde"
   },
   "articles": {
     "articleUnavailable": "Artikel nie beskikbaar in",

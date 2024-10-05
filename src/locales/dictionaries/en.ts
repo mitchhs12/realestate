@@ -58,6 +58,7 @@ export default {
         "subtitle": "Enter your email below to sign up!",
         "already": "Already have an account?",
         "change": "Sign in",
+        "email": "Sign up with Email",
         "apple": "Sign up with Apple",
         "google": "Sign up with Google",
         "facebook": "Sign up with Facebook"
@@ -67,6 +68,7 @@ export default {
         "subtitle": "Enter your email below to sign in.",
         "already": "Don't have an account?",
         "change": "Sign up",
+        "email": "Sign in with Email",
         "apple": "Sign in with Apple",
         "google": "Sign in with Google",
         "facebook": "Sign in with Facebook"
@@ -178,6 +180,11 @@ export default {
         "data": "Data"
       }
     }
+  },
+  "legal": {
+    "title": "Legal",
+    "documents": "Documents",
+    "images": "Images"
   },
   "articles": {
     "articleUnavailable": "Article unavailable in",

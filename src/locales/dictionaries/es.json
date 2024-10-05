@@ -58,6 +58,7 @@
         "subtitle": "¡Introduce tu correo electrónico a continuación para registrarte!",
         "already": "¿Ya tienes una cuenta?",
         "change": "Acceso",
+        "email": "Regístrate con correo electrónico",
         "apple": "Regístrate con Apple",
         "google": "Regístrate con Google",
         "facebook": "Regístrate con Facebook"
@@ -67,6 +68,7 @@
         "subtitle": "Introduzca su correo electrónico a continuación para iniciar sesión.",
         "already": "¿No tienes una cuenta?",
         "change": "Inscribirse",
+        "email": "Iniciar sesión con correo electrónico",
         "apple": "Iniciar sesión con Apple",
         "google": "Iniciar sesión con Google",
         "facebook": "Iniciar sesión con Facebook"
@@ -178,6 +180,11 @@
         "data": "Datos"
       }
     }
+  },
+  "legal": {
+    "title": "Legal",
+    "documents": "Documentos",
+    "images": "Imágenes"
   },
   "articles": {
     "articleUnavailable": "Artículo no disponible en",

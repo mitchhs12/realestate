@@ -58,6 +58,7 @@ export default {
         "subtitle": "กรอกอีเมล์ของคุณด้านล่างเพื่อสมัครสมาชิก!",
         "already": "มีบัญชีอยู่แล้วใช่ไหม?",
         "change": "เข้าสู่ระบบ",
+        "email": "ลงทะเบียนด้วยอีเมล์",
         "apple": "ลงทะเบียนกับ Apple",
         "google": "ลงทะเบียนด้วย Google",
         "facebook": "ลงทะเบียนด้วย Facebook"
@@ -67,6 +68,7 @@ export default {
         "subtitle": "กรอกอีเมล์ของคุณด้านล่างเพื่อเข้าสู่ระบบ",
         "already": "ยังไม่มีบัญชีใช่ไหม?",
         "change": "สมัครสมาชิก",
+        "email": "ลงชื่อเข้าใช้ด้วยอีเมล",
         "apple": "เข้าสู่ระบบด้วย Apple",
         "google": "เข้าสู่ระบบด้วย Google",
         "facebook": "เข้าสู่ระบบด้วย Facebook"
@@ -178,6 +180,11 @@ export default {
         "data": "ข้อมูล"
       }
     }
+  },
+  "legal": {
+    "title": "ถูกกฎหมาย",
+    "documents": "เอกสาร",
+    "images": "รูปภาพ"
   },
   "articles": {
     "articleUnavailable": "บทความนี้ไม่พร้อมใช้งานใน",

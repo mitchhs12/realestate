@@ -58,6 +58,7 @@
         "subtitle": "Kaydolmak için aşağıya e-postanızı girin!",
         "already": "Zaten bir hesabınız var mı?",
         "change": "Giriş yapmak",
+        "email": "E-posta ile kaydolun",
         "apple": "Apple'a kaydolun",
         "google": "Google ile kaydolun",
         "facebook": "Facebook ile kaydolun"
@@ -67,6 +68,7 @@
         "subtitle": "Giriş yapmak için aşağıya e-postanızı girin.",
         "already": "Hesabınız yok mu?",
         "change": "Üye olmak",
+        "email": "E-posta ile giriş yapın",
         "apple": "Apple ile oturum açın",
         "google": "Google ile giriş yapın",
         "facebook": "Facebook ile giriş yap"
@@ -178,6 +180,11 @@
         "data": "Veri"
       }
     }
+  },
+  "legal": {
+    "title": "Yasal",
+    "documents": "Belgeler",
+    "images": "Görüntüler"
   },
   "articles": {
     "articleUnavailable": "Makale şurada mevcut değil:",

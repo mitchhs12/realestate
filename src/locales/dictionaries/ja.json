@@ -58,6 +58,7 @@
         "subtitle": "登録するには下記にメールアドレスを入力してください。",
         "already": "すでにアカウントをお持ちですか?",
         "change": "ログイン",
+        "email": "メールで登録",
         "apple": "Appleでサインアップ",
         "google": "Googleでサインアップ",
         "facebook": "Facebookでサインアップ"
@@ -67,6 +68,7 @@
         "subtitle": "ログインするには、以下にメールアドレスを入力してください。",
         "already": "アカウントをお持ちではありませんか?",
         "change": "サインアップ",
+        "email": "メールでサインイン",
         "apple": "Appleでログイン",
         "google": "Googleでログイン",
         "facebook": "Facebookでログイン"
@@ -178,6 +180,11 @@
         "data": "データ"
       }
     }
+  },
+  "legal": {
+    "title": "法律上の",
+    "documents": "文書",
+    "images": "画像"
   },
   "articles": {
     "articleUnavailable": "記事は利用できません",

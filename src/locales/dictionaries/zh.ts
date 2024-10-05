@@ -58,6 +58,7 @@ export default {
         "subtitle": "在下面输入您的电子邮件进行注册！",
         "already": "已有账户？",
         "change": "登录",
+        "email": "使用电子邮件注册",
         "apple": "通过 Apple 注册",
         "google": "使用 Google 注册",
         "facebook": "使用 Facebook 注册"
@@ -67,6 +68,7 @@ export default {
         "subtitle": "在下面输入您的电子邮件以登录。",
         "already": "沒有帳戶？",
         "change": "报名",
+        "email": "使用电子邮件登录",
         "apple": "使用 Apple 登录",
         "google": "使用 Google 登录",
         "facebook": "使用 Facebook 登录"
@@ -178,6 +180,11 @@ export default {
         "data": "数据"
       }
     }
+  },
+  "legal": {
+    "title": "合法的",
+    "documents": "文件",
+    "images": "图片"
   },
   "articles": {
     "articleUnavailable": "文章不可用",

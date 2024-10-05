@@ -3,7 +3,7 @@ import Locations from "@/components/Locations";
 import { getScopedI18n } from "@/locales/server";
 import { getPopular, getNew, getCheapest } from "@/app/[locale]/actions";
 import { locationImageIds } from "@/lib/validations";
-import { Newspaper, HandCoins, Heart, Map, PiggyBank } from "lucide-react";
+import { Newspaper, HandCoins, Heart, Map, PiggyBank, BadgeCent } from "lucide-react";
 import { typesMap } from "@/lib/sellFlowData";
 
 async function fetchWithCache(url: string) {
@@ -99,18 +99,18 @@ export default async function HomePageContent() {
     <div className="flex flex-col justify-start h-full w-full gap-1 sm:gap-2 bg-background">
       <section className="flex bg-gradient-to-b from-[#f4fbf6] to-[#f4f5fb] dark:from-[#021007] dark:to-[#020410] flex-col justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 md:pb-4 justify-start w-full h-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl font-normal py-4 tracking-wide">
-            <Map size={28} strokeWidth={2} />
-            {t("locations").toUpperCase()}
+          <h2 className="flex justify-center items-center gap-4 text-3xl font-light py-4 tracking-wider">
+            <Map size={28} strokeWidth={1.5} />
+            {t("locations")}
           </h2>
           <Locations countries={countries} />
         </div>
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#f4f5fb] to-[#fbf4f8]  dark:from-[#020410] dark:to-[#10020b] justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl font-normal py-4 tracking-wide">
-            <Heart size={28} strokeWidth={2.4} />
-            {t("popular").toUpperCase()}
+          <h2 className="flex justify-center items-center gap-4 text-3xl font-light py-4 tracking-wider">
+            <Heart strokeWidth={1.8} />
+            {t("popular")}
           </h2>
           <Listings
             listingKey={"popular"}
@@ -122,9 +122,9 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl font-normal py-4 tracking-wide">
-            <PiggyBank size={34} strokeWidth={1.7} />
-            {t("cheapest").toUpperCase()}
+          <h2 className="flex justify-center items-center gap-4 text-3xl font-light py-4 tracking-wider">
+            <BadgeCent strokeWidth={1.5} size={27} />
+            {t("cheapest")}
           </h2>
           <Listings
             listingKey={"cheapest"}
@@ -136,9 +136,9 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbfaf4] to-[#f4fbf6] dark:from-[#100e02] dark:to-[#021003] justify-center items-center w-full h-full">
         <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
-          <h2 className="flex justify-center items-center gap-3 text-3xl font-normal py-4 tracking-wide">
-            <Newspaper size={28} strokeWidth={2} />
-            {t("newest").toUpperCase()}
+          <h2 className="flex justify-center items-center gap-4 text-3xl font-light py-4 tracking-wider">
+            <Newspaper strokeWidth={1.7} />
+            {t("newest")}
           </h2>
           <Listings
             listingKey={"newest"}

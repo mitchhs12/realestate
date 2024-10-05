@@ -58,6 +58,7 @@ export default {
         "subtitle": "შეიყვანეთ თქვენი ელფოსტა ქვემოთ, რომ დარეგისტრირდეთ!",
         "already": "უკვე გაქვთ ანგარიში?",
         "change": "შესვლა",
+        "email": "დარეგისტრირდით ელექტრონული ფოსტით",
         "apple": "დარეგისტრირდით Apple-თან",
         "google": "დარეგისტრირდით Google-ით",
         "facebook": "დარეგისტრირდით Facebook-ით"
@@ -67,6 +68,7 @@ export default {
         "subtitle": "შეიყვანეთ თქვენი ელფოსტა ქვემოთ, რომ შეხვიდეთ.",
         "already": "არ გაქვთ ანგარიში?",
         "change": "დარეგისტრირდით",
+        "email": "შედით ელფოსტით",
         "apple": "შედით Apple-ით",
         "google": "შედით Google-ით",
         "facebook": "შედით Facebook-ით"
@@ -178,6 +180,11 @@ export default {
         "data": "მონაცემები"
       }
     }
+  },
+  "legal": {
+    "title": "იურიდიული",
+    "documents": "დოკუმენტები",
+    "images": "სურათები"
   },
   "articles": {
     "articleUnavailable": "სტატია მიუწვდომელია",

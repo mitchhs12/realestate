@@ -31,7 +31,7 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full h-full gap-2 md:gap-4 lg:gap-5 justify-start p-2 sm:p-4 lg:p-8 items-start max-w-8xl">
+      <div className="p-4 md:p-8 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full h-full gap-4 justify-start items-start max-w-8xl">
         {data.map((article, idx) => (
           <Card key={idx} className="flex flex-col items-center shadow-xl h-[380px]">
             <div className="relative items-center justify-center h-[200px] w-full">

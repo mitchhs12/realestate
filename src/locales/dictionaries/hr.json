@@ -58,6 +58,7 @@
         "subtitle": "Unesite svoju e-poštu ispod da biste se prijavili!",
         "already": "Već imate račun?",
         "change": "Prijavite se",
+        "email": "Prijavite se putem e-pošte",
         "apple": "Prijavite se s Appleom",
         "google": "Prijavite se s Googleom",
         "facebook": "Prijavite se putem Facebooka"
@@ -67,6 +68,7 @@
         "subtitle": "Unesite svoju e-poštu ispod kako biste se prijavili.",
         "already": "Nemate račun?",
         "change": "Prijavite se",
+        "email": "Prijavite se putem e-pošte",
         "apple": "Prijavite se s Appleom",
         "google": "Prijavite se s Googleom",
         "facebook": "Prijavite se putem Facebooka"
@@ -178,6 +180,11 @@
         "data": "Podaci"
       }
     }
+  },
+  "legal": {
+    "title": "Pravno",
+    "documents": "Dokumenti",
+    "images": "Slike"
   },
   "articles": {
     "articleUnavailable": "Članak nije dostupan u",
