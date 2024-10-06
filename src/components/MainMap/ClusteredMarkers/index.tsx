@@ -42,7 +42,6 @@ export const ClusteredMarkers = ({
   const handleClusterClick = useCallback(
     (marker: google.maps.marker.AdvancedMarkerElement, clusterId: number) => {
       const leaves = getLeaves(clusterId);
-
       setInfowindowData({ anchor: marker, features: leaves });
     },
     [getLeaves, setInfowindowData]
@@ -51,6 +50,7 @@ export const ClusteredMarkers = ({
   const handleMarkerClick = useCallback(
     (marker: google.maps.marker.AdvancedMarkerElement, featureId: string) => {
       const feature = clusters.find((feat) => feat.id === featureId) as Feature<Point>;
+      console.log("running this now :)");
 
       setInfowindowData({ anchor: marker, features: [feature] });
     },

@@ -73,7 +73,7 @@ export default function ResizableCard({
     </div>
   ) : (
     <div
-      className="flex flex-col h-full w-full relative"
+      className={`flex flex-col h-full w-full relative`}
       // style={{ paddingTop: "12px" }}
       onMouseOver={() => {
         setTitleUnderlined(true);
@@ -97,7 +97,9 @@ export default function ResizableCard({
       )}
       <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
-        <div className="flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative">
+        <div
+          className={`flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative ${home.listingType === "premium" && "text-white dark:text-black bg-gradient-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
+        >
           <h3
             className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
               titleUnderlined ? "underline" : ""
