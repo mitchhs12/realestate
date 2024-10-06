@@ -27,6 +27,7 @@ const providers: Provider[] = [
         scope: "name email",
       },
     },
+    //@ts-ignore
     profile(profile) {
       return {
         id: profile.sub,
