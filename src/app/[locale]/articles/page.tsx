@@ -1,9 +1,14 @@
 import Image from "next/image";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
+import { Metadata } from "next";
 
 import ArticlesTitle from "@/components/ArticlesPageContent/Title";
 import ArticlesPageContent from "@/components/ArticlesPageContent";
+
+export const metadata: Metadata = {
+  title: "Articles",
+};
 
 export const revalidate = 30;
 

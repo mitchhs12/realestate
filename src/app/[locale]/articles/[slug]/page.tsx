@@ -5,6 +5,15 @@ import { getReadingTime } from "@/lib/utils";
 import Image from "next/image";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
+  const data = await getData(params.locale, params.slug);
+
+  return {
+    title: data.localizedTitle || "Article", // Set the title dynamically
+  };
+}
 
 const components = {
   types: {

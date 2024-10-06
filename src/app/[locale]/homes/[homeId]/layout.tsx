@@ -6,6 +6,14 @@ import { findMatching } from "@/lib/utils";
 import { featuresMap, typesMap } from "@/lib/sellFlowData";
 import { Metadata } from "next";
 
+export async function generateMetadata({ params }: { params: { homeId: string } }): Promise<Metadata> {
+  const home = await getHomeById(params.homeId);
+
+  return {
+    title: home?.title || "Property", // Set the title dynamically
+  };
+}
+
 type Props = {
   children: React.ReactNode;
   params: { homeId: string; locale: string };
