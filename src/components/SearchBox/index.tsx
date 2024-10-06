@@ -232,7 +232,7 @@ export default function SearchBox({
                           2500,
                           "Medellín, Colombia",
                           2500,
-                          "La Paz/El Alto, Bolivia",
+                          "La Paz, Bolivia",
                           2500,
                           "Panama City, Panama",
                           2500,
