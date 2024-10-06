@@ -10,15 +10,12 @@ import { CoordinatesType, BoundsType, TypeObject } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
-import lookup from "country-code-lookup";
 import { QueryContext } from "@/context/QueryContext";
 import { FlagComponent } from "../ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import BrokenPrice from "../BrokenPrice";
 import { LocaleContext } from "@/context/LocaleContext";
-import Link from "next/link";
-import { findMatching } from "@/lib/utils";
 
 export type MapConfig = {
   id: string;
@@ -162,62 +159,11 @@ export default function MapComponent({
               />
             )}
 
-            {infowindowData && (
+            {infowindowData && defaultCurrency && (
               <InfoWindow
-                headerContent={
-                  infowindowData.features.length === 1 ? (
-                    <div className="flex items-center gap-3">
-                      {infowindowData &&
-                        infowindowData.features[0].properties &&
-                        infowindowData.features[0].properties.country && (
-                          <FlagComponent
-                            width={"w-12"}
-                            height={"h-8"}
-                            country={lookup.byIso(infowindowData.features[0].properties?.country)?.iso2 as Country}
-                            countryName={infowindowData.features[0].properties?.country}
-                          />
-                        )}
-                      <Link href={`/homes/${infowindowData.features[0].properties?.id}`} target={"_blank"}>
-                        <div className="flex flex-col justify-between">
-                          {(() => {
-                            const matchingTypes = findMatching(
-                              typesObject,
-                              infowindowData.features[0].properties,
-                              "type"
-                            );
-                            return (
-                              <span className="text-sm">
-                                {matchingTypes[0].translation}
-                                {matchingTypes.length > 1 &&
-                                  ` (+${new Intl.NumberFormat().format(matchingTypes.length - 1)})`}
-                              </span>
-                            );
-                          })()}
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger>
-                                <BrokenPrice
-                                  priceUsd={infowindowData.features[0].properties?.priceUsd}
-                                  currency={defaultCurrency}
-                                  reveal={user ? true : false}
-                                  blurAmount="blur-sm"
-                                  className="text-md hover:cursor-pointer font-light"
-                                />
-                              </TooltipTrigger>
-                              {!user && (
-                                <TooltipContent className="flex justify-center items-center">
-                                  <p>{loginToViewPrice}</p>
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                          </TooltipProvider>
-                        </div>
-                      </Link>
-                    </div>
-                  ) : (
-                    `${new Intl.NumberFormat().format(infowindowData.features.length)} ${propertiesText}`
-                  )
-                }
+                //@ts-ignore
+                headerDisabled={infowindowData.features.length === 1 ? true : false}
+                headerContent={`${new Intl.NumberFormat().format(infowindowData.features.length)} ${propertiesText}`}
                 onClose={hamdleInfoWindowClose}
                 anchor={infowindowData.anchor}
               >
@@ -225,6 +171,9 @@ export default function MapComponent({
                   features={infowindowData.features}
                   otherCategories={otherCategories}
                   typesObject={typesObject}
+                  user={user}
+                  defaultCurrency={defaultCurrency}
+                  loginToViewPrice={loginToViewPrice}
                 />
               </InfoWindow>
             )}

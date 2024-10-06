@@ -82,6 +82,7 @@ export const ClusteredMarkers = ({
           return (
             <FeatureMarker
               key={feature.id}
+              listingType={feature.properties.listingType}
               featureId={feature.id as string}
               position={{ lat, lng }}
               onMarkerClick={handleMarkerClick}

@@ -162,12 +162,14 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
       coordinates: [home.longitude, home.latitude],
     },
     properties: {
+      id: home.id,
       name: home.title,
       address: home.address,
       description: home.description,
       type: home.type, // Include type from home object
       features: home.features, // Include features from home object
       price: home.price, // Include price from home object
+      priceUsd: home.priceUsd,
       bedrooms: home.bedrooms, // Include bedrooms from home object
       bathrooms: home.bathrooms, // Include bathrooms from home object
       livingrooms: home.livingrooms, // Include livingrooms from home object
@@ -177,6 +179,8 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
       contactName: home.contactName, // Include contactName from home object
       contactEmail: home.contactEmail, // Include contactEmail from home object
       contactPhone: home.contactPhone, // Include contactPhone from home object
+      listingType: home.listingType,
+      country: home.country,
     },
   }));
 
@@ -272,6 +276,7 @@ export async function getAllHomesFiltered(
       contactName: home.contactName, // Include contactName from home object
       contactEmail: home.contactEmail, // Include contactEmail from home object
       contactPhone: home.contactPhone, // Include contactPhone from home object
+      listingType: home.listingType, // Include listingType from home object
     },
   }));
 

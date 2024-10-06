@@ -6,12 +6,13 @@ import MultiTypeButton from "@/components/MultiTypeButton";
 
 type TreeMarkerProps = {
   position: google.maps.LatLngLiteral;
+  listingType: string;
   featureId: string;
   onMarkerClick?: (marker: google.maps.marker.AdvancedMarkerElement, featureId: string) => void;
   matchingTypes: { id: string; name: string; translation: string }[];
 };
 
-export const FeatureMarker = ({ position, featureId, onMarkerClick, matchingTypes }: TreeMarkerProps) => {
+export const FeatureMarker = ({ position, listingType, featureId, onMarkerClick, matchingTypes }: TreeMarkerProps) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const [currentType, setCurrentType] = useState<TypeObject | null>(matchingTypes[0]);
 
@@ -24,8 +25,8 @@ export const FeatureMarker = ({ position, featureId, onMarkerClick, matchingType
   );
 
   return (
-    <AdvancedMarker ref={markerRef} position={position} onClick={handleClick} className={"marker feature"}>
-      <div className="flex justify-center items-center border-2">
+    <AdvancedMarker ref={markerRef} position={position} onClick={handleClick} className={`marker feature`}>
+      <div className="flex justify-center items-center">
         <MultiTypeButton
           types={matchingTypes}
           currentType={currentType}
@@ -33,7 +34,7 @@ export const FeatureMarker = ({ position, featureId, onMarkerClick, matchingType
           className="absolute bottom-0.5 rounded-full disabled:opacity-100"
           width={30}
           height={30}
-          color={"#16A34A"}
+          color={listingType === "premium" ? "#fbbf24" : "#16A34A"}
           variant={"none"}
           disabled={null}
         />

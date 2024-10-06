@@ -191,12 +191,14 @@ export type BoundsType = {
 };
 
 export type HomeFeatureProps = {
+  id: number;
   name: string | null;
   address: string | null;
   description: string | null;
   type: string[];
   features: string[];
   price: number;
+  priceUsd: number;
   bedrooms: number;
   bathrooms: number;
   livingrooms: number;
@@ -206,6 +208,8 @@ export type HomeFeatureProps = {
   contactName: string | null;
   contactEmail: string | null;
   contactPhone: string | null;
+  listingType: string | null;
+  country: string | null;
 };
 
 export type CurrencyType = {
