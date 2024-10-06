@@ -14,7 +14,13 @@ export default async function Footer() {
           <Link href={"/about"}>{scopedT("pages.about")}</Link>
           <Link href={"/articles"}>{scopedT("pages.articles")}</Link>
           <Link href={"/data"}>{scopedT("pages.data")}</Link>
+        </div>
+        <div className="flex text-sm gap-6 justify-center">
           <Link href={"/legal"}>{scopedT("legal.title")}</Link>
+          <div className="flex text-sm gap-6 justify-center">
+            <Link href={"/legal/terms-and-conditions"}>{scopedT("legal.terms")}</Link>
+            <Link href={"/legal/privacy-policy"}>{scopedT("legal.privacy")}</Link>
+          </div>
         </div>
       </div>
       <Icons />
