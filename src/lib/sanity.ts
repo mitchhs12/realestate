@@ -13,3 +13,10 @@ const builder = imageUrlBuilder(client);
 export function urlFor(source: any) {
   return builder.image(source);
 }
+
+export async function getAllArticleSlugs() {
+  const query = `*[_type == "article"]{
+    "slug": slug.current
+  }`;
+  return await client.fetch(query);
+}

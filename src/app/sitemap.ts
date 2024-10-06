@@ -1,20 +1,28 @@
 import type { MetadataRoute } from "next";
 import { languages } from "../lib/validations"; // Assuming this is an array like ['es', 'en', 'fr']
+import { getAllArticleSlugs } from "@/lib/sanity";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = "https://www.vivaideal.com";
-  const routes = [
+  let routes = [
     "/articles",
     "/data",
     "/client",
     "/homes",
     "/legal",
+    "/legal/terms-and-conditions",
+    "/legal/privacy-policy",
     "/my-properties",
     "/my-wishlists",
     "/search",
     "/sell",
     "/settings",
   ];
+
+  // Fetch all articles from Sanity
+  const articles = await getAllArticleSlugs();
+
+  routes = routes.concat(articles.map((article: any) => `/articles/${article.slug}`));
 
   // Helper function to dynamically create alternates in the expected format
   const createAlternates = (route: string) => {
