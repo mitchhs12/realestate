@@ -81,6 +81,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     colorScheme: "auto",
   },
   adapter: PrismaAdapter(prisma) as Adapter,
+  cookies: {
+    pkceCodeVerifier: {
+      name: "next-auth.pkce.code_verifier",
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   callbacks: {
     session({ session, user }) {
       // Return basic user information synchronously first
