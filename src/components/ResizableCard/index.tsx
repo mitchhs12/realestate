@@ -18,6 +18,7 @@ import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 import { usePathname } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiTypeButton from "../MultiTypeButton";
+import { useTheme } from "next-themes";
 
 interface Props {
   home: HomeType | null;
@@ -47,6 +48,7 @@ export default function ResizableCard({
   const path = usePathname();
   const isMyProperties = path === "/my-properties";
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
+  const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
     if (home && home.language) {
@@ -88,17 +90,20 @@ export default function ResizableCard({
           <svg height="84" width="84">
             <g transform="rotate(-90, 42, 42)">
               <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />
-              <polygon points="0 0, 84 84, 84 48, 36 0" fill={"rgb(251 191 36)"} />
+              <polygon
+                points="0 0, 84 84, 84 48, 36 0"
+                fill={theme === "dark" ? "rgb(251 191 36)" : "rgb(252 211 77)"}
+              />
               <polygon points="72 72, 72 84, 84 84" fill={`${"rgb(180 83 9)"}`} />
             </g>
           </svg>
-          <span className="leftCornerRibbonText text-white dark:text-black font-bold">{premiumText}</span>
+          <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
         </div>
       )}
       <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
       <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
         <div
-          className={`flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative ${home.listingType === "premium" && "text-white dark:text-black bg-gradient-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
+          className={`flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative ${home.listingType === "premium" && "text-white bg-gradient-to-r from-amber-400 dark:from-amber-500 via-amber-300 dark:via-amber-400 to-amber-400 dark:to-amber-500"}`}
         >
           <h3
             className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
@@ -154,7 +159,7 @@ export default function ResizableCard({
         currentType={currentType}
         setCurrentType={setCurrentType}
         disabled={true}
-        invertColor={home.listingType === "premium" && true}
+        premium={home.listingType === "premium"}
       />
       {isMyProperties && home.isComplete && user?.id === home.ownerId && (
         <Button
