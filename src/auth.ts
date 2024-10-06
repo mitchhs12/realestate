@@ -37,8 +37,8 @@ const providers: Provider[] = [
         currency: null,
         language: null,
         role: null,
-        favoritedLists: [],
-        homes: [],
+        // favoritedLists: [],
+        // homes: [],
       };
     },
   }),

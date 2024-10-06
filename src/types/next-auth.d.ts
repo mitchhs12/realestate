@@ -12,7 +12,7 @@ declare module "next-auth" {
     currency: string | null;
     language: LanguageType;
     phoneNumber: string | null;
-    favoritedLists: (FavoriteList & { homes: HomeType[] })[];
-    homes: HomeType[];
+    favoritedLists?: (FavoriteList & { homes: HomeType[] })[];
+    homes?: HomeType[];
   }
 }
