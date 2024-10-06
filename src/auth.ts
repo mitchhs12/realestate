@@ -27,14 +27,14 @@ const providers: Provider[] = [
         scope: "name email",
       },
     },
-    // profile(profile) {
-    //   return {
-    //     id: profile.sub,
-    //     name: "Person Doe", //profile.name.givenName + " " + profile.name.familyName, but apple does not return name...
-    //     email: profile.email,
-    //     image: "",
-    //   };
-    // },
+    profile(profile) {
+      return {
+        id: profile.sub,
+        name: profile.name || null, //profile.name.givenName + " " + profile.name.familyName, but apple does not return name...
+        email: profile.email || null,
+        image: null,
+      };
+    },
   }),
   Facebook,
   Resend({
@@ -140,6 +140,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           session.user.homes = [];
           return session;
         });
+    },
+  },
+  cookies: {
+    pkceCodeVerifier: {
+      name: "next-auth.pkce.code_verifier",
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/",
+        secure: true,
+      },
     },
   },
   providers,
