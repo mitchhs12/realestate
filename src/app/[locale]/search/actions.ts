@@ -146,6 +146,19 @@ export async function getSearchResults(
   return homes;
 }
 
+export async function getAllHomeIds(): Promise<number[]> {
+  const homes = await prisma.home.findMany({
+    where: {
+      isActive: true,
+    },
+    select: {
+      id: true,
+    },
+  });
+  const ids = homes.map((home) => home.id);
+  return ids;
+}
+
 export async function getAllHomes(): Promise<HomesGeoJson> {
   const homes = await prisma.home.findMany({
     where: {

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { languages } from "../lib/validations"; // Assuming this is an array like ['es', 'en', 'fr']
 import { getAllArticleSlugs } from "@/lib/sanity";
+import { getAllHomeIds } from "./[locale]/search/actions";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = "https://www.vivaideal.com";
@@ -8,7 +9,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/articles",
     "/data",
     "/client",
-    "/homes",
     "/legal",
     "/legal/terms-and-conditions",
     "/legal/privacy-policy",
@@ -21,8 +21,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Fetch all articles from Sanity
   const articles = await getAllArticleSlugs();
-
   routes = routes.concat(articles.map((article: any) => `/articles/${article.slug}`));
+
+  // Fetch all properties from Prisma
+  const homeIds = await getAllHomeIds();
+  routes = routes.concat(homeIds.map((id: number) => `/homes/${id}`));
 
   // Helper function to dynamically create alternates in the expected format
   const createAlternates = (route: string) => {
