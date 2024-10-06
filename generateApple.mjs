@@ -1,5 +1,5 @@
 #!/bin/node
-
+// Generate a JWT for Apple Sign In
 import { SignJWT } from "jose";
 import { createPrivateKey } from "crypto";
 
