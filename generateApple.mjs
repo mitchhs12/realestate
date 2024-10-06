@@ -6,7 +6,7 @@ import { createPrivateKey } from "crypto";
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`
   Creates a JWT from the components found at Apple.
-  By default, the JWT has a 6 months expiry date.
+  By default, the JWT has a 6 months expiry date...
   Read more: https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens#3262048
 
   Usage:
