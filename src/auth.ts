@@ -10,7 +10,32 @@ import type { Provider } from "next-auth/providers";
 
 const providers: Provider[] = [
   Google,
-  Apple,
+  Apple({
+    clientId: process.env.AUTH_APPLE_ID,
+    clientSecret: "" + process.env.AUTH_APPLE_SECRET,
+    checks: ["pkce"],
+    token: {
+      url: `https://appleid.apple.com/auth/token`,
+    },
+    client: {
+      token_endpoint_auth_method: "client_secret_post",
+    },
+    authorization: {
+      params: {
+        response_mode: "form_post",
+        response_type: "code", //do not set to "code id_token" as it will not work
+        scope: "name email",
+      },
+    },
+    // profile(profile) {
+    //   return {
+    //     id: profile.sub,
+    //     name: "Person Doe", //profile.name.givenName + " " + profile.name.familyName, but apple does not return name...
+    //     email: profile.email,
+    //     image: "",
+    //   };
+    // },
+  }),
   Facebook,
   Resend({
     sendVerificationRequest({ identifier: email, url, provider: { from } }) {
@@ -81,17 +106,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     colorScheme: "auto",
   },
   adapter: PrismaAdapter(prisma) as Adapter,
-  cookies: {
-    pkceCodeVerifier: {
-      name: "next-auth.pkce.code_verifier",
-      options: {
-        httpOnly: true,
-        sameSite: "none",
-        path: "/",
-        secure: true,
-      },
-    },
-  },
   callbacks: {
     session({ session, user }) {
       // Return basic user information synchronously first
