@@ -252,10 +252,10 @@ export default function Photos({
         };
 
         const compressedFile = await imageCompression(resizedFile, options);
-        const avifFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".webp"), { type: "image/avif" });
+        const webpFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".webp"), { type: "image/webp" });
 
         const formData = new FormData();
-        formData.append("file", avifFile);
+        formData.append("file", webpFile);
         formData.append("homeId", currentHome.id.toString());
 
         return uploadPhotos(formData);

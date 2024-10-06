@@ -87,6 +87,7 @@
     "react-markdown": "^9.0.1",
     "react-phone-number-input": "^3.4.5",
     "react-social-icons": "^6.18.0",
+    "react-type-animation": "^3.2.0",
     "recharts": "^2.12.7",
     "sanity": "^3.56.0",
     "sanity-plugin-internationalized-array": "^3.0.0",

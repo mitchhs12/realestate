@@ -11,6 +11,7 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { Search } from "lucide-react";
 import Filters from "@/components/Filters";
 import FiltersDialog from "@/components/FiltersDialog";
+import { TypeAnimation } from "react-type-animation";
 
 interface Result {
   Text: string;
@@ -185,8 +186,8 @@ export default function SearchBox({
                     autoFocus={false}
                     ref={inputRef}
                     type="search"
-                    placeholder={placeholderShort}
-                    className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11`} // Add padding-left to create space for the icon
+                    placeholder={pathname !== "/" ? placeholderShort : ""}
+                    className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11 overflow-hidden whitespace-nowrap text-ellipsis`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -201,6 +202,62 @@ export default function SearchBox({
                       }
                     }}
                   />
+                  {!query && pathname === "/" && (
+                    <span className="type absolute left-[2.80rem] top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none truncate overflow-hidden whitespace-nowrap text-ellipsis w-full max-w-[calc(100%-4.75rem)]">
+                      <TypeAnimation
+                        preRenderFirstString={true}
+                        cursor={false}
+                        sequence={[
+                          `${placeholderShort}`,
+                          2500,
+                          "São Paulo, Brazil",
+                          2500,
+                          "Mexico City, Mexico",
+                          2500,
+                          "Buenos Aires, Argentina",
+                          2500,
+                          "Lima, Peru",
+                          2500,
+                          "Bogotá, Colombia",
+                          2500,
+                          "Santiago, Chile",
+                          2500,
+                          "Rio de Janeiro, Brazil",
+                          2500,
+                          "Caracas, Venezuela",
+                          2500,
+                          "Guadalajara, Mexico",
+                          2500,
+                          "Quito, Ecuador",
+                          2500,
+                          "Medellín, Colombia",
+                          2500,
+                          "La Paz/El Alto, Bolivia",
+                          2500,
+                          "Panama City, Panama",
+                          2500,
+                          "Havana, Cuba",
+                          2500,
+                          "Asunción, Paraguay",
+                          2500,
+                          "San Salvador, El Salvador",
+                          2500,
+                          "Montevideo, Uruguay",
+                          2500,
+                          "San José, Costa Rica",
+                          2500,
+                          "Santo Domingo, Dominican Republic",
+                          2500,
+                          "Port-au-Prince, Haiti",
+                          2500,
+                        ]}
+                        repeat={Infinity}
+                        wrapper="span"
+                        speed={50}
+                        deletionSpeed={75}
+                      />
+                    </span>
+                  )}
                 </div>
               </div>
             </PopoverTrigger>
