@@ -5,7 +5,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
   setStaticParamsLocale(locale);
 
   return (
-    <div className="flex flex-col w-full justify-center border-2 items-center">
+    <div className="flex flex-col w-full justify-center items-center">
       <div className="flex flex-col max-w-4xl space-y-8 p-8">
         <div className="text-4xl font-bold py-4">Privacy Policy</div>
         <div className="italic">Version 23 September 2024</div>

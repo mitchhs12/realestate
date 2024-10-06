@@ -8,10 +8,10 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   setStaticParamsLocale(locale);
 
   return (
-    <div className="flex flex-col items-center w-full h-full gap-8">
+    <div className="flex flex-col items-center w-full gap-8 h-screen-minus-header-svh">
       <div className="relative h-[20vh] flex w-full">
         <Image
-          src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner4.webp`}
+          src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner2.webp`}
           alt="background"
           fill={true}
           style={{ objectFit: "cover" }}
