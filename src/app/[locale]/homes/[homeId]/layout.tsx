@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
   const home = await getHomeById(params.homeId);
 
   return {
-    title: home?.title || "Property", // Set the title dynamically
+    title: `${home?.title} - ${home?.type[0]}` || "Property", // Set the title dynamically
   };
 }
 
