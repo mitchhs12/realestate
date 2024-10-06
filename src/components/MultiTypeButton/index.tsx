@@ -16,10 +16,12 @@ export default function MultiTypeButton({
   disabled,
   width,
   height,
+  invertColor,
 }: {
   types: TypeObject[];
   currentType: TypeObject | null;
   setCurrentType: (type: TypeObject | null) => void;
+  invertColor?: boolean;
   color?: string;
   className?: string;
   disabled?: boolean | null;
@@ -54,10 +56,10 @@ export default function MultiTypeButton({
           setCurrentType(types[newIndex]);
         }}
         size={"icon"}
-        className={className ? `${className}` : "absolute bottom-2 left-2"}
+        className={className ? `${className}` : "absolute bottom-2 left-2 disabled:opacity-100"}
       >
         <IconComponent
-          color={color ? color : theme === "dark" ? "white" : "black"}
+          color={color ? color : theme === "dark" ? (invertColor ? "black" : "white") : invertColor ? "white" : "black"}
           width={width ? width : 40}
           height={height ? height : 40}
         />

@@ -92,7 +92,7 @@ export default function ResizableCard({
               <polygon points="72 72, 72 84, 84 84" fill={`${"rgb(180 83 9)"}`} />
             </g>
           </svg>
-          <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
+          <span className="leftCornerRibbonText text-white dark:text-black font-bold">{premiumText}</span>
         </div>
       )}
       <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
@@ -149,7 +149,13 @@ export default function ResizableCard({
         </div>
       </Link>
 
-      <MultiTypeButton types={types} currentType={currentType} setCurrentType={setCurrentType} disabled={true} />
+      <MultiTypeButton
+        types={types}
+        currentType={currentType}
+        setCurrentType={setCurrentType}
+        disabled={true}
+        invertColor={home.listingType === "premium" && true}
+      />
       {isMyProperties && home.isComplete && user?.id === home.ownerId && (
         <Button
           variant={home.isActive ? "default" : "destructive"}

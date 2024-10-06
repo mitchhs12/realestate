@@ -33,7 +33,7 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice, pr
           return (
             <div
               key={index}
-              className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg
+              className={`flex flex-col h-full w-full space-y-2 shadow-lg ${home?.listingType === "premium" ? "shadow-amber-500/40 dark:shadow-amber-500/40" : "dark:shadow-white/10"} rounded-lg
                 ${index >= 4 && "hidden 2xs:block"}
                 ${index >= 4 && "2xs:hidden sm:block"}
                 ${index >= 4 && "sm:hidden md:block"}
