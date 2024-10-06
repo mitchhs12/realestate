@@ -33,6 +33,12 @@ const providers: Provider[] = [
         name: profile.name || null, //profile.name.givenName + " " + profile.name.familyName, but apple does not return name...
         email: profile.email || null,
         image: null,
+        phoneNumber: null,
+        currency: null,
+        language: null,
+        role: null,
+        favoritedLists: [],
+        homes: [],
       };
     },
   }),
