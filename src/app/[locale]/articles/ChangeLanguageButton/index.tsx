@@ -15,7 +15,7 @@ export default function ChangeLanguage({ changeLanguageText }: { changeLanguageT
 
   return (
     <Button onClick={() => handleChangeLang("en")} className="flex w-full items-center justify-center gap-3">
-      <Languages size={20} />
+      <Languages size={18} />
       {changeLanguageText}
     </Button>
   );

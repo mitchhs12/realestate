@@ -109,12 +109,14 @@ export default async function Article({ params }: { params: { locale: string; sl
         {data.content ? (
           <PortableText value={data.content.value} components={components} />
         ) : (
-          <div className="flex flex-col justify-center items-center text-center gap-3">
+          <div className="flex flex-col justify-center items-center text-center gap-5">
             <div>
               <div>{errorLine1}</div>
               <div>{errorLine2}</div>
             </div>
-            <ChangeLanguageButton changeLanguageText={changeLanguageText} />
+            <div>
+              <ChangeLanguageButton changeLanguageText={changeLanguageText} />
+            </div>
           </div>
         )}
       </div>
