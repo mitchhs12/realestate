@@ -6,6 +6,7 @@ import Image from "next/image";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
+import ChangeLanguageButton from "../ChangeLanguageButton";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const data = await getData(params.locale, params.slug);
@@ -71,6 +72,7 @@ export default async function Article({ params }: { params: { locale: string; sl
   const errorLine1 = t("errorLine1");
   const errorLine2 = t("errorLine2");
   const reading = t("reading");
+  const changeLanguageText = t("changeLanguage");
 
   return (
     <div className="flex flex-col items-center h-full mt-6 p-8">
@@ -107,9 +109,12 @@ export default async function Article({ params }: { params: { locale: string; sl
         {data.content ? (
           <PortableText value={data.content.value} components={components} />
         ) : (
-          <div className="flex flex-col justify-center items-center text-center">
-            <div>{errorLine1}</div>
-            <div>{errorLine2}</div>
+          <div className="flex flex-col justify-center items-center text-center gap-3">
+            <div>
+              <div>{errorLine1}</div>
+              <div>{errorLine2}</div>
+            </div>
+            <ChangeLanguageButton changeLanguageText={changeLanguageText} />
           </div>
         )}
       </div>

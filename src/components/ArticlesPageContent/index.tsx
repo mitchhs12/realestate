@@ -5,6 +5,8 @@ import { client, urlFor } from "@/lib/sanity";
 import { getFullLanguageName } from "@/lib/utils";
 import { ArticleType } from "@/lib/validations";
 import { getScopedI18n } from "@/locales/server";
+import ChangeLanguageButton from "@/app/[locale]/articles/ChangeLanguageButton";
+
 import Image from "next/image";
 
 async function getData(locale: string) {
@@ -48,8 +50,8 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
               />
             </div>
 
-            <CardContent className="flex flex-col justify-between w-full h-[190px] px-3 gap-2 py-2">
-              <h3 className="mt-2 text-primary text-lg line-clamp-2 font-bold">
+            <CardContent className="flex flex-col justify-between w-full h-[200px] px-3 gap-1 py-2">
+              <h3 className="text-primary text-lg line-clamp-2 font-bold">
                 {article.localizedTitle
                   ? article.localizedTitle
                   : `${articleUnavailable} ${getFullLanguageName(locale)}`}
@@ -58,16 +60,22 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
                 {article.thumbnailDescription ? article.thumbnailDescription : unavailableWarning}
               </div>
               <div className="flex items-end w-full">
-                <Button asChild className="flex w-full mb-1" disabled={article.thumbnailDescription ? false : true}>
-                  <Link
-                    className={`${!article.thumbnailDescription ? "pointer-events-none opacity-50" : ""}`}
-                    href={article.thumbnailDescription ? `/articles/${article.currentSlug}` : "#"}
-                    tabIndex={article.thumbnailDescription ? 0 : -1}
-                    aria-disabled={!article.thumbnailDescription}
-                  >
-                    {article.localizedTitle ? readMore : changeLanguage}
-                  </Link>
-                </Button>
+                {article.localizedTitle ? (
+                  <Button asChild className="flex w-full mb-1" disabled={article.thumbnailDescription ? false : true}>
+                    <Link
+                      className={`${!article.thumbnailDescription ? "pointer-events-none opacity-50" : ""}`}
+                      href={article.thumbnailDescription ? `/articles/${article.currentSlug}` : "#"}
+                      tabIndex={article.thumbnailDescription ? 0 : -1}
+                      aria-disabled={!article.thumbnailDescription}
+                    >
+                      {readMore}
+                    </Link>
+                  </Button>
+                ) : (
+                  <div className="flex mb-1 w-full">
+                    <ChangeLanguageButton changeLanguageText={changeLanguage} />
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
