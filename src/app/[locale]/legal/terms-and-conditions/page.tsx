@@ -37,8 +37,8 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
             <li className="font-bold custom-li">Other Agreements and Policies</li>
             <ol className="custom-ol">
               <li className="custom-li">
-                The Terms include other agreements and policies which may apply to your use of our Platform, including
-                without limitation:
+                The Terms include other agreements and policies which may apply to your use of our Platform, depending
+                on your usage, and includes without limitation:
                 <ol style={{ listStyleType: "lower-alpha", paddingLeft: "20px" }}>
                   <li>Privacy Policy</li>
                   <li>Terms and Conditions of Sale</li>
@@ -69,7 +69,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
             <ol className="custom-ol">
               <li className="custom-li">
                 We will update our Platform and may modify our service and product offerings from time to time. We do
-                not guarantee that our Platform, or any content, service and product offerings displayes on it, will
+                not guarantee that our Platform, or any content, service and product offerings displayed on it, will
                 always be available or be uninterrupted. We may suspend or withdraw or restrict the availability of all
                 or any part of our Platform at any time for or without any reason.
               </li>
@@ -228,6 +228,11 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
                 your responsibility to verify that all transaction information and other details are correct. You should
                 receive a confirmation email once the payment has been received by the third-party payment service
                 provider.
+              </li>
+              <li className="custom-li">
+                If you are provided with a free trial period for our products or services, you will only be charged
+                after the free trial period. For the avoidance of doubt, payments made cannot be cancelled and are
+                non-refundable.
               </li>
               <li className="custom-li">
                 Once a payment has been made it cannot be cancelled. We do not accept any responsibility for refusal or
