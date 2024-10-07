@@ -14,7 +14,10 @@ export default function ChangeLanguage({ changeLanguageText }: { changeLanguageT
   };
 
   return (
-    <Button onClick={() => handleChangeLang("en")} className="flex w-full items-center justify-center gap-3">
+    <Button
+      onClick={() => handleChangeLang("en")}
+      className="flex w-full items-center justify-center gap-3 bg-[#2563eb] hover:bg-[#2563eb]/90"
+    >
       <Languages size={18} />
       {changeLanguageText}
     </Button>
