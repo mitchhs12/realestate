@@ -40,18 +40,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   };
 
-  const links = [
-    {
-      url: url,
-      lastModified: new Date(),
-      alternates: createAlternates(""), // No route, just the base URL
-    },
-    ...routes.map((route) => ({
-      url: `${url}${route}`,
+  // Create links for each language and route combination
+  const links = languages.flatMap((lang) => {
+    return routes.map((route) => ({
+      url: `${url}/${lang}${route}`, // Create language-specific URLs for each route
       lastModified: new Date(),
       alternates: createAlternates(route),
-    })),
-  ];
+    }));
+  });
+
+  console.log("links", links);
 
   return links;
 }
