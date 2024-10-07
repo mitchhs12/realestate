@@ -8,7 +8,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let routes = [
     "/articles",
     "/data",
-    "/client",
     "/legal",
     "/legal/terms-and-conditions",
     "/legal/privacy-policy",
@@ -41,13 +40,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
 
   // Create links for each language and route combination
-  const links = languages.flatMap((lang) => {
-    return routes.map((route) => ({
-      url: `${url}/${lang}${route}`, // Create language-specific URLs for each route
+  const links = [
+    // Non-localized URLs (without language suffix)
+    ...routes.map((route) => ({
+      url: `${url}${route}`, // Non-localized base URL
       lastModified: new Date(),
       alternates: createAlternates(route),
-    }));
-  });
+    })),
+
+    // Base URLs for each language
+    ...languages.map((lang) => ({
+      url: `${url}/${lang}`, // Base URL for each language
+      lastModified: new Date(),
+      alternates: createAlternates(""),
+    })),
+
+    // URLs for each route in each language
+    ...languages.flatMap((lang) => {
+      return routes.map((route) => ({
+        url: `${url}/${lang}${route}`, // Language-specific URL for each route
+        lastModified: new Date(),
+        alternates: createAlternates(route),
+      }));
+    }),
+  ];
 
   console.log("links", links);
 
