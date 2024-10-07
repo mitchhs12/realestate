@@ -70,7 +70,7 @@ export default function MapComponent({
     {
       id: "dark",
       label: "Dark",
-      mapId: "66e8c712a9e09ae1",
+      mapId: "ae56363d8be5f45d",
       mapTypeId: MapTypeId.ROADMAP,
       styles: darkMap,
     },
