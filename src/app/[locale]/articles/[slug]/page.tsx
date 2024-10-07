@@ -18,17 +18,18 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 const components = {
   types: {
     image: ({ value }: any) => {
+      const imageUrl = value?.asset ? urlFor(value).url() : "/path-to-fallback-image";
       return (
         <div>
           <Image
-            src={urlFor(value).url()}
+            src={imageUrl}
             alt={value.alt || "Image"}
-            width={720} // Adjust as needed
-            height={480} // Adjust as needed
+            width={720}
+            height={480}
             className="rounded-lg"
             style={{
               height: "auto",
-              maxHeight: "70vh", // Cap height at 80% of viewport height
+              maxHeight: "70vh",
             }}
           />
         </div>
