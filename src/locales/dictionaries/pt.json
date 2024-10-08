@@ -516,12 +516,14 @@
     },
     "edit": "Editar detalhes da propriedade",
     "contact": {
+      "contact-title": "Informações do proprietário",
+      "contact-title-mobile": "Informações do proprietário",
       "name": "Nome:",
       "email": "E-mail:",
       "phone": "Telefone:",
-      "contact-button": "Proprietário",
       "contact-thanks": "Obrigado, enviaremos um e-mail para você em breve!",
-      "buy-button": "Comprar casa",
+      "contact-button": "Contato",
+      "buy-button": "Comprar!",
       "login-to-purchase": "Faça login para comprar"
     },
     "translate-button": "Traduzir",

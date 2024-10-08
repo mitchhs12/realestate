@@ -516,12 +516,14 @@ export default {
     },
     "edit": "ქონების დეტალების რედაქტირება",
     "contact": {
+      "contact-title": "მფლობელის ინფორმაცია",
+      "contact-title-mobile": "მფლობელის ინფორმაცია",
       "name": "სახელი:",
       "email": "ელფოსტა:",
       "phone": "ტელეფონი:",
-      "contact-button": "მფლობელი",
       "contact-thanks": "გმადლობთ, მალე გამოგიგზავნით ელ.წერილს!",
-      "buy-button": "შეიძინეთ სახლი",
+      "contact-button": "კონტაქტი",
+      "buy-button": "შეიძინე!",
       "login-to-purchase": "შესაძენად შედით სისტემაში"
     },
     "translate-button": "თარგმნეთ",

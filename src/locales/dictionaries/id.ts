@@ -516,12 +516,14 @@ export default {
     },
     "edit": "Edit Detail Properti",
     "contact": {
+      "contact-title": "Informasi Pemilik",
+      "contact-title-mobile": "Informasi Pemilik",
       "name": "Nama:",
       "email": "E-mail:",
       "phone": "Telepon:",
-      "contact-button": "Pemilik",
       "contact-thanks": "Terima kasih, kami akan segera mengirimkan email kepada Anda!",
-      "buy-button": "Beli Rumah",
+      "contact-button": "Kontak",
+      "buy-button": "Pembelian!",
       "login-to-purchase": "Masuk untuk membeli"
     },
     "translate-button": "Menerjemahkan",

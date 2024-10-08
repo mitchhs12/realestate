@@ -516,12 +516,14 @@ export default {
     },
     "edit": "แก้ไขรายละเอียดทรัพย์สิน",
     "contact": {
+      "contact-title": "ข้อมูลเจ้าของ",
+      "contact-title-mobile": "ข้อมูลเจ้าของ",
       "name": "ชื่อ:",
       "email": "อีเมล:",
       "phone": "โทรศัพท์:",
-      "contact-button": "เจ้าของ",
       "contact-thanks": "ขอบคุณ เราจะส่งอีเมลถึงคุณเร็วๆ นี้!",
-      "buy-button": "ซื้อบ้าน",
+      "contact-button": "ติดต่อ",
+      "buy-button": "ซื้อ!",
       "login-to-purchase": "เข้าสู่ระบบเพื่อซื้อ"
     },
     "translate-button": "แปล",

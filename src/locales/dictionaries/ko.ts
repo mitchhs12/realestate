@@ -516,12 +516,14 @@ export default {
     },
     "edit": "속성 세부 정보 편집",
     "contact": {
+      "contact-title": "소유자 정보",
+      "contact-title-mobile": "소유자 정보",
       "name": "이름:",
       "email": "이메일:",
       "phone": "핸드폰:",
-      "contact-button": "소유자",
       "contact-thanks": "감사합니다. 곧 이메일을 보내드리겠습니다!",
-      "buy-button": "집을 사다",
+      "contact-button": "연락하다",
+      "buy-button": "구입!",
       "login-to-purchase": "구매하려면 로그인하세요"
     },
     "translate-button": "번역하다",

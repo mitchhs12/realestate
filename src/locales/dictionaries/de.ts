@@ -516,12 +516,14 @@ export default {
     },
     "edit": "Eigenschaftendetails bearbeiten",
     "contact": {
+      "contact-title": "Eigentümerinformationen",
+      "contact-title-mobile": "Eigentümerinformationen",
       "name": "Name:",
       "email": "E-Mail:",
       "phone": "Telefon:",
-      "contact-button": "Eigentümer",
       "contact-thanks": "Danke, wir werden Ihnen bald eine E-Mail senden!",
-      "buy-button": "Kaufen Home",
+      "contact-button": "Kontakt",
+      "buy-button": "Kaufen!",
       "login-to-purchase": "Zum Einkaufen anmelden"
     },
     "translate-button": "Übersetzen",
