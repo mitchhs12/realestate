@@ -1,19 +1,25 @@
 import { HomeType } from "@/lib/validations";
 import ResizableCard from "@/components/ResizableCard";
 import { findMatching } from "@/lib/utils";
+import BackButton from "./BackButton";
 
 export default function List({
   list,
   types,
   premiumText,
+  listText,
 }: {
   list: any;
   types: { id: string; name: string; translation: string }[];
   premiumText: string;
+  listText: string;
 }) {
   return (
     <div className="flex flex-col max-w-8xl h-full w-full">
-      <div className="flex flex-col items-center w-full pb-8">
+      <div className="flex flex-col items-start w-full pb-8">
+        <div className="pt-8 pl-8">
+          <BackButton listText={listText} />
+        </div>
         <div className="flex w-full h-full justify-center text-2xl items-center py-8">
           <h1>{list.name}</h1>
         </div>

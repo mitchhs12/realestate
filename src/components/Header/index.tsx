@@ -20,7 +20,6 @@ import SearchDialog from "@/components/SearchDialog";
 
 interface Props {
   map: string;
-  list: string;
   articles: string;
   data: string;
   searchPlaceholder: string;
@@ -37,7 +36,6 @@ interface Props {
 
 export default function Header({
   map,
-  list,
   articles,
   data,
   searchPlaceholder,
@@ -61,7 +59,6 @@ export default function Header({
   const isSellPage = pathname.includes("/sell");
   const isArticlesPage = pathname.includes("/articles");
   const isStudioPage = pathname.includes("/studio");
-  const isSingleListPage = pathname.includes("/my-wishlists/");
   const isDataPage = pathname.includes("/data");
 
   return (
@@ -151,29 +148,6 @@ export default function Header({
                       </div>
                       <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
                         {map}
-                      </h1>
-                    </div>
-                  </div>
-                </Link>
-              </Button>
-            )}
-            {isSingleListPage && (
-              <Button
-                asChild
-                size={"largeIcon"}
-                variant={"outline"}
-                className="flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group"
-                disabled={true}
-              >
-                <Link href={`/my-wishlists`}>
-                  <div>
-                    <div className="flex px-2 justify-center text-center items-center">
-                      <div className="flex justify-between items-center gap-2">
-                        <Heart width={"22"} height={"22"} />
-                        <ChevronLeft width={"22"} height={"22"} />
-                      </div>
-                      <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
-                        {list}
                       </h1>
                     </div>
                   </div>

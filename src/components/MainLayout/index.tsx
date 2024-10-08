@@ -56,7 +56,6 @@ export default async function MainLayout({ children }: Props) {
       <QueryContextProvider headerValues={headerValues}>
         <Header
           map={h("map")}
-          list={h("list")}
           articles={h("articles")}
           data={h("data")}
           searchPlaceholder={h("search.placeholder")}

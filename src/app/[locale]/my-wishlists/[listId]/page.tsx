@@ -28,6 +28,7 @@ export default async function Page({ params }: { params: { locale: string; listI
   } else if (user && user.id) {
     const t = await getScopedI18n("sell.type");
     const p = await getScopedI18n("sell.checkout.premium");
+    const h = await getScopedI18n("home.header");
 
     const typesObject = Array.from({ length: 17 }, (_, index) => ({
       id: typesMap[index].id,
@@ -39,7 +40,7 @@ export default async function Page({ params }: { params: { locale: string; listI
     return (
       <>
         <div className="flex flex-col items-center h-full min-h-screen-minus-header-svh">
-          <List list={list} types={typesObject} premiumText={p("title")} />
+          <List list={list} types={typesObject} premiumText={p("title")} listText={h("list")} />
         </div>
         <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
           <Footer />

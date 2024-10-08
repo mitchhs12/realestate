@@ -173,9 +173,10 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
                 guarantee the security of your Personal Data, we are committed to employing reasonable security
                 measures, regularly reviewing our security practices (security risk assessments / audits), and providing
                 regular awareness training. You are responsible for keeping your login information and passwords
-                confidential. We deploy [TBC: Specify Security Certificates/Tools] to ensure maximum security. Please be
-                aware that these protection tools do not protect information that is not collected through our Platform,
-                such as information provided to us by e-mail.
+                confidential. We deploy <b>SSL/TLS encryption</b>, <b>OAuth 2.0 authentication</b>,{" "}
+                <b>token-based security</b>, and <b>Magic Link (passwordless) authentication</b> to ensure maximum
+                security. Please be aware that these protection tools do not protect information that is not collected
+                through our Platform, such as information provided to us by e-mail.
               </div>
             </ol>
           </div>
