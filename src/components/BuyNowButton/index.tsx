@@ -48,7 +48,7 @@ export default function BuyNowButton({ homeId, user, buyNow, loginToPurchase, co
           <div className="flex">
             <House strokeWidth={1.8} size={20} />
           </div>
-          <span className="text-xs xs:text-sm">{user ? `${buyNow}` : loginToPurchase}</span>
+          <span className="text-xs md:text-sm">{user ? `${buyNow}` : loginToPurchase}</span>
         </div>
       )}
     </Button>

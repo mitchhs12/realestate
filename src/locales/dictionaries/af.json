@@ -516,12 +516,10 @@
     },
     "edit": "Wysig eiendomsbesonderhede",
     "contact": {
-      "contact-title": "Eienaar inligting",
-      "contact-title-mobile": "Eienaar inligting",
       "name": "Naam:",
       "email": "E-pos:",
       "phone": "Telefoon:",
-      "contact-button": "Eienaar Besonderhede",
+      "contact-button": "Eienaar",
       "contact-thanks": "Dankie, ons sal jou binnekort e-pos!",
       "buy-button": "Koop Huis",
       "login-to-purchase": "Meld aan om te koop"

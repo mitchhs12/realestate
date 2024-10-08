@@ -319,7 +319,7 @@ export default function HomeText({
               <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>
             </CardHeader>
 
-            <CardContent className="flex flex-col gap-3">
+            <CardContent className="flex flex-col gap-4">
               {sessionLoading ? (
                 <div className="flex justify-center w-full">
                   <Skeleton className="h-8 md:h-9 lg:h-10 w-8/12" />

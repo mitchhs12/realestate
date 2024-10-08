@@ -516,12 +516,10 @@ export default {
     },
     "edit": "Özellik Ayrıntılarını Düzenle",
     "contact": {
-      "contact-title": "Sahip Bilgileri",
-      "contact-title-mobile": "Sahip Bilgileri",
       "name": "İsim:",
       "email": "E-posta:",
       "phone": "Telefon:",
-      "contact-button": "Sahip Detayları",
+      "contact-button": "Mal sahibi",
       "contact-thanks": "Teşekkürler, en kısa sürede size e-posta göndereceğiz!",
       "buy-button": "Ev satın al",
       "login-to-purchase": "Satın almak için giriş yapın"

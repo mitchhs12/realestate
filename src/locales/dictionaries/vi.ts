@@ -516,12 +516,10 @@ export default {
     },
     "edit": "Chỉnh sửa chi tiết tài sản",
     "contact": {
-      "contact-title": "Thông tin chủ sở hữu",
-      "contact-title-mobile": "Thông tin chủ sở hữu",
       "name": "Tên:",
       "email": "E-mail:",
       "phone": "Điện thoại:",
-      "contact-button": "Chi tiết chủ sở hữu",
+      "contact-button": "Người sở hữu",
       "contact-thanks": "Cảm ơn, chúng tôi sẽ gửi email cho bạn sớm!",
       "buy-button": "Mua nhà",
       "login-to-purchase": "Đăng nhập để mua hàng"

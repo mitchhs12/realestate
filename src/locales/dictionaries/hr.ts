@@ -516,12 +516,10 @@ export default {
     },
     "edit": "Uredite pojedinosti nekretnine",
     "contact": {
-      "contact-title": "Informacije o vlasniku",
-      "contact-title-mobile": "Informacije o vlasniku",
       "name": "Ime:",
       "email": "Email:",
       "phone": "Telefon:",
-      "contact-button": "Podaci o vlasniku",
+      "contact-button": "Vlasnik",
       "contact-thanks": "Hvala, uskoro ćemo vam poslati e-poruku!",
       "buy-button": "Kupi dom",
       "login-to-purchase": "Prijavite se za kupnju"

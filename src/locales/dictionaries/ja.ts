@@ -516,12 +516,10 @@ export default {
     },
     "edit": "物件詳細の編集",
     "contact": {
-      "contact-title": "オーナー情報",
-      "contact-title-mobile": "オーナー情報",
       "name": "名前：",
       "email": "メールアドレス:",
       "phone": "電話：",
-      "contact-button": "オーナーの詳細",
+      "contact-button": "所有者",
       "contact-thanks": "ありがとうございます。すぐにメールをお送りします。",
       "buy-button": "住宅を購入する",
       "login-to-purchase": "購入するにはログインしてください"

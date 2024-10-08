@@ -516,12 +516,10 @@
     },
     "edit": "编辑房产详情",
     "contact": {
-      "contact-title": "车主信息",
-      "contact-title-mobile": "车主信息",
       "name": "姓名：",
       "email": "电子邮件：",
       "phone": "电话：",
-      "contact-button": "所有者详细信息",
+      "contact-button": "所有者",
       "contact-thanks": "谢谢，我们会尽快给您发送电子邮件！",
       "buy-button": "购买房屋",
       "login-to-purchase": "登录后购买"

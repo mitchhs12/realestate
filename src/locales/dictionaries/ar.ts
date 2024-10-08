@@ -516,12 +516,10 @@ export default {
     },
     "edit": "تعديل تفاصيل الملكية",
     "contact": {
-      "contact-title": "معلومات المالك",
-      "contact-title-mobile": "معلومات المالك",
       "name": "اسم:",
       "email": "بريد إلكتروني:",
       "phone": "هاتف:",
-      "contact-button": "تفاصيل المالك",
+      "contact-button": "مالك",
       "contact-thanks": "شكرًا لك، سنرسل لك بريدًا إلكترونيًا قريبًا!",
       "buy-button": "شراء منزل",
       "login-to-purchase": "تسجيل الدخول للشراء"

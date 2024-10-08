@@ -516,12 +516,10 @@ export default {
     },
     "edit": "Editar detalhes da propriedade",
     "contact": {
-      "contact-title": "Informações do proprietário",
-      "contact-title-mobile": "Informações do proprietário",
       "name": "Nome:",
       "email": "E-mail:",
       "phone": "Telefone:",
-      "contact-button": "Detalhes do proprietário",
+      "contact-button": "Proprietário",
       "contact-thanks": "Obrigado, enviaremos um e-mail para você em breve!",
       "buy-button": "Comprar casa",
       "login-to-purchase": "Faça login para comprar"

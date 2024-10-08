@@ -521,7 +521,7 @@ export default {
       "name": "Name:",
       "email": "Email:",
       "phone": "Phone:",
-      "contact-button": "Owner Details",
+      "contact-button": "Owner",
       "contact-thanks": "Thanks, we will email you soon!",
       "buy-button": "Buy Home",
       "login-to-purchase": "Log in to purchase"

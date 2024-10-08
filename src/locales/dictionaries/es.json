@@ -516,12 +516,10 @@
     },
     "edit": "Editar detalles",
     "contact": {
-      "contact-title": "Información del propietario",
-      "contact-title-mobile": "Información del propietario",
       "name": "Nombre:",
       "email": "Correo electrónico:",
       "phone": "Teléfono:",
-      "contact-button": "Datos del propietario",
+      "contact-button": "Dueño",
       "contact-thanks": "¡Gracias, te enviaremos un correo electrónico pronto!",
       "buy-button": "Comprar casa",
       "login-to-purchase": "Iniciar sesión para comprar"
