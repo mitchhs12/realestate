@@ -225,9 +225,9 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
                 the following channels:
               </div>
               <div>
-                <div>Data Protection Officer: TBC</div>
-                <div>Mailing Address: TBC</div>
-                <div>Email: TBC</div>
+                <div>Data Protection Officer: Mitchell Spencer</div>
+                <div>Mailing Address: 68 Circular Road, #02-01, Singapore</div>
+                <div>Email: mitchell@vivaideal.com</div>
               </div>
             </div>
           </div>
