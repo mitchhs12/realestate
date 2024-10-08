@@ -493,7 +493,6 @@
     "show-all-photos": "Tüm fotoğrafları göster",
     "original-price": "Orijinal Fiyat",
     "negotiable": "Fiyat Pazarlığa Açık mı?",
-    "contact-thanks": "Teşekkürler, en kısa sürede size e-posta göndereceğiz!",
     "bedrooms": {
       "single": "Yatak odası",
       "plural": "Yatak odaları"
@@ -522,7 +521,10 @@
       "name": "İsim:",
       "email": "E-posta:",
       "phone": "Telefon:",
-      "contact-button": "Sahip Detayları"
+      "contact-button": "Sahip Detayları",
+      "contact-thanks": "Teşekkürler, en kısa sürede size e-posta göndereceğiz!",
+      "buy-button": "Ev satın al",
+      "login-to-purchase": "Satın almak için giriş yapın"
     },
     "translate-button": "Çevir",
     "show-original-button": "Orijinali göster"

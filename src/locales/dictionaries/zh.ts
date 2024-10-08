@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "显示所有照片",
     "original-price": "原价",
     "negotiable": "价格可以商量吗？",
-    "contact-thanks": "谢谢，我们会尽快给您发送电子邮件！",
     "bedrooms": {
       "single": "卧室",
       "plural": "卧室"
@@ -522,7 +521,10 @@ export default {
       "name": "姓名：",
       "email": "电子邮件：",
       "phone": "电话：",
-      "contact-button": "所有者详细信息"
+      "contact-button": "所有者详细信息",
+      "contact-thanks": "谢谢，我们会尽快给您发送电子邮件！",
+      "buy-button": "购买房屋",
+      "login-to-purchase": "登录后购买"
     },
     "translate-button": "翻译",
     "show-original-button": "显示原始内容"

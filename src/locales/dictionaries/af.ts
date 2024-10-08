@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "Wys alle foto's",
     "original-price": "Oorspronklike prys",
     "negotiable": "Prys onderhandelbaar?",
-    "contact-thanks": "Dankie, ons sal jou binnekort e-pos!",
     "bedrooms": {
       "single": "Slaapkamer",
       "plural": "Slaapkamers"
@@ -522,7 +521,10 @@ export default {
       "name": "Naam:",
       "email": "E-pos:",
       "phone": "Telefoon:",
-      "contact-button": "Eienaar Besonderhede"
+      "contact-button": "Eienaar Besonderhede",
+      "contact-thanks": "Dankie, ons sal jou binnekort e-pos!",
+      "buy-button": "Koop Huis",
+      "login-to-purchase": "Meld aan om te koop"
     },
     "translate-button": "Vertaal",
     "show-original-button": "Wys oorspronklike"

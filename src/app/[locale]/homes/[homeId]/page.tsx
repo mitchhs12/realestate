@@ -35,7 +35,9 @@ export default async function Page({ params }: { params: { locale: string } }) {
   const hidePrice = h("price-button.hide");
   const mobilePrice = h("price-button.mobile");
 
-  const contactThanks = h("contact-thanks");
+  const contactThanks = h("contact.contact-thanks");
+  const buyNow = h("contact.buy-button");
+  const loginToPurchase = h("contact.login-to-purchase");
   const contactTitle = h("contact.contact-title");
   const contactTitleMobile = h("contact.contact-title-mobile");
   const contactNameText = h("contact.name");
@@ -66,6 +68,8 @@ export default async function Page({ params }: { params: { locale: string } }) {
             originalPrice={originalPrice}
             negotiable={negotiable}
             contactThanks={contactThanks}
+            buyNow={buyNow}
+            loginToPurchase={loginToPurchase}
             sizeTitle={sizeTitle}
             showPrice={showPrice}
             hidePrice={hidePrice}
@@ -104,6 +108,9 @@ export default async function Page({ params }: { params: { locale: string } }) {
           mobilePrice={mobilePrice}
           contactTitleMobile={contactTitleMobile}
           contactButton={contactButton}
+          contactThanks={contactThanks}
+          buyNow={buyNow}
+          loginToPurchase={loginToPurchase}
         />
       </div>
     </div>

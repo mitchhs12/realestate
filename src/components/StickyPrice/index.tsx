@@ -6,13 +6,14 @@ import { Button } from "@/components/ui/button";
 import { useContext, useEffect, useState } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
-import { EyeOpenIcon, EyeClosedIcon, CheckIcon, CopyIcon } from "@radix-ui/react-icons";
+import { EyeOpenIcon, EyeClosedIcon, CheckIcon, CopyIcon, ReloadIcon } from "@radix-ui/react-icons";
 import BrokenPrice from "@/components/BrokenPrice";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { Phone, PhoneCall } from "lucide-react";
 import { handleCopy } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeContext } from "@/context/HomeContext";
+import BuyNowButton from "@/components/BuyNowButton";
 
 interface Props {
   contactNameText: string;
@@ -21,6 +22,9 @@ interface Props {
   mobilePrice: string;
   contactTitleMobile: string;
   contactButton: string;
+  contactThanks: string;
+  buyNow: string;
+  loginToPurchase: string;
 }
 
 export default function StickyPrice({
@@ -30,6 +34,9 @@ export default function StickyPrice({
   mobilePrice,
   contactTitleMobile,
   contactButton,
+  contactThanks,
+  buyNow,
+  loginToPurchase,
 }: Props) {
   const { home } = useContext(HomeContext);
   const { defaultCurrency, currencyData, sessionLoading, user } = useContext(LocaleContext);
@@ -72,9 +79,12 @@ export default function StickyPrice({
           </div>
         </div>
         {sessionLoading ? (
-          <Skeleton className="w-full h-9 md:h-10 lg:h-12" />
+          <div className="flex gap-4 justify-center w-full">
+            <Skeleton className="w-1/2 h-9 md:h-10 lg:h-12" />
+            <Skeleton className="w-1/2 h-9 md:h-10 lg:h-12" />
+          </div>
         ) : (
-          <div className="flex w-full justify-center gap-4">
+          <div className="flex w-full justify-center gap-2">
             {!user && (
               <Button
                 onClick={() => {
@@ -105,7 +115,13 @@ export default function StickyPrice({
               </div>
               <div className="text-xs xs:text-sm">{contactButton}</div>
             </Button>
-            <Button className="flex w-1/2 px-4 justify-center gap-2 text-center">Buy now!</Button>
+            <BuyNowButton
+              homeId={home.id}
+              user={user}
+              buyNow={buyNow}
+              loginToPurchase={loginToPurchase}
+              contactThanks={contactThanks}
+            />
           </div>
         )}
       </CardHeader>

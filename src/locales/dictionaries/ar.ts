@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "عرض جميع الصور",
     "original-price": "السعر الأصلي",
     "negotiable": "السعر قابل للتفاوض؟",
-    "contact-thanks": "شكرًا لك، سنرسل لك بريدًا إلكترونيًا قريبًا!",
     "bedrooms": {
       "single": "غرفة نوم",
       "plural": "غرف النوم"
@@ -522,7 +521,10 @@ export default {
       "name": "اسم:",
       "email": "بريد إلكتروني:",
       "phone": "هاتف:",
-      "contact-button": "تفاصيل المالك"
+      "contact-button": "تفاصيل المالك",
+      "contact-thanks": "شكرًا لك، سنرسل لك بريدًا إلكترونيًا قريبًا!",
+      "buy-button": "شراء منزل",
+      "login-to-purchase": "تسجيل الدخول للشراء"
     },
     "translate-button": "يترجم",
     "show-original-button": "عرض الأصل"

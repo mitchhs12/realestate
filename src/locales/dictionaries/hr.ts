@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "Prikaži sve fotografije",
     "original-price": "Originalna cijena",
     "negotiable": "Cijena po dogovoru?",
-    "contact-thanks": "Hvala, uskoro ćemo vam poslati e-poruku!",
     "bedrooms": {
       "single": "Spavaća soba",
       "plural": "spavaće sobe"
@@ -522,7 +521,10 @@ export default {
       "name": "Ime:",
       "email": "Email:",
       "phone": "Telefon:",
-      "contact-button": "Podaci o vlasniku"
+      "contact-button": "Podaci o vlasniku",
+      "contact-thanks": "Hvala, uskoro ćemo vam poslati e-poruku!",
+      "buy-button": "Kupi dom",
+      "login-to-purchase": "Prijavite se za kupnju"
     },
     "translate-button": "Prevesti",
     "show-original-button": "Prikaži izvornik"

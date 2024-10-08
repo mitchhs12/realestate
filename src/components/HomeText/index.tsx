@@ -40,6 +40,7 @@ import { HomeContext } from "@/context/HomeContext";
 import { typeIcons } from "../Icons/typeIcons";
 import { useTheme } from "next-themes";
 import { featureIcons } from "../Icons/featureIcons";
+import BuyNowButton from "@/components/BuyNowButton";
 import { kv } from "@vercel/kv";
 
 interface Props {
@@ -52,6 +53,8 @@ interface Props {
   originalPrice: string;
   negotiable: string;
   contactThanks: string;
+  buyNow: string;
+  loginToPurchase: string;
   sizeTitle: string;
   showPrice: string;
   hidePrice: string;
@@ -79,6 +82,8 @@ export default function HomeText({
   originalPrice,
   negotiable,
   contactThanks,
+  buyNow,
+  loginToPurchase,
   sizeTitle,
   showPrice,
   hidePrice,
@@ -125,43 +130,8 @@ export default function HomeText({
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [currentType, setCurrentType] = useState(matchingTypes[0]);
   const [index, setIndex] = useState(0);
-  const [buyingLoading, setBuyingLoading] = useState(false);
-  const [buyingError, setBuyingError] = useState(null);
-  const [messageSent, setMessageSent] = useState(false);
+
   const { resolvedTheme: theme } = useTheme();
-
-  const handleBuyNow = async () => {
-    if (user) {
-      setBuyingLoading(true);
-      setBuyingError(null);
-      const payload = {
-        username: "Property Bot", // The name of the bot
-        content: `Someone wants to buy a property!\n${user.name ? user.name : "Unknown Username"}\n${user.email}\nhttps://www.vivaideal.com/homes/${home.id}`,
-      };
-      try {
-        const response = await fetch(
-          "https://discord.com/api/webhooks/1293295558840025098/s1c1sKzTD4ub0ghGlF2gBPY6iLR_WRGUg-1zG_42YGyFyyjxbj7NP0rwzG7jK6JgLPXL",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to send notification");
-        }
-
-        setMessageSent(true);
-        setBuyingLoading(false);
-      } catch (err: any) {
-        setBuyingError(err.message);
-        setBuyingLoading(false);
-      }
-    }
-  };
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -352,7 +322,7 @@ export default function HomeText({
             <CardContent className="flex flex-col gap-3">
               {sessionLoading ? (
                 <div className="flex justify-center w-full">
-                  <Skeleton className="h-10 md:h-11 lg:h-12 w-8/12" />
+                  <Skeleton className="h-8 md:h-9 lg:h-10 w-8/12" />
                 </div>
               ) : (
                 <BrokenPrice
@@ -367,20 +337,18 @@ export default function HomeText({
                 <span className={`text-sm md:text-base lg:text-lg`}>
                   {originalPrice} ({home.currency})
                 </span>
-                {originalCurrencyRate && home.currency ? (
-                  sessionLoading ? (
-                    <div className="flex justify-center w-full">
-                      <Skeleton className="items-center h-8 md:h-9 lg:h-9 w-7/12" />
-                    </div>
-                  ) : (
-                    <BrokenPrice
-                      priceUsd={home.priceUsd}
-                      currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
-                      reveal={user ? true : false}
-                      blurAmount={"blur-md"}
-                      className="text-primary justify-center text-base md:text-lg lg:text-xl"
-                    />
-                  )
+                {sessionLoading ? (
+                  <div className="flex justify-center w-full">
+                    <Skeleton className="items-center h-6 md:h-7 lg:h-7.5 w-7/12" />
+                  </div>
+                ) : originalCurrencyRate && home.currency ? (
+                  <BrokenPrice
+                    priceUsd={home.priceUsd}
+                    currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
+                    reveal={user ? true : false}
+                    blurAmount={"blur-md"}
+                    className="text-primary justify-center text-base md:text-lg lg:text-xl"
+                  />
                 ) : (
                   "Contact us"
                 )}
@@ -401,25 +369,16 @@ export default function HomeText({
                   </span>
                 </div>
 
-                {messageSent ? (
-                  <Button
-                    onClick={handleBuyNow}
-                    className="flex items-center justify-center gap-2 w-full"
-                    disabled={buyingLoading ? true : user ? false : true}
-                  >
-                    {buyingLoading ? (
-                      <span className="flex gap-3 w-full h-full justify-center items-center">
-                        <ReloadIcon className="animate-spin" />
-                        Loading...
-                      </span>
-                    ) : user ? (
-                      "Buy Now!"
-                    ) : (
-                      "Log in to purchase"
-                    )}
-                  </Button>
+                {sessionLoading ? (
+                  <Skeleton className="h-[3.2vh] md:h-[3.2vh] lg:h-[3.2vh] w-11/12" />
                 ) : (
-                  <div>{contactThanks}</div>
+                  <BuyNowButton
+                    homeId={home.id}
+                    user={user}
+                    buyNow={buyNow}
+                    loginToPurchase={loginToPurchase}
+                    contactThanks={contactThanks}
+                  />
                 )}
               </div>
               {sessionLoading ||

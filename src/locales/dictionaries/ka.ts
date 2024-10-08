@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "ყველა ფოტოს ჩვენება",
     "original-price": "ორიგინალური ფასი",
     "negotiable": "ფასი შეთანხმებით?",
-    "contact-thanks": "გმადლობთ, მალე გამოგიგზავნით ელ.წერილს!",
     "bedrooms": {
       "single": "საძინებელი",
       "plural": "საძინებლები"
@@ -522,7 +521,10 @@ export default {
       "name": "სახელი:",
       "email": "ელფოსტა:",
       "phone": "ტელეფონი:",
-      "contact-button": "მფლობელის დეტალები"
+      "contact-button": "მფლობელის დეტალები",
+      "contact-thanks": "გმადლობთ, მალე გამოგიგზავნით ელ.წერილს!",
+      "buy-button": "შეიძინეთ სახლი",
+      "login-to-purchase": "შესაძენად შედით სისტემაში"
     },
     "translate-button": "თარგმნეთ",
     "show-original-button": "ორიგინალის ჩვენება"

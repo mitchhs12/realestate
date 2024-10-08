@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "Mostrar todas las fotos",
     "original-price": "Precio original",
     "negotiable": "¿Precio negociable?",
-    "contact-thanks": "¡Gracias, te enviaremos un correo pronto!",
     "bedrooms": {
       "single": "Dormitorio",
       "plural": "Dormitorios"
@@ -522,7 +521,10 @@ export default {
       "name": "Nombre:",
       "email": "Correo electrónico:",
       "phone": "Teléfono:",
-      "contact-button": "Datos del propietario"
+      "contact-button": "Datos del propietario",
+      "contact-thanks": "¡Gracias, te enviaremos un correo electrónico pronto!",
+      "buy-button": "Comprar casa",
+      "login-to-purchase": "Iniciar sesión para comprar"
     },
     "translate-button": "Traducir",
     "show-original-button": "Mostrar original"

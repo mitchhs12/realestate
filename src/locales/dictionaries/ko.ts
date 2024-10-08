@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "모든 사진 보기",
     "original-price": "원래 가격",
     "negotiable": "가격 협상 가능?",
-    "contact-thanks": "감사합니다. 곧 이메일을 보내드리겠습니다!",
     "bedrooms": {
       "single": "침실",
       "plural": "침실"
@@ -522,7 +521,10 @@ export default {
       "name": "이름:",
       "email": "이메일:",
       "phone": "핸드폰:",
-      "contact-button": "소유자 세부 정보"
+      "contact-button": "소유자 세부 정보",
+      "contact-thanks": "감사합니다. 곧 이메일을 보내드리겠습니다!",
+      "buy-button": "집을 사다",
+      "login-to-purchase": "구매하려면 로그인하세요"
     },
     "translate-button": "번역하다",
     "show-original-button": "원본보기"

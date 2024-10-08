@@ -493,7 +493,6 @@
     "show-all-photos": "Tampilkan semua foto",
     "original-price": "Harga Asli",
     "negotiable": "Harga Bisa Nego?",
-    "contact-thanks": "Terima kasih, kami akan segera mengirimkan email kepada Anda!",
     "bedrooms": {
       "single": "Kamar tidur",
       "plural": "Kamar tidur"
@@ -522,7 +521,10 @@
       "name": "Nama:",
       "email": "E-mail:",
       "phone": "Telepon:",
-      "contact-button": "Detail Pemilik"
+      "contact-button": "Detail Pemilik",
+      "contact-thanks": "Terima kasih, kami akan segera mengirimkan email kepada Anda!",
+      "buy-button": "Beli Rumah",
+      "login-to-purchase": "Masuk untuk membeli"
     },
     "translate-button": "Menerjemahkan",
     "show-original-button": "Tampilkan Aslinya"

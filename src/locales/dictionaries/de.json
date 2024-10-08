@@ -493,7 +493,6 @@
     "show-all-photos": "Alle Fotos anzeigen",
     "original-price": "Ursprünglicher Preis",
     "negotiable": "Preis verhandelbar?",
-    "contact-thanks": "Danke, wir werden Ihnen bald eine E-Mail senden!",
     "bedrooms": {
       "single": "Schlafzimmer",
       "plural": "Schlafzimmer"
@@ -522,7 +521,10 @@
       "name": "Name:",
       "email": "E-Mail:",
       "phone": "Telefon:",
-      "contact-button": "Angaben zum Eigentümer"
+      "contact-button": "Angaben zum Eigentümer",
+      "contact-thanks": "Danke, wir werden Ihnen bald eine E-Mail senden!",
+      "buy-button": "Kaufen Home",
+      "login-to-purchase": "Zum Einkaufen anmelden"
     },
     "translate-button": "Übersetzen",
     "show-original-button": "Zeige Original"

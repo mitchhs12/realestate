@@ -493,7 +493,6 @@
     "show-all-photos": "すべての写真を表示",
     "original-price": "元の価格",
     "negotiable": "価格交渉可能でしょうか?",
-    "contact-thanks": "ありがとうございます。すぐにメールをお送りします。",
     "bedrooms": {
       "single": "寝室",
       "plural": "ベッドルーム"
@@ -522,7 +521,10 @@
       "name": "名前：",
       "email": "メールアドレス:",
       "phone": "電話：",
-      "contact-button": "オーナーの詳細"
+      "contact-button": "オーナーの詳細",
+      "contact-thanks": "ありがとうございます。すぐにメールをお送りします。",
+      "buy-button": "住宅を購入する",
+      "login-to-purchase": "購入するにはログインしてください"
     },
     "translate-button": "翻訳する",
     "show-original-button": "オリジナルを表示"

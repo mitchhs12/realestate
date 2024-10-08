@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "Mostrar todas as fotos",
     "original-price": "Preço original",
     "negotiable": "Preço negociável?",
-    "contact-thanks": "Obrigado, enviaremos um e-mail para você em breve!",
     "bedrooms": {
       "single": "Quarto",
       "plural": "Quartos"
@@ -522,7 +521,10 @@ export default {
       "name": "Nome:",
       "email": "E-mail:",
       "phone": "Telefone:",
-      "contact-button": "Detalhes do proprietário"
+      "contact-button": "Detalhes do proprietário",
+      "contact-thanks": "Obrigado, enviaremos um e-mail para você em breve!",
+      "buy-button": "Comprar casa",
+      "login-to-purchase": "Faça login para comprar"
     },
     "translate-button": "Traduzir",
     "show-original-button": "Mostrar original"

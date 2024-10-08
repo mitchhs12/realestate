@@ -493,7 +493,6 @@ export default {
     "show-all-photos": "แสดงรูปภาพทั้งหมด",
     "original-price": "ราคาเดิม",
     "negotiable": "ราคาต่อรองได้?",
-    "contact-thanks": "ขอบคุณ เราจะส่งอีเมลถึงคุณเร็วๆ นี้!",
     "bedrooms": {
       "single": "ห้องนอน",
       "plural": "ห้องนอน"
@@ -522,7 +521,10 @@ export default {
       "name": "ชื่อ:",
       "email": "อีเมล:",
       "phone": "โทรศัพท์:",
-      "contact-button": "รายละเอียดเจ้าของ"
+      "contact-button": "รายละเอียดเจ้าของ",
+      "contact-thanks": "ขอบคุณ เราจะส่งอีเมลถึงคุณเร็วๆ นี้!",
+      "buy-button": "ซื้อบ้าน",
+      "login-to-purchase": "เข้าสู่ระบบเพื่อซื้อ"
     },
     "translate-button": "แปล",
     "show-original-button": "แสดงต้นฉบับ"

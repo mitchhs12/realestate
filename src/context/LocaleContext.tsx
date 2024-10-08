@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useState, ReactNode, useEffect } from "react";
-import { CurrencyType, LanguageType, numeralMap } from "@/lib/validations";
+import { CurrencyType, HomeType, LanguageType, numeralMap } from "@/lib/validations";
 import { useSession } from "next-auth/react";
 import { getCurrency } from "@/lib/utils";
 import { useChangeLocale } from "@/locales/client";
@@ -54,6 +54,9 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   const [numerals, setNumerals] = useState<string>(numeralMap[lang]);
   const [user, setUser] = useState<User | undefined>(session.data?.user);
   const [sessionLoading, setSessionLoading] = useState(true);
+  const [messageSent, setMessageSent] = useState(false);
+  const [buyingLoading, setBuyingLoading] = useState(false);
+  const [buyingError, setBuyingError] = useState<string | null>(null);
   const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
   const defaultLanguage = lang;
 

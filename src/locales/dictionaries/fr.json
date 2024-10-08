@@ -493,7 +493,6 @@
     "show-all-photos": "Afficher toutes les photos",
     "original-price": "Prix d'origine",
     "negotiable": "Prix négociable ?",
-    "contact-thanks": "Merci, nous vous enverrons bientôt un e-mail !",
     "bedrooms": {
       "single": "Chambre à coucher",
       "plural": "Chambres"
@@ -522,7 +521,10 @@
       "name": "Nom:",
       "email": "E-mail:",
       "phone": "Téléphone:",
-      "contact-button": "Détails du propriétaire"
+      "contact-button": "Détails du propriétaire",
+      "contact-thanks": "Merci, nous vous enverrons bientôt un e-mail !",
+      "buy-button": "Acheter une maison",
+      "login-to-purchase": "Connectez-vous pour acheter"
     },
     "translate-button": "Traduire",
     "show-original-button": "Afficher l'original"
