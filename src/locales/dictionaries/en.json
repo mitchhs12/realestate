@@ -460,12 +460,14 @@
     "price-button": { "show": "Reveal the Price!", "hide": "Hide the Price!", "mobile": "Reveal Price!" },
     "edit": "Edit Property Details",
     "contact": {
-      "contact-title": "Contact Information",
-      "contact-title-mobile": "Property Owner Contact Information",
+      "contact-title": "Owner Information",
+      "contact-title-mobile": "Owner Information",
       "name": "Name:",
       "email": "Email:",
       "phone": "Phone:",
-      "contact-button": "Contact Details"
+      "contact-button": "Owner Details",
+      "contact-thanks": "Thanks, we will email you soon!",
+      "buy-button": "Buy now!"
     },
     "translate-button": "Translate",
     "show-original-button": "Show Original"

@@ -493,6 +493,7 @@ export default {
     "show-all-photos": "Show all photos",
     "original-price": "Original Price",
     "negotiable": "Price Negotiable?",
+    "contact-thanks": "Thanks, we will email you soon!",
     "bedrooms": {
       "single": "Bedroom",
       "plural": "Bedrooms"
@@ -516,12 +517,12 @@ export default {
     },
     "edit": "Edit Property Details",
     "contact": {
-      "contact-title": "Contact Information",
-      "contact-title-mobile": "Property Owner Contact Information",
+      "contact-title": "Owner Information",
+      "contact-title-mobile": "Owner Information",
       "name": "Name:",
       "email": "Email:",
       "phone": "Phone:",
-      "contact-button": "Contact Details"
+      "contact-button": "Owner Details"
     },
     "translate-button": "Translate",
     "show-original-button": "Show Original"

@@ -35,6 +35,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
   const hidePrice = h("price-button.hide");
   const mobilePrice = h("price-button.mobile");
 
+  const contactThanks = h("contact-thanks");
   const contactTitle = h("contact.contact-title");
   const contactTitleMobile = h("contact.contact-title-mobile");
   const contactNameText = h("contact.name");
@@ -64,6 +65,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
             priceTitle={priceTitle}
             originalPrice={originalPrice}
             negotiable={negotiable}
+            contactThanks={contactThanks}
             sizeTitle={sizeTitle}
             showPrice={showPrice}
             hidePrice={hidePrice}

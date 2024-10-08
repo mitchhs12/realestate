@@ -493,6 +493,7 @@
     "show-all-photos": "عرض جميع الصور",
     "original-price": "السعر الأصلي",
     "negotiable": "السعر قابل للتفاوض؟",
+    "contact-thanks": "شكرًا لك، سنرسل لك بريدًا إلكترونيًا قريبًا!",
     "bedrooms": {
       "single": "غرفة نوم",
       "plural": "غرف النوم"
@@ -516,12 +517,12 @@
     },
     "edit": "تعديل تفاصيل الملكية",
     "contact": {
-      "contact-title": "معلومات الاتصال",
-      "contact-title-mobile": "معلومات الاتصال بمالك العقار",
+      "contact-title": "معلومات المالك",
+      "contact-title-mobile": "معلومات المالك",
       "name": "اسم:",
       "email": "بريد إلكتروني:",
       "phone": "هاتف:",
-      "contact-button": "تفاصيل الاتصال"
+      "contact-button": "تفاصيل المالك"
     },
     "translate-button": "يترجم",
     "show-original-button": "عرض الأصل"

@@ -493,6 +493,7 @@
     "show-all-photos": "Wys alle foto's",
     "original-price": "Oorspronklike prys",
     "negotiable": "Prys onderhandelbaar?",
+    "contact-thanks": "Dankie, ons sal jou binnekort e-pos!",
     "bedrooms": {
       "single": "Slaapkamer",
       "plural": "Slaapkamers"
@@ -516,12 +517,12 @@
     },
     "edit": "Wysig eiendomsbesonderhede",
     "contact": {
-      "contact-title": "Kontakinligting",
-      "contact-title-mobile": "Eiendomseienaar se kontakinligting",
+      "contact-title": "Eienaar inligting",
+      "contact-title-mobile": "Eienaar inligting",
       "name": "Naam:",
       "email": "E-pos:",
       "phone": "Telefoon:",
-      "contact-button": "Kontakbesonderhede"
+      "contact-button": "Eienaar Besonderhede"
     },
     "translate-button": "Vertaal",
     "show-original-button": "Wys oorspronklike"

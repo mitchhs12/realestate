@@ -493,6 +493,7 @@
     "show-all-photos": "Tampilkan semua foto",
     "original-price": "Harga Asli",
     "negotiable": "Harga Bisa Nego?",
+    "contact-thanks": "Terima kasih, kami akan segera mengirimkan email kepada Anda!",
     "bedrooms": {
       "single": "Kamar tidur",
       "plural": "Kamar tidur"
@@ -516,12 +517,12 @@
     },
     "edit": "Edit Detail Properti",
     "contact": {
-      "contact-title": "Informasi Kontak",
-      "contact-title-mobile": "Informasi Kontak Pemilik Properti",
+      "contact-title": "Informasi Pemilik",
+      "contact-title-mobile": "Informasi Pemilik",
       "name": "Nama:",
       "email": "E-mail:",
       "phone": "Telepon:",
-      "contact-button": "Rincian Kontak"
+      "contact-button": "Detail Pemilik"
     },
     "translate-button": "Menerjemahkan",
     "show-original-button": "Tampilkan Aslinya"

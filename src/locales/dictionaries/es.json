@@ -493,6 +493,7 @@
     "show-all-photos": "Mostrar todas las fotos",
     "original-price": "Precio original",
     "negotiable": "¿Precio negociable?",
+    "contact-thanks": "¡Gracias, te enviaremos un correo pronto!",
     "bedrooms": {
       "single": "Dormitorio",
       "plural": "Dormitorios"
@@ -516,12 +517,12 @@
     },
     "edit": "Editar detalles",
     "contact": {
-      "contact-title": "Información del contacto",
-      "contact-title-mobile": "Información de contacto del propietario de la propiedad",
+      "contact-title": "Información del propietario",
+      "contact-title-mobile": "Información del propietario",
       "name": "Nombre:",
       "email": "Correo electrónico:",
       "phone": "Teléfono:",
-      "contact-button": "Datos de contacto"
+      "contact-button": "Datos del propietario"
     },
     "translate-button": "Traducir",
     "show-original-button": "Mostrar original"

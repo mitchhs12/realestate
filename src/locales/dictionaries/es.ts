@@ -169,8 +169,8 @@ export default {
       "allRightsReserved": "© 2024 Viva Ideal. Todos los derechos reservados.",
       "legal": {
         "title": "Legal",
-        "terms": "Términos y condiciones",
-        "privacy": "política de privacidad"
+        "terms": "Términos y Condiciones",
+        "privacy": "Política de Privacidad"
       },
       "pages": {
         "title": "Viva ideal",
@@ -493,6 +493,7 @@ export default {
     "show-all-photos": "Mostrar todas las fotos",
     "original-price": "Precio original",
     "negotiable": "¿Precio negociable?",
+    "contact-thanks": "¡Gracias, te enviaremos un correo pronto!",
     "bedrooms": {
       "single": "Dormitorio",
       "plural": "Dormitorios"
@@ -516,12 +517,12 @@ export default {
     },
     "edit": "Editar detalles",
     "contact": {
-      "contact-title": "Información del contacto",
-      "contact-title-mobile": "Información de contacto del propietario de la propiedad",
+      "contact-title": "Información del propietario",
+      "contact-title-mobile": "Información del propietario",
       "name": "Nombre:",
       "email": "Correo electrónico:",
       "phone": "Teléfono:",
-      "contact-button": "Datos de contacto"
+      "contact-button": "Datos del propietario"
     },
     "translate-button": "Traducir",
     "show-original-button": "Mostrar original"
@@ -568,6 +569,6 @@ export default {
       "title": "Cambiar su moneda predeterminada",
       "subtitle": "Los precios de las propiedades se mostrarán en esta moneda."
     },
-    "submit": "Ahorrar"
+    "submit": "Guardar"
   }
 } as const;

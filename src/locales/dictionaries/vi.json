@@ -493,6 +493,7 @@
     "show-all-photos": "Hiển thị tất cả hình ảnh",
     "original-price": "Giá gốc",
     "negotiable": "Giá có thể thương lượng?",
+    "contact-thanks": "Cảm ơn, chúng tôi sẽ gửi email cho bạn sớm!",
     "bedrooms": {
       "single": "Phòng ngủ",
       "plural": "Phòng ngủ"
@@ -516,12 +517,12 @@
     },
     "edit": "Chỉnh sửa chi tiết tài sản",
     "contact": {
-      "contact-title": "Thông tin liên lạc",
-      "contact-title-mobile": "Thông tin liên lạc của chủ sở hữu bất động sản",
+      "contact-title": "Thông tin chủ sở hữu",
+      "contact-title-mobile": "Thông tin chủ sở hữu",
       "name": "Tên:",
       "email": "E-mail:",
       "phone": "Điện thoại:",
-      "contact-button": "Chi tiết liên lạc"
+      "contact-button": "Chi tiết chủ sở hữu"
     },
     "translate-button": "Dịch",
     "show-original-button": "Hiển thị bản gốc"

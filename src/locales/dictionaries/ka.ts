@@ -493,6 +493,7 @@ export default {
     "show-all-photos": "ყველა ფოტოს ჩვენება",
     "original-price": "ორიგინალური ფასი",
     "negotiable": "ფასი შეთანხმებით?",
+    "contact-thanks": "გმადლობთ, მალე გამოგიგზავნით ელ.წერილს!",
     "bedrooms": {
       "single": "საძინებელი",
       "plural": "საძინებლები"
@@ -516,12 +517,12 @@ export default {
     },
     "edit": "ქონების დეტალების რედაქტირება",
     "contact": {
-      "contact-title": "საკონტაქტო ინფორმაცია",
-      "contact-title-mobile": "ქონების მფლობელის საკონტაქტო ინფორმაცია",
+      "contact-title": "მფლობელის ინფორმაცია",
+      "contact-title-mobile": "მფლობელის ინფორმაცია",
       "name": "სახელი:",
       "email": "ელფოსტა:",
       "phone": "ტელეფონი:",
-      "contact-button": "საკონტაქტო დეტალები"
+      "contact-button": "მფლობელის დეტალები"
     },
     "translate-button": "თარგმნეთ",
     "show-original-button": "ორიგინალის ჩვენება"

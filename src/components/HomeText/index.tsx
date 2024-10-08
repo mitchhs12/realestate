@@ -11,6 +11,7 @@ import {
   EyeClosedIcon,
   CopyIcon,
   CheckIcon,
+  ReloadIcon,
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { FlagComponent } from "@/components/ui/phone-input";
@@ -50,6 +51,7 @@ interface Props {
   priceTitle: string;
   originalPrice: string;
   negotiable: string;
+  contactThanks: string;
   sizeTitle: string;
   showPrice: string;
   hidePrice: string;
@@ -76,6 +78,7 @@ export default function HomeText({
   priceTitle,
   originalPrice,
   negotiable,
+  contactThanks,
   sizeTitle,
   showPrice,
   hidePrice,
@@ -122,7 +125,43 @@ export default function HomeText({
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [currentType, setCurrentType] = useState(matchingTypes[0]);
   const [index, setIndex] = useState(0);
+  const [buyingLoading, setBuyingLoading] = useState(false);
+  const [buyingError, setBuyingError] = useState(null);
+  const [messageSent, setMessageSent] = useState(false);
   const { resolvedTheme: theme } = useTheme();
+
+  const handleBuyNow = async () => {
+    if (user) {
+      setBuyingLoading(true);
+      setBuyingError(null);
+      const payload = {
+        username: "Property Bot", // The name of the bot
+        content: `Someone wants to buy a property!\n${user.name ? user.name : "Unknown Username"}\n${user.email}\nhttps://www.vivaideal.com/homes/${home.id}`,
+      };
+      try {
+        const response = await fetch(
+          "https://discord.com/api/webhooks/1293295558840025098/s1c1sKzTD4ub0ghGlF2gBPY6iLR_WRGUg-1zG_42YGyFyyjxbj7NP0rwzG7jK6JgLPXL",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to send notification");
+        }
+
+        setMessageSent(true);
+        setBuyingLoading(false);
+      } catch (err: any) {
+        setBuyingError(err.message);
+        setBuyingLoading(false);
+      }
+    }
+  };
 
   useEffect(() => {
     const ftConversion = 10.76391042;
@@ -346,7 +385,7 @@ export default function HomeText({
                   "Contact us"
                 )}
               </div>
-              <div className="flex flex-col items-center w-full">
+              <div className="flex flex-col items-center w-full gap-3">
                 <div className="flex items-center justify-center gap-2 w-full">
                   <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">{negotiable}</span>
                   <span className="flex text-center w-auto h-auto">
@@ -361,6 +400,27 @@ export default function HomeText({
                     )}
                   </span>
                 </div>
+
+                {messageSent ? (
+                  <Button
+                    onClick={handleBuyNow}
+                    className="flex items-center justify-center gap-2 w-full"
+                    disabled={buyingLoading ? true : user ? false : true}
+                  >
+                    {buyingLoading ? (
+                      <span className="flex gap-3 w-full h-full justify-center items-center">
+                        <ReloadIcon className="animate-spin" />
+                        Loading...
+                      </span>
+                    ) : user ? (
+                      "Buy Now!"
+                    ) : (
+                      "Log in to purchase"
+                    )}
+                  </Button>
+                ) : (
+                  <div>{contactThanks}</div>
+                )}
               </div>
               {sessionLoading ||
                 (sessionUnauthenticated && (

@@ -493,6 +493,7 @@ export default {
     "show-all-photos": "แสดงรูปภาพทั้งหมด",
     "original-price": "ราคาเดิม",
     "negotiable": "ราคาต่อรองได้?",
+    "contact-thanks": "ขอบคุณ เราจะส่งอีเมลถึงคุณเร็วๆ นี้!",
     "bedrooms": {
       "single": "ห้องนอน",
       "plural": "ห้องนอน"
@@ -516,12 +517,12 @@ export default {
     },
     "edit": "แก้ไขรายละเอียดทรัพย์สิน",
     "contact": {
-      "contact-title": "ข้อมูลการติดต่อ",
-      "contact-title-mobile": "ข้อมูลการติดต่อเจ้าของทรัพย์สิน",
+      "contact-title": "ข้อมูลเจ้าของ",
+      "contact-title-mobile": "ข้อมูลเจ้าของ",
       "name": "ชื่อ:",
       "email": "อีเมล:",
       "phone": "โทรศัพท์:",
-      "contact-button": "ข้อมูลการติดต่อ"
+      "contact-button": "รายละเอียดเจ้าของ"
     },
     "translate-button": "แปล",
     "show-original-button": "แสดงต้นฉบับ"

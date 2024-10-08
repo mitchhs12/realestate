@@ -105,6 +105,7 @@ export default function StickyPrice({
               </div>
               <div className="text-xs xs:text-sm">{contactButton}</div>
             </Button>
+            <Button className="flex w-1/2 px-4 justify-center gap-2 text-center">Buy now!</Button>
           </div>
         )}
       </CardHeader>

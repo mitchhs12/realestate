@@ -493,6 +493,7 @@ export default {
     "show-all-photos": "Afficher toutes les photos",
     "original-price": "Prix d'origine",
     "negotiable": "Prix négociable ?",
+    "contact-thanks": "Merci, nous vous enverrons bientôt un e-mail !",
     "bedrooms": {
       "single": "Chambre à coucher",
       "plural": "Chambres"
@@ -516,12 +517,12 @@ export default {
     },
     "edit": "Modifier les détails de la propriété",
     "contact": {
-      "contact-title": "Coordonnées",
-      "contact-title-mobile": "Coordonnées du propriétaire",
+      "contact-title": "Informations sur le propriétaire",
+      "contact-title-mobile": "Informations sur le propriétaire",
       "name": "Nom:",
       "email": "E-mail:",
       "phone": "Téléphone:",
-      "contact-button": "Coordonnées"
+      "contact-button": "Détails du propriétaire"
     },
     "translate-button": "Traduire",
     "show-original-button": "Afficher l'original"

@@ -493,6 +493,7 @@
     "show-all-photos": "Mostrar todas as fotos",
     "original-price": "Preço original",
     "negotiable": "Preço negociável?",
+    "contact-thanks": "Obrigado, enviaremos um e-mail para você em breve!",
     "bedrooms": {
       "single": "Quarto",
       "plural": "Quartos"
@@ -516,12 +517,12 @@
     },
     "edit": "Editar detalhes da propriedade",
     "contact": {
-      "contact-title": "Informações de contato",
-      "contact-title-mobile": "Informações de contato do proprietário do imóvel",
+      "contact-title": "Informações do proprietário",
+      "contact-title-mobile": "Informações do proprietário",
       "name": "Nome:",
       "email": "E-mail:",
       "phone": "Telefone:",
-      "contact-button": "Detalhes de contato"
+      "contact-button": "Detalhes do proprietário"
     },
     "translate-button": "Traduzir",
     "show-original-button": "Mostrar original"

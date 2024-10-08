@@ -493,6 +493,7 @@
     "show-all-photos": "显示所有照片",
     "original-price": "原价",
     "negotiable": "价格可以商量吗？",
+    "contact-thanks": "谢谢，我们会尽快给您发送电子邮件！",
     "bedrooms": {
       "single": "卧室",
       "plural": "卧室"
@@ -516,12 +517,12 @@
     },
     "edit": "编辑房产详情",
     "contact": {
-      "contact-title": "联系信息",
-      "contact-title-mobile": "业主联系信息",
+      "contact-title": "车主信息",
+      "contact-title-mobile": "车主信息",
       "name": "姓名：",
       "email": "电子邮件：",
       "phone": "电话：",
-      "contact-button": "联系方式"
+      "contact-button": "所有者详细信息"
     },
     "translate-button": "翻译",
     "show-original-button": "显示原始内容"

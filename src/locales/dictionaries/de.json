@@ -493,6 +493,7 @@
     "show-all-photos": "Alle Fotos anzeigen",
     "original-price": "Ursprünglicher Preis",
     "negotiable": "Preis verhandelbar?",
+    "contact-thanks": "Danke, wir werden Ihnen bald eine E-Mail senden!",
     "bedrooms": {
       "single": "Schlafzimmer",
       "plural": "Schlafzimmer"
@@ -516,12 +517,12 @@
     },
     "edit": "Eigenschaftendetails bearbeiten",
     "contact": {
-      "contact-title": "Kontaktinformationen",
-      "contact-title-mobile": "Kontaktinformationen des Immobilieneigentümers",
+      "contact-title": "Eigentümerinformationen",
+      "contact-title-mobile": "Eigentümerinformationen",
       "name": "Name:",
       "email": "E-Mail:",
       "phone": "Telefon:",
-      "contact-button": "Kontaktdetails"
+      "contact-button": "Angaben zum Eigentümer"
     },
     "translate-button": "Übersetzen",
     "show-original-button": "Zeige Original"

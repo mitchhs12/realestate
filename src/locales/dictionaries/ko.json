@@ -493,6 +493,7 @@
     "show-all-photos": "모든 사진 보기",
     "original-price": "원래 가격",
     "negotiable": "가격 협상 가능?",
+    "contact-thanks": "감사합니다. 곧 이메일을 보내드리겠습니다!",
     "bedrooms": {
       "single": "침실",
       "plural": "침실"
@@ -516,12 +517,12 @@
     },
     "edit": "속성 세부 정보 편집",
     "contact": {
-      "contact-title": "연락처 정보",
-      "contact-title-mobile": "부동산 소유자 연락처 정보",
+      "contact-title": "소유자 정보",
+      "contact-title-mobile": "소유자 정보",
       "name": "이름:",
       "email": "이메일:",
       "phone": "핸드폰:",
-      "contact-button": "연락처 정보"
+      "contact-button": "소유자 세부 정보"
     },
     "translate-button": "번역하다",
     "show-original-button": "원본보기"

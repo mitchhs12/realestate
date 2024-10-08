@@ -140,9 +140,11 @@ export default function MapComponent({
           <div className="rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15">
             <Map
               clickableIcons={false}
-              gestureHandling={"greedy"}
+              gestureHandling={"none"}
               defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
               maxZoom={20}
+              zoomControl={false}
+              scrollwheel={false}
               minZoom={6}
               onZoomChanged={(num) => {
                 setNewZoom(num.detail.zoom);
@@ -157,7 +159,7 @@ export default function MapComponent({
             >
               {disabled ? (
                 <Circle
-                  radius={170}
+                  radius={200}
                   center={{ lat: coordinates.lat, lng: coordinates.long }}
                   strokeColor={"#16A34A"}
                   strokeOpacity={1}
