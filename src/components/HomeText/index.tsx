@@ -370,7 +370,7 @@ export default function HomeText({
                 </div>
 
                 {sessionLoading ? (
-                  <Skeleton className="h-[3.2vh] md:h-[3.2vh] lg:h-[3.2vh] w-11/12" />
+                  <Skeleton className="h-[3.2vh] md:h-[3.2vh] lg:h-[2.8vh] xl:h-[2.8vh] w-11/12" />
                 ) : (
                   <BuyNowButton
                     homeId={home.id}

@@ -55,6 +55,6 @@ export default function BuyNowButton({ homeId, user, buyNow, loginToPurchase, co
   ) : buyingError ? (
     <div>{buyingError}</div>
   ) : (
-    <div>{contactThanks}</div>
+    <div className="flex w-full text-xs xs:text-sm md:text-sm">{contactThanks}</div>
   );
 }

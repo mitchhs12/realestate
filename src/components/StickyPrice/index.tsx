@@ -79,7 +79,7 @@ export default function StickyPrice({
           </div>
         </div>
         {sessionLoading ? (
-          <div className="flex gap-4 justify-center w-full">
+          <div className="flex gap-2 justify-center w-full">
             <Skeleton className="w-1/2 h-9 md:h-10 lg:h-12" />
             <Skeleton className="w-1/2 h-9 md:h-10 lg:h-12" />
           </div>
