@@ -15,7 +15,20 @@ import { useRouter } from "next/navigation";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
-import { ChevronLeft, HousePlus, Heart, Map, Gauge, ChartNoAxesCombined, ChartPie } from "lucide-react";
+import {
+  ChevronLeft,
+  HousePlus,
+  Heart,
+  Map,
+  Gauge,
+  ChartNoAxesCombined,
+  ChartPie,
+  ChartLine,
+  BarChart,
+  ChartColumn,
+  ChartColumnBig,
+  BookText,
+} from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
 interface Props {
@@ -102,7 +115,7 @@ export default function Header({
                 <Link href="/articles">
                   <div className="flex px-2 justify-center text-center items-center gap-2">
                     <div className="flex justify-center items-center">
-                      <Icons.book_icon width={"22"} height={"22"} />
+                      <BookText width={"22"} height={"22"} />
                     </div>
                     <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
                       {articles}
@@ -122,7 +135,7 @@ export default function Header({
                 <Link href="/data">
                   <div className="flex px-2 justify-center text-center items-center gap-2">
                     <div className="flex justify-center items-center">
-                      <ChartPie width={"22"} height={"22"} />
+                      <ChartColumn width={"22"} height={"22"} strokeWidth={2} />
                     </div>
                     <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
                       {data}
