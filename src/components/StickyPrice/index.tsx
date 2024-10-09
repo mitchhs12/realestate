@@ -115,13 +115,15 @@ export default function StickyPrice({
               </div>
               <div className="text-xs xs:text-sm">{contactButton}</div>
             </Button>
-            <BuyNowButton
-              homeId={home.id}
-              user={user}
-              buyNow={buyNow}
-              loginToPurchase={loginToPurchase}
-              contactThanks={contactThanks}
-            />
+            {user && (
+              <BuyNowButton
+                homeId={home.id}
+                user={user}
+                buyNow={buyNow}
+                loginToPurchase={loginToPurchase}
+                contactThanks={contactThanks}
+              />
+            )}
           </div>
         )}
       </CardHeader>

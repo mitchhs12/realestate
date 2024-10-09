@@ -372,13 +372,16 @@ export default function HomeText({
                 {sessionLoading ? (
                   <Skeleton className="h-[3.2vh] md:h-[3.2vh] lg:h-[2.8vh] xl:h-[2.8vh] w-11/12" />
                 ) : (
-                  <BuyNowButton
-                    homeId={home.id}
-                    user={user}
-                    buyNow={buyNow}
-                    loginToPurchase={loginToPurchase}
-                    contactThanks={contactThanks}
-                  />
+                  user &&
+                  user.id && (
+                    <BuyNowButton
+                      homeId={home.id}
+                      user={user}
+                      buyNow={buyNow}
+                      loginToPurchase={loginToPurchase}
+                      contactThanks={contactThanks}
+                    />
+                  )
                 )}
               </div>
               {sessionLoading ||
