@@ -125,13 +125,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 homes: true,
               },
             },
-            homes: true, // Include homes owned by the user
+            homes: {
+              include: {
+                _count: {
+                  select: {
+                    favoritedLists: true, // Count how many favorite lists each home is in
+                  },
+                },
+              },
+            }, // Include homes owned by the user
           },
         })
         .then((dbUser) => {
+          const homesWithFavoriteCount = dbUser?.homes.map((home) => ({
+            ...home,
+            favoritedCount: home._count.favoritedLists, // Add favorited count to each home
+          }));
           // Attach favoritedLists and homes to the session after fetching them
           session.user.favoritedLists = dbUser?.favoritedLists || [];
-          session.user.homes = dbUser?.homes || [];
+          session.user.homes = homesWithFavoriteCount || [];
           return session; // Return the session with all the user data
         })
         .catch((error) => {

@@ -19,9 +19,19 @@ export async function getMyHomes(): Promise<HomeType[]> {
     orderBy: {
       createdAt: "desc",
     },
+    include: {
+      _count: {
+        select: {
+          favoritedLists: true, // Count how many favorite lists this home is in
+        },
+      },
+    },
   });
 
-  return homes;
+  return homes.map((home) => ({
+    ...home,
+    favoritedCount: home._count.favoritedLists, // Add favorited count to each home
+  }));
 }
 
 export async function changeHomeVisibility(homeId: number, currentState: boolean) {

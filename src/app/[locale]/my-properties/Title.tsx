@@ -1,9 +1,8 @@
 import { poppins } from "@/app/[locale]/fonts";
 import { getScopedI18n } from "@/locales/server";
 
-export default async function DataTitle({ locale }: { locale: string }) {
+export default async function Title({ locale, title }: { locale: string; title: string }) {
   const t = await getScopedI18n("data");
-  const title = t("title");
 
   return (
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">

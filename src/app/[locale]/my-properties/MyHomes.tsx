@@ -8,7 +8,6 @@ interface Props {
   user: User;
   finishSelling: string;
   incompleteListing: string;
-  title: string;
   hideAllText: string;
   showAllText: string;
   typesObject: { id: string; name: string; translation: string }[];
@@ -19,7 +18,6 @@ export default function MyHomes({
   user,
   finishSelling,
   incompleteListing,
-  title,
   hideAllText,
   showAllText,
   typesObject,
@@ -27,13 +25,14 @@ export default function MyHomes({
 }: Props) {
   const activeHomes = user.homes.filter((home) => home.isComplete);
   const allCompletedHomesActive = activeHomes.every((home) => home.isActive);
+  user.homes.map((home) => {
+    console.log("id", home.id);
+    console.log("home", home.favoritedCount);
+  });
 
   return (
     <div className="flex flex-col max-w-8xl h-full w-full pb-8">
-      <div className="flex flex-col items-center w-full pb-8">
-        <div className="flex w-full h-full justify-center text-2xl items-center py-8">
-          <h1>{title}</h1>
-        </div>
+      <div className="flex flex-col items-center w-full py-8">
         <ToggleAllVisbilityButton
           hideAllText={hideAllText}
           showAllText={showAllText}
