@@ -11,7 +11,7 @@ export default async function Footer() {
       <div className="flex flex-col justify-center gap-4 items-center max-w-8xl">
         <div className="flex text-sm gap-6 justify-center">
           <Link href={"/"}>{scopedT("pages.home")}</Link>
-          <Link href={"/about"}>{scopedT("pages.about")}</Link>
+          {/* <Link href={"/about"}>{scopedT("pages.about")}</Link> */}
           <Link href={"/articles"}>{scopedT("pages.articles")}</Link>
           <Link href={"/data"}>{scopedT("pages.data")}</Link>
         </div>
