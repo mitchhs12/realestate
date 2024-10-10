@@ -533,8 +533,18 @@ export default {
     "title": "Benim Özelliklerim",
     "incompleteListing": "Eksik Listeleme!",
     "finishSelling": "Satışı Bitir!",
-    "hideAllText": "Tüm Özel",
-    "showAllText": "Tüm Kamu"
+    "hideAllText": "Tümünü Özel Yap",
+    "showAllText": "Tümünü Kamuya Açık Yap",
+    "properties": "Özellikler",
+    "favorites": "Favoriler",
+    "views": "Görünümler",
+    "properties-description": "Listelediğiniz toplam mülk sayısı.",
+    "favorites-description": "Emlaklarınızın toplamda kaç kez favorilere eklendiği.",
+    "views-description": "Emlaklarınızın toplam görüntülenme sayısı.",
+    "order-by": "Sıralama",
+    "date": "Oluşturulma tarihi",
+    "favorited": "En çok beğenilen",
+    "price": "En pahalı"
   },
   "my-lists": {
     "title": "İstek Listelerim",

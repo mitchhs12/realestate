@@ -533,8 +533,18 @@
     "title": "내 속성",
     "incompleteListing": "목록이 불완전합니다!",
     "finishSelling": "판매를 완료하세요!",
-    "hideAllText": "모든 개인",
-    "showAllText": "전체 공개"
+    "hideAllText": "모두 비공개로 설정",
+    "showAllText": "모두 공개",
+    "properties": "속성",
+    "favorites": "즐겨찾기",
+    "views": "조회수",
+    "properties-description": "귀하가 등록한 부동산의 총 개수입니다.",
+    "favorites-description": "귀하의 부동산이 즐겨찾기에 추가된 총 횟수입니다.",
+    "views-description": "귀하의 부동산이 조회된 총 횟수입니다.",
+    "order-by": "주문 기준",
+    "date": "생성 날짜",
+    "favorited": "가장 많이 즐겨찾기됨",
+    "price": "가장 비싼"
   },
   "my-lists": {
     "title": "내 위시리스트",

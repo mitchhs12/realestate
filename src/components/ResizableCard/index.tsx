@@ -64,8 +64,10 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div className="flex flex-col h-full w-full">
-      <Skeleton className="rounded-none rounded-t-xl h-[200px] w-full" />
+    <div
+      className={`flex flex-col h-full w-full shadow-lg rounded-xl overflow-hidden ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
+    >
+      <Skeleton className="rounded-none h-[200px] w-full" />
       <div className="pt-2 flex flex-col justify-center items-center w-full gap-3 px-2 pb-2 bg-white dark:bg-black rounded-b-lg">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />
@@ -76,7 +78,6 @@ export default function ResizableCard({
   ) : (
     <div
       className={`flex flex-col h-full w-full relative`}
-      // style={{ paddingTop: "12px" }}
       onMouseOver={() => {
         setTitleUnderlined(true);
       }}
@@ -100,59 +101,63 @@ export default function ResizableCard({
           <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
         </div>
       )}
-      <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
-      <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
-        <div
-          className={`flex flex-col rounded-b-lg bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative ${home.listingType === "premium" && "text-white bg-gradient-to-r from-amber-400 dark:from-amber-500 via-amber-300 dark:via-amber-400 to-amber-400 dark:to-amber-500"}`}
-        >
-          <h3
-            className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
-              titleUnderlined ? "underline" : ""
-            }`}
+      <div
+        className={`flex flex-col w-full h-full rounded-xl shadow-lg overflow-hidden ${home.listingType === "premium" && "border-[3px] border-amber-500"} ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
+      >
+        <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
+        <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
+          <div
+            className={`flex flex-col bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative`}
           >
-            {home.isComplete
-              ? types.length > 1
-                ? currentType?.translation
-                : types.length > 0 && types[0].translation
-              : finishSelling}
-          </h3>
+            <h3
+              className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
+                titleUnderlined ? "underline" : ""
+              }`}
+            >
+              {home.isComplete
+                ? types.length > 1
+                  ? currentType?.translation
+                  : types.length > 0 && types[0].translation
+                : finishSelling}
+            </h3>
 
-          <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
-            {home.municipality ? home.municipality : "-"}
+            <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
+              {home.municipality ? home.municipality : "-"}
+            </div>
+            <div className="flex text-center gap-2 items-center text-sm sm:text-sm lg:text-md">
+              {home.country ? countryName : "-"}
+              {home.country && (
+                <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
+              )}
+            </div>
+            <div className="pt-1">
+              {sessionLoading ? (
+                <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
+              ) : (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <BrokenPrice
+                        incompleteListing={incompleteListing}
+                        priceUsd={home.priceUsd}
+                        currency={defaultCurrency}
+                        reveal={user ? true : false}
+                        blurAmount="blur-sm"
+                        className="text-sm md:text-md lg:text-lg mb-2"
+                      />
+                    </TooltipTrigger>
+                    {!user && (
+                      <TooltipContent>
+                        <p>{loginToViewPrice}</p>
+                      </TooltipContent>
+                    )}
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+            </div>
           </div>
-          <div className="flex text-center gap-2 items-center text-sm sm:text-sm lg:text-md">
-            {home.country ? countryName : "-"}
-            {home.country && (
-              <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
-            )}
-          </div>
-          <div className="pt-1">
-            {sessionLoading ? (
-              <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
-            ) : (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <BrokenPrice
-                      incompleteListing={incompleteListing}
-                      priceUsd={home.priceUsd}
-                      currency={defaultCurrency}
-                      reveal={user ? true : false}
-                      blurAmount="blur-sm"
-                      className="text-sm md:text-md lg:text-lg mb-2"
-                    />
-                  </TooltipTrigger>
-                  {!user && (
-                    <TooltipContent>
-                      <p>{loginToViewPrice}</p>
-                    </TooltipContent>
-                  )}
-                </Tooltip>
-              </TooltipProvider>
-            )}
-          </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
 
       <MultiTypeButton
         types={types}

@@ -25,17 +25,20 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
   const { user } = useContext(LocaleContext);
 
   return (
-    <Carousel className="h-full w-full">
-      <CarouselContent>
+    <Carousel className="h-full w-full overflow-hidden">
+      <CarouselContent className="ml-0">
         {photos.map((photo: string, index) => (
-          <CarouselItem key={index} className="flex justify-center items-center h-full w-full">
+          <CarouselItem
+            key={index}
+            className="h-full w-full pl-0" // pl-4 ???
+          >
             <div
               onClick={openModal && (() => openModal(index))}
-              className={`relative justify-center items-center ${height ? height : "h-[200px]"} w-full`}
+              className={`relative justify-center items-center ${height ? height : "h-[200px]"} w-full `}
             >
               <Image
                 src={photo.replace(process.env.NEXT_PUBLIC_AWS_S3_URL!, process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL!)}
-                className={`object-cover object-center ${rounded ? rounded : "rounded-t-lg"}`}
+                className={`object-cover object-center`}
                 alt={`${title} photo ${index}`}
                 fill={true}
                 loading={"lazy"}
@@ -51,18 +54,6 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
                 (max-width: 1920px) 1920px,
                 100vw"
               />
-              {/* {home.listingType === "premium" && (
-                <div>
-                  <div className="relative flex justify-between w-full">
-                    <div className="flex gap-3 px-3 items-center bg-gradient-to-r rounded-l-lg rounded-b-none from-amber-400 via-yellow-400 to-amber-400 text-white py-1 font-semibold shadow-xl">
-                      <div className="flex">PREMIUM</div>
-                      <div className="flex w-full h-full items-center">
-                        <Star size={20} fill={"white"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )} */}
             </div>
           </CarouselItem>
         ))}

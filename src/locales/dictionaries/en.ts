@@ -533,8 +533,18 @@ export default {
     "title": "My Properties",
     "incompleteListing": "Incomplete Listing!",
     "finishSelling": "Finish Selling!",
-    "hideAllText": "All Private",
-    "showAllText": "All Public"
+    "hideAllText": "Make All Private",
+    "showAllText": "Make All Public",
+    "properties": "Properties",
+    "favorites": "Favorites",
+    "views": "Views",
+    "properties-description": "Total number of properties you have listed.",
+    "favorites-description": "Total number of times your properties have been favorited.",
+    "views-description": "Total number of times your properties have been viewed.",
+    "order-by": "Order by",
+    "date": "Date created",
+    "favorited": "Most favorited",
+    "price": "Most expensive"
   },
   "my-lists": {
     "title": "My Wishlists",

@@ -533,8 +533,18 @@
     "title": "Properti Saya",
     "incompleteListing": "Daftar Tidak Lengkap!",
     "finishSelling": "Selesai Menjual!",
-    "hideAllText": "Semua Pribadi",
-    "showAllText": "Semua Publik"
+    "hideAllText": "Jadikan Semua Pribadi",
+    "showAllText": "Jadikan Semua Publik",
+    "properties": "Properti",
+    "favorites": "Favorit",
+    "views": "Pemandangan",
+    "properties-description": "Jumlah total properti yang Anda daftarkan.",
+    "favorites-description": "Jumlah total berapa kali properti Anda difavoritkan.",
+    "views-description": "Jumlah total berapa kali properti Anda dilihat.",
+    "order-by": "Pesan berdasarkan",
+    "date": "Tanggal dibuat",
+    "favorited": "Paling disukai",
+    "price": "Paling mahal"
   },
   "my-lists": {
     "title": "Daftar Keinginanku",

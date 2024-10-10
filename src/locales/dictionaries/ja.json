@@ -533,8 +533,18 @@
     "title": "私のプロパティ",
     "incompleteListing": "リストが不完全です!",
     "finishSelling": "販売終了！",
-    "hideAllText": "すべてプライベート",
-    "showAllText": "すべて公開"
+    "hideAllText": "すべてを非公開にする",
+    "showAllText": "すべて公開する",
+    "properties": "プロパティ",
+    "favorites": "お気に入り",
+    "views": "ビュー",
+    "properties-description": "リストした物件の総数。",
+    "favorites-description": "あなたの物件がお気に入りに登録された合計回数。",
+    "views-description": "あなたの物件が閲覧された合計回数。",
+    "order-by": "並び替え",
+    "date": "作成日",
+    "favorited": "最もお気に入り",
+    "price": "最も高価"
   },
   "my-lists": {
     "title": "私のウィッシュリスト",

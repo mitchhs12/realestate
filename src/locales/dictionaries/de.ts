@@ -533,8 +533,18 @@ export default {
     "title": "Meine Immobilien",
     "incompleteListing": "Unvollständige Auflistung!",
     "finishSelling": "Verkauf abschließen!",
-    "hideAllText": "Alles privat",
-    "showAllText": "Alle öffentlich"
+    "hideAllText": "Alles privat machen",
+    "showAllText": "Alles öffentlich machen",
+    "properties": "Eigenschaften",
+    "favorites": "Favoriten",
+    "views": "Ansichten",
+    "properties-description": "Gesamtzahl der von Ihnen aufgelisteten Eigenschaften.",
+    "favorites-description": "Gesamtzahl der Male, die Ihre Immobilien als Favoriten markiert wurden.",
+    "views-description": "Gesamtzahl der Aufrufe Ihrer Immobilien.",
+    "order-by": "Bestellen Sie bis zum",
+    "date": "Erstellungsdatum",
+    "favorited": "Am meisten favorisiert",
+    "price": "Am teuersten"
   },
   "my-lists": {
     "title": "Meine Wunschlisten",

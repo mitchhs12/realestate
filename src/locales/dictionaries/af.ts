@@ -533,8 +533,18 @@ export default {
     "title": "My Eienskappe",
     "incompleteListing": "Onvolledige lys!",
     "finishSelling": "Voltooi verkoop!",
-    "hideAllText": "Alles privaat",
-    "showAllText": "Alle publiek"
+    "hideAllText": "Maak alles privaat",
+    "showAllText": "Maak alles publiek",
+    "properties": "Eienskappe",
+    "favorites": "Gunstelinge",
+    "views": "Uitsigte",
+    "properties-description": "Totale aantal eiendomme wat jy gelys het.",
+    "favorites-description": "Totale aantal kere wat jou eiendomme as gunsteling gekeur is.",
+    "views-description": "Totale aantal kere wat jou eiendomme bekyk is.",
+    "order-by": "Bestel by",
+    "date": "Datum geskep",
+    "favorited": "Mees gunsteling",
+    "price": "Die duurste"
   },
   "my-lists": {
     "title": "My wenslys",

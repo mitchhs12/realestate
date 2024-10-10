@@ -533,8 +533,18 @@
     "title": "Moja svojstva",
     "incompleteListing": "Nepotpun popis!",
     "finishSelling": "Završite prodaju!",
-    "hideAllText": "Sve privatno",
-    "showAllText": "Sve javno"
+    "hideAllText": "Učini sve privatnim",
+    "showAllText": "Učini sve javnim",
+    "properties": "Svojstva",
+    "favorites": "Favoriti",
+    "views": "Pogledi",
+    "properties-description": "Ukupan broj nekretnina koje ste naveli.",
+    "favorites-description": "Ukupan broj puta kada su vaši objekti dodani u favorite.",
+    "views-description": "Ukupan broj pregleda vaših nekretnina.",
+    "order-by": "Naručite po",
+    "date": "Datum kreiranja",
+    "favorited": "Najomiljenije",
+    "price": "Najskuplji"
   },
   "my-lists": {
     "title": "Moje liste želja",

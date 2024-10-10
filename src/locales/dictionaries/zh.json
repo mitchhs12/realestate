@@ -533,8 +533,18 @@
     "title": "我的房产",
     "incompleteListing": "列表不完整！",
     "finishSelling": "完成销售！",
-    "hideAllText": "全部私人",
-    "showAllText": "全部公开"
+    "hideAllText": "全部设为私密",
+    "showAllText": "全部公开",
+    "properties": "特性",
+    "favorites": "收藏夹",
+    "views": "视图",
+    "properties-description": "您列出的房产总数。",
+    "favorites-description": "您的房产被收藏的总次数。",
+    "views-description": "您的房产被浏览的总次数。",
+    "order-by": "排序依据",
+    "date": "创建日期",
+    "favorited": "最受喜爱",
+    "price": "最昂贵的"
   },
   "my-lists": {
     "title": "我的愿望清单",

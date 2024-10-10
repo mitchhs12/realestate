@@ -533,8 +533,18 @@ export default {
     "title": "ممتلكاتي",
     "incompleteListing": "قائمة غير كاملة!",
     "finishSelling": "إنهاء البيع!",
-    "hideAllText": "كل خاص",
-    "showAllText": "كل العامة"
+    "hideAllText": "جعل كل شيء خاصًا",
+    "showAllText": "جعل كل شيء عامًا",
+    "properties": "ملكيات",
+    "favorites": "المفضلة",
+    "views": "المشاهدات",
+    "properties-description": "العدد الإجمالي للعقارات التي قمت بإدراجها.",
+    "favorites-description": "العدد الإجمالي للمرات التي تم فيها إضافة خصائصك إلى المفضلة.",
+    "views-description": "العدد الإجمالي للمرات التي تمت فيها مشاهدة خصائصك.",
+    "order-by": "ترتيب حسب",
+    "date": "تاريخ الإنشاء",
+    "favorited": "الأكثر تفضيلا",
+    "price": "أغلى"
   },
   "my-lists": {
     "title": "قائمة أمنياتي",

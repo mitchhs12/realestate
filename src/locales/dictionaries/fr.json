@@ -533,8 +533,18 @@
     "title": "Mes propriétés",
     "incompleteListing": "Liste incomplète !",
     "finishSelling": "Terminer la vente !",
-    "hideAllText": "Tout privé",
-    "showAllText": "Tout public"
+    "hideAllText": "Rendre tout privé",
+    "showAllText": "Rendre tout public",
+    "properties": "Propriétés",
+    "favorites": "Favoris",
+    "views": "Vues",
+    "properties-description": "Nombre total de propriétés que vous avez répertoriées.",
+    "favorites-description": "Nombre total de fois où vos propriétés ont été ajoutées aux favoris.",
+    "views-description": "Nombre total de fois que vos propriétés ont été consultées.",
+    "order-by": "Trier par",
+    "date": "Date de création",
+    "favorited": "Le plus favorisé",
+    "price": "Plus cher"
   },
   "my-lists": {
     "title": "Mes listes de souhaits",

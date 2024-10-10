@@ -38,6 +38,22 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       translation: t(`options.${index}` as keyof typeof t),
     }));
 
+    const cardTextObject = {
+      properties: mp("properties"),
+      favorites: mp("favorites"),
+      views: mp("views"),
+      propertiesDescription: mp("properties-description"),
+      favoritesDescription: mp("favorites-description"),
+      viewsDescription: mp("views-description"),
+    };
+
+    const selectionObject = {
+      orderBy: mp("order-by"),
+      date: mp("date"),
+      favorited: mp("favorited"),
+      price: mp("price"),
+    };
+
     return (
       <div className="flex flex-col items-center h-full">
         <div className="relative h-[20vh] flex w-full">
@@ -49,13 +65,13 @@ export default async function Page({ params: { locale } }: { params: { locale: s
             quality={70}
             priority={true}
             sizes="(max-width: 400px) 400px,
-        (max-width: 510px) 510px,
-        (max-width: 768px) 768px, 
-        (max-width: 1024px) 1024px, 
-        (max-width: 1280px) 1280px, 
-        (max-width: 1536px) 1536px,
-        (max-width: 1920px) 1920px,
-        100vw"
+            (max-width: 510px) 510px,
+            (max-width: 768px) 768px, 
+            (max-width: 1024px) 1024px, 
+            (max-width: 1280px) 1280px, 
+            (max-width: 1536px) 1536px,
+            (max-width: 1920px) 1920px,
+            100vw"
             className="-z-10 opacity-30 dark:opacity-20"
           />
           <Title locale={locale} title={mp("title")} />
@@ -68,6 +84,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
           showAllText={mp("showAllText")}
           typesObject={typesObject}
           premiumText={p("title")}
+          cardText={cardTextObject}
+          selection={selectionObject}
         />
         <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
           <Footer />

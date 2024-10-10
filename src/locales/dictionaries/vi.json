@@ -533,8 +533,18 @@
     "title": "Thuộc tính của tôi",
     "incompleteListing": "Danh sách chưa đầy đủ!",
     "finishSelling": "Hoàn tất việc bán!",
-    "hideAllText": "Tất cả riêng tư",
-    "showAllText": "Tất cả công cộng"
+    "hideAllText": "Làm cho tất cả riêng tư",
+    "showAllText": "Làm cho tất cả công khai",
+    "properties": "Của cải",
+    "favorites": "Yêu thích",
+    "views": "Lượt xem",
+    "properties-description": "Tổng số bất động sản bạn đã niêm yết.",
+    "favorites-description": "Tổng số lần bất động sản của bạn được yêu thích.",
+    "views-description": "Tổng số lần bất động sản của bạn được xem.",
+    "order-by": "Đặt hàng theo",
+    "date": "Ngày tạo",
+    "favorited": "Được yêu thích nhất",
+    "price": "Đắt nhất"
   },
   "my-lists": {
     "title": "Danh sách mong muốn của tôi",
