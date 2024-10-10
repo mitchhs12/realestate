@@ -112,21 +112,21 @@ export default function Locations({ countries }: { countries: CountryProps }) {
         {Object.entries(countries).map(([isoCode, country], countryIndex) => (
           <Carousel
             key={countryIndex}
-            className="w-full h-full shadow-xl dark:shadow-white/10"
+            className="w-full h-full shadow-xl dark:shadow-white/10 rounded-lg overflow-hidden"
             onMouseEnter={() => handleMouseEnter(country.city.id)} // Show arrows on hover
             onMouseLeave={handleMouseLeave}
           >
-            <CarouselContent>
+            <CarouselContent className="h-full w-full ml-0">
               <CarouselItem
                 key={country.city.id}
-                className="flex justify-center items-center h-full w-full "
+                className="pl-0 h-full w-full"
                 onMouseOver={() => {
                   handleHover(getUrl(country.folder, country.city.id), country.city, country.city.id);
                 }}
               >
                 <div className="relative flex justify-center items-center h-40 w-full ">
                   <Image
-                    className="object-cover object-center rounded-lg"
+                    className="object-cover object-center"
                     src={getUrl(country.folder, country.city.id)}
                     alt="City Image"
                     sizes={
@@ -138,7 +138,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                     onLoad={() => handleImageLoad(getUrl(country.folder, country.city.id))}
                   />
                   <div
-                    className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 rounded-t-lg hover:cursor-pointer"
+                    className="absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 hover:cursor-pointer"
                     onClick={() => {
                       setClickedLocation(true);
                       setQuery(country.city.translation);
@@ -167,14 +167,14 @@ export default function Locations({ countries }: { countries: CountryProps }) {
               {country.neighborhoods.map((neighborhood) => (
                 <CarouselItem
                   key={neighborhood.id}
-                  className="flex justify-center items-center h-full w-full"
+                  className="h-full w-full pl-0"
                   onMouseOver={() => {
                     handleHover(getUrl(country.folder, neighborhood.id), neighborhood, neighborhood.id);
                   }}
                 >
                   <div className="relative flex justify-center items-center h-40 w-full">
                     <Image
-                      className="object-cover object-center rounded-lg" //opacity-65 dark:opacity-60"
+                      className="object-cover object-center" //opacity-65 dark:opacity-60"
                       src={getUrl(country.folder, neighborhood.id)}
                       alt="Location Image"
                       sizes={"(max-width: 200px), (max-height: 200px)"}
@@ -185,7 +185,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                     />
 
                     <div
-                      className={`absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 hover:cursor-pointer rounded-t-lg ${
+                      className={`absolute top-0 left-0 right-0 bg-white/70 dark:bg-secondary/70 text-black dark:text-white text-center py-1 hover:cursor-pointer ${
                         underlinedImage === neighborhood.id && "underline"
                       }`}
                       onClick={() => {

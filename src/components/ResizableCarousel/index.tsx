@@ -25,7 +25,7 @@ export default function ResizableCarousel({ photos, title, height, rounded, open
   const { user } = useContext(LocaleContext);
 
   return (
-    <Carousel className="h-full w-full overflow-hidden">
+    <Carousel className="h-full w-full overflow-hidden bg-white dark:bg-black">
       <CarouselContent className="ml-0">
         {photos.map((photo: string, index) => (
           <CarouselItem
