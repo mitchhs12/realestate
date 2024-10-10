@@ -47,11 +47,11 @@ const InfoWindowContent = memo(
         <>
           <div className="flex flex-col justify-center items-center w-full min-w-[220px] text-sm">
             <Carousel
-              className={`${props.listingType === "premium" && "bg-gradient-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"} h-full w-full`}
+              className={`h-full w-full overflow-auto ${props.listingType === "premium" && "bg-gradient-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
             >
-              <CarouselContent>
+              <CarouselContent className="ml-0">
                 {props.photos.map((photo: string, index) => (
-                  <CarouselItem key={index} className="flex justify-center items-center h-full w-full">
+                  <CarouselItem key={index} className="h-full w-full pl-0">
                     <div className={`relative justify-center items-center h-[150px] w-full`}>
                       <Link
                         href={getDetailsUrl(f.id)}
