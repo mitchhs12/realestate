@@ -51,7 +51,7 @@ export default function Title({
   }, []);
 
   useEffect(() => {
-    if (currentHome && title.length > 0 && title.length < 32) {
+    if (currentHome && title.length > 0 && title.length <= 32) {
       setNextDisabled(false);
       setNewHome({ ...currentHome, title: title });
     } else {
