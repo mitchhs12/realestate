@@ -4,7 +4,7 @@ import Image from "next/image";
 import ResizableCarousel from "@/components/ResizableCarousel";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect, useContext } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { HomeContext } from "@/context/HomeContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { FavoriteComponent } from "../FavoriteComponent";
@@ -103,7 +103,7 @@ export default function HomePhotos({ showAllPhotos }: Props) {
         )}
 
         {/* Carousel for smaller screens */}
-        <div className="relative md:hidden w-full hover:cursor-pointer">
+        <div className="relative md:hidden w-full hover:cursor-pointer rounded-xl overflow-hidden">
           <ResizableCarousel
             photos={home.photos}
             title={home.title!}
@@ -118,11 +118,12 @@ export default function HomePhotos({ showAllPhotos }: Props) {
 
       {/* Modal for showing all photos */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-[85vw] sm:max-w-3xl rounded-md" onOpenAutoFocus={(e) => e.preventDefault()}>
+        <DialogContent className="max-w-[90vw] sm:max-w-3xl rounded-md p-4" onOpenAutoFocus={(e) => e.preventDefault()}>
           <DialogHeader>
             <DialogTitle>All Photos</DialogTitle>
+            <DialogClose asChild></DialogClose>
           </DialogHeader>
-          <div className="max-h-[85vh] overflow-y-auto grid grid-cols-1 gap-4 p-4">
+          <div className="max-h-[80vh] px-0 overflow-y-auto grid grid-cols-1 gap-4">
             {home.photos.map((photo, index) => (
               <div
                 key={index}

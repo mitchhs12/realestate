@@ -140,11 +140,11 @@ export default function MapComponent({
           <div className="rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15">
             <Map
               clickableIcons={false}
-              gestureHandling={"none"}
+              gestureHandling={"greedy"}
               defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
               maxZoom={20}
-              zoomControl={false}
-              scrollwheel={false}
+              // zoomControl={false}
+              // scrollwheel={false}
               minZoom={6}
               onZoomChanged={(num) => {
                 setNewZoom(num.detail.zoom);
