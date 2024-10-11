@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Algo deu errado ao buscar esta propriedade!",
+    "page": "Algo deu errado ao buscar esta página!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Ordenar por",
     "date": "Data de criação",
     "favorited": "Mais favorito",
-    "price": "Mais caro"
+    "price": "Mais caro",
+    "deleteWarning": "Você tem certeza absoluta?",
+    "deleteDescription": "Isso excluirá sua casa permanentemente!",
+    "deleteCancel": "Cancelar",
+    "deleteConfirm": "Excluir"
   },
   "my-lists": {
     "title": "Minhas listas de desejos",

@@ -98,6 +98,7 @@ model Home {
   contactName     String?
   contactEmail    String?
   contactPhone    String?
+  isDeleted       Boolean         @default(false)
   isActive        Boolean         @default(false)
   isComplete      Boolean         @default(false)
   completedAt     DateTime?

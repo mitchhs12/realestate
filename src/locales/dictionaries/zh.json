@@ -1,4 +1,8 @@
 {
+  "error": {
+    "property": "获取此属性时出错！",
+    "page": "获取此页面时出错！"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@
     "order-by": "排序依据",
     "date": "创建日期",
     "favorited": "最受喜爱",
-    "price": "最昂贵的"
+    "price": "最昂贵的",
+    "deleteWarning": "你真的确定吗？",
+    "deleteDescription": "这将永久删除您的主页！",
+    "deleteCancel": "取消",
+    "deleteConfirm": "删除"
   },
   "my-lists": {
     "title": "我的愿望清单",

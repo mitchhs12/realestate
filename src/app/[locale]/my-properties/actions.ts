@@ -15,6 +15,7 @@ export async function getMyHomes(): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
       ownerId: userId,
+      isDeleted: false,
     },
     orderBy: {
       createdAt: "desc",
@@ -48,6 +49,26 @@ export async function changeHomeVisibility(homeId: number, currentState: boolean
     },
     data: {
       isActive: !currentState,
+    },
+  });
+  revalidatePath(`/my-properties`);
+}
+
+export async function deleteHome(homeId: number) {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) {
+    throw new Error("User not found");
+  }
+
+  const home = await prisma.home.update({
+    where: {
+      id: Number(homeId),
+      ownerId: userId,
+    },
+    data: {
+      isDeleted: true,
+      isActive: false,
     },
   });
   revalidatePath(`/my-properties`);

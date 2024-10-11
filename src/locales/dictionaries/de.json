@@ -1,4 +1,8 @@
 {
+  "error": {
+    "property": "Beim Abrufen dieser Immobilie ist ein Fehler aufgetreten!",
+    "page": "Beim Abrufen dieser Seite ist ein Fehler aufgetreten!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@
     "order-by": "Bestellen Sie bis zum",
     "date": "Erstellungsdatum",
     "favorited": "Am meisten favorisiert",
-    "price": "Am teuersten"
+    "price": "Am teuersten",
+    "deleteWarning": "Sind Sie ganz sicher?",
+    "deleteDescription": "Dadurch wird Ihr Zuhause dauerhaft gelöscht!",
+    "deleteCancel": "Stornieren",
+    "deleteConfirm": "Löschen"
   },
   "my-lists": {
     "title": "Meine Wunschlisten",

@@ -19,6 +19,7 @@ import { usePathname } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiTypeButton from "../MultiTypeButton";
 import { useTheme } from "next-themes";
+import DeleteButton from "@/components/DeleteButton";
 
 interface Props {
   home: HomeType | null;
@@ -29,6 +30,8 @@ interface Props {
   loginToViewPrice?: string;
   userId?: string;
   premiumText: string;
+  deleting?: boolean;
+  handleDelete?: (homeId: number) => void;
 }
 
 export default function ResizableCard({
@@ -186,6 +189,7 @@ export default function ResizableCard({
           {!visibilityChanging ? home.isActive ? <Eye /> : <EyeOff /> : <ReloadIcon className="animate-spin w-5 h-5" />}
         </Button>
       )}
+      {isMyProperties && user?.id === home.ownerId && <DeleteButton homeId={home.id} />}
     </div>
   );
 }

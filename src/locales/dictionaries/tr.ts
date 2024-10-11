@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Bu özelliği alırken bir sorun oluştu!",
+    "page": "Bu sayfaya ulaşırken bir sorun oluştu!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Sıralama",
     "date": "Oluşturulma tarihi",
     "favorited": "En çok beğenilen",
-    "price": "En pahalı"
+    "price": "En pahalı",
+    "deleteWarning": "Kesinlikle emin misin?",
+    "deleteDescription": "Bu işlem evinizi kalıcı olarak silecektir!",
+    "deleteCancel": "İptal etmek",
+    "deleteConfirm": "Silmek"
   },
   "my-lists": {
     "title": "İstek Listelerim",

@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "이 속성을 가져오는 중에 오류가 발생했습니다!",
+    "page": "이 페이지를 가져오는 중에 오류가 발생했습니다!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "주문 기준",
     "date": "생성 날짜",
     "favorited": "가장 많이 즐겨찾기됨",
-    "price": "가장 비싼"
+    "price": "가장 비싼",
+    "deleteWarning": "정말 확신하시나요?",
+    "deleteDescription": "이렇게 하면 집이 영구적으로 삭제됩니다!",
+    "deleteCancel": "취소",
+    "deleteConfirm": "삭제"
   },
   "my-lists": {
     "title": "내 위시리스트",

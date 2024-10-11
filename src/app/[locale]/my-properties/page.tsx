@@ -56,15 +56,16 @@ export default async function Page({ params: { locale } }: { params: { locale: s
 
     return (
       <div className="flex flex-col items-center h-full">
-        <div className="relative h-[20vh] flex w-full">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner5.webp`}
-            alt="background"
-            fill={true}
-            style={{ objectFit: "cover" }}
-            quality={70}
-            priority={true}
-            sizes="(max-width: 400px) 400px,
+        <div className="h-full min-h-screen-minus-header-svh">
+          <div className="relative h-[20vh] flex w-full">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner5.webp`}
+              alt="background"
+              fill={true}
+              style={{ objectFit: "cover" }}
+              quality={70}
+              priority={true}
+              sizes="(max-width: 400px) 400px,
             (max-width: 510px) 510px,
             (max-width: 768px) 768px, 
             (max-width: 1024px) 1024px, 
@@ -72,21 +73,22 @@ export default async function Page({ params: { locale } }: { params: { locale: s
             (max-width: 1536px) 1536px,
             (max-width: 1920px) 1920px,
             100vw"
-            className="-z-10 opacity-30 dark:opacity-20"
+              className="-z-10 opacity-30 dark:opacity-20"
+            />
+            <Title locale={locale} title={mp("title")} />
+          </div>
+          <MyHomes
+            user={user}
+            finishSelling={mp("finishSelling")}
+            incompleteListing={mp("incompleteListing")}
+            hideAllText={mp("hideAllText")}
+            showAllText={mp("showAllText")}
+            typesObject={typesObject}
+            premiumText={p("title")}
+            cardText={cardTextObject}
+            selection={selectionObject}
           />
-          <Title locale={locale} title={mp("title")} />
         </div>
-        <MyHomes
-          user={user}
-          finishSelling={mp("finishSelling")}
-          incompleteListing={mp("incompleteListing")}
-          hideAllText={mp("hideAllText")}
-          showAllText={mp("showAllText")}
-          typesObject={typesObject}
-          premiumText={p("title")}
-          cardText={cardTextObject}
-          selection={selectionObject}
-        />
         <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
           <Footer />
         </footer>

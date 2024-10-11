@@ -1,4 +1,8 @@
 {
+  "error": {
+    "property": "Terjadi kesalahan saat mengambil properti ini!",
+    "page": "Terjadi kesalahan saat mengambil halaman ini!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@
     "order-by": "Pesan berdasarkan",
     "date": "Tanggal dibuat",
     "favorited": "Paling disukai",
-    "price": "Paling mahal"
+    "price": "Paling mahal",
+    "deleteWarning": "Apakah Anda benar-benar yakin?",
+    "deleteDescription": "Ini akan menghapus rumah Anda secara permanen!",
+    "deleteCancel": "Membatalkan",
+    "deleteConfirm": "Menghapus"
   },
   "my-lists": {
     "title": "Daftar Keinginanku",

@@ -8,6 +8,9 @@ import { Eye, Heart, House } from "lucide-react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 import { HomeType } from "@/lib/validations";
+import { Button } from "@/components/ui/button";
+import { deleteHome } from "@/app/[locale]/my-properties/actions";
+import { Trash } from "lucide-react";
 
 interface Props {
   user: User;

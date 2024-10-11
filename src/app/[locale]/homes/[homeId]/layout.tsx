@@ -20,10 +20,11 @@ type Props = {
 };
 
 export default async function HomeLayout({ children, params: { homeId, locale } }: Readonly<Props>) {
-  const [home, f, t] = await Promise.all([
+  const [home, f, t, e] = await Promise.all([
     getHomeById(homeId),
     getScopedI18n("sell.features"),
     getScopedI18n("sell.type"),
+    getScopedI18n("error"),
   ]);
 
   const featuresObject = Array.from({ length: 26 }, (_, index) => ({
@@ -43,9 +44,9 @@ export default async function HomeLayout({ children, params: { homeId, locale } 
 
   if (home === null) {
     return (
-      <div>
-        <main>
-          <div className="flex justify-center text-xl">Something went wrong fetching this home.</div>
+      <div className="flex flex-col">
+        <main className="flex flex-col justify-center items-center h-full min-h-screen-minus-header-svh">
+          <div className="text-xl">{e("property")}</div>
         </main>
         <footer className="flex justify-center items-center p-6 w-full bg-muted">
           <Footer />

@@ -1,4 +1,8 @@
 {
+  "error": {
+    "property": "لقد حدث خطأ أثناء جلب هذه الخاصية!",
+    "page": "لقد حدث خطأ أثناء جلب هذه الصفحة!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@
     "order-by": "ترتيب حسب",
     "date": "تاريخ الإنشاء",
     "favorited": "الأكثر تفضيلا",
-    "price": "أغلى"
+    "price": "أغلى",
+    "deleteWarning": "هل أنت متأكد تماما؟",
+    "deleteDescription": "سيؤدي هذا إلى حذف منزلك نهائيًا!",
+    "deleteCancel": "يلغي",
+    "deleteConfirm": "يمسح"
   },
   "my-lists": {
     "title": "قائمة أمنياتي",

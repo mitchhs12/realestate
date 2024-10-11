@@ -1,4 +1,8 @@
 {
+  "error": {
+    "property": "このプロパティの取得中に問題が発生しました。",
+    "page": "このページの取得中に問題が発生しました。"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@
     "order-by": "並び替え",
     "date": "作成日",
     "favorited": "最もお気に入り",
-    "price": "最も高価"
+    "price": "最も高価",
+    "deleteWarning": "本当に確信していますか?",
+    "deleteDescription": "これにより、あなたのホームは永久に削除されます。",
+    "deleteCancel": "キャンセル",
+    "deleteConfirm": "消去"
   },
   "my-lists": {
     "title": "私のウィッシュリスト",

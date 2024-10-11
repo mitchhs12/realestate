@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Une erreur s'est produite lors de la récupération de cette propriété !",
+    "page": "Une erreur s'est produite lors de la récupération de cette page !"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Trier par",
     "date": "Date de création",
     "favorited": "Le plus favorisé",
-    "price": "Plus cher"
+    "price": "Plus cher",
+    "deleteWarning": "Êtes-vous absolument sûr ?",
+    "deleteDescription": "Cela supprimera définitivement votre maison !",
+    "deleteCancel": "Annuler",
+    "deleteConfirm": "Supprimer"
   },
   "my-lists": {
     "title": "Mes listes de souhaits",

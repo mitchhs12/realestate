@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Nešto je pošlo po zlu prilikom dohvaćanja ove nekretnine!",
+    "page": "Nešto nije u redu prilikom dohvaćanja ove stranice!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Naručite po",
     "date": "Datum kreiranja",
     "favorited": "Najomiljenije",
-    "price": "Najskuplji"
+    "price": "Najskuplji",
+    "deleteWarning": "Jeste li potpuno sigurni?",
+    "deleteDescription": "Ovo će trajno izbrisati vaš dom!",
+    "deleteCancel": "Otkazati",
+    "deleteConfirm": "Izbrisati"
   },
   "my-lists": {
     "title": "Moje liste želja",

@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Đã xảy ra lỗi khi tải thuộc tính này!",
+    "page": "Có lỗi xảy ra khi tải trang này!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Đặt hàng theo",
     "date": "Ngày tạo",
     "favorited": "Được yêu thích nhất",
-    "price": "Đắt nhất"
+    "price": "Đắt nhất",
+    "deleteWarning": "Bạn có chắc chắn hoàn toàn không?",
+    "deleteDescription": "Thao tác này sẽ xóa vĩnh viễn trang chủ của bạn!",
+    "deleteCancel": "Hủy bỏ",
+    "deleteConfirm": "Xóa bỏ"
   },
   "my-lists": {
     "title": "Danh sách mong muốn của tôi",

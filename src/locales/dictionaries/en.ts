@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Something went wrong fetching this property!",
+    "page": "Something went wrong fetching this page!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Order by",
     "date": "Date created",
     "favorited": "Most favorited",
-    "price": "Most expensive"
+    "price": "Most expensive",
+    "deleteWarning": "Are you absolutely sure?",
+    "deleteDescription": "This will permanently delete your home!",
+    "deleteCancel": "Cancel",
+    "deleteConfirm": "Delete"
   },
   "my-lists": {
     "title": "My Wishlists",

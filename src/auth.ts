@@ -126,6 +126,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               },
             },
             homes: {
+              where: {
+                isDeleted: false,
+              },
               include: {
                 _count: {
                   select: {

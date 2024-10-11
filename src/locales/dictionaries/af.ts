@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "Iets het verkeerd geloop om hierdie eiendom te gaan haal!",
+    "page": "Iets het verkeerd geloop om hierdie bladsy te gaan haal!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Bestel by",
     "date": "Datum geskep",
     "favorited": "Mees gunsteling",
-    "price": "Die duurste"
+    "price": "Die duurste",
+    "deleteWarning": "Is jy heeltemal seker?",
+    "deleteDescription": "Dit sal jou huis permanent uitvee!",
+    "deleteCancel": "Kanselleer",
+    "deleteConfirm": "Vee uit"
   },
   "my-lists": {
     "title": "My wenslys",

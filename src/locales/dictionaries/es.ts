@@ -1,4 +1,8 @@
 export default {
+  "error": {
+    "property": "¡Algo salió mal al obtener esta propiedad!",
+    "page": "¡Algo salió mal al obtener esta página!"
+  },
   "home": {
     "header": {
       "search": {
@@ -544,7 +548,11 @@ export default {
     "order-by": "Ordenar por",
     "date": "Fecha de creación",
     "favorited": "Más favoritos",
-    "price": "El más caro"
+    "price": "El más caro",
+    "deleteWarning": "¿Estás completamente seguro?",
+    "deleteDescription": "¡Esto eliminará tu casa de forma permanente!",
+    "deleteCancel": "Cancelar",
+    "deleteConfirm": "Borrar"
   },
   "my-lists": {
     "title": "Mis listas de deseos",
