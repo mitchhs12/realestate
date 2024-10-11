@@ -21,9 +21,9 @@ const validateHome = (homeData: any) => {
   if (homeData.description && homeData.description.length > 3000) {
     return { success: false, error: "Description cannot be longer than 3000 characters long" };
   }
-  if (homeData.capacity === 0) {
-    return { success: false, error: "Capacity cannot be 0" };
-  }
+  // if (homeData.capacity === 0) {
+  //   return { success: false, error: "Capacity cannot be 0" };
+  // }
   if (homeData.areaSqm === 0) {
     return { success: false, error: "Area cannot be 0" };
   }

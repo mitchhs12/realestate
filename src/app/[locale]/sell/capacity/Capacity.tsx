@@ -67,14 +67,14 @@ export default function Capacity({
   const [sqFeet, setSqFeet] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm * ftConversion : 0);
 
   useEffect(() => {
-    if (currentHome && sqSize > 0 && humanCapacity > 0) {
+    if (currentHome && sqSize > 0) {
       setNextDisabled(false);
       setNewHome({
         ...currentHome,
         areaSqm: sqSize,
         capacity: humanCapacity,
       });
-    } else if (sqSize === 0 || humanCapacity === 0) {
+    } else if (sqSize === 0) {
       setNextDisabled(true);
     }
   }, [sqSize, humanCapacity]);
@@ -85,7 +85,7 @@ export default function Capacity({
     setSellFlowFlatIndex(sellFlatIndex);
     setStepPercentage(stepPercentage);
     setNextLoading(false);
-    if (sqSize > 0 || humanCapacity > 0) {
+    if (sqSize > 0) {
       setNextDisabled(false);
     } else {
       setNextDisabled(true);

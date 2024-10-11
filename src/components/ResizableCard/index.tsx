@@ -49,6 +49,8 @@ export default function ResizableCard({
   const isMyProperties = path === "/my-properties";
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const { resolvedTheme: theme } = useTheme();
+  const originalPrice = home?.price;
+  const originalCurrency = home?.currency;
 
   useEffect(() => {
     if (home && home.language) {
@@ -140,6 +142,8 @@ export default function ResizableCard({
                       <BrokenPrice
                         incompleteListing={incompleteListing}
                         priceUsd={home.priceUsd}
+                        // originalPrice={home.price}
+                        // originalCurrency={home.currency}
                         currency={defaultCurrency}
                         reveal={user ? true : false}
                         blurAmount="blur-sm"

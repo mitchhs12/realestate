@@ -244,6 +244,7 @@ export const resizeImageToMinDimensions = async (
       const { width, height } = img;
 
       // Check if either dimension is smaller than the minimum dimension
+      console.log("minDimension", minDimension);
       width < minDimension && reject(new Error(widthError));
       height < minDimension && reject(new Error(heightError));
 

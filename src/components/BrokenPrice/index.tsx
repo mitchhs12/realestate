@@ -8,6 +8,8 @@ interface Props {
   reveal: boolean;
   blurAmount?: string;
   className?: string;
+  originalPrice?: number;
+  originalCurrency?: string;
 }
 
 export default function BrokenPrice({ incompleteListing, priceUsd, currency, reveal, blurAmount, className }: Props) {
