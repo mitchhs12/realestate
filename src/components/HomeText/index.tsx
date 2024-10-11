@@ -220,16 +220,18 @@ export default function HomeText({
               </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <div className="text-lg sm:text-xl">{capacityTitle}</div>
-              <div className="flex items-center gap-3 pl-1">
-                <Users size={20} strokeWidth={1.5} />
-                <div className="flex items-center gap-1">
-                  <span>{formatNumber(home.capacity, numerals)}</span>
-                  {home.capacity === 0 ? capacityText.single : capacityText.plural}
+            {currentType.id !== "warehouse" && currentType.id !== "land" && (
+              <div className="flex flex-col gap-3">
+                <div className="text-lg sm:text-xl">{capacityTitle}</div>
+                <div className="flex items-center gap-3 pl-1">
+                  <Users size={20} strokeWidth={1.5} />
+                  <div className="flex items-center gap-1">
+                    <span>{formatNumber(home.capacity, numerals)}</span>
+                    {home.capacity === 0 ? capacityText.single : capacityText.plural}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-5">
                 <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
