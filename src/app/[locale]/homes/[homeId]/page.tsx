@@ -111,6 +111,8 @@ export default async function Page({ params }: { params: { locale: string } }) {
           contactThanks={contactThanks}
           buyNow={buyNow}
           loginToPurchase={loginToPurchase}
+          priceTitle={priceTitle}
+          originalPrice={originalPrice}
         />
       </div>
     </div>

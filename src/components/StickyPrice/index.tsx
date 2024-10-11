@@ -25,6 +25,8 @@ interface Props {
   contactThanks: string;
   buyNow: string;
   loginToPurchase: string;
+  priceTitle: string;
+  originalPrice: string;
 }
 
 export default function StickyPrice({
@@ -37,6 +39,8 @@ export default function StickyPrice({
   contactThanks,
   buyNow,
   loginToPurchase,
+  priceTitle,
+  originalPrice,
 }: Props) {
   const { home } = useContext(HomeContext);
   const { defaultCurrency, currencyData, sessionLoading, user } = useContext(LocaleContext);
@@ -50,7 +54,7 @@ export default function StickyPrice({
       <CardHeader className={`flex flex-col gap-y-2 items-center bg-card`}>
         <div className="flex flex-row items-end justify-between w-full">
           <div className={`flex flex-col items-start w-1/2`}>
-            <span className="font-sm">Price:</span>
+            <span className="font-sm">{priceTitle}</span>
             <span className="text-xl font-semibold text-primary">
               <BrokenPrice
                 priceUsd={home.priceUsd}
@@ -62,7 +66,9 @@ export default function StickyPrice({
             </span>
           </div>
           <div className={`flex flex-col w-1/2 h-full text-end `}>
-            <span className="text-sm">Original price ({home.currency})</span>
+            <span className="text-sm">
+              {originalPrice} ({home.currency})
+            </span>
             <span className="flex justify-end gap-2 text-lg font-semibold text-primary">
               {originalCurrencyRate && home.currency ? (
                 <BrokenPrice

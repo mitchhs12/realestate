@@ -1,5 +1,4 @@
 import { getScopedI18n } from "@/locales/server";
-import { Separator } from "../ui/separator";
 import Link from "next/link";
 import Icons from "@/components/Footer/Icons";
 
