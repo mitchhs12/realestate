@@ -446,7 +446,7 @@ export default {
         "8": "Casa ecológica",
         "9": "Granja",
         "10": "Casa flotante",
-        "11": "Tierra",
+        "11": "Terreno",
         "12": "Palacio",
         "13": "Casa pequeña",
         "14": "Torre",

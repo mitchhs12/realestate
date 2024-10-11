@@ -317,7 +317,7 @@ export default {
       "title": "Description",
       "subtitle": "Write a brief description of your property.",
       "placeholder": "Provide a brief overview and include any additional details you think others should know.",
-      "warning": "Please write a shorter description."
+      "warning": "Maximum character limit reached!"
     },
     "features": {
       "title": "Features",
@@ -429,7 +429,7 @@ export default {
     "title": {
       "title": "Title",
       "subtitle": "Give your property listing a title.",
-      "warning": "Please use a smaller title."
+      "warning": "Maximum character limit reached!"
     },
     "type": {
       "title": "Type",
