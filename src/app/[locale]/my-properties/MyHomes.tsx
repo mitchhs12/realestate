@@ -55,7 +55,7 @@ export default function MyHomes({
         console.log("favorited");
         return homes.sort((a: any, b: any) => (b.favoritedCount || 0) - (a.favoritedCount || 0));
       case "price":
-        return homes.sort((a: any, b: any) => (b.price || 0) - (a.price || 0));
+        return homes.sort((a: any, b: any) => (b.priceUsd || 0) - (a.priceUsd || 0));
       default:
         return homes;
     }
