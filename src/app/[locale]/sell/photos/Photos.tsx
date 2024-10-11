@@ -243,7 +243,7 @@ export default function Photos({
 
     try {
       const uploadPromises = validImageFiles.map(async (file) => {
-        const resizedFile = await resizeImageToMinDimensions(file, 700, tooShort, tooNarrow);
+        const resizedFile = await resizeImageToMinDimensions(file, 600, tooShort, tooNarrow);
 
         const options = {
           maxSizeMB: 1,

@@ -275,7 +275,7 @@ export default function SearchBox({
                     results.map((entry: any, index) => (
                       <div
                         key={index}
-                        className={`${index === 0 ? (results.length === 1 ? "rounded-b-2xl" : "rounded-b-2xl") : index === results.length - 1 && "rounded-b-2xl"} py-1 md:py-2 cursor-pointer hover:bg-muted`}
+                        className={`${index === 0 ? (results.length === 1 ? (pathname === "/sell/location" ? "rounded-l-2xl" : "rounded-b-2xl") : pathname === "/sell/location" ? "rounded-tl-2xl" : "rounded-b-2xl") : index === results.length - 1 && (pathname === "/sell/location" ? "rounded-bl-2xl" : "rounded-b-2xl")} py-1 md:py-2 cursor-pointer hover:bg-muted`}
                         onClick={() => {
                           handleSearch(entry.Text, entry.PlaceId);
                         }}
