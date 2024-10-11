@@ -437,7 +437,7 @@ export default {
       "options": {
         "0": "Casa",
         "1": "Departamento",
-        "2": "Cabina",
+        "2": "Cabaña",
         "3": "Casa particular",
         "4": "Castillo",
         "5": "Edificio comercial",
