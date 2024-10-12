@@ -166,13 +166,15 @@ export default function ResizableCard({
         </Link>
       </div>
 
-      <MultiTypeButton
-        types={types}
-        currentType={currentType}
-        setCurrentType={setCurrentType}
-        disabled={true}
-        premium={home.listingType === "premium"}
-      />
+      {!incompleteListing && (
+        <MultiTypeButton
+          types={types}
+          currentType={currentType}
+          setCurrentType={setCurrentType}
+          disabled={true}
+          premium={home.listingType === "premium"}
+        />
+      )}
       {isMyProperties && home.isComplete && user?.id === home.ownerId && (
         <Button
           variant={home.isActive ? "default" : "destructive"}

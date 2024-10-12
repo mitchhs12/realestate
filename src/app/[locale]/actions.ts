@@ -71,7 +71,7 @@ export async function getNew(): Promise<HomeType[]> {
       isActive: true,
     },
     orderBy: {
-      createdAt: "desc",
+      completedAt: "desc",
     },
     take: 6,
   });

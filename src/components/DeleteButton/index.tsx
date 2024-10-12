@@ -27,7 +27,7 @@ export default function DeleteButton({ homeId }: { homeId: number }) {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant={"destructive"} size={"icon"} disabled={isDeleting} className="absolute top-2 right-2">
-          {isDeleting ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Trash size={20} />}
+          {isDeleting ? <ReloadIcon className="animate-spin w-5 h-5" /> : <Trash size={20} />}
         </Button>
       </AlertDialogTrigger>
       <I18nProviderClient locale={defaultLanguage}>
