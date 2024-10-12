@@ -462,7 +462,7 @@ export default {
       "continue": "Continuar con el listado",
       "start": "Comenzar",
       "back": "Atrás",
-      "next": "Próximo",
+      "next": "Siguiente",
       "loading": "Cargando...",
       "finish": "¡Finalizar!"
     }
@@ -486,7 +486,7 @@ export default {
     },
     "capacity": {
       "single": "Persona.",
-      "plural": "Gente."
+      "plural": "Personas."
     },
     "capacity-title": "Capacidad:",
     "rooms-title": "Alojamiento:",
