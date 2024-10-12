@@ -442,7 +442,7 @@ export default {
         "0": "Huis",
         "1": "Woonstel",
         "2": "Kajuit",
-        "3": "Casa besonders",
+        "3": "Plattelandshuis",
         "4": "Kasteel",
         "5": "Kommersiële gebou",
         "6": "Houer",

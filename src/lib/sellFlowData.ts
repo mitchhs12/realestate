@@ -8,7 +8,7 @@ export const types = [
   "House", //X House
   "Apartment" /* */,
   "Cabin" /* */,
-  "Casa particular", //
+  "Country house", //
   "Castle", //X Castle
   "Commercial building", //X City or Domain
   "Container", // container
@@ -57,7 +57,7 @@ export const typesMap = [
   { id: "house", name: "House" },
   { id: "apartment", name: "Apartment" },
   { id: "cabin", name: "Cabin" },
-  { id: "casa-particular", name: "Casa particular" },
+  { id: "country-house", name: "Country House" },
   { id: "castle", name: "Castle" },
   { id: "commercial-building", name: "Commercial building" },
   { id: "container", name: "Container" },

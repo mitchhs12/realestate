@@ -64,7 +64,6 @@ export default function Capacity({
   );
   const [metresOn, setMetresOn] = useState(true);
   const [humanCapacity, setHumanCapacity] = useState<number>(currentHome?.capacity ? currentHome?.capacity : 0);
-  const [sqFeet, setSqFeet] = useState<number>(currentHome?.areaSqm ? currentHome?.areaSqm * ftConversion : 0);
 
   useEffect(() => {
     if (currentHome && sqSize > 0) {

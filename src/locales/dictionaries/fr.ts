@@ -442,7 +442,7 @@ export default {
         "0": "Maison",
         "1": "Appartement",
         "2": "Cabine",
-        "3": "Maison particulière",
+        "3": "Maison de campagne",
         "4": "Château",
         "5": "Bâtiment commercial",
         "6": "Récipient",
