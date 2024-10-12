@@ -58,7 +58,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const price = c("price");
   const negotiable = c("negotiable");
 
-  const featuresObject = Array.from({ length: 26 }, (_, index) => ({
+  const featuresObject = Array.from({ length: 27 }, (_, index) => ({
     id: featuresMap[index].id,
     name: featuresMap[index].name,
     translation: f(`options.${index}` as keyof typeof f),

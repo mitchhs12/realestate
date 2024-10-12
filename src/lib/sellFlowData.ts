@@ -33,6 +33,7 @@ export const features = [
   "BBQ" /* */,
   "Beach access" /* */,
   "Car parking", // Parking Lucide
+  "Elevator", // Elevator Tabler
   "Exercise Equipment", // Dumbbell lucide
   "Fire Pit", // Flame kindling lucide
   "Garage", // Car Garage Tabler
@@ -82,6 +83,7 @@ export const featuresMap = [
   { id: "bbq", name: "BBQ" },
   { id: "beach-access", name: "Beach access" }, // done
   { id: "car-parking", name: "Car parking" },
+  { id: "elevator", name: "Elevator" },
   { id: "exercise-equipment", name: "Exercise Equipment" },
   { id: "fire-pit", name: "Fire Pit" },
   { id: "garage", name: "Garage" },

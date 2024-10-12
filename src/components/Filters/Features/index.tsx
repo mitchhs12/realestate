@@ -26,7 +26,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
 
   useEffect(() => {
     if (t) {
-      const newFeaturesObject = Array.from({ length: 26 }, (_, index) => ({
+      const newFeaturesObject = Array.from({ length: 27 }, (_, index) => ({
         id: featuresMap[index].id,
         name: featuresMap[index].name,
         translation: t(`options.${index}` as keyof typeof t),
@@ -52,7 +52,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
 
   useEffect(() => {
     // resync selectedFeatures with the selectedFeatures in the parent component
-    const newFeaturesObject = Array.from({ length: 26 }, (_, index) => ({
+    const newFeaturesObject = Array.from({ length: 27 }, (_, index) => ({
       id: featuresMap[index].id,
       name: featuresMap[index].name,
       translation: t(`options.${index}` as keyof typeof t),

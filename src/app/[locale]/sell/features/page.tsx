@@ -36,7 +36,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
   const t = await getScopedI18n("sell.features");
   const title = t("title");
   const subtitle = t("subtitle");
-  const options = Array.from({ length: 26 }, (_, index) => ({
+  const options = Array.from({ length: 27 }, (_, index) => ({
     id: featuresMap[index].id,
     name: featuresMap[index].name,
     translation: t(`options.${index}` as keyof typeof t),

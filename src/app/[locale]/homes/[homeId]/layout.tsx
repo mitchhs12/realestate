@@ -27,7 +27,7 @@ export default async function HomeLayout({ children, params: { homeId, locale } 
     getScopedI18n("error"),
   ]);
 
-  const featuresObject = Array.from({ length: 26 }, (_, index) => ({
+  const featuresObject = Array.from({ length: 27 }, (_, index) => ({
     id: featuresMap[index].id,
     name: featuresMap[index].name,
     translation: f(`options.${index}` as keyof typeof f),

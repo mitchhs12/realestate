@@ -119,6 +119,14 @@ export const featureIcons: Record<string, FeatureComponent> = {
       </g>
     </svg>
   ),
+  elevator: ({ color, width = 45, height = 45 }: IconProps) => (
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={height}>
+      <g fill={"none"} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}>
+        <path d="M5 5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z" />
+        <path d="m10 10l2-2l2 2m-4 4l2 2l2-2" />
+      </g>
+    </svg>
+  ),
   "exercise-equipment": ({ color, width = 45, height = 45 }: IconProps) => (
     <svg width={width} height={height} viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
