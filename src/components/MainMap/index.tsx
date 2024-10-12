@@ -11,10 +11,6 @@ import { HomesGeoJson } from "@/lib/validations";
 import { Feature, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
 import { QueryContext } from "@/context/QueryContext";
-import { FlagComponent } from "../ui/phone-input";
-import { Country } from "react-phone-number-input";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
-import BrokenPrice from "../BrokenPrice";
 import { LocaleContext } from "@/context/LocaleContext";
 
 export type MapConfig = {

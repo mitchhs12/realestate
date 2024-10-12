@@ -118,6 +118,8 @@ const InfoWindowContent = memo(
                     <TooltipTrigger>
                       <BrokenPrice
                         priceUsd={props.priceUsd}
+                        originalCurrencySymbol={props.currency}
+                        originalPrice={props.price}
                         currency={defaultCurrency!}
                         reveal={user ? true : false}
                         blurAmount="blur-sm"

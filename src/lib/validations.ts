@@ -198,6 +198,7 @@ export type HomeFeatureProps = {
   type: string[];
   features: string[];
   price: number;
+  currency: string;
   priceUsd: number;
   bedrooms: number;
   bathrooms: number;
