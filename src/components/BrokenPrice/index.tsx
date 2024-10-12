@@ -7,12 +7,21 @@ interface Props {
   currency: { symbol: string; usdPrice: number } | null;
   reveal: boolean;
   blurAmount?: string;
+  originalPrice: number;
+  originalCurrencySymbol: string;
   className?: string;
-  originalPrice?: number;
-  originalCurrency?: string;
 }
 
-export default function BrokenPrice({ incompleteListing, priceUsd, currency, reveal, blurAmount, className }: Props) {
+export default function BrokenPrice({
+  incompleteListing,
+  priceUsd,
+  currency,
+  reveal,
+  blurAmount,
+  originalPrice,
+  originalCurrencySymbol,
+  className,
+}: Props) {
   if (!priceUsd) {
     return <span className={`flex items-center text-center font-semibold ${className}`}>{incompleteListing}</span>;
   }
@@ -30,7 +39,10 @@ export default function BrokenPrice({ incompleteListing, priceUsd, currency, rev
       {priceUsd &&
         // Destructure the formatted price
         (() => {
-          const { symbol, number, symbolFirst } = formatBrokenPrice(currency.symbol, priceUsd * currency.usdPrice, 0);
+          const { symbol, number, symbolFirst } =
+            originalCurrencySymbol === currency.symbol
+              ? formatBrokenPrice(originalCurrencySymbol, originalPrice, 0)
+              : formatBrokenPrice(currency.symbol, priceUsd * currency.usdPrice, 0);
 
           return (
             <span className={`flex items-center text-center font-semibold ${className} `}>

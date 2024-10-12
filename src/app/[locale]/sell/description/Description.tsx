@@ -3,6 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Textarea } from "@/components/ui/textarea";
 import { HomeType } from "@/lib/validations";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import { cn } from "@/lib/utils";
 
 interface Props {
   currentHome: HomeType | null;
@@ -44,11 +47,7 @@ export default function Description({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-    if (description.length > 0) {
-      setNextDisabled(false);
-    } else {
-      setNextDisabled(true);
-    }
+    setNextDisabled(description.length === 0);
   }, []);
 
   useEffect(() => {
@@ -73,12 +72,25 @@ export default function Description({
         </div>
 
         <div className="flex flex-col max-w-7xl w-full h-full px-12 justify-center mt-10">
-          <Textarea
+          <ReactQuill
             value={description}
+            theme={"snow"}
             placeholder={placeholder}
-            className={`border-2 text-start ${description.length === 3000 && "border-red-500"}`}
-            onChange={(e) => setDescription(e.target.value)}
-            maxLength={3000}
+            className={`flex flex-col h-full w-full rounded-md bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${description.length === 3000 && "border-red-500"}`}
+            onChange={(value: string) => {
+              if (value.length <= 3000) {
+                setDescription(value);
+              }
+            }}
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, false] }],
+                ["bold", "italic", "underline"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["clean"],
+              ],
+            }}
+            formats={["header", "bold", "italic", "underline", "list"]}
           />
           <div className="flex justify-center text-sm min-h-12">
             {description.length === 3000 && <span className="text-red-500">{warning}</span>}

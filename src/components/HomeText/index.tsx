@@ -331,6 +331,8 @@ export default function HomeText({
                   priceUsd={home.priceUsd}
                   currency={defaultCurrency}
                   reveal={user ? true : false}
+                  originalPrice={home.price}
+                  originalCurrencySymbol={home.currency!}
                   blurAmount={"blur-lg"}
                   className="text-primary justify-center text-2xl md:text-3xl lg:text-4xl"
                 />
@@ -348,6 +350,8 @@ export default function HomeText({
                     priceUsd={home.priceUsd}
                     currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
                     reveal={user ? true : false}
+                    originalPrice={home.price}
+                    originalCurrencySymbol={home.currency}
                     blurAmount={"blur-md"}
                     className="text-primary justify-center text-base md:text-lg lg:text-xl"
                   />
