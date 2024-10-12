@@ -143,12 +143,12 @@ export default function Review({
           </div>
         </div>
         <div className="flex flex-col w-full h-full md:flex-row justify-center py-8 px-6 gap-8 lg:p-4">
-          <Card className="w-full h-auto flex flex-col">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold">{title}</CardTitle>
+          <Card className="w-full h-auto flex flex-col p-2 xs:p-4 sm:p-8 gap-4">
+            <CardHeader className="gap-8">
+              <CardTitle className="text-md md:text-2xl font-bold">{title}</CardTitle>
               <CardDescription>{description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex justify-center gap-4 p-4 sm:p-8">
+            <CardContent className="flex justify-center gap-4">
               <div className="flex flex-col justify-center text-left gap-y-8 h-full w-full">
                 <p className="flex flex-col text-center">{address}</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-center items-center">
@@ -175,8 +175,8 @@ export default function Review({
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-col text-center justify-center items-center w-full h-full p-2 xs:p-4 sm:p-8 gap-8 rounded-2xl">
-                  <div className="flex flex-col w-full h-full max-w-4xl text-center gap-8">
+                <div className="flex flex-col text-center justify-center items-center w-full h-full rounded-2xl">
+                  <div className="flex flex-col w-full h-full max-w-8xl text-center gap-8">
                     <div className="flex flex-col gap-8">
                       <div className="flex flex-col w-full justify-center items-center overflow-auto text-sm md:text-md lg:text-lg gap-y-4">
                         <div className="flex flex-col w-full">
@@ -186,31 +186,41 @@ export default function Review({
                           </div>
                           <Separator />
                         </div>
-                        <div className="grid grid-rows-4 grid-cols-1 xs:grid-rows-2 xs:grid-cols-2 lg:grid-cols-4 lg:grid-rows-1 justify-between w-full gap-2 py-4">
-                          <div className="flex justify-center lg:justify-center items-center gap-3 w-full">
-                            <BedDouble className="w-6 h-6" />
-                            <div className="flex gap-3 w-full lg:w-auto">
-                              <strong>{bedrooms_text}</strong>
+                        <div className="grid grid-rows-4 grid-cols-1 xs:grid-rows-2 xs:grid-cols-2 lg:grid-cols-4 lg:grid-rows-1 justify-between w-full gap-3 py-4">
+                          <div className="flex xs:justify-start xs:items-start lg:justify-center lg:items-center">
+                            <div className="flex justify-between lg:justify-center items-center gap-3 text-center lg:w-full w-[180px]">
+                              <div className="flex gap-3 items-center">
+                                <BedDouble className="w-6 h-6" />
+                                <strong>{bedrooms_text}</strong>
+                              </div>
                               <span>{formatNumber(bedrooms, numerals)}</span>
                             </div>
                           </div>
-                          <div className="flex flex-row justify-center gap-3 text-center">
-                            <Bath className="w-6 h-6" />
-                            <div className="flex gap-3 w-full lg:w-auto">
-                              <strong className="justify-start">{bathrooms_text}</strong>
+                          <div className="flex xs:justify-end xs:items-end lg:justify-center lg:items-center">
+                            <div className="flex flex-row justify-between lg:justify-center items-center gap-3 text-center lg:w-full w-[180px]">
+                              <div className="flex gap-3 items-center">
+                                <Bath className="w-6 h-6" />
+                                <strong className="justify-start">{bathrooms_text}</strong>
+                              </div>
                               <span>{formatNumber(bathrooms, numerals)}</span>
                             </div>
                           </div>
-                          <div className="flex flex-row justify-center gap-3 text-center">
-                            <Sofa className="w-6 h-6" />
-                            <div className="flex gap-3 w-full lg:w-auto">
-                              <strong>{livingRooms_text}</strong> <span>{formatNumber(livingRooms, numerals)}</span>
+                          <div className="flex xs:justify-start xs:items-start lg:justify-center lg:items-center">
+                            <div className="flex flex-row justify-between lg:justify-center items-center gap-3 text-center lg:w-full w-[180px]">
+                              <div className="flex gap-3 items-center">
+                                <Sofa className="w-6 h-6" />
+                                <strong>{livingRooms_text}</strong>
+                              </div>
+                              <span>{formatNumber(livingRooms, numerals)}</span>
                             </div>
                           </div>
-                          <div className="flex flex-row justify-center gap-3 text-center">
-                            <CookingPot className="w-6 h-6" />
-                            <div className="flex gap-3 w-full lg:w-auto">
-                              <strong>{kitchens_text}</strong> <span>{formatNumber(kitchens, numerals)}</span>
+                          <div className="flex xs:justify-end xs:items-end lg:justify-center lg:items-center">
+                            <div className="flex flex-row justify-between lg:justify-center items-center gap-3 text-center lg:w-full w-[180px]">
+                              <div className="flex gap-3 items-center">
+                                <CookingPot className="w-6 h-6" />
+                                <strong>{kitchens_text}</strong>
+                              </div>
+                              <span>{formatNumber(kitchens, numerals)}</span>
                             </div>
                           </div>
                         </div>

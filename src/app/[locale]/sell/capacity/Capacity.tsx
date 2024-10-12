@@ -105,7 +105,7 @@ export default function Capacity({
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
+      <div className="flex flex-col w-full h-full justify-start items-center text-center">
         <div className="flex flex-col w-full justify-center items-center h-full">
           <div className="flex flex-col pb-4">
             <div className="flex items-center justify-center py-3">
@@ -115,24 +115,22 @@ export default function Capacity({
               <h3 className="text-lg w-full">{subtitle}</h3>
             </div>
           </div>
-          <div className="flex flex-col h-full items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl overflow-auto">
+          <div className="flex flex-col h-full items-center w-[80vw] text-lg md:text-xl xl:text-2xl overflow-auto">
             <div className="flex w-full justify-center">{size}</div>
-            <div className="flex flex-col w-full h-full gap-3">
-              <div className="flex flex-col md:flex-row h-1/2 pt-10 w-full justify-between items-center">
-                <div className="flex w-full h-full justify-center items-center">
-                  <div className="flex w-full h-full justify-start items-center gap-4">
-                    <NumberInput
-                      component={Input}
-                      value={sqLabel}
-                      locales={numerals}
-                      onNumberFormat={(e: any) => handleSqSizeChange(e.detail)}
-                      placeholder={metresOn ? mPlaceholder : ftPlaceholder}
-                    />
-                    <div className="flex justify-start items-start">{metresOn ? m : ft}</div>
-                  </div>
+            <div className="flex flex-col w-full h-full justify-start items-center gap-3">
+              <div className="flex flex-col pt-8 w-full justify-between items-center">
+                <div className="flex w-full h-full justify-center items-center px-2">
+                  <NumberInput
+                    className="w-[400px]"
+                    component={Input}
+                    value={sqLabel}
+                    locales={numerals}
+                    onNumberFormat={(e: any) => handleSqSizeChange(e.detail)}
+                    placeholder={metresOn ? mPlaceholder : ftPlaceholder}
+                  />
                 </div>
               </div>
-              <div className="flex justify-start w-full">
+              <div className="flex justify-center items-center">
                 <Button
                   className="flex items-center gap-3"
                   variant={"outline"}
@@ -152,17 +150,15 @@ export default function Capacity({
               </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-3 items-center">
-                <div className="flex">
-                  <LandPlot size={20} strokeWidth={1} />
-                </div>
-                <div className="flex flex-col">
-                  {sqLabel} {metresOn ? m : ft}
-                </div>
+            <div className="flex justify-center gap-3 items-center">
+              <div className="flex items-center">
+                <LandPlot size={20} strokeWidth={1} />
+              </div>
+              <div className="flex flex-col">
+                {sqLabel} {metresOn ? m : ft}
               </div>
             </div>
-            <div className="flex flex-col h-full w-full justify-center items-center gap-4 md:gap-8">
+            <div className="flex flex-col h-full w-full justify-center text-sm md:text-md lg:text-lg xl:text-xl items-center gap-4 md:gap-8">
               <h3 className="flex ">{capacity}</h3>
               <div className="flex justify-center items-center gap-4 md:gap-8">
                 <CounterComponent state={humanCapacity} setState={setHumanCapacity} numerals={numerals} />
