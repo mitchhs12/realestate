@@ -38,8 +38,6 @@ interface Props {
   searchPlaceholder: string;
   searchPlaceholderShort: string;
   searchText: string;
-  construction: string;
-  construction_sub: string;
   sellButtonBig: string;
   sellButtonSmall: string;
   exit: string;
@@ -54,8 +52,6 @@ export default function Header({
   searchPlaceholder,
   searchPlaceholderShort,
   searchText,
-  construction,
-  construction_sub,
   sellButtonBig,
   sellButtonSmall,
   exit,
@@ -67,7 +63,7 @@ export default function Header({
   const { currentHome, openLogInModal, openSignUpModal } = useContext(QueryContext);
   const { defaultLanguage, user } = useContext(LocaleContext);
   const isSearchPage = pathname.includes("/search");
-  const isRootPage = pathname === "/";
+  const isRootPage = pathname === "/" || pathname === `/${defaultLanguage}`;
   const isHomesPage = pathname.includes("/homes");
   const isSellPage = pathname.includes("/sell");
   const isArticlesPage = pathname.includes("/articles");

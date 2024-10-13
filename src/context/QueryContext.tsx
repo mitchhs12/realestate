@@ -7,6 +7,7 @@ import { UpdateSession, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { User } from "next-auth";
 import { types, features } from "@/lib/sellFlowData";
+import { LocaleContext } from "./LocaleContext";
 
 interface QueryContextProps {
   query: string;
@@ -158,6 +159,7 @@ interface SelectedRooms {
 }
 
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerValues }) => {
+  const { defaultLanguage } = useContext(LocaleContext);
   const [query, setQuery] = useState("");
   const [mapFocused, setMapFocused] = useState(true);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
@@ -256,7 +258,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
   };
 
   useEffect(() => {
-    if (pathname === "/") {
+    if (pathname === "/" || pathname === `/${defaultLanguage}`) {
       setQuery("");
     }
   }, [pathname]);
