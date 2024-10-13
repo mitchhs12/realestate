@@ -225,7 +225,7 @@ export default function FiltersDialog() {
                   })
                 }
                 onClick={() => {
-                  if (pathname !== "/") {
+                  if (pathname !== "/" && pathname !== `/${defaultLanguage}`) {
                     setIsFiltering(true);
                   } else {
                     setNewFilters(

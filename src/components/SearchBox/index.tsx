@@ -167,7 +167,7 @@ export default function SearchBox({
         }}
       >
         <div className="flex w-full items-center">
-          {pathname !== "/sell/location" && !rawBox && (
+          {pathname !== "/sell/location" && pathname !== `${defaultLanguage}/sell/location` && !rawBox && (
             <div className="flex justify-start items-center">
               <div className="hidden md:flex">
                 <Filters />
@@ -187,7 +187,7 @@ export default function SearchBox({
                     ref={inputRef}
                     type="search"
                     placeholder={pathname !== "/" && pathname !== `/${defaultLanguage}` ? placeholderShort : ""}
-                    className={`${pathname === "/sell/location" ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11 overflow-hidden whitespace-nowrap text-ellipsis`} // Add padding-left to create space for the icon
+                    className={`${pathname === "/sell/location" || pathname === `${defaultLanguage}/sell/location` ? "rounded-full lg:rounded-l-full lg:rounded-r-none" : rawBox ? "rounded-md" : "rounded-none"} bg-popover pl-11 overflow-hidden whitespace-nowrap text-ellipsis`} // Add padding-left to create space for the icon
                     value={query}
                     onFocus={getGeolocation}
                     onMouseDown={() => results.length > 0 && query && setPopoverOpen(true)}
@@ -269,14 +269,14 @@ export default function SearchBox({
                   ref={popoverRef}
                   sideOffset={1}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className={`${pathname.startsWith("/search") ? (rawBox ? "flex" : "hidden sm:flex") : "flex"} flex-col PopoverContent rounded-b-3xl ${pathname === "/sell/location" && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
+                  className={`${pathname.startsWith("/search") || pathname.startsWith(`/${defaultLanguage}/search`) ? (rawBox ? "flex" : "hidden sm:flex") : "flex"} flex-col PopoverContent rounded-b-3xl ${(pathname === "/sell/location" || pathname === `/${defaultLanguage}/sell/location`) && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
                 >
                   {results.length === 0 && "No results found."}
                   {results.length > 0 &&
                     results.map((entry: any, index) => (
                       <div
                         key={index}
-                        className={`${index === 0 ? (results.length === 1 ? (pathname === "/sell/location" ? "rounded-l-2xl" : "rounded-b-2xl") : pathname === "/sell/location" ? "rounded-tl-2xl" : "rounded-b-2xl") : index === results.length - 1 && (pathname === "/sell/location" ? "rounded-bl-2xl" : "rounded-b-2xl")} py-1 md:py-2 cursor-pointer hover:bg-muted`}
+                        className={`${index === 0 ? (results.length === 1 ? (pathname === "/sell/location" || pathname === `${defaultLanguage}/sell/location` ? "rounded-l-2xl" : "rounded-b-2xl") : pathname === "/sell/location" || pathname === `/${defaultLanguage}/sell/location` ? "rounded-tl-2xl" : "rounded-b-2xl") : index === results.length - 1 && (pathname === "/sell/location" || pathname === `/${defaultLanguage}/sell/location` ? "rounded-bl-2xl" : "rounded-b-2xl")} py-1 md:py-2 cursor-pointer hover:bg-muted`}
                         onClick={() => {
                           handleSearch(entry.Text, entry.PlaceId);
                         }}

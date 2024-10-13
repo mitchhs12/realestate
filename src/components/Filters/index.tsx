@@ -230,7 +230,7 @@ export default function Filters() {
               })
             }
             onClick={() => {
-              if (pathname !== "/") {
+              if (pathname !== "/" && pathname !== `/${defaultLanguage}`) {
                 setIsFiltering(true);
               } else {
                 setNewFilters(

@@ -212,7 +212,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                 })
               }
               onClick={() => {
-                if (pathname !== "/") {
+                if (pathname !== "/" && pathname !== `/${defaultLanguage}`) {
                   setIsFiltering(true);
                 } else {
                   setNewFilters(
