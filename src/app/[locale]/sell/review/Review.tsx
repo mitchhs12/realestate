@@ -15,6 +15,8 @@ import { typeIcons } from "@/components/Icons/typeIcons";
 import { featureIcons } from "@/components/Icons/featureIcons";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import ReactQuill from "react-quill";
+import "@/app/[locale]/quill.css"; // Import Quill styles for displaying content
 
 interface Props {
   currentHome: HomeType | null;
@@ -143,10 +145,15 @@ export default function Review({
           </div>
         </div>
         <div className="flex flex-col w-full h-full md:flex-row justify-center py-8 px-6 gap-8 lg:p-4">
-          <Card className="w-full h-auto flex flex-col p-2 xs:p-4 sm:p-8 gap-4">
-            <CardHeader className="gap-8">
+          <Card className="w-full h-auto flex flex-col p-2 px-0 xs:p-4 sm:p-6">
+            <CardHeader className="gap-4 md:gap-8">
               <CardTitle className="text-md md:text-2xl font-bold">{title}</CardTitle>
-              <CardDescription>{description}</CardDescription>
+              <ReactQuill
+                theme={"snow"}
+                readOnly={true}
+                value={description}
+                modules={{ toolbar: false }} // Disable the toolbar
+              />
             </CardHeader>
             <CardContent className="flex justify-center gap-4">
               <div className="flex flex-col justify-center text-left gap-y-8 h-full w-full">

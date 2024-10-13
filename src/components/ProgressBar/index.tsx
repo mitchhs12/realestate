@@ -20,8 +20,9 @@ interface Props {
 
 export default function ProgressBar({ cont, start, back, next, finish, loading }: Props) {
   const router = useRouter();
-  const pathname = usePathname();
+  const localePathname = usePathname();
   const currentLocale = useCurrentLocale();
+  const pathname = localePathname.replace(`/${currentLocale}`, "");
   const {
     nextStep,
     prevStep,
@@ -68,7 +69,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
 
     const _shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
     // console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
-
     if (_shouldIncreaseListingFlowStep) {
       if (pathname.startsWith("/sell/step")) {
         // console.log("button should be active because we are on a intro step page");
@@ -77,7 +77,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
         // console.log("button should be active because new home is different from current home");
         return false;
       } else if (pathname.startsWith("/sell/review")) {
-        // console.log("button should be active because we are on the final page");
+        console.log("button should be active because we are on the final page");
         return false;
       } else if (currentHome?.listingType === "premium") {
         return false;

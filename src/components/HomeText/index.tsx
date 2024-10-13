@@ -41,6 +41,8 @@ import { typeIcons } from "../Icons/typeIcons";
 import { useTheme } from "next-themes";
 import { featureIcons } from "../Icons/featureIcons";
 import BuyNowButton from "@/components/BuyNowButton";
+import ReactQuill from "react-quill";
+import "@/app/[locale]/quill.css"; // Import Quill styles
 import { kv } from "@vercel/kv";
 
 interface Props {
@@ -204,7 +206,12 @@ export default function HomeText({
                 {translationLoading || descriptionLoading ? (
                   <Skeleton className="h-[9vh] sm:h-[9vh] md:h-[9vh] lg:h-[16vh] w-full" />
                 ) : (
-                  description
+                  <ReactQuill
+                    theme={"snow"}
+                    readOnly={true}
+                    value={description!}
+                    modules={{ toolbar: false }} // Disable the toolbar
+                  />
                 )}
               </div>
               <div className={`${defaultLanguage === "en" ? "hidden" : "flex"} w-full h-full justify-start`}>
