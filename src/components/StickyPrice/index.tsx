@@ -57,6 +57,8 @@ export default function StickyPrice({
             <span className="font-sm">{priceTitle}</span>
             <span className="text-xl font-semibold text-primary">
               <BrokenPrice
+                originalPrice={home.price}
+                originalCurrencySymbol={home.currency!}
                 priceUsd={home.priceUsd}
                 currency={defaultCurrency}
                 reveal={user ? true : false}
@@ -72,6 +74,8 @@ export default function StickyPrice({
             <span className="flex justify-end gap-2 text-lg font-semibold text-primary">
               {originalCurrencyRate && home.currency ? (
                 <BrokenPrice
+                  originalPrice={home.price}
+                  originalCurrencySymbol={home.currency}
                   priceUsd={home.priceUsd}
                   currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
                   reveal={user ? true : false}
