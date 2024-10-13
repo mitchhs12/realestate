@@ -183,6 +183,7 @@ export async function getAllHomes(): Promise<HomesGeoJson> {
       features: home.features, // Include features from home object
       price: home.price, // Include price from home object
       priceUsd: home.priceUsd,
+      currency: home.currency,
       bedrooms: home.bedrooms, // Include bedrooms from home object
       bathrooms: home.bathrooms, // Include bathrooms from home object
       livingrooms: home.livingrooms, // Include livingrooms from home object
