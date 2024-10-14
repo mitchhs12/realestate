@@ -2,7 +2,7 @@
 
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   CheckCircledIcon,
@@ -11,8 +11,8 @@ import {
   EyeClosedIcon,
   CopyIcon,
   CheckIcon,
-  ReloadIcon,
 } from "@radix-ui/react-icons";
+
 import { Button } from "@/components/ui/button";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
@@ -133,6 +133,21 @@ export default function HomeText({
   const [currentType, setCurrentType] = useState(matchingTypes[0]);
   const [index, setIndex] = useState(0);
 
+  const quillRef = useRef<ReactQuill | null>(null);
+  const [quillDimensions, setQuillDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    // If the Quill editor is loaded, capture its width and height
+    if (quillRef.current && !translationLoading && !descriptionLoading) {
+      const quillInstance = quillRef.current.getEditor(); // Get the Quill instance
+      const quillElement = quillInstance.root; // Access the root element
+      setQuillDimensions({
+        width: quillElement.offsetWidth,
+        height: quillElement.offsetHeight,
+      });
+    }
+  }, [translationLoading, descriptionLoading]);
+
   const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
@@ -202,18 +217,6 @@ export default function HomeText({
           <Separator />
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-3">
-              <div className="text-base">
-                {translationLoading || descriptionLoading ? (
-                  <Skeleton className="h-[9vh] sm:h-[9vh] md:h-[9vh] lg:h-[16vh] w-full" />
-                ) : (
-                  <ReactQuill
-                    theme={"snow"}
-                    readOnly={true}
-                    value={description!}
-                    modules={{ toolbar: false }} // Disable the toolbar
-                  />
-                )}
-              </div>
               <div className={`${defaultLanguage === home.language ? "hidden" : "flex"} w-full h-full justify-start`}>
                 <Button
                   disabled={descriptionLoading || translationLoading}
@@ -224,6 +227,22 @@ export default function HomeText({
                   <Languages width={18} />
                   {originalDescription ? translateButton : showOriginalButton}
                 </Button>
+              </div>
+              <div className="text-base">
+                {translationLoading || descriptionLoading ? (
+                  <Skeleton
+                    className="w-full"
+                    style={{ width: `${quillDimensions.width}px`, height: `${quillDimensions.height}px` }}
+                  />
+                ) : (
+                  <ReactQuill
+                    ref={quillRef}
+                    theme={"snow"}
+                    readOnly={true}
+                    value={description!}
+                    modules={{ toolbar: false }} // Disable the toolbar
+                  />
+                )}
               </div>
             </div>
 
