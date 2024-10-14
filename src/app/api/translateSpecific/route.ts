@@ -29,10 +29,12 @@ const translationClient = new TranslationServiceClient({ authClient: authClient 
 
 export async function POST(req: NextRequest) {
   try {
-    const { text, target } = await req.json();
+    const { text, source, target } = await req.json();
 
     if (!text) {
-      return NextResponse.json({ error: "Title is required" }, { status: 400 });
+      return NextResponse.json({ error: "Text is required" }, { status: 400 });
+    } else if (!source) {
+      return NextResponse.json({ error: "Source language is required" }, { status: 400 });
     } else if (!target) {
       return NextResponse.json({ error: "Target language is required" }, { status: 400 });
     }
@@ -40,10 +42,12 @@ export async function POST(req: NextRequest) {
     const request = {
       parent: `projects/${GCP_PROJECT_ID}/locations/global`,
       contents: [text],
-      mimeType: "text/plain",
-      sourceLanguageCode: "en",
+      mimeType: "text/html",
+      sourceLanguageCode: source,
       targetLanguageCode: target,
     };
+
+    console.log("request", request);
 
     const [response] = await translationClient.translateText(request);
 

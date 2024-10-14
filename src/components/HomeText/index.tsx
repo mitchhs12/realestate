@@ -214,7 +214,7 @@ export default function HomeText({
                   />
                 )}
               </div>
-              <div className={`${defaultLanguage === "en" ? "hidden" : "flex"} w-full h-full justify-start`}>
+              <div className={`${defaultLanguage === home.language ? "hidden" : "flex"} w-full h-full justify-start`}>
                 <Button
                   disabled={descriptionLoading || translationLoading}
                   className="gap-2"

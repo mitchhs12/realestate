@@ -53,6 +53,8 @@ export async function POST(req: NextRequest) {
       targetLanguageCode: target,
     };
 
+    console.log("request", request);
+
     const [response] = await translationClient.translateText(request);
 
     if (!response.translations) {
