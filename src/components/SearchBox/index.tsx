@@ -202,63 +202,62 @@ export default function SearchBox({
                       }
                     }}
                   />
-                  {(!query && pathname === "/") ||
-                    (!query && pathname === `/${defaultLanguage}` && (
-                      <span className="type absolute left-[2.80rem] top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none truncate overflow-hidden whitespace-nowrap text-ellipsis w-full max-w-[calc(100%-4.75rem)]">
-                        <TypeAnimation
-                          preRenderFirstString={true}
-                          cursor={false}
-                          sequence={[
-                            `${placeholderShort}`,
-                            2500,
-                            "São Paulo, Brazil",
-                            2500,
-                            "Mexico City, Mexico",
-                            2500,
-                            "Buenos Aires, Argentina",
-                            2500,
-                            "Lima, Peru",
-                            2500,
-                            "Bogotá, Colombia",
-                            2500,
-                            "Santiago, Chile",
-                            2500,
-                            "Rio de Janeiro, Brazil",
-                            2500,
-                            "Caracas, Venezuela",
-                            2500,
-                            "Guadalajara, Mexico",
-                            2500,
-                            "Quito, Ecuador",
-                            2500,
-                            "Medellín, Colombia",
-                            2500,
-                            "La Paz, Bolivia",
-                            2500,
-                            "Panama City, Panama",
-                            2500,
-                            "Havana, Cuba",
-                            2500,
-                            "Asunción, Paraguay",
-                            2500,
-                            "San Salvador, El Salvador",
-                            2500,
-                            "Montevideo, Uruguay",
-                            2500,
-                            "San José, Costa Rica",
-                            2500,
-                            "Santo Domingo, Dominican Republic",
-                            2500,
-                            "Port-au-Prince, Haiti",
-                            2500,
-                          ]}
-                          repeat={Infinity}
-                          wrapper="span"
-                          speed={50}
-                          deletionSpeed={75}
-                        />
-                      </span>
-                    ))}
+                  {!query && (pathname === "/" || pathname === `/${defaultLanguage}`) && (
+                    <span className="type absolute left-[2.80rem] top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none truncate overflow-hidden whitespace-nowrap text-ellipsis w-full max-w-[calc(100%-4.75rem)]">
+                      <TypeAnimation
+                        preRenderFirstString={true}
+                        cursor={false}
+                        sequence={[
+                          `${placeholderShort}`,
+                          2500,
+                          "São Paulo, Brazil",
+                          2500,
+                          "Mexico City, Mexico",
+                          2500,
+                          "Buenos Aires, Argentina",
+                          2500,
+                          "Lima, Peru",
+                          2500,
+                          "Bogotá, Colombia",
+                          2500,
+                          "Santiago, Chile",
+                          2500,
+                          "Rio de Janeiro, Brazil",
+                          2500,
+                          "Caracas, Venezuela",
+                          2500,
+                          "Guadalajara, Mexico",
+                          2500,
+                          "Quito, Ecuador",
+                          2500,
+                          "Medellín, Colombia",
+                          2500,
+                          "La Paz, Bolivia",
+                          2500,
+                          "Panama City, Panama",
+                          2500,
+                          "Havana, Cuba",
+                          2500,
+                          "Asunción, Paraguay",
+                          2500,
+                          "San Salvador, El Salvador",
+                          2500,
+                          "Montevideo, Uruguay",
+                          2500,
+                          "San José, Costa Rica",
+                          2500,
+                          "Santo Domingo, Dominican Republic",
+                          2500,
+                          "Port-au-Prince, Haiti",
+                          2500,
+                        ]}
+                        repeat={Infinity}
+                        wrapper="span"
+                        speed={50}
+                        deletionSpeed={75}
+                      />
+                    </span>
+                  )}
                 </div>
               </div>
             </PopoverTrigger>
