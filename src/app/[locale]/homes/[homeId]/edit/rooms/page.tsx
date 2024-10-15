@@ -5,7 +5,7 @@ import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 import { getScopedI18n } from "@/locales/server";
-import { getUnfinishedHome } from "../actions";
+import { getUnfinishedHome } from "@/app/[locale]/sell/actions";
 import { headers } from "next/headers";
 import { getPath } from "@/lib/utils";
 import { setStaticParamsLocale } from "next-international/server";

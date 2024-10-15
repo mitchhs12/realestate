@@ -6,7 +6,7 @@ import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 import { getScopedI18n, getCurrentLocale } from "@/locales/server";
 import { getPhoneLocale } from "@/lib/utils";
-import { getUnfinishedHome } from "../actions";
+import { getUnfinishedHome } from "@/app/[locale]/sell/actions";
 import { getPath } from "@/lib/utils";
 import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";

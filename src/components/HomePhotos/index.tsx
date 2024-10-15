@@ -8,8 +8,8 @@ import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTr
 import { HomeContext } from "@/context/HomeContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { FavoriteComponent } from "../FavoriteComponent";
-import Title from "@/app/[locale]/homes/[homeId]/edit/title/Title";
-import Photos from "@/app/[locale]/homes/[homeId]/edit/photos/Photos";
+import Title from "@/app/[locale]/homes/[homeId]/edit/title";
+import Photos from "@/app/[locale]/homes/[homeId]/edit/photos";
 import { I18nProviderClient } from "@/locales/client";
 
 interface Props {

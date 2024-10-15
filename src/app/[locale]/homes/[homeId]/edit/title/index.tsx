@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { HomeType } from "@/lib/validations";
 import { useContext } from "react";
 import { HomeContext } from "@/context/HomeContext";
 import { useScopedI18n } from "@/locales/client";
