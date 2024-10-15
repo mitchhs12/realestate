@@ -34,6 +34,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { HomeType } from "@/lib/validations";
+import { usePathname } from "next/navigation";
 
 interface Props {
   currentHome: HomeType | null;
@@ -145,6 +146,7 @@ export default function Photos({
   const [activeId, setActiveId] = useState<string | null>(null);
   const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -190,8 +192,16 @@ export default function Photos({
     if (currentHome) {
       const photoUrls = await getPhotoUrls(currentHome.id);
       if (photoUrls) {
-        setUploadedImageUrls(photoUrls);
+        const updatedPhotos = new Set(currentHome.photos);
+        // Add any photoUrls that are not already in editedHome.photos
+        photoUrls.forEach((url) => {
+          if (!updatedPhotos.has(url)) {
+            updatedPhotos.add(url);
+          }
+        });
+        setUploadedImageUrls(Array.from(updatedPhotos));
       } else {
+        console.log("Unknown URLS:", photoUrls);
         setUploadedImageUrls([]);
       }
     }

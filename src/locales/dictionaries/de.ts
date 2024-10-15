@@ -520,6 +520,7 @@ export default {
       "mobile": "Preis anzeigen!"
     },
     "edit": "Eigenschaftendetails bearbeiten",
+    "save": "Speichern",
     "contact": {
       "contact-title": "Eigentümerinformationen",
       "contact-title-mobile": "Eigentümerinformationen",

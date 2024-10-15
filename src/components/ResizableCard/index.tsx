@@ -49,11 +49,9 @@ export default function ResizableCard({
   const { user, sessionLoading } = useContext(LocaleContext);
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
-  const isMyProperties = path === "/my-properties";
+  const isMyProperties = path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const { resolvedTheme: theme } = useTheme();
-  const originalPrice = home?.price;
-  const originalCurrency = home?.currency;
 
   useEffect(() => {
     if (home && home.language) {
@@ -93,23 +91,31 @@ export default function ResizableCard({
       {home.listingType === "premium" && (
         // comment style={{ paddingTop: "12px" }} above and add style={{ marginTop:'-12' }} below
         <div className="absolute" style={{ top: "0", left: "-12px", zIndex: 30, marginTop: "-12px" }}>
-          <svg height="84" width="84">
-            <g transform="rotate(-90, 42, 42)">
-              <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />
-              <polygon
-                points="0 0, 84 84, 84 48, 36 0"
-                fill={theme === "dark" ? "rgb(251 191 36)" : "rgb(252 211 77)"}
-              />
-              <polygon points="72 72, 72 84, 84 84" fill={`${"rgb(180 83 9)"}`} />
-            </g>
-          </svg>
-          <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
+          <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
+            <svg height="84" width="84">
+              <g transform="rotate(-90, 42, 42)">
+                <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />
+                <polygon
+                  points="0 0, 84 84, 84 48, 36 0"
+                  fill={theme === "dark" ? "rgb(251 191 36)" : "rgb(252 211 77)"}
+                />
+                <polygon points="72 72, 72 84, 84 84" fill={`${"rgb(180 83 9)"}`} />
+              </g>
+            </svg>
+            <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
+          </Link>
         </div>
       )}
       <div
         className={`flex flex-col w-full h-full rounded-xl shadow-lg overflow-hidden ${home.listingType === "premium" && "border-[3px] border-amber-500"} ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
       >
-        <ResizableCarousel photos={home.photos} title={home.title!} hovering={titleUnderlined} home={home} />
+        <ResizableCarousel
+          photos={home.photos}
+          title={home.title!}
+          hovering={titleUnderlined}
+          home={home}
+          link={true}
+        />
         <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
           <div
             className={`flex flex-col bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative`}

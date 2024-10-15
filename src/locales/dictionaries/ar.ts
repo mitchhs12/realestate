@@ -520,6 +520,7 @@ export default {
       "mobile": "كشف السعر!"
     },
     "edit": "تعديل تفاصيل الملكية",
+    "save": "يحفظ",
     "contact": {
       "contact-title": "معلومات المالك",
       "contact-title-mobile": "معلومات المالك",

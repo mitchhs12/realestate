@@ -520,6 +520,7 @@ export default {
       "mobile": "価格を公開！"
     },
     "edit": "物件詳細の編集",
+    "save": "保存",
     "contact": {
       "contact-title": "オーナー情報",
       "contact-title-mobile": "オーナー情報",

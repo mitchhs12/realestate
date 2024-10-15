@@ -56,7 +56,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
 
     return (
       <div className="flex flex-col items-center h-full">
-        <div className="h-full min-h-screen-minus-header-svh">
+        <div className="flex flex-col h-full min-h-screen-minus-header-svh w-full justify-center items-center">
           <div className="relative h-[20vh] flex w-full">
             <Image
               src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner5.webp`}

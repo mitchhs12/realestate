@@ -520,6 +520,7 @@ export default {
       "mobile": "Otkrijte cijenu!"
     },
     "edit": "Uredite pojedinosti nekretnine",
+    "save": "Uštedjeti",
     "contact": {
       "contact-title": "Informacije o vlasniku",
       "contact-title-mobile": "Informacije o vlasniku",

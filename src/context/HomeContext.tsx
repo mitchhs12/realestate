@@ -6,6 +6,8 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 import lookup from "country-code-lookup";
 import { getCountryNameForLocale } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
+import { saveHome } from "@/app/[locale]/homes/actions";
 
 interface HomeContextProps {
   home: HomeType;
@@ -28,6 +30,12 @@ interface HomeContextProps {
   originalDescription: boolean;
   originalTitle: boolean;
   countryName: string | null | undefined;
+  editMode: boolean;
+  setEditMode: (value: boolean) => void;
+  handleSaveEdits: () => void;
+  editedHome: HomeType;
+  setEditedHome: (value: HomeType) => void;
+  saveLoading: boolean;
 }
 
 const HomeContext = createContext<HomeContextProps>({
@@ -85,6 +93,46 @@ const HomeContext = createContext<HomeContextProps>({
   originalDescription: true,
   originalTitle: true,
   countryName: "",
+  editMode: false,
+  setEditMode: () => {},
+  handleSaveEdits: () => {},
+  editedHome: {
+    id: 0,
+    ownerId: "",
+    title: "",
+    description: "",
+    address: "",
+    municipality: "",
+    subRegion: "",
+    region: "",
+    country: "",
+    latitude: 0,
+    longitude: 0,
+    type: [],
+    features: [],
+    bedrooms: 0,
+    bathrooms: 0,
+    livingrooms: 0,
+    kitchens: 0,
+    capacity: 0,
+    photos: [],
+    price: 0,
+    currency: "",
+    language: "",
+    priceUsd: 0,
+    priceNegotiable: false,
+    contactName: "",
+    contactEmail: "",
+    contactPhone: "",
+    listingType: "",
+    areaSqm: 0,
+    isActive: false,
+    isComplete: false,
+    listingFlowStep: 0,
+    completedAt: null,
+  },
+  setEditedHome: () => {},
+  saveLoading: false,
 });
 
 interface HomeProviderProps {
@@ -106,6 +154,10 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
   const [originalTitle, setOriginalTitle] = useState<boolean>(true);
   const [description, setDescription] = useState<string | null>(home.description);
   const [title, setTitle] = useState<string | null>(home.title);
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [saveLoading, setSaveLoading] = useState<boolean>(false);
+  const [editedHome, setEditedHome] = useState<HomeType>(home);
+  const pathname = usePathname();
 
   const iso = home && home.country && lookup.byIso(home.country);
   const countryName =
@@ -148,6 +200,12 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
   useEffect(() => {
     originalTitle ? setTitle(home.title) : setTitle(translatedTitle);
   }, [originalTitle]);
+
+  const handleSaveEdits = async () => {
+    setSaveLoading(true);
+    await saveHome(editedHome, pathname);
+    setSaveLoading(false);
+  };
 
   // Helper Function
   const handleTranslate = async (text: string, isTitle: boolean) => {
@@ -230,6 +288,12 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
         originalDescription,
         originalTitle,
         countryName,
+        editMode,
+        setEditMode,
+        handleSaveEdits,
+        editedHome,
+        setEditedHome,
+        saveLoading,
       }}
     >
       {children}

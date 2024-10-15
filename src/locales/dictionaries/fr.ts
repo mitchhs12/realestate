@@ -520,6 +520,7 @@ export default {
       "mobile": "Révéler le prix !"
     },
     "edit": "Modifier les détails de la propriété",
+    "save": "Sauvegarder",
     "contact": {
       "contact-title": "Informations sur le propriétaire",
       "contact-title-mobile": "Informations sur le propriétaire",

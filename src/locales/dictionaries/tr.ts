@@ -520,6 +520,7 @@ export default {
       "mobile": "Fiyatı Açıkla!"
     },
     "edit": "Özellik Ayrıntılarını Düzenle",
+    "save": "Kaydetmek",
     "contact": {
       "contact-title": "Sahip Bilgileri",
       "contact-title-mobile": "Sahip Bilgileri",

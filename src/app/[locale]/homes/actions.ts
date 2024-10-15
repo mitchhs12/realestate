@@ -3,6 +3,8 @@
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { HomeType } from "@/lib/validations";
+import { homeSchema } from "@/lib/validations";
+import { revalidatePath } from "next/cache";
 
 export async function getHomeById(homeId: string): Promise<HomeType | null> {
   const home = await prisma.home.findFirst({
@@ -47,5 +49,24 @@ export async function sendBuyMessage(homeId: number) {
     }
   } catch (err: any) {
     return { success: false, message: err.message };
+  }
+}
+
+export async function saveHome(newHome: HomeType, url: string) {
+  const session = await auth();
+  const user = session?.user;
+  const { id, ...homeData } = homeSchema.parse(newHome);
+
+  if (newHome.ownerId === user?.id) {
+    const home = await prisma.home.update({
+      where: {
+        id: newHome.id,
+      },
+      data: homeData,
+    });
+    revalidatePath(url); // Revalidate the path if necessary
+    return home;
+  } else {
+    throw new Error("Unauthorized");
   }
 }

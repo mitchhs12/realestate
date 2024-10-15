@@ -66,7 +66,6 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children }) => {
   const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
   const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
   const [newHome, setNewHome] = useState<HomeType | null>(null);
-  // const [isLoading, setIsLoading] = useState(false);
   const [nextLoading, setNextLoading] = useState(false);
   const [prevLoading, setPrevLoading] = useState(false);
   const [nextDisabled, setNextDisabled] = useState(false);

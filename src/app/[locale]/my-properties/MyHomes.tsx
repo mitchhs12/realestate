@@ -52,8 +52,9 @@ export default function MyHomes({
   const sortHomes = (homes: any) => {
     switch (sortOption) {
       case "date":
-        console.log("date");
-        return homes.sort((a: any, b: any) => b.createdAt - a.createdAt);
+        return homes.sort((a: any, b: any) => {
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        });
       case "favorited":
         console.log("favorited");
         return homes.sort((a: any, b: any) => (b.favoritedCount || 0) - (a.favoritedCount || 0));
@@ -74,37 +75,37 @@ export default function MyHomes({
     <div className="flex flex-col max-w-8xl h-full w-full pb-8">
       <div className="grid grid-cols-3 gap-3 w-full p-2 px-4 md:px-6">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-2 xs:p-6">
             <CardTitle className="text-sm font-medium">{cardText.properties}</CardTitle>
-            <House className="h-4 w-4 text-muted-foreground" />
+            <House className="hidden xs:flex h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{user.homes.length}</div>
+          <CardContent className="p-2 xs:p-6">
+            <div className="text-xl sm:text-2xl font-bold">{user.homes.length}</div>
             <p className="text-xs text-muted-foreground">{cardText.propertiesDescription}</p>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-2 xs:p-6">
             <CardTitle className="text-sm font-medium">{cardText.favorites}</CardTitle>
-            <Heart className="h-4 w-4 text-muted-foreground" />
+            <Heart className="hidden xs:flex h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalFavorites}</div>
+          <CardContent className="p-2 xs:p-6">
+            <div className="text-xl sm:text-2xl font-bold">{totalFavorites}</div>
             <p className="text-xs text-muted-foreground">{cardText.favoritesDescription}</p>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-2 xs:p-6">
             <CardTitle className="text-sm font-medium">{cardText.views}</CardTitle>
-            <Eye className="h-4 w-4 text-muted-foreground" />
+            <Eye className="hidden xs:flex h-4 w-4 text-muted-foreground" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Coming soon...</div>
+          <CardContent className="p-2 xs:p-6">
+            <div className="text-xl sm:text-2xl font-bold">Coming soon...</div>
             <p className="text-xs text-muted-foreground">{cardText.viewsDescription}</p>
           </CardContent>
         </Card>
       </div>
-      <div className="flex px-4 md:px-6 items-center justify-between w-full py-8">
+      <div className="flex gap-3 px-4 md:px-6 items-center justify-between w-full py-6">
         <ToggleAllVisbilityButton
           hideAllText={hideAllText}
           showAllText={showAllText}

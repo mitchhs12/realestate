@@ -520,6 +520,7 @@ export default {
       "mobile": "Onthul prys!"
     },
     "edit": "Wysig eiendomsbesonderhede",
+    "save": "Stoor",
     "contact": {
       "contact-title": "Eienaar inligting",
       "contact-title-mobile": "Eienaar inligting",

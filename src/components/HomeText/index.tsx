@@ -11,6 +11,7 @@ import {
   EyeClosedIcon,
   CopyIcon,
   CheckIcon,
+  ReloadIcon,
 } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,7 @@ import {
   Ruler,
   Footprints,
   LandPlot,
+  Save,
 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
@@ -123,6 +125,11 @@ export default function HomeText({
     handleDescriptionConvert,
     originalDescription,
     countryName,
+    editMode,
+    setEditMode,
+    handleSaveEdits,
+    editedHome,
+    setEditedHome,
   } = useContext(HomeContext);
 
   const { defaultCurrency, currencyData, numerals, defaultLanguage, sessionLoading, sessionUnauthenticated, user } =
@@ -132,6 +139,7 @@ export default function HomeText({
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [currentType, setCurrentType] = useState(matchingTypes[0]);
   const [index, setIndex] = useState(0);
+  const [editLoading, setEditLoading] = useState<boolean>(false);
 
   const quillRef = useRef<ReactQuill | null>(null);
   const [quillDimensions, setQuillDimensions] = useState({ width: 0, height: 0 });
@@ -336,12 +344,33 @@ export default function HomeText({
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 max-w-xs h-full items-end rounded-xl gap-10">
-          {user && user.id === home.ownerId && (
-            <Button className="flex justify-center w-full gap-3" size={"lg"}>
-              <Pencil size={18} />
-              {edit}
-            </Button>
-          )}
+          {user &&
+            user.id === home.ownerId &&
+            (editMode ? (
+              <Button
+                disabled={editLoading}
+                className="flex justify-center w-full gap-3"
+                size={"lg"}
+                onClick={() => {
+                  setEditMode(!editMode);
+                }}
+              >
+                <Save size={18} />
+                Save changes
+              </Button>
+            ) : (
+              <Button
+                disabled={editLoading}
+                className="flex justify-center w-full gap-3"
+                size={"lg"}
+                onClick={() => {
+                  setEditMode(true);
+                }}
+              >
+                <Pencil size={18} />
+                {edit}
+              </Button>
+            ))}
           <Card className="w-full max-w-xs shadow-lg">
             <CardHeader>
               <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>

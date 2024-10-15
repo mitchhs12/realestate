@@ -520,6 +520,7 @@ export default {
       "mobile": "Tiết lộ giá!"
     },
     "edit": "Chỉnh sửa chi tiết tài sản",
+    "save": "Cứu",
     "contact": {
       "contact-title": "Thông tin chủ sở hữu",
       "contact-title-mobile": "Thông tin chủ sở hữu",

@@ -25,7 +25,7 @@ export default function ToggleAllVisbilityButton({ hideAllText, showAllText, all
         changeAllHomeVisibilities(allCompletedHomesActive);
       }}
       disabled={isLoading}
-      className="gap-3"
+      className="text-xs sm:text-normal gap-3"
       variant={allCompletedHomesActive ? "destructive" : "default"}
     >
       {!isLoading ? (

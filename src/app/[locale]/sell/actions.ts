@@ -208,6 +208,7 @@ export async function updateHome(
 }
 
 export async function getPhotoUrls(homeId: number) {
+  // THIS ONLY UPLOADS AND RETURNS THE URLS (NOT THE ORDER)
   const params = {
     Bucket: "vivaidealfinalbucket",
     Prefix: `${homeId}/`,

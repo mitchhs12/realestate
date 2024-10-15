@@ -520,6 +520,7 @@ export default {
       "mobile": "เปิดเผยราคา!"
     },
     "edit": "แก้ไขรายละเอียดทรัพย์สิน",
+    "save": "บันทึก",
     "contact": {
       "contact-title": "ข้อมูลเจ้าของ",
       "contact-title-mobile": "ข้อมูลเจ้าของ",
