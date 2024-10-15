@@ -12,7 +12,20 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   const data = await getData(params.locale, params.slug);
 
   return {
-    title: data.localizedTitle || "Article", // Set the title dynamically
+    title: data.localizedTitle || "Article",
+    openGraph: {
+      title: data.localizedTitle || "Article", // Dynamic title
+      description: data.content ? data.content.value[0]?.children[0]?.text : "Read this article", // Use the first part of the content for description
+      url: `https://www.vivaideal.com/${params.locale}/articles/${params.slug}`, // Dynamic URL
+      images: [
+        {
+          url: urlFor(data.titleImage).url(), // Dynamically set the Open Graph image from the article data
+          width: 1200, // Ideal width for LinkedIn
+          height: 630, // Ideal height for LinkedIn
+          alt: data.localizedTitle || "Article Image", // Alternative text for the image
+        },
+      ],
+    },
   };
 }
 
