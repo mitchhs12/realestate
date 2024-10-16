@@ -70,7 +70,9 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     const _shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
     // console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
     if (_shouldIncreaseListingFlowStep) {
-      if (pathname.startsWith("/sell/step")) {
+      if (pathname.startsWith("/sell/rooms")) {
+        return false;
+      } else if (pathname.startsWith("/sell/step")) {
         // console.log("button should be active because we are on a intro step page");
         return false;
       } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
