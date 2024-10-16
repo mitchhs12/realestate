@@ -6,12 +6,12 @@ import { locationImageIds } from "@/lib/validations";
 import { Newspaper, HandCoins, Heart, Map, PiggyBank, BadgeCent } from "lucide-react";
 import { typesMap } from "@/lib/sellFlowData";
 
-async function fetchWithCache(url: string) {
-  const res = await fetch(url, {
-    next: { revalidate: 360 },
-  });
-  return res.json();
-}
+// async function fetchWithCache(url: string) {
+//   const res = await fetch(url, {
+//     next: { revalidate: 360 },
+//   });
+//   return res.json();
+// }
 
 export default async function HomePageContent() {
   const [t, type, p, premium] = await Promise.all([

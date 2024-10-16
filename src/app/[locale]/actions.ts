@@ -84,7 +84,7 @@ export async function getCheapest(): Promise<HomeType[]> {
       isActive: true,
     },
     orderBy: {
-      price: "asc",
+      priceUsd: "asc",
     },
     take: 6,
   });
