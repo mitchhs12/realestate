@@ -59,7 +59,7 @@ export default function MultiTypeButton({
         className={className ? `${className}` : "absolute bottom-2 left-2 disabled:opacity-100"}
       >
         <IconComponent
-          color={color ? color : premium ? "white" : theme === "dark" ? "white" : "black"}
+          color={color ? color : premium ? "#F59E0B" : theme === "dark" ? "white" : "black"}
           width={width ? width : 40}
           height={height ? height : 40}
         />

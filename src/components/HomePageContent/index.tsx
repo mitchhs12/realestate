@@ -107,13 +107,13 @@ export default async function HomePageContent() {
         </div>
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#f4f5fb] to-[#fbf4f8]  dark:from-[#020410] dark:to-[#10020b] justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-1 md:pt-4 pb-2 md:pb-4 justify-start h-full w-full max-w-8xl">
+        <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
           <h2 className="flex justify-center items-center gap-4 text-3xl font-light py-4 tracking-wider">
-            <Heart strokeWidth={1.8} />
-            {t("popular")}
+            <Newspaper strokeWidth={1.7} />
+            {t("newest")}
           </h2>
           <Listings
-            listingKey={"popular"}
+            listingKey={"newest"}
             typesObject={typesObject}
             loginToViewPrice={loginToViewPrice}
             premiumText={premium("title")}
@@ -135,13 +135,13 @@ export default async function HomePageContent() {
         </div>
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbfaf4] to-[#f4fbf6] dark:from-[#100e02] dark:to-[#021003] justify-center items-center w-full h-full">
-        <div className="flex flex-col pt-1 md:pt-4 pb-1 md:pb-4 justify-start h-full w-full max-w-8xl">
+        <div className="flex flex-col pt-1 md:pt-4 pb-2 md:pb-4 justify-start h-full w-full max-w-8xl">
           <h2 className="flex justify-center items-center gap-4 text-3xl font-light py-4 tracking-wider">
-            <Newspaper strokeWidth={1.7} />
-            {t("newest")}
+            <Heart strokeWidth={1.8} />
+            {t("popular")}
           </h2>
           <Listings
-            listingKey={"newest"}
+            listingKey={"popular"}
             typesObject={typesObject}
             loginToViewPrice={loginToViewPrice}
             premiumText={premium("title")}
