@@ -15,7 +15,7 @@ export default function CounterComponent({ state, setState, numerals }: Props) {
         variant="outline"
         size="icon"
         onClick={() => {
-          setState(state >= 0 ? state - 1 : 0);
+          setState(state > 0 ? state - 1 : 0);
         }}
       >
         <MinusIcon className="h-4 w-4" />
