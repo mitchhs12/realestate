@@ -25,7 +25,7 @@ export default function DescriptionDialog() {
           />
         </div>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="w-[90%] max-w-6xl h-[80%] overflow-auto">
         <I18nProviderClient locale={defaultLanguage}>
           <Description />
         </I18nProviderClient>

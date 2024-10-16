@@ -1,13 +1,14 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import { HomeType } from "@/lib/validations";
 import ReactQuill from "react-quill";
 import "@/app/[locale]/quill.css"; // Import Quill styles
 import { HomeContext } from "@/context/HomeContext";
 import { useScopedI18n } from "@/locales/client";
+import { Button } from "@/components/ui/button";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 export default function Description() {
-  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
+  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
   const [saveDisabled, setSaveDisabled] = useState(true);
   const t = useScopedI18n("sell.description");
   const [description, setDescription] = useState<string>(editedHome?.description ? editedHome?.description : "");
@@ -37,7 +38,7 @@ export default function Description() {
           </div>
         </div>
 
-        <div className="flex flex-col max-w-8xl h-auto w-full justify-center mt-10 shadow-lg dark:shadow-white rounded-xl">
+        <div className="flex flex-col max-w-8xl h-full w-full justify-center my-10 shadow-lg dark:shadow-white rounded-xl">
           <ReactQuill
             value={description}
             theme={"snow"}
@@ -62,6 +63,14 @@ export default function Description() {
             {description.length === 3000 && <span className="text-red-500">{t("warning")}</span>}
           </div>
         </div>
+        <Button
+          className="sticky bottom-0"
+          variant={"default"}
+          onClick={handleSaveEdits}
+          disabled={saveDisabled || saveLoading}
+        >
+          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+        </Button>
       </div>
     </div>
   );

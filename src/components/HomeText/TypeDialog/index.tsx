@@ -36,7 +36,7 @@ export default function TypeDialog() {
           </Button>
         </div>
       </DialogTrigger>
-      <DialogContent className="w-full max-w-6xl h-[80%] overflow-auto">
+      <DialogContent className="w-[90%] max-w-6xl h-[80%] overflow-auto">
         <I18nProviderClient locale={defaultLanguage}>
           <Type />
         </I18nProviderClient>
