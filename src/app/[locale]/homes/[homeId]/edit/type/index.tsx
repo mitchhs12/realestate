@@ -1,54 +1,33 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
 import { typeIcons } from "@/components/Icons/typeIcons";
+import { HomeContext } from "@/context/HomeContext";
+import { useScopedI18n } from "@/locales/client";
+import { typesMap } from "@/lib/sellFlowData";
+import { Button } from "@/components/ui/button";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
-interface Props {
-  currentHome: HomeType | null;
-  sellFlatIndex: number;
-  sellFlowIndices: { outerIndex: number; innerIndex: number };
-  stepPercentage: number[];
-  title: string;
-  subtitle: string;
-  options: { id: string; name: string; translation: string }[];
-}
+export default function Type() {
+  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
+  const [selection, setSelection] = useState<string[]>(editedHome?.type || []);
+  const [saveDisabled, setSaveDisabled] = useState(true);
+  const t = useScopedI18n("sell.type");
 
-export default function Type({
-  currentHome,
-  sellFlatIndex,
-  sellFlowIndices,
-  stepPercentage,
-  title,
-  subtitle,
-  options,
-}: Props) {
-  const {
-    setSellFlowFlatIndex,
-    setCurrentHome,
-    setSellFlowIndices,
-    setStepPercentage,
-    setNewHome,
-    setNextLoading,
-    setPrevLoading,
-  } = useContext(SellContext);
-
-  const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
+  const options = Array.from({ length: 17 }, (_, index) => ({
+    id: typesMap[index].id,
+    name: typesMap[index].name,
+    translation: t(`options.${index}` as keyof typeof t),
+  }));
 
   useEffect(() => {
-    setCurrentHome(currentHome);
-    setSellFlowIndices(sellFlowIndices);
-    setSellFlowFlatIndex(sellFlatIndex);
-    setStepPercentage(stepPercentage);
-    setNextLoading(false);
-    setPrevLoading(false);
-  }, []);
-
-  useEffect(() => {
-    if (currentHome) {
-      setNewHome({ ...currentHome, type: selection });
+    if (editedHome) {
+      setEditedHome({ ...editedHome, type: selection });
+      setSaveDisabled(false);
+    } else {
+      setSaveDisabled(true);
     }
   }, [selection]);
 
@@ -57,10 +36,10 @@ export default function Type({
       <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
         <div className="flex flex-col pb-4">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">{title}</h1>
+            <h1 className="flex items-center text-3xl">{t("title")}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">{subtitle}</h3>
+            <h3 className="text-lg w-full">{t("subtitle")}</h3>
           </div>
         </div>
         <div className="grid w-full h-full px-4 justify-center items-center overflow-auto">
@@ -96,6 +75,9 @@ export default function Type({
             </div>
           </ToggleGroup>
         </div>
+        <Button variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
+          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+        </Button>
       </div>
     </div>
   );

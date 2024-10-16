@@ -23,9 +23,6 @@ export default function HomePhotos({ showAllPhotos }: Props) {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { home, editMode } = useContext(HomeContext);
   const { user } = useContext(LocaleContext);
-  const [isTitleModalOpen, setTitleModalOpen] = useState(false);
-  const [isPhotoModalOpen, setPhotoModalOpen] = useState(false);
-  const { defaultLanguage } = useContext(LocaleContext);
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);

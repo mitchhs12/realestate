@@ -5,14 +5,16 @@ import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 import lookup from "country-code-lookup";
-import { getCountryNameForLocale } from "@/lib/utils";
+import { findMatching, getCountryNameForLocale } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { saveHome } from "@/app/[locale]/homes/actions";
 
 interface HomeContextProps {
   home: HomeType;
-  matchingTypes: { id: string; translation: string }[];
-  matchingFeatures: { id: string; translation: string }[];
+  matchingTypes: { id: string; name: string; translation: string }[];
+  currentType: { id: string; name: string; translation: string };
+  setCurrentType: (value: { id: string; name: string; translation: string }) => void;
+  matchingFeatures: { id: string; name: string; translation: string }[];
   translatedMunicipality: string | null;
   setTranslatedMunicipality: (value: string | null) => void;
   translatedDescription: string | null;
@@ -75,6 +77,8 @@ const HomeContext = createContext<HomeContextProps>({
     completedAt: null,
   },
   matchingTypes: [],
+  currentType: { id: "", name: "", translation: "" },
+  setCurrentType: () => {},
   matchingFeatures: [],
   translatedMunicipality: null,
   setTranslatedMunicipality: () => {},
@@ -137,12 +141,25 @@ const HomeContext = createContext<HomeContextProps>({
 
 interface HomeProviderProps {
   children: ReactNode;
-  home: HomeType;
-  matchingTypes: { id: string; name: string; translation: string }[];
-  matchingFeatures: { id: string; name: string; translation: string }[];
+  typesObject: { id: string; name: string; translation: string }[];
+  featuresObject: { id: string; name: string; translation: string }[];
+  originalHome: HomeType;
+  originalMatchingTypes: { id: string; name: string; translation: string }[];
+  originalMatchingFeatures: { id: string; name: string; translation: string }[];
 }
 
-const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matchingTypes, matchingFeatures }) => {
+const HomeContextProvider: React.FC<HomeProviderProps> = ({
+  children,
+  typesObject,
+  featuresObject,
+  originalHome,
+  originalMatchingTypes,
+  originalMatchingFeatures,
+}) => {
+  const [home, setHome] = useState(originalHome);
+  const [matchingTypes, setMatchingTypes] = useState(originalMatchingTypes);
+  const [currentType, setCurrentType] = useState(matchingTypes[0]);
+  const [matchingFeatures, setMatchingFeatures] = useState(originalMatchingFeatures);
   const [translatedMunicipality, setTranslatedMunicipality] = useState<string | null>(null);
   const [translatedDescription, setTranslatedDescription] = useState<string | null>(null);
   const [translatedTitle, setTranslatedTitle] = useState<string | null>(null);
@@ -203,7 +220,14 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
 
   const handleSaveEdits = async () => {
     setSaveLoading(true);
-    await saveHome(editedHome, pathname);
+    const newHome = await saveHome(editedHome, pathname);
+    const matchingTypes = findMatching(typesObject, newHome, "type");
+    const matchingFeatures = findMatching(featuresObject, newHome, "features");
+    setMatchingTypes(matchingTypes);
+    setMatchingFeatures(matchingFeatures);
+    setCurrentType(matchingTypes[0]);
+    console.log("newType", matchingTypes[0]);
+    setHome(newHome);
     setSaveLoading(false);
   };
 
@@ -270,6 +294,8 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({ children, home, matc
       value={{
         home,
         matchingTypes,
+        currentType,
+        setCurrentType,
         matchingFeatures,
         translatedMunicipality,
         setTranslatedMunicipality,

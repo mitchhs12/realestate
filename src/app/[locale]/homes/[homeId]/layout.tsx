@@ -57,7 +57,13 @@ export default async function HomeLayout({ children, params: { homeId, locale } 
 
   return (
     <>
-      <HomeContextProvider home={home} matchingTypes={matchingTypes} matchingFeatures={matchingFeatures}>
+      <HomeContextProvider
+        typesObject={typesObject}
+        featuresObject={featuresObject}
+        originalHome={home}
+        originalMatchingTypes={matchingTypes}
+        originalMatchingFeatures={matchingFeatures}
+      >
         <div className="flex flex-col h-screen-minus-header-dvh w-full">
           <main className="flex-grow overflow-auto h-full">{children}</main>
         </div>

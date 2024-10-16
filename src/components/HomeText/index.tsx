@@ -46,6 +46,7 @@ import BuyNowButton from "@/components/BuyNowButton";
 import ReactQuill from "react-quill";
 import "@/app/[locale]/quill.css"; // Import Quill styles
 import { kv } from "@vercel/kv";
+import TypeDialog from "./TypeDialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -120,6 +121,8 @@ export default function HomeText({
     home,
     matchingTypes,
     matchingFeatures,
+    currentType,
+    setCurrentType,
     translatedMunicipality,
     translationLoading,
     descriptionLoading,
@@ -129,9 +132,6 @@ export default function HomeText({
     countryName,
     editMode,
     setEditMode,
-    handleSaveEdits,
-    editedHome,
-    setEditedHome,
   } = useContext(HomeContext);
 
   const { defaultCurrency, currencyData, numerals, defaultLanguage, sessionLoading, sessionUnauthenticated, user } =
@@ -139,7 +139,6 @@ export default function HomeText({
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [currentType, setCurrentType] = useState(matchingTypes[0]);
   const [index, setIndex] = useState(0);
   const [editLoading, setEditLoading] = useState<boolean>(false);
 
@@ -213,27 +212,31 @@ export default function HomeText({
                     {edit}
                   </Button>
                 ))}
-              {IconComponent && (
-                <div className="relative flex items-center justify-center h-12 w-full">
-                  <Button
-                    className="flex sm:absolute -left-3 items-center justify-center h-12 gap-2 pl-2 pr-2 disabled:opacity-70"
-                    variant={"ghost"}
-                    disabled={matchingTypes.length > 1 ? false : true}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      const newIndex = (index + 1) % matchingTypes.length;
-                      setIndex(newIndex);
-                      setCurrentType(matchingTypes[newIndex]);
-                    }}
-                  >
-                    <div className="flex">
-                      <IconComponent color={theme === "dark" ? "white" : "black"} width={42} height={42} />
-                    </div>
-                    <h3 className="flex w-full text-3xl font-normal">{currentType.translation}</h3>
-                  </Button>
-                </div>
-              )}
+
+              {IconComponent &&
+                (editMode ? (
+                  <TypeDialog />
+                ) : (
+                  <div className="relative flex items-center justify-center h-12 w-full">
+                    <Button
+                      className="flex sm:absolute -left-3 items-center justify-center h-12 gap-2 pl-2 pr-2 disabled:opacity-70"
+                      variant={"ghost"}
+                      disabled={matchingTypes.length > 1 ? false : true}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        const newIndex = (index + 1) % matchingTypes.length;
+                        setIndex(newIndex);
+                        setCurrentType(matchingTypes[newIndex]);
+                      }}
+                    >
+                      <div className="flex">
+                        <IconComponent color={theme === "dark" ? "white" : "black"} width={42} height={42} />
+                      </div>
+                      <h3 className="flex w-full text-3xl font-normal">{currentType.translation}</h3>
+                    </Button>
+                  </div>
+                ))}
               <div className="flex flex-col sm:flex-row text-center sm:text-start gap-2 flex-wrap justify-center sm:justify-start text-2xl lg:text-2xl">
                 <div>{translatedMunicipality ? translatedMunicipality : home.municipality}</div>
                 <div className="flex items-center gap-3">
