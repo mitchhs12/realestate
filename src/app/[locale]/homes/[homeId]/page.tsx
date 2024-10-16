@@ -21,6 +21,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
   const negotiable = h("negotiable");
   const sizeTitle = h("size-title");
   const edit = h("edit");
+  const save = h("save");
 
   const bedrooms = { single: h("bedrooms.single"), plural: h("bedrooms.plural") };
   const bathrooms = { single: h("bathrooms.single"), plural: h("bathrooms.plural") };
@@ -85,6 +86,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
             translateButton={translateButton}
             showOriginalButton={showOriginalButton}
             edit={edit}
+            save={save}
           />
           <div className="py-6 px-8">
             <Separator />

@@ -74,6 +74,7 @@ interface Props {
   translateButton: string;
   showOriginalButton: string;
   edit: string;
+  save: string;
 }
 
 export default function HomeText({
@@ -103,6 +104,7 @@ export default function HomeText({
   translateButton,
   showOriginalButton,
   edit,
+  save,
 }: Props) {
   const {
     setCurrentHome,
@@ -184,6 +186,33 @@ export default function HomeText({
             </div>
           ) : (
             <div className="flex flex-col items-center sm:items-start gap-5">
+              {user &&
+                user.id === home.ownerId &&
+                (editMode ? (
+                  <Button
+                    disabled={editLoading}
+                    className="flex sm:hidden justify-center w-full gap-3"
+                    size={"lg"}
+                    onClick={() => {
+                      setEditMode(!editMode);
+                    }}
+                  >
+                    <Save size={18} />
+                    {save}
+                  </Button>
+                ) : (
+                  <Button
+                    disabled={editLoading}
+                    className="flex sm:hidden justify-center w-full gap-3"
+                    size={"lg"}
+                    onClick={() => {
+                      setEditMode(true);
+                    }}
+                  >
+                    <Pencil size={18} />
+                    {edit}
+                  </Button>
+                ))}
               {IconComponent && (
                 <div className="relative flex items-center justify-center h-12 w-full">
                   <Button
