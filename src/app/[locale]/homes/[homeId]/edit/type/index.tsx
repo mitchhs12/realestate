@@ -32,8 +32,8 @@ export default function Type() {
   }, [selection]);
 
   return (
-    <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
+    <div className="flex flex-col h-full w-full items-center gap-t-20">
+      <div className="flex flex-col w-full h-full justify-start items-center text-center">
         <div className="flex flex-col pb-4">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{t("title")}</h1>
@@ -42,7 +42,7 @@ export default function Type() {
             <h3 className="text-lg w-full">{t("subtitle")}</h3>
           </div>
         </div>
-        <div className="grid w-full h-full px-4 justify-center items-center overflow-auto">
+        <div className="flex flex-col w-full h-full sm:h-full px-4 justify-start items-center overflow-auto">
           <ToggleGroup
             type="multiple"
             value={selection}
@@ -75,10 +75,15 @@ export default function Type() {
             </div>
           </ToggleGroup>
         </div>
-        <Button variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
-        </Button>
       </div>
+      <Button
+        className="sticky bottom-0"
+        variant={"default"}
+        onClick={handleSaveEdits}
+        disabled={saveDisabled || saveLoading}
+      >
+        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+      </Button>
     </div>
   );
 }

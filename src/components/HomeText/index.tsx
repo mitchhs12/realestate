@@ -11,7 +11,6 @@ import {
   EyeClosedIcon,
   CopyIcon,
   CheckIcon,
-  ReloadIcon,
 } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
@@ -47,6 +46,7 @@ import ReactQuill from "react-quill";
 import "@/app/[locale]/quill.css"; // Import Quill styles
 import { kv } from "@vercel/kv";
 import TypeDialog from "./TypeDialog";
+import DescriptionDialog from "./DescriptionDialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -268,22 +268,26 @@ export default function HomeText({
                   {originalDescription ? translateButton : showOriginalButton}
                 </Button>
               </div>
-              <div className="text-base">
-                {translationLoading || descriptionLoading ? (
-                  <Skeleton
-                    className="w-full"
-                    style={{ width: `${quillDimensions.width}px`, height: `${quillDimensions.height}px` }}
-                  />
-                ) : (
-                  <ReactQuill
-                    ref={quillRef}
-                    theme={"snow"}
-                    readOnly={true}
-                    value={description!}
-                    modules={{ toolbar: false }} // Disable the toolbar
-                  />
-                )}
-              </div>
+              {editMode ? (
+                <DescriptionDialog />
+              ) : (
+                <div className="text-base">
+                  {translationLoading || descriptionLoading ? (
+                    <Skeleton
+                      className="w-full"
+                      style={{ width: `${quillDimensions.width}px`, height: `${quillDimensions.height}px` }}
+                    />
+                  ) : (
+                    <ReactQuill
+                      ref={quillRef}
+                      theme={"snow"}
+                      readOnly={true}
+                      value={description!}
+                      modules={{ toolbar: false }} // Disable the toolbar
+                    />
+                  )}
+                </div>
+              )}
             </div>
 
             {currentType.id !== "warehouse" && currentType.id !== "land" && (

@@ -9,7 +9,7 @@ import { LocaleContext } from "@/context/LocaleContext";
 import Type from "@/app/[locale]/homes/[homeId]/edit/type";
 
 export default function TypeDialog() {
-  const { matchingTypes, currentType, setCurrentType } = useContext(HomeContext);
+  const { matchingTypes, currentType } = useContext(HomeContext);
   const { defaultLanguage } = useContext(LocaleContext);
 
   const { resolvedTheme: theme } = useTheme();
@@ -36,7 +36,7 @@ export default function TypeDialog() {
           </Button>
         </div>
       </DialogTrigger>
-      <DialogContent className="w-full max-w-6xl">
+      <DialogContent className="w-full max-w-6xl h-[80%] overflow-auto">
         <I18nProviderClient locale={defaultLanguage}>
           <Type />
         </I18nProviderClient>

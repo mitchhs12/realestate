@@ -226,7 +226,6 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
     setMatchingTypes(matchingTypes);
     setMatchingFeatures(matchingFeatures);
     setCurrentType(matchingTypes[0]);
-    console.log("newType", matchingTypes[0]);
     setHome(newHome);
     setSaveLoading(false);
   };
