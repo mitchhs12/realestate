@@ -421,7 +421,7 @@ export default function HomeText({
               isModalOpen={isModalOpen}
               hidePrice={hidePrice}
               showPrice={showPrice}
-              isLargeScreen={false}
+              isLargeScreen={true}
             />
           ) : (
             <Card className="w-full max-w-xs shadow-lg">
