@@ -8,7 +8,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
     <div className="flex flex-col w-full justify-center items-center">
       <div className="flex flex-col max-w-4xl space-y-8 p-8">
         <div className="text-4xl font-bold py-4">Terms and Conditions</div>
-        <div className="italic">Version 23 September 2024</div>
+        <div className="italic">Version 17 October 2024</div>
         <div className="italic">
           Viva Idea Pte Ltd (202435684M) (“we”, “our” or “us”) owns and operates www.vivaideal.com (“Platform”). We
           provide services for the marketing of international real estate.
