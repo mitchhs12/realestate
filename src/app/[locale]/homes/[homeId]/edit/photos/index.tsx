@@ -371,7 +371,12 @@ export default function Photos() {
                 </div>
               )}
             </div>
-            <Button onClick={handleSaveEdits} variant={"default"} className="bottom-0 sticky">
+            <Button
+              onClick={handleSaveEdits}
+              variant={"default"}
+              className="bottom-0 sticky"
+              disabled={saveDisabled || saveLoading}
+            >
               {saveLoading ? <ReloadIcon className="animate-spin w-6 h-6" /> : h("save")}
             </Button>
           </div>
