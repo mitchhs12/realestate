@@ -20,7 +20,8 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
             <ol className="custom-ol">
               <li className="custom-li">
                 By using our Platform, you accept our Terms and Conditions, the Privacy Policy and any other associated
-                agreement(s) between you and us governing your usage of our Platform (collectively “<b>Terms</b>”).
+                agreement(s) between you and us governing your usage of our Platform (collectively “
+                <span className="font-semibold">Terms</span>”).
               </li>
               <li className="custom-li">If you do not agree to these Terms, you must not use our Platform.</li>
               <li className="custom-li">
@@ -85,7 +86,8 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
               <li className="custom-li">
                 The Platform and contents located on the Platform, including any software programmes made available on
                 or through the Platform, are protected by copyright, trademark and other forms of intellectual property
-                rights (“<b>IPR</b>”). Unless otherwise stated, all IPR should be taken as owned by Viva Idea Pte Ltd.
+                rights (“<span className="font-semibold">IPR</span>”). Unless otherwise stated, all IPR should be taken
+                as owned by Viva Idea Pte Ltd.
               </li>
               <li className="custom-li">
                 Except as otherwise provided, the IPR of the Platform shall not be reproduced, republished, uploaded,
@@ -254,8 +256,9 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
               <li className="custom-li">
                 Any dispute arising out of or in connection with this Terms, including any question regarding its
                 existence, validity or termination, shall be referred to and finally resolved by arbitration
-                administered by the Singapore International Arbitration Centre (“<b>SIAC</b>”) in accordance with the
-                Arbitration Rules of the Singapore International Arbitration Centre (“<b>SIAC Rules</b>”) for the time
+                administered by the Singapore International Arbitration Centre (“
+                <span className="font-semibold">SIAC</span>”) in accordance with the Arbitration Rules of the Singapore
+                International Arbitration Centre (“<span className="font-semibold">SIAC Rules</span>”) for the time
                 being in force, which rules are deemed to be incorporated by reference in this clause. The seat of the
                 arbitration shall be Singapore. The Tribunal shall consist of one (1) arbitrator. The language of the
                 arbitration shall be English.
