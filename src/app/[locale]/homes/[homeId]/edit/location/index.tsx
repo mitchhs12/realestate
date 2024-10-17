@@ -1,54 +1,40 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { SellContext } from "@/context/SellContext";
 import SearchBox from "@/components/SearchBox";
 import SmallMap from "@/components/SmallMap";
-import { HomeType } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
-
-interface Props {
-  currentHome: HomeType | null;
-  sellFlatIndex: number;
-  sellFlowIndices: { outerIndex: number; innerIndex: number };
-  stepPercentage: number[];
-  text: string;
-  placeholder: string;
-  placeholderShort: string;
-  title: string;
-  subtitle: string;
-}
+import { useScopedI18n } from "@/locales/client";
+import { HomeContext } from "@/context/HomeContext";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface SearchResult {
   text: string;
   placeId: string;
 }
 
-export default function Location({
-  currentHome,
-  sellFlatIndex,
-  sellFlowIndices,
-  stepPercentage,
-  text,
-  placeholder,
-  placeholderShort,
-  title,
-  subtitle,
-}: Props) {
-  const {
-    setSellFlowFlatIndex,
-    setSellFlowIndices,
-    setStepPercentage,
-    setNextLoading,
-    setCurrentHome,
-    setPrevLoading,
-  } = useContext(SellContext);
+export default function Location() {
+  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
+  const [saveDisabled, setSaveDisabled] = useState(true);
+
   const [currentCoords, setCurrentCoords] = useState(
-    currentHome?.latitude && currentHome?.longitude
-      ? { lat: currentHome.latitude, long: currentHome.longitude }
+    editedHome?.latitude && editedHome?.longitude
+      ? { lat: editedHome.latitude, long: editedHome.longitude }
       : { lat: 0, long: 0 }
   );
+
+  const t = useScopedI18n("sell.location");
+  const s = useScopedI18n("home.header.search");
+
+  useEffect(() => {
+    if (editedHome) {
+      setEditedHome({ ...editedHome, latitude: currentCoords.lat, longitude: currentCoords.long });
+      setSaveDisabled(false);
+    } else {
+      setSaveDisabled(true);
+    }
+  }, [currentCoords]);
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -69,43 +55,47 @@ export default function Location({
     }
   }, [searchResult]);
 
-  useEffect(() => {
-    setCurrentHome(currentHome);
-    setSellFlowIndices(sellFlowIndices);
-    setSellFlowFlatIndex(sellFlatIndex);
-    setStepPercentage(stepPercentage);
-    setNextLoading(false);
-    setPrevLoading(false);
-  }, []);
-
   return (
-    <div className="flex flex-col h-full w-full items-center gap-y-20">
-      <div className="flex flex-col mb-8 w-full px-8 max-w-8xl h-full overflow-y-auto justify-start items-center text-center">
+    <div className="flex flex-col h-full w-full items-center gap-6">
+      <div className="flex flex-col w-full max-w-8xl h-full overflow-y-auto justify-start items-center text-center">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">{title}</h1>
+            <h1 className="flex items-center text-3xl">{t("title")}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">{subtitle}</h3>
+            <h3 className="text-lg w-full">{t("subtitle")}</h3>
           </div>
           <div className="flex flex-col h-full justify-center items-center w-full text-lg md:text-xl xl:text-2xl py-8">
             <SearchBox
-              placeholderShort={placeholderShort}
+              placeholderShort={s("placeholder-short")}
               isSmallMap={true}
               setSearchResult={(text, placeId) => setSearchResult({ text: text, placeId: placeId })}
-              placeholder={placeholder}
-              text={text}
+              placeholder={s("placeholder")}
+              text={s("search-button")}
             />
           </div>
         </div>
         {currentCoords.lat !== 0 && currentCoords.long !== 0 && (
           <div className="flex flex-col items-start justify-center h-full w-full gap-8">
             <div className="flex w-full h-full">
-              <SmallMap coordinates={currentCoords} currentHome={currentHome} />
+              <SmallMap
+                coordinates={currentCoords}
+                currentHome={editedHome}
+                setNewHome={setEditedHome}
+                setSaveDisabled={setSaveDisabled}
+              />
             </div>
           </div>
         )}
       </div>
+      <Button
+        className="sticky bottom-0"
+        variant={"default"}
+        onClick={handleSaveEdits}
+        disabled={saveDisabled || saveLoading}
+      >
+        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+      </Button>
     </div>
   );
 }

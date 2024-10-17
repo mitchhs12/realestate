@@ -16,7 +16,6 @@ export type MapConfig = {
   mapId?: string;
   mapTypeId?: string;
   styles?: google.maps.MapTypeStyle[];
-  disabled?: boolean;
 };
 
 const MapTypeId = {
@@ -30,10 +29,20 @@ export default function MapComponent({
   coordinates,
   currentHome,
   disabled,
+  editMode,
+  setNewHome,
+  setNextLoading,
+  setPrevLoading,
+  setSaveDisabled,
 }: {
   currentHome: HomeType | null;
   coordinates: CoordinatesType;
   disabled?: boolean;
+  editMode?: boolean;
+  setNewHome?: (value: HomeType) => void;
+  setNextLoading?: (value: boolean) => void;
+  setPrevLoading?: (value: boolean) => void;
+  setSaveDisabled?: (value: boolean) => void;
 }) {
   const MAP_CONFIGS: MapConfig[] = [
     {
@@ -53,7 +62,6 @@ export default function MapComponent({
   ];
 
   const { resolvedTheme: theme } = useTheme();
-  const { setNewHome, setNextLoading, setPrevLoading } = useContext(SellContext);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
   const [newZoom, setNewZoom] = useState(disabled ? 16 : 17);
@@ -81,6 +89,7 @@ export default function MapComponent({
     });
     const data = await result.json();
     currentHome &&
+      setNewHome &&
       setNewHome({
         ...currentHome,
         address: data.results.Label,
@@ -91,8 +100,21 @@ export default function MapComponent({
         longitude: data.location[0],
         latitude: data.location[1],
       });
-    setNextLoading(false);
-    setPrevLoading(false);
+    if (setNextLoading && setPrevLoading) {
+      setNextLoading(false);
+      setPrevLoading(false);
+    } else if (setSaveDisabled) {
+      setSaveDisabled(false);
+    }
+  };
+
+  const setLoading = () => {
+    if (setNextLoading && setPrevLoading) {
+      setNextLoading(true);
+      setPrevLoading(true);
+    } else if (setSaveDisabled) {
+      setSaveDisabled(true);
+    }
   };
 
   const debounce = (func: (...args: any[]) => void, delay: number) => {
@@ -109,8 +131,7 @@ export default function MapComponent({
 
   const handleCameraChanged = useCallback(
     (ev: MapCameraChangedEvent) => {
-      setNextLoading(true);
-      setPrevLoading(true);
+      setLoading();
       setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
       setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
       debouncedGetAddress(ev.detail.center.lat, ev.detail.center.lng);
@@ -129,7 +150,7 @@ export default function MapComponent({
   };
 
   return (
-    <div className="flex flex-col w-full items-center justify-center">
+    <div className={`flex flex-col w-full items-center justify-center ${editMode && "hover:cursor-pointer"}`}>
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
         {isMapLoading ? (
           <div className="flex items-center justify-center text-lg lg:text-3xl">
@@ -137,14 +158,16 @@ export default function MapComponent({
             Loading...
           </div>
         ) : (
-          <div className="rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15">
+          <div
+            className={`rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15 ${editMode && "hover:cursor-pointer"}`}
+          >
             <Map
               clickableIcons={false}
-              gestureHandling={"greedy"}
+              gestureHandling={editMode ? "none" : "greedy"}
               defaultCenter={{ lat: coordinates.lat, lng: coordinates.long }}
               maxZoom={20}
-              // zoomControl={false}
-              // scrollwheel={false}
+              zoomControl={editMode ? false : true}
+              scrollwheel={editMode ? false : true}
               minZoom={6}
               onZoomChanged={(num) => {
                 setNewZoom(num.detail.zoom);

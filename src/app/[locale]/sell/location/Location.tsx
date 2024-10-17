@@ -39,10 +39,12 @@ export default function Location({
     setSellFlowFlatIndex,
     setSellFlowIndices,
     setStepPercentage,
+    setNewHome,
     setNextLoading,
     setCurrentHome,
     setPrevLoading,
   } = useContext(SellContext);
+
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
   const [currentCoords, setCurrentCoords] = useState(
     currentHome?.latitude && currentHome?.longitude
@@ -101,7 +103,13 @@ export default function Location({
         {currentCoords.lat !== 0 && currentCoords.long !== 0 && (
           <div className="flex flex-col items-start justify-center h-full w-full gap-8">
             <div className="flex w-full h-full">
-              <SmallMap coordinates={currentCoords} currentHome={currentHome} />
+              <SmallMap
+                coordinates={currentCoords}
+                currentHome={currentHome}
+                setNewHome={setNewHome}
+                setNextLoading={setNextLoading}
+                setPrevLoading={setPrevLoading}
+              />
             </div>
           </div>
         )}
