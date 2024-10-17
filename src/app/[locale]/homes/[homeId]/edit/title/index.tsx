@@ -19,6 +19,7 @@ export default function Title() {
   const [title, setTitle] = useState<string>(editedHome?.title ? editedHome?.title : "");
   const [saveDisabled, setSaveDisabled] = useState(true);
   const t = useScopedI18n("sell.title");
+  const h = useScopedI18n("homes");
 
   useEffect(() => {
     if (editedHome && title.length > 0 && title.length <= 32 && title !== editedHome.title) {
@@ -65,7 +66,7 @@ export default function Title() {
           </div>
         </div>
         <Button variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
         </Button>
       </div>
     </div>

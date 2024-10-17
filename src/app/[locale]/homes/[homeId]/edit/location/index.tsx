@@ -26,6 +26,7 @@ export default function Location() {
 
   const t = useScopedI18n("sell.location");
   const s = useScopedI18n("home.header.search");
+  const h = useScopedI18n("homes");
 
   useEffect(() => {
     if (editedHome) {
@@ -94,7 +95,7 @@ export default function Location() {
         onClick={handleSaveEdits}
         disabled={saveDisabled || saveLoading}
       >
-        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
       </Button>
     </div>
   );

@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Tampilkan semua foto",
     "original-price": "Harga Asli",
     "negotiable": "Harga Bisa Nego?",
+    "negotiable-text": "Bisa dinegosiasikan",
     "bedrooms": {
       "single": "Kamar tidur",
       "plural": "Kamar tidur"

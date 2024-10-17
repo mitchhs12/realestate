@@ -14,6 +14,7 @@ import { handleCopy } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeContext } from "@/context/HomeContext";
 import BuyNowButton from "@/components/BuyNowButton";
+import PriceDialog from "@/components/HomeText/PriceDialog";
 
 interface Props {
   contactNameText: string;
@@ -27,6 +28,7 @@ interface Props {
   loginToPurchase: string;
   priceTitle: string;
   originalPrice: string;
+  negotiable: string;
 }
 
 export default function StickyPrice({
@@ -41,8 +43,9 @@ export default function StickyPrice({
   loginToPurchase,
   priceTitle,
   originalPrice,
+  negotiable,
 }: Props) {
-  const { home } = useContext(HomeContext);
+  const { home, editMode } = useContext(HomeContext);
   const { defaultCurrency, currencyData, sessionLoading, user } = useContext(LocaleContext);
   const { openLogInModal, isModalOpen, revealPrice, setRevealPrice } = useContext(QueryContext);
   const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
@@ -52,42 +55,59 @@ export default function StickyPrice({
   return (
     <>
       <CardHeader className={`flex flex-col gap-y-2 items-center bg-card`}>
-        <div className="flex flex-row items-end justify-between w-full">
-          <div className={`flex flex-col items-start w-1/2`}>
-            <span className="font-sm">{priceTitle}</span>
-            <span className="text-xl font-semibold text-primary">
-              <BrokenPrice
-                originalPrice={home.price}
-                originalCurrencySymbol={home.currency!}
-                priceUsd={home.priceUsd}
-                currency={defaultCurrency}
-                reveal={user ? true : false}
-                blurAmount="blur-sm"
-                className="mb-0"
-              />
-            </span>
-          </div>
-          <div className={`flex flex-col w-1/2 h-full text-end `}>
-            <span className="text-sm">
-              {originalPrice} ({home.currency})
-            </span>
-            <span className="flex justify-end gap-2 text-lg font-semibold text-primary">
-              {originalCurrencyRate && home.currency ? (
+        {editMode ? (
+          <PriceDialog
+            priceTitle={priceTitle}
+            originalPrice={originalPrice}
+            originalCurrencyRate={originalCurrencyRate}
+            buyNow={buyNow}
+            negotiable={negotiable}
+            loginToPurchase={loginToPurchase}
+            contactThanks={contactThanks}
+            revealPrice={revealPrice}
+            isModalOpen={isModalOpen}
+            isLargeScreen={false}
+          />
+        ) : (
+          <div className="flex flex-row items-end justify-between w-full">
+            <div className={`flex flex-col items-start w-1/2`}>
+              <span className="font-sm">
+                {priceTitle} {home.priceNegotiable && <span className="text-sm">(Negotiable)</span>}
+              </span>
+              <span className="text-xl font-semibold text-primary">
                 <BrokenPrice
                   originalPrice={home.price}
-                  originalCurrencySymbol={home.currency}
+                  originalCurrencySymbol={home.currency!}
                   priceUsd={home.priceUsd}
-                  currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
+                  currency={defaultCurrency}
                   reveal={user ? true : false}
                   blurAmount="blur-sm"
                   className="mb-0"
                 />
-              ) : (
-                "Contact us to know"
-              )}
-            </span>
+              </span>
+            </div>
+            <div className={`flex flex-col w-1/2 h-full text-end `}>
+              <span className="text-sm">
+                {originalPrice} ({home.currency})
+              </span>
+              <span className="flex justify-end gap-2 text-lg font-semibold text-primary">
+                {originalCurrencyRate && home.currency ? (
+                  <BrokenPrice
+                    originalPrice={home.price}
+                    originalCurrencySymbol={home.currency}
+                    priceUsd={home.priceUsd}
+                    currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
+                    reveal={user ? true : false}
+                    blurAmount="blur-sm"
+                    className="mb-0"
+                  />
+                ) : (
+                  "Contact us to know"
+                )}
+              </span>
+            </div>
           </div>
-        </div>
+        )}
         {sessionLoading ? (
           <div className="flex gap-2 justify-center w-full">
             <Skeleton className="w-1/2 h-9 md:h-10 lg:h-12" />

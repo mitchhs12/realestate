@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Afficher toutes les photos",
     "original-price": "Prix d'origine",
     "negotiable": "Prix négociable ?",
+    "negotiable-text": "Négociable",
     "bedrooms": {
       "single": "Chambre à coucher",
       "plural": "Chambres"

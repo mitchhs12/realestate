@@ -47,6 +47,7 @@ import "@/app/[locale]/quill.css"; // Import Quill styles
 import { kv } from "@vercel/kv";
 import TypeDialog from "./TypeDialog";
 import DescriptionDialog from "./DescriptionDialog";
+import PriceDialog from "./PriceDialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -176,7 +177,7 @@ export default function HomeText({
   const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
 
   return (
-    <div className="flex flex-col w-full h-full justify-center px-8 py-3">
+    <div className="flex flex-col w-full h-full justify-center px-6 py-3">
       <div className="flex flex-row w-full h-full justify-between gap-8">
         <div className="flex flex-col justify-start text-start w-full sm:w-2/3 gap-6 h-auto">
           {translationLoading ? (
@@ -407,105 +408,122 @@ export default function HomeText({
                 {edit}
               </Button>
             ))}
-          <Card className="w-full max-w-xs shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>
-            </CardHeader>
+          {editMode ? (
+            <PriceDialog
+              priceTitle={priceTitle}
+              originalPrice={originalPrice}
+              originalCurrencyRate={originalCurrencyRate}
+              buyNow={buyNow}
+              loginToPurchase={loginToPurchase}
+              contactThanks={contactThanks}
+              negotiable={negotiable}
+              revealPrice={revealPrice}
+              isModalOpen={isModalOpen}
+              hidePrice={hidePrice}
+              showPrice={showPrice}
+              isLargeScreen={false}
+            />
+          ) : (
+            <Card className="w-full max-w-xs shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>
+              </CardHeader>
 
-            <CardContent className="flex flex-col gap-4">
-              {sessionLoading ? (
-                <div className="flex justify-center w-full">
-                  <Skeleton className="h-8 md:h-9 lg:h-10 w-8/12" />
-                </div>
-              ) : (
-                <BrokenPrice
-                  priceUsd={home.priceUsd}
-                  currency={defaultCurrency}
-                  reveal={user ? true : false}
-                  originalPrice={home.price}
-                  originalCurrencySymbol={home.currency!}
-                  blurAmount={"blur-lg"}
-                  className="text-primary justify-center text-2xl md:text-3xl lg:text-4xl"
-                />
-              )}
-              <div className={`flex flex-col w-full`}>
-                <span className={`text-sm md:text-base lg:text-lg`}>
-                  {originalPrice} ({home.currency})
-                </span>
+              <CardContent className="flex flex-col gap-4">
                 {sessionLoading ? (
                   <div className="flex justify-center w-full">
-                    <Skeleton className="items-center h-6 md:h-7 lg:h-7.5 w-7/12" />
+                    <Skeleton className="h-8 md:h-9 lg:h-10 w-8/12" />
                   </div>
-                ) : originalCurrencyRate && home.currency ? (
+                ) : (
                   <BrokenPrice
                     priceUsd={home.priceUsd}
-                    currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
+                    currency={defaultCurrency}
                     reveal={user ? true : false}
                     originalPrice={home.price}
-                    originalCurrencySymbol={home.currency}
-                    blurAmount={"blur-md"}
-                    className="text-primary justify-center text-base md:text-lg lg:text-xl"
+                    originalCurrencySymbol={home.currency!}
+                    blurAmount={"blur-lg"}
+                    className="text-primary justify-center text-2xl md:text-3xl lg:text-4xl"
                   />
-                ) : (
-                  "Contact us"
                 )}
-              </div>
-              <div className="flex flex-col items-center w-full gap-3">
-                <div className="flex items-center justify-center gap-2 w-full">
-                  <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">{negotiable}</span>
-                  <span className="flex text-center w-auto h-auto">
-                    {home.priceNegotiable ? (
-                      <span className="flex w-auto h-auto">
-                        <CheckCircledIcon className="rounded-full text-primary w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-                      </span>
-                    ) : (
-                      <span className="flex w-auto h-auto">
-                        <CrossCircledIcon className="text-red-500 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-                      </span>
-                    )}
+                <div className={`flex flex-col w-full`}>
+                  <span className={`text-sm md:text-base lg:text-lg`}>
+                    {originalPrice} ({home.currency})
                   </span>
-                </div>
-
-                {sessionLoading ? (
-                  <Skeleton className="h-[3.2vh] md:h-[3.2vh] lg:h-[2.8vh] xl:h-[2.8vh] w-11/12" />
-                ) : (
-                  user &&
-                  user.id && (
-                    <BuyNowButton
-                      homeId={home.id}
-                      user={user}
-                      buyNow={buyNow}
-                      loginToPurchase={loginToPurchase}
-                      contactThanks={contactThanks}
+                  {sessionLoading ? (
+                    <div className="flex justify-center w-full">
+                      <Skeleton className="items-center h-6 md:h-7 lg:h-7.5 w-7/12" />
+                    </div>
+                  ) : originalCurrencyRate && home.currency ? (
+                    <BrokenPrice
+                      priceUsd={home.priceUsd}
+                      currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
+                      reveal={user ? true : false}
+                      originalPrice={home.price}
+                      originalCurrencySymbol={home.currency}
+                      blurAmount={"blur-md"}
+                      className="text-primary justify-center text-base md:text-lg lg:text-xl"
                     />
-                  )
-                )}
-              </div>
-              {sessionLoading ||
-                (sessionUnauthenticated && (
-                  <div className="flex items-center justify-center mt-4">
-                    <Button
-                      onClick={() => {
-                        user ? setRevealPrice(!revealPrice) : openLogInModal();
-                      }}
-                      variant={"default"}
-                      className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
-                    >
-                      <div className="flex gap-3 justify-center text-lg items-center">
-                        {revealPrice || isModalOpen ? (
-                          <EyeOpenIcon className="w-5 h-5" />
-                        ) : (
-                          <EyeClosedIcon className="w-5 h-5" />
-                        )}
-                        <span className="text-xs md:text-sm lg:text-base">{`${
-                          revealPrice ? hidePrice : showPrice
-                        }`}</span>
-                      </div>
-                    </Button>
+                  ) : (
+                    "Contact us"
+                  )}
+                </div>
+                <div className="flex flex-col items-center w-full gap-3">
+                  <div className="flex items-center justify-center gap-2 w-full">
+                    <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">{negotiable}</span>
+                    <span className="flex text-center w-auto h-auto">
+                      {home.priceNegotiable ? (
+                        <span className="flex w-auto h-auto">
+                          <CheckCircledIcon className="rounded-full text-primary w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+                        </span>
+                      ) : (
+                        <span className="flex w-auto h-auto">
+                          <CrossCircledIcon className="text-red-500 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+                        </span>
+                      )}
+                    </span>
                   </div>
-                ))}
-            </CardContent>
-          </Card>
+
+                  {sessionLoading ? (
+                    <Skeleton className="h-[3.2vh] md:h-[3.2vh] lg:h-[2.8vh] xl:h-[2.8vh] w-11/12" />
+                  ) : (
+                    user &&
+                    user.id && (
+                      <BuyNowButton
+                        homeId={home.id}
+                        user={user}
+                        buyNow={buyNow}
+                        loginToPurchase={loginToPurchase}
+                        contactThanks={contactThanks}
+                      />
+                    )
+                  )}
+                </div>
+                {sessionLoading ||
+                  (sessionUnauthenticated && (
+                    <div className="flex items-center justify-center mt-4">
+                      <Button
+                        onClick={() => {
+                          user ? setRevealPrice(!revealPrice) : openLogInModal();
+                        }}
+                        variant={"default"}
+                        className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
+                      >
+                        <div className="flex gap-3 justify-center text-lg items-center">
+                          {revealPrice || isModalOpen ? (
+                            <EyeOpenIcon className="w-5 h-5" />
+                          ) : (
+                            <EyeClosedIcon className="w-5 h-5" />
+                          )}
+                          <span className="text-xs md:text-sm lg:text-base">{`${
+                            revealPrice ? hidePrice : showPrice
+                          }`}</span>
+                        </div>
+                      </Button>
+                    </div>
+                  ))}
+              </CardContent>
+            </Card>
+          )}
           <Card className="w-full max-w-xs shadow-lg">
             <CardHeader>
               <CardTitle className="text-sm md:text-base lg:text-lg">{contactTitle}</CardTitle>

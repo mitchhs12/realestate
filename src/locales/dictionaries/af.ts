@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Wys alle foto's",
     "original-price": "Oorspronklike prys",
     "negotiable": "Prys onderhandelbaar?",
+    "negotiable-text": "Onderhandelbaar",
     "bedrooms": {
       "single": "Slaapkamer",
       "plural": "Slaapkamers"

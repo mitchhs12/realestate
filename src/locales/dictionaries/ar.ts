@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "عرض جميع الصور",
     "original-price": "السعر الأصلي",
     "negotiable": "السعر قابل للتفاوض؟",
+    "negotiable-text": "قابلة للتفاوض",
     "bedrooms": {
       "single": "غرفة نوم",
       "plural": "غرف النوم"

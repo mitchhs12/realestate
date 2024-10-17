@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "ყველა ფოტოს ჩვენება",
     "original-price": "ორიგინალური ფასი",
     "negotiable": "ფასი შეთანხმებით?",
+    "negotiable-text": "შეთანხმებით",
     "bedrooms": {
       "single": "საძინებელი",
       "plural": "საძინებლები"

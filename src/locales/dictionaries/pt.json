@@ -498,6 +498,7 @@
     "show-all-photos": "Mostrar todas as fotos",
     "original-price": "Preço original",
     "negotiable": "Preço negociável?",
+    "negotiable-text": "Negociável",
     "bedrooms": {
       "single": "Quarto",
       "plural": "Quartos"

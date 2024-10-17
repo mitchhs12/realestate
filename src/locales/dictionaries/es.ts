@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Mostrar todas las fotos",
     "original-price": "Precio original",
     "negotiable": "¿Precio negociable?",
+    "negotiable-text": "Negociable",
     "bedrooms": {
       "single": "Dormitorio",
       "plural": "Dormitorios"

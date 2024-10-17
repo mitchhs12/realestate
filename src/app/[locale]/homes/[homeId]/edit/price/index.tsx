@@ -15,66 +15,40 @@ import { Button } from "@/components/ui/button";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
+import { HomeContext } from "@/context/HomeContext";
+import { useScopedI18n } from "@/locales/client";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
-interface Props {
-  currentHome: HomeType | null;
-  sellFlatIndex: number;
-  sellFlowIndices: { outerIndex: number; innerIndex: number };
-  stepPercentage: number[];
-  title: string;
-  subtitle: string;
-  negotiable: string;
-  price_placeholder: string;
-  noCurrencies: string;
-  selectCurrency: string;
-}
-
-export default function Price({
-  currentHome,
-  sellFlatIndex,
-  sellFlowIndices,
-  stepPercentage,
-  title,
-  subtitle,
-  negotiable,
-  price_placeholder,
-  noCurrencies,
-  selectCurrency,
-}: Props) {
-  const {
-    setSellFlowFlatIndex,
-    setSellFlowIndices,
-    setStepPercentage,
-    setNextLoading,
-    setCurrentHome,
-    setPrevLoading,
-    setNewHome,
-    setNextDisabled,
-  } = useContext(SellContext);
+export default function Price() {
   const { defaultCurrency, currencyData } = useContext(LocaleContext);
+  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
+  const t = useScopedI18n("sell.price");
+  const h = useScopedI18n("homes");
+
+  const [saveDisabled, setSaveDisabled] = useState(true);
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
-  const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
-  const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);
-  const initialIntlConfig = currentHome?.currency
-    ? locales.find((option) => option.currency === currentHome.currency)
+  const [price, setPrice] = useState<number | null>(editedHome?.price || 0);
+  const [isNegotiable, setIsNegotiable] = useState<boolean>(editedHome?.priceNegotiable || false);
+  const initialIntlConfig = editedHome?.currency
+    ? locales.find((option) => option.currency === editedHome.currency)
     : locales.find((option) => option.currency === defaultCurrency?.symbol);
   console.log("initialIntlConfig", initialIntlConfig);
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {
-    if (currentHome && price !== null && intlConfig && intlConfig.currency) {
+    if (editedHome && price !== null && intlConfig && intlConfig.currency) {
       const currentCurrency = currencyData?.prices.find((currency) => currency.symbol === intlConfig?.currency);
 
       if (currentCurrency && currentCurrency.usdPrice !== null) {
         const priceInUsd = price / currentCurrency.usdPrice;
         const roundedPriceInUsd = Math.round(priceInUsd * 100) / 100;
 
-        setNextDisabled(false);
-        setNewHome({
-          ...currentHome,
+        setSaveDisabled(false);
+        setEditedHome({
+          ...editedHome,
           price: price, // Save price in USD
           currency: intlConfig.currency,
           priceUsd: roundedPriceInUsd,
@@ -82,21 +56,16 @@ export default function Price({
         });
       }
     } else {
-      setNextDisabled(true);
+      setSaveDisabled(true);
     }
   }, [price, isNegotiable, intlConfig, currencyData]);
 
   useEffect(() => {
-    setCurrentHome(currentHome);
-    setSellFlowIndices(sellFlowIndices);
-    setSellFlowFlatIndex(sellFlatIndex);
-    setStepPercentage(stepPercentage);
-    setNextLoading(false);
-    setPrevLoading(false);
+    setEditedHome(editedHome);
     if (price && price > 0) {
-      setNextDisabled(false);
+      setSaveDisabled(false);
     } else {
-      setNextDisabled(true);
+      setSaveDisabled(true);
     }
   }, []);
 
@@ -141,14 +110,14 @@ export default function Price({
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center">
-      <div className="flex flex-col mb-20 w-full h-full justify-start items-center text-center">
+    <div className="flex flex-col gap-6 h-full w-full items-center">
+      <div className="flex flex-col w-full h-full justify-start items-center text-center">
         <div className="flex flex-col">
           <div className="flex items-center justify-center py-3">
-            <h1 className="flex items-center text-3xl">{title}</h1>
+            <h1 className="flex items-center text-3xl">{t("title")}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className="text-lg w-full">{subtitle}</h3>
+            <h3 className="text-lg w-full">{t("subtitle")}</h3>
           </div>
         </div>
         <div className="flex flex-col h-full w-full pt-20">
@@ -158,14 +127,14 @@ export default function Price({
                 <PopoverTrigger asChild>
                   <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
                     <FlagComponent country={intlConfig?.locale as Country} countryName={intlConfig?.locale as string} />
-                    {intlConfig ? locales.find((locales) => locales === intlConfig)?.currency : selectCurrency}
+                    {intlConfig ? locales.find((locales) => locales === intlConfig)?.currency : t("select_currency")}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="flex justify-center w-full p-0">
                   <Command>
                     <CommandList>
-                      <CommandEmpty>{noCurrencies}</CommandEmpty>
+                      <CommandEmpty>{t("no_currency")}</CommandEmpty>
                       <CommandGroup>
                         {locales.map((option) => (
                           <CommandItem
@@ -199,7 +168,7 @@ export default function Price({
               </Popover>
               <CurrencyInput
                 key={intlConfig?.currency} // Force re-render when currency changes
-                placeholder={price_placeholder}
+                placeholder={t("price_placeholder")}
                 intlConfig={intlConfig}
                 decimalsLimit={
                   intlConfig ? locales.find((option) => option.currency === intlConfig.currency)?.decimalsLimit : 2
@@ -212,7 +181,7 @@ export default function Price({
               />
             </div>
             <div className="flex justify-center items-end gap-x-4">
-              <Label htmlFor="price-negotiable">{negotiable}</Label>
+              <Label htmlFor="price-negotiable">{t("negotiable")}</Label>
               <Switch
                 id="price-negotiable"
                 checked={isNegotiable}
@@ -224,6 +193,9 @@ export default function Price({
           </div>
         </div>
       </div>
+      <Button variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
+        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+      </Button>
     </div>
   );
 }

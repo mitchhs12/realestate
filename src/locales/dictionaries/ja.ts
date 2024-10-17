@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "すべての写真を表示",
     "original-price": "元の価格",
     "negotiable": "価格交渉可能でしょうか?",
+    "negotiable-text": "交渉可能",
     "bedrooms": {
       "single": "寝室",
       "plural": "ベッドルーム"

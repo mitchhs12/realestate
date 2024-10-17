@@ -458,6 +458,7 @@
     "show-all-photos": "Show all photos",
     "original-price": "Original Price",
     "negotiable": "Price Negotiable?",
+    "negotiable-text": "Negotiable",
     "bedrooms": { "single": "Bedroom", "plural": "Bedrooms" },
     "bathrooms": { "single": "Bathroom", "plural": "Bathrooms" },
     "living-rooms": { "single": "Living Room", "plural": "Living Rooms" },

@@ -45,7 +45,7 @@ export default function HomePhotos({ showAllPhotos }: Props) {
   }, [isModalOpen, selectedImageIndex]);
 
   return (
-    <div className="flex flex-col min-h-full w-full px-8 py-4">
+    <div className="flex flex-col min-h-full w-full p-2 px-4 sm:p-4 md:px-6 py-4">
       <div className={`flex justify-center relative text-3xl pb-6`}>
         {editMode ? (
           <TitleDialog />

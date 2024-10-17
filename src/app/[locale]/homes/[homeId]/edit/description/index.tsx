@@ -10,8 +10,10 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 export default function Description() {
   const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
   const [saveDisabled, setSaveDisabled] = useState(true);
-  const t = useScopedI18n("sell.description");
   const [description, setDescription] = useState<string>(editedHome?.description ? editedHome?.description : "");
+
+  const t = useScopedI18n("sell.description");
+  const h = useScopedI18n("homes");
 
   useEffect(() => {
     setSaveDisabled(description.length === 0);
@@ -69,7 +71,7 @@ export default function Description() {
           onClick={handleSaveEdits}
           disabled={saveDisabled || saveLoading}
         >
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
         </Button>
       </div>
     </div>

@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Show all photos",
     "original-price": "Original Price",
     "negotiable": "Price Negotiable?",
+    "negotiable-text": "Negotiable",
     "bedrooms": {
       "single": "Bedroom",
       "plural": "Bedrooms"

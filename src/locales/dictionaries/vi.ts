@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Hiển thị tất cả hình ảnh",
     "original-price": "Giá gốc",
     "negotiable": "Giá có thể thương lượng?",
+    "negotiable-text": "Có thể thương lượng",
     "bedrooms": {
       "single": "Phòng ngủ",
       "plural": "Phòng ngủ"

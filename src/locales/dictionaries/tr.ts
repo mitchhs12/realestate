@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "Tüm fotoğrafları göster",
     "original-price": "Orijinal Fiyat",
     "negotiable": "Fiyat Pazarlığa Açık mı?",
+    "negotiable-text": "Pazarlık edilebilir",
     "bedrooms": {
       "single": "Yatak odası",
       "plural": "Yatak odaları"

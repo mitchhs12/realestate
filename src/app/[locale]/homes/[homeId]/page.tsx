@@ -19,6 +19,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
   const priceTitle = h("price-title");
   const originalPrice = h("original-price");
   const negotiable = h("negotiable");
+  const negotiableText = h("negotiable-text");
   const sizeTitle = h("size-title");
   const edit = h("edit");
   const save = h("save");
@@ -92,7 +93,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
             <Separator />
           </div>
         </div>
-        <div className="flex flex-col max-w-8xl w-full h-[40vh] px-8 py-2 gap-3 mb-16">
+        <div className="flex flex-col max-w-8xl w-full h-[40vh] px-6 py-2 gap-3 mb-6">
           <div className="text-lg sm:text-xl">{locationTitle}</div>
           <div className="flex w-full max-w-8xl h-[50vh]">
             <SmallMapWrapper />
@@ -115,6 +116,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
           loginToPurchase={loginToPurchase}
           priceTitle={priceTitle}
           originalPrice={originalPrice}
+          negotiable={negotiableText}
         />
       </div>
     </div>

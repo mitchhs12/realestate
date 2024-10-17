@@ -2,7 +2,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { capitalizeFirstLetter } from "@/lib/utils";
-import { HomeType } from "@/lib/validations";
 import { typeIcons } from "@/components/Icons/typeIcons";
 import { HomeContext } from "@/context/HomeContext";
 import { useScopedI18n } from "@/locales/client";
@@ -15,6 +14,7 @@ export default function Type() {
   const [selection, setSelection] = useState<string[]>(editedHome?.type || []);
   const [saveDisabled, setSaveDisabled] = useState(true);
   const t = useScopedI18n("sell.type");
+  const h = useScopedI18n("homes");
 
   const options = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -82,7 +82,7 @@ export default function Type() {
         onClick={handleSaveEdits}
         disabled={saveDisabled || saveLoading}
       >
-        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : "Save"}
+        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
       </Button>
     </div>
   );

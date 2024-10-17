@@ -498,6 +498,7 @@ export default {
     "show-all-photos": "แสดงรูปภาพทั้งหมด",
     "original-price": "ราคาเดิม",
     "negotiable": "ราคาต่อรองได้?",
+    "negotiable-text": "สามารถต่อรองได้",
     "bedrooms": {
       "single": "ห้องนอน",
       "plural": "ห้องนอน"

@@ -92,11 +92,11 @@ export default function MapComponent({
       setNewHome &&
       setNewHome({
         ...currentHome,
-        address: data.results.Label,
-        municipality: data.results.Municipality,
-        subRegion: data.results.SubRegion,
-        region: data.results.Region,
-        country: data.results.Country, // ISO 3166 Alpha 3 Code
+        address: data.results?.Label,
+        municipality: data.results?.Municipality,
+        subRegion: data.results?.SubRegion,
+        region: data.results?.Region,
+        country: data.results?.Country, // ISO 3166 Alpha 3 Code
         longitude: data.location[0],
         latitude: data.location[1],
       });

@@ -21,7 +21,7 @@ export default function TitleDialog() {
           {home.title}
         </h1>
       </DialogTrigger>
-      <DialogContent className="flex flex-col w-[90%] px-0 sm:px-2 md:px-6">
+      <DialogContent className="w-[90%] px-0 sm:px-2 md:px-6">
         <I18nProviderClient locale={defaultLanguage}>
           <Title />
         </I18nProviderClient>
