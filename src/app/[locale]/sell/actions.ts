@@ -40,8 +40,8 @@ const validateHome = (homeData: any) => {
     ("You need at least 5 photos");
   }
   if (homeData.listingType === "standard") {
-    if (homeData.photos.length > 5) {
-      return { success: false, error: "You can only upload 5 photos with a standard listing" };
+    if (homeData.photos.length > 10) {
+      return { success: false, error: "You can only upload up to 10 photos with a standard listing" };
     }
   }
   return { success: true, error: "" };

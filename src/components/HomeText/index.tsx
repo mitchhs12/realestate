@@ -50,6 +50,7 @@ import DescriptionDialog from "./DescriptionDialog";
 import PriceDialog from "./PriceDialog";
 import ContactDialog from "./ContactDialog";
 import CapacityDialog from "./CapacityDialog";
+import RoomsDialog from "./RoomsDialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -349,31 +350,41 @@ export default function HomeText({
                 </div>
               </div>
             )}
-            <div className="flex flex-col w-full sm:w-3/4">
-              <div className="text-lg sm:text-xl mb-3">{roomsTitle}</div>
-              <div className="flex flex-col w-full gap-3 pl-1">
-                <div className="flex gap-3 items-center">
-                  <BedDouble size={18} strokeWidth={1.5} />
-                  <span className="w-[1rem]">{formatNumber(home.bedrooms, numerals)}</span>{" "}
-                  <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
-                </div>
-                <div className="flex gap-3 items-center">
-                  <Bath size={18} strokeWidth={1.5} />
-                  <span className="w-[1rem]">{formatNumber(home.bathrooms, numerals)}</span>
-                  <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
-                </div>
-                <div className="flex gap-3 items-center">
-                  <Sofa size={18} strokeWidth={1.5} />
-                  <span className="w-[1rem]">{formatNumber(home.livingrooms, numerals)}</span>
-                  <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
-                </div>
-                <div className="flex gap-3 items-center">
-                  <CookingPot size={18} strokeWidth={1.5} />
-                  <span className="w-[1rem]">{formatNumber(home.kitchens, numerals)}</span>
-                  <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
+            {editMode ? (
+              <RoomsDialog
+                roomsTitle={roomsTitle}
+                bedroomsText={bedroomsText}
+                bathroomsText={bathroomsText}
+                livingroomsText={livingroomsText}
+                kitchensText={kitchensText}
+              />
+            ) : (
+              <div className="flex flex-col w-full sm:w-3/4">
+                <div className="text-lg sm:text-xl mb-3">{roomsTitle}</div>
+                <div className="flex flex-col w-full gap-3 pl-1">
+                  <div className="flex gap-3 items-center">
+                    <BedDouble size={18} strokeWidth={1.5} />
+                    <span className="w-[1rem]">{formatNumber(home.bedrooms, numerals)}</span>{" "}
+                    <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
+                  </div>
+                  <div className="flex gap-3 items-center">
+                    <Bath size={18} strokeWidth={1.5} />
+                    <span className="w-[1rem]">{formatNumber(home.bathrooms, numerals)}</span>
+                    <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
+                  </div>
+                  <div className="flex gap-3 items-center">
+                    <Sofa size={18} strokeWidth={1.5} />
+                    <span className="w-[1rem]">{formatNumber(home.livingrooms, numerals)}</span>
+                    <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
+                  </div>
+                  <div className="flex gap-3 items-center">
+                    <CookingPot size={18} strokeWidth={1.5} />
+                    <span className="w-[1rem]">{formatNumber(home.kitchens, numerals)}</span>
+                    <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             <div className="flex flex-col h-full">
               <div className="text-lg sm:text-xl mb-3">{featuresTitle}</div>
               <div className="gap-3 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 text-sm sm:text-lg">
