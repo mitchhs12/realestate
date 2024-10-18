@@ -51,6 +51,7 @@ import PriceDialog from "./PriceDialog";
 import ContactDialog from "./ContactDialog";
 import CapacityDialog from "./CapacityDialog";
 import RoomsDialog from "./RoomsDialog";
+import FeaturesDialog from "./FeaturesDialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -385,25 +386,29 @@ export default function HomeText({
                 </div>
               </div>
             )}
-            <div className="flex flex-col h-full">
-              <div className="text-lg sm:text-xl mb-3">{featuresTitle}</div>
-              <div className="gap-3 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 text-sm sm:text-lg">
-                {matchingFeatures.map((feature, index) => {
-                  const FeatureIcon = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
+            {editMode ? (
+              <FeaturesDialog featuresTitle={featuresTitle} />
+            ) : (
+              <div className="flex flex-col h-full">
+                <div className="text-lg sm:text-xl mb-3">{featuresTitle}</div>
+                <div className="gap-3 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 text-sm sm:text-lg">
+                  {matchingFeatures.map((feature, index) => {
+                    const FeatureIcon = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
 
-                  return (
-                    FeatureIcon && (
-                      <div key={index} className="flex items-center gap-2">
-                        <div className="flex">
-                          <FeatureIcon color={theme === "dark" ? "#FFFFFF" : "#000000"} width={25} height={25} />
+                    return (
+                      FeatureIcon && (
+                        <div key={index} className="flex items-center gap-2">
+                          <div className="flex">
+                            <FeatureIcon color={theme === "dark" ? "#FFFFFF" : "#000000"} width={25} height={25} />
+                          </div>
+                          <div className="flex text-xs sm:text-sm">{feature.translation}</div>
                         </div>
-                        <div className="flex text-xs sm:text-sm">{feature.translation}</div>
-                      </div>
-                    )
-                  );
-                })}
+                      )
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         <div className="hidden sm:flex flex-col w-1/3 max-w-xs h-full items-end rounded-xl gap-10">

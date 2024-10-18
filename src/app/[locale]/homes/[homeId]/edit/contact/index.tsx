@@ -59,7 +59,7 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col h-full w-full items-center">
-      <div className="flex flex-col w-full h-full justify-start items-center text-center">
+      <div className="flex flex-col w-full h-full justify-start items-center text-center gap-6">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{t("title")}</h1>
@@ -68,7 +68,7 @@ export default function Contact() {
             <h3 className="text-lg w-full">{t("subtitle")}</h3>
           </div>
         </div>
-        <div className="flex h-full w-2/3 justify-center pt-12 gap-8">
+        <div className="flex h-full w-2/3 justify-center gap-8">
           <div className="flex flex-col items-start gap-6 md:gap-12 w-full">
             <div className="flex flex-col md:flex-row items-center gap-3 w-full">
               <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">{t("name")}</h2>
@@ -113,12 +113,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <Button
-          className="sticky bottom-0"
-          variant={"default"}
-          onClick={handleSaveEdits}
-          disabled={saveDisabled || saveLoading}
-        >
+        <Button className="flex" variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
           {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
         </Button>
       </div>

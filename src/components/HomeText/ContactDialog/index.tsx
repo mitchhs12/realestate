@@ -104,7 +104,7 @@ export default function ContactDialog({
           )}
         </div>
       </DialogTrigger>
-      <DialogContent className="w-[90%] max-w-6xl h-[80%]">
+      <DialogContent className="w-[90%] max-w-6xl max-h-[80%]">
         <I18nProviderClient locale={defaultLanguage}>
           <Contact />
         </I18nProviderClient>

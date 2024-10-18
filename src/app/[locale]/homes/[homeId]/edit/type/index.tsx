@@ -51,7 +51,7 @@ export default function Type() {
               if (value) setSelection(value.map(capitalizeFirstLetter));
             }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
               {options.map((type, index) => {
                 const IconComponent = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
                 return (
