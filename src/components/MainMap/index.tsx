@@ -66,7 +66,7 @@ export default function MapComponent({
     {
       id: "dark",
       label: "Dark",
-      mapId: "ae56363d8be5f45d",
+      mapId: "66e8c712a9e09ae1",
       mapTypeId: MapTypeId.ROADMAP,
       styles: darkMap,
     },
@@ -125,6 +125,9 @@ export default function MapComponent({
     currentHome && currentHome.address === query
       ? { lat: currentHome.latitude, lng: currentHome.longitude }
       : { lat: coordinates.lat, lng: coordinates.long };
+
+  console.log("CURRENT THEME", theme);
+  console.log(MAP_CONFIGS[1].mapId);
 
   return (
     <div className="flex flex-col w-full items-center justify-center">
