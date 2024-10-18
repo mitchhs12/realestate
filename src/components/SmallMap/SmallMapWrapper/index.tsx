@@ -14,7 +14,7 @@ export default function SmallMapWrapper() {
   return editMode ? (
     <Dialog open={isMapModalOpen} onOpenChange={setIsMapModalOpen}>
       <DialogTrigger asChild>
-        <div className="flex w-full h-full hover:cursor-pointer border-2 p-2 border-primary animate-pulse rounded-md bg-primary/10">
+        <div className="flex w-full h-full hover:cursor-pointer border-2 border-primary animate-pulse rounded-md bg-primary/10">
           <MapComponent
             currentHome={home}
             coordinates={{ long: home.longitude, lat: home.latitude }}

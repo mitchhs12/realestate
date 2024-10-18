@@ -363,7 +363,7 @@
     "photos": {
       "title": "Fotos",
       "requirement": "Sube al menos 5 fotos.",
-      "restriction": "Sube hasta 12 fotos.",
+      "restriction": "Sube hasta 20 fotos.",
       "drag": "Arrastre sus fotos para reorganizar su orden.",
       "maximum": "Has subido la cantidad máxima de fotos.",
       "onlyImages": "Sólo puedes subir imágenes.",

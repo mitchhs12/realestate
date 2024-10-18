@@ -363,7 +363,7 @@
     "photos": {
       "title": "Photos",
       "requirement": "Téléchargez au moins 5 photos.",
-      "restriction": "Téléchargez jusqu'à 12 photos.",
+      "restriction": "Téléchargez jusqu'à 20 photos.",
       "drag": "Faites glisser vos photos pour réorganiser leur ordre.",
       "maximum": "Vous avez téléchargé le nombre maximum de photos.",
       "onlyImages": "Vous ne pouvez télécharger que des images.",

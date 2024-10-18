@@ -328,7 +328,7 @@ export default function Photos({
           </div>
           <div className="flex flex-col px-8 mt-5">
             <h3 className={`text-lg w-full ${uploadedImageUrls.length === 12 && "text-green-500"}`}>
-              {uploadedImageUrls.length < 5 ? requirement : uploadedImageUrls.length < 12 ? restriction : maximum}
+              {uploadedImageUrls.length < 5 ? requirement : uploadedImageUrls.length < 20 ? restriction : maximum}
             </h3>
             {uploadedImageUrls.length > 0 && <h4>{drag}</h4>}
             {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}

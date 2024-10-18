@@ -363,7 +363,7 @@ export default {
     "photos": {
       "title": "Fotografije",
       "requirement": "Učitajte najmanje 5 fotografija.",
-      "restriction": "Učitajte do 12 fotografija.",
+      "restriction": "Učitajte do 20 fotografija.",
       "drag": "Povucite fotografije da biste promijenili redoslijed.",
       "maximum": "Učitali ste maksimalan broj fotografija.",
       "onlyImages": "Možete učitavati samo slike.",

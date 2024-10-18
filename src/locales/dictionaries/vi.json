@@ -363,7 +363,7 @@
     "photos": {
       "title": "Hình ảnh",
       "requirement": "Tải lên ít nhất 5 ảnh.",
-      "restriction": "Tải lên tối đa 12 ảnh.",
+      "restriction": "Tải lên tối đa 20 ảnh.",
       "drag": "Kéo ảnh để sắp xếp lại thứ tự.",
       "maximum": "Bạn đã tải lên số lượng ảnh tối đa.",
       "onlyImages": "Bạn chỉ có thể tải lên hình ảnh.",

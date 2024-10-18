@@ -34,8 +34,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell/contact");
   const sellFlatIndex = await getSellFlowIndex("/sell/contact");
-  const currentLocale = await getCurrentLocale();
-  const phoneLocale = await getPhoneLocale(currentLocale);
+  const phoneLocale = await getPhoneLocale(locale);
 
   const t = await getScopedI18n("sell.contact");
   const title = t("title");

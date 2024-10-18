@@ -19,7 +19,7 @@ export default function PhotoDialog({ showAllPhotos }: { showAllPhotos: string }
     <Dialog open={isPhotoModalOpen} onOpenChange={setPhotoModalOpen}>
       <DialogTrigger asChild>
         <div
-          className={`relative w-full ${editMode && "hover:cursor-pointer border-2 p-2 border-primary animate-pulse rounded-md bg-primary/10"}`}
+          className={`relative w-full ${editMode && "hover:cursor-pointer border-2 border-primary animate-pulse rounded-2xl bg-primary/10"}`}
         >
           {/* Grid for larger screens */}
           <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-4 h-80 lg:h-96 w-full">

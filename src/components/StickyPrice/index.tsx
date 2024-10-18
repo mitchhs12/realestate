@@ -15,6 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { HomeContext } from "@/context/HomeContext";
 import BuyNowButton from "@/components/BuyNowButton";
 import PriceDialog from "@/components/HomeText/PriceDialog";
+import ContactDialog from "@/components/HomeText/ContactDialog";
 
 interface Props {
   contactNameText: string;
@@ -133,18 +134,22 @@ export default function StickyPrice({
                 <div className="text-xs xs:text-sm">{mobilePrice}</div>
               </Button>
             )}
-            <Button
-              className={`flex ${user ? "w-full" : "w-1/2"} px-4 justify-center gap-2 text-center`}
-              variant={"default"}
-              onClick={() => {
-                setContactModalOpen(true);
-              }}
-            >
-              <div className="flex justify-center">
-                {contactModalOpen ? <PhoneCall className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
-              </div>
-              <div className="text-xs xs:text-sm">{contactButton}</div>
-            </Button>
+            {editMode ? (
+              <ContactDialog isLargeScreen={false} contactButton={contactButton} />
+            ) : (
+              <Button
+                className={`flex ${user ? "w-full" : "w-1/2"} px-4 justify-center gap-2 text-center`}
+                variant={"default"}
+                onClick={() => {
+                  setContactModalOpen(true);
+                }}
+              >
+                <div className="flex justify-center">
+                  {contactModalOpen ? <PhoneCall className="w-4 h-4" /> : <Phone className="w-4 h-4" />}
+                </div>
+                <div className="text-xs xs:text-sm">{contactButton}</div>
+              </Button>
+            )}
             {user && (
               <BuyNowButton
                 homeId={home.id}

@@ -363,7 +363,7 @@ export default {
     "photos": {
       "title": "Foto's",
       "requirement": "Laai ten minste 5 foto's op.",
-      "restriction": "Laai tot 12 foto's op.",
+      "restriction": "Laai tot 20 foto's op.",
       "drag": "Sleep jou foto's om hul volgorde te herrangskik.",
       "maximum": "Jy het die maksimum aantal foto's opgelaai.",
       "onlyImages": "Jy kan net beelde oplaai.",

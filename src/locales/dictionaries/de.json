@@ -363,7 +363,7 @@
     "photos": {
       "title": "Fotos",
       "requirement": "Laden Sie mindestens 5 Fotos hoch.",
-      "restriction": "Laden Sie bis zu 12 Fotos hoch.",
+      "restriction": "Laden Sie bis zu 20 Fotos hoch.",
       "drag": "Ziehen Sie Ihre Fotos, um ihre Reihenfolge zu ändern.",
       "maximum": "Sie haben die maximale Anzahl an Fotos hochgeladen.",
       "onlyImages": "Sie können nur Bilder hochladen.",

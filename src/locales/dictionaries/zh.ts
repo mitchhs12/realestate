@@ -363,7 +363,7 @@ export default {
     "photos": {
       "title": "相片",
       "requirement": "上传至少 5 张照片。",
-      "restriction": "最多上传 12 张照片。",
+      "restriction": "最多上传 20 张照片。",
       "drag": "拖动照片以重新排列其顺序。",
       "maximum": "您上传的照片数量已达到上限。",
       "onlyImages": "您只能上传图像。",

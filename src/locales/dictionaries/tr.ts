@@ -363,7 +363,7 @@ export default {
     "photos": {
       "title": "Fotoğraflar",
       "requirement": "En az 5 adet fotoğraf yükleyin.",
-      "restriction": "En fazla 12 fotoğraf yükleyin.",
+      "restriction": "En fazla 20 fotoğraf yükleyin.",
       "drag": "Fotoğraflarınızı sürükleyerek sıralarını değiştirebilirsiniz.",
       "maximum": "Maksimum sayıda fotoğraf yüklediniz.",
       "onlyImages": "Sadece resim yükleyebilirsiniz.",

@@ -48,6 +48,8 @@ import { kv } from "@vercel/kv";
 import TypeDialog from "./TypeDialog";
 import DescriptionDialog from "./DescriptionDialog";
 import PriceDialog from "./PriceDialog";
+import ContactDialog from "./ContactDialog";
+import CapacityDialog from "./CapacityDialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -291,49 +293,62 @@ export default function HomeText({
               )}
             </div>
 
-            {currentType.id !== "warehouse" && currentType.id !== "land" && (
-              <div className="flex flex-col gap-3">
-                <div className="text-lg sm:text-xl">{capacityTitle}</div>
-                <div className="flex items-center gap-3 pl-1">
-                  <Users size={20} strokeWidth={1.5} />
-                  <div className="flex items-center gap-1">
-                    <span>{formatNumber(home.capacity, numerals)}</span>
-                    {home.capacity === 0 ? capacityText.single : capacityText.plural}
+            {editMode ? (
+              <CapacityDialog
+                capacityTitle={capacityTitle}
+                capacityText={capacityText}
+                sizeTitle={sizeTitle}
+                units={units}
+                sqSize={sqSize}
+                feet={feet}
+              />
+            ) : (
+              <div className="flex flex-col gap-6">
+                {currentType.id !== "warehouse" && currentType.id !== "land" && (
+                  <div className="flex flex-col gap-3">
+                    <div className="text-lg sm:text-xl">{capacityTitle}</div>
+                    <div className="flex items-center gap-3 pl-1">
+                      <Users size={20} strokeWidth={1.5} />
+                      <div className="flex items-center gap-1">
+                        <span>{formatNumber(home.capacity, numerals)}</span>
+                        {home.capacity === 0 ? capacityText.single : capacityText.plural}
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-5">
+                    <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
+                  </div>
+                  <div className="flex gap-3 items-center pl-1">
+                    <div className="flex">
+                      <LandPlot size={20} strokeWidth={1.25} />
+                    </div>
+                    <div className="flex flex-col">
+                      {formatNumber(sqSize, numerals)} {feet ? units.ft : units.m}
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Button
+                      className="flex items-center gap-3"
+                      variant={"secondary"}
+                      size={"default"}
+                      onClick={() => {
+                        if (feet) {
+                          setFeet(true);
+                        } else {
+                          setFeet(false);
+                        }
+                        setFeet(!feet);
+                      }}
+                    >
+                      {feet ? <Ruler size={18} strokeWidth={1.25} /> : <Footprints size={18} strokeWidth={1.25} />}
+                      {feet ? units.m : units.ft}
+                    </Button>
                   </div>
                 </div>
               </div>
             )}
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-5">
-                <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
-              </div>
-              <div className="flex gap-3 items-center pl-1">
-                <div className="flex">
-                  <LandPlot size={20} strokeWidth={1.25} />
-                </div>
-                <div className="flex flex-col">
-                  {formatNumber(sqSize, numerals)} {feet ? units.ft : units.m}
-                </div>
-              </div>
-              <div className="flex items-center">
-                <Button
-                  className="flex items-center gap-3"
-                  variant={"secondary"}
-                  size={"default"}
-                  onClick={() => {
-                    if (feet) {
-                      setFeet(true);
-                    } else {
-                      setFeet(false);
-                    }
-                    setFeet(!feet);
-                  }}
-                >
-                  {feet ? <Ruler size={18} strokeWidth={1.25} /> : <Footprints size={18} strokeWidth={1.25} />}
-                  {feet ? units.m : units.ft}
-                </Button>
-              </div>
-            </div>
             <div className="flex flex-col w-full sm:w-3/4">
               <div className="text-lg sm:text-xl mb-3">{roomsTitle}</div>
               <div className="flex flex-col w-full gap-3 pl-1">
@@ -524,87 +539,100 @@ export default function HomeText({
               </CardContent>
             </Card>
           )}
-          <Card className="w-full max-w-xs shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-sm md:text-base lg:text-lg">{contactTitle}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-5">
-              <div className="flex flex-col items-start">
-                <span className="text-start text-xs md:text-sm">{contactNameText}</span>
-                <div
-                  className={`${
-                    !revealContact ? "blur-sm select-none" : "select-text"
-                  } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
-                >
-                  <div className="text-start">{home.contactName}</div>
-                  <Button
-                    onClick={() => home.contactName && handleCopy(home.contactName, "name", setCopiedField)}
-                    variant="outline"
-                    size="icon"
-                    className="flex text-xs gap-2 p-2"
-                    disabled={!revealContact}
+          {editMode ? (
+            <ContactDialog
+              contactTitle={contactTitle}
+              contactNameText={contactNameText}
+              contactEmailText={contactEmailText}
+              contactPhoneText={contactPhoneText}
+              revealContact={revealContact}
+              copiedField={copiedField}
+              contactButton={contactButton}
+              isLargeScreen={true}
+            />
+          ) : (
+            <Card className="w-full max-w-xs shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-sm md:text-base lg:text-lg">{contactTitle}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-5">
+                <div className="flex flex-col items-start">
+                  <span className="text-start text-xs md:text-sm">{contactNameText}</span>
+                  <div
+                    className={`${
+                      !revealContact ? "blur-sm select-none" : "select-text"
+                    } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
-                    {copiedField === "name" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-start">
-                <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
-                <div
-                  className={`${
-                    !revealContact ? "blur-sm select-none" : "select-text"
-                  } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
-                >
-                  <div className="justify-start truncate">{home.contactEmail}</div>
-                  <Button
-                    onClick={() => home.contactEmail && handleCopy(home.contactEmail, "email", setCopiedField)}
-                    variant="outline"
-                    size="icon"
-                    className="flex text-xs gap-2 p-2"
-                    disabled={!revealContact}
-                  >
-                    {copiedField === "email" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-start">
-                <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
-                <div
-                  className={`${
-                    !revealContact ? "blur-sm select-none" : "select-text"
-                  } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
-                >
-                  <div className="justify-start">{home.contactPhone}</div>
-                  <Button
-                    onClick={() => home.contactPhone && handleCopy(home.contactPhone, "phone", setCopiedField)}
-                    variant="outline"
-                    className="flex text-xs gap-2 p-2"
-                    size="icon"
-                    disabled={!revealContact}
-                  >
-                    {copiedField === "phone" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center mt-4">
-                <Button
-                  onClick={() => {
-                    user ? setRevealContact(!revealContact) : openLogInModal();
-                  }}
-                  variant="default"
-                  className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
-                >
-                  <div className="flex gap-3 justify-center text-lg items-center">
-                    {revealContact || isModalOpen ? <PhoneCall className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
-                    <span className="text-xs md:text-sm lg:text-base">{contactButton}</span>
+                    <div className="text-start">{home.contactName}</div>
+                    <Button
+                      onClick={() => home.contactName && handleCopy(home.contactName, "name", setCopiedField)}
+                      variant="outline"
+                      size="icon"
+                      className="flex text-xs gap-2 p-2"
+                      disabled={!revealContact}
+                    >
+                      {copiedField === "name" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                    </Button>
                   </div>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                </div>
+
+                <div className="flex flex-col items-start">
+                  <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
+                  <div
+                    className={`${
+                      !revealContact ? "blur-sm select-none" : "select-text"
+                    } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
+                  >
+                    <div className="justify-start truncate">{home.contactEmail}</div>
+                    <Button
+                      onClick={() => home.contactEmail && handleCopy(home.contactEmail, "email", setCopiedField)}
+                      variant="outline"
+                      size="icon"
+                      className="flex text-xs gap-2 p-2"
+                      disabled={!revealContact}
+                    >
+                      {copiedField === "email" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-start">
+                  <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
+                  <div
+                    className={`${
+                      !revealContact ? "blur-sm select-none" : "select-text"
+                    } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
+                  >
+                    <div className="justify-start">{home.contactPhone}</div>
+                    <Button
+                      onClick={() => home.contactPhone && handleCopy(home.contactPhone, "phone", setCopiedField)}
+                      variant="outline"
+                      className="flex text-xs gap-2 p-2"
+                      size="icon"
+                      disabled={!revealContact}
+                    >
+                      {copiedField === "phone" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-center mt-4">
+                  <Button
+                    onClick={() => {
+                      user ? setRevealContact(!revealContact) : openLogInModal();
+                    }}
+                    variant="default"
+                    className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
+                  >
+                    <div className="flex gap-3 justify-center text-lg items-center">
+                      {revealContact || isModalOpen ? <PhoneCall className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
+                      <span className="text-xs md:text-sm lg:text-base">{contactButton}</span>
+                    </div>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </div>

@@ -363,7 +363,7 @@
     "photos": {
       "title": "Foto",
       "requirement": "Unggah setidaknya 5 foto.",
-      "restriction": "Unggah hingga 12 foto.",
+      "restriction": "Unggah hingga 20 foto.",
       "drag": "Tarik foto Anda untuk mengatur ulang urutannya.",
       "maximum": "Anda telah mengunggah foto dalam jumlah maksimum.",
       "onlyImages": "Anda hanya dapat mengunggah gambar.",

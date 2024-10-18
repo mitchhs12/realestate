@@ -363,7 +363,7 @@
     "photos": {
       "title": "Fotos",
       "requirement": "Envie pelo menos 5 fotos.",
-      "restriction": "Carregue até 12 fotos.",
+      "restriction": "Carregue até 20 fotos.",
       "drag": "Arraste suas fotos para reorganizá-las.",
       "maximum": "Você carregou a quantidade máxima de fotos.",
       "onlyImages": "Você só pode carregar imagens.",

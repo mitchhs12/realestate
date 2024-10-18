@@ -363,7 +363,7 @@ export default {
     "photos": {
       "title": "사진",
       "requirement": "최소 5장의 사진을 업로드하세요.",
-      "restriction": "최대 12장의 사진을 업로드하세요.",
+      "restriction": "최대 20장의 사진을 업로드하세요.",
       "drag": "사진을 드래그하여 순서를 바꾸세요.",
       "maximum": "업로드한 사진의 최대 개수에 도달했습니다.",
       "onlyImages": "이미지만 업로드할 수 있습니다.",

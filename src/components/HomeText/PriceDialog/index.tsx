@@ -45,7 +45,7 @@ export default function PriceDialog({
   return (
     <Dialog open={isPriceModalOpen} onOpenChange={setIsPriceModalOpen}>
       <DialogTrigger asChild>
-        <div className="w-full h-full hover:cursor-pointer border-2 p-2 border-primary animate-pulse rounded-md bg-primary/10">
+        <div className="w-full h-full hover:cursor-pointer border-2 border-primary animate-pulse rounded-lg bg-primary/10">
           {isLargeScreen ? (
             <Card className="w-full max-w-xs shadow-lg">
               <CardHeader>

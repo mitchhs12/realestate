@@ -363,7 +363,7 @@ export default {
     "photos": {
       "title": "Photos",
       "requirement": "Upload at least 5 photos.",
-      "restriction": "Upload up to 12 photos.",
+      "restriction": "Upload up to 20 photos.",
       "drag": "Drag your photos to rearrange their order.",
       "maximum": "You have uploaded the maximum amount of photos.",
       "onlyImages": "You can only upload images.",
