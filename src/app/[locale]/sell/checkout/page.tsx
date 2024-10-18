@@ -39,8 +39,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
     premium: {
       title: t("premium.title"),
       subtitle: t("premium.subtitle"),
-      anchor: 100.0,
-      price: 29.99,
+      anchor: 19.99,
+      price: 4.99,
       perks: [
         {
           title: t("premium.perks.0.title"),
