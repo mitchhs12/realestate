@@ -38,7 +38,7 @@ const chartConfig = {
 
 export default function PropertyValue() {
   const [chartData, setChartData] = useState<{ date: string; lowest: number; average: number; highest: number }[]>([]);
-  const [timeRange, setTimeRange] = useState("90d");
+  const [timeRange, setTimeRange] = useState("30d");
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date);

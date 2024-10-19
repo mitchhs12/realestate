@@ -5,6 +5,7 @@ import FeatureDistribution from "./FeatureDistribution";
 import UserPropertyCount from "./UserPropertyCount";
 import Wrapper from "./Wrapper";
 import UserAccountsCreated from "./UserAccountsCreated";
+import LiveProperties from "./LiveProperties";
 
 export default async function DataPageContent({ locale }: { locale: string }) {
   return (
@@ -15,6 +16,9 @@ export default async function DataPageContent({ locale }: { locale: string }) {
         </Wrapper>
         <Wrapper>
           <UserAccountsCreated />
+        </Wrapper>
+        <Wrapper>
+          <LiveProperties />
         </Wrapper>
         <Wrapper>
           <PropertyValue />

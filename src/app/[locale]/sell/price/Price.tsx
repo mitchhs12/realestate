@@ -61,7 +61,6 @@ export default function Price({
   const initialIntlConfig = currentHome?.currency
     ? locales.find((option) => option.currency === currentHome.currency)
     : locales.find((option) => option.currency === defaultCurrency?.symbol);
-  console.log("initialIntlConfig", initialIntlConfig);
   const [intlConfig, setIntlConfig] = useState<CurrencyInputProps["intlConfig"]>(initialIntlConfig);
 
   useEffect(() => {

@@ -56,7 +56,6 @@ export default function MyHomes({
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         });
       case "favorited":
-        console.log("favorited");
         return homes.sort((a: any, b: any) => (b.favoritedCount || 0) - (a.favoritedCount || 0));
       case "price":
         return homes.sort((a: any, b: any) => (b.priceUsd || 0) - (a.priceUsd || 0));

@@ -13,6 +13,55 @@ function getDateRange(startDate: Date, endDate: Date): Date[] {
   return dates;
 }
 
+export async function getLiveProperties(): Promise<{ date: Date; count: number }[]> {
+  // Get the home creation count grouped by date (ignore time)
+  const homeUpdatedCounts = await prisma.home.groupBy({
+    by: ["updatedAt"],
+    _count: {
+      updatedAt: true,
+    },
+    orderBy: {
+      updatedAt: "asc",
+    },
+    where: {
+      isActive: true,
+    },
+  });
+
+  // Get the earliest and latest completion dates
+  const earliestDate =
+    homeUpdatedCounts.length > 0
+      ? new Date(Math.min(...homeUpdatedCounts.map((home) => home.updatedAt!.getTime())))
+      : null;
+
+  if (!earliestDate) {
+    return [];
+  }
+
+  const today = new Date();
+
+  // Get all dates between the earliest creation date and today
+  const allDates = getDateRange(earliestDate, today);
+
+  // Create a map for quick lookup of homes created on specific dates (ignore time)
+  const updatedMap = new Map<string, number>();
+  homeUpdatedCounts.forEach((home) => {
+    const dateKey = home.updatedAt!.toISOString().split("T")[0]; // Use only the date part
+    const currentCount = updatedMap.get(dateKey) || 0;
+    updatedMap.set(dateKey, currentCount + home._count.updatedAt); // Increment the count for the date
+  });
+
+  // Format the result to include all dates, even those with 0 home creations
+  const formattedResult = allDates.map((date) => {
+    const dateKey = date.toISOString().split("T")[0];
+    return {
+      date: date,
+      count: updatedMap.get(dateKey) || 0, // Default to 0 if no homes were created on that day
+    };
+  });
+  return formattedResult;
+}
+
 export async function getHomeCreationDates(): Promise<{ date: Date; count: number }[]> {
   // Get the home creation count grouped by date (ignore time)
   const homeCreationCounts = await prisma.home.groupBy({
@@ -228,6 +277,7 @@ export async function getPropertyValues(): Promise<{ date: Date; lowest: number;
     },
     where: {
       isComplete: true,
+      isDeleted: false,
     },
   });
 
