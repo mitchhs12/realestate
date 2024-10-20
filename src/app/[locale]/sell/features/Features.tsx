@@ -4,6 +4,7 @@ import { SellContext } from "@/context/SellContext";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { HomeType } from "@/lib/validations";
 import { featureIcons } from "@/components/Icons/featureIcons";
+import { useTheme } from "next-themes";
 
 interface Props {
   currentHome: HomeType | null;
@@ -36,6 +37,8 @@ export default function Type({
   } = useContext(SellContext);
 
   const [selection, setSelection] = useState<string[]>(currentHome?.features ? currentHome?.features : []);
+
+  const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -92,7 +95,7 @@ export default function Type({
                     <div className="flex lg:w-1/2 justify-start lg:justify-center items-center">
                       {IconComponent && (
                         <div className="flex justify-center items-center">
-                          <IconComponent color="gray" width={52} height={55} />
+                          <IconComponent color={theme === "dark" ? "#FFFFFF" : "#000000"} width={55} height={55} />
                         </div>
                       )}
                     </div>

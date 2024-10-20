@@ -8,7 +8,7 @@ type IconComponent = (props: IconProps) => JSX.Element;
 
 export const typeIcons: Record<string, IconComponent> = {
   house: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -22,7 +22,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   apartment: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -40,7 +40,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   cabin: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -56,48 +56,228 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   "country-house": ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
-      <defs>
-        <style>{`.cls-1`}</style>
-      </defs>
-      <path className="cls-1" d="M50.83,48.92V40.65a4.46,4.46,0,0,0-4.46-4.45H39.92A4.85,4.85,0,0,0,35.11,41V53.35" />
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <path
-        className="cls-1"
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        d="M50.83,48.92V40.65a4.46,4.46,0,0,0-4.46-4.45H39.92A4.85,4.85,0,0,0,35.11,41V53.35"
+      />
+      <path
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
         d="M9.4,59a49.15,49.15,0,0,1,12,.27c5.63.91,8.18,2.54,9.81,3.81l.18.1a56.81,56.81,0,0,1,16.81-7.64A61.4,61.4,0,0,1,68,53.45"
       />
-      <ellipse className="cls-1" cx="15.76" cy="50" rx="3.82" ry="6.81" />
-      <line className="cls-1" x1="15.76" y1="50.82" x2="15.76" y2="57.27" />
-      <line className="cls-1" x1="53.73" y1="24.94" x2="53.73" y2="17.58" />
-      <polyline className="cls-1" points="26.02 54.05 26.02 32.75 43.38 15.49 59.91 32.75 59.91 47.73" />
+      <ellipse
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        cx={15.76}
+        cy={50}
+        rx={3.82}
+        ry={6.81}
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1={15.76}
+        y1={50.82}
+        x2={15.76}
+        y2={57.27}
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1={53.73}
+        y1={24.94}
+        x2={53.73}
+        y2={17.58}
+      />
+      <polyline
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        points="26.02 54.05 26.02 32.75 43.38 15.49 59.91 32.75 59.91 47.73"
+      />
     </svg>
   ),
   castle: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
-      <defs>
-        <style>{`.cls-1`}</style>
-      </defs>
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <path
-        className="cls-1"
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
         d="M26.08,40.08H12.36A2.86,2.86,0,0,0,9.5,42.94V66.25a2.86,2.86,0,0,0,2.86,2.86h52.7a2.86,2.86,0,0,0,2.85-2.86V42.94a2.86,2.86,0,0,0-2.85-2.86H53.29"
       />
-      <path className="cls-1" d="M27.3,33.1V22.84c0-2.23,1.36-4,3.05-4h17.1c1.68,0,3,1.8,3,4V33.1" />
-      <line className="cls-1" x1="19.28" y1="67.91" x2="27.3" y2="32.63" />
-      <line className="cls-1" x1="59.47" y1="68.43" x2="50.5" y2="32.63" />
-      <line className="cls-1" x1="11.75" y1="39.4" x2="11.75" y2="34.3" />
-      <line className="cls-1" x1="19.24" y1="38.92" x2="19.24" y2="34.3" />
-      <line className="cls-1" x1="58.15" y1="39.4" x2="58.15" y2="34.49" />
-      <line className="cls-1" x1="65.65" y1="38.94" x2="65.65" y2="34.49" />
-      <line className="cls-1" x1="30.79" y1="17.28" x2="30.79" y2="12.15" />
-      <line className="cls-1" x1="38.29" y1="16.8" x2="38.29" y2="12.15" />
-      <line className="cls-1" x1="46.58" y1="16.8" x2="46.58" y2="12.15" />
-      <path className="cls-1" d="M47,68.65V57.94a7.36,7.36,0,0,0-7.31-7.41H38.1a7.37,7.37,0,0,0-7.31,7.41V68.65" />
-      <line className="cls-1" x1="27.93" y1="32.23" x2="36.39" y2="32.23" />
-      <line className="cls-1" x1="32.64" y1="26.49" x2="40.13" y2="26.49" />
-      <line className="cls-1" x1="27.3" y1="38.05" x2="32.16" y2="38.05" />
+      <path
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        d="M27.3,33.1V22.84c0-2.23,1.36-4,3.05-4h17.1c1.68,0,3,1.8,3,4V33.1"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="19.28"
+        y1="67.91"
+        x2="27.3"
+        y2="32.63"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="59.47"
+        y1="68.43"
+        x2="50.5"
+        y2="32.63"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="11.75"
+        y1="39.4"
+        x2="11.75"
+        y2="34.3"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="19.24"
+        y1="38.92"
+        x2="19.24"
+        y2="34.3"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="58.15"
+        y1="39.4"
+        x2="58.15"
+        y2="34.49"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="65.65"
+        y1="38.94"
+        x2="65.65"
+        y2="34.49"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="30.79"
+        y1="17.28"
+        x2="30.79"
+        y2="12.15"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="38.29"
+        y1="16.8"
+        x2="38.29"
+        y2="12.15"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="46.58"
+        y1="16.8"
+        x2="46.58"
+        y2="12.15"
+      />
+      <path
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        d="M47,68.65V57.94a7.36,7.36,0,0,0-7.31-7.41H38.1a7.37,7.37,0,0,0-7.31,7.41V68.65"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="27.93"
+        y1="32.23"
+        x2="36.39"
+        y2="32.23"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="32.64"
+        y1="26.49"
+        x2="40.13"
+        y2="26.49"
+      />
+      <line
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        x1="27.3"
+        y1="38.05"
+        x2="32.16"
+        y2="38.05"
+      />
     </svg>
   ),
   "commercial-building": ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -114,7 +294,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   container: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -130,10 +310,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   "cycladic-home": ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
-      <defs>
-        <style>{`.cls-1`}</style>
-      </defs>
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <line className="cls-1" x1="61.96" y1="26.09" x2="61.96" y2="17.99" />
       <line className="cls-1" x1="45.73" y1="61.5" x2="51.1" y2="61.5" />
       <rect className="cls-1" x="24.62" y="26.09" width="37.34" height="39.68" />
@@ -142,7 +319,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   "eco-home": ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -157,7 +334,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   farm: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -174,24 +351,36 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   houseboat: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
       <path
-        className="cls-1"
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
         d="M20.1,56.92a18.73,18.73,0,0,1-4.68-12.41h0a.45.45,0,0,1,.45-.44H61a.44.44,0,0,1,.44.44h0c0,4.76-1,8.62-3.94,11.92"
       />
-      <polyline className="cls-1" points="26.84 42.84 26.84 32.03 38.72 21.1 50.04 32.03 50.04 42.84" />
+      <polyline
+        stroke={color}
+        fill={"none"}
+        strokeWidth={3}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        points="26.84 42.84 26.84 32.03 38.72 21.1 50.04 32.03 50.04 42.84"
+      />
       <path className="cls-1" d="M42.58,44.07V35.4a2.51,2.51,0,0,0-2.5-2.51H36.8a2.51,2.51,0,0,0-2.51,2.51v8.67" />
       <path
+        stroke={color}
         fill={color}
         d="M9.3,62.41c1.9,1,3.21.43,4.89-.8,1-.74,1.77-1.91,2.82-2.56,5.19-3.16,5.28,0,7.54,2.27,3.93,3.92,9.18,2.65,13.07-.62a33,33,0,0,1,2.58-2.29,5.1,5.1,0,0,1,4.17,1.81A21,21,0,0,0,47.44,62,6.54,6.54,0,0,0,54,61.1c1.14-.85,2-2.74,3.21-3.34,3.29-1.63,4.49,1.89,6.39,3.34s3.5,1.67,5.66.65c1.75-.83.23-3.41-1.51-2.59-2.27,1.07-5.65-4.65-8-5.16-1.85-.39-3.26.43-4.62,1.63-.82.73-1.48,2-2.38,2.59-4.67,3.16-5.71-.41-8.49-2.15-1.56-1-2.75-1.47-4.57-.77-3,1.15-4.37,4.52-7.69,5.3-4.85,1.14-5.5-2.84-8.47-5.06a5.5,5.5,0,0,0-5.56-.69c-1.52.6-5.89,5.62-7.12,5-1.71-.9-3.23,1.68-1.52,2.59Z"
       />
     </svg>
   ),
   land: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7{fill:none;stroke:${color};stroke-linecap:round;stroke-width:3px;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6{stroke-linejoin:round;}.cls-2{stroke-dasharray:2.6 3.46;}.cls-3{stroke-dasharray:3.17 4.23;}.cls-4{stroke-dasharray:2.94 3.92;}.cls-5{stroke-dasharray:3.14 4.19;}.cls-6{stroke-dasharray:3.39 4.52;}.cls-7{stroke-miterlimit:10;}`}</style>
       </defs>
@@ -216,7 +405,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   mansion: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -243,7 +432,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   "tiny-home": ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -253,7 +442,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   tower: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -267,7 +456,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   warehouse: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <defs>
         <style>{`.cls-1`}</style>
       </defs>
@@ -283,10 +472,7 @@ export const typeIcons: Record<string, IconComponent> = {
     </svg>
   ),
   windmill: ({ color, width = 45, height = 45 }: IconProps) => (
-    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
-      <defs>
-        <style>{`.cls-1{stroke:${color}}`}</style>
-      </defs>
+    <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <polyline className="cls-1" points="31.37 43.45 27.28 71.31 50.25 71.31 46.41 43.77" />
       <circle className="cls-1" cx="38.76" cy="34.79" r="3.79" />
       <polygon className="cls-1" points="38.76 35.67 41.85 32.87 59.52 48.06 55.09 52.95 38.76 35.67" />

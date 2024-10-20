@@ -5,6 +5,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
 import { typeIcons } from "@/components/Icons/typeIcons";
+import { useTheme } from "next-themes";
 
 interface Props {
   currentHome: HomeType | null;
@@ -36,7 +37,7 @@ export default function Type({
   } = useContext(SellContext);
 
   const [selection, setSelection] = useState<string[]>(currentHome?.type || []);
-
+  const { resolvedTheme: theme } = useTheme();
   useEffect(() => {
     setCurrentHome(currentHome);
     setSellFlowIndices(sellFlowIndices);
@@ -72,7 +73,7 @@ export default function Type({
               if (value) setSelection(value.map(capitalizeFirstLetter));
             }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
               {options.map((type, index) => {
                 const IconComponent = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
                 return (
@@ -85,7 +86,7 @@ export default function Type({
                     <div className="flex w-full justify-center gap-2 items-center text-center text-xs sm:text-sm md:text-md lg:text-lg">
                       {IconComponent && (
                         <div className="flex w-1/3 justify-center items-center">
-                          <IconComponent color="gray" width={40} height={40} />
+                          <IconComponent color={theme === "dark" ? "#FFFFFF" : "#000000"} width={55} height={55} />
                         </div>
                       )}
                       <div className="flex w-2/3 justify-start text-start">{type.translation}</div>
