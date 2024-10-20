@@ -79,7 +79,7 @@ export default function Type({
         </div>
         <div className="w-full h-full justify-center items-center px-4 sm:px-8 overflow-auto">
           <ToggleGroup type="multiple" value={selection} defaultValue={selection} onValueChange={handleValueChange}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 xl:gap-8 items-center justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:gap-8 items-center justify-center">
               {options.map((feature, index) => {
                 const IconComponent = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
                 return (
@@ -87,12 +87,12 @@ export default function Type({
                     variant={"outline"}
                     key={index}
                     value={feature.name}
-                    className="flex px-2 gap-3 justify-center items-center h-[50px] md:h-[80px] xl:h-[120px] text-xs md:text-sm lg:text-md"
+                    className="flex gap-3 justify-center items-center h-[60px] md:h-[80px] xl:h-[100px] text-xs md:text-sm lg:text-sm"
                   >
-                    <div className="flex lg:w-1/2 justify-start lg:justify-center lg:items-center items-start">
+                    <div className="flex lg:w-1/2 justify-start lg:justify-center items-center">
                       {IconComponent && (
                         <div className="flex justify-center items-center">
-                          <IconComponent color="gray" width={40} height={40} />
+                          <IconComponent color="gray" width={52} height={55} />
                         </div>
                       )}
                     </div>
