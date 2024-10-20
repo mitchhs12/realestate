@@ -24,7 +24,7 @@ export const typeIcons: Record<string, IconComponent> = {
   apartment: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
       <defs>
-        <style>{`.cls-1{fill:none;stroke:${color}`}</style>
+        <style>{`.cls-1`}</style>
       </defs>
       <rect className="cls-1" x="28.47" y="13.25" width="23.08" height="56.75" rx="1.78" />
       <rect className="cls-1" x="10.45" y="49.31" width="18.03" height="20.69" rx="2.26" />
@@ -42,7 +42,7 @@ export const typeIcons: Record<string, IconComponent> = {
   cabin: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83">
       <defs>
-        <style>{`.cls-1,.cls-2{fill:none;stroke:${color};stroke-width:3px;}`}</style>
+        <style>{`.cls-1`}</style>
       </defs>
       <path className="cls-1" d="M49.08,71.93V54.19c0-3-2-5.4-4.55-5.4H37.94c-2.69,0-4.92,2.65-4.92,5.84v17.3" />
       <line className="cls-1" x1="20.97" y1="47.85" x2="62.1" y2="47.85" />
@@ -185,7 +185,7 @@ export const typeIcons: Record<string, IconComponent> = {
       <polyline className="cls-1" points="26.84 42.84 26.84 32.03 38.72 21.1 50.04 32.03 50.04 42.84" />
       <path className="cls-1" d="M42.58,44.07V35.4a2.51,2.51,0,0,0-2.5-2.51H36.8a2.51,2.51,0,0,0-2.51,2.51v8.67" />
       <path
-        className="cls-1"
+        fill={color}
         d="M9.3,62.41c1.9,1,3.21.43,4.89-.8,1-.74,1.77-1.91,2.82-2.56,5.19-3.16,5.28,0,7.54,2.27,3.93,3.92,9.18,2.65,13.07-.62a33,33,0,0,1,2.58-2.29,5.1,5.1,0,0,1,4.17,1.81A21,21,0,0,0,47.44,62,6.54,6.54,0,0,0,54,61.1c1.14-.85,2-2.74,3.21-3.34,3.29-1.63,4.49,1.89,6.39,3.34s3.5,1.67,5.66.65c1.75-.83.23-3.41-1.51-2.59-2.27,1.07-5.65-4.65-8-5.16-1.85-.39-3.26.43-4.62,1.63-.82.73-1.48,2-2.38,2.59-4.67,3.16-5.71-.41-8.49-2.15-1.56-1-2.75-1.47-4.57-.77-3,1.15-4.37,4.52-7.69,5.3-4.85,1.14-5.5-2.84-8.47-5.06a5.5,5.5,0,0,0-5.56-.69c-1.52.6-5.89,5.62-7.12,5-1.71-.9-3.23,1.68-1.52,2.59Z"
       />
     </svg>
@@ -238,8 +238,8 @@ export const typeIcons: Record<string, IconComponent> = {
       <line className="cls-1" x1="18.13" y1="43.3" x2="18.13" y2="45.77" />
       <line className="cls-1" x1="18.13" y1="52.21" x2="18.13" y2="54.68" />
       <line className="cls-1" x1="18.13" y1="61.07" x2="18.13" y2="63.54" />
-      <line className="cls-1" x1="12.92" y1="36.46" x2="25.04" y2="36.46" />
-      <line className="cls-1" x1="55.26" y1="37.25" x2="68.93" y2="37.25" />
+      <line className="cls-1" x1="12.92" y1="36.46" x2="23.54" y2="36.46" />
+      <line className="cls-1" x1="56.26" y1="37.25" x2="68.93" y2="37.25" />
     </svg>
   ),
   "tiny-home": ({ color, width = 45, height = 45 }: IconProps) => (
