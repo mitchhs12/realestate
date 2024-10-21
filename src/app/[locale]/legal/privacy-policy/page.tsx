@@ -10,7 +10,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
         <div className="text-4xl font-bold py-4">Privacy Policy</div>
         <div className="italic">Version 17 October 2024</div>
         <div>
-          This Privacy Policy sets out the manner in which Viva Idea Pte Ltd (UEN 202435684M) (“we”, “our”, “us”)
+          This Privacy Policy sets out the manner in which Viva Ideal Pte Ltd (UEN 202435684M) (“we”, “our”, “us”)
           collect, use, manage and protect the data that is capable of identifying a user of our Platform as an
           individual whether on its own or in conjunction with other data accessible by us (“<b>Personal Data</b>”) in
           compliance with the Personal Data Protection Act 2012 of Singapore, as may be amended from time to time (“

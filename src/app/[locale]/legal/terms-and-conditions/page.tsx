@@ -10,7 +10,7 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
         <div className="text-4xl font-bold py-4">Terms and Conditions</div>
         <div className="italic">Version 17 October 2024</div>
         <div className="italic">
-          Viva Idea Pte Ltd (202435684M) (“we”, “our” or “us”) owns and operates www.vivaideal.com (“Platform”). We
+          Viva Ideal Pte Ltd (202435684M) (“we”, “our” or “us”) owns and operates www.vivaideal.com (“Platform”). We
           provide services for the marketing of international real estate.
         </div>
         <div className="italic">Please read these Terms and Conditions carefully before using our Platform.</div>
