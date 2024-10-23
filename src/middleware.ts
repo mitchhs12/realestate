@@ -7,7 +7,7 @@ import { LanguageType } from "@/lib/validations";
 const I18nMiddleware = createI18nMiddleware({
   locales: languages,
   defaultLocale: defaultLanguage,
-  urlMappingStrategy: "redirect",
+  urlMappingStrategy: "rewrite",
   resolveLocaleFromRequest: (request: NextRequest) => {
     const url = new URL(request.url);
     const pathSegments = url.pathname.split("/");
