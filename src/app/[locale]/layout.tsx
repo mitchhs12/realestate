@@ -6,11 +6,16 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/providers/theme";
 import { LocaleContextProvider } from "@/context/LocaleContext";
-import { LanguageType } from "@/lib/validations";
+import { languages, LanguageType } from "@/lib/validations";
 import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
 import { getStaticParams } from "@/locales/server";
 import React from "react";
+
+const languageAlternates = languages.reduce((acc: any, lang) => {
+  acc[lang] = `/${lang}`;
+  return acc;
+}, {});
 
 export const metadata: Metadata = {
   title: {
@@ -19,6 +24,22 @@ export const metadata: Metadata = {
   },
   description:
     "Discover global properties for sale on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
+  metadataBase: new URL("https://www.vivaideal.com"),
+  alternates: {
+    canonical: "/",
+    languages: languageAlternates,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export function generateStaticParams() {
