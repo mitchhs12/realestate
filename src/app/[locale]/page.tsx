@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import HomePageContent from "@/components/HomePageContent";
 
 export const metadata: Metadata = {
-  title: "Home | Viva Ideal - International Property Marketplace",
+  title: "Viva Ideal - Buy and Sell Global Properties",
   description:
     "Search and explore global properties on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
 };

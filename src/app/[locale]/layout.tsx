@@ -20,7 +20,7 @@ const languageAlternates = languages.reduce((acc: any, lang) => {
 export const metadata: Metadata = {
   title: {
     default: "Viva Ideal | Buy and Sell Global Properties",
-    template: "%s | Viva Ideal",
+    template: "Viva Ideal | %s",
   },
   description:
     "Discover global properties for sale on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
