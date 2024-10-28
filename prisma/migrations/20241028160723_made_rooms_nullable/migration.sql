@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "homes" ALTER COLUMN "bedrooms" DROP NOT NULL,
+ALTER COLUMN "bathrooms" DROP NOT NULL,
+ALTER COLUMN "capacity" DROP NOT NULL,
+ALTER COLUMN "kitchens" DROP NOT NULL,
+ALTER COLUMN "livingrooms" DROP NOT NULL;

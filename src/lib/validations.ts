@@ -149,11 +149,11 @@ export const homeSchema = z.object({
   longitude: z.number(),
   type: z.array(z.string()),
   features: z.array(z.string()),
-  bedrooms: z.number().int(),
-  bathrooms: z.number().int(),
-  livingrooms: z.number().int(),
-  kitchens: z.number().int(),
-  capacity: z.number().int(),
+  bedrooms: z.number().int().nullable(),
+  bathrooms: z.number().int().nullable(),
+  livingrooms: z.number().int().nullable(),
+  kitchens: z.number().int().nullable(),
+  capacity: z.number().int().nullable(),
   photos: z.array(z.string()),
   price: z.number(),
   currency: z.string().nullable(),
@@ -200,11 +200,11 @@ export type HomeFeatureProps = {
   price: number;
   priceUsd: number;
   currency: string | null;
-  bedrooms: number;
-  bathrooms: number;
-  livingrooms: number;
-  kitchens: number;
-  capacity: number;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  livingrooms: number | null;
+  kitchens: number | null;
+  capacity: number | null;
   photos: string[];
   contactName: string | null;
   contactEmail: string | null;

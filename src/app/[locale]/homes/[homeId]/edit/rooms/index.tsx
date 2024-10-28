@@ -12,10 +12,10 @@ export default function Rooms() {
   const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
   const { numerals } = useContext(LocaleContext);
 
-  const [bedrooms, setBedrooms] = useState(editedHome?.bedrooms);
-  const [bathrooms, setBathrooms] = useState(editedHome?.bathrooms);
-  const [livingrooms, setLivingrooms] = useState(editedHome?.livingrooms);
-  const [kitchens, setKitchens] = useState(editedHome?.kitchens);
+  const [bedrooms, setBedrooms] = useState(editedHome?.bedrooms ?? 0);
+  const [bathrooms, setBathrooms] = useState(editedHome?.bathrooms ?? 0);
+  const [livingrooms, setLivingrooms] = useState(editedHome?.livingrooms ?? 0);
+  const [kitchens, setKitchens] = useState(editedHome?.kitchens ?? 0);
 
   const t = useScopedI18n("sell.rooms");
   const h = useScopedI18n("homes");

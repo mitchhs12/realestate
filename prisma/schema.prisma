@@ -82,11 +82,11 @@ model Home {
   longitude       Float           @default(0)
   type            String[]
   features        String[]
-  bedrooms        Int             @default(0)
-  bathrooms       Int             @default(0)
-  livingrooms     Int             @default(0)
-  kitchens        Int             @default(0)
-  capacity        Int             @default(0)
+  bedrooms        Int?             @default(0)
+  bathrooms       Int?             @default(0)
+  livingrooms     Int?             @default(0)
+  kitchens        Int?             @default(0)
+  capacity        Int?             @default(0)
   photos          String[]
   price           Float           @default(0.0)
   currency        String?

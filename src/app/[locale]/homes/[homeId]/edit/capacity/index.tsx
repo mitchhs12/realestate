@@ -23,7 +23,7 @@ export default function Capacity() {
   const [saveDisabled, setSaveDisabled] = useState(true);
   const [sqLabel, setSqLabel] = useState<string>(formatNumber(editedHome?.areaSqm, numerals));
   const [metresOn, setMetresOn] = useState(true);
-  const [humanCapacity, setHumanCapacity] = useState<number>(editedHome?.capacity);
+  const [humanCapacity, setHumanCapacity] = useState<number>(editedHome?.capacity ?? 0);
   const t = useScopedI18n("sell.capacity");
   const h = useScopedI18n("homes");
 
