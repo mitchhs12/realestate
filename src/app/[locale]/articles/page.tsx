@@ -2,12 +2,35 @@ import Image from "next/image";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
+import { languages } from "@/lib/validations";
 
 import ArticlesTitle from "@/components/ArticlesPageContent/Title";
 import ArticlesPageContent from "@/components/ArticlesPageContent";
 
+const languageAlternates = languages.reduce((acc: any, lang) => {
+  acc[lang] = `/articles/${lang}`;
+  return acc;
+}, {});
+
 export const metadata: Metadata = {
   title: "Articles",
+  description: "Read and learn about global properties on Viva Ideal.",
+  metadataBase: new URL("https://www.vivaideal.com/articles"),
+  alternates: {
+    canonical: "/articles",
+    languages: languageAlternates,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const revalidate = 30;

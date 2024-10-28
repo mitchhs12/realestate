@@ -64,8 +64,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }));
     }),
   ];
+  console.log("links", links[0]);
 
-  console.log("links", links);
+  console.log("links", links[0].alternates);
 
   return links;
 }
