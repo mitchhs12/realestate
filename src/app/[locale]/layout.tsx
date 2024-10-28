@@ -17,8 +17,17 @@ export const metadata: Metadata = {
     default: "Viva Ideal | Buy and Sell Global Properties",
     template: "Viva Ideal | %s",
   },
-  description:
-    "Discover global properties for sale on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export function generateStaticParams() {
