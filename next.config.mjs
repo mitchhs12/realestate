@@ -8,6 +8,11 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.sanity.io", port: "" },
       { protocol: "https", hostname: "d3pkwgsrr79pi4.cloudfront.net", port: "" },
       { protocol: "https", hostname: "images.vivaideal.com", port: "" },
+      {
+        protocol: "https",
+        hostname: "staticw.s3.amazonaws.com",
+        port: "",
+      },
     ],
   },
 };

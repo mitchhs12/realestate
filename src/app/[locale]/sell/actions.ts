@@ -147,7 +147,6 @@ export async function updateHome(
 ): Promise<HomeType> {
   const session = await auth();
   const userId = session?.user?.id;
-  console.log("shouldIncreaseListingFlowStep", shouldIncreaseListingFlowStep);
 
   if (!userId) {
     throw new Error("User not found");

@@ -105,6 +105,7 @@ model Home {
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   listingFlowStep Int
+  source          String?         @default("viva-ideal")
   favoritedLists  FavoriteList[]  @relation("HomesInFavoriteLists")
   ownerId         String
 
