@@ -65,14 +65,14 @@ def insert_property(new_property):
         INSERT INTO Homes (
             photos, "ownerId", title, description, address, municipality, "subRegion", 
             region, country, latitude, longitude, bedrooms, bathrooms, "areaSqm", 
-            type, features, currency, price, "priceNegotiable", language, 
+            type, features, currency, price, "priceNegotiable", "priceUsd", language, 
             "contactName", "contactEmail", "contactPhone", "listingFlowStep", source, 
             "listingType", "isDeleted", "isActive", "isComplete", "completedAt", "updatedAt"
         ) VALUES (
             %(photos)s, %(ownerId)s, %(title)s, %(description)s, %(address)s, %(municipality)s, 
             %(subRegion)s, %(region)s, %(country)s, %(latitude)s, %(longitude)s, %(bedrooms)s, 
             %(bathrooms)s, %(areaSqm)s, %(type)s, %(features)s, %(currency)s, %(price)s, 
-            %(priceNegotiable)s, %(language)s, %(contactName)s, %(contactEmail)s, %(contactPhone)s, 
+            %(priceNegotiable)s, %(priceUsd)s, %(language)s, %(contactName)s, %(contactEmail)s, %(contactPhone)s, 
             %(listingFlowStep)s, %(source)s, %(listingType)s, %(isDeleted)s, %(isActive)s, 
             %(isComplete)s, %(completedAt)s, %(updatedAt)s
         );
@@ -189,67 +189,71 @@ def run_main():
     properties_for_sale = [property for property in all_properties if property["for_sale"]]
     print(f"Total properties for sale: {len(properties_for_sale)}")
 
-    address_info = get_address([float(all_properties[0]["longitude"]), float(all_properties[0]["latitude"])])
-    # Format the first property in this format:
+    # Loop through each property and insert it into the database
+    for property_data in properties_for_sale:
+        # Get address information using the longitude and latitude
+        address_info = get_address([float(property_data["longitude"]), float(property_data["latitude"])])
 
-    photos = []
-    for gallery in all_properties[0]["galleries"]:
-        for key, image in gallery.items():
-            if isinstance(image, dict):
-                photos.append(image["url_original"])
+        # Gather photos, limiting to a maximum of 10
+        photos = []
+        for gallery in property_data["galleries"]:
+            for key, image in gallery.items():
+                if isinstance(image, dict):
+                    photos.append(image["url_original"])
+                if len(photos) >= 10:
+                    break  # Stop once we have 10 images
             if len(photos) >= 10:
-                break  # Stop once we have 10 images
-        if len(photos) >= 10:
-            break  # Stop if the limit is reached
+                break  # Stop if the limit is reached
 
-    conversion_rate = currencies[all_properties[0]["iso_currency"]]
-    print(conversion_rate)
-    new_property = {
-        "photos": photos,
-        "ownerId": "cly4ycuwy000013zyqaazjjiq",
-        "title": all_properties[0]["title"],
-        "description": all_properties[0]["observations"],
-        "address": all_properties[0]["address"],
-        "latitude": float(all_properties[0]["latitude"]),
-        "longitude": float(all_properties[0]["longitude"]),
-        "bedrooms": int(all_properties[0]["bedrooms"]),
-        "bathrooms": int(all_properties[0]["bathrooms"]),
-        "address": address_info["address"],
-        "municipality": address_info["municipality"],
-        "subRegion": address_info["subRegion"],
-        "region": address_info["region"],
-        "country": address_info["country"],
-        "latitude": all_properties[0]["latitude"],
-        "longitude": all_properties[0]["longitude"],
-        "areaSqm": float(all_properties[0]["area"]),
-        "type": [viva_ideal_types[propertyTypeMapping[all_properties[0]["id_property_type"]]]],
-        "features": [
+        # Calculate the USD price
+        conversion_rate = float(currencies[property_data["iso_currency"]])
+        sale_price = float(property_data["sale_price"])
+        usd_price = round(sale_price / conversion_rate)
+
+        # Define the property dictionary for insertion
+        new_property = {
+            "photos": photos,
+            "ownerId": "cly4ycuwy000013zyqaazjjiq",
+            "title": property_data["title"],
+            "description": property_data["observations"],
+            "address": address_info["address"],
+            "municipality": address_info["municipality"],
+            "subRegion": address_info["subRegion"],
+            "region": address_info["region"],
+            "country": address_info["country"],
+            "latitude": float(property_data["latitude"]),
+            "longitude": float(property_data["longitude"]),
+            "bedrooms": int(property_data["bedrooms"]),
+            "bathrooms": int(property_data["bathrooms"]),
+            "areaSqm": float(property_data["area"]),
+            "type": [viva_ideal_types[propertyTypeMapping[property_data["id_property_type"]]]],
+            "features": [
                 viva_ideal_features[featuresMap[feature["nombre"]]] 
-                for feature in all_properties[0]["features"]["internal"] + all_properties[0]["features"]["external"]
+                for feature in property_data["features"]["internal"] + property_data["features"]["external"]
                 if featuresMap.get(feature["nombre"]) != "none"
             ],
-        "currency": all_properties[0]['iso_currency'],
-        "price": float(all_properties[0]["sale_price"]),
-        "usdPrice": conversion_rate * float(all_properties[0]["sale_price"]),
-        "priceNegotiable": False,
-        "language": "es",
-        "priceNegotiable": False,
-        "contactName": all_properties[0]["user_data"]["first_name"] + " " + all_properties[0]["user_data"]["last_name"],
-        "contactEmail": "ibra@ibragomez.com",
-        "contactPhone": "+573001163462",
-        "listingFlowStep": 14,
-        "source": "wasi",
-        "listingType": "standard",
-        "isDeleted": False,
-        "isActive": True,
-        "isComplete": True,
-        "completedAt": "2024-10-28T00:00:00.000Z",
-        "createdAt": "2024-10-28T00:00:00.000Z",
-        "updatedAt": "2024-10-28T00:00:00.000Z",
+            "currency": property_data['iso_currency'],
+            "price": round(sale_price),
+            "priceUsd": usd_price,
+            "priceNegotiable": False,
+            "language": "es",
+            "contactName": f"{property_data['user_data']['first_name']} {property_data['user_data']['last_name']}",
+            "contactEmail": "ibra@ibragomez.com",
+            "contactPhone": "+573001163462",
+            "listingFlowStep": 14,
+            "source": "wasi",
+            "listingType": "standard",
+            "isDeleted": False,
+            "isActive": True,
+            "isComplete": True,
+            "completedAt": "2024-10-28T00:00:00.000Z",
+            "createdAt": "2024-10-28T00:00:00.000Z",
+            "updatedAt": "2024-10-28T00:00:00.000Z",
         }
-    print(new_property)
-    print('UPLOADING!')
-    insert_property(new_property)
+
+        # Insert the property into the database
+        print(f"Inserting property: {new_property['title']}")
+        insert_property(new_property)
 
 if __name__ == "__main__":
     run_main()
