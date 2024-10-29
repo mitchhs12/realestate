@@ -552,6 +552,7 @@
     "date": "تاريخ الإنشاء",
     "favorited": "الأكثر تفضيلا",
     "price": "أغلى",
+    "completed": "القوائم المكتملة",
     "deleteWarning": "هل أنت متأكد تماما؟",
     "deleteDescription": "سيؤدي هذا إلى حذف منزلك نهائيًا!",
     "deleteCancel": "يلغي",

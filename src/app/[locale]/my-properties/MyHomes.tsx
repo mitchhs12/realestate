@@ -31,6 +31,7 @@ interface Props {
     date: string;
     favorited: string;
     price: string;
+    completed: string;
   };
 }
 
@@ -62,6 +63,8 @@ export default function MyHomes({
       case "price":
         sortedHomes.sort((a: any, b: any) => (b.priceUsd || 0) - (a.priceUsd || 0));
         break;
+      case "completed":
+        sortedHomes.sort((a: any, b: any) => (b.sellFlowCount || 0) - (a.sellFlowCount || 0));
       default:
         break;
     }
@@ -133,6 +136,7 @@ export default function MyHomes({
                 <SelectItem value="date">{selection.date}</SelectItem>
                 <SelectItem value="favorited">{selection.favorited}</SelectItem>
                 <SelectItem value="price">{selection.price}</SelectItem>
+                <SelectItem value="completed">{selection.completed}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

@@ -52,6 +52,7 @@ export default async function Page({ params: { locale } }: { params: { locale: s
       date: mp("date"),
       favorited: mp("favorited"),
       price: mp("price"),
+      completed: mp("completed"),
     };
 
     return (
