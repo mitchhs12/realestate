@@ -6,17 +6,9 @@ import { User } from "next-auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, Heart, House } from "lucide-react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HomeType } from "@/lib/validations";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import PaginationComponent from "@/components/PaginationComponent";
 
 interface Props {
   user: User;
@@ -54,21 +46,31 @@ export default function MyHomes({
   selection,
 }: Props) {
   const [sortOption, setSortOption] = useState("date");
+  const [homes, setHomes] = useState<HomeType[]>(user.homes);
+  const [visibleHomes, setVisibleHomes] = useState<HomeType[]>([]);
 
-  const sortHomes = (homes: any) => {
+  const sortHomes = (homes: HomeType[]) => {
+    let sortedHomes = [...homes]; // Clone the array to avoid in-place sorting
+
     switch (sortOption) {
       case "date":
-        return homes.sort((a: any, b: any) => {
-          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-        });
+        sortedHomes.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        break;
       case "favorited":
-        return homes.sort((a: any, b: any) => (b.favoritedCount || 0) - (a.favoritedCount || 0));
+        sortedHomes.sort((a: any, b: any) => (b.favoritedCount || 0) - (a.favoritedCount || 0));
+        break;
       case "price":
-        return homes.sort((a: any, b: any) => (b.priceUsd || 0) - (a.priceUsd || 0));
+        sortedHomes.sort((a: any, b: any) => (b.priceUsd || 0) - (a.priceUsd || 0));
+        break;
       default:
-        return homes;
+        break;
     }
+    setHomes(sortedHomes);
   };
+
+  useEffect(() => {
+    sortHomes(user.homes);
+  }, [sortOption]);
 
   const activeHomes = user.homes.filter((home) => home.isComplete);
   const allCompletedHomesActive = activeHomes.every((home) => home.isActive);
@@ -111,26 +113,34 @@ export default function MyHomes({
         </Card>
       </div>
       <div className="flex gap-3 px-4 md:px-6 items-center justify-between w-full py-6">
-        <ToggleAllVisbilityButton
-          hideAllText={hideAllText}
-          showAllText={showAllText}
-          allCompletedHomesActive={allCompletedHomesActive}
-        />
-        <Select onValueChange={setSortOption}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder={selection.orderBy} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="date">{selection.date}</SelectItem>
-              <SelectItem value="favorited">{selection.favorited}</SelectItem>
-              <SelectItem value="price">{selection.price}</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <div className="flex justify-start items-center w-full">
+          <ToggleAllVisbilityButton
+            hideAllText={hideAllText}
+            showAllText={showAllText}
+            allCompletedHomesActive={allCompletedHomesActive}
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          <PaginationComponent homes={homes} ITEMS_PER_PAGE={20} setVisibleHomes={setVisibleHomes} />
+        </div>
+        <div className="flex justify-end items-center w-full">
+          <Select onValueChange={setSortOption}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder={selection.orderBy} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="date">{selection.date}</SelectItem>
+                <SelectItem value="favorited">{selection.favorited}</SelectItem>
+                <SelectItem value="price">{selection.price}</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
-      <div className="p-2 px-4 sm:p-4 md:px-6 overflow-y-auto w-full h-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
-        {sortHomes(user.homes).map((home: HomeType, index: number) => {
+
+      <div className="p-2 px-4 sm:p-4 md:px-6 overflow-y-auto w-full h-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+        {visibleHomes.map((home: HomeType, index: number) => {
           const matchingTypes = findMatching(typesObject, home, "type");
 
           return (
@@ -150,7 +160,6 @@ export default function MyHomes({
           );
         })}
       </div>
-      <Pagination />
     </div>
   );
 }
