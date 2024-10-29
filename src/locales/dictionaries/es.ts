@@ -552,6 +552,7 @@ export default {
     "date": "Fecha de creación",
     "favorited": "Más favoritos",
     "price": "El más caro",
+    "completed": "Listados completados",
     "deleteWarning": "¿Estás completamente seguro?",
     "deleteDescription": "¡Esto eliminará tu casa de forma permanente!",
     "deleteCancel": "Cancelar",

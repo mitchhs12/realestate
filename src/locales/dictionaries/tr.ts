@@ -552,6 +552,7 @@ export default {
     "date": "Oluşturulma tarihi",
     "favorited": "En çok beğenilen",
     "price": "En pahalı",
+    "completed": "Tamamlanmış listeler",
     "deleteWarning": "Kesinlikle emin misin?",
     "deleteDescription": "Bu işlem evinizi kalıcı olarak silecektir!",
     "deleteCancel": "İptal etmek",

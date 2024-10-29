@@ -552,6 +552,7 @@ export default {
     "date": "วันที่สร้าง",
     "favorited": "ชื่นชอบมากที่สุด",
     "price": "ราคาแพงที่สุด",
+    "completed": "รายการเสร็จสมบูรณ์",
     "deleteWarning": "คุณแน่ใจแน่นอนมั้ย?",
     "deleteDescription": "การกระทำดังกล่าวจะลบบ้านของคุณอย่างถาวร!",
     "deleteCancel": "ยกเลิก",

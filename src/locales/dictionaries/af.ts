@@ -552,6 +552,7 @@ export default {
     "date": "Datum geskep",
     "favorited": "Mees gunsteling",
     "price": "Die duurste",
+    "completed": "Voltooide inskrywings",
     "deleteWarning": "Is jy heeltemal seker?",
     "deleteDescription": "Dit sal jou huis permanent uitvee!",
     "deleteCancel": "Kanselleer",

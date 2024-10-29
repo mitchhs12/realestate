@@ -552,6 +552,7 @@ export default {
     "date": "შექმნის თარიღი",
     "favorited": "ყველაზე საყვარელი",
     "price": "ყველაზე ძვირი",
+    "completed": "დასრულებული განცხადებები",
     "deleteWarning": "აბსოლუტურად დარწმუნებული ხარ?",
     "deleteDescription": "ეს სამუდამოდ წაშლის თქვენს სახლს!",
     "deleteCancel": "გაუქმება",

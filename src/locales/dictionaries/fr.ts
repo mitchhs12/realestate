@@ -552,6 +552,7 @@ export default {
     "date": "Date de création",
     "favorited": "Le plus favorisé",
     "price": "Plus cher",
+    "completed": "Annonces terminées",
     "deleteWarning": "Êtes-vous absolument sûr ?",
     "deleteDescription": "Cela supprimera définitivement votre maison !",
     "deleteCancel": "Annuler",

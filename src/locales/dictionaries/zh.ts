@@ -552,6 +552,7 @@ export default {
     "date": "创建日期",
     "favorited": "最受喜爱",
     "price": "最昂贵的",
+    "completed": "已完成的清单",
     "deleteWarning": "你真的确定吗？",
     "deleteDescription": "这将永久删除您的主页！",
     "deleteCancel": "取消",

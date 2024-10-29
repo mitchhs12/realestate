@@ -552,6 +552,7 @@ export default {
     "date": "作成日",
     "favorited": "最もお気に入り",
     "price": "最も高価",
+    "completed": "完了したリスト",
     "deleteWarning": "本当に確信していますか?",
     "deleteDescription": "これにより、あなたのホームは永久に削除されます。",
     "deleteCancel": "キャンセル",

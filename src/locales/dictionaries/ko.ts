@@ -552,6 +552,7 @@ export default {
     "date": "생성 날짜",
     "favorited": "가장 많이 즐겨찾기됨",
     "price": "가장 비싼",
+    "completed": "완료된 목록",
     "deleteWarning": "정말 확신하시나요?",
     "deleteDescription": "이렇게 하면 집이 영구적으로 삭제됩니다!",
     "deleteCancel": "취소",

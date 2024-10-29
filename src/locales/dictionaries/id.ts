@@ -552,6 +552,7 @@ export default {
     "date": "Tanggal dibuat",
     "favorited": "Paling disukai",
     "price": "Paling mahal",
+    "completed": "Daftar yang sudah selesai",
     "deleteWarning": "Apakah Anda benar-benar yakin?",
     "deleteDescription": "Ini akan menghapus rumah Anda secara permanen!",
     "deleteCancel": "Membatalkan",
