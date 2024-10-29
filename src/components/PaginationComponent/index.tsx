@@ -25,10 +25,8 @@ export default function PaginationComponent({ homes, ITEMS_PER_PAGE, setVisibleH
   }, [homes]);
 
   useEffect(() => {
-    if (homes.length > 0) {
-      setVisibleHomes(homes.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE));
-    }
-  }, [currentPage]);
+    setVisibleHomes(homes.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE));
+  }, [currentPage, homes]);
 
   const totalPages = Math.ceil(homes.length / ITEMS_PER_PAGE);
 

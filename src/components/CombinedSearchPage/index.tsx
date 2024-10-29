@@ -95,7 +95,6 @@ export default function CombinedSearchPage({
         defaultCurrency
       ).then((data) => {
         setHomes(data);
-        setIsSearchLoading(false);
         setIsFiltering(false);
         setNewFilters(
           JSON.stringify({
@@ -125,6 +124,7 @@ export default function CombinedSearchPage({
       setIsOpen(false);
       setMapFocused(true);
     }
+    setIsSearchLoading(false);
   }, [homes]);
 
   return (
