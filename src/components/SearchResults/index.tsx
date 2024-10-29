@@ -1,10 +1,18 @@
 "use client";
 
 import { HomeType, BoundsType } from "@/lib/validations";
-import { useState, useContext, useEffect, useRef } from "react";
-import { QueryContext } from "@/context/QueryContext";
+import { useState, useEffect, useRef } from "react";
 import ResizableCard from "../ResizableCard";
 import { findMatching } from "@/lib/utils";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 interface Props {
   homes: (HomeType | null)[];
@@ -27,30 +35,41 @@ export default function SearchResults({
   loginToViewPrice,
   premiumText,
 }: Props) {
-  const { query } = useContext(QueryContext);
-  const [currentQuery, setCurrentQuery] = useState(query);
-  const [boundsChanged, setBoundsChanged] = useState(false);
   const firstRender = useRef(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    setCurrentQuery(label);
-  }, [label]);
+  // Number of items to load per page
+  const ITEMS_PER_PAGE = 12;
+  const totalPages = Math.ceil(homes.length / ITEMS_PER_PAGE);
+  console.log("totalPages", totalPages);
+
+  const visibleHomes = homes.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   useEffect(() => {
     if (bounds) {
       if (firstRender.current) {
         firstRender.current = false;
-      } else {
-        setBoundsChanged(true);
       }
     }
   }, [bounds]);
 
   return (
-    <div className="flex flex-col h-full justify-start items-start w-full overflow-y-auto px-4">
+    <div className="flex flex-col h-full justify-between items-start w-full overflow-y-auto px-4">
       {homes && homes.length > 0 ? (
         <div className="w-full grid gap-8 px-4 p-8 pt-0 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
-          {homes.map((home, index) => {
+          {visibleHomes.map((home, index) => {
             const matchingTypes = findMatching(typesObject, home, "type");
 
             return (
@@ -77,6 +96,58 @@ export default function SearchResults({
       ) : (
         <div className="flex justify-center w-full items-center p-6">{noHomesFound}</div>
       )}
+      <Pagination className="pb-4">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious className="cursor-pointer" onClick={handlePreviousPage} />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(1)} isActive={currentPage === 1}>
+              {1}
+            </PaginationLink>
+          </PaginationItem>
+          {currentPage > 3 && <PaginationEllipsis />}
+          {currentPage > 2 && (
+            <PaginationItem>
+              <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(currentPage - 1)}>
+                {currentPage - 1}
+              </PaginationLink>
+            </PaginationItem>
+          )}
+
+          {/* Current Page */}
+          {currentPage !== 1 && currentPage !== totalPages && (
+            <PaginationItem>
+              <PaginationLink className="cursor-pointer" isActive>
+                {currentPage}
+              </PaginationLink>
+            </PaginationItem>
+          )}
+
+          {currentPage < totalPages - 1 && (
+            <PaginationItem>
+              <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(currentPage + 1)}>
+                {currentPage + 1}
+              </PaginationLink>
+            </PaginationItem>
+          )}
+          {currentPage < totalPages - 2 && <PaginationEllipsis />}
+          {totalPages > 1 && (
+            <PaginationItem>
+              <PaginationLink
+                className="cursor-pointer"
+                onClick={() => setCurrentPage(totalPages)}
+                isActive={currentPage === totalPages}
+              >
+                {totalPages}
+              </PaginationLink>
+            </PaginationItem>
+          )}
+          <PaginationItem>
+            <PaginationNext className="cursor-pointer" onClick={handleNextPage} />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 }

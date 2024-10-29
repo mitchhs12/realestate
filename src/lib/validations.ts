@@ -192,9 +192,9 @@ export type BoundsType = {
 
 export type HomeFeatureProps = {
   id: number;
-  name: string | null;
+  // name: string | null;
   address: string | null;
-  description: string | null;
+  // description: string | null;
   type: string[];
   features: string[];
   price: number;
@@ -206,10 +206,10 @@ export type HomeFeatureProps = {
   // kitchens: number | null;
   // capacity: number | null;
   photos: string[];
-  contactName: string | null;
-  contactEmail: string | null;
-  contactPhone: string | null;
-  listingType: string | null;
+  // contactName: string | null;
+  // contactEmail: string | null;
+  // contactPhone: string | null;
+  // listingType: string | null;
   country: string | null;
 };
 

@@ -272,19 +272,19 @@ export async function getAllHomesFiltered(
     },
     properties: {
       id: home.id,
-      name: home.title,
+      // name: home.title,
       address: home.address,
       country: home.country,
       priceUsd: home.priceUsd,
       currency: home.currency,
-      description: home.description,
+      // description: home.description,
       type: home.type, // Include type from home object
       features: home.features, // Include features from home object
       price: home.price, // Include price from home object
       photos: home.photos, // Include photos from home object
-      contactName: home.contactName, // Include contactName from home object
-      contactEmail: home.contactEmail, // Include contactEmail from home object
-      contactPhone: home.contactPhone, // Include contactPhone from home object
+      // contactName: home.contactName, // Include contactName from home object
+      // contactEmail: home.contactEmail, // Include contactEmail from home object
+      // contactPhone: home.contactPhone, // Include contactPhone from home object
       listingType: home.listingType, // Include listingType from home object
     },
   }));
