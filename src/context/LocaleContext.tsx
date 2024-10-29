@@ -59,7 +59,6 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
   const [buyingError, setBuyingError] = useState<string | null>(null);
   const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
   const defaultLanguage = lang;
-  console.log("userId", session?.data?.user.id);
 
   useEffect(() => {
     const fetchCurrencies = async () => {
