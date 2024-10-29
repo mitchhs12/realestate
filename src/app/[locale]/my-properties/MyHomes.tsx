@@ -68,7 +68,7 @@ export default function MyHomes({
   }, 0);
 
   return (
-    <div className="flex flex-col max-w-8xl h-full w-full pb-8">
+    <div className="flex flex-col max-w-8xl justify-center items-center h-full w-full pb-8">
       <div className="grid grid-cols-3 gap-3 w-full p-2 px-4 md:px-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-2 xs:p-6">
