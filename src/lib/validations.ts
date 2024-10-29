@@ -209,7 +209,7 @@ export type HomeFeatureProps = {
   // contactName: string | null;
   // contactEmail: string | null;
   // contactPhone: string | null;
-  // listingType: string | null;
+  listingType: string | null;
   country: string | null;
 };
 
