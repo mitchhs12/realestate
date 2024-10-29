@@ -31,7 +31,8 @@ interface Props {
     date: string;
     favorited: string;
     price: string;
-    completed: string;
+    incomplete: string;
+    visible: string;
   };
 }
 
@@ -63,8 +64,16 @@ export default function MyHomes({
       case "price":
         sortedHomes.sort((a: any, b: any) => (b.priceUsd || 0) - (a.priceUsd || 0));
         break;
-      case "completed":
-        sortedHomes.sort((a: any, b: any) => (b.sellFlowCount || 0) - (a.sellFlowCount || 0));
+      case "incomplete":
+        sortedHomes.sort((a, b) => {
+          if (a.isComplete === b.isComplete) return 0; // Keep original order if equal
+          return a.isComplete ? 1 : -1; // Move `false` (a) before `true` (b)
+        });
+      case "visible":
+        sortedHomes.sort((a, b) => {
+          if (a.isActive === b.isActive) return 0; // Keep original order if equal
+          return a.isActive ? 1 : -1; // Move `false` (a) before `true` (b)
+        });
       default:
         break;
     }
@@ -136,7 +145,8 @@ export default function MyHomes({
                 <SelectItem value="date">{selection.date}</SelectItem>
                 <SelectItem value="favorited">{selection.favorited}</SelectItem>
                 <SelectItem value="price">{selection.price}</SelectItem>
-                <SelectItem value="completed">{selection.completed}</SelectItem>
+                <SelectItem value="incomplete">{selection.incomplete}</SelectItem>
+                <SelectItem value="visible">{selection.visible}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

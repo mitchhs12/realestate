@@ -9,6 +9,7 @@ import { getScopedI18n } from "@/locales/server";
 import { getUnfinishedHome } from "./actions";
 import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
+import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
 
 export const metadata: Metadata = {
   title: "Sell Your Property",
@@ -27,6 +28,11 @@ export default async function Page({ params: { locale } }: any) {
       console.error("Failed to render LockedLogin component:", error);
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
+  }
+
+  const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
+  if (unfinishedHomes.length > 1) {
+    return <SelectHomeWrapper locale={locale} unfinishedHomes={unfinishedHomes} user={user} />;
   }
 
   const url = getPath(headers());
