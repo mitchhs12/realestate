@@ -8,6 +8,15 @@ import { Eye, Heart, House } from "lucide-react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 import { HomeType } from "@/lib/validations";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 interface Props {
   user: User;
@@ -141,6 +150,7 @@ export default function MyHomes({
           );
         })}
       </div>
+      <Pagination />
     </div>
   );
 }

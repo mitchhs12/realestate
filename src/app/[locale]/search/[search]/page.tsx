@@ -110,7 +110,7 @@ export default async function Page({ params }: { params: { locale: string; searc
 
   if (coordinates && label && initZoom) {
     return (
-      <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end ">
+      <main className="flex flex-col-reverse h-screen-minus-header-svh lg:flex-row justify-end">
         <CombinedSearchPage
           coordinates={coordinates}
           label={label}

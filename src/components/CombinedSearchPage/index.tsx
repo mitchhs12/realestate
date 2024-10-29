@@ -14,6 +14,7 @@ import { formatNumber } from "@/lib/utils";
 import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
 import { LocaleContext } from "@/context/LocaleContext";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import PaginationComponent from "../PaginationComponent";
 
 interface Props {
   coordinates: CoordinatesType;
@@ -196,7 +197,7 @@ export default function CombinedSearchPage({
               )}
             </DrawerDescription>
             <div className={`flex flex-col h-full w-full justify-center items-center gap-y-2 overflow-y-auto`}>
-              <div className={`flex w-full h-full pb-12`}>
+              <div className={`flex flex-col w-full h-full pb-12`}>
                 <SearchResults
                   homes={homes}
                   isSearchLoading={isSearchLoading}

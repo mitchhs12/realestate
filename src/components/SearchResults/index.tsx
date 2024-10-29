@@ -4,15 +4,7 @@ import { HomeType, BoundsType } from "@/lib/validations";
 import { useState, useEffect, useRef } from "react";
 import ResizableCard from "../ResizableCard";
 import { findMatching } from "@/lib/utils";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import PaginationComponent from "../PaginationComponent";
 
 interface Props {
   homes: (HomeType | null)[];
@@ -36,26 +28,9 @@ export default function SearchResults({
   premiumText,
 }: Props) {
   const firstRender = useRef(true);
-  const [currentPage, setCurrentPage] = useState(1);
 
-  // Number of items to load per page
   const ITEMS_PER_PAGE = 12;
-  const totalPages = Math.ceil(homes.length / ITEMS_PER_PAGE);
-  console.log("totalPages", totalPages);
-
-  const visibleHomes = homes.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
+  const [visibleHomes, setVisibleHomes] = useState(homes.slice((1 - 1) * ITEMS_PER_PAGE, 1 * ITEMS_PER_PAGE));
 
   useEffect(() => {
     if (bounds) {
@@ -66,88 +41,41 @@ export default function SearchResults({
   }, [bounds]);
 
   return (
-    <div className="flex flex-col h-full justify-between items-start w-full overflow-y-auto px-4">
-      {homes && homes.length > 0 ? (
-        <div className="w-full grid gap-8 px-4 p-8 pt-0 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
-          {visibleHomes.map((home, index) => {
-            const matchingTypes = findMatching(typesObject, home, "type");
+    <>
+      <div className="flex flex-col h-full justify-between items-start w-full overflow-y-auto px-4">
+        {homes && homes.length > 0 ? (
+          <div className="w-full grid gap-8 px-4 p-8 pt-0 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
+            {visibleHomes.map((home, index) => {
+              const matchingTypes = findMatching(typesObject, home, "type");
 
-            return (
-              <div key={index} className="flex justify-center items-start h-full w-full pt-4">
-                <div
-                  className={`flex justify-center rounded-xl h-full w-full space-y-2 shadow-lg dark:shadow-white/10 bg-zinc-100 dark:bg-zinc-900 ${
-                    isSearchLoading && index >= 4 && "hidden sm:block"
-                  } ${isSearchLoading && index >= 9 && "sm:hidden lg:block"} ${
-                    isSearchLoading && index >= 6 && "lg:hidden xl:block"
-                  } ${isSearchLoading && index >= 9 && "xl:hidden 2xl:block"}`}
-                >
-                  <ResizableCard
-                    home={home}
-                    isLoading={isSearchLoading}
-                    types={matchingTypes}
-                    loginToViewPrice={loginToViewPrice}
-                    premiumText={premiumText}
-                  />
+              return (
+                <div key={index} className="flex justify-center items-start h-full w-full pt-4">
+                  <div
+                    className={`flex justify-center rounded-xl h-full w-full space-y-2 shadow-lg dark:shadow-white/10 bg-zinc-100 dark:bg-zinc-900 ${
+                      isSearchLoading && index >= 4 && "hidden sm:block"
+                    } ${isSearchLoading && index >= 9 && "sm:hidden lg:block"} ${
+                      isSearchLoading && index >= 6 && "lg:hidden xl:block"
+                    } ${isSearchLoading && index >= 9 && "xl:hidden 2xl:block"}`}
+                  >
+                    <ResizableCard
+                      home={home}
+                      isLoading={isSearchLoading}
+                      types={matchingTypes}
+                      loginToViewPrice={loginToViewPrice}
+                      premiumText={premiumText}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="flex justify-center w-full items-center p-6">{noHomesFound}</div>
-      )}
-      <Pagination className="pb-4">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious className="cursor-pointer" onClick={handlePreviousPage} />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(1)} isActive={currentPage === 1}>
-              {1}
-            </PaginationLink>
-          </PaginationItem>
-          {currentPage > 3 && <PaginationEllipsis />}
-          {currentPage > 2 && (
-            <PaginationItem>
-              <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(currentPage - 1)}>
-                {currentPage - 1}
-              </PaginationLink>
-            </PaginationItem>
-          )}
-
-          {/* Current Page */}
-          {currentPage !== 1 && currentPage !== totalPages && (
-            <PaginationItem>
-              <PaginationLink className="cursor-pointer" isActive>
-                {currentPage}
-              </PaginationLink>
-            </PaginationItem>
-          )}
-
-          {currentPage < totalPages - 1 && (
-            <PaginationItem>
-              <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(currentPage + 1)}>
-                {currentPage + 1}
-              </PaginationLink>
-            </PaginationItem>
-          )}
-          {currentPage < totalPages - 2 && <PaginationEllipsis />}
-          {totalPages > 1 && (
-            <PaginationItem>
-              <PaginationLink
-                className="cursor-pointer"
-                onClick={() => setCurrentPage(totalPages)}
-                isActive={currentPage === totalPages}
-              >
-                {totalPages}
-              </PaginationLink>
-            </PaginationItem>
-          )}
-          <PaginationItem>
-            <PaginationNext className="cursor-pointer" onClick={handleNextPage} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex justify-center w-full items-center p-6">{noHomesFound}</div>
+        )}
+      </div>
+      <div className="flex py-4">
+        <PaginationComponent homes={homes} ITEMS_PER_PAGE={ITEMS_PER_PAGE} setVisibleHomes={setVisibleHomes} />
+      </div>
+    </>
   );
 }
