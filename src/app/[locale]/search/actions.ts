@@ -281,11 +281,6 @@ export async function getAllHomesFiltered(
       type: home.type, // Include type from home object
       features: home.features, // Include features from home object
       price: home.price, // Include price from home object
-      bedrooms: home.bedrooms, // Include bedrooms from home object
-      bathrooms: home.bathrooms, // Include bathrooms from home object
-      livingrooms: home.livingrooms, // Include livingrooms from home object
-      kitchens: home.kitchens, // Include kitchens from home object
-      capacity: home.capacity, // Include capacity from home object
       photos: home.photos, // Include photos from home object
       contactName: home.contactName, // Include contactName from home object
       contactEmail: home.contactEmail, // Include contactEmail from home object

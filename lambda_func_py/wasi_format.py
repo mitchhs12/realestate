@@ -177,7 +177,7 @@ def get_address(long_lat_array):
 #X   listingFlowStep: z.number().min(0, "Cannot be empty"),
 # });
 
-def run_main():
+def run_main(start_index=0):
     # load properties from all_properties.json
     with open("wasi/all_properties.json", "r") as json_file:
         all_properties = json.load(json_file)
@@ -190,70 +190,85 @@ def run_main():
     print(f"Total properties for sale: {len(properties_for_sale)}")
 
     # Loop through each property and insert it into the database
-    for property_data in properties_for_sale:
+    for index, property_data in enumerate(properties_for_sale[start_index:], start=start_index):
         # Get address information using the longitude and latitude
-        address_info = get_address([float(property_data["longitude"]), float(property_data["latitude"])])
+        try:
+            # Attempt to convert latitude and longitude to float, skip if it fails
+            latitude = float(property_data["latitude"])
+            longitude = float(property_data["longitude"])
+        
 
-        # Gather photos, limiting to a maximum of 10
-        photos = []
-        for gallery in property_data["galleries"]:
-            for key, image in gallery.items():
-                if isinstance(image, dict):
-                    photos.append(image["url_original"])
+            address_info = get_address([longitude, latitude])
+
+            # Gather photos, limiting to a maximum of 10
+            photos = []
+            for gallery in property_data["galleries"]:
+                for key, image in gallery.items():
+                    if isinstance(image, dict):
+                        photos.append(image["url_original"])
+                    if len(photos) >= 10:
+                        break  # Stop once we have 10 images
                 if len(photos) >= 10:
-                    break  # Stop once we have 10 images
-            if len(photos) >= 10:
-                break  # Stop if the limit is reached
+                    break  # Stop if the limit is reached
 
-        # Calculate the USD price
-        conversion_rate = float(currencies[property_data["iso_currency"]])
-        sale_price = float(property_data["sale_price"])
-        usd_price = round(sale_price / conversion_rate)
+            # Calculate the USD price
+            conversion_rate = float(currencies[property_data["iso_currency"]])
+            sale_price = float(property_data["sale_price"])
+            usd_price = round(sale_price / conversion_rate)
 
-        # Define the property dictionary for insertion
-        new_property = {
-            "photos": photos,
-            "ownerId": "cly4ycuwy000013zyqaazjjiq",
-            "title": property_data["title"],
-            "description": property_data["observations"],
-            "address": address_info["address"],
-            "municipality": address_info["municipality"],
-            "subRegion": address_info["subRegion"],
-            "region": address_info["region"],
-            "country": address_info["country"],
-            "latitude": float(property_data["latitude"]),
-            "longitude": float(property_data["longitude"]),
-            "bedrooms": int(property_data["bedrooms"]),
-            "bathrooms": int(property_data["bathrooms"]),
-            "areaSqm": float(property_data["area"]),
-            "type": [viva_ideal_types[propertyTypeMapping[property_data["id_property_type"]]]],
-            "features": [
-                viva_ideal_features[featuresMap[feature["nombre"]]] 
-                for feature in property_data["features"]["internal"] + property_data["features"]["external"]
-                if featuresMap.get(feature["nombre"]) != "none"
-            ],
-            "currency": property_data['iso_currency'],
-            "price": round(sale_price),
-            "priceUsd": usd_price,
-            "priceNegotiable": False,
-            "language": "es",
-            "contactName": f"{property_data['user_data']['first_name']} {property_data['user_data']['last_name']}",
-            "contactEmail": "ibra@ibragomez.com",
-            "contactPhone": "+573001163462",
-            "listingFlowStep": 14,
-            "source": "wasi",
-            "listingType": "standard",
-            "isDeleted": False,
-            "isActive": True,
-            "isComplete": True,
-            "completedAt": "2024-10-28T00:00:00.000Z",
-            "createdAt": "2024-10-28T00:00:00.000Z",
-            "updatedAt": "2024-10-28T00:00:00.000Z",
-        }
+            # Define the property dictionary for insertion
+            new_property = {
+                "photos": photos,
+                "ownerId": "cly4ycuwy000013zyqaazjjiq",
+                "title": property_data["title"],
+                "description": property_data["observations"],
+                "address": address_info["address"],
+                "municipality": address_info["municipality"],
+                "subRegion": address_info["subRegion"],
+                "region": address_info["region"],
+                "country": address_info["country"],
+                "latitude": float(property_data["latitude"]),
+                "longitude": float(property_data["longitude"]),
+                "bedrooms": int(property_data["bedrooms"]),
+                "bathrooms": int(property_data["bathrooms"]),
+                "areaSqm": float(property_data["area"]),
+                "type": [viva_ideal_types[propertyTypeMapping[property_data["id_property_type"]]]],
+                "features": [
+                    viva_ideal_features[featuresMap[feature["id"]]] 
+                    for feature in property_data["features"]["internal"] + property_data["features"]["external"]
+                    if featuresMap.get(feature["id"]) != "none"
+                ],
+                "currency": property_data['iso_currency'],
+                "price": round(sale_price),
+                "priceUsd": usd_price,
+                "priceNegotiable": False,
+                "language": "es",
+                "contactName": f"{property_data['user_data']['first_name']} {property_data['user_data']['last_name']}",
+                "contactEmail": "ibra@ibragomez.com",
+                "contactPhone": "+573001163462",
+                "listingFlowStep": 14,
+                "source": "wasi",
+                "listingType": "standard",
+                "isDeleted": False,
+                "isActive": True,
+                "isComplete": True,
+                "completedAt": "2024-10-28T00:00:00.000Z",
+                "createdAt": "2024-10-28T00:00:00.000Z",
+                "updatedAt": "2024-10-28T00:00:00.000Z",
+            } 
 
-        # Insert the property into the database
-        print(f"Inserting property: {new_property['title']}")
-        insert_property(new_property)
+            # Insert the property into the database
+            print(f"Inserting property: {new_property['title']}")
+            insert_property(new_property)
+            print('Property', index, 'completed!')
+
+        except (ValueError, KeyError) as e:
+            print(f"Skipping property {property_data['title']} due to missing value")
+            # print the error message
+            print("Error:", e)
+            continue  # Skip this property if conversion fails   
+
 
 if __name__ == "__main__":
-    run_main()
+    start_index = 63
+    run_main(start_index=start_index)

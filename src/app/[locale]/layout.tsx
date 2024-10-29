@@ -11,6 +11,7 @@ import Locale from "intl-locale-textinfo-polyfill";
 import MainLayout from "@/components/MainLayout";
 import { getStaticParams } from "@/locales/server";
 import React from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
@@ -49,6 +50,7 @@ export default function RootLayout({ children, params }: Props) {
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
             <LocaleContextProvider lang={params.locale}>
               <MainLayout>{children}</MainLayout>
+              <Toaster />
             </LocaleContextProvider>
           </ThemeProvider>
           <SpeedInsights />

@@ -200,11 +200,11 @@ export type HomeFeatureProps = {
   price: number;
   priceUsd: number;
   currency: string | null;
-  bedrooms: number | null;
-  bathrooms: number | null;
-  livingrooms: number | null;
-  kitchens: number | null;
-  capacity: number | null;
+  // bedrooms: number | null;
+  // bathrooms: number | null;
+  // livingrooms: number | null;
+  // kitchens: number | null;
+  // capacity: number | null;
   photos: string[];
   contactName: string | null;
   contactEmail: string | null;
