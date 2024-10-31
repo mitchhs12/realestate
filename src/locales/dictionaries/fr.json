@@ -246,7 +246,11 @@
       "step-2-sub": "Téléchargez 5 photos ou plus, un titre et une description.",
       "step-3": "3. Terminez et publiez",
       "step-3-sub": "Ajoutez vos coordonnées, votre prix et publiez.",
-      "completed": "Complété"
+      "completed": "Complété",
+      "unfinishedProperties": {
+        "title": "Propriétés inachevées",
+        "subtitle": "Sélectionnez l'une de vos propriétés inachevées pour continuer !"
+      }
     },
     "capacity": {
       "title": "Capacité",

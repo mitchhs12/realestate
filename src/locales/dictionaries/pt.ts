@@ -246,7 +246,11 @@ export default {
       "step-2-sub": "Carregue 5 ou mais fotos, um título e uma descrição.",
       "step-3": "3. Finalizar e publicar",
       "step-3-sub": "Adicione detalhes de contato, seu preço e publique.",
-      "completed": "Concluído"
+      "completed": "Concluído",
+      "unfinishedProperties": {
+        "title": "Propriedades inacabadas",
+        "subtitle": "Selecione uma das suas propriedades inacabadas para continuar!"
+      }
     },
     "capacity": {
       "title": "Capacidade",

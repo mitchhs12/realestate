@@ -246,7 +246,11 @@
       "step-2-sub": "Unggah 5 foto atau lebih, judul, dan deskripsi.",
       "step-3": "3. Selesaikan dan publikasikan",
       "step-3-sub": "Tambahkan rincian kontak, harga Anda, dan publikasikan.",
-      "completed": "Selesai"
+      "completed": "Selesai",
+      "unfinishedProperties": {
+        "title": "Properti yang Belum Selesai",
+        "subtitle": "Pilih salah satu properti Anda yang belum selesai untuk melanjutkan!"
+      }
     },
     "capacity": {
       "title": "Kapasitas",

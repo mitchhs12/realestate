@@ -246,7 +246,11 @@
       "step-2-sub": "Tải lên 5 ảnh trở lên, tiêu đề và mô tả.",
       "step-3": "3. Hoàn thành và xuất bản",
       "step-3-sub": "Thêm thông tin liên lạc, giá và đăng.",
-      "completed": "Hoàn thành"
+      "completed": "Hoàn thành",
+      "unfinishedProperties": {
+        "title": "Bất động sản chưa hoàn thiện",
+        "subtitle": "Chọn một trong những bất động sản còn dang dở của bạn để tiếp tục!"
+      }
     },
     "capacity": {
       "title": "Dung tích",

@@ -246,7 +246,11 @@ export default {
       "step-2-sub": "Laai 5 of meer foto's, 'n titel en 'n beskrywing op.",
       "step-3": "3. Voltooi en publiseer",
       "step-3-sub": "Voeg kontakbesonderhede, jou prys by en publiseer.",
-      "completed": "Voltooi"
+      "completed": "Voltooi",
+      "unfinishedProperties": {
+        "title": "Onvoltooide eiendomme",
+        "subtitle": "Kies een van jou onvoltooide eiendomme om voort te gaan!"
+      }
     },
     "capacity": {
       "title": "Kapasiteit",

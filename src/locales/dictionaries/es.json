@@ -246,7 +246,11 @@
       "step-2-sub": "Sube 5 o más fotos, un título y una descripción.",
       "step-3": "3. Terminar y publicar",
       "step-3-sub": "Añade tus datos de contacto, tu precio y publica.",
-      "completed": "Terminado"
+      "completed": "Terminado",
+      "unfinishedProperties": {
+        "title": "Propiedades sin terminar",
+        "subtitle": "¡Selecciona una de tus propiedades sin terminar para continuar!"
+      }
     },
     "capacity": {
       "title": "Capacidad",

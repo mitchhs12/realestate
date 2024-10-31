@@ -246,7 +246,11 @@
       "step-2-sub": "Učitajte 5 ili više fotografija, naslov i opis.",
       "step-3": "3. Dovršite i objavite",
       "step-3-sub": "Dodajte kontakt podatke, svoju cijenu i objavite.",
-      "completed": "Završeno"
+      "completed": "Završeno",
+      "unfinishedProperties": {
+        "title": "Nedovršene nekretnine",
+        "subtitle": "Odaberite jednu od svojih nedovršenih nekretnina za nastavak!"
+      }
     },
     "capacity": {
       "title": "Kapacitet",

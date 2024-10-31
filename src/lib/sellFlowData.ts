@@ -1,7 +1,7 @@
 export const sellSteps = [
-  ["/sell/step1", "/sell/type", "/sell/location", "/sell/rooms", "/sell/capacity"],
-  ["/sell/step2", "/sell/features", "/sell/photos", "/sell/title", "/sell/description"],
-  ["/sell/step3", "/sell/contact", "/sell/price", "/sell/checkout", "/sell/review"],
+  ["step1", "type", "location", "rooms", "capacity"],
+  ["step2", "features", "photos", "title", "description"],
+  ["step3", "contact", "price", "checkout", "review"],
 ];
 
 export const types = [

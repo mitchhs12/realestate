@@ -215,7 +215,11 @@
       "step-2-sub": "Upload 5 or more photos, a title, and a description.",
       "step-3": "3. Finish up and publish",
       "step-3-sub": "Add contact details, your price and publish.",
-      "completed": "Completed"
+      "completed": "Completed",
+      "unfinishedProperties": {
+        "title": "Unfinished Properties",
+        "subtitle": "Select one of your unfinished properties to continue!"
+      }
     },
     "capacity": {
       "title": "Capacity",

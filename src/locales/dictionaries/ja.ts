@@ -246,7 +246,11 @@ export default {
       "step-2-sub": "5 枚以上の写真、タイトル、説明をアップロードします。",
       "step-3": "3. 完成させて公開する",
       "step-3-sub": "連絡先の詳細と価格を追加して公開します。",
-      "completed": "完了"
+      "completed": "完了",
+      "unfinishedProperties": {
+        "title": "未完成物件",
+        "subtitle": "続行するには、未完了のプロパティの 1 つを選択してください。"
+      }
     },
     "capacity": {
       "title": "容量",

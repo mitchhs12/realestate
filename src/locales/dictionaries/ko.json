@@ -246,7 +246,11 @@
       "step-2-sub": "5장 이상의 사진과 제목, 설명을 업로드하세요.",
       "step-3": "3. 마무리하고 게시하기",
       "step-3-sub": "연락처 정보와 가격을 추가하고 게시하세요.",
-      "completed": "완전한"
+      "completed": "완전한",
+      "unfinishedProperties": {
+        "title": "미완성 부동산",
+        "subtitle": "계속하려면 미완성 부동산 중 하나를 선택하세요!"
+      }
     },
     "capacity": {
       "title": "용량",

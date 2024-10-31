@@ -246,7 +246,11 @@
       "step-2-sub": "En az 5 fotoğraf, bir başlık ve bir açıklama yükleyin.",
       "step-3": "3. Bitirin ve yayınlayın",
       "step-3-sub": "İletişim bilgilerinizi ve fiyatınızı ekleyin ve yayınlayın.",
-      "completed": "Tamamlanmış"
+      "completed": "Tamamlanmış",
+      "unfinishedProperties": {
+        "title": "Tamamlanmamış Mülkler",
+        "subtitle": "Devam etmek için tamamlanmamış mülklerinizden birini seçin!"
+      }
     },
     "capacity": {
       "title": "Kapasite",

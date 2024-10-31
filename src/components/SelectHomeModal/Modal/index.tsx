@@ -26,6 +26,7 @@ export function Modal({ unfinishedHomes, user }: { unfinishedHomes: HomeType[]; 
   const mp = useScopedI18n("my-properties");
   const t = useScopedI18n("sell.type");
   const p = useScopedI18n("sell.checkout.premium");
+  const u = useScopedI18n("sell.sell-flow.unfinishedProperties");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -35,11 +36,10 @@ export function Modal({ unfinishedHomes, user }: { unfinishedHomes: HomeType[]; 
 
   return (
     <Dialog open={true}>
-      <DialogContent className="flex flex-col w-[90%] max-w-7xl h-[90%]">
+      <DialogContent close={false} className="flex flex-col w-[90%] max-w-7xl h-[90%]">
         <DialogHeader className="p-2 sm:p-4 md:px-6">
-          <DialogTitle className="text-2xl font-semibold">{"Unfinished Properties"}</DialogTitle>
-          <DialogDescription>{"Select an unfinished property to continue..."}</DialogDescription>
-          <DialogClose asChild></DialogClose>
+          <DialogTitle className="text-2xl font-semibold">{u("title")}</DialogTitle>
+          <DialogDescription>{u("subtitle")}</DialogDescription>
         </DialogHeader>
         <div className="p-2 sm:p-4 md:px-6 overflow-y-auto h-full w-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
           {unfinishedHomes.map((home: HomeType, index: number) => {

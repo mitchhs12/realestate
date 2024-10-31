@@ -246,7 +246,11 @@ export default {
       "step-2-sub": "上传 5 张或更多照片、标题和描述。",
       "step-3": "3. 完成并发布",
       "step-3-sub": "添加联系方式、价格并发布。",
-      "completed": "完全的"
+      "completed": "完全的",
+      "unfinishedProperties": {
+        "title": "未完成的房产",
+        "subtitle": "选择您的一处未完成的房产并继续！"
+      }
     },
     "capacity": {
       "title": "容量",

@@ -246,7 +246,11 @@
       "step-2-sub": "Laden Sie 5 oder mehr Fotos, einen Titel und eine Beschreibung hoch.",
       "step-3": "3. Fertigstellen und veröffentlichen",
       "step-3-sub": "Fügen Sie Kontaktdaten und Ihren Preis hinzu und veröffentlichen Sie.",
-      "completed": "Vollendet"
+      "completed": "Vollendet",
+      "unfinishedProperties": {
+        "title": "Unfertige Immobilien",
+        "subtitle": "Wählen Sie eine Ihrer unfertigen Immobilien aus, um fortzufahren!"
+      }
     },
     "capacity": {
       "title": "Kapazität",

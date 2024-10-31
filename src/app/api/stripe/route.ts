@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         homeId: homeId,
       },
-      return_url: `${request.headers.get("origin")}/sell/checkout`,
+      return_url: `${request.headers.get("origin")}/sell/${homeId}/checkout`,
     });
 
     return NextResponse.json({ id: session.id, clientSecret: session.client_secret });

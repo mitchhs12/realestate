@@ -116,7 +116,7 @@ export default function ResizableCard({
           home={home}
           link={true}
         />
-        <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
+        <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
           <div
             className={`flex flex-col bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative`}
           >

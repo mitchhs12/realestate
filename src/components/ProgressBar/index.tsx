@@ -39,6 +39,8 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     isMyPhone,
   } = useContext(SellContext);
 
+  console.log("NEXT DISABLED", nextDisabled);
+
   router.prefetch(nextStep);
   router.prefetch(prevStep);
   // console.log("currentHome", JSON.stringify(currentHome));
@@ -70,21 +72,22 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     const _shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
     // console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
     if (_shouldIncreaseListingFlowStep) {
-      if (pathname.startsWith("/sell/rooms")) {
+      if (pathname.startsWith(`/sell/${currentHome?.id}/rooms`)) {
         return false;
-      } else if (pathname.startsWith("/sell/step")) {
+      } else if (pathname.startsWith(`/sell/${currentHome?.id}/step`)) {
         // console.log("button should be active because we are on a intro step page");
         return false;
       } else if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
         // console.log("button should be active because new home is different from current home");
         return false;
-      } else if (pathname.startsWith("/sell/review")) {
+      } else if (pathname.startsWith(`/sell/${currentHome?.id}/review`)) {
         console.log("button should be active because we are on the final page");
         return false;
       } else if (currentHome?.listingType === "premium") {
         return false;
       } else {
         // console.log("button should be DISABLED because new home is the same as current home");
+        console.log("return true here");
         return true;
       }
     } else {
@@ -94,13 +97,14 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   };
 
   const nextButtonDisabled = isButtonDisabled();
+  console.log("next state", nextButtonDisabled, nextDisabled, prevLoading);
 
   async function handleNext() {
     setNextLoading(true);
     if (prevStep === "" && currentHome) {
       // console.log("running log 1");
       // we are on the first page of the sell flow so we are redirected to where we are up too
-      router.push(stepsFlattened[checkStepPositionForNextNavigation()]);
+      router.push(`/sell/${currentHome.id}/${stepsFlattened[checkStepPositionForNextNavigation()]}`);
     } else if (prevStep === "" && !currentHome) {
       // console.log("running log 2");
       // we are on the first page of the sell flow and we need to create a new home
@@ -114,7 +118,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     } else if (shouldIncrementFlowStep()) {
       // console.log("running log 4");
       if (sellFlowFlatIndex === stepsFlattened.length - 1) {
-        const result = await sellHome(currentLocale, pathname);
+        const result = await sellHome(currentLocale, `${currentHome!.id}`, pathname);
         if (result.error) {
           alert(result.error);
           setNextLoading(false);
@@ -196,7 +200,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
             >
               {!nextLoading
                 ? prevStep !== ""
-                  ? pathname.startsWith("/sell/review")
+                  ? pathname.startsWith(`/sell/${currentHome?.id}/review`)
                     ? finish
                     : next
                   : currentHome

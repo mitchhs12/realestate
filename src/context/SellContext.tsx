@@ -76,14 +76,14 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children }) => {
       sellFlowFlatIndex !== -1
         ? sellFlowFlatIndex === stepsFlattened.length - 1
           ? "/"
-          : stepsFlattened[sellFlowFlatIndex + 1]
-        : stepsFlattened[0]
+          : `/sell/${currentHome?.id}/${stepsFlattened[sellFlowFlatIndex + 1]}`
+        : `/sell/${currentHome?.id}/${stepsFlattened[0]}`
     );
     setPrevStep(
       sellFlowFlatIndex !== -1
         ? sellFlowIndices.outerIndex === 0 && sellFlowIndices.innerIndex === 0
-          ? "/sell"
-          : stepsFlattened[sellFlowFlatIndex - 1]
+          ? `/sell/${currentHome?.id}`
+          : `/sell/${currentHome?.id}/${stepsFlattened[sellFlowFlatIndex - 1]}`
         : ""
     );
   }, [sellFlowFlatIndex]);

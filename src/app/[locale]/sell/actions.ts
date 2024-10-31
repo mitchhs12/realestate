@@ -47,7 +47,7 @@ const validateHome = (homeData: any) => {
   return { success: true, error: "" };
 };
 
-export async function getUnfinishedHome(url?: string) {
+export async function getUnfinishedHome(homeId: string, url?: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -60,6 +60,7 @@ export async function getUnfinishedHome(url?: string) {
     where: {
       ownerId: userId,
       isComplete: { not: true },
+      id: Number(homeId),
     },
     orderBy: {
       createdAt: "asc",
@@ -104,13 +105,13 @@ export async function getHomes() {
   return homes;
 }
 
-export async function sellHome(currentLocale: string, url: string): Promise<ResponseObj> {
+export async function sellHome(currentLocale: string, homeId: string, url: string): Promise<ResponseObj> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
     throw new Error("User not found");
   }
-  const home = await getUnfinishedHome(url);
+  const home = await getUnfinishedHome(homeId, url);
   const result = validateHome(home);
 
   if (result.success === false) {
