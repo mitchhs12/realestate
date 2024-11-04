@@ -91,7 +91,7 @@ export default function ResizableCard({
       {home.listingType === "premium" && (
         // comment style={{ paddingTop: "12px" }} above and add style={{ marginTop:'-12' }} below
         <div className="absolute" style={{ top: "0", left: "-12px", zIndex: 30, marginTop: "-12px" }}>
-          <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
+          <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
             <svg height="84" width="84">
               <g transform="rotate(-90, 42, 42)">
                 <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />

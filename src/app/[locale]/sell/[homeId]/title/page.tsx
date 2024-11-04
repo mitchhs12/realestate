@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Title",
 };
 
-export default async function Page({ params: { locale, homeId } }: { params: { locale: string; homeId: number } }) {
+export default async function Page({ params: { locale, homeId } }: { params: { locale: string; homeId: string } }) {
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;

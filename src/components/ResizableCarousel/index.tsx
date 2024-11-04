@@ -49,7 +49,7 @@ export default function ResizableCarousel({
               className={`relative justify-center items-center ${height ? height : "h-[200px]"} w-full `}
             >
               {link ? (
-                <Link href={home.isComplete ? `/homes/${home.id}` : "/sell"} target={"_blank"}>
+                <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
                   <Image
                     src={photo.replace(
                       process.env.NEXT_PUBLIC_AWS_S3_URL!,
