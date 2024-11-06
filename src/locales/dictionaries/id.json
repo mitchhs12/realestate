@@ -239,9 +239,18 @@
   },
   "about": {
     "title": "Tentang",
-    "mission": "Untuk memastikan setiap orang memiliki kesempatan untuk tinggal di rumah yang indah, aman, dan terjangkau, memberdayakan mereka untuk membangun masa depan yang aman dan kehidupan yang lebih baik.",
-    "why": "Kami percaya bahwa setiap orang berhak atas tempat tinggal yang aman dan terjangkau.",
-    "how": "Cara terbaik untuk mewujudkan hal ini adalah dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan mereka mengeksplorasi bagaimana rasanya tinggal di tempat-tempat di luar lingkup budaya langsung dan lingkungan yang mereka kenal."
+    "mission": {
+      "title": "Misi Kami",
+      "content": "Untuk memastikan setiap orang memiliki kesempatan untuk tinggal di rumah yang indah, aman, dan terjangkau, memberdayakan mereka untuk membangun masa depan yang aman dan kehidupan yang lebih baik."
+    },
+    "why": {
+      "title": "Mengapa Kami",
+      "content": "Kami percaya bahwa setiap orang berhak atas tempat tinggal yang aman dan terjangkau."
+    },
+    "how": {
+      "title": "Bagaimana Kami",
+      "content": "Cara terbaik untuk mewujudkan hal ini adalah dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan mereka mengeksplorasi bagaimana rasanya tinggal di tempat-tempat di luar lingkup budaya langsung dan lingkungan yang mereka kenal."
+    }
   },
   "sell": {
     "sell-flow": {

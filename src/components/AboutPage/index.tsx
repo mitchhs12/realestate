@@ -12,9 +12,9 @@ import { useState } from "react";
 
 export default async function AboutPageContent({ locale, data }: { locale: string; data: any }) {
   const t = await getScopedI18n("about");
-  const mission = t("mission");
-  const how = t("how");
-  const why = t("why");
+  const mission = { title: t("mission.title"), content: t("mission.content") };
+  const how = { title: t("how.title"), content: t("how.content") };
+  const why = { title: t("why.title"), content: t("why.content") };
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
@@ -42,16 +42,16 @@ export default async function AboutPageContent({ locale, data }: { locale: strin
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="text-2xl">Our Mission</div>
-          <div className="text-xl italic">{mission}</div>
+          <div className="text-2xl">{mission.title}</div>
+          <div className="text-xl italic">{mission.content}</div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="text-2xl">Our How</div>
-          <div className="text-lg">{how}</div>
+          <div className="text-2xl">{how.title}</div>
+          <div className="text-lg">{how.content}</div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="text-2xl">Our Why</div>
-          <div className="text-lg">{why}</div>
+          <div className="text-2xl">{why.title}</div>
+          <div className="text-lg">{why.content}</div>
         </div>
       </div>
     </div>

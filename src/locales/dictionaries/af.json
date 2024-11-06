@@ -239,9 +239,18 @@
   },
   "about": {
     "title": "Oor",
-    "mission": "Om te verseker dat almal die geleentheid het om in 'n pragtige, veilige en bekostigbare huis te woon, wat hulle bemagtig om 'n veilige toekoms en 'n beter lewe te bou.",
-    "why": "Ons glo dat almal die reg het op 'n veilige en bekostigbare woonplek.",
-    "how": "Die beste manier om dit moontlik te maak, is deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat hulle in staat stel om te verken hoe dit is om op plekke buite hul onmiddellike kulturele sfeer en bekende omgewing te woon."
+    "mission": {
+      "title": "Ons Missie",
+      "content": "Om te verseker dat almal die geleentheid het om in 'n pragtige, veilige en bekostigbare huis te woon, wat hulle bemagtig om 'n veilige toekoms en 'n beter lewe te bou."
+    },
+    "why": {
+      "title": "Ons Hoekom",
+      "content": "Ons glo dat almal die reg het op 'n veilige en bekostigbare woonplek."
+    },
+    "how": {
+      "title": "Ons Hoe",
+      "content": "Die beste manier om dit moontlik te maak, is deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat hulle in staat stel om te verken hoe dit is om op plekke buite hul onmiddellike kulturele sfeer en bekende omgewing te woon."
+    }
   },
   "sell": {
     "sell-flow": {

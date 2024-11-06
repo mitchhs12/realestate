@@ -239,9 +239,18 @@
   },
   "about": {
     "title": "Sobre",
-    "mission": "Para garantir que todos tenham a oportunidade de viver em uma casa bonita, segura e acessível, capacitando-os a construir um futuro seguro e uma vida melhor.",
-    "why": "Acreditamos que todos têm direito a um lugar seguro e acessível para viver.",
-    "how": "A melhor maneira de tornar isso possível é reduzindo o atrito e conectando pessoas de diversas origens culturais, permitindo que elas explorem como é viver em lugares fora de sua esfera cultural imediata e ambiente familiar."
+    "mission": {
+      "title": "Nossa Missão",
+      "content": "Para garantir que todos tenham a oportunidade de viver em uma casa bonita, segura e acessível, capacitando-os a construir um futuro seguro e uma vida melhor."
+    },
+    "why": {
+      "title": "Nosso Porquê",
+      "content": "Acreditamos que todos têm direito a um lugar seguro e acessível para viver."
+    },
+    "how": {
+      "title": "Nosso Como",
+      "content": "A melhor maneira de tornar isso possível é reduzindo o atrito e conectando pessoas de diversas origens culturais, permitindo que elas explorem como é viver em lugares fora de sua esfera cultural imediata e ambiente familiar."
+    }
   },
   "sell": {
     "sell-flow": {

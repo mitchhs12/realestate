@@ -239,9 +239,18 @@ export default {
   },
   "about": {
     "title": "Hakkında",
-    "mission": "Herkesin güzel, güvenli ve uygun fiyatlı bir evde yaşama fırsatına sahip olmasını sağlayarak, güvenli bir gelecek ve daha iyi bir yaşam inşa etmelerine olanak sağlamak.",
-    "why": "Herkesin güvenli ve uygun fiyatlı bir yaşam alanına sahip olma hakkı olduğuna inanıyoruz.",
-    "how": "Bunu mümkün kılmanın en iyi yolu, sürtüşmeleri azaltmak ve farklı kültürel geçmişlere sahip insanları birbirine bağlamaktır; böylece onların kendi kültürel çevrelerinin ve aşina oldukları çevrelerinin dışındaki yerlerde yaşamanın nasıl bir şey olduğunu keşfetmelerini sağlamaktır."
+    "mission": {
+      "title": "Misyonumuz",
+      "content": "Herkesin güzel, güvenli ve uygun fiyatlı bir evde yaşama fırsatına sahip olmasını sağlayarak, güvenli bir gelecek ve daha iyi bir yaşam inşa etmelerine olanak sağlamak."
+    },
+    "why": {
+      "title": "Nedenimiz",
+      "content": "Herkesin güvenli ve uygun fiyatlı bir yaşam alanına sahip olma hakkı olduğuna inanıyoruz."
+    },
+    "how": {
+      "title": "Bizim Nasıl",
+      "content": "Bunu mümkün kılmanın en iyi yolu, sürtüşmeleri azaltmak ve farklı kültürel geçmişlere sahip insanları birbirine bağlamaktır; böylece onların kendi kültürel çevrelerinin ve aşina oldukları çevrelerinin dışındaki yerlerde yaşamanın nasıl bir şey olduğunu keşfetmelerini sağlamaktır."
+    }
   },
   "sell": {
     "sell-flow": {

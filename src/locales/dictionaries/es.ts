@@ -29,7 +29,7 @@ export default {
         "features": "Muéstrame propiedades con"
       },
       "articles": "Artículos",
-      "about": "Acerca de",
+      "about": "Nosotros",
       "data": "Datos",
       "map": "Ver en el mapa",
       "list": "Volver a listas de deseos",
@@ -180,7 +180,7 @@ export default {
       "pages": {
         "title": "Viva ideal",
         "home": "Hogar",
-        "about": "Acerca de",
+        "about": "Nosotros",
         "articles": "Artículos",
         "data": "Datos"
       }
@@ -238,10 +238,19 @@ export default {
     "title": "Datos"
   },
   "about": {
-    "title": "Acerca de",
-    "mission": "Garantizar que todos tengan la oportunidad de vivir en un hogar hermoso, seguro y asequible, capacitándolos para construir un futuro seguro y una vida mejor.",
-    "why": "Creemos que todos tienen derecho a un lugar seguro y asequible para vivir.",
-    "how": "La mejor manera de hacer esto posible es reducir la fricción y conectar a personas de diversos orígenes culturales, permitiéndoles explorar cómo es vivir en lugares fuera de su esfera cultural inmediata y su entorno familiar."
+    "title": "Sobre Nosotros",
+    "mission": {
+      "title": "Nuestra misión",
+      "content": "Garantizar que todos tengan la oportunidad de vivir en un hogar hermoso, seguro y asequible, capacitándolos para construir un futuro seguro y una vida mejor."
+    },
+    "why": {
+      "title": "Nuestro por qué",
+      "content": "Creemos que todos tienen derecho a un lugar seguro y asequible para vivir."
+    },
+    "how": {
+      "title": "Nuestro Cómo",
+      "content": "La mejor manera de hacer esto posible es reducir la fricción y conectar a personas de diversos orígenes culturales, permitiéndoles explorar cómo es vivir en lugares fuera de su esfera cultural inmediata y su entorno familiar."
+    }
   },
   "sell": {
     "sell-flow": {

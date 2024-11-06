@@ -239,9 +239,18 @@ export default {
   },
   "about": {
     "title": "Um",
-    "mission": "Damit jeder die Möglichkeit hat, in einem schönen, sicheren und erschwinglichen Zuhause zu leben und sich so eine sichere Zukunft und ein besseres Leben aufzubauen.",
-    "why": "Wir glauben, dass jeder das Recht auf einen sicheren und bezahlbaren Wohnort hat.",
-    "how": "Der beste Weg, dies zu erreichen, besteht darin, Reibungspunkte abzubauen und Menschen mit unterschiedlichem kulturellen Hintergrund zusammenzubringen. Dadurch können sie erfahren, wie es ist, an Orten außerhalb ihres unmittelbaren kulturellen Umfelds und ihrer vertrauten Umgebung zu leben."
+    "mission": {
+      "title": "Unsere Mission",
+      "content": "Damit jeder die Möglichkeit hat, in einem schönen, sicheren und erschwinglichen Zuhause zu leben und sich so eine sichere Zukunft und ein besseres Leben aufzubauen."
+    },
+    "why": {
+      "title": "Unser Warum",
+      "content": "Wir glauben, dass jeder das Recht auf einen sicheren und bezahlbaren Wohnort hat."
+    },
+    "how": {
+      "title": "Unser Wie",
+      "content": "Der beste Weg, dies zu erreichen, besteht darin, Reibungspunkte abzubauen und Menschen mit unterschiedlichem kulturellen Hintergrund zusammenzubringen. Dadurch können sie erfahren, wie es ist, an Orten außerhalb ihres unmittelbaren kulturellen Umfelds und ihrer vertrauten Umgebung zu leben."
+    }
   },
   "sell": {
     "sell-flow": {

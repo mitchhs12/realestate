@@ -239,9 +239,18 @@ export default {
   },
   "about": {
     "title": "À propos",
-    "mission": "Garantir à chacun la possibilité de vivre dans une maison belle, sûre et abordable, leur permettant ainsi de construire un avenir sûr et une vie meilleure.",
-    "why": "Nous croyons que chacun a droit à un endroit sûr et abordable où vivre.",
-    "how": "La meilleure façon d’y parvenir est de réduire les frictions et de connecter des personnes d’horizons culturels divers, en leur permettant d’explorer ce que c’est que de vivre dans des lieux extérieurs à leur sphère culturelle immédiate et à leur environnement familier."
+    "mission": {
+      "title": "Notre mission",
+      "content": "Garantir à chacun la possibilité de vivre dans une maison belle, sûre et abordable, leur permettant ainsi de construire un avenir sûr et une vie meilleure."
+    },
+    "why": {
+      "title": "Notre Pourquoi",
+      "content": "Nous croyons que chacun a droit à un endroit sûr et abordable où vivre."
+    },
+    "how": {
+      "title": "Notre Comment",
+      "content": "La meilleure façon d’y parvenir est de réduire les frictions et de connecter des personnes d’horizons culturels divers, en leur permettant d’explorer ce que c’est que de vivre dans des lieux extérieurs à leur sphère culturelle immédiate et à leur environnement familier."
+    }
   },
   "sell": {
     "sell-flow": {
