@@ -125,7 +125,7 @@ export default function Header({
                 </Link>
               </Button>
             )}
-            {!isSearchPage && !isHomesPage && (
+            {/* {!isSearchPage && !isHomesPage && (
               <Button
                 asChild
                 size={"largeIcon"}
@@ -144,7 +144,7 @@ export default function Header({
                   </div>
                 </Link>
               </Button>
-            )}
+            )} */}
             {/* {!isSearchPage && !isHomesPage && (
               <Button
                 asChild
