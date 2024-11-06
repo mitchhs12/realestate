@@ -28,6 +28,8 @@ import {
   ChartColumn,
   ChartColumnBig,
   BookText,
+  CircleHelp,
+  Info,
 } from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
@@ -35,6 +37,7 @@ interface Props {
   map: string;
   articles: string;
   data: string;
+  about: string;
   searchPlaceholder: string;
   searchPlaceholderShort: string;
   searchText: string;
@@ -49,6 +52,7 @@ export default function Header({
   map,
   articles,
   data,
+  about,
   searchPlaceholder,
   searchPlaceholderShort,
   searchText,
@@ -67,6 +71,7 @@ export default function Header({
   const isHomesPage = pathname.includes("/homes");
   const isSellPage = pathname.includes("/sell");
   const isArticlesPage = pathname.includes("/articles");
+  const isAboutPage = pathname.includes("/about");
   const isStudioPage = pathname.includes("/studio");
   const isDataPage = pathname.includes("/data");
 
@@ -93,7 +98,7 @@ export default function Header({
                 </div>
                 <h1
                   className={`${poppins.className} ${
-                    isSearchPage ? "hidden 2xl:flex" : "hidden sm:flex"
+                    isSearchPage ? "hidden 2xl:flex" : "hidden md:flex"
                   } items-center text-lg font-medium align-middle`}
                 >
                   Viva Ideal
@@ -113,8 +118,28 @@ export default function Header({
                     <div className="flex justify-center items-center">
                       <BookText width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                    <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
                       {articles}
+                    </h1>
+                  </div>
+                </Link>
+              </Button>
+            )}
+            {!isSearchPage && !isHomesPage && (
+              <Button
+                asChild
+                size={"largeIcon"}
+                variant="outline"
+                className={`${isAboutPage && "bg-secondary"} flex h-12 text-[#2dac5c] hover:text-primary/80 `}
+                disabled={true}
+              >
+                <Link href="/about">
+                  <div className="flex px-2 justify-center text-center items-center gap-2">
+                    <div className="flex justify-center items-center">
+                      <Info width={"22"} height={"22"} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                      {about}
                     </h1>
                   </div>
                 </Link>

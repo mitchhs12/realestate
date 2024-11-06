@@ -29,6 +29,7 @@ export default {
         "features": "Bana şu özellikleri göster:"
       },
       "articles": "Makaleler",
+      "about": "Hakkında",
       "data": "Veri",
       "map": "Haritada Görüntüle",
       "list": "İstek Listelerine Geri Dön",
@@ -235,6 +236,12 @@ export default {
   },
   "data": {
     "title": "Veri"
+  },
+  "about": {
+    "title": "Hakkında",
+    "mission": "Herkesin güzel, güvenli ve uygun fiyatlı bir evde yaşama fırsatına sahip olmasını sağlayarak, güvenli bir gelecek ve daha iyi bir yaşam inşa etmelerine olanak sağlamak.",
+    "why": "Herkesin güvenli ve uygun fiyatlı bir yaşam alanına sahip olma hakkı olduğuna inanıyoruz.",
+    "how": "Bunu mümkün kılmanın en iyi yolu, sürtüşmeleri azaltmak ve farklı kültürel geçmişlere sahip insanları birbirine bağlamaktır; böylece onların kendi kültürel çevrelerinin ve aşina oldukları çevrelerinin dışındaki yerlerde yaşamanın nasıl bir şey olduğunu keşfetmelerini sağlamaktır."
   },
   "sell": {
     "sell-flow": {

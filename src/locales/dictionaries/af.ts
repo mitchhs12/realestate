@@ -29,6 +29,7 @@ export default {
         "features": "Wys my eiendomme met"
       },
       "articles": "Artikels",
+      "about": "Oor",
       "data": "Data",
       "map": "Bekyk in kaart",
       "list": "Terug na wenslys",
@@ -235,6 +236,12 @@ export default {
   },
   "data": {
     "title": "Data"
+  },
+  "about": {
+    "title": "Oor",
+    "mission": "Om te verseker dat almal die geleentheid het om in 'n pragtige, veilige en bekostigbare huis te woon, wat hulle bemagtig om 'n veilige toekoms en 'n beter lewe te bou.",
+    "why": "Ons glo dat almal die reg het op 'n veilige en bekostigbare woonplek.",
+    "how": "Die beste manier om dit moontlik te maak, is deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat hulle in staat stel om te verken hoe dit is om op plekke buite hul onmiddellike kulturele sfeer en bekende omgewing te woon."
   },
   "sell": {
     "sell-flow": {

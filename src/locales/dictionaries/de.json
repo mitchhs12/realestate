@@ -29,6 +29,7 @@
         "features": "Zeigen Sie mir Immobilien mit"
       },
       "articles": "Artikel",
+      "about": "Um",
       "data": "Daten",
       "map": "Auf der Karte anzeigen",
       "list": "Zurück zur Wunschliste",
@@ -235,6 +236,12 @@
   },
   "data": {
     "title": "Daten"
+  },
+  "about": {
+    "title": "Um",
+    "mission": "Damit jeder die Möglichkeit hat, in einem schönen, sicheren und erschwinglichen Zuhause zu leben und sich so eine sichere Zukunft und ein besseres Leben aufzubauen.",
+    "why": "Wir glauben, dass jeder das Recht auf einen sicheren und bezahlbaren Wohnort hat.",
+    "how": "Der beste Weg, dies zu erreichen, besteht darin, Reibungspunkte abzubauen und Menschen mit unterschiedlichem kulturellen Hintergrund zusammenzubringen. Dadurch können sie erfahren, wie es ist, an Orten außerhalb ihres unmittelbaren kulturellen Umfelds und ihrer vertrauten Umgebung zu leben."
   },
   "sell": {
     "sell-flow": {

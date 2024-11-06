@@ -29,6 +29,7 @@ export default {
         "features": "Tunjukkan saya properti dengan"
       },
       "articles": "Artikel",
+      "about": "Tentang",
       "data": "Data",
       "map": "Lihat di Peta",
       "list": "Kembali ke Daftar Keinginan",
@@ -235,6 +236,12 @@ export default {
   },
   "data": {
     "title": "Data"
+  },
+  "about": {
+    "title": "Tentang",
+    "mission": "Untuk memastikan setiap orang memiliki kesempatan untuk tinggal di rumah yang indah, aman, dan terjangkau, memberdayakan mereka untuk membangun masa depan yang aman dan kehidupan yang lebih baik.",
+    "why": "Kami percaya bahwa setiap orang berhak atas tempat tinggal yang aman dan terjangkau.",
+    "how": "Cara terbaik untuk mewujudkan hal ini adalah dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan mereka mengeksplorasi bagaimana rasanya tinggal di tempat-tempat di luar lingkup budaya langsung dan lingkungan yang mereka kenal."
   },
   "sell": {
     "sell-flow": {

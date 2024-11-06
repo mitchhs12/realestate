@@ -29,6 +29,7 @@ export default {
         "features": "Show me properties with"
       },
       "articles": "Articles",
+      "about": "About",
       "data": "Data",
       "map": "View in Map",
       "list": "Back to Wishlists",
@@ -235,6 +236,12 @@ export default {
   },
   "data": {
     "title": "Data"
+  },
+  "about": {
+    "title": "About",
+    "mission": "To ensure everyone has the opportunity to live in a beautiful, safe, and affordable home, empowering them to build a secure future and a better life.",
+    "why": "We believe that everyone has the right to a safe and affordable place to live.",
+    "how": "The best way to make this possible is by reducing friction and connecting people from diverse cultural backgrounds; enabling them to explore what it is like to live in places outside of their immediate cultural sphere and familiar surroundings."
   },
   "sell": {
     "sell-flow": {

@@ -4,8 +4,8 @@ import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import { languages } from "@/lib/validations";
 
-import ArticlesTitle from "@/components/ArticlesPageContent/Title";
-import ArticlesPageContent from "@/components/ArticlesPageContent";
+import ArticlesTitle from "@/components/ArticlesPage/Title";
+import ArticlesPageContent from "@/components/ArticlesPage";
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
   acc[lang] = `/articles/${lang}`;

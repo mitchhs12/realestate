@@ -29,6 +29,7 @@ export default {
         "features": "Hiển thị cho tôi các thuộc tính với"
       },
       "articles": "Bài viết",
+      "about": "Về",
       "data": "Dữ liệu",
       "map": "Xem trong bản đồ",
       "list": "Quay lại danh sách mong muốn",
@@ -235,6 +236,12 @@ export default {
   },
   "data": {
     "title": "Dữ liệu"
+  },
+  "about": {
+    "title": "Về",
+    "mission": "Đảm bảo mọi người đều có cơ hội sống trong một ngôi nhà đẹp, an toàn và giá cả phải chăng, giúp họ xây dựng một tương lai an toàn và cuộc sống tốt đẹp hơn.",
+    "why": "Chúng tôi tin rằng mọi người đều có quyền có một nơi ở an toàn và giá cả phải chăng.",
+    "how": "Cách tốt nhất để thực hiện điều này là giảm thiểu sự xung đột và kết nối những người có nền tảng văn hóa đa dạng; cho phép họ khám phá cuộc sống ở những nơi nằm ngoài phạm vi văn hóa gần và môi trường quen thuộc của họ."
   },
   "sell": {
     "sell-flow": {

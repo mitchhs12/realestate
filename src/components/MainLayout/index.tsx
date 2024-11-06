@@ -57,6 +57,7 @@ export default async function MainLayout({ children }: Props) {
         <Header
           map={h("map")}
           articles={h("articles")}
+          about={h("about")}
           data={h("data")}
           searchPlaceholder={h("search.placeholder")}
           searchPlaceholderShort={h("search.placeholder-short")}
