@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -24,7 +22,10 @@ export default async function AboutPageContent({ locale, data }: { locale: strin
           <div className="flex gap-8">
             {data.map((person: { name: string; bio: string; image_url: string }) => {
               return (
-                <div className="relative items-center justify-center h-[100px] w-[100px] transition-transform ease-in-out duration-200 hover:scale-110 hover:cursor-pointer">
+                <div
+                  key={person.name} // Add a unique key here
+                  className="relative items-center justify-center h-[100px] w-[100px] transition-transform ease-in-out duration-200 hover:scale-110 hover:cursor-pointer"
+                >
                   <Image
                     src={urlFor(person.image_url).url()}
                     alt="image"
