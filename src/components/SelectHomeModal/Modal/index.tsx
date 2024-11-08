@@ -41,7 +41,7 @@ export function Modal({ unfinishedHomes, user }: { unfinishedHomes: HomeType[]; 
           <DialogTitle className="text-2xl font-semibold">{u("title")}</DialogTitle>
           <DialogDescription>{u("subtitle")}</DialogDescription>
         </DialogHeader>
-        <div className="p-2 sm:p-4 md:px-6 overflow-y-auto h-full w-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+        <div className="p-2 sm:p-4 md:px-6 overflow-y-auto w-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
           {unfinishedHomes.map((home: HomeType, index: number) => {
             const matchingTypes = findMatching(typesObject, home, "type");
 

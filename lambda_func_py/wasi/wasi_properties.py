@@ -8,8 +8,11 @@ def run_main():
     url = "https://api.wasi.co/v1/property/search"
     
     # Credentials
-    company_id = 17076208
-    wasi_token = "ZPI4_jTau_z6aj_nzxn"
+    # company_id = 17076208
+    # wasi_token = "ZPI4_jTau_z6aj_nzxn"
+
+    company_id = 2719156
+    wasi_token = "NxRi_E8R6_VRkK_5TuG"
     
     # Pagination settings
     take = 100  # Maximum number of items per request
@@ -68,7 +71,7 @@ def run_main():
             json.dump(all_properties, json_file, indent=4)
         print("All properties have been saved to 'all_properties.json'.")
     else:
-        print("No properties were retrieved.")\
+        print("No properties were retrieved.")
     
 
 if __name__ == "__main__":

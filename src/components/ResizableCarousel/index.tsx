@@ -6,8 +6,8 @@ import { HomeType } from "@/lib/validations";
 import { FavoriteComponent } from "@/components/FavoriteComponent";
 import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
-import { Star } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 interface Props {
   photos: string[];
@@ -35,11 +35,14 @@ export default function ResizableCarousel({
   link,
 }: Props) {
   const { user } = useContext(LocaleContext);
+  const { resolvedTheme: theme } = useTheme();
+  const placeholderImage = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`; // Placeholder image URL
+  const validPhotos = photos && photos.length > 0 ? photos : [placeholderImage];
 
   return (
     <Carousel className="h-full w-full overflow-hidden bg-white dark:bg-black">
       <CarouselContent className="ml-0">
-        {photos.map((photo: string, index) => (
+        {validPhotos.map((photo: string, index) => (
           <CarouselItem
             key={index}
             className="h-full w-full pl-0" // pl-4 ???

@@ -97,7 +97,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   };
 
   const nextButtonDisabled = isButtonDisabled();
-  console.log("next state", nextButtonDisabled, nextDisabled, prevLoading);
 
   async function handleNext() {
     setNextLoading(true);
@@ -109,7 +108,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
       // console.log("running log 2");
       // we are on the first page of the sell flow and we need to create a new home
       const _newHome = await updateHome(newHome, pathname, true);
-      router.push(nextStep);
+      router.push(`/sell/${_newHome.id}/step1`);
     } else if (currentHome && newHome && JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       // console.log("running log 3");
       console.log(JSON.stringify(newHome, null, 2));

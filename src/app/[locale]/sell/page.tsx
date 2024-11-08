@@ -31,12 +31,9 @@ export default async function Page({ params: { locale } }: any) {
   }
 
   const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
-  if (unfinishedHomes.length > 1) {
+  if (unfinishedHomes.length >= 1) {
     return <SelectHomeWrapper locale={locale} unfinishedHomes={unfinishedHomes} user={user} />;
   }
-
-  const url = getPath(headers());
-  const unfinishedHome = await getUnfinishedHome(url);
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");
@@ -54,7 +51,7 @@ export default async function Page({ params: { locale } }: any) {
 
   return (
     <SellFlowPage
-      currentHome={unfinishedHome}
+      currentHome={null}
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
