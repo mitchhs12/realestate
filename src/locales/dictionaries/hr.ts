@@ -239,6 +239,53 @@ export default {
   },
   "about": {
     "title": "Oko",
+    "content": {
+      "h1": "Dobrodošli u Viva Ideal: Vaš pristup globalnim nekretninama",
+      "p1": {
+        "title": "Povezujemo vas s International Properties, širom svijeta",
+        "content": "U Viva Ideal, naša misija je biti platforma broj 1 za one širom svijeta koji žele kupiti nekretninu u inozemstvu. Posvećeni smo pomaganju ljudima u snalaženju u složenosti kupnje nekretnina u stranim zemljama i omogućavamo prekogranično vlasništvo nad nekretninama neometanim i dostupnim svima."
+      },
+      "p2": {
+        "title": "Vaš partner od povjerenja u procesu transakcije",
+        "content": "Razumijemo da kupnja nekretnine u inozemstvu uključuje snalaženje u nepoznatim pravnim i regulatornim okvirima. Viva Ideal se ističe nudeći praktično vodstvo kroz svaki korak procesa transakcije, zahvaljujući našem detaljnom poznavanju lokalnih zakona u svakoj zemlji u kojoj poslujemo. Uz našu stručnost, možete biti sigurni u svakoj fazi vaše kupnje nekretnine , od usklađenosti s zakonima do financijskih transakcija, kao i razumijevanja lokalnog tržišta nekretnina."
+      },
+      "p3": {
+        "title": "Dizajnirano za modernog kupca",
+        "content": "Naša platforma posebno je namijenjena digitalnim nomadima, udaljenim radnicima i globalno orijentiranim pojedincima koji traže nekretnine koje odgovaraju fleksibilnom životnom stilu neovisnom o lokaciji. Bilo da želite ulagati, preseliti se ili pronaći novu bazu za rad na daljinu, Viva Ideal vas povezuje s nekretninama prilagođenim vašim jedinstvenim potrebama i životnim preferencijama."
+      },
+      "p4": {
+        "title": "Što Vivu Ideal čini drugačijom?",
+        "content": "Naša platforma ide dalje od popisa nekretnina s fokusom na:",
+        "b1": {
+          "title": "Lokalizirana stručnost",
+          "content": "Detaljan uvid u pravne, financijske i kulturne nijanse kupnje u svakoj regiji, tako da možete s povjerenjem upravljati postupkom."
+        },
+        "b2": {
+          "title": "Sveobuhvatna podrška",
+          "content": "Pomoć u svakom koraku transakcije, osiguravanje sigurnog i glatkog procesa bez obzira gdje se nalazite."
+        },
+        "b3": {
+          "title": "Globalna mreža",
+          "content": "Pristup pouzdanim stručnjacima za nekretnine, pravnim savjetnicima i lokalnim stručnjacima koji razumiju izazove i prilike međunarodnog vlasništva nad nekretninama."
+        },
+        "b4": {
+          "title": "Tržišni trendovi",
+          "content": "Ažurirane informacije o tržištima u razvoju i mogućnostima ulaganja prilagođene globalnoj publici."
+        },
+        "b5": {
+          "title": "Zajednica Highlights",
+          "content": "Detaljni profili četvrti, načina života i lokalnih atrakcija u svakoj regiji, omogućujući vam da pronađete savršenu lokaciju za svoju sljedeću nekretninu."
+        }
+      },
+      "p5": {
+        "title": "Počinje u Latinskoj Americi, širi se diljem svijeta",
+        "content": "Naše putovanje počinje s fokusom na živahna tržišta Latinske Amerike s velikim rastom—idealna regija za pristupačna i atraktivna ulaganja u nekretnine. S vremenom planiramo proširiti svoj doseg na Aziju i Europu, stvarajući istinski globalnu platformu koja zadovoljava potrebe međunarodnih kupaca posvuda."
+      },
+      "p6": {
+        "title": "Pridružite se budućnosti globalnih nekretnina",
+        "content": "Dok rad na daljinu mijenja način na koji živimo i ulažemo, Viva Ideal je tu da vam pomogne u pronalaženju vaše idealne nekretnine bilo gdje u svijetu. Dobrodošli u Viva Ideal, gdje počinje međunarodno vlasništvo nad nekretninama."
+      }
+    },
     "mission": {
       "title": "Naša misija",
       "content": "Osigurati da svi imaju priliku živjeti u lijepom, sigurnom i pristupačnom domu, osnažujući ih da izgrade sigurnu budućnost i bolji život."

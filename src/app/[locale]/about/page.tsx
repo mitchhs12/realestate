@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { languages } from "@/lib/validations";
 import Image from "next/image";
 import { client } from "@/lib/sanity";
-
 import AboutTitle from "@/components/AboutPage/Title";
 import AboutPageContent from "@/components/AboutPage";
 

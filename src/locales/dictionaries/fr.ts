@@ -239,6 +239,53 @@ export default {
   },
   "about": {
     "title": "À propos",
+    "content": {
+      "h1": "Bienvenue chez Viva Ideal : votre passerelle vers l'immobilier mondial",
+      "p1": {
+        "title": "Vous connecter avec des propriétés internationales, dans le monde entier",
+        "content": "Chez Viva Ideal, notre mission est d'être la plateforme n°1 pour ceux qui souhaitent acheter des biens immobiliers à l'étranger. Nous nous engageons à aider les gens à s'y retrouver dans les complexités de l'achat de biens immobiliers dans des pays étrangers et à rendre la propriété immobilière transfrontalière transparente et accessible à tous."
+      },
+      "p2": {
+        "title": "Votre partenaire de confiance dans le processus transactionnel",
+        "content": "Nous comprenons que l'achat d'un bien immobilier à l'étranger implique de naviguer dans des environnements juridiques et réglementaires inconnus. Viva Ideal se distingue en offrant des conseils pratiques à chaque étape du processus transactionnel, grâce à notre connaissance approfondie des lois locales de chaque pays dans lequel nous opérons. Grâce à notre expertise, vous pouvez être sûr à chaque étape de votre achat immobilier, de la conformité juridique aux transactions financières, ainsi que de la compréhension du marché immobilier local."
+      },
+      "p3": {
+        "title": "Conçu pour l'acheteur moderne",
+        "content": "Notre plateforme s'adresse en particulier aux nomades numériques, aux travailleurs à distance et aux personnes tournées vers le monde qui recherchent des opportunités immobilières adaptées à un style de vie flexible et indépendant de l'emplacement. Que vous cherchiez à investir, à déménager ou à trouver une nouvelle base pour travailler à distance, Viva Ideal vous met en relation avec des propriétés adaptées à vos besoins uniques et à vos préférences de style de vie."
+      },
+      "p4": {
+        "title": "Qu'est-ce qui rend Viva Ideal différent ?",
+        "content": "Notre plateforme va au-delà des annonces immobilières en se concentrant sur :",
+        "b1": {
+          "title": "Expertise localisée",
+          "content": "Des informations détaillées sur les nuances juridiques, financières et culturelles de l’achat dans chaque région, afin que vous puissiez naviguer dans le processus en toute confiance."
+        },
+        "b2": {
+          "title": "Assistance complète",
+          "content": "Une assistance à chaque étape de la transaction, assurant un processus sécurisé et fluide où que vous soyez."
+        },
+        "b3": {
+          "title": "Réseau mondial",
+          "content": "Accès à des professionnels de l’immobilier, des conseillers juridiques et des experts locaux de confiance qui comprennent les défis et les opportunités de la propriété immobilière internationale."
+        },
+        "b4": {
+          "title": "Tendances du marché",
+          "content": "Informations actualisées sur les marchés émergents et les opportunités d’investissement adaptées à un public mondial."
+        },
+        "b5": {
+          "title": "Faits saillants de la communauté",
+          "content": "Profils détaillés des quartiers, du style de vie et des attractions locales dans chaque région, vous permettant de trouver l'emplacement idéal pour votre prochaine propriété."
+        }
+      },
+      "p5": {
+        "title": "Début en Amérique latine, expansion dans le monde entier",
+        "content": "Notre parcours commence par une attention particulière portée aux marchés dynamiques et à forte croissance d’Amérique latine, une région idéale pour des investissements immobiliers abordables et attractifs. Au fil du temps, nous prévoyons d’étendre notre présence à l’Asie et à l’Europe, créant ainsi une plateforme véritablement mondiale qui répond aux besoins des acheteurs internationaux du monde entier."
+      },
+      "p6": {
+        "title": "Rejoignez le futur de l'immobilier mondial",
+        "content": "Alors que le télétravail transforme notre façon de vivre et d'investir, Viva Ideal est là pour vous aider à trouver votre propriété idéale partout dans le monde. Bienvenue chez Viva Ideal, où commence l'accession à la propriété internationale."
+      }
+    },
     "mission": {
       "title": "Notre mission",
       "content": "Garantir à chacun la possibilité de vivre dans une maison belle, sûre et abordable, leur permettant ainsi de construire un avenir sûr et une vie meilleure."

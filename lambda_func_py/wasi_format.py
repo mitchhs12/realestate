@@ -219,7 +219,7 @@ def run_main(start_index=0):
             # Define the property dictionary for insertion
             new_property = {
                 "photos": photos,
-                "ownerId": "cly4ycuwy000013zyqaazjjiq",
+                "ownerId": "cly58rzl8000c11t7yxe7ovmu",
                 "title": property_data["title"],
                 "description": property_data["observations"],
                 "address": address_info["address"],
@@ -244,8 +244,8 @@ def run_main(start_index=0):
                 "priceNegotiable": False,
                 "language": "es",
                 "contactName": f"{property_data['user_data']['first_name']} {property_data['user_data']['last_name']}",
-                "contactEmail": "ibra@ibragomez.com",
-                "contactPhone": "+573001163462",
+                "contactEmail": "emaus_peru@hotmail.com",
+                "contactPhone": "+51⁠984691512",
                 "listingFlowStep": 14,
                 "source": "wasi",
                 "listingType": "standard",
@@ -270,5 +270,5 @@ def run_main(start_index=0):
 
 
 if __name__ == "__main__":
-    start_index = 63
+    start_index = 0
     run_main(start_index=start_index)

@@ -239,6 +239,53 @@
   },
   "about": {
     "title": "Tentang",
+    "content": {
+      "h1": "Selamat datang di Viva Ideal: Gerbang Anda Menuju Real Estat Global",
+      "p1": {
+        "title": "Menghubungkan Anda dengan Properti Internasional di Seluruh Dunia",
+        "content": "Di Viva Ideal, misi kami adalah menjadi platform #1 bagi mereka di seluruh dunia yang ingin membeli properti di luar negeri. Kami berdedikasi untuk membantu orang-orang mengatasi kerumitan pembelian real estat di negara asing dan menjadikan kepemilikan properti lintas batas menjadi mudah dan dapat diakses oleh semua orang."
+      },
+      "p2": {
+        "title": "Mitra Tepercaya Anda dalam Proses Transaksi",
+        "content": "Kami memahami bahwa membeli properti di luar negeri melibatkan pemahaman terhadap lanskap hukum dan peraturan yang tidak dikenal. Viva Ideal menonjol dengan menawarkan panduan langsung melalui setiap langkah proses transaksi, berkat pengetahuan mendalam kami tentang hukum setempat di setiap negara tempat kami beroperasi. Dengan keahlian kami, Anda dapat merasa yakin pada setiap tahap pembelian properti Anda, mulai dari kepatuhan hukum hingga transaksi keuangan, serta memahami pasar properti setempat."
+      },
+      "p3": {
+        "title": "Dirancang untuk Pembeli Modern",
+        "content": "Platform kami ditujukan terutama untuk para pekerja lepas digital, pekerja jarak jauh, dan individu yang berpikiran global yang mencari peluang properti yang sesuai dengan gaya hidup yang fleksibel dan tidak bergantung pada lokasi. Baik Anda ingin berinvestasi, pindah, atau mencari tempat baru untuk bekerja jarak jauh, Viva Ideal menghubungkan Anda dengan properti yang disesuaikan dengan kebutuhan unik dan preferensi gaya hidup Anda."
+      },
+      "p4": {
+        "title": "Apa yang Membuat Viva Ideal Berbeda?",
+        "content": "Platform kami melampaui sekadar daftar properti dengan fokus pada:",
+        "b1": {
+          "title": "Keahlian Lokal",
+          "content": "Wawasan terperinci tentang nuansa hukum, keuangan, dan budaya pembelian di setiap wilayah, sehingga Anda dapat menavigasi prosesnya dengan percaya diri."
+        },
+        "b2": {
+          "title": "Dukungan Komprehensif",
+          "content": "Bantuan di setiap langkah transaksi, memastikan proses aman dan lancar di mana pun Anda berada."
+        },
+        "b3": {
+          "title": "Jaringan Global",
+          "content": "Akses ke profesional real estat tepercaya, penasihat hukum, dan pakar lokal yang memahami tantangan dan peluang kepemilikan properti internasional."
+        },
+        "b4": {
+          "title": "Tren Pasar",
+          "content": "Informasi terkini tentang pasar negara berkembang dan peluang investasi yang disesuaikan untuk audiens global."
+        },
+        "b5": {
+          "title": "Sorotan Komunitas",
+          "content": "Profil terperinci mengenai lingkungan sekitar, gaya hidup, dan objek wisata lokal di setiap wilayah, memudahkan Anda menemukan lokasi yang tepat untuk properti Anda berikutnya."
+        }
+      },
+      "p5": {
+        "title": "Dimulai di Amerika Latin, Berkembang ke Seluruh Dunia",
+        "content": "Perjalanan kami dimulai dengan fokus pada pasar Amerika Latin yang dinamis dan bertumbuh pesat—wilayah ideal untuk investasi properti yang terjangkau dan menarik. Seiring berjalannya waktu, kami berencana untuk memperluas jangkauan kami ke Asia dan Eropa, menciptakan platform global sejati yang memenuhi kebutuhan pembeli internasional di mana pun."
+      },
+      "p6": {
+        "title": "Bergabunglah dengan Masa Depan Real Estat Global",
+        "content": "Karena bekerja jarak jauh mengubah cara kita hidup dan berinvestasi, Viva Ideal hadir untuk mendukung Anda dalam menemukan properti idaman di mana pun di dunia. Selamat datang di Viva Ideal, tempat dimulainya kepemilikan properti internasional."
+      }
+    },
     "mission": {
       "title": "Misi Kami",
       "content": "Untuk memastikan setiap orang memiliki kesempatan untuk tinggal di rumah yang indah, aman, dan terjangkau, memberdayakan mereka untuk membangun masa depan yang aman dan kehidupan yang lebih baik."

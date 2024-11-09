@@ -8,9 +8,12 @@ def run_main():
     url = "https://api.wasi.co/v1/property/search"
     
     # Credentials
+    # Ibra Gomez
     # company_id = 17076208
     # wasi_token = "ZPI4_jTau_z6aj_nzxn"
 
+    # Credentials
+    # Wilian
     company_id = 2719156
     wasi_token = "NxRi_E8R6_VRkK_5TuG"
     

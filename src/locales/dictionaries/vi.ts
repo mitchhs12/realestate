@@ -239,6 +239,53 @@ export default {
   },
   "about": {
     "title": "Về",
+    "content": {
+      "h1": "Chào mừng đến với Viva Ideal: Cổng thông tin của bạn đến với Bất động sản toàn cầu",
+      "p1": {
+        "title": "Kết nối bạn với các bất động sản quốc tế trên toàn thế giới",
+        "content": "Tại Viva Ideal, sứ mệnh của chúng tôi là trở thành nền tảng số 1 cho những người trên khắp thế giới muốn mua bất động sản ở nước ngoài. Chúng tôi tận tâm giúp mọi người vượt qua sự phức tạp khi mua bất động sản ở nước ngoài và giúp việc sở hữu bất động sản xuyên biên giới trở nên liền mạch và dễ tiếp cận cho tất cả mọi người."
+      },
+      "p2": {
+        "title": "Đối tác đáng tin cậy của bạn trong quá trình giao dịch",
+        "content": "Chúng tôi hiểu rằng việc mua bất động sản ở nước ngoài liên quan đến việc điều hướng bối cảnh pháp lý và quy định không quen thuộc. Viva Ideal nổi bật với việc cung cấp hướng dẫn thực hành trong từng bước của quy trình giao dịch, nhờ vào kiến thức sâu rộng về luật pháp địa phương tại mỗi quốc gia mà chúng tôi hoạt động. Với chuyên môn của mình, bạn có thể tự tin trong từng giai đoạn mua bất động sản của mình, từ tuân thủ pháp luật đến giao dịch tài chính, cũng như hiểu biết về thị trường bất động sản địa phương."
+      },
+      "p3": {
+        "title": "Được thiết kế cho người mua hiện đại",
+        "content": "Nền tảng của chúng tôi phục vụ đặc biệt cho những người du mục kỹ thuật số, người làm việc từ xa và những cá nhân có tư duy toàn cầu đang tìm kiếm cơ hội bất động sản phù hợp với lối sống linh hoạt, không phụ thuộc vào địa điểm. Cho dù bạn đang muốn đầu tư, di dời hay tìm một căn cứ mới để làm việc từ xa, Viva Ideal sẽ kết nối bạn với các bất động sản phù hợp với nhu cầu và sở thích lối sống riêng của bạn."
+      },
+      "p4": {
+        "title": "Điều gì làm cho Viva Ideal khác biệt?",
+        "content": "Nền tảng của chúng tôi không chỉ giới hạn ở việc niêm yết bất động sản mà còn tập trung vào:",
+        "b1": {
+          "title": "Chuyên môn bản địa hóa",
+          "content": "Thông tin chi tiết về các sắc thái pháp lý, tài chính và văn hóa khi mua hàng ở từng khu vực, để bạn có thể tự tin thực hiện quy trình."
+        },
+        "b2": {
+          "title": "Hỗ trợ toàn diện",
+          "content": "Hỗ trợ ở mọi bước của giao dịch, đảm bảo quá trình diễn ra an toàn và suôn sẻ bất kể bạn ở đâu."
+        },
+        "b3": {
+          "title": "Mạng lưới toàn cầu",
+          "content": "Tiếp cận các chuyên gia bất động sản, cố vấn pháp lý và chuyên gia địa phương đáng tin cậy, những người hiểu rõ những thách thức và cơ hội của việc sở hữu bất động sản quốc tế."
+        },
+        "b4": {
+          "title": "Xu hướng thị trường",
+          "content": "Thông tin mới nhất về các thị trường mới nổi và cơ hội đầu tư phù hợp với đối tượng toàn cầu."
+        },
+        "b5": {
+          "title": "Điểm nổi bật của cộng đồng",
+          "content": "Hồ sơ chi tiết về các khu phố, lối sống và các điểm tham quan địa phương ở mỗi khu vực, cho phép bạn tìm được vị trí hoàn hảo cho bất động sản tiếp theo của mình."
+        }
+      },
+      "p5": {
+        "title": "Bắt đầu từ Châu Mỹ Latinh, Mở rộng ra toàn thế giới",
+        "content": "Hành trình của chúng tôi bắt đầu bằng việc tập trung vào các thị trường sôi động, tăng trưởng cao của Châu Mỹ Latinh—một khu vực lý tưởng cho các khoản đầu tư bất động sản giá cả phải chăng và hấp dẫn. Theo thời gian, chúng tôi có kế hoạch mở rộng phạm vi hoạt động sang Châu Á và Châu Âu, tạo ra một nền tảng thực sự toàn cầu đáp ứng nhu cầu của người mua quốc tế ở khắp mọi nơi."
+      },
+      "p6": {
+        "title": "Tham gia vào tương lai của bất động sản toàn cầu",
+        "content": "Khi công việc từ xa thay đổi cách chúng ta sống và đầu tư, Viva Ideal ở đây để hỗ trợ bạn tìm bất động sản lý tưởng của mình ở bất kỳ đâu trên thế giới. Chào mừng đến với Viva Ideal, nơi bắt đầu quyền sở hữu bất động sản quốc tế."
+      }
+    },
     "mission": {
       "title": "Sứ mệnh của chúng tôi",
       "content": "Đảm bảo mọi người đều có cơ hội sống trong một ngôi nhà đẹp, an toàn và giá cả phải chăng, giúp họ xây dựng một tương lai an toàn và cuộc sống tốt đẹp hơn."

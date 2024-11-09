@@ -239,6 +239,53 @@ export default {
   },
   "about": {
     "title": "Oor",
+    "content": {
+      "h1": "Welkom by Viva Ideal: Jou poort na Global Real Estate",
+      "p1": {
+        "title": "Verbind jou met internasionale eiendomme, wêreldwyd",
+        "content": "By Viva Ideal is ons missie om die #1 platform te wees vir diegene regoor die wêreld wat eiendom oorsee wil koop. Ons is toegewyd om mense te help om die kompleksiteit van die aankoop van eiendom in die buiteland te navigeer en om oorgrens eiendomsbesit naatloos en toeganklik vir almal te maak."
+      },
+      "p2": {
+        "title": "Jou vertroude vennoot in die transaksieproses",
+        "content": "Ons verstaan ​​dat die koop van eiendom in die buiteland behels die navigasie van onbekende wetlike en regulatoriese landskappe. Viva Ideal staan ​​uit deur praktiese leiding deur elke stap van die transaksieproses te bied, danksy ons diepgaande kennis van plaaslike wette in elke land waarin ons bedrywig is. Met ons kundigheid kan jy vol vertroue wees in elke stadium van jou eiendomsaankoop , van wetlike nakoming tot finansiële transaksies, asook begrip van die plaaslike eiendomsmark."
+      },
+      "p3": {
+        "title": "Ontwerp vir die moderne koper",
+        "content": "Ons platform maak veral voorsiening vir digitale nomades, afgeleë werkers en individue wat wêreldwyd gesind is wat eiendomsgeleenthede soek wat pas by 'n buigsame, liggingonafhanklike leefstyl. Of jy nou wil belê, hervestig, of 'n nuwe basis vind om op afstand te werk, Viva Ideal verbind jou met eiendomme wat aangepas is vir jou unieke behoeftes en leefstylvoorkeure."
+      },
+      "p4": {
+        "title": "Wat maak Viva Ideaal anders?",
+        "content": "Ons platform gaan verder as eiendomslys met die fokus op:",
+        "b1": {
+          "title": "Gelokaliseerde Kundigheid",
+          "content": "Gedetailleerde insigte in die wetlike, finansiële en kulturele nuanses van koop in elke streek, sodat jy die proses met selfvertroue kan navigeer."
+        },
+        "b2": {
+          "title": "Omvattende ondersteuning",
+          "content": "Bystand by elke stap van die transaksie, om 'n veilige en gladde proses te verseker, maak nie saak waar jy is nie."
+        },
+        "b3": {
+          "title": "Wêreldwye netwerk",
+          "content": "Toegang tot betroubare eiendomskundiges, regsadviseurs en plaaslike kundiges wat die uitdagings en geleenthede van internasionale eiendomsbesit verstaan."
+        },
+        "b4": {
+          "title": "Marktendense",
+          "content": "Opgedateerde inligting oor ontluikende markte en beleggingsgeleenthede wat aangepas is vir 'n globale gehoor."
+        },
+        "b5": {
+          "title": "Gemeenskapshoogtepunte",
+          "content": "Gedetailleerde profiele van woonbuurte, leefstyl en plaaslike besienswaardighede in elke streek, sodat jy die perfekte ligging vir jou volgende eiendom kan vind."
+        }
+      },
+      "p5": {
+        "title": "Begin in Latyns-Amerika, brei wêreldwyd uit",
+        "content": "Ons reis begin met 'n fokus op die lewendige, hoëgroeimarkte van Latyns-Amerika—'n ideale streek vir bekostigbare en aantreklike eiendomsbeleggings. Met verloop van tyd beplan ons om ons bereik na Asië en Europa uit te brei, wat 'n werklik globale platform skep wat oral in die behoeftes van internasionale kopers voorsien."
+      },
+      "p6": {
+        "title": "Sluit aan by die toekoms van globale vaste eiendom",
+        "content": "Aangesien afgeleë werk hoe ons leef en belê verander, is Viva Ideal hier om jou te ondersteun om jou ideale eiendom op enige plek in die wêreld te vind. Welkom by Viva Ideal, waar internasionale eiendomsbesit begin."
+      }
+    },
     "mission": {
       "title": "Ons Missie",
       "content": "Om te verseker dat almal die geleentheid het om in 'n pragtige, veilige en bekostigbare huis te woon, wat hulle bemagtig om 'n veilige toekoms en 'n beter lewe te bou."

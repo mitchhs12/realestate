@@ -239,6 +239,53 @@ export default {
   },
   "about": {
     "title": "About Us",
+    "content": {
+      "h1": "Welcome to Viva Ideal: Your Gateway to Global Real Estate",
+      "p1": {
+        "title": "Connecting You with International Properties, Worldwide",
+        "content": "At Viva Ideal, our mission is to be the #1 platform for those around the world looking to buy property overseas. We are dedicated to helping people navigate the complexities of purchasing real estate in foreign countries and making cross-border property ownership seamless and accessible for all."
+      },
+      "p2": {
+        "title": "Your Trusted Partner in the Transactional Process",
+        "content": "We understand that buying property abroad involves navigating unfamiliar legal and regulatory landscapes. Viva Ideal stands out by offering hands-on guidance through every step of the transactional process, thanks to our in-depth knowledge of local laws in each country we operate in. With our expertise, you can be confident in each stage of your property purchase, from legal compliance to financial transactions, as well as understanding the local property market."
+      },
+      "p3": {
+        "title": "Designed for the Modern Buyer",
+        "content": "Our platform caters especially to digital nomads, remote workers, and global-minded individuals seeking property opportunities that fit a flexible, location-independent lifestyle. Whether you're looking to invest, relocate, or find a new base for working remotely, Viva Ideal connects you with properties tailored to your unique needs and lifestyle preferences."
+      },
+      "p4": {
+        "title": "What Makes Viva Ideal Different?",
+        "content": "Our platform goes beyond property listings with a focus on:",
+        "b1": {
+          "title": "Localized Expertise",
+          "content": "Detailed insights into the legal, financial, and cultural nuances of buying in each region, so you can navigate the process with confidence."
+        },
+        "b2": {
+          "title": "Comprehensive Support",
+          "content": "Assistance at every step of the transaction, ensuring a secure and smooth process no matter where you are."
+        },
+        "b3": {
+          "title": "Global Network",
+          "content": "Access to trusted real estate professionals, legal advisors, and local experts who understand the challenges and opportunities of international property ownership."
+        },
+        "b4": {
+          "title": "Market Trends",
+          "content": "Up-to-date information on emerging markets and investment opportunities tailored to a global audience."
+        },
+        "b5": {
+          "title": "Community Highlights",
+          "content": "Detailed profiles of neighborhoods, lifestyle, and local attractions in each region, allowing you to find the perfect location for your next property."
+        }
+      },
+      "p5": {
+        "title": "Starting in Latin America, Expanding Worldwide",
+        "content": "Our journey begins with a focus on the vibrant, high-growth markets of Latin America—an ideal region for affordable and attractive property investments. Over time, we plan to expand our reach to Asia and Europe, creating a truly global platform that meets the needs of international buyers everywhere."
+      },
+      "p6": {
+        "title": "Join the Future of Global Real Estate",
+        "content": "As remote work transforms how we live and invest, Viva Ideal is here to support you in finding your ideal property anywhere in the world. Welcome to Viva Ideal, where international property ownership begins."
+      }
+    },
     "mission": {
       "title": "Our Mission",
       "content": "To ensure everyone has the opportunity to live in a beautiful, safe, and affordable home, empowering them to build a secure future and a better life."

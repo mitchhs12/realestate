@@ -239,6 +239,53 @@
   },
   "about": {
     "title": "Hakkında",
+    "content": {
+      "h1": "Viva Ideal'e Hoş Geldiniz: Küresel Gayrimenkule Açılan Kapınız",
+      "p1": {
+        "title": "Sizi Dünya Çapında Uluslararası Emlaklarla Buluşturuyoruz",
+        "content": "Viva Ideal'de misyonumuz, yurtdışında mülk satın almak isteyen dünyanın dört bir yanındaki kişiler için 1 numaralı platform olmaktır. İnsanların yabancı ülkelerde gayrimenkul satın almanın karmaşıklıklarını aşmalarına yardımcı olmaya ve sınır ötesi mülk sahipliğini herkes için sorunsuz ve erişilebilir hale getirmeye adadık kendimizi."
+      },
+      "p2": {
+        "title": "İşlemsel Süreçte Güvenilir Ortağınız",
+        "content": "Yurt dışında mülk satın almanın, alışılmadık yasal ve düzenleyici ortamlarda gezinmeyi gerektirdiğini anlıyoruz. Viva Ideal, faaliyet gösterdiğimiz her ülkedeki yerel yasalara ilişkin derinlemesine bilgimiz sayesinde, işlem sürecinin her adımında uygulamalı rehberlik sunarak öne çıkıyor. Uzmanlığımızla, yasal uyumluluktan finansal işlemlere kadar mülk satın alma işleminizin her aşamasında kendinize güvenebilir ve yerel mülk pazarını anlayabilirsiniz."
+      },
+      "p3": {
+        "title": "Modern Alıcılar İçin Tasarlandı",
+        "content": "Platformumuz özellikle dijital göçebelere, uzaktan çalışanlara ve esnek, konumdan bağımsız bir yaşam tarzına uygun mülk fırsatları arayan küresel düşünceli bireylere hitap ediyor. Yatırım yapmak, taşınmak veya uzaktan çalışmak için yeni bir üs bulmak istiyorsanız, Viva Ideal sizi benzersiz ihtiyaçlarınıza ve yaşam tarzı tercihlerinize göre uyarlanmış mülklerle buluşturuyor."
+      },
+      "p4": {
+        "title": "Viva Ideal'i Farklı Kılan Nedir?",
+        "content": "Platformumuz, emlak listelemelerinin ötesine geçerek şu konulara odaklanıyor:",
+        "b1": {
+          "title": "Yerelleştirilmiş Uzmanlık",
+          "content": "Her bölgedeki satın alma işlemlerinin yasal, finansal ve kültürel ayrıntılarına ilişkin ayrıntılı bilgiler, böylece süreci güvenle yönetebilirsiniz."
+        },
+        "b2": {
+          "title": "Kapsamlı Destek",
+          "content": "İşlemin her aşamasında size yardımcı oluyoruz, nerede olursanız olun güvenli ve sorunsuz bir süreç geçirmenizi sağlıyoruz."
+        },
+        "b3": {
+          "title": "Küresel Ağ",
+          "content": "Uluslararası gayrimenkul sahipliğinin zorluklarını ve fırsatlarını anlayan güvenilir gayrimenkul profesyonellerine, hukuk danışmanlarına ve yerel uzmanlara erişim."
+        },
+        "b4": {
+          "title": "Piyasa Trendleri",
+          "content": "Küresel bir kitleye yönelik, gelişmekte olan piyasalar ve yatırım fırsatları hakkında güncel bilgiler."
+        },
+        "b5": {
+          "title": "Topluluk Öne Çıkanlar",
+          "content": "Her bölgedeki mahallelerin, yaşam tarzlarının ve yerel cazibe merkezlerinin ayrıntılı profilleri, bir sonraki mülkünüz için mükemmel konumu bulmanıza olanak tanır."
+        }
+      },
+      "p5": {
+        "title": "Latin Amerika'da Başlayıp Dünya Çapında Genişliyoruz",
+        "content": "Yolculuğumuz, uygun fiyatlı ve cazip gayrimenkul yatırımları için ideal bir bölge olan Latin Amerika'nın canlı, yüksek büyüme pazarlarına odaklanarak başlıyor. Zamanla, erişimimizi Asya ve Avrupa'ya genişleterek, her yerdeki uluslararası alıcıların ihtiyaçlarını karşılayan gerçek anlamda küresel bir platform yaratmayı planlıyoruz."
+      },
+      "p6": {
+        "title": "Küresel Gayrimenkulün Geleceğine Katılın",
+        "content": "Uzaktan çalışma, yaşam ve yatırım şeklimizi değiştirirken, Viva Ideal dünyanın herhangi bir yerinde ideal mülkünüzü bulmanızda size destek olmak için burada. Uluslararası mülk sahipliğinin başladığı Viva Ideal'e hoş geldiniz."
+      }
+    },
     "mission": {
       "title": "Misyonumuz",
       "content": "Herkesin güzel, güvenli ve uygun fiyatlı bir evde yaşama fırsatına sahip olmasını sağlayarak, güvenli bir gelecek ve daha iyi bir yaşam inşa etmelerine olanak sağlamak."
