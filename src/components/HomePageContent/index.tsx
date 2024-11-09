@@ -100,14 +100,14 @@ export default async function HomePageContent() {
     <div className="flex flex-col justify-start h-full w-full gap-2 sm:gap-3 bg-background">
       <section className="flex bg-gradient-to-b from-[#f4fbf6] to-[#f4f5fb] dark:from-[#021007] dark:to-[#020410] flex-col justify-center items-center w-full h-full">
         <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start w-full h-full max-w-8xl">
-          <div className="flex flex-col items-center gap-2 py-12">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
               {t("locations-sub")}
             </h3>
-            <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
-              <Map size={32} strokeWidth={3} />
+            <h2 className="flex items-center justify-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              {/* <Map size={32} strokeWidth={3} /> */}
               {t("locations")}
             </h2>
           </div>
@@ -116,14 +116,14 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#f4f5fb] to-[#fbf4f8]  dark:from-[#020410] dark:to-[#10020b] justify-center items-center w-full h-full">
         <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
-          <div className="flex flex-col items-center gap-2 py-12">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
               {t("newest-sub")}
             </h3>
-            <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
-              <Newspaper strokeWidth={3} size={32} />
+            <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              {/* <Newspaper strokeWidth={3} size={32} /> */}
               {t("newest")}
             </h2>
           </div>
@@ -137,14 +137,14 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
         <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
-          <div className="flex flex-col items-center gap-2 py-12">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
               {t("cheapest-sub")}
             </h3>
-            <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
-              <BadgeCent strokeWidth={3} size={32} />
+            <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              {/* <BadgeCent strokeWidth={3} size={32} /> */}
               {t("cheapest")}
             </h2>
           </div>
@@ -158,14 +158,14 @@ export default async function HomePageContent() {
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#fbfaf4] to-[#f4fbf6] dark:from-[#100e02] dark:to-[#021003] justify-center items-center w-full h-full">
         <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
-          <div className="flex flex-col items-center gap-2 py-12">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
               {t("popular-sub")}
             </h3>
-            <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
-              <Heart strokeWidth={3} size={32} />
+            <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              {/* <Heart strokeWidth={3} size={32} /> */}
               {t("popular")}
             </h2>
           </div>

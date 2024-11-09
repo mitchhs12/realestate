@@ -44,6 +44,7 @@ import {
   House,
   Heart,
   Lock,
+  LogIn,
 } from "lucide-react";
 
 interface Props {
@@ -94,23 +95,30 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button className="h-12" variant="outline">
-          <Menu width={20} height={20} strokeWidth={1.75} className="hidden sm:flex mr-2 ml-1" />
-          {sessionUnauthenticated ? (
-            <CircleUser width={24} height={24} strokeWidth={1.5} />
-          ) : sessionLoading ? (
-            <Skeleton className="h-6 w-6 rounded-full" />
-          ) : (
-            user &&
-            user.email && (
-              <Avatar className="h-6 w-6">
-                {user.image ? (
-                  <AvatarImage src={user.image} alt={user.name ? user.name : user.email} />
-                ) : (
-                  <AvatarFallback>{user.name ? getInitials(user.name) : user.email[0]}</AvatarFallback>
-                )}
-              </Avatar>
-            )
-          )}
+          <div className="flex items-center gap-2">
+            {user && <Menu width={20} height={20} strokeWidth={1.75} className="hidden sm:flex" />}
+            {sessionUnauthenticated ? (
+              <CircleUser width={24} height={24} strokeWidth={1.5} />
+            ) : sessionLoading ? (
+              <Skeleton className="h-6 w-6 rounded-full" />
+            ) : (
+              user &&
+              user.email && (
+                <Avatar className="h-6 w-6">
+                  {user.image ? (
+                    <AvatarImage src={user.image} alt={user.name ? user.name : user.email} />
+                  ) : (
+                    <AvatarFallback>{user.name ? getInitials(user.name) : user.email[0]}</AvatarFallback>
+                  )}
+                </Avatar>
+              )
+            )}
+            {!user && (
+              <div>
+                {log_in}/{sign_up}
+              </div>
+            )}
+          </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-52 p-2" side="bottom" align="end">
