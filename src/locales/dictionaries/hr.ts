@@ -9,7 +9,7 @@ export default {
         "placeholder": "Potražite bilo koju adresu ili mjesto...",
         "placeholder-short": "Pretraživanje...",
         "search-button": "Pretraživanje",
-        "search-button-small": "Traži / Filtriraj"
+        "search-button-small": "Pretraživanje"
       },
       "filters": "Filteri",
       "categories": "kategorije",

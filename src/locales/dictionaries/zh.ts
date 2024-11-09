@@ -9,7 +9,7 @@ export default {
         "placeholder": "搜索任何地址或地点...",
         "placeholder-short": "搜索...",
         "search-button": "搜索",
-        "search-button-small": "搜索/过滤"
+        "search-button-small": "搜索"
       },
       "filters": "筛选器",
       "categories": "类别",

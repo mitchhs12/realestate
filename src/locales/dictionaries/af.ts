@@ -9,7 +9,7 @@ export default {
         "placeholder": "Soek vir enige adres of plek...",
         "placeholder-short": "Soek...",
         "search-button": "Soek",
-        "search-button-small": "Soek / Filter"
+        "search-button-small": "Soek"
       },
       "filters": "Filters",
       "categories": "Kategorieë",

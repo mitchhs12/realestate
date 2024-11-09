@@ -9,7 +9,7 @@ export default {
         "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",
         "placeholder-short": "Tìm kiếm...",
         "search-button": "Tìm kiếm",
-        "search-button-small": "Tìm kiếm / Lọc"
+        "search-button-small": "Tìm kiếm"
       },
       "filters": "Bộ lọc",
       "categories": "Thể loại",

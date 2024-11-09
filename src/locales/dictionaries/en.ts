@@ -9,7 +9,7 @@ export default {
         "placeholder": "Search for any address or place...",
         "placeholder-short": "Search...",
         "search-button": "Search",
-        "search-button-small": "Search / Filter"
+        "search-button-small": "Search"
       },
       "filters": "Filters",
       "categories": "Categories",
@@ -39,7 +39,7 @@ export default {
       "sell-button-small": "Sell",
       "profile-button": {
         "greeting": "Hi",
-        "admin": "Admin",
+        "admin": "Administration",
         "log-in": "Log in",
         "sign-up": "Sign up",
         "log-out": "Log out",

@@ -9,7 +9,7 @@ export default {
         "placeholder": "任意の住所または場所を検索します...",
         "placeholder-short": "検索...",
         "search-button": "検索",
-        "search-button-small": "検索 / フィルター"
+        "search-button-small": "検索"
       },
       "filters": "フィルター",
       "categories": "カテゴリー",

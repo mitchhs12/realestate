@@ -9,7 +9,7 @@ export default {
         "placeholder": "Pesquise qualquer endereço ou lugar...",
         "placeholder-short": "Procurar...",
         "search-button": "Procurar",
-        "search-button-small": "Pesquisar / Filtrar"
+        "search-button-small": "Procurar"
       },
       "filters": "Filtros",
       "categories": "Categorias",

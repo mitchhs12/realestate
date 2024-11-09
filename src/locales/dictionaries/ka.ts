@@ -9,7 +9,7 @@ export default {
         "placeholder": "მოძებნეთ ნებისმიერი მისამართი ან ადგილი...",
         "placeholder-short": "ძიება...",
         "search-button": "ძიება",
-        "search-button-small": "ძიება / ფილტრი"
+        "search-button-small": "ძიება"
       },
       "filters": "ფილტრები",
       "categories": "კატეგორიები",
