@@ -39,6 +39,7 @@
       "sell-button-small": "Bán",
       "profile-button": {
         "greeting": "CHÀO",
+        "admin": "Quản trị viên",
         "log-in": "Đăng nhập",
         "sign-up": "Đăng ký",
         "log-out": "Đăng xuất",
@@ -167,9 +168,13 @@
     },
     "cities": "Bắt đầu bằng cách chọn một quận thành phố bên dưới.",
     "popular": "Được yêu thích nhất",
+    "popular-sub": "KHÁCH HÀNG YÊU THÍCH",
     "locations": "Địa điểm",
+    "locations-sub": "HÀNH TRÌNH CỦA BẠN BẮT ĐẦU TẠI ĐÂY",
     "cheapest": "Rẻ nhất",
+    "cheapest-sub": "GIÁ KHÔNG THỂ BẮT CHẠI",
     "newest": "Mới nhất",
+    "newest-sub": "ĐÃ ĐƯỢC LIỆT KÊ GẦN ĐÂY",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền.",
       "legal": {

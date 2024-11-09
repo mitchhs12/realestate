@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "売る",
       "profile-button": {
         "greeting": "こんにちは",
+        "admin": "管理者",
         "log-in": "ログイン",
         "sign-up": "サインアップ",
         "log-out": "ログアウト",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "以下の市区町村を選択して開始してください。",
     "popular": "最も好まれた",
+    "popular-sub": "お客様のお気に入り",
     "locations": "場所",
+    "locations-sub": "あなたの旅はここから始まります",
     "cheapest": "最も安い",
+    "cheapest-sub": "破格の価格",
     "newest": "最新",
+    "newest-sub": "最近リストされた",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal。無断複写・転載を禁じます。",
       "legal": {

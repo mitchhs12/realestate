@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "팔다",
       "profile-button": {
         "greeting": "안녕",
+        "admin": "관리자",
         "log-in": "로그인",
         "sign-up": "가입하기",
         "log-out": "로그아웃",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "아래에서 도시 구역을 선택하여 시작하세요.",
     "popular": "가장 많이 좋아요",
+    "popular-sub": "고객이 선호하는 상품",
     "locations": "위치",
+    "locations-sub": "당신의 여행은 여기서 시작됩니다",
     "cheapest": "가장 저렴한",
+    "cheapest-sub": "비교할 수 없는 가격",
     "newest": "최신",
+    "newest-sub": "최근 등록됨",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. 모든 권리 보유.",
       "legal": {

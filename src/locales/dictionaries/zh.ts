@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "卖",
       "profile-button": {
         "greeting": "你好",
+        "admin": "行政",
         "log-in": "登录",
         "sign-up": "报名",
         "log-out": "登出",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "从下面选择一个城市区域开始。",
     "popular": "最受喜爱",
+    "popular-sub": "顾客最爱",
     "locations": "位置",
+    "locations-sub": "你的旅程从这里开始",
     "cheapest": "最便宜的",
+    "cheapest-sub": "无与伦比的价格",
     "newest": "最新",
+    "newest-sub": "最近上市",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal。保留所有权利。",
       "legal": {

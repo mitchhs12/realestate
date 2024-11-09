@@ -39,6 +39,7 @@
       "sell-button-small": "Prodavati",
       "profile-button": {
         "greeting": "Bok",
+        "admin": "Administrator",
         "log-in": "Prijavite se",
         "sign-up": "Prijavite se",
         "log-out": "Odjavi se",
@@ -167,9 +168,13 @@
     },
     "cities": "Započnite odabirom gradskog okruga u nastavku.",
     "popular": "Najviše lajkanih",
+    "popular-sub": "FAVORITI KUPACA",
     "locations": "Lokacije",
+    "locations-sub": "VAŠE PUTOVANJE POČINJE OVDJE",
     "cheapest": "Najjeftiniji",
+    "cheapest-sub": "NEPOVREDNE CIJENE",
     "newest": "Najnoviji",
+    "newest-sub": "NEDAVNO NA POPISU",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Sva prava pridržana.",
       "legal": {

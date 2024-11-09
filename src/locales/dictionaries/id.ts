@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "Menjual",
       "profile-button": {
         "greeting": "Hai",
+        "admin": "Admin",
         "log-in": "Masuk",
         "sign-up": "Mendaftar",
         "log-out": "Keluar",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "Mulailah dengan memilih distrik kota di bawah ini.",
     "popular": "Paling Disukai",
+    "popular-sub": "FAVORIT PELANGGAN",
     "locations": "Lokasi",
+    "locations-sub": "PERJALANAN ANDA DIMULAI DI SINI",
     "cheapest": "Termurah",
+    "cheapest-sub": "HARGA YANG TAK TERKALAHKAN",
     "newest": "Terbaru",
+    "newest-sub": "TERDAFTAR TERBARU",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Semua hak dilindungi undang-undang.",
       "legal": {

@@ -23,6 +23,7 @@ export default async function MainLayout({ children }: Props) {
     sellButtonBig: h("sell-button-big"),
     sellButtonSmall: h("sell-button-small"),
     greeting: p("greeting"),
+    admin: p("admin"),
     log_in: p("log-in"),
     sign_up: p("sign-up"),
     log_out: p("log-out"),

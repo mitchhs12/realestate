@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "Verkoop",
       "profile-button": {
         "greeting": "Hallo",
+        "admin": "Admin",
         "log-in": "Meld aan",
         "sign-up": "Teken in",
         "log-out": "Teken uit",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "Begin deur 'n stadgrens hieronder te kies.",
     "popular": "Mees gelaaik",
+    "popular-sub": "KLANT GUNSTELING",
     "locations": "Liggings",
+    "locations-sub": "JOU REIS BEGIN HIER",
     "cheapest": "Goedkoopste",
+    "cheapest-sub": "ONVERSTELLENDE PRYSE",
     "newest": "Nuutste",
+    "newest-sub": "ONLANGS GELYS",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideaal. Alle regte voorbehou.",
       "legal": {

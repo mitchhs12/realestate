@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "Vender",
       "profile-button": {
         "greeting": "Oi",
+        "admin": "Administrador",
         "log-in": "Conecte-se",
         "sign-up": "Inscrever-se",
         "log-out": "Sair",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "Comece selecionando um distrito da cidade abaixo.",
     "popular": "Mais curtido",
+    "popular-sub": "FAVORITOS DO CLIENTE",
     "locations": "Locais",
+    "locations-sub": "SUA JORNADA COMEÇA AQUI",
     "cheapest": "Mais barato",
+    "cheapest-sub": "PREÇOS IMBATÍVEIS",
     "newest": "Mais novo",
+    "newest-sub": "LISTADO RECENTEMENTE",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Todos os direitos reservados.",
       "legal": {

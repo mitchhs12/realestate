@@ -104,7 +104,7 @@ export default async function HomePageContent() {
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
-              YOUR JOURNEY STARTS HERE
+              {t("locations-sub")}
             </h3>
             <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
               <Map size={32} strokeWidth={3} />
@@ -120,7 +120,7 @@ export default async function HomePageContent() {
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
-              RECENTLY LISTED
+              {t("newest-sub")}
             </h3>
             <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
               <Newspaper strokeWidth={3} size={32} />
@@ -141,7 +141,7 @@ export default async function HomePageContent() {
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
-              UNBEATABLE PRICES
+              {t("cheapest-sub")}
             </h3>
             <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
               <BadgeCent strokeWidth={3} size={32} />
@@ -162,7 +162,7 @@ export default async function HomePageContent() {
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
-              CUSTOMER FAVORITES
+              {t("popular-sub")}
             </h3>
             <h2 className="flex items-center gap-4 text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
               <Heart strokeWidth={3} size={32} />

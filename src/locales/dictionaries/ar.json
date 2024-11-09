@@ -39,6 +39,7 @@
       "sell-button-small": "يبيع",
       "profile-button": {
         "greeting": "أهلاً",
+        "admin": "مسؤل",
         "log-in": "تسجيل الدخول",
         "sign-up": "اشتراك",
         "log-out": "تسجيل الخروج",
@@ -167,9 +168,13 @@
     },
     "cities": "ابدأ باختيار منطقة المدينة أدناه.",
     "popular": "الأكثر اعجابا",
+    "popular-sub": "المفضلة لدى العملاء",
     "locations": "المواقع",
+    "locations-sub": "رحلتك تبدأ هنا",
     "cheapest": "أرخص",
+    "cheapest-sub": "أسعار لا تقبل المنافسة",
     "newest": "الأحدث",
+    "newest-sub": "تم إدراجه مؤخرا",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. جميع الحقوق محفوظة.",
       "legal": {

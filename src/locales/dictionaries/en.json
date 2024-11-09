@@ -39,6 +39,7 @@
       "sell-button-small": "Sell",
       "profile-button": {
         "greeting": "Hi",
+        "admin": "Administration",
         "log-in": "Log in",
         "sign-up": "Sign up",
         "log-out": "Log out",
@@ -136,9 +137,13 @@
     },
     "cities": "Get started by selecting a city destrict below",
     "popular": "Popular",
+    "popular-sub": "CUSTOMER FAVORITES",
     "locations": "Locations",
+    "locations-sub": "YOUR JOURNEY STARTS HERE",
     "cheapest": "Cheapest",
+    "cheapest-sub": "UNBEATABLE PRICES",
     "newest": "Newest",
+    "newest-sub": "RECENTLY LISTED",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal PTE. LTD. All rights reserved.",
       "legal": {

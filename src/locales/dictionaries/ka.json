@@ -39,6 +39,7 @@
       "sell-button-small": "გაყიდე",
       "profile-button": {
         "greeting": "გამარჯობა",
+        "admin": "ადმინ",
         "log-in": "შესვლა",
         "sign-up": "დარეგისტრირდით",
         "log-out": "გასვლა",
@@ -167,9 +168,13 @@
     },
     "cities": "დაიწყეთ ქვემოთ ქალაქის უბნის არჩევით.",
     "popular": "ყველაზე მოწონებული",
+    "popular-sub": "მომხმარებლის ფავორიტები",
     "locations": "ლოკაციები",
+    "locations-sub": "თქვენი მოგზაურობა იწყება აქ",
     "cheapest": "ყველაზე იაფად",
+    "cheapest-sub": "დაუმარცხებელი ფასები",
     "newest": "უახლესი",
+    "newest-sub": "ახლახან ჩამოთვლილი",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. ყველა უფლება დაცულია.",
       "legal": {

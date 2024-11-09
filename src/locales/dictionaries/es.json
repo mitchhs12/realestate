@@ -39,6 +39,7 @@
       "sell-button-small": "Vender",
       "profile-button": {
         "greeting": "Hola",
+        "admin": "Administración",
         "log-in": "Acceso",
         "sign-up": "Inscribirse",
         "log-out": "Finalizar la sesión",
@@ -167,9 +168,13 @@
     },
     "cities": "Comience seleccionando un distrito de ciudad a continuación.",
     "popular": "Lo más gustado",
+    "popular-sub": "FAVORITOS DE LOS CLIENTES",
     "locations": "Ubicaciones",
+    "locations-sub": "TU VIAJE COMIENZA AQUÍ",
     "cheapest": "El más barato",
+    "cheapest-sub": "PRECIOS IMBATIBLES",
     "newest": "El más nuevo",
+    "newest-sub": "RECIENTEMENTE LISTADO",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Todos los derechos reservados.",
       "legal": {

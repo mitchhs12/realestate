@@ -32,7 +32,19 @@ import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { languageToFlagMap } from "@/lib/validations";
 import { QueryContext } from "@/context/QueryContext";
-import { Languages, CircleDollarSign, Settings, SunMoon, LogOut, Sun, Moon, Laptop, House, Heart } from "lucide-react";
+import {
+  Languages,
+  CircleDollarSign,
+  Settings,
+  SunMoon,
+  LogOut,
+  Sun,
+  Moon,
+  Laptop,
+  House,
+  Heart,
+  Lock,
+} from "lucide-react";
 
 interface Props {
   openSignUpModal: () => void;
@@ -61,6 +73,7 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
     settings,
     myproperties,
     mylists,
+    admin,
   } = headerValues;
 
   const handleUpdateLanguage = async (newLang: LanguageType) => {
@@ -141,12 +154,13 @@ export function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
           <DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className="cursor-pointer"
+              className="cursor-pointer flex items-center gap-2"
               onClick={() => {
                 router.push("/admin");
               }}
             >
-              Admin
+              <Lock width={20} height={20} strokeWidth={1.25} />
+              {admin}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         )}

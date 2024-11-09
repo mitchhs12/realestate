@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "ขาย",
       "profile-button": {
         "greeting": "สวัสดี",
+        "admin": "ผู้ดูแลระบบ",
         "log-in": "เข้าสู่ระบบ",
         "sign-up": "สมัครสมาชิก",
         "log-out": "ออกจากระบบ",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "เริ่มต้นด้วยการเลือกเขตเมืองด้านล่าง",
     "popular": "ถูกใจมากที่สุด",
+    "popular-sub": "รายการโปรดของลูกค้า",
     "locations": "ตำแหน่งที่ตั้ง",
+    "locations-sub": "การเดินทางของคุณเริ่มต้นที่นี่",
     "cheapest": "ถูกที่สุด",
+    "cheapest-sub": "ราคาที่ไม่มีใครเทียบได้",
     "newest": "ใหม่ล่าสุด",
+    "newest-sub": "รายการล่าสุด",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. สงวนลิขสิทธิ์",
       "legal": {

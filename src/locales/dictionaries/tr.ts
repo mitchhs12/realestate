@@ -39,6 +39,7 @@ export default {
       "sell-button-small": "Satmak",
       "profile-button": {
         "greeting": "MERHABA",
+        "admin": "Yönetici",
         "log-in": "Giriş yapmak",
         "sign-up": "Üye olmak",
         "log-out": "Çıkış yap",
@@ -167,9 +168,13 @@ export default {
     },
     "cities": "Aşağıdan bir şehir bölgesi seçerek başlayabilirsiniz.",
     "popular": "En Çok Beğenilen",
+    "popular-sub": "MÜŞTERİ FAVORİLERİ",
     "locations": "Konumlar",
+    "locations-sub": "YOLCULUĞUNUZ BURADA BAŞLIYOR",
     "cheapest": "En ucuz",
+    "cheapest-sub": "RAKİPSİZ FİYATLAR",
     "newest": "En yeni",
+    "newest-sub": "SON LİSTELENENLER",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Tüm hakları saklıdır.",
       "legal": {
