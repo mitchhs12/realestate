@@ -3,6 +3,117 @@
     "property": "Đã xảy ra lỗi khi tải thuộc tính này!",
     "page": "Có lỗi xảy ra khi tải trang này!"
   },
+  "billing": {
+    "most-popular": "Phổ biến nhất",
+    "starter": {
+      "title": "Đơn",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Xem 1 bất động sản",
+          "subtitle": "Xem thông tin liên lạc và vị trí của 1 bất động sản."
+        },
+        "1": {
+          "title": "Bán 1 Bất động sản",
+          "subtitle": "Đăng 1 bất động sản mỗi tháng."
+        },
+        "2": {
+          "title": "5 Ảnh",
+          "subtitle": "Tải lên 5 ảnh cho mỗi danh sách."
+        },
+        "3": {
+          "title": "Hỗ trợ cơ bản",
+          "subtitle": "Nhận hỗ trợ trong vòng 24-48 giờ."
+        }
+      }
+    },
+    "pro": {
+      "title": "Chuyên nghiệp",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "Xem 100 bất động sản",
+          "subtitle": "Xem thông tin liên lạc và vị trí của 10 bất động sản."
+        },
+        "1": {
+          "title": "Bán 100 bất động sản",
+          "subtitle": "Liệt kê 10 bất động sản mỗi tháng."
+        },
+        "2": {
+          "title": "10 bức ảnh",
+          "subtitle": "Tải lên 10 ảnh cho mỗi bất động sản."
+        },
+        "3": {
+          "title": "Hỗ trợ chuyên nghiệp",
+          "subtitle": "Nhận hỗ trợ trong vòng 12-24 giờ."
+        }
+      }
+    },
+    "premium": {
+      "title": "Phần thưởng",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Xem tất cả các thuộc tính",
+          "subtitle": "Xem tất cả thông tin liên hệ của bất động sản."
+        },
+        "1": {
+          "title": "Bán 30 bất động sản",
+          "subtitle": "Đăng 30 bất động sản mỗi tháng."
+        },
+        "2": {
+          "title": "30 bức ảnh",
+          "subtitle": "Tải lên 30 ảnh cho mỗi bất động sản."
+        },
+        "3": {
+          "title": "Băng hình",
+          "subtitle": "Thêm video vào thuộc tính của bạn."
+        },
+        "4": {
+          "title": "Biểu ngữ cao cấp",
+          "subtitle": "Thuộc tính của bạn sẽ được đánh dấu và xuất hiện ở đầu kết quả tìm kiếm của người dùng."
+        },
+        "5": {
+          "title": "Hỗ trợ cao cấp",
+          "subtitle": "Nhận hỗ trợ trong vòng 8 giờ."
+        }
+      }
+    },
+    "business": {
+      "title": "Việc kinh doanh",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Bán bất động sản không giới hạn",
+          "subtitle": "Liệt kê các bất động sản không giới hạn mỗi tháng"
+        },
+        "1": {
+          "title": "Ảnh không giới hạn",
+          "subtitle": "Tải lên ảnh không giới hạn cho mỗi tài sản"
+        },
+        "2": {
+          "title": "Danh sách nổi bật",
+          "subtitle": "Thuộc tính của bạn sẽ được đánh dấu và xuất hiện ở đầu tìm kiếm của người dùng"
+        },
+        "3": {
+          "title": "Quảng cáo trên mạng xã hội",
+          "subtitle": "Danh sách của bạn sẽ được quảng bá trên các kênh truyền thông xã hội của chúng tôi"
+        },
+        "4": {
+          "title": "Hỗ trợ doanh nghiệp",
+          "subtitle": "Nhận hỗ trợ trong vòng 1 giờ"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

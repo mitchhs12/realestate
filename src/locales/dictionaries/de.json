@@ -3,6 +3,117 @@
     "property": "Beim Abrufen dieser Immobilie ist ein Fehler aufgetreten!",
     "page": "Beim Abrufen dieser Seite ist ein Fehler aufgetreten!"
   },
+  "billing": {
+    "most-popular": "Am beliebtesten",
+    "starter": {
+      "title": "Einzel",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "1 Immobilie ansehen",
+          "subtitle": "Zeigen Sie die Kontaktdaten und den Standort von 1 Immobilie an."
+        },
+        "1": {
+          "title": "1 Immobilie verkaufen",
+          "subtitle": "Listen Sie 1 Immobilie pro Monat auf."
+        },
+        "2": {
+          "title": "5 Fotos",
+          "subtitle": "Laden Sie 5 Fotos pro Eintrag hoch."
+        },
+        "3": {
+          "title": "Grundlegende Unterstützung",
+          "subtitle": "Erhalten Sie innerhalb von 24–48 Stunden Unterstützung."
+        }
+      }
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "100 Eigenschaften anzeigen",
+          "subtitle": "Sehen Sie sich die Kontaktdaten und Standorte von 10 Unterkünften an."
+        },
+        "1": {
+          "title": "100 Immobilien verkaufen",
+          "subtitle": "Listen Sie 10 Immobilien pro Monat auf."
+        },
+        "2": {
+          "title": "10 Fotos",
+          "subtitle": "Laden Sie 10 Fotos pro Immobilie hoch."
+        },
+        "3": {
+          "title": "Pro Support",
+          "subtitle": "Erhalten Sie innerhalb von 12–24 Stunden Unterstützung."
+        }
+      }
+    },
+    "premium": {
+      "title": "Prämie",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Alle Unterkünfte anzeigen",
+          "subtitle": "Alle Kontaktdaten der Unterkunft anzeigen."
+        },
+        "1": {
+          "title": "30 Immobilien verkaufen",
+          "subtitle": "Listen Sie 30 Immobilien pro Monat auf."
+        },
+        "2": {
+          "title": "30 Fotos",
+          "subtitle": "Laden Sie 30 Fotos pro Immobilie hoch."
+        },
+        "3": {
+          "title": "Video",
+          "subtitle": "Fügen Sie Ihren Eigenschaften Videos hinzu."
+        },
+        "4": {
+          "title": "Premium Banner",
+          "subtitle": "Ihre Eigenschaften werden hervorgehoben und erscheinen oben bei den Benutzersuchen."
+        },
+        "5": {
+          "title": "Premium Kunden-Support",
+          "subtitle": "Erhalten Sie innerhalb von 8 Stunden Unterstützung."
+        }
+      }
+    },
+    "business": {
+      "title": "Geschäft",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Unbegrenzt Immobilien verkaufen",
+          "subtitle": "Listen Sie jeden Monat eine unbegrenzte Anzahl an Immobilien auf"
+        },
+        "1": {
+          "title": "Unbegrenzte Fotos",
+          "subtitle": "Laden Sie pro Immobilie eine unbegrenzte Anzahl an Fotos hoch"
+        },
+        "2": {
+          "title": "Ausgewählte Angebote",
+          "subtitle": "Ihre Immobilien werden hervorgehoben und erscheinen ganz oben bei den Suchanfragen der Benutzer"
+        },
+        "3": {
+          "title": "Social Media-Werbung",
+          "subtitle": "Ihre Angebote werden auf unseren Social-Media-Kanälen beworben"
+        },
+        "4": {
+          "title": "Unternehmensunterstützung",
+          "subtitle": "Erhalten Sie innerhalb von 1 Stunde Unterstützung"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

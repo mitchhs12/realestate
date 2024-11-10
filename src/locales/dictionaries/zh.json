@@ -3,6 +3,117 @@
     "property": "获取此属性时出错！",
     "page": "获取此页面时出错！"
   },
+  "billing": {
+    "most-popular": "最受欢迎",
+    "starter": {
+      "title": "单身的",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "查看 1 处房产",
+          "subtitle": "查看 1 家酒店的联系方式和位置。"
+        },
+        "1": {
+          "title": "出售 1 处房产",
+          "subtitle": "每月列出 1 处房产。"
+        },
+        "2": {
+          "title": "5 张照片",
+          "subtitle": "每个列表上传 5 张照片。"
+        },
+        "3": {
+          "title": "基础支持",
+          "subtitle": "在 24-48 小时内获得支持。"
+        }
+      }
+    },
+    "pro": {
+      "title": "专业版",
+      "price": "三十九",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "查看 100 处房产",
+          "subtitle": "查看 10 家酒店的联系方式和位置。"
+        },
+        "1": {
+          "title": "出售 100 处房产",
+          "subtitle": "每月列出 10 处房产。"
+        },
+        "2": {
+          "title": "10 张照片",
+          "subtitle": "每个房产上传 10 张照片。"
+        },
+        "3": {
+          "title": "专业支持",
+          "subtitle": "在 12-24 小时内获得支持。"
+        }
+      }
+    },
+    "premium": {
+      "title": "优质的",
+      "price": "99",
+      "yearly-monthly-price": "四十二",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "查看所有房产",
+          "subtitle": "查看所有酒店的联系方式。"
+        },
+        "1": {
+          "title": "出售 30 处房产",
+          "subtitle": "每月列出 30 处房产。"
+        },
+        "2": {
+          "title": "30 张照片",
+          "subtitle": "每个房产上传 30 张照片。"
+        },
+        "3": {
+          "title": "视频",
+          "subtitle": "将视频添加到您的属性中。"
+        },
+        "4": {
+          "title": "优质横幅",
+          "subtitle": "您的房产将会突出显示并出现在用户搜索的顶部。"
+        },
+        "5": {
+          "title": "高级支持",
+          "subtitle": "8 小时内获得支持。"
+        }
+      }
+    },
+    "business": {
+      "title": "商业",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "出售无限的财产",
+          "subtitle": "每月列出无限数量的房产"
+        },
+        "1": {
+          "title": "无限照片",
+          "subtitle": "每个房产可上传无限数量的照片"
+        },
+        "2": {
+          "title": "精选房源",
+          "subtitle": "您的房产将会被突出显示，并出现在用户搜索的顶部"
+        },
+        "3": {
+          "title": "社交媒体推广",
+          "subtitle": "您的列表将在我们的社交媒体渠道上推广"
+        },
+        "4": {
+          "title": "商业支持",
+          "subtitle": "1 小时内获得支持"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

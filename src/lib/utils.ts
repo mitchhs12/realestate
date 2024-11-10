@@ -18,7 +18,7 @@ export const formatPrice = (currency: string, value: number, decimals?: number):
   const formattedPrice = new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
-    maximumFractionDigits: decimals || decimalsLimit,
+    maximumFractionDigits: decimals !== undefined ? decimals : decimalsLimit,
   }).format(value);
 
   return formattedPrice;

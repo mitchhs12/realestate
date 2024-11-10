@@ -5,7 +5,7 @@ import { SellContext } from "@/context/SellContext";
 import CheckoutCard from "./CheckoutCard";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
-import Stripe from "./Stripe";
+import Stripe from "@/app/[locale]/Stripe";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Tier {
@@ -104,7 +104,7 @@ export default function Checkout({
                 title={premium.title}
                 description={premium.subtitle}
                 button={hasPaid ? paidText : premium.price}
-                buttonDisabled={hasPaid ? true : false}
+                buttonDisabled={true} // currently disabled because changed how purchasing works
                 originalPrice={premium.anchor}
                 buttonFunction={() => setIsOpen(true)}
                 selected={selected}
@@ -127,13 +127,13 @@ export default function Checkout({
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="p-0 border-0 bg-none w-80 md:w-full" close={false}>
-          {defaultCurrency && currentHome && (
+          {/* {defaultCurrency && currentHome && (
             <Stripe
               amount={defaultCurrency.usdPrice * (premium.price as number)}
               defaultCurrency={defaultCurrency}
-              homeId={currentHome?.id}
+              accountId={user?.id}
             />
-          )}
+          )} */}
         </DialogContent>
       </Dialog>
     </>

@@ -3,6 +3,117 @@
     "property": "Terjadi kesalahan saat mengambil properti ini!",
     "page": "Terjadi kesalahan saat mengambil halaman ini!"
   },
+  "billing": {
+    "most-popular": "Paling Populer",
+    "starter": {
+      "title": "Lajang",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Lihat 1 properti",
+          "subtitle": "Lihat detail kontak dan lokasi 1 properti."
+        },
+        "1": {
+          "title": "Jual 1 Properti",
+          "subtitle": "Cantumkan 1 properti per bulan."
+        },
+        "2": {
+          "title": "5 Foto",
+          "subtitle": "Unggah 5 foto per iklan."
+        },
+        "3": {
+          "title": "Dukungan Dasar",
+          "subtitle": "Dapatkan dukungan dalam waktu 24-48 jam."
+        }
+      }
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "Lihat 100 properti",
+          "subtitle": "Lihat detail kontak dan lokasi 10 properti."
+        },
+        "1": {
+          "title": "Jual 100 properti",
+          "subtitle": "Cantumkan 10 properti per bulan."
+        },
+        "2": {
+          "title": "10 foto",
+          "subtitle": "Unggah 10 foto per properti."
+        },
+        "3": {
+          "title": "Dukungan Pro",
+          "subtitle": "Dapatkan dukungan dalam 12-24 jam."
+        }
+      }
+    },
+    "premium": {
+      "title": "Premi",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Lihat semua properti",
+          "subtitle": "Lihat semua detail kontak properti."
+        },
+        "1": {
+          "title": "Jual 30 properti",
+          "subtitle": "Cantumkan 30 properti per bulan."
+        },
+        "2": {
+          "title": "30 foto",
+          "subtitle": "Unggah 30 foto per properti."
+        },
+        "3": {
+          "title": "Video",
+          "subtitle": "Tambahkan video ke properti Anda."
+        },
+        "4": {
+          "title": "Spanduk Premium",
+          "subtitle": "Properti Anda akan disorot dan muncul di bagian atas pencarian pengguna."
+        },
+        "5": {
+          "title": "Dukungan Premium",
+          "subtitle": "Dapatkan dukungan dalam waktu 8 jam."
+        }
+      }
+    },
+    "business": {
+      "title": "Bisnis",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "tahun 1699",
+      "perks": {
+        "0": {
+          "title": "Jual properti tanpa batas",
+          "subtitle": "Daftarkan properti tanpa batas setiap bulan"
+        },
+        "1": {
+          "title": "Foto tak terbatas",
+          "subtitle": "Unggah foto tanpa batas per properti"
+        },
+        "2": {
+          "title": "Daftar Unggulan",
+          "subtitle": "Properti Anda akan disorot dan muncul di bagian atas pencarian pengguna"
+        },
+        "3": {
+          "title": "Promosi Media Sosial",
+          "subtitle": "Daftar Anda akan dipromosikan di saluran media sosial kami"
+        },
+        "4": {
+          "title": "Dukungan Bisnis",
+          "subtitle": "Dapatkan dukungan dalam waktu 1 jam"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

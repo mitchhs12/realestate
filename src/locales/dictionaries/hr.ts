@@ -3,6 +3,117 @@ export default {
     "property": "Nešto je pošlo po zlu prilikom dohvaćanja ove nekretnine!",
     "page": "Nešto nije u redu prilikom dohvaćanja ove stranice!"
   },
+  "billing": {
+    "most-popular": "Najpopularniji",
+    "starter": {
+      "title": "Singl",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Pogledajte 1 nekretninu",
+          "subtitle": "Pregledajte kontakt podatke i lokaciju 1 objekta."
+        },
+        "1": {
+          "title": "Prodajem 1 nekretninu",
+          "subtitle": "Navedite 1 nekretninu mjesečno."
+        },
+        "2": {
+          "title": "5 fotografija",
+          "subtitle": "Učitajte 5 fotografija po oglasu."
+        },
+        "3": {
+          "title": "Osnovna podrška",
+          "subtitle": "Dobijte podršku u roku od 24-48 sati."
+        }
+      }
+    },
+    "pro": {
+      "title": "profesionalac",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "Pogledajte 100 nekretnina",
+          "subtitle": "Pogledajte podatke o kontaktu i lokaciji 10 nekretnina."
+        },
+        "1": {
+          "title": "Prodaj 100 nekretnina",
+          "subtitle": "Navedite 10 nekretnina mjesečno."
+        },
+        "2": {
+          "title": "10 fotografija",
+          "subtitle": "Učitajte 10 fotografija po objektu."
+        },
+        "3": {
+          "title": "Pro Podrška",
+          "subtitle": "Dobijte podršku u roku od 12-24 sata."
+        }
+      }
+    },
+    "premium": {
+      "title": "Premija",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Pogledajte sve nekretnine",
+          "subtitle": "Pogledajte sve podatke o kontaktu nekretnine."
+        },
+        "1": {
+          "title": "Prodajem 30 nekretnina",
+          "subtitle": "Navedite 30 nekretnina mjesečno."
+        },
+        "2": {
+          "title": "30 fotografija",
+          "subtitle": "Učitajte 30 fotografija po objektu."
+        },
+        "3": {
+          "title": "Video",
+          "subtitle": "Dodajte videozapise svojim svojstvima."
+        },
+        "4": {
+          "title": "Premium banner",
+          "subtitle": "Vaša svojstva bit će istaknuta i prikazana na vrhu korisničkih pretraživanja."
+        },
+        "5": {
+          "title": "Premium podrška",
+          "subtitle": "Dobijte podršku u roku od 8 sati."
+        }
+      }
+    },
+    "business": {
+      "title": "posao",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699. godine",
+      "perks": {
+        "0": {
+          "title": "Prodajte neograničene nekretnine",
+          "subtitle": "Navedite neograničen broj svojstava svakog mjeseca"
+        },
+        "1": {
+          "title": "Neograničene fotografije",
+          "subtitle": "Prenesite neograničen broj fotografija po objektu"
+        },
+        "2": {
+          "title": "Istaknuti oglasi",
+          "subtitle": "Vaša svojstva bit će istaknuta i prikazana na vrhu korisničkih pretraživanja"
+        },
+        "3": {
+          "title": "Promocija na društvenim mrežama",
+          "subtitle": "Vaši oglasi bit će promovirani na našim kanalima društvenih medija"
+        },
+        "4": {
+          "title": "Poslovna podrška",
+          "subtitle": "Dobijte podršku u roku od 1 sata"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

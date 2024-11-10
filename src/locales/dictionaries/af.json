@@ -3,6 +3,117 @@
     "property": "Iets het verkeerd geloop om hierdie eiendom te gaan haal!",
     "page": "Iets het verkeerd geloop om hierdie bladsy te gaan haal!"
   },
+  "billing": {
+    "most-popular": "Gewildste",
+    "starter": {
+      "title": "Enkellopend",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Bekyk 1 eiendom",
+          "subtitle": "Bekyk 1 eiendom se kontakbesonderhede en ligging."
+        },
+        "1": {
+          "title": "Verkoop 1 Eiendom",
+          "subtitle": "Lys 1 eiendom per maand."
+        },
+        "2": {
+          "title": "5 Foto's",
+          "subtitle": "Laai 5 foto's per lys op."
+        },
+        "3": {
+          "title": "Basiese ondersteuning",
+          "subtitle": "Kry ondersteuning binne 24-48 uur."
+        }
+      }
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "Bekyk 100 eiendomme",
+          "subtitle": "Bekyk 10 eiendom se kontakbesonderhede en ligging."
+        },
+        "1": {
+          "title": "Verkoop 100 eiendomme",
+          "subtitle": "Lys 10 eiendomme per maand."
+        },
+        "2": {
+          "title": "10 foto's",
+          "subtitle": "Laai 10 foto's per eiendom op."
+        },
+        "3": {
+          "title": "Pro Ondersteuning",
+          "subtitle": "Kry ondersteuning binne 12-24 uur."
+        }
+      }
+    },
+    "premium": {
+      "title": "Premie",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Bekyk alle eiendomme",
+          "subtitle": "Bekyk alle kontakbesonderhede van die eiendom."
+        },
+        "1": {
+          "title": "Verkoop 30 eiendomme",
+          "subtitle": "Lys 30 eiendomme per maand."
+        },
+        "2": {
+          "title": "30 foto's",
+          "subtitle": "Laai 30 foto's per eiendom op."
+        },
+        "3": {
+          "title": "Video",
+          "subtitle": "Voeg video's by jou eiendomme."
+        },
+        "4": {
+          "title": "Premium Banier",
+          "subtitle": "Jou eiendomme sal uitgelig word en boaan gebruikersoektogte verskyn."
+        },
+        "5": {
+          "title": "Premium Ondersteuning",
+          "subtitle": "Kry ondersteuning binne 8 uur."
+        }
+      }
+    },
+    "business": {
+      "title": "Besigheid",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Verkoop onbeperkte eiendomme",
+          "subtitle": "Lys onbeperkte eiendomme elke maand"
+        },
+        "1": {
+          "title": "Onbeperkte foto's",
+          "subtitle": "Laai onbeperkte foto's per eiendom op"
+        },
+        "2": {
+          "title": "Uitstallys",
+          "subtitle": "Jou eiendomme sal uitgelig word en boaan gebruikersoektogte verskyn"
+        },
+        "3": {
+          "title": "Sosiale media promosie",
+          "subtitle": "Jou inskrywings sal op ons sosiale media-kanale bevorder word"
+        },
+        "4": {
+          "title": "Besigheidsondersteuning",
+          "subtitle": "Kry ondersteuning binne 1 uur"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

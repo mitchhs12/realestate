@@ -54,7 +54,6 @@ export default function Price({
   const { defaultCurrency, currencyData } = useContext(LocaleContext);
 
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
 
   const [price, setPrice] = useState<number | null>(currentHome?.price || 0);
   const [isNegotiable, setIsNegotiable] = useState<boolean>(currentHome?.priceNegotiable || false);

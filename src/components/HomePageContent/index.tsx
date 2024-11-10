@@ -6,6 +6,7 @@ import { locationImageIds } from "@/lib/validations";
 import { Newspaper, HandCoins, Heart, Map, PiggyBank, BadgeCent } from "lucide-react";
 import { typesMap } from "@/lib/sellFlowData";
 import { urbanist } from "@/app/[locale]/fonts";
+import Pricing from "@/components/Pricing";
 
 // async function fetchWithCache(url: string) {
 //   const res = await fetch(url, {
@@ -15,12 +16,123 @@ import { urbanist } from "@/app/[locale]/fonts";
 // }
 
 export default async function HomePageContent() {
-  const [t, type, p, premium] = await Promise.all([
+  const [t, type, p, premium, billing] = await Promise.all([
     getScopedI18n("home"),
     getScopedI18n("sell.type"),
     getScopedI18n("search"),
     getScopedI18n("sell.checkout.premium"),
+    getScopedI18n("billing"),
   ]);
+
+  const starterBilling = {
+    title: billing("starter.title"),
+    price: Number(billing("starter.price")),
+    yearlyPrice: Number(billing("starter.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("starter.yearly-total-price")),
+    perks: [
+      {
+        title: billing("starter.perks.0.title"),
+        subtitle: billing("starter.perks.0.subtitle"),
+      },
+      {
+        title: billing("starter.perks.1.title"),
+        subtitle: billing("starter.perks.1.subtitle"),
+      },
+      {
+        title: billing("starter.perks.2.title"),
+        subtitle: billing("starter.perks.2.subtitle"),
+      },
+      {
+        title: billing("starter.perks.3.title"),
+        subtitle: billing("starter.perks.3.subtitle"),
+      },
+    ],
+  };
+  const proBilling = {
+    title: billing("pro.title"),
+    price: Number(billing("pro.price")),
+    yearlyPrice: Number(billing("pro.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("pro.yearly-total-price")),
+    perks: [
+      {
+        title: billing("pro.perks.0.title"),
+        subtitle: billing("pro.perks.0.subtitle"),
+      },
+      {
+        title: billing("pro.perks.1.title"),
+        subtitle: billing("pro.perks.1.subtitle"),
+      },
+      {
+        title: billing("pro.perks.2.title"),
+        subtitle: billing("pro.perks.2.subtitle"),
+      },
+      {
+        title: billing("pro.perks.3.title"),
+        subtitle: billing("pro.perks.3.subtitle"),
+      },
+    ],
+  };
+  const premiumBilling = {
+    title: billing("premium.title"),
+    price: Number(billing("premium.price")),
+    yearlyPrice: Number(billing("premium.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("premium.yearly-total-price")),
+    perks: [
+      {
+        title: billing("premium.perks.0.title"),
+        subtitle: billing("premium.perks.0.subtitle"),
+      },
+      {
+        title: billing("premium.perks.1.title"),
+        subtitle: billing("premium.perks.1.subtitle"),
+      },
+      {
+        title: billing("premium.perks.2.title"),
+        subtitle: billing("premium.perks.2.subtitle"),
+      },
+      {
+        title: billing("premium.perks.3.title"),
+        subtitle: billing("premium.perks.3.subtitle"),
+      },
+      {
+        title: billing("premium.perks.4.title"),
+        subtitle: billing("premium.perks.4.subtitle"),
+      },
+      {
+        title: billing("premium.perks.5.title"),
+        subtitle: billing("premium.perks.5.subtitle"),
+      },
+    ],
+  };
+  const businessBilling = {
+    title: billing("business.title"),
+    price: Number(billing("business.price")),
+    yearlyPrice: Number(billing("business.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("business.yearly-total-price")),
+    perks: [
+      {
+        title: billing("business.perks.0.title"),
+        subtitle: billing("business.perks.0.subtitle"),
+      },
+      {
+        title: billing("business.perks.1.title"),
+        subtitle: billing("business.perks.1.subtitle"),
+      },
+      {
+        title: billing("business.perks.2.title"),
+        subtitle: billing("business.perks.2.subtitle"),
+      },
+      {
+        title: billing("business.perks.3.title"),
+        subtitle: billing("business.perks.3.subtitle"),
+      },
+      {
+        title: billing("business.perks.4.title"),
+        subtitle: billing("business.perks.4.subtitle"),
+      },
+    ],
+  };
+
   const loginToViewPrice = p("loginToViewPrices");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
@@ -174,6 +286,27 @@ export default async function HomePageContent() {
             typesObject={typesObject}
             loginToViewPrice={loginToViewPrice}
             premiumText={premium("title")}
+          />
+        </div>
+      </section>
+      <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
+        <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
+            <h3
+              className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
+            >
+              LOWEST PRICES GUARANTEED
+            </h3>
+            <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              Plans & pricing
+            </h2>
+          </div>
+          <Pricing
+            starter={starterBilling}
+            pro={proBilling}
+            premium={premiumBilling}
+            business={businessBilling}
+            mostPopularText={billing("most-popular")}
           />
         </div>
       </section>

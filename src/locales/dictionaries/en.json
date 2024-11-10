@@ -3,6 +3,87 @@
     "property": "Something went wrong fetching this property!",
     "page": "Something went wrong fetching this page!"
   },
+  "billing": {
+    "most-popular": "Most Popular",
+    "starter": {
+      "title": "Starter",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": [
+        {
+          "title": "View 1 property",
+          "subtitle": "View 1 property's contact details and location."
+        },
+        {
+          "title": "Sell 1 Property",
+          "subtitle": "List 1 property per month."
+        },
+        {
+          "title": "5 Photos",
+          "subtitle": "Upload 5 photos per listing."
+        },
+        { "title": "Basic Support", "subtitle": "Get support within 24-48 hours." }
+      ]
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": [
+        { "title": "View 100 properties", "subtitle": "View 10 property's contact details and location." },
+        { "title": "Sell 100 properties", "subtitle": "List 10 properties per month." },
+        { "title": "10 photos", "subtitle": "Upload 10 photos per property." },
+        { "title": "Pro Support", "subtitle": "Get support within 12-24 hours." }
+      ]
+    },
+    "premium": {
+      "title": "Premium",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": [
+        { "title": "View all properties", "subtitle": "View all property contact details." },
+        { "title": "Sell 30 properties", "subtitle": "List 30 properties per month." },
+        { "title": "30 photos", "subtitle": "Upload 30 photos per property." },
+        { "title": "Video", "subtitle": "Add videos to your properties." },
+        {
+          "title": "Premium Banner",
+          "subtitle": "Your properties will be highlighted and appear at the top of user searches."
+        },
+        { "title": "Premium Support", "subtitle": "Get support within 8 hours." }
+      ]
+    },
+    "business": {
+      "title": "Business",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": [
+        {
+          "title": "Sell unlimited properties",
+          "subtitle": "List unlimited properties every month"
+        },
+        {
+          "title": "Unlimited photos",
+          "subtitle": "Upload unlimited photos per property"
+        },
+        {
+          "title": "Featured Listings",
+          "subtitle": "Your properties will be highlighted and appear at the top of user searches"
+        },
+        {
+          "title": "Social Media Promotion",
+          "subtitle": "Your listings will be promoted on our social media channels"
+        },
+        {
+          "title": "Business Support",
+          "subtitle": "Get support within 1 hour"
+        }
+      ]
+    }
+  },
   "home": {
     "header": {
       "search": {

@@ -3,6 +3,117 @@
     "property": "Algo deu errado ao buscar esta propriedade!",
     "page": "Algo deu errado ao buscar esta página!"
   },
+  "billing": {
+    "most-popular": "Mais populares",
+    "starter": {
+      "title": "Solteiro",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Ver 1 propriedade",
+          "subtitle": "Veja os detalhes de contato e a localização de 1 propriedade."
+        },
+        "1": {
+          "title": "Vender 1 Propriedade",
+          "subtitle": "Liste 1 imóvel por mês."
+        },
+        "2": {
+          "title": "5 fotos",
+          "subtitle": "Carregue 5 fotos por anúncio."
+        },
+        "3": {
+          "title": "Suporte Básico",
+          "subtitle": "Obtenha suporte dentro de 24 a 48 horas."
+        }
+      }
+    },
+    "pro": {
+      "title": "Pró",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "Ver 100 propriedades",
+          "subtitle": "Veja os detalhes de contato e a localização de 10 propriedades."
+        },
+        "1": {
+          "title": "Vender 100 imóveis",
+          "subtitle": "Liste 10 propriedades por mês."
+        },
+        "2": {
+          "title": "10 fotos",
+          "subtitle": "Carregue 10 fotos por propriedade."
+        },
+        "3": {
+          "title": "Suporte profissional",
+          "subtitle": "Obtenha suporte dentro de 12 a 24 horas."
+        }
+      }
+    },
+    "premium": {
+      "title": "Prêmio",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Ver todas as propriedades",
+          "subtitle": "Veja todos os detalhes de contato da propriedade."
+        },
+        "1": {
+          "title": "Vender 30 imóveis",
+          "subtitle": "Liste 30 propriedades por mês."
+        },
+        "2": {
+          "title": "30 fotos",
+          "subtitle": "Carregue 30 fotos por propriedade."
+        },
+        "3": {
+          "title": "Vídeo",
+          "subtitle": "Adicione vídeos às suas propriedades."
+        },
+        "4": {
+          "title": "Banner Premium",
+          "subtitle": "Suas propriedades serão destacadas e aparecerão no topo das pesquisas dos usuários."
+        },
+        "5": {
+          "title": "Suporte Premium",
+          "subtitle": "Obtenha suporte em até 8 horas."
+        }
+      }
+    },
+    "business": {
+      "title": "Negócios",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Vender propriedades ilimitadas",
+          "subtitle": "Liste propriedades ilimitadas todo mês"
+        },
+        "1": {
+          "title": "Fotos ilimitadas",
+          "subtitle": "Carregue fotos ilimitadas por propriedade"
+        },
+        "2": {
+          "title": "Listagens em destaque",
+          "subtitle": "Suas propriedades serão destacadas e aparecerão no topo das pesquisas dos usuários"
+        },
+        "3": {
+          "title": "Promoção de mídia social",
+          "subtitle": "Suas listagens serão promovidas em nossos canais de mídia social"
+        },
+        "4": {
+          "title": "Suporte Empresarial",
+          "subtitle": "Obtenha suporte em até 1 hora"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

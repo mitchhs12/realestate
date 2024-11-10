@@ -3,6 +3,117 @@
     "property": "Bu özelliği alırken bir sorun oluştu!",
     "page": "Bu sayfaya ulaşırken bir sorun oluştu!"
   },
+  "billing": {
+    "most-popular": "En Popüler",
+    "starter": {
+      "title": "Bekar",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "1 mülkü görüntüle",
+          "subtitle": "1 mülkün iletişim bilgilerini ve konumunu görüntüleyin."
+        },
+        "1": {
+          "title": "1 Mülkü Sat",
+          "subtitle": "Ayda 1 adet mülk listeleyin."
+        },
+        "2": {
+          "title": "5 Fotoğraf",
+          "subtitle": "Her ilan için 5 fotoğraf yükleyin."
+        },
+        "3": {
+          "title": "Temel Destek",
+          "subtitle": "24-48 saat içerisinde destek alın."
+        }
+      }
+    },
+    "pro": {
+      "title": "Profesyonel",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "100 mülkü görüntüle",
+          "subtitle": "10 mülkün iletişim bilgilerini ve konumunu görüntüleyin."
+        },
+        "1": {
+          "title": "100 mülkü sat",
+          "subtitle": "Ayda 10 adet gayrimenkul listeleyin."
+        },
+        "2": {
+          "title": "10 fotoğraf",
+          "subtitle": "Her mülk için 10 fotoğraf yükleyin."
+        },
+        "3": {
+          "title": "Profesyonel Destek",
+          "subtitle": "12-24 saat içerisinde destek alın."
+        }
+      }
+    },
+    "premium": {
+      "title": "prim",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "Tüm özellikleri görüntüle",
+          "subtitle": "Tüm mülkün iletişim bilgilerini görüntüleyin."
+        },
+        "1": {
+          "title": "30 mülkü sat",
+          "subtitle": "Ayda 30 adet gayrimenkul ilanı verin."
+        },
+        "2": {
+          "title": "30 fotoğraf",
+          "subtitle": "Her mülk için 30 fotoğraf yükleyin."
+        },
+        "3": {
+          "title": "Video",
+          "subtitle": "Özelliklerinize videolar ekleyin."
+        },
+        "4": {
+          "title": "Premium Banner",
+          "subtitle": "Emlaklarınız vurgulanacak ve kullanıcı aramalarında en üstte görünecektir."
+        },
+        "5": {
+          "title": "Premium Destek",
+          "subtitle": "8 saat içerisinde destek alın."
+        }
+      }
+    },
+    "business": {
+      "title": "İşletme",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Sınırsız mülk satışı",
+          "subtitle": "Her ay sınırsız mülk listeleyin"
+        },
+        "1": {
+          "title": "Sınırsız fotoğraf",
+          "subtitle": "Mülk başına sınırsız fotoğraf yükleyin"
+        },
+        "2": {
+          "title": "Öne Çıkan Listeler",
+          "subtitle": "Özellikleriniz vurgulanacak ve kullanıcı aramalarında en üstte görünecek"
+        },
+        "3": {
+          "title": "Sosyal Medya Tanıtımı",
+          "subtitle": "İlanlarınız sosyal medya kanallarımızda tanıtılacak"
+        },
+        "4": {
+          "title": "İş Desteği",
+          "subtitle": "1 saat içinde destek alın"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

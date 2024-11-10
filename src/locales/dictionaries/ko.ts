@@ -3,6 +3,117 @@ export default {
     "property": "이 속성을 가져오는 중에 오류가 발생했습니다!",
     "page": "이 페이지를 가져오는 중에 오류가 발생했습니다!"
   },
+  "billing": {
+    "most-popular": "가장 인기 있는",
+    "starter": {
+      "title": "하나의",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "1개의 부동산 보기",
+          "subtitle": "1개 부동산의 연락처 정보와 위치를 확인하세요."
+        },
+        "1": {
+          "title": "1개의 부동산 판매",
+          "subtitle": "매달 1개의 부동산을 등록하세요."
+        },
+        "2": {
+          "title": "5장의 사진",
+          "subtitle": "리스트당 5장의 사진을 업로드하세요."
+        },
+        "3": {
+          "title": "기본 지원",
+          "subtitle": "24~48시간 내에 지원을 받으세요."
+        }
+      }
+    },
+    "pro": {
+      "title": "찬성",
+      "price": "39",
+      "yearly-monthly-price": "17",
+      "yearly-total-price": "199",
+      "perks": {
+        "0": {
+          "title": "100개의 부동산 보기",
+          "subtitle": "10개 숙박 시설의 연락처 정보와 위치를 확인하세요."
+        },
+        "1": {
+          "title": "100개의 부동산을 판매하세요",
+          "subtitle": "매달 10개의 부동산을 등록하세요."
+        },
+        "2": {
+          "title": "10장의 사진",
+          "subtitle": "각 부동산당 10장의 사진을 업로드하세요."
+        },
+        "3": {
+          "title": "프로 지원",
+          "subtitle": "12~24시간 내에 지원을 받으세요."
+        }
+      }
+    },
+    "premium": {
+      "title": "프리미엄",
+      "price": "99",
+      "yearly-monthly-price": "42",
+      "yearly-total-price": "499",
+      "perks": {
+        "0": {
+          "title": "모든 속성 보기",
+          "subtitle": "모든 부동산 연락처 정보를 확인하세요."
+        },
+        "1": {
+          "title": "30개의 부동산을 판매하세요",
+          "subtitle": "매달 30개의 부동산을 등록하세요."
+        },
+        "2": {
+          "title": "30장의 사진",
+          "subtitle": "각 부동산당 30장의 사진을 업로드하세요."
+        },
+        "3": {
+          "title": "동영상",
+          "subtitle": "귀하의 속성에 비디오를 추가하세요."
+        },
+        "4": {
+          "title": "프리미엄 배너",
+          "subtitle": "귀하의 부동산이 강조 표시되어 사용자 검색 상단에 표시됩니다."
+        },
+        "5": {
+          "title": "프리미엄 지원",
+          "subtitle": "8시간 이내에 지원을 받으세요."
+        }
+      }
+    },
+    "business": {
+      "title": "사업",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "무제한의 부동산 판매",
+          "subtitle": "매달 무제한으로 부동산을 등록하세요"
+        },
+        "1": {
+          "title": "무제한 사진",
+          "subtitle": "부동산당 무제한 사진 업로드"
+        },
+        "2": {
+          "title": "추천 목록",
+          "subtitle": "귀하의 속성은 강조 표시되고 사용자 검색 상단에 표시됩니다."
+        },
+        "3": {
+          "title": "소셜 미디어 프로모션",
+          "subtitle": "귀하의 리스트는 당사 소셜 미디어 채널에 홍보됩니다."
+        },
+        "4": {
+          "title": "비즈니스 지원",
+          "subtitle": "1시간 이내에 지원을 받으세요"
+        }
+      }
+    }
+  },
   "home": {
     "header": {
       "search": {

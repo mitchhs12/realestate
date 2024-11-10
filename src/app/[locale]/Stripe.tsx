@@ -6,19 +6,12 @@ import { EmbeddedCheckoutProvider, EmbeddedCheckout } from "@stripe/react-stripe
 import { CurrencyType } from "@/lib/validations";
 
 interface Props {
-  amount: number;
   defaultCurrency: CurrencyType;
-  homeId: number;
+  accountId: string;
 }
 
-export default function CheckoutButton({ amount, defaultCurrency, homeId }: Props) {
+export default function CheckoutButton({ defaultCurrency, accountId }: Props) {
   const currency = defaultCurrency.symbol.toLowerCase();
-
-  if (defaultCurrency.decimalsLimit === 0) {
-    amount = Math.round(amount);
-  } else {
-    amount = amount * 100;
-  }
 
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_TEST_PUBLISHABLE_KEY || (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
@@ -30,7 +23,7 @@ export default function CheckoutButton({ amount, defaultCurrency, homeId }: Prop
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: amount, currency: currency, homeId: homeId }),
+      body: JSON.stringify({ currency: currency, accountId: accountId }),
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);

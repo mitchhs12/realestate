@@ -22,6 +22,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   homes         Home[]
+  subscription  String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
