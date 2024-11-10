@@ -4,6 +4,10 @@ export default {
     "page": "Beim Abrufen dieser Seite ist ein Fehler aufgetreten!"
   },
   "billing": {
+    "monthly": "Monatlich",
+    "yearly": "Jährlich: (erhalten Sie 6+ Monate kostenlos)",
+    "current-plan": "Aktueller Plan",
+    "subscribe": "Abonnieren",
     "most-popular": "Am beliebtesten",
     "starter": {
       "title": "Einzel",

@@ -307,6 +307,10 @@ export default async function HomePageContent() {
             premium={premiumBilling}
             business={businessBilling}
             mostPopularText={billing("most-popular")}
+            subscribeText={billing("subscribe")}
+            currentPlanText={billing("current-plan")}
+            yearlyText={billing("yearly")}
+            monthlyText={billing("monthly")}
           />
         </div>
       </section>

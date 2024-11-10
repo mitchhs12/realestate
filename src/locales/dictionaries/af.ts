@@ -4,6 +4,10 @@ export default {
     "page": "Iets het verkeerd geloop om hierdie bladsy te gaan haal!"
   },
   "billing": {
+    "monthly": "Maandeliks",
+    "yearly": "Jaarliks: (kry 6+ maande gratis)",
+    "current-plan": "Huidige Plan",
+    "subscribe": "Teken in",
     "most-popular": "Gewildste",
     "starter": {
       "title": "Enkellopend",

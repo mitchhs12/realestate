@@ -4,6 +4,10 @@
     "page": "获取此页面时出错！"
   },
   "billing": {
+    "monthly": "每月",
+    "yearly": "每年：（免费获得 6 个月以上）",
+    "current-plan": "当前计划",
+    "subscribe": "订阅",
     "most-popular": "最受欢迎",
     "starter": {
       "title": "单身的",

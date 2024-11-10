@@ -4,6 +4,10 @@ export default {
     "page": "Terjadi kesalahan saat mengambil halaman ini!"
   },
   "billing": {
+    "monthly": "Bulanan",
+    "yearly": "Tahunan: (dapatkan 6+ bulan gratis)",
+    "current-plan": "Rencana Saat Ini",
+    "subscribe": "Berlangganan",
     "most-popular": "Paling Populer",
     "starter": {
       "title": "Lajang",

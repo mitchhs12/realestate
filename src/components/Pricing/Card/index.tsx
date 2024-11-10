@@ -21,6 +21,8 @@ interface Props {
   };
   yearly: boolean;
   setYearly: (yearly: boolean) => void;
+  subscribe: string;
+  currentPlan: string;
 }
 
 export default function PriceCard({
@@ -35,6 +37,8 @@ export default function PriceCard({
   defaultCurrency,
   yearly,
   setYearly,
+  subscribe,
+  currentPlan,
 }: Props) {
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
@@ -85,7 +89,7 @@ export default function PriceCard({
             disabled={buttonDisabled}
             onClick={buttonFunction}
           >
-            Subscribe
+            {buttonDisabled ? currentPlan : subscribe}
           </Button>
         </CardFooter>
       </Card>

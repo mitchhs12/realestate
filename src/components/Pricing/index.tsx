@@ -27,9 +27,23 @@ interface Props {
   premium: Tier;
   business: Tier;
   mostPopularText: string;
+  subscribeText: string;
+  currentPlanText: string;
+  yearlyText: string;
+  monthlyText: string;
 }
 
-export default function Pricing({ starter, pro, premium, business, mostPopularText }: Props) {
+export default function Pricing({
+  starter,
+  pro,
+  premium,
+  business,
+  mostPopularText,
+  subscribeText,
+  currentPlanText,
+  yearlyText,
+  monthlyText,
+}: Props) {
   const { defaultCurrency, user } = useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -74,10 +88,10 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                 setYearly(false);
               }}
             >
-              Monthly
+              {monthlyText}
             </Button>
             <Button variant={"default"} disabled={yearly} className="gap-2" onClick={() => setYearly(true)}>
-              Yearly: <b>(get 6+ months free)</b>
+              {yearlyText}
             </Button>
           </div>
           {defaultCurrency && (
@@ -97,6 +111,8 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
                 setYearly={setYearly}
+                subscribe={subscribeText}
+                currentPlan={currentPlanText}
               />
               <PriceCard
                 id={"pro"}
@@ -110,6 +126,8 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
                 setYearly={setYearly}
+                subscribe={subscribeText}
+                currentPlan={currentPlanText}
               />
               <div className="relative flex flex-col justify-center items-center">
                 <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
@@ -127,6 +145,8 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                   defaultCurrency={defaultCurrency}
                   yearly={yearly}
                   setYearly={setYearly}
+                  subscribe={subscribeText}
+                  currentPlan={currentPlanText}
                 />
               </div>
               <PriceCard
@@ -141,6 +161,8 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
                 setYearly={setYearly}
+                subscribe={subscribeText}
+                currentPlan={currentPlanText}
               />
             </div>
           )}

@@ -4,6 +4,10 @@ export default {
     "page": "Có lỗi xảy ra khi tải trang này!"
   },
   "billing": {
+    "monthly": "Hàng tháng",
+    "yearly": "Hàng năm: (nhận 6 tháng miễn phí trở lên)",
+    "current-plan": "Kế hoạch hiện tại",
+    "subscribe": "Đặt mua",
     "most-popular": "Phổ biến nhất",
     "starter": {
       "title": "Đơn",

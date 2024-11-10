@@ -4,6 +4,10 @@ export default {
     "page": "Nešto nije u redu prilikom dohvaćanja ove stranice!"
   },
   "billing": {
+    "monthly": "Mjesečno",
+    "yearly": "Godišnje: (dobite 6+ mjeseci besplatno)",
+    "current-plan": "Trenutni plan",
+    "subscribe": "Pretplatite se",
     "most-popular": "Najpopularniji",
     "starter": {
       "title": "Singl",

@@ -4,6 +4,10 @@ export default {
     "page": "Something went wrong fetching this page!"
   },
   "billing": {
+    "monthly": "Monthly",
+    "yearly": "Yearly: (get 6+ months free)",
+    "current-plan": "Current Plan",
+    "subscribe": "Subscribe",
     "most-popular": "Most Popular",
     "starter": {
       "title": "Starter",

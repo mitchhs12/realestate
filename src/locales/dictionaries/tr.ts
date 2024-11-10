@@ -4,6 +4,10 @@ export default {
     "page": "Bu sayfaya ulaşırken bir sorun oluştu!"
   },
   "billing": {
+    "monthly": "Aylık",
+    "yearly": "Yıllık: (6+ ay ücretsiz alın)",
+    "current-plan": "Güncel Plan",
+    "subscribe": "Abone",
     "most-popular": "En Popüler",
     "starter": {
       "title": "Bekar",

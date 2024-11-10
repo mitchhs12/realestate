@@ -4,6 +4,10 @@ export default {
     "page": "このページの取得中に問題が発生しました。"
   },
   "billing": {
+    "monthly": "月次",
+    "yearly": "年間: (6 か月以上無料)",
+    "current-plan": "現在の計画",
+    "subscribe": "購読する",
     "most-popular": "最も人気",
     "starter": {
       "title": "シングル",

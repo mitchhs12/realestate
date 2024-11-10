@@ -4,6 +4,10 @@ export default {
     "page": "لقد حدث خطأ أثناء جلب هذه الصفحة!"
   },
   "billing": {
+    "monthly": "شهريا",
+    "yearly": "سنويًا: (احصل على 6 أشهر أو أكثر مجانًا)",
+    "current-plan": "الخطة الحالية",
+    "subscribe": "يشترك",
     "most-popular": "الأكثر شعبية",
     "starter": {
       "title": "أعزب",

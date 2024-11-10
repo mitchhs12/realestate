@@ -4,6 +4,10 @@ export default {
     "page": "¡Algo salió mal al obtener esta página!"
   },
   "billing": {
+    "monthly": "Mensual",
+    "yearly": "Anual: (obtenga 6+ meses gratis)",
+    "current-plan": "Plan actual",
+    "subscribe": "Suscribir",
     "most-popular": "Más populares",
     "starter": {
       "title": "Soltero",
