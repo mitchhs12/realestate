@@ -28,8 +28,6 @@ export async function POST(req: Request, res: NextApiResponse) {
       process.env.STRIPE_TEST_WEBHOOK_SECRET || (process.env.STRIPE_WEBHOOK_SECRET as string) // The webhook secret from the Stripe dashboard
     );
 
-    console.log(`Received event: ${event.id} Type: ${event.type}`);
-
     // Handle the event based on its type
     switch (event.type) {
       // When a checkout session completes (e.g., a subscription is purchased)
