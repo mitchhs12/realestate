@@ -31,6 +31,10 @@ interface Props {
   currentPlanText: string;
   yearlyText: string;
   monthlyText: string;
+  billedAnnually: string;
+  monthlyBilling: string;
+  yearlyBilling: string;
+  sixMonthsFree: string;
 }
 
 export default function Pricing({
@@ -43,6 +47,10 @@ export default function Pricing({
   currentPlanText,
   yearlyText,
   monthlyText,
+  billedAnnually,
+  monthlyBilling,
+  yearlyBilling,
+  sixMonthsFree,
 }: Props) {
   const { defaultCurrency, user } = useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
@@ -66,15 +74,28 @@ export default function Pricing({
   }, [user]);
 
   useEffect(() => {
-    if (selected) {
+    if (!user?.subscription && selected) {
       if (!user?.id) {
-        console.log("openSignUpModal");
         openSignUpModal();
       } else {
         setIsOpen(true);
       }
+    } else if (user?.subscription && selected) {
+      if (selected !== user.subscription) {
+        setIsOpen(true);
+      }
     }
   }, [selected]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      if (user?.subscription) {
+        setSelected(user?.subscription);
+      } else {
+        setSelected("");
+      }
+    }
+  }, [isOpen]);
 
   return (
     <>
@@ -113,6 +134,10 @@ export default function Pricing({
                 setYearly={setYearly}
                 subscribe={subscribeText}
                 currentPlan={currentPlanText}
+                billedAnnually={billedAnnually}
+                monthlyBilling={monthlyBilling}
+                yearlyBilling={yearlyBilling}
+                sixMonthsFree={sixMonthsFree}
               />
               <PriceCard
                 id={"pro"}
@@ -128,6 +153,10 @@ export default function Pricing({
                 setYearly={setYearly}
                 subscribe={subscribeText}
                 currentPlan={currentPlanText}
+                billedAnnually={billedAnnually}
+                monthlyBilling={monthlyBilling}
+                yearlyBilling={yearlyBilling}
+                sixMonthsFree={sixMonthsFree}
               />
               <div className="relative flex flex-col justify-center items-center">
                 <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
@@ -147,6 +176,10 @@ export default function Pricing({
                   setYearly={setYearly}
                   subscribe={subscribeText}
                   currentPlan={currentPlanText}
+                  billedAnnually={billedAnnually}
+                  monthlyBilling={monthlyBilling}
+                  yearlyBilling={yearlyBilling}
+                  sixMonthsFree={sixMonthsFree}
                 />
               </div>
               <PriceCard
@@ -163,6 +196,10 @@ export default function Pricing({
                 setYearly={setYearly}
                 subscribe={subscribeText}
                 currentPlan={currentPlanText}
+                billedAnnually={billedAnnually}
+                monthlyBilling={monthlyBilling}
+                yearlyBilling={yearlyBilling}
+                sixMonthsFree={sixMonthsFree}
               />
             </div>
           )}
@@ -176,6 +213,7 @@ export default function Pricing({
               planId={selected}
               interval={yearly ? "year" : "month"}
               accountId={user.id as string}
+              accountEmail={user.email ? user.email : null}
             />
           )}
         </DialogContent>

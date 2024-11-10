@@ -10,9 +10,10 @@ interface Props {
   planId: string;
   interval: string;
   accountId: string;
+  accountEmail: string | null;
 }
 
-export default function Stripe({ defaultCurrency, planId, interval, accountId }: Props) {
+export default function Stripe({ defaultCurrency, planId, interval, accountId, accountEmail }: Props) {
   const currency = defaultCurrency.symbol.toLowerCase();
 
   const stripePromise = loadStripe(
@@ -25,7 +26,13 @@ export default function Stripe({ defaultCurrency, planId, interval, accountId }:
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ currency: currency, planId: planId, interval: interval, accountId: accountId }),
+      body: JSON.stringify({
+        currency: currency,
+        planId: planId,
+        interval: interval,
+        accountId: accountId,
+        accountEmail: accountEmail,
+      }),
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);

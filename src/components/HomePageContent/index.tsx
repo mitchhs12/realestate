@@ -311,6 +311,10 @@ export default async function HomePageContent() {
             currentPlanText={billing("current-plan")}
             yearlyText={billing("yearly")}
             monthlyText={billing("monthly")}
+            billedAnnually={billing("billed-annually")}
+            monthlyBilling={billing("view-monthly-billing")}
+            yearlyBilling={billing("save-with-yearly")}
+            sixMonthsFree={billing("six-months-free")}
           />
         </div>
       </section>

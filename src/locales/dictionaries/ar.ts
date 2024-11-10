@@ -7,8 +7,12 @@ export default {
     "monthly": "شهريا",
     "yearly": "سنويًا: (احصل على 6 أشهر أو أكثر مجانًا)",
     "current-plan": "الخطة الحالية",
+    "billed-annually": "يتم دفع الفاتورة سنويا",
     "subscribe": "يشترك",
     "most-popular": "الأكثر شعبية",
+    "view-monthly-billing": "عرض الفواتير الشهرية ↗",
+    "save-with-yearly": "وفر مع سنوي",
+    "six-months-free": "(6+ أشهر مجانية ↗)",
     "starter": {
       "title": "أعزب",
       "price": "19",
@@ -35,6 +39,7 @@ export default {
     },
     "pro": {
       "title": "محترف",
+      "blurb": "جميع ميزات البدء، بالإضافة إلى",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@ export default {
     },
     "premium": {
       "title": "غالي",
+      "blurb": "جميع الميزات الاحترافية، بالإضافة إلى",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@ export default {
     },
     "business": {
       "title": "عمل",
+      "blurb": "جميع الميزات المتميزة، بالإضافة إلى",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

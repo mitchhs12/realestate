@@ -7,8 +7,12 @@
     "monthly": "Mensal",
     "yearly": "Anual: (ganhe mais de 6 meses grátis)",
     "current-plan": "Plano atual",
+    "billed-annually": "Cobrado anualmente",
     "subscribe": "Inscrever-se",
     "most-popular": "Mais populares",
+    "view-monthly-billing": "Ver faturamento mensal ↗",
+    "save-with-yearly": "Economize com anual",
+    "six-months-free": "(6+ meses grátis ↗)",
     "starter": {
       "title": "Solteiro",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "Pró",
+      "blurb": "Todos os recursos iniciais, mais",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "Prêmio",
+      "blurb": "Todos os recursos profissionais, mais",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "Negócios",
+      "blurb": "Todos os recursos premium, mais",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

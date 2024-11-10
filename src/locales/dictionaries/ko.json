@@ -7,8 +7,12 @@
     "monthly": "월간 간행물",
     "yearly": "연간: (6개월 이상 무료)",
     "current-plan": "현재 계획",
+    "billed-annually": "연간 청구",
     "subscribe": "구독하다",
     "most-popular": "가장 인기 있는",
+    "view-monthly-billing": "월별 청구 보기 ↗",
+    "save-with-yearly": "연간으로 절약하세요",
+    "six-months-free": "(6개월 이상 무료 ↗)",
     "starter": {
       "title": "하나의",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "찬성",
+      "blurb": "모든 스타터 기능 및 추가",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "프리미엄",
+      "blurb": "모든 프로 기능, 플러스",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "사업",
+      "blurb": "모든 프리미엄 기능 외에도",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

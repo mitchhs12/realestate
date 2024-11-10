@@ -7,8 +7,12 @@
     "monthly": "Monthly",
     "yearly": "Yearly: (get 6+ months free)",
     "current-plan": "Current Plan",
+    "billed-annually": "Billed annually",
     "subscribe": "Subscribe",
     "most-popular": "Most Popular",
+    "view-monthly-billing": "View monthly billing ↗",
+    "save-with-yearly": "Save with yearly",
+    "six-months-free": "(6+ months free ↗)",
     "starter": {
       "title": "Starter",
       "price": "19",
@@ -32,6 +36,7 @@
     },
     "pro": {
       "title": "Pro",
+      "blurb": "All starter features, plus",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -44,6 +49,7 @@
     },
     "premium": {
       "title": "Premium",
+      "blurb": "All pro features, plus",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -61,6 +67,7 @@
     },
     "business": {
       "title": "Business",
+      "blurb": "All premium features, plus",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

@@ -7,8 +7,12 @@
     "monthly": "Mjesečno",
     "yearly": "Godišnje: (dobite 6+ mjeseci besplatno)",
     "current-plan": "Trenutni plan",
+    "billed-annually": "Naplaćuje se godišnje",
     "subscribe": "Pretplatite se",
     "most-popular": "Najpopularniji",
+    "view-monthly-billing": "Pogledajte mjesečnu naplatu ↗",
+    "save-with-yearly": "Uštedite uz godišnje",
+    "six-months-free": "(6+ mjeseci besplatno ↗)",
     "starter": {
       "title": "Singl",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "profesionalac",
+      "blurb": "Sve početne značajke, plus",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "Premija",
+      "blurb": "Sve profesionalne značajke, plus",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "posao",
+      "blurb": "Sve premium značajke, plus",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699. godine",

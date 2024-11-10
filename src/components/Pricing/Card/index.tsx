@@ -23,6 +23,10 @@ interface Props {
   setYearly: (yearly: boolean) => void;
   subscribe: string;
   currentPlan: string;
+  billedAnnually: string;
+  monthlyBilling: string;
+  yearlyBilling: string;
+  sixMonthsFree: string;
 }
 
 export default function PriceCard({
@@ -39,6 +43,10 @@ export default function PriceCard({
   setYearly,
   subscribe,
   currentPlan,
+  billedAnnually,
+  monthlyBilling,
+  yearlyBilling,
+  sixMonthsFree,
 }: Props) {
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
@@ -57,7 +65,7 @@ export default function PriceCard({
             )}
           </div>
           <p className="text-sm">
-            Billed annually {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * annualPrice, 0)}
+            {billedAnnually} {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * annualPrice, 0)}
           </p>
 
           <Button
@@ -66,11 +74,18 @@ export default function PriceCard({
               setYearly(!yearly);
             }}
           >
-            {yearly ? "View monthly billing ↗" : "Save with yearly (6+ months free) ↗"}
+            {yearly ? (
+              monthlyBilling
+            ) : (
+              <div>
+                <p>{yearlyBilling}</p>
+                <p>{sixMonthsFree}</p>
+              </div>
+            )}
           </Button>
 
-          {title !== "Starter" && (
-            <div>All {title === "Pro" ? "Starter" : title === "Premium" ? "Pro" : "Premium"} features, plus</div>
+          {id !== "starter" && (
+            <div>All {id === "Pro" ? "Starter" : id === "Premium" ? "Pro" : "Premium"} features, plus</div>
           )}
           {perks.map((perk, index) => (
             <div key={index} className="flex items-start gap-4 px-3">

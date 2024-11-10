@@ -7,8 +7,12 @@ export default {
     "monthly": "Maandeliks",
     "yearly": "Jaarliks: (kry 6+ maande gratis)",
     "current-plan": "Huidige Plan",
+    "billed-annually": "Jaarliks ​​gefaktureer",
     "subscribe": "Teken in",
     "most-popular": "Gewildste",
+    "view-monthly-billing": "Bekyk maandelikse fakturering ↗",
+    "save-with-yearly": "Spaar met jaarlikse",
+    "six-months-free": "(6+ maande gratis ↗)",
     "starter": {
       "title": "Enkellopend",
       "price": "19",
@@ -35,6 +39,7 @@ export default {
     },
     "pro": {
       "title": "Pro",
+      "blurb": "Alle voorgereg funksies, plus",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@ export default {
     },
     "premium": {
       "title": "Premie",
+      "blurb": "Alle pro-kenmerke, plus",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@ export default {
     },
     "business": {
       "title": "Besigheid",
+      "blurb": "Alle premium kenmerke, plus",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

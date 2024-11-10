@@ -4,11 +4,12 @@ import stripe from "@/lib/stripe";
 
 export async function POST(request: NextRequest) {
   try {
-    const { currency, planId, interval, accountId } = (await request.json()) as {
+    const { currency, planId, interval, accountId, accountEmail } = (await request.json()) as {
       currency: string;
       planId: "starter" | "pro" | "premium" | "business";
       interval: "year" | "month";
       accountId: string;
+      accountEmail: string | null;
     };
 
     const map = {
@@ -35,6 +36,7 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       payment_method_types: ["card"],
+      ...(accountEmail && { customer_email: accountEmail }), // Include customer_email only if accountEmail is not null
       line_items: [
         {
           price_data: {

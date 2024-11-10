@@ -7,8 +7,12 @@
     "monthly": "Bulanan",
     "yearly": "Tahunan: (dapatkan 6+ bulan gratis)",
     "current-plan": "Rencana Saat Ini",
+    "billed-annually": "Ditagih setiap tahun",
     "subscribe": "Berlangganan",
     "most-popular": "Paling Populer",
+    "view-monthly-billing": "Lihat tagihan bulanan ↗",
+    "save-with-yearly": "Hemat dengan tahunan",
+    "six-months-free": "(6+ bulan gratis ↗)",
     "starter": {
       "title": "Lajang",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "Pro",
+      "blurb": "Semua fitur pemula, plus",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "Premi",
+      "blurb": "Semua fitur pro, plus",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "Bisnis",
+      "blurb": "Semua fitur premium, plus",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "tahun 1699",

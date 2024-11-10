@@ -7,8 +7,12 @@ export default {
     "monthly": "Mensuel",
     "yearly": "Annuel : (obtenez 6 mois ou plus gratuits)",
     "current-plan": "Plan actuel",
+    "billed-annually": "Facturé annuellement",
     "subscribe": "S'abonner",
     "most-popular": "Le plus populaire",
+    "view-monthly-billing": "Voir la facturation mensuelle ↗",
+    "save-with-yearly": "Économisez avec l'annuelle",
+    "six-months-free": "(6+ mois gratuits ↗)",
     "starter": {
       "title": "Célibataire",
       "price": "19",
@@ -35,6 +39,7 @@ export default {
     },
     "pro": {
       "title": "Pro",
+      "blurb": "Toutes les fonctionnalités de démarrage, plus",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@ export default {
     },
     "premium": {
       "title": "Prime",
+      "blurb": "Toutes les fonctionnalités professionnelles, plus",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@ export default {
     },
     "business": {
       "title": "Entreprise",
+      "blurb": "Toutes les fonctionnalités premium, plus",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

@@ -7,8 +7,12 @@ export default {
     "monthly": "月次",
     "yearly": "年間: (6 か月以上無料)",
     "current-plan": "現在の計画",
+    "billed-annually": "年払い",
     "subscribe": "購読する",
     "most-popular": "最も人気",
+    "view-monthly-billing": "月々の請求額を表示↗",
+    "save-with-yearly": "年間で節約",
+    "six-months-free": "（6か月以上無料↗）",
     "starter": {
       "title": "シングル",
       "price": "19",
@@ -35,6 +39,7 @@ export default {
     },
     "pro": {
       "title": "プロ",
+      "blurb": "すべてのスターター機能に加え、",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@ export default {
     },
     "premium": {
       "title": "プレミアム",
+      "blurb": "すべてのプロ機能に加え、",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@ export default {
     },
     "business": {
       "title": "仕事",
+      "blurb": "すべてのプレミアム機能に加え、",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

@@ -7,8 +7,12 @@
     "monthly": "Hàng tháng",
     "yearly": "Hàng năm: (nhận 6 tháng miễn phí trở lên)",
     "current-plan": "Kế hoạch hiện tại",
+    "billed-annually": "Được thanh toán hàng năm",
     "subscribe": "Đặt mua",
     "most-popular": "Phổ biến nhất",
+    "view-monthly-billing": "Xem hóa đơn hàng tháng ↗",
+    "save-with-yearly": "Tiết kiệm với hàng năm",
+    "six-months-free": "(6 tháng miễn phí trở lên ↗)",
     "starter": {
       "title": "Đơn",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "Chuyên nghiệp",
+      "blurb": "Tất cả các tính năng khởi động, cộng thêm",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "Phần thưởng",
+      "blurb": "Tất cả các tính năng chuyên nghiệp, cộng thêm",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "Việc kinh doanh",
+      "blurb": "Tất cả các tính năng cao cấp, cộng thêm",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

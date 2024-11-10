@@ -7,8 +7,12 @@
     "monthly": "每月",
     "yearly": "每年：（免费获得 6 个月以上）",
     "current-plan": "当前计划",
+    "billed-annually": "每年计费",
     "subscribe": "订阅",
     "most-popular": "最受欢迎",
+    "view-monthly-billing": "查看每月账单 ↗",
+    "save-with-yearly": "每年节省",
+    "six-months-free": "（6 个月以上免费↗）",
     "starter": {
       "title": "单身的",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "专业版",
+      "blurb": "所有入门功能，以及",
       "price": "三十九",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "优质的",
+      "blurb": "所有专业功能，以及",
       "price": "99",
       "yearly-monthly-price": "四十二",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "商业",
+      "blurb": "所有高级功能，以及",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

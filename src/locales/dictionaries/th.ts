@@ -7,8 +7,12 @@ export default {
     "monthly": "รายเดือน",
     "yearly": "รายปี : (รับฟรี 6 เดือนขึ้นไป)",
     "current-plan": "แผนปัจจุบัน",
+    "billed-annually": "เรียกเก็บเงินเป็นรายปี",
     "subscribe": "สมัครสมาชิก",
     "most-popular": "ได้รับความนิยมมากที่สุด",
+    "view-monthly-billing": "ดูการเรียกเก็บเงินรายเดือน ↗",
+    "save-with-yearly": "ประหยัดเงินด้วยรายปี",
+    "six-months-free": "(ฟรี 6 เดือนขึ้นไป ↗)",
     "starter": {
       "title": "เดี่ยว",
       "price": "19",
@@ -35,6 +39,7 @@ export default {
     },
     "pro": {
       "title": "โปร",
+      "blurb": "คุณสมบัติเริ่มต้นทั้งหมดรวมถึง",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@ export default {
     },
     "premium": {
       "title": "พรีเมี่ยม",
+      "blurb": "คุณสมบัติระดับมืออาชีพทั้งหมดรวมถึง",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@ export default {
     },
     "business": {
       "title": "ธุรกิจ",
+      "blurb": "คุณสมบัติพรีเมี่ยมทั้งหมดรวมถึง",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",

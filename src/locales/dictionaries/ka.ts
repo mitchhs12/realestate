@@ -7,8 +7,12 @@ export default {
     "monthly": "ყოველთვიური",
     "yearly": "ყოველწლიურად: (მიიღეთ 6+ თვე უფასოდ)",
     "current-plan": "მიმდინარე გეგმა",
+    "billed-annually": "დარიცხულია ყოველწლიურად",
     "subscribe": "გამოწერა",
     "most-popular": "ყველაზე პოპულარული",
+    "view-monthly-billing": "ყოველთვიური ბილინგის ნახვა ↗",
+    "save-with-yearly": "დაზოგეთ ყოველწლიურად",
+    "six-months-free": "(6+ თვე უფასოდ ↗)",
     "starter": {
       "title": "მარტოხელა",
       "price": "19",
@@ -35,6 +39,7 @@ export default {
     },
     "pro": {
       "title": "პრო",
+      "blurb": "დამწყებ ყველა ფუნქცია, პლუს",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@ export default {
     },
     "premium": {
       "title": "პრემიუმი",
+      "blurb": "ყველა პროფესიონალური ფუნქცია, პლუს",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@ export default {
     },
     "business": {
       "title": "ბიზნესი",
+      "blurb": "ყველა პრემიუმ ფუნქცია, პლუს",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699 წ",

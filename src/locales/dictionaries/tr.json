@@ -7,8 +7,12 @@
     "monthly": "Aylık",
     "yearly": "Yıllık: (6+ ay ücretsiz alın)",
     "current-plan": "Güncel Plan",
+    "billed-annually": "Yıllık olarak faturalandırılır",
     "subscribe": "Abone",
     "most-popular": "En Popüler",
+    "view-monthly-billing": "Aylık faturalandırmayı görüntüle ↗",
+    "save-with-yearly": "Yıllık tasarruf edin",
+    "six-months-free": "(6+ ay ücretsiz ↗)",
     "starter": {
       "title": "Bekar",
       "price": "19",
@@ -35,6 +39,7 @@
     },
     "pro": {
       "title": "Profesyonel",
+      "blurb": "Tüm başlangıç özellikleri artı",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -59,6 +64,7 @@
     },
     "premium": {
       "title": "prim",
+      "blurb": "Tüm profesyonel özellikler, artı",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -91,6 +97,7 @@
     },
     "business": {
       "title": "İşletme",
+      "blurb": "Tüm premium özellikler, artı",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
