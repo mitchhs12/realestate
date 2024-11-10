@@ -7,10 +7,12 @@ import { CurrencyType } from "@/lib/validations";
 
 interface Props {
   defaultCurrency: CurrencyType;
+  planId: string;
+  interval: string;
   accountId: string;
 }
 
-export default function CheckoutButton({ defaultCurrency, accountId }: Props) {
+export default function Stripe({ defaultCurrency, planId, interval, accountId }: Props) {
   const currency = defaultCurrency.symbol.toLowerCase();
 
   const stripePromise = loadStripe(
@@ -23,7 +25,7 @@ export default function CheckoutButton({ defaultCurrency, accountId }: Props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ currency: currency, accountId: accountId }),
+      body: JSON.stringify({ currency: currency, planId: planId, interval: interval, accountId: accountId }),
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);

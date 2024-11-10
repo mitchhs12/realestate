@@ -1,6 +1,6 @@
 // pages/api/webhook.ts
 
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 import Stripe from "stripe";
 import prisma from "@/lib/prisma"; // Import your Prisma client
 import { NextResponse } from "next/server";
@@ -28,18 +28,21 @@ export async function POST(req: Request, res: NextApiResponse) {
       process.env.STRIPE_TEST_WEBHOOK_SECRET || (process.env.STRIPE_WEBHOOK_SECRET as string) // The webhook secret from the Stripe dashboard
     );
 
+    console.log(`Received event: ${event.id} Type: ${event.type}`);
+
     // Handle the event based on its type
     switch (event.type) {
       // When a checkout session completes (e.g., a subscription is purchased)
       case "checkout.session.completed": {
         const session = event.data.object;
-        const homeId = session.metadata?.homeId;
+        const accountId = session.metadata?.accountId;
+        const planId = session.metadata?.planId;
 
-        if (homeId) {
+        if (accountId && planId) {
           // Update the home listing in the database to "premium"
-          await prisma.home.update({
-            where: { id: parseInt(homeId) },
-            data: { listingType: "premium" },
+          await prisma.user.update({
+            where: { id: accountId },
+            data: { subscription: planId },
           });
         } else {
           console.error("Missing homeId in subscription metadata.");

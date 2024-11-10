@@ -7,6 +7,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import PriceCard from "@/components/Pricing/Card";
 import { Button } from "@/components/ui/button";
 import { DollarSign } from "lucide-react";
+import { QueryContext } from "@/context/QueryContext";
 
 interface Tier {
   title: string;
@@ -30,6 +31,7 @@ interface Props {
 
 export default function Pricing({ starter, pro, premium, business, mostPopularText }: Props) {
   const { defaultCurrency, user } = useContext(LocaleContext);
+  const { openSignUpModal } = useContext(QueryContext);
   const [isOpen, setIsOpen] = useState(false);
   const [currentPlan, setCurrentPlan] = useState("");
   const [selected, setSelected] = useState<string>("");
@@ -51,7 +53,12 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
 
   useEffect(() => {
     if (selected) {
-      setIsOpen(true);
+      if (!user?.id) {
+        console.log("openSignUpModal");
+        openSignUpModal();
+      } else {
+        setIsOpen(true);
+      }
     }
   }, [selected]);
 
@@ -98,14 +105,14 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                 button={yearly ? pro.yearlyPrice : pro.price}
                 annualPrice={pro.totalYearlyPrice}
                 buttonDisabled={currentPlan === "pro" ? true : false}
-                buttonFunction={() => setSelected("standard")}
+                buttonFunction={() => setSelected("pro")}
                 selected={selected}
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
                 setYearly={setYearly}
               />
               <div className="relative flex flex-col justify-center items-center">
-                <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white px-4 rounded-full animate-bounce w-[150px]">
+                <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
                   {mostPopularText}
                 </div>
                 <PriceCard
@@ -115,7 +122,7 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                   button={yearly ? premium.yearlyPrice : premium.price}
                   annualPrice={premium.totalYearlyPrice}
                   buttonDisabled={currentPlan === "premium" ? true : false}
-                  buttonFunction={() => setSelected("standard")}
+                  buttonFunction={() => setSelected("premium")}
                   selected={selected}
                   defaultCurrency={defaultCurrency}
                   yearly={yearly}
@@ -129,7 +136,7 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
                 button={yearly ? business.yearlyPrice : business.price}
                 annualPrice={business.totalYearlyPrice}
                 buttonDisabled={currentPlan === "business" ? true : false}
-                buttonFunction={() => setSelected("standard")}
+                buttonFunction={() => setSelected("business")}
                 selected={selected}
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
@@ -141,7 +148,14 @@ export default function Pricing({ starter, pro, premium, business, mostPopularTe
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="p-0 border-0 bg-none w-80 md:w-full" close={false}>
-          {defaultCurrency && user && <Stripe defaultCurrency={defaultCurrency} accountId={user.id as string} />}
+          {defaultCurrency && user && (
+            <Stripe
+              defaultCurrency={defaultCurrency}
+              planId={selected}
+              interval={yearly ? "year" : "month"}
+              accountId={user.id as string}
+            />
+          )}
         </DialogContent>
       </Dialog>
     </>

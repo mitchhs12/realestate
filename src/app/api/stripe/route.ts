@@ -1,10 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
+import { formatPrice } from "@/lib/utils";
 import stripe from "@/lib/stripe";
 
 export async function POST(request: NextRequest) {
   try {
-    const { currency, amount, homeId } = await request.json();
-    console.log("homeId", homeId);
+    const { currency, planId, interval, accountId } = (await request.json()) as {
+      currency: string;
+      planId: "starter" | "pro" | "premium" | "business";
+      interval: "year" | "month";
+      accountId: string;
+    };
+
+    const map = {
+      starter: {
+        price: 19,
+        "yearly-total-price": 99,
+      },
+      pro: {
+        price: 39,
+        "yearly-total-price": 199,
+      },
+      premium: {
+        price: 99,
+        "yearly-total-price": 499,
+      },
+      business: {
+        price: 299,
+        "yearly-total-price": 1699,
+      },
+    };
+
+    const amount = interval === "year" ? map[planId]["yearly-total-price"] * 100 : map[planId].price * 100;
+
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       payment_method_types: ["card"],
@@ -13,11 +40,11 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: currency,
             product_data: {
-              name: "Premium",
+              name: planId,
             },
             unit_amount: amount, // Amount in cents
             recurring: {
-              interval: "month",
+              interval: interval,
             },
           },
           quantity: 1,
@@ -25,9 +52,10 @@ export async function POST(request: NextRequest) {
       ],
       mode: "subscription",
       metadata: {
-        homeId: homeId,
+        accountId: accountId,
+        planId: planId,
       },
-      return_url: `${request.headers.get("origin")}/sell/${homeId}/checkout`,
+      return_url: `${request.headers.get("origin")}`,
     });
 
     return NextResponse.json({ id: session.id, clientSecret: session.client_secret });
