@@ -53,6 +53,7 @@ export default async function HomePageContent() {
     price: Number(billing("pro.price")),
     yearlyPrice: Number(billing("pro.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("pro.yearly-total-price")),
+    blurb: billing("pro.blurb"),
     perks: [
       {
         title: billing("pro.perks.0.title"),
@@ -77,6 +78,7 @@ export default async function HomePageContent() {
     price: Number(billing("premium.price")),
     yearlyPrice: Number(billing("premium.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("premium.yearly-total-price")),
+    premium: billing("premium.blurb"),
     perks: [
       {
         title: billing("premium.perks.0.title"),
@@ -109,6 +111,7 @@ export default async function HomePageContent() {
     price: Number(billing("business.price")),
     yearlyPrice: Number(billing("business.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("business.yearly-total-price")),
+    blurb: billing("business.blurb"),
     perks: [
       {
         title: billing("business.perks.0.title"),

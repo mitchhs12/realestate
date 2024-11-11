@@ -6,7 +6,6 @@ import Stripe from "@/app/[locale]/Stripe";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import PriceCard from "@/components/Pricing/Card";
 import { Button } from "@/components/ui/button";
-import { DollarSign } from "lucide-react";
 import { QueryContext } from "@/context/QueryContext";
 
 interface Tier {
@@ -15,6 +14,7 @@ interface Tier {
   yearlyPrice: number;
   totalYearlyPrice: number;
   anchor?: number;
+  blurb?: string;
   perks: {
     title: string;
     subtitle: string;
@@ -157,6 +157,7 @@ export default function Pricing({
                 monthlyBilling={monthlyBilling}
                 yearlyBilling={yearlyBilling}
                 sixMonthsFree={sixMonthsFree}
+                blurb={pro.blurb}
               />
               <div className="relative flex flex-col justify-center items-center">
                 <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
@@ -180,6 +181,7 @@ export default function Pricing({
                   monthlyBilling={monthlyBilling}
                   yearlyBilling={yearlyBilling}
                   sixMonthsFree={sixMonthsFree}
+                  blurb={premium.blurb}
                 />
               </div>
               <PriceCard
@@ -200,6 +202,7 @@ export default function Pricing({
                 monthlyBilling={monthlyBilling}
                 yearlyBilling={yearlyBilling}
                 sixMonthsFree={sixMonthsFree}
+                blurb={business.blurb}
               />
             </div>
           )}

@@ -27,6 +27,7 @@ interface Props {
   monthlyBilling: string;
   yearlyBilling: string;
   sixMonthsFree: string;
+  blurb?: string;
 }
 
 export default function PriceCard({
@@ -47,6 +48,7 @@ export default function PriceCard({
   monthlyBilling,
   yearlyBilling,
   sixMonthsFree,
+  blurb,
 }: Props) {
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
@@ -84,9 +86,7 @@ export default function PriceCard({
             )}
           </Button>
 
-          {id !== "starter" && (
-            <div>All {id === "Pro" ? "Starter" : id === "Premium" ? "Pro" : "Premium"} features, plus</div>
-          )}
+          <div>{blurb}</div>
           {perks.map((perk, index) => (
             <div key={index} className="flex items-start gap-4 px-3">
               <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary" />
