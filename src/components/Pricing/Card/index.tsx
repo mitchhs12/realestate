@@ -66,9 +66,11 @@ export default function PriceCard({
               </div>
             )}
           </div>
-          <p className="text-sm">
-            {billedAnnually} {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * annualPrice, 0)}
-          </p>
+          {yearly && (
+            <p className="text-sm">
+              {billedAnnually} {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * annualPrice, 0)}
+            </p>
+          )}
 
           <Button
             variant={"link"}

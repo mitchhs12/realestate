@@ -14,7 +14,7 @@ export default {
     "save-with-yearly": "Ahorre con el pago anual",
     "six-months-free": "(6+ meses gratis ↗)",
     "starter": {
-      "title": "Soltero",
+      "title": "Inicio",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
