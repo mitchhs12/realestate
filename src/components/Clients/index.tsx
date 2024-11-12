@@ -12,7 +12,7 @@ export default function Clients() {
   ];
 
   return (
-    <div className="grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-y-12">
+    <div className="grid justify-center items-center grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-y-12">
       {images.map((image, index) => (
         <div key={index} className="relative justify-center items-center w-auto h-[140px]">
           <Image
