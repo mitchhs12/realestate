@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Aşağıdan bir şehir bölgesi seçerek başlayabilirsiniz.",
+    "trusted-sub": "EN İYİLER TARAFINDAN GÜVENİLİYOR",
+    "trusted": "Müşteriler",
     "popular": "En Çok Beğenilen",
     "popular-sub": "MÜŞTERİ FAVORİLERİ",
     "locations": "Konumlar",

@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "从下面选择一个城市区域开始。",
+    "trusted-sub": "深受信赖",
+    "trusted": "客户",
     "popular": "最受喜爱",
     "popular-sub": "顾客最爱",
     "locations": "位置",

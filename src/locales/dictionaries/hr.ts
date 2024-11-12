@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Započnite odabirom gradskog okruga u nastavku.",
+    "trusted-sub": "POVJERENJE NAJBOLJIH",
+    "trusted": "Klijenti",
     "popular": "Najviše lajkanih",
     "popular-sub": "FAVORITI KUPACA",
     "locations": "Lokacije",

@@ -289,6 +289,8 @@
       }
     },
     "cities": "以下の市区町村を選択して開始してください。",
+    "trusted-sub": "最高の信頼",
+    "trusted": "クライアント",
     "popular": "最も好まれた",
     "popular-sub": "お客様のお気に入り",
     "locations": "場所",

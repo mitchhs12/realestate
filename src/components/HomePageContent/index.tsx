@@ -6,14 +6,8 @@ import { locationImageIds } from "@/lib/validations";
 import { Newspaper, HandCoins, Heart, Map, PiggyBank, BadgeCent } from "lucide-react";
 import { typesMap } from "@/lib/sellFlowData";
 import { urbanist } from "@/app/[locale]/fonts";
+import Clients from "@/components/Clients";
 import Pricing from "@/components/Pricing";
-
-// async function fetchWithCache(url: string) {
-//   const res = await fetch(url, {
-//     next: { revalidate: 360 },
-//   });
-//   return res.json();
-// }
 
 export default async function HomePageContent() {
   const [t, type, p, premium, billing] = await Promise.all([
@@ -227,6 +221,18 @@ export default async function HomePageContent() {
             </h2>
           </div>
           <Locations countries={countries} />
+        </div>
+      </section>
+      <section className="flex bg-white dark:bg-black flex-col justify-center items-center w-full h-full">
+        <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start w-full h-full max-w-8xl">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
+            <h3
+              className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
+            >
+              {t("trusted-sub")}
+            </h3>
+          </div>
+          <Clients />
         </div>
       </section>
       <section className="flex flex-col bg-gradient-to-b from-[#f4f5fb] to-[#fbf4f8]  dark:from-[#020410] dark:to-[#10020b] justify-center items-center w-full h-full">

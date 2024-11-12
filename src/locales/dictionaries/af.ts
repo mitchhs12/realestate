@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Begin deur 'n stadgrens hieronder te kies.",
+    "trusted-sub": "VERTROU DEUR DIE BESTE",
+    "trusted": "Kliënte",
     "popular": "Mees gelaaik",
     "popular-sub": "KLANT GUNSTELING",
     "locations": "Liggings",

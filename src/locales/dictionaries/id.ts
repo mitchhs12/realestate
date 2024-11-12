@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Mulailah dengan memilih distrik kota di bawah ini.",
+    "trusted-sub": "DIPERCAYA OLEH YANG TERBAIK",
+    "trusted": "Klien",
     "popular": "Paling Disukai",
     "popular-sub": "FAVORIT PELANGGAN",
     "locations": "Lokasi",

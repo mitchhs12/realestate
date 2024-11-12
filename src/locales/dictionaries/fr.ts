@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Commencez par sélectionner un quartier de la ville ci-dessous.",
+    "trusted-sub": "LA CONFIANCE DES MEILLEURS",
+    "trusted": "Clients",
     "popular": "Le plus aimé",
     "popular-sub": "FAVORIS DES CLIENTS",
     "locations": "Emplacements",

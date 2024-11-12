@@ -289,6 +289,8 @@ export default {
       ]
     },
     "cities": "Get started by selecting a city destrict below",
+    "trusted-sub": "TRUSTED BY THE BEST",
+    "trusted": "Clients",
     "popular": "Popular",
     "popular-sub": "CUSTOMER FAVORITES",
     "locations": "Locations",

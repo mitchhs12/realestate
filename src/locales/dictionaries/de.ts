@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Wählen Sie zunächst unten einen Stadtteil aus.",
+    "trusted-sub": "DIE BESTEN VERTRAUEN UNS",
+    "trusted": "Kunden",
     "popular": "Meist gemocht",
     "popular-sub": "KUNDENFAVORITEN",
     "locations": "Standorte",

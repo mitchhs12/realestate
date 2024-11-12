@@ -289,6 +289,8 @@ export default {
       }
     },
     "cities": "Comience seleccionando un distrito de ciudad a continuación.",
+    "trusted-sub": "CON LA CONFIANZA DE LOS MEJORES",
+    "trusted": "Clientela",
     "popular": "Lo más gustado",
     "popular-sub": "FAVORITOS DE LOS CLIENTES",
     "locations": "Ubicaciones",
