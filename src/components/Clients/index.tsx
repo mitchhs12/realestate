@@ -12,7 +12,7 @@ export default function Clients() {
   ];
 
   return (
-    <div className="grid justify-center items-center grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-y-12">
+    <div className="grid justify-center items-center grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-3">
       {images.map((image, index) => (
         <div key={index} className="relative justify-center items-center w-auto h-[140px]">
           <Image
@@ -20,7 +20,8 @@ export default function Clients() {
             alt={"image-" + index}
             loading={"lazy"}
             fill={true}
-            style={{ objectFit: "contain" }}
+            className="object-contain dark:filter-white"
+            // style={{ objectFit: "contain" }}
             placeholder={"blur"}
             blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
             sizes="(max-width: 400px) 400px,

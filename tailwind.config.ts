@@ -17,6 +17,9 @@ const config = {
       fontFamily: {
         charter: ["charter"],
       },
+      filter: {
+        white: "brightness(0) invert(1)",
+      },
       height: {
         "screen-minus-header": "calc(100vh - 86px)",
         "screen-minus-header-footer": "calc(100vh - 86px - 100px)",
@@ -99,7 +102,17 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".filter-white": {
+          filter: "brightness(0) invert(1)",
+        },
+      });
+    },
+  ],
 } satisfies Config;
 
 export default config;
