@@ -13,7 +13,7 @@ export default function Clients() {
   return (
     <div className="flex justify-between gap-12">
       {images.map((image, index) => (
-        <div className="relative justify-center items-center w-[210px] h-[140px]">
+        <div key={index} className="relative justify-center items-center w-[210px] h-[140px]">
           <Image
             src={image}
             alt={"image-" + index}
