@@ -262,7 +262,7 @@ export default function HomeText({
           <Separator />
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-3">
-              <div className={`${defaultLanguage === home.language ? "hidden" : "flex"} w-full h-full justify-start`}>
+              <div className={`flex w-full h-full justify-start`}>
                 <Button
                   disabled={descriptionLoading || translationLoading}
                   className="gap-2"

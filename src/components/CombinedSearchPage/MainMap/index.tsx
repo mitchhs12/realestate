@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useCallback, useContext } from "react";
 import { APIProvider, Map, InfoWindow } from "@vis.gl/react-google-maps";
-import { InfoWindowContent } from "@/components/MainMap/InfoWindowContent";
+import { InfoWindowContent } from "@/components/CombinedSearchPage/MainMap/InfoWindowContent";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import darkMap from "./map-styles/dark-map";
@@ -9,7 +9,7 @@ import lightMap from "./map-styles/light-map";
 import { CoordinatesType, BoundsType, TypeObject } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Feature, Point } from "geojson";
-import { ClusteredMarkers } from "@/components/MainMap/ClusteredMarkers";
+import { ClusteredMarkers } from "@/components/CombinedSearchPage/MainMap/ClusteredMarkers";
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
 

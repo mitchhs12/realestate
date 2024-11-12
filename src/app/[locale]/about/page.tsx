@@ -27,7 +27,7 @@ const languageAlternates = languages.reduce((acc: any, lang) => {
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Read and learn about global properties on Viva Ideal.",
+  description: "Viva Ideal's team, mission, and contact details.",
   metadataBase: new URL("https://www.vivaideal.com/about"),
   alternates: {
     canonical: "/about",

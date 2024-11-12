@@ -1,10 +1,10 @@
 "use client";
 
-import SearchResults from "@/components/SearchResults";
-import MapComponent from "@/components/MainMap";
-import { getAllHomes, getSearchResults, getAllHomesFiltered } from "@/app/[locale]/search/actions";
-import FloatingButton from "@/components/FloatingButtons";
-import FloatingDrawerButton from "@/components/FloatingButtons/FloatingDrawerButton";
+import SearchResults from "@/components/CombinedSearchPage/SearchResults";
+import MapComponent from "@/components/CombinedSearchPage/MainMap";
+import { getSearchResults, getAllHomesFiltered } from "@/app/[locale]/search/actions";
+import FloatingButton from "@/components/CombinedSearchPage/FloatingButtons";
+import FloatingDrawerButton from "@/components/CombinedSearchPage/FloatingButtons/FloatingDrawerButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
@@ -14,7 +14,6 @@ import { formatNumber } from "@/lib/utils";
 import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
 import { LocaleContext } from "@/context/LocaleContext";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import PaginationComponent from "../PaginationComponent";
 
 interface Props {
   coordinates: CoordinatesType;

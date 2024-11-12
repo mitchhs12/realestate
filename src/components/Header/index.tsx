@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ProfileButton } from "@/components/ProfileButton";
+import ProfileButton from "@/components/Header/ProfileButton";
 import { poppins } from "@/app/[locale]/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";

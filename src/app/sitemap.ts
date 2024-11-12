@@ -6,6 +6,7 @@ import { getAllHomeIds } from "./[locale]/search/actions";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = "https://www.vivaideal.com";
   let routes = [
+    "/about",
     "/articles",
     "/data",
     "/legal",
@@ -13,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/legal/privacy-policy",
     "/my-properties",
     "/my-wishlists",
+    "/pricing",
     "/search",
     "/sell",
     "/settings",

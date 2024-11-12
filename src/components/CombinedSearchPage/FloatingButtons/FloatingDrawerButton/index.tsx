@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useContext } from "react";
-import { QueryContext } from "../../../context/QueryContext";
-import { Button } from "../../../components/ui/button";
+import { QueryContext } from "../../../../context/QueryContext";
+import { Button } from "../../../ui/button";
 import { LayoutGrid, Map } from "lucide-react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 

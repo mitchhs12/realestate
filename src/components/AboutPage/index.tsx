@@ -19,7 +19,7 @@ export default async function AboutPageContent({ locale, data }: { locale: strin
       <div className="p-4 md:p-8 flex flex-col w-full h-full gap-10 justify-start items-start max-w-8xl">
         <div className="flex flex-col gap-4">
           <div className="text-2xl">Our Team</div>
-          <div className="flex gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
             {data.map((person: { name: string; bio: string; image_url: string }) => {
               return (
                 <div

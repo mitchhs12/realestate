@@ -2,9 +2,9 @@
 
 import { HomeType, BoundsType } from "@/lib/validations";
 import { useState, useEffect, useRef } from "react";
-import ResizableCard from "../ResizableCard";
+import ResizableCard from "../../ResizableCard";
 import { findMatching } from "@/lib/utils";
-import PaginationComponent from "../PaginationComponent";
+import PaginationComponent from "../../PaginationComponent";
 
 interface Props {
   homes: (HomeType | null)[];

@@ -11,16 +11,16 @@ import { Metadata } from "next";
 export const revalidate = 30;
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/data/${lang}`;
+  acc[lang] = `/pricing/${lang}`;
   return acc;
 }, {});
 
 export const metadata: Metadata = {
-  title: "Data",
-  description: "Analyze and discover about global properties on Viva Ideal.",
-  metadataBase: new URL("https://www.vivaideal.com/data"),
+  title: "Pricing",
+  description: "Compare and contrast billing plans of different on Viva Ideal.",
+  metadataBase: new URL("https://www.vivaideal.com/pricing"),
   alternates: {
-    canonical: "/data",
+    canonical: "/pricing",
     languages: languageAlternates,
   },
   robots: {

@@ -43,11 +43,11 @@ export async function POST(req: NextRequest) {
       parent: `projects/${GCP_PROJECT_ID}/locations/global`,
       contents: [text],
       mimeType: "text/html",
-      sourceLanguageCode: source,
+      // sourceLanguageCode: source,
       targetLanguageCode: target,
     };
 
-    console.log("request", request);
+    // console.log("request", request);
 
     const [response] = await translationClient.translateText(request);
 
