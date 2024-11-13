@@ -38,7 +38,7 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice, pr
                 ${index >= 4 && "2xs:hidden sm:block"}
                 ${index >= 4 && "sm:hidden md:block"}
                 ${index >= 6 && "md:hidden lg:block"}
-                ${index >= 4 && "lg:hidden xl:block"}
+                ${index >= 8 && "lg:hidden xl:block"}
                 ${index >= 8 && "xl:hidden"}
               `}
             >
