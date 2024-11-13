@@ -366,6 +366,9 @@ export default {
   "data": {
     "title": "Podaci"
   },
+  "pricing": {
+    "title": "Cijene"
+  },
   "about": {
     "title": "Oko",
     "content": {

@@ -3,12 +3,12 @@ import Image from "next/image";
 
 export default function Clients() {
   const images = [
-    "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/clients/construvalores.avif",
-    "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/clients/ibra-gomez.png",
-    "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/clients/coritrec.png",
-    "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/clients/ecuaraices.png",
-    "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/clients/inmoga.png",
-    "https://vivaidealfinalbucket.s3.us-west-2.amazonaws.com/home/clients/ehf.png",
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/construvalores.avif`,
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/ibra-gomez.png`,
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/coritrec.png`,
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/ecuaraices.png`,
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/inmoga.png`,
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/ehf.png`,
   ];
 
   return (

@@ -366,6 +366,9 @@ export default {
   "data": {
     "title": "მონაცემები"
   },
+  "pricing": {
+    "title": "ფასი"
+  },
   "about": {
     "title": "შესახებ",
     "content": {

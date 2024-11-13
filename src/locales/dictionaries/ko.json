@@ -366,6 +366,9 @@
   "data": {
     "title": "데이터"
   },
+  "pricing": {
+    "title": "가격"
+  },
   "about": {
     "title": "에 대한",
     "content": {

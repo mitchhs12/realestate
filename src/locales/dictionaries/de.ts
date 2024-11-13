@@ -366,6 +366,9 @@ export default {
   "data": {
     "title": "Daten"
   },
+  "pricing": {
+    "title": "Preise"
+  },
   "about": {
     "title": "Um",
     "content": {

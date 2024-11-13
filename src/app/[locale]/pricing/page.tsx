@@ -2,11 +2,12 @@ import Image from "next/image";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 
-import DataTitle from "@/components/DataPageContent/Title";
-import DataPageContent from "@/components/DataPageContent";
+import PricingTitle from "@/components/PricingPageContent/Title";
+import PricingPageContent from "@/components/PricingPageContent";
 
 import { languages } from "@/lib/validations";
 import { Metadata } from "next";
+import { getScopedI18n } from "@/locales/server";
 
 export const revalidate = 30;
 
@@ -36,8 +37,143 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
+export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
+  const billing = await getScopedI18n("billing");
+
+  const starterBilling = {
+    title: billing("starter.title"),
+    price: Number(billing("starter.price")),
+    yearlyPrice: Number(billing("starter.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("starter.yearly-total-price")),
+    perks: [
+      {
+        title: billing("starter.perks.0.title"),
+        subtitle: billing("starter.perks.0.subtitle"),
+      },
+      {
+        title: billing("starter.perks.1.title"),
+        subtitle: billing("starter.perks.1.subtitle"),
+      },
+      {
+        title: billing("starter.perks.2.title"),
+        subtitle: billing("starter.perks.2.subtitle"),
+      },
+      {
+        title: billing("starter.perks.3.title"),
+        subtitle: billing("starter.perks.3.subtitle"),
+      },
+    ],
+  };
+
+  const proBilling = {
+    title: billing("pro.title"),
+    price: Number(billing("pro.price")),
+    yearlyPrice: Number(billing("pro.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("pro.yearly-total-price")),
+    blurb: billing("pro.blurb"),
+    perks: [
+      {
+        title: billing("pro.perks.0.title"),
+        subtitle: billing("pro.perks.0.subtitle"),
+      },
+      {
+        title: billing("pro.perks.1.title"),
+        subtitle: billing("pro.perks.1.subtitle"),
+      },
+      {
+        title: billing("pro.perks.2.title"),
+        subtitle: billing("pro.perks.2.subtitle"),
+      },
+      {
+        title: billing("pro.perks.3.title"),
+        subtitle: billing("pro.perks.3.subtitle"),
+      },
+    ],
+  };
+
+  const premiumBilling = {
+    title: billing("premium.title"),
+    price: Number(billing("premium.price")),
+    yearlyPrice: Number(billing("premium.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("premium.yearly-total-price")),
+    premium: billing("premium.blurb"),
+    perks: [
+      {
+        title: billing("premium.perks.0.title"),
+        subtitle: billing("premium.perks.0.subtitle"),
+      },
+      {
+        title: billing("premium.perks.1.title"),
+        subtitle: billing("premium.perks.1.subtitle"),
+      },
+      {
+        title: billing("premium.perks.2.title"),
+        subtitle: billing("premium.perks.2.subtitle"),
+      },
+      {
+        title: billing("premium.perks.3.title"),
+        subtitle: billing("premium.perks.3.subtitle"),
+      },
+      {
+        title: billing("premium.perks.4.title"),
+        subtitle: billing("premium.perks.4.subtitle"),
+      },
+      {
+        title: billing("premium.perks.5.title"),
+        subtitle: billing("premium.perks.5.subtitle"),
+      },
+    ],
+  };
+
+  const businessBilling = {
+    title: billing("business.title"),
+    price: Number(billing("business.price")),
+    yearlyPrice: Number(billing("business.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("business.yearly-total-price")),
+    blurb: billing("business.blurb"),
+    perks: [
+      {
+        title: billing("business.perks.0.title"),
+        subtitle: billing("business.perks.0.subtitle"),
+      },
+      {
+        title: billing("business.perks.1.title"),
+        subtitle: billing("business.perks.1.subtitle"),
+      },
+      {
+        title: billing("business.perks.2.title"),
+        subtitle: billing("business.perks.2.subtitle"),
+      },
+      {
+        title: billing("business.perks.3.title"),
+        subtitle: billing("business.perks.3.subtitle"),
+      },
+      {
+        title: billing("business.perks.4.title"),
+        subtitle: billing("business.perks.4.subtitle"),
+      },
+    ],
+  };
+
+  const billingObject = {
+    starter: starterBilling,
+    pro: proBilling,
+    premium: premiumBilling,
+    business: businessBilling,
+  };
+
+  const billingText = {
+    "most-popular": billing("most-popular"),
+    subscribe: billing("subscribe"),
+    "current-plan": billing("current-plan"),
+    yearly: billing("yearly"),
+    monthly: billing("monthly"),
+    "billed-annually": billing("billed-annually"),
+    "view-monthly-billing": billing("view-monthly-billing"),
+    "save-with-yearly": billing("save-with-yearly"),
+    "six-months-free": billing("six-months-free"),
+  };
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -59,10 +195,10 @@ export default function Page({ params: { locale } }: { params: { locale: Languag
         100vw"
           className="-z-10 opacity-30 dark:opacity-20"
         />
-        <DataTitle locale={locale} />
+        <PricingTitle locale={locale} />
       </div>
 
-      <DataPageContent locale={locale} />
+      <PricingPageContent locale={locale} billingObject={billingObject} billingText={billingText} />
     </div>
   );
 }

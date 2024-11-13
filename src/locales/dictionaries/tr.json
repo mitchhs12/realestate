@@ -366,6 +366,9 @@
   "data": {
     "title": "Veri"
   },
+  "pricing": {
+    "title": "Fiyatlandırma"
+  },
   "about": {
     "title": "Hakkında",
     "content": {

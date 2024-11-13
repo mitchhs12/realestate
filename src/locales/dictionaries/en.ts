@@ -8,7 +8,7 @@ export default {
     "yearly": "Yearly: (get 6+ months free)",
     "current-plan": "Current Plan",
     "billed-annually": "Billed annually",
-    "subscribe": "Subscribe",
+    "subscribe": "Get started",
     "most-popular": "Most Popular",
     "view-monthly-billing": "View monthly billing ↗",
     "save-with-yearly": "Save with yearly",
@@ -365,6 +365,9 @@ export default {
   },
   "data": {
     "title": "Data"
+  },
+  "pricing": {
+    "title": "Pricing"
   },
   "about": {
     "title": "About Us",

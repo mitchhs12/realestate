@@ -366,6 +366,9 @@ export default {
   "data": {
     "title": "ข้อมูล"
   },
+  "pricing": {
+    "title": "การกำหนดราคา"
+  },
   "about": {
     "title": "เกี่ยวกับ",
     "content": {

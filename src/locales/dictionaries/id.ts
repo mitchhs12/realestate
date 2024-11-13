@@ -366,6 +366,9 @@ export default {
   "data": {
     "title": "Data"
   },
+  "pricing": {
+    "title": "Harga"
+  },
   "about": {
     "title": "Tentang",
     "content": {
