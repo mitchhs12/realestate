@@ -366,7 +366,7 @@ export default {
   "data": {
     "title": "Dữ liệu"
   },
-  "pricing": {
+  "start": {
     "title": "Giá cả"
   },
   "about": {

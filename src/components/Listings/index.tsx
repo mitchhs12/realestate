@@ -16,17 +16,17 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice, pr
   const [homes, setHomes] = useState<(HomeType | null)[]>([null, null, null, null, null, null]);
   useEffect(() => {
     if (listingKey === "popular") {
-      getPopular().then((homes) => setHomes(homes));
+      getPopular(8).then((homes) => setHomes(homes));
     } else if (listingKey === "cheapest") {
-      getCheapest().then((homes) => setHomes(homes));
+      getCheapest(8).then((homes) => setHomes(homes));
     } else {
-      getNew().then((homes) => setHomes(homes));
+      getNew(8).then((homes) => setHomes(homes));
     }
   }, [listingKey]);
 
   return (
     <div className="flex flex-col items-center h-full w-full">
-      <div className="grid w-full h-full grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 xl:grid-cols-5 xl:grid-rows-1 justify-center items-center gap-2 sm:gap-4 lg:gap-5 xl:gap-5">
+      <div className="grid w-full h-full grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 justify-center items-center gap-2 sm:gap-4 lg:gap-5 xl:gap-5">
         {homes.map((home, index) => {
           const matchingTypes = findMatching(typesObject, home, "type");
 
@@ -39,7 +39,7 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice, pr
                 ${index >= 4 && "sm:hidden md:block"}
                 ${index >= 6 && "md:hidden lg:block"}
                 ${index >= 4 && "lg:hidden xl:block"}
-                ${index >= 5 && "xl:hidden"}
+                ${index >= 8 && "xl:hidden"}
               `}
             >
               <ResizableCard

@@ -2,8 +2,8 @@ import Image from "next/image";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 
-import PricingTitle from "@/components/PricingPageContent/Title";
-import PricingPageContent from "@/components/PricingPageContent";
+import PricingTitle from "@/components/StartPageContent/Title";
+import PricingPageContent from "@/components/StartPageContent";
 
 import { languages } from "@/lib/validations";
 import { Metadata } from "next";
@@ -12,16 +12,16 @@ import { getScopedI18n } from "@/locales/server";
 export const revalidate = 30;
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/pricing/${lang}`;
+  acc[lang] = `/start/${lang}`;
   return acc;
 }, {});
 
 export const metadata: Metadata = {
-  title: "Pricing",
-  description: "Compare and contrast billing plans of different on Viva Ideal.",
-  metadataBase: new URL("https://www.vivaideal.com/pricing"),
+  title: "Start",
+  description: "Get started and compare subscription plans on Viva Ideal.",
+  metadataBase: new URL("https://www.vivaideal.com/start"),
   alternates: {
-    canonical: "/pricing",
+    canonical: "/start",
     languages: languageAlternates,
   },
   robots: {

@@ -2,7 +2,7 @@ import { poppins } from "@/app/[locale]/fonts";
 import { getScopedI18n } from "@/locales/server";
 
 export default async function PricingTitle({ locale }: { locale: string }) {
-  const t = await getScopedI18n("pricing");
+  const t = await getScopedI18n("start");
   const title = t("title");
 
   return (

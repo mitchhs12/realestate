@@ -366,7 +366,7 @@ export default {
   "data": {
     "title": "データ"
   },
-  "pricing": {
+  "start": {
     "title": "価格"
   },
   "about": {

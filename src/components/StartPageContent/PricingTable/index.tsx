@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import Stripe from "@/app/[locale]/Stripe";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import PriceCard from "@/components/PricingPageContent/PricingTable/Card";
+import PriceCard from "@/components/StartPageContent/PricingTable/Card";
 import { Button } from "@/components/ui/button";
 import { QueryContext } from "@/context/QueryContext";
 

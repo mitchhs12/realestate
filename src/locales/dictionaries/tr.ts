@@ -366,7 +366,7 @@ export default {
   "data": {
     "title": "Veri"
   },
-  "pricing": {
+  "start": {
     "title": "Fiyatlandırma"
   },
   "about": {

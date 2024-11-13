@@ -49,7 +49,7 @@ export default function ResizableCarousel({
           >
             <div
               onClick={openModal && (() => openModal(index))}
-              className={`relative justify-center items-center ${height ? height : "h-[200px]"} w-full `}
+              className={`relative justify-center items-center ${height ? height : "h-[250px]"} w-full `}
             >
               {link ? (
                 <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>

@@ -366,7 +366,7 @@ export default {
   "data": {
     "title": "Datos"
   },
-  "pricing": {
+  "start": {
     "title": "Precios"
   },
   "about": {

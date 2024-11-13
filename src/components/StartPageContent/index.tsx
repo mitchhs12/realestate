@@ -1,4 +1,4 @@
-import PricingTable from "@/components/PricingPageContent/PricingTable";
+import PricingTable from "@/components/StartPageContent/PricingTable";
 import { urbanist } from "@/app/[locale]/fonts";
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   };
 }
 
-export default function PricingPageContent({ locale, billingObject, billingText }: Props) {
+export default function StartPageContent({ locale, billingObject, billingText }: Props) {
   return (
     <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
       <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">

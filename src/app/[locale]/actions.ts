@@ -50,7 +50,7 @@ export async function getRecommended(): Promise<HomeType[]> {
   return homes;
 }
 
-export async function getPopular(): Promise<HomeType[]> {
+export async function getPopular(takeNumber: number): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,
@@ -60,12 +60,12 @@ export async function getPopular(): Promise<HomeType[]> {
         _count: "desc",
       },
     },
-    take: 6,
+    take: takeNumber,
   });
   return homes;
 }
 
-export async function getNew(): Promise<HomeType[]> {
+export async function getNew(takeNumber: number): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,
@@ -73,12 +73,12 @@ export async function getNew(): Promise<HomeType[]> {
     orderBy: {
       completedAt: "desc",
     },
-    take: 6,
+    take: takeNumber,
   });
   return homes;
 }
 
-export async function getCheapest(): Promise<HomeType[]> {
+export async function getCheapest(takeNumber: number): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,
@@ -86,7 +86,7 @@ export async function getCheapest(): Promise<HomeType[]> {
     orderBy: {
       priceUsd: "asc",
     },
-    take: 6,
+    take: takeNumber,
   });
 
   return homes;

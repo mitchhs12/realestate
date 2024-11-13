@@ -366,7 +366,7 @@ export default {
   "data": {
     "title": "Podaci"
   },
-  "pricing": {
+  "start": {
     "title": "Cijene"
   },
   "about": {
