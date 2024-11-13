@@ -70,7 +70,7 @@ export default function ResizableCard({
     <div
       className={`flex flex-col h-full w-full shadow-lg rounded-xl overflow-hidden ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
     >
-      <Skeleton className="rounded-none h-[200px] w-full" />
+      <Skeleton className="rounded-none h-[250px] w-full" />
       <div className="pt-2 flex flex-col justify-center items-center w-full gap-3 px-2 pb-2 bg-white dark:bg-black rounded-b-lg">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
         <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />

@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { HomeContext } from "@/context/HomeContext";
 import { LocaleContext } from "@/context/LocaleContext";
+import InteriorAI from "@/components/InteriorAI";
 import { FavoriteComponent } from "../FavoriteComponent";
 import TitleDialog from "./TitleDialog";
 import PhotoDialog from "./PhotoDialog";
@@ -139,11 +140,14 @@ export default function HomePhotos({ showAllPhotos }: Props) {
             {home.photos.map((photo, index) => (
               <div
                 key={index}
-                className="w-full"
+                className="w-full relative"
                 ref={(el) => {
                   imageRefs.current[index] = el;
                 }}
               >
+                <div className="absolute bottom-3 md:right-7">
+                  <InteriorAI imageUrl={photo} />
+                </div>
                 <Image
                   src={photo}
                   className="object-cover object-center rounded-lg"
