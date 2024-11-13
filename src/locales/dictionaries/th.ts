@@ -4,6 +4,10 @@ export default {
     "page": "มีบางอย่างผิดพลาดในการดึงหน้านี้!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "ฟรี 6 เดือนขึ้นไป",
+      "per-month": "ต่อเดือน"
+    },
     "monthly": "รายเดือน",
     "yearly": "รายปี : (รับฟรี 6 เดือนขึ้นไป)",
     "current-plan": "แผนปัจจุบัน",

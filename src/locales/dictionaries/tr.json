@@ -4,6 +4,10 @@
     "page": "Bu sayfaya ulaşırken bir sorun oluştu!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ ay ücretsiz",
+      "per-month": "ayda"
+    },
     "monthly": "Aylık",
     "yearly": "Yıllık: (6+ ay ücretsiz alın)",
     "current-plan": "Güncel Plan",

@@ -4,6 +4,10 @@
     "page": "¡Algo salió mal al obtener esta página!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ meses gratis",
+      "per-month": "por mes"
+    },
     "monthly": "Mensual",
     "yearly": "Anual: (obtenga 6+ meses gratis)",
     "current-plan": "Plan actual",

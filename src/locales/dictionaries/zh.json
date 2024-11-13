@@ -4,6 +4,10 @@
     "page": "获取此页面时出错！"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6 个月以上免费",
+      "per-month": "每月"
+    },
     "monthly": "每月",
     "yearly": "每年：（免费获得 6 个月以上）",
     "current-plan": "当前计划",

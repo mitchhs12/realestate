@@ -4,6 +4,10 @@
     "page": "이 페이지를 가져오는 중에 오류가 발생했습니다!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6개월 이상 무료",
+      "per-month": "한 달에"
+    },
     "monthly": "월간 간행물",
     "yearly": "연간: (6개월 이상 무료)",
     "current-plan": "현재 계획",

@@ -4,6 +4,10 @@
     "page": "Une erreur s'est produite lors de la récupération de cette page !"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ mois gratuits",
+      "per-month": "par mois"
+    },
     "monthly": "Mensuel",
     "yearly": "Annuel : (obtenez 6 mois ou plus gratuits)",
     "current-plan": "Plan actuel",

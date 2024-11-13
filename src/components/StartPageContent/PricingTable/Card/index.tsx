@@ -28,6 +28,10 @@ interface Props {
   yearlyBilling: string;
   sixMonthsFree: string;
   blurb?: string;
+  subText: {
+    "six-months-free": string;
+    "per-month": string;
+  };
 }
 
 export default function PriceCard({
@@ -49,6 +53,7 @@ export default function PriceCard({
   yearlyBilling,
   sixMonthsFree,
   blurb,
+  subText,
 }: Props) {
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
@@ -61,8 +66,8 @@ export default function PriceCard({
             {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * button, 0)}
             {yearly && (
               <div className="flex flex-col text-xs text-start">
-                <p>6+ months free</p>
-                <p>per month</p>
+                <p>{subText["six-months-free"]}</p>
+                <p>{subText["per-month"]}</p>
               </div>
             )}
           </div>

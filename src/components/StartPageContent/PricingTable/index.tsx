@@ -35,6 +35,10 @@ interface Props {
   monthlyBilling: string;
   yearlyBilling: string;
   sixMonthsFree: string;
+  subText: {
+    "six-months-free": string;
+    "per-month": string;
+  };
 }
 
 export default function PricingTable({
@@ -51,6 +55,7 @@ export default function PricingTable({
   monthlyBilling,
   yearlyBilling,
   sixMonthsFree,
+  subText,
 }: Props) {
   const { defaultCurrency, user } = useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
@@ -138,6 +143,7 @@ export default function PricingTable({
                 monthlyBilling={monthlyBilling}
                 yearlyBilling={yearlyBilling}
                 sixMonthsFree={sixMonthsFree}
+                subText={subText}
               />
               <PriceCard
                 id={"pro"}
@@ -158,6 +164,7 @@ export default function PricingTable({
                 yearlyBilling={yearlyBilling}
                 sixMonthsFree={sixMonthsFree}
                 blurb={pro.blurb}
+                subText={subText}
               />
               <div className="relative flex flex-col justify-center items-center">
                 <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
@@ -182,6 +189,7 @@ export default function PricingTable({
                   yearlyBilling={yearlyBilling}
                   sixMonthsFree={sixMonthsFree}
                   blurb={premium.blurb}
+                  subText={subText}
                 />
               </div>
               <PriceCard
@@ -203,6 +211,7 @@ export default function PricingTable({
                 yearlyBilling={yearlyBilling}
                 sixMonthsFree={sixMonthsFree}
                 blurb={business.blurb}
+                subText={subText}
               />
             </div>
           )}

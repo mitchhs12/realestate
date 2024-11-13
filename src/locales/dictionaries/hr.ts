@@ -4,6 +4,10 @@ export default {
     "page": "Nešto nije u redu prilikom dohvaćanja ove stranice!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ mjeseci besplatno",
+      "per-month": "mjesečno"
+    },
     "monthly": "Mjesečno",
     "yearly": "Godišnje: (dobite 6+ mjeseci besplatno)",
     "current-plan": "Trenutni plan",

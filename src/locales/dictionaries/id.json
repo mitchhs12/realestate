@@ -4,6 +4,10 @@
     "page": "Terjadi kesalahan saat mengambil halaman ini!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ bulan gratis",
+      "per-month": "per bulan"
+    },
     "monthly": "Bulanan",
     "yearly": "Tahunan: (dapatkan 6+ bulan gratis)",
     "current-plan": "Rencana Saat Ini",

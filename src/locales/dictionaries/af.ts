@@ -4,6 +4,10 @@ export default {
     "page": "Iets het verkeerd geloop om hierdie bladsy te gaan haal!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ maande gratis",
+      "per-month": "per maand"
+    },
     "monthly": "Maandeliks",
     "yearly": "Jaarliks: (kry 6+ maande gratis)",
     "current-plan": "Huidige Plan",

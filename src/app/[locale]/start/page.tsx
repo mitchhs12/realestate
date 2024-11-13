@@ -173,6 +173,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     "view-monthly-billing": billing("view-monthly-billing"),
     "save-with-yearly": billing("save-with-yearly"),
     "six-months-free": billing("six-months-free"),
+    subText: { "six-months-free": billing("subText.six-months-free"), "per-month": billing("subText.per-month") },
   };
 
   return (

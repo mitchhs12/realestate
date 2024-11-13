@@ -4,6 +4,10 @@ export default {
     "page": "Beim Abrufen dieser Seite ist ein Fehler aufgetreten!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ Monate gratis",
+      "per-month": "pro Monat"
+    },
     "monthly": "Monatlich",
     "yearly": "Jährlich: (erhalten Sie 6+ Monate kostenlos)",
     "current-plan": "Aktueller Plan",

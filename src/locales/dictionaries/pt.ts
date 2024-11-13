@@ -4,6 +4,10 @@ export default {
     "page": "Algo deu errado ao buscar esta página!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ meses grátis",
+      "per-month": "por mês"
+    },
     "monthly": "Mensal",
     "yearly": "Anual: (ganhe mais de 6 meses grátis)",
     "current-plan": "Plano atual",

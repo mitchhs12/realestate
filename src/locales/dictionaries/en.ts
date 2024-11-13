@@ -4,6 +4,10 @@ export default {
     "page": "Something went wrong fetching this page!"
   },
   "billing": {
+    "subText": {
+      "six-months-free": "6+ months free",
+      "per-month": "per month"
+    },
     "monthly": "Monthly",
     "yearly": "Yearly: (get 6+ months free)",
     "current-plan": "Current Plan",
@@ -49,7 +53,7 @@ export default {
           "subtitle": "View 10 property's contact details and location."
         },
         {
-          "title": "Sell 100 properties",
+          "title": "Sell 10 properties",
           "subtitle": "List 10 properties per month."
         },
         {

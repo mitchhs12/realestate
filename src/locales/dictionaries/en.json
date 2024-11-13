@@ -4,6 +4,7 @@
     "page": "Something went wrong fetching this page!"
   },
   "billing": {
+    "subText": { "six-months-free": "6+ months free", "per-month": "per month" },
     "monthly": "Monthly",
     "yearly": "Yearly: (get 6+ months free)",
     "current-plan": "Current Plan",
@@ -42,7 +43,7 @@
       "yearly-total-price": "199",
       "perks": [
         { "title": "View 100 properties", "subtitle": "View 10 property's contact details and location." },
-        { "title": "Sell 100 properties", "subtitle": "List 10 properties per month." },
+        { "title": "Sell 10 properties", "subtitle": "List 10 properties per month." },
         { "title": "10 photos", "subtitle": "Upload 10 photos per property." },
         { "title": "Pro Support", "subtitle": "Get support within 12-24 hours." }
       ]

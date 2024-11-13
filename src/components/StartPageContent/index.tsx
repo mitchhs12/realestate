@@ -14,6 +14,7 @@ interface Props {
     "view-monthly-billing": string;
     "save-with-yearly": string;
     "six-months-free": string;
+    subText: { "six-months-free": string; "per-month": string };
   };
 }
 
@@ -45,6 +46,7 @@ export default function StartPageContent({ locale, billingObject, billingText }:
           monthlyBilling={billingText["view-monthly-billing"]}
           yearlyBilling={billingText["save-with-yearly"]}
           sixMonthsFree={billingText["six-months-free"]}
+          subText={billingText.subText}
         />
       </div>
     </section>
