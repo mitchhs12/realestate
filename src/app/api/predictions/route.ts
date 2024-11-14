@@ -1,20 +1,19 @@
 import { NextResponse, NextRequest } from "next/server";
 import Replicate from "replicate";
+import { kv } from "@vercel/kv";
 
 const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
+  auth: process.env.REPLICATE_API_KEY,
 });
 
-const WEBHOOK_HOST = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NGROK_HOST;
-
 export async function POST(request: NextRequest) {
-  if (!process.env.REPLICATE_API_TOKEN) {
-    return NextResponse.json({ detail: "REPLICATE_API_TOKEN is not set." }, { status: 500 });
+  if (!process.env.REPLICATE_API_KEY) {
+    return NextResponse.json({ detail: "REPLICATE_API_KEY is not set." }, { status: 500 });
   }
 
   const { imageUrl, room, theme } = await request.json();
 
-  const options = {
+  const options: any = {
     version: "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
     input: {
       image: imageUrl,
@@ -26,16 +25,14 @@ export async function POST(request: NextRequest) {
     },
   };
 
-  if (WEBHOOK_HOST) {
-    options.webhook = `${WEBHOOK_HOST}/api/webhooks`;
-    options.webhook_events_filter = ["start", "completed"];
-  }
-
   const prediction = await replicate.predictions.create(options);
 
   if (prediction?.error) {
     return NextResponse.json({ detail: prediction.error }, { status: 500 });
   }
+
+  // Store the initial prediction status as "pending"
+  await kv.set(`prediction:${prediction.id}`, { status: "pending" }, { ex: 86400 }); // 1-day expiration
 
   return NextResponse.json(prediction, { status: 201 });
 }

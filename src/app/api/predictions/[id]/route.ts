@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import Replicate from "replicate";
 
 const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
+  auth: process.env.REPLICATE_API_KEY,
 });
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }): Promise<NextResponse> {

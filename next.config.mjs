@@ -13,6 +13,7 @@ const nextConfig = {
         hostname: "staticw.s3.amazonaws.com",
         port: "",
       },
+      { protocol: "https", hostname: "replicate.delivery", port: "" },
     ],
   },
 };

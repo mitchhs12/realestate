@@ -23,11 +23,21 @@ export default function HomePhotos({ showAllPhotos }: Props) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { home, editMode } = useContext(HomeContext);
+  const [generatedImages, setGeneratedImages] = useState<{ [key: string]: string }>({});
+  const [displayedImages, setDisplayedImages] = useState<any>({});
   const { user } = useContext(LocaleContext);
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
+  };
+
+  const toggleImage = (photo: any) => {
+    console.log("toggling image", photo, displayedImages[photo]);
+    setDisplayedImages((prev: any) => ({
+      ...prev,
+      [photo]: prev[photo] === "original" ? "generated" : "original",
+    }));
   };
 
   useEffect(() => {
@@ -145,11 +155,26 @@ export default function HomePhotos({ showAllPhotos }: Props) {
                   imageRefs.current[index] = el;
                 }}
               >
-                <div className="absolute bottom-3 md:right-7">
-                  <InteriorAI imageUrl={photo} />
+                {/* Check if the photo is AI-generated */}
+                <div className="absolute top-3 md:left-3">
+                  <div className="flex flex-col gap-3">
+                    <InteriorAI
+                      imageUrl={photo}
+                      generatedImages={generatedImages}
+                      setGeneratedImages={setGeneratedImages}
+                      toggleImage={toggleImage}
+                    />
+                    {generatedImages[photo] && (
+                      <Button variant="secondary" onClick={() => toggleImage(photo)}>
+                        {displayedImages[photo] === "generated" ? "Show Original" : "Show Generated"}
+                      </Button>
+                    )}
+                  </div>
                 </div>
                 <Image
-                  src={photo}
+                  src={
+                    displayedImages[photo] === "generated" && generatedImages[photo] ? generatedImages[photo] : photo
+                  }
                   className="object-cover object-center rounded-lg"
                   alt={`${home.title} photo ${index}`}
                   width={700}
