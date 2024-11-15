@@ -130,6 +130,47 @@ export default {
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Oda Tipleri",
+      "options": {
+        "0": "Yatak odası",
+        "1": "Mutfak",
+        "2": "Oturma odası",
+        "3": "Banyo",
+        "4": "Çalışmak",
+        "5": "Yemek odası"
+      }
+    },
+    "propertyStyles": {
+      "title": "Emlak Stilleri",
+      "options": {
+        "0": "Modern",
+        "1": "Sömürgeci",
+        "2": "Viktorya dönemi",
+        "3": "Zanaatkar",
+        "4": "Akdeniz'in canlanması",
+        "5": "Cape Cod",
+        "6": "Tudor",
+        "7": "Art Deko",
+        "8": "Çiftlik",
+        "9": "Dağ evi"
+      }
+    },
+    "roomStyles": {
+      "title": "Oda Stilleri",
+      "options": {
+        "0": "Modern",
+        "1": "Nostaljik",
+        "2": "Minimalist",
+        "3": "Endüstriyel",
+        "4": "Bohem",
+        "5": "İskandinav",
+        "6": "Kıyı",
+        "7": "Akdeniz",
+        "8": "Çiftlik evi",
+        "9": "Orta Yüzyıl Modern"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Herhangi bir adresi veya yeri arayın...",

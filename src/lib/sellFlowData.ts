@@ -54,6 +54,41 @@ export const features = [
   "Walk-in closet", // Hanger Tabler
 ];
 
+export const roomStylesMap = [
+  { id: "modern", name: "Modern" },
+  { id: "vintage", name: "Vintage" },
+  { id: "minimalist", name: "Minimalist" },
+  { id: "industrial", name: "Industrial" },
+  { id: "bohemian", name: "Bohemian" },
+  { id: "scandinavian", name: "Scandinavian" },
+  { id: "coastal", name: "Coastal" },
+  { id: "mediterranean", name: "Mediterranean" },
+  { id: "farmhouse", name: "Farmhouse" },
+  { id: "mid-century-modern", name: "Mid-Century Modern" },
+];
+
+export const propertyStylesMap = [
+  { id: "contemporary", name: "Contemporary" },
+  { id: "colonial", name: "Colonial" },
+  { id: "victorian", name: "Victorian" },
+  { id: "craftsman", name: "Craftsman" },
+  { id: "mediterranean-revival", name: "Mediterranean Revival" },
+  { id: "cape-cod", name: "Cape Cod" },
+  { id: "tudor", name: "Tudor" },
+  { id: "art-deco", name: "Art Deco" },
+  { id: "ranch", name: "Ranch" },
+  { id: "chalet", name: "Chalet" },
+];
+
+export const roomTypesMap = [
+  { id: "bedroom", name: "Bedroom" },
+  { id: "kitchen", name: "Kitchen" },
+  { id: "living-room", name: "Living room" },
+  { id: "bathroom", name: "Bathroom" },
+  { id: "study", name: "Study" },
+  { id: "dining-room", name: "Dining room" },
+];
+
 export const typesMap = [
   { id: "house", name: "House" },
   { id: "apartment", name: "Apartment" },

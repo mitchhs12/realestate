@@ -38,6 +38,9 @@ interface HomeContextProps {
   editedHome: HomeType;
   setEditedHome: (value: HomeType) => void;
   saveLoading: boolean;
+  roomTypes: { id: string; name: string; translation: string }[];
+  roomStyles: { id: string; name: string; translation: string }[];
+  propertyStyles: { id: string; name: string; translation: string }[];
 }
 
 const HomeContext = createContext<HomeContextProps>({
@@ -137,6 +140,9 @@ const HomeContext = createContext<HomeContextProps>({
   },
   setEditedHome: () => {},
   saveLoading: false,
+  roomTypes: [],
+  roomStyles: [],
+  propertyStyles: [],
 });
 
 interface HomeProviderProps {
@@ -146,6 +152,9 @@ interface HomeProviderProps {
   originalHome: HomeType;
   originalMatchingTypes: { id: string; name: string; translation: string }[];
   originalMatchingFeatures: { id: string; name: string; translation: string }[];
+  roomTypes: { id: string; name: string; translation: string }[];
+  roomStyles: { id: string; name: string; translation: string }[];
+  propertyStyles: { id: string; name: string; translation: string }[];
 }
 
 const HomeContextProvider: React.FC<HomeProviderProps> = ({
@@ -155,6 +164,9 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
   originalHome,
   originalMatchingTypes,
   originalMatchingFeatures,
+  roomTypes,
+  roomStyles,
+  propertyStyles,
 }) => {
   const [home, setHome] = useState(originalHome);
   const [matchingTypes, setMatchingTypes] = useState(originalMatchingTypes);
@@ -320,6 +332,9 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
         editedHome,
         setEditedHome,
         saveLoading,
+        roomTypes,
+        roomStyles,
+        propertyStyles,
       }}
     >
       {children}

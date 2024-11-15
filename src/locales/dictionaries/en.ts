@@ -130,6 +130,47 @@ export default {
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Room Types",
+      "options": {
+        "0": "Bedroom",
+        "1": "Kitchen",
+        "2": "Living room",
+        "3": "Bathroom",
+        "4": "Study",
+        "5": "Dining room"
+      }
+    },
+    "propertyStyles": {
+      "title": "Property Styles",
+      "options": {
+        "0": "Contemporary",
+        "1": "Colonial",
+        "2": "Victorian",
+        "3": "Craftsman",
+        "4": "Mediterranean Revival",
+        "5": "Cape Cod",
+        "6": "Tudor",
+        "7": "Art Deco",
+        "8": "Ranch",
+        "9": "Chalet"
+      }
+    },
+    "roomStyles": {
+      "title": "Room Styles",
+      "options": {
+        "0": "Modern",
+        "1": "Vintage",
+        "2": "Minimalist",
+        "3": "Industrial",
+        "4": "Bohemian",
+        "5": "Scandinavian",
+        "6": "Coastal",
+        "7": "Mediterranean",
+        "8": "Farmhouse",
+        "9": "Mid-Century Modern"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Search for any address or place...",

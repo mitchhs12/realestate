@@ -7,6 +7,26 @@ export type IconProps = React.HTMLAttributes<SVGElement> & {
 type IconComponent = (props: IconProps) => JSX.Element;
 
 export const typeIcons: Record<string, IconComponent> = {
+  room: ({ color, width = 45, height = 45 }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" width={width} height={height}>
+      <g id="TRAZOS" stroke={color} strokeLinecap={"round"} strokeLinejoin={"round"} strokeWidth={3} fill="none">
+        <line x1="4.5" y1="69.5" x2="70.5" y2="69.5" />
+        <polyline points="27 46.39 27 42 64 42 64 46.43" />
+        <line x1="13.5" y1="69.5" x2="13.5" y2="33.5" />
+        <polygon points="7.5 17.5 19.5 17.5 21.5 33.5 5.5 33.5 7.5 17.5" />
+        <rect x="41.5" y="17.5" width="20.08" height="14.5" />
+        <polyline points="21.5 50.5 25.99 65.5 58.5 65.5" />
+        <line x1="33.44" y1="56.63" x2="30.5" y2="49.5" />
+        <polyline points="68.5 50.5 63.52 65.5 58.5 65.5" />
+        <line x1="56.5" y1="56.5" x2="59.5" y2="50.5" />
+        <line x1="33.5" y1="56.63" x2="56.5" y2="56.5" />
+        <path d="M21.5,50.5c0-2.2,1.63-3.62,4.25-3.62,2.27,0,4.27.84,4.75,2.62" />
+        <path d="M59.53,50.31A4.34,4.34,0,0,1,64,46.76a4.41,4.41,0,0,1,4.39,3.13" />
+        <line x1="29.5" y1="65.5" x2="29.5" y2="68.5" />
+        <line x1="59.5" y1="65.5" x2="59.5" y2="68.5" />
+      </g>
+    </svg>
+  ),
   house: ({ color, width = 45, height = 45 }: IconProps) => (
     <svg id="TRAZOS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 83" width={width} height={height}>
       <path

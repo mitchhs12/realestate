@@ -130,6 +130,47 @@ export default {
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Tipos de habitaciones",
+      "options": {
+        "0": "Dormitorio",
+        "1": "Cocina",
+        "2": "Sala de estar",
+        "3": "Baño",
+        "4": "Estudiar",
+        "5": "Comedor"
+      }
+    },
+    "propertyStyles": {
+      "title": "Estilos de propiedad",
+      "options": {
+        "0": "Contemporáneo",
+        "1": "Colonial",
+        "2": "victoriano",
+        "3": "Artesano",
+        "4": "Renacimiento mediterráneo",
+        "5": "Cabo Cod",
+        "6": "Tudor",
+        "7": "Art Decó",
+        "8": "Rancho",
+        "9": "Chalet"
+      }
+    },
+    "roomStyles": {
+      "title": "Estilos de habitaciones",
+      "options": {
+        "0": "Moderno",
+        "1": "Antiguo",
+        "2": "Minimalist",
+        "3": "Industrial",
+        "4": "bohemio",
+        "5": "escandinavo",
+        "6": "Costero",
+        "7": "mediterráneo",
+        "8": "Cortijo",
+        "9": "Modernismo de mediados de siglo"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Busca cualquier dirección o lugar...",

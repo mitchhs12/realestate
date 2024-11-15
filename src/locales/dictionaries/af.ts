@@ -130,6 +130,47 @@ export default {
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Kamer tipes",
+      "options": {
+        "0": "Slaapkamer",
+        "1": "Kombuis",
+        "2": "Sitkamer",
+        "3": "Badkamer",
+        "4": "Studie",
+        "5": "Eetkamer"
+      }
+    },
+    "propertyStyles": {
+      "title": "Eiendom Styles",
+      "options": {
+        "0": "Kontemporêr",
+        "1": "Koloniaal",
+        "2": "Victoriaans",
+        "3": "Vakman",
+        "4": "Mediterreense herlewing",
+        "5": "Kaapse kabeljou",
+        "6": "Tudor",
+        "7": "Art Deco",
+        "8": "Ranch",
+        "9": "Chalet"
+      }
+    },
+    "roomStyles": {
+      "title": "Kamerstyle",
+      "options": {
+        "0": "Moderne",
+        "1": "Oesjaar",
+        "2": "Minimalisties",
+        "3": "Industriële",
+        "4": "Boheems",
+        "5": "Skandinawiese",
+        "6": "Kus",
+        "7": "Middellandse See",
+        "8": "Plaashuis",
+        "9": "Middel-eeu modern"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Soek vir enige adres of plek...",

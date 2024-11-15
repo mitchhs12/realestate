@@ -130,6 +130,47 @@
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Zimmertypen",
+      "options": {
+        "0": "Schlafzimmer",
+        "1": "Küche",
+        "2": "Wohnzimmer",
+        "3": "Badezimmer",
+        "4": "Studie",
+        "5": "Esszimmer"
+      }
+    },
+    "propertyStyles": {
+      "title": "Eigenschaftenstile",
+      "options": {
+        "0": "Zeitgenössisch",
+        "1": "Kolonialstil",
+        "2": "viktorianisch",
+        "3": "Handwerker",
+        "4": "Mediterrane Wiederbelebung",
+        "5": "Cape Cod",
+        "6": "Tudor",
+        "7": "Art Deco",
+        "8": "Ranch",
+        "9": "Chalet"
+      }
+    },
+    "roomStyles": {
+      "title": "Zimmerstile",
+      "options": {
+        "0": "Modern",
+        "1": "Jahrgang",
+        "2": "Minimalistisch",
+        "3": "Industrie",
+        "4": "Bohemien",
+        "5": "skandinavisch",
+        "6": "Küste",
+        "7": "Mittelmeer",
+        "8": "Bauernhaus",
+        "9": "Mid-Century Modern"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Suche nach einer beliebigen Adresse oder einem beliebigen Ort...",

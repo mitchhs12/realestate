@@ -46,14 +46,7 @@ export default function PhotoDialog({ showAllPhotos }: { showAllPhotos: string }
 
           {/* Carousel for smaller screens */}
           <div className="relative md:hidden w-full hover:cursor-pointer rounded-xl overflow-hidden">
-            <ResizableCarousel
-              photos={home.photos}
-              title={home.title!}
-              height={`h-[320px]`}
-              rounded={"rounded-xl"}
-              home={home}
-              large={true}
-            />
+            <ResizableCarousel photos={home.photos} title={home.title!} height={`h-[320px]`} home={home} large={true} />
           </div>
         </div>
       </DialogTrigger>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import ResizableCarousel from "@/components/ResizableCarousel";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect, useContext } from "react";
-import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { HomeContext } from "@/context/HomeContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import InteriorAI from "@/components/InteriorAI";
@@ -23,21 +23,11 @@ export default function HomePhotos({ showAllPhotos }: Props) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { home, editMode } = useContext(HomeContext);
-  const [generatedImages, setGeneratedImages] = useState<{ [key: string]: string }>({});
-  const [displayedImages, setDisplayedImages] = useState<any>({});
   const { user } = useContext(LocaleContext);
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
-  };
-
-  const toggleImage = (photo: any) => {
-    console.log("toggling image", photo, displayedImages[photo]);
-    setDisplayedImages((prev: any) => ({
-      ...prev,
-      [photo]: prev[photo] === "original" ? "generated" : "original",
-    }));
   };
 
   useEffect(() => {
@@ -106,6 +96,9 @@ export default function HomePhotos({ showAllPhotos }: Props) {
                 />
               </div>
             ))}
+            <div className="absolute top-3 left-3">
+              <InteriorAI imageUrl={home.photos[0]} />
+            </div>
             <div className="absolute top-1 left-[49%] -translate-x-1/2">
               {user && user.id !== home.ownerId && <FavoriteComponent user={user} home={home} large={true} />}
             </div>
@@ -131,9 +124,9 @@ export default function HomePhotos({ showAllPhotos }: Props) {
               title={home.title!}
               height={`h-[320px]`}
               openModal={openModal}
-              rounded={"rounded-xl"}
               home={home}
               large={true}
+              aiDesign={true}
             />
           </div>
         </div>
@@ -156,25 +149,11 @@ export default function HomePhotos({ showAllPhotos }: Props) {
                 }}
               >
                 {/* Check if the photo is AI-generated */}
-                <div className="absolute top-3 md:left-3">
-                  <div className="flex flex-col gap-3">
-                    <InteriorAI
-                      imageUrl={photo}
-                      generatedImages={generatedImages}
-                      setGeneratedImages={setGeneratedImages}
-                      toggleImage={toggleImage}
-                    />
-                    {generatedImages[photo] && (
-                      <Button variant="secondary" onClick={() => toggleImage(photo)}>
-                        {displayedImages[photo] === "generated" ? "Show Original" : "Show Generated"}
-                      </Button>
-                    )}
-                  </div>
+                <div className="absolute top-3 left-3">
+                  <InteriorAI imageUrl={photo} />
                 </div>
                 <Image
-                  src={
-                    displayedImages[photo] === "generated" && generatedImages[photo] ? generatedImages[photo] : photo
-                  }
+                  src={photo}
                   className="object-cover object-center rounded-lg"
                   alt={`${home.title} photo ${index}`}
                   width={700}

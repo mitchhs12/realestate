@@ -130,6 +130,47 @@
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Tipos de quarto",
+      "options": {
+        "0": "Quarto",
+        "1": "Cozinha",
+        "2": "Sala de estar",
+        "3": "Banheiro",
+        "4": "Estudar",
+        "5": "Sala de jantar"
+      }
+    },
+    "propertyStyles": {
+      "title": "Estilos de Propriedade",
+      "options": {
+        "0": "Contemporâneo",
+        "1": "Colonial",
+        "2": "Vitoriano",
+        "3": "Artesão",
+        "4": "Revival Mediterrâneo",
+        "5": "Cabo Cod",
+        "6": "tudor",
+        "7": "Art Déco",
+        "8": "Rancho",
+        "9": "Chalé"
+      }
+    },
+    "roomStyles": {
+      "title": "Estilos de quarto",
+      "options": {
+        "0": "Moderno",
+        "1": "Vintage",
+        "2": "Minimalista",
+        "3": "Industrial",
+        "4": "boêmio",
+        "5": "escandinavo",
+        "6": "Costeiro",
+        "7": "Mediterrâneo",
+        "8": "Casa de fazenda",
+        "9": "Moderno de meados do século"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Pesquise qualquer endereço ou lugar...",

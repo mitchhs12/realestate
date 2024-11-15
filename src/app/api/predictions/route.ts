@@ -11,17 +11,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ detail: "REPLICATE_API_KEY is not set." }, { status: 500 });
   }
 
-  const { imageUrl, room, theme } = await request.json();
+  const { imageUrl, isRoom, kind, style } = await request.json();
+  // isRoom = "room" | "property"
+  // kind = "kind of property" / "kind of room"
+  // style = "style of design"
 
   const options: any = {
     version: "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
     input: {
       image: imageUrl,
-      prompt: `a ${theme.toLowerCase()} ${room.toLowerCase()}`,
-      a_prompt:
-        "best quality, extremely detailed, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning",
+      prompt: `A ${kind} ${isRoom ? "room" : "property"} designed in ${style} style and with ${style} aesthetics.`,
+      a_prompt: `best quality, extremely detailed, photo from Pinterest, cinematic photo, ${isRoom ? "indoor lighting accents" : "outdoor natural lighting"}, ultra-detailed, ultra-realistic, award-winning`,
       n_prompt:
-        "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
+        "longbody, blurry, distorted edges, unrealistic proportions, bad lighting, oversaturation, overly cartoonish, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
     },
   };
 

@@ -44,7 +44,6 @@ import { featureIcons } from "../Icons/featureIcons";
 import BuyNowButton from "@/components/BuyNowButton";
 import ReactQuill from "react-quill";
 import "@/app/[locale]/quill.css"; // Import Quill styles
-import { kv } from "@vercel/kv";
 import TypeDialog from "./TypeDialog";
 import DescriptionDialog from "./DescriptionDialog";
 import PriceDialog from "./PriceDialog";

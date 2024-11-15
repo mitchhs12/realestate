@@ -130,6 +130,47 @@ export default {
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Loại phòng",
+      "options": {
+        "0": "Phòng ngủ",
+        "1": "Phòng bếp",
+        "2": "Phòng khách",
+        "3": "Phòng tắm",
+        "4": "Học",
+        "5": "Phòng ăn"
+      }
+    },
+    "propertyStyles": {
+      "title": "Kiểu Thuộc Tính",
+      "options": {
+        "0": "Đồng thời",
+        "1": "Thuộc địa",
+        "2": "thời Victoria",
+        "3": "Người thợ thủ công",
+        "4": "Sự hồi sinh của Địa Trung Hải",
+        "5": "Mũi Cod",
+        "6": "Tudor",
+        "7": "Nghệ thuật trang trí",
+        "8": "Trang trại",
+        "9": "Nhà gỗ"
+      }
+    },
+    "roomStyles": {
+      "title": "Kiểu phòng",
+      "options": {
+        "0": "Hiện đại",
+        "1": "Cổ điển",
+        "2": "Tối giản",
+        "3": "Công nghiệp",
+        "4": "Người Bohemia",
+        "5": "Người Scandinavi",
+        "6": "Bờ biển",
+        "7": "Địa Trung Hải",
+        "8": "Nhà nông trại",
+        "9": "Hiện đại giữa thế kỷ"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Tìm kiếm bất kỳ địa chỉ hoặc địa điểm nào...",

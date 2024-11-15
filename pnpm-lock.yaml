@@ -233,6 +233,9 @@ importers:
       react:
         specifier: ^18.3.1
         version: 18.3.1
+      react-compare-slider:
+        specifier: ^3.1.0
+        version: 3.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-currency-input-field:
         specifier: ^3.8.0
         version: 3.8.0(react@18.3.1)
@@ -6303,6 +6306,13 @@ packages:
     resolution: {integrity: sha512-XGGGRQAKY+q25Lz9a/4EPqom7WRjz3z9R2k4jhVKA/puQFH/5Nt27vFZYql4m4NVNdUvX8PS3O7r/Zzm7cjUlg==}
     peerDependencies:
       react: ^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+
+  react-compare-slider@3.1.0:
+    resolution: {integrity: sha512-TQVbZYmYyTIeKRmQciVXCmUwHjTThQTON7GfWfzMAOInRRG9tCiQnVXnCUd5DJ5l3Hngh4IEzOb9TG82gjoEhQ==}
+    engines: {node: '>=16.9.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
 
   react-copy-to-clipboard@5.1.0:
     resolution: {integrity: sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==}
@@ -14595,6 +14605,11 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.25.6
       react: 18.3.1
+
+  react-compare-slider@3.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   react-copy-to-clipboard@5.1.0(react@18.3.1):
     dependencies:

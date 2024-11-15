@@ -130,6 +130,47 @@
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Tipe Kamar",
+      "options": {
+        "0": "Kamar tidur",
+        "1": "Dapur",
+        "2": "Ruang tamu",
+        "3": "Kamar mandi",
+        "4": "Belajar",
+        "5": "Ruang makan"
+      }
+    },
+    "propertyStyles": {
+      "title": "Gaya Properti",
+      "options": {
+        "0": "Kontemporer",
+        "1": "Kolonial",
+        "2": "Victoria",
+        "3": "Tukang",
+        "4": "Kebangkitan Mediterania",
+        "5": "Tanjung Cod",
+        "6": "Bahasa Tudor",
+        "7": "Seni Dekorasi",
+        "8": "Peternakan",
+        "9": "Pondok"
+      }
+    },
+    "roomStyles": {
+      "title": "Gaya Ruangan",
+      "options": {
+        "0": "Modern",
+        "1": "Antik",
+        "2": "Minimalis",
+        "3": "Industri",
+        "4": "Bahasa Bohemia",
+        "5": "Skandinavia",
+        "6": "pesisir",
+        "7": "Mediterania",
+        "8": "Rumah pertanian",
+        "9": "Modern Abad Pertengahan"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Cari alamat atau tempat apa pun...",

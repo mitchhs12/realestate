@@ -130,6 +130,47 @@ export default {
     }
   },
   "home": {
+    "roomTypes": {
+      "title": "Vrste soba",
+      "options": {
+        "0": "Spavaća soba",
+        "1": "Kuhinja",
+        "2": "Dnevni boravak",
+        "3": "Kupaonica",
+        "4": "Studija",
+        "5": "Blagovaonica"
+      }
+    },
+    "propertyStyles": {
+      "title": "Stilovi svojstava",
+      "options": {
+        "0": "Suvremeni",
+        "1": "Kolonijalni",
+        "2": "viktorijanski",
+        "3": "Zanatlija",
+        "4": "Mediteranski preporod",
+        "5": "Cape Cod",
+        "6": "Tudor",
+        "7": "Art Deco",
+        "8": "Ranč",
+        "9": "Brvnara"
+      }
+    },
+    "roomStyles": {
+      "title": "Stilovi soba",
+      "options": {
+        "0": "Moderno",
+        "1": "Vintage",
+        "2": "Minimalistički",
+        "3": "Industrijski",
+        "4": "boemski",
+        "5": "skandinavski",
+        "6": "primorski",
+        "7": "Mediteran",
+        "8": "Seoska kuća",
+        "9": "Moderna sredinom stoljeća"
+      }
+    },
     "header": {
       "search": {
         "placeholder": "Potražite bilo koju adresu ili mjesto...",
