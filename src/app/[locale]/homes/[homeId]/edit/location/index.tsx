@@ -18,8 +18,7 @@ export default function Location() {
   const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
   const [saveDisabled, setSaveDisabled] = useState(true);
-
-  const [isExactLocation, setIsExactLocation] = useState(editedHome?.exactLocation || false);
+  const [isExactLocation, setIsExactLocation] = useState(editedHome?.exactLocation ? true : false);
 
   const [currentCoords, setCurrentCoords] = useState(
     editedHome?.latitude && editedHome?.longitude
@@ -27,18 +26,29 @@ export default function Location() {
       : { lat: 0, long: 0 }
   );
 
+  useEffect(() => {
+    console.log("exact", isExactLocation);
+  }, [isExactLocation]);
+
   const t = useScopedI18n("sell.location");
   const s = useScopedI18n("home.header.search");
   const h = useScopedI18n("homes");
 
   useEffect(() => {
     if (editedHome) {
-      setEditedHome({ ...editedHome, latitude: currentCoords.lat, longitude: currentCoords.long });
+      console.log("exact location pin to be set", isExactLocation);
+
+      setEditedHome({
+        ...editedHome,
+        latitude: currentCoords.lat,
+        longitude: currentCoords.long,
+        exactLocation: isExactLocation,
+      });
       setSaveDisabled(false);
     } else {
       setSaveDisabled(true);
     }
-  }, [currentCoords]);
+  }, [currentCoords, isExactLocation]);
 
   useEffect(() => {
     const fetchCoordinates = async () => {

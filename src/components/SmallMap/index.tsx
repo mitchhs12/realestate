@@ -79,7 +79,7 @@ export default function MapComponent({
     setCameraProps({ center: { lat: coordinates.lat, lng: coordinates.long }, zoom: newZoom });
   }, [coordinates]);
 
-  const getAddress = async (lat: number, lng: number) => {
+  const getAddress = async (lat: number, lng: number, usePin: boolean) => {
     const result = await fetch("/api/getAddress", {
       method: "POST",
       headers: {
@@ -90,6 +90,7 @@ export default function MapComponent({
       }),
     });
     const data = await result.json();
+    console.log("new pin to be set", usePin);
     currentHome &&
       setNewHome &&
       setNewHome({
@@ -137,7 +138,7 @@ export default function MapComponent({
       setLoading();
       setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
       setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
-      debouncedGetAddress(ev.detail.center.lat, ev.detail.center.lng);
+      debouncedGetAddress(ev.detail.center.lat, ev.detail.center.lng, usePin);
     },
     [debouncedGetAddress]
   );
