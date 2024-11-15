@@ -29,7 +29,7 @@ export default function MapComponent({
   coordinates,
   currentHome,
   disabled,
-  useCircle,
+  usePin,
   editMode,
   setNewHome,
   setNextLoading,
@@ -39,7 +39,7 @@ export default function MapComponent({
   currentHome: HomeType | null;
   coordinates: CoordinatesType;
   disabled?: boolean;
-  useCircle?: boolean;
+  usePin: boolean;
   editMode?: boolean;
   setNewHome?: (value: HomeType) => void;
   setNextLoading?: (value: boolean) => void;
@@ -101,7 +101,7 @@ export default function MapComponent({
         country: data.results?.Country, // ISO 3166 Alpha 3 Code
         longitude: data.location[0],
         latitude: data.location[1],
-        exactLocation: useCircle ? false : true,
+        exactLocation: usePin,
       });
     if (setNextLoading && setPrevLoading) {
       setNextLoading(false);
@@ -183,7 +183,15 @@ export default function MapComponent({
               reuseMaps={true}
               onCameraChanged={handleCameraChanged}
             >
-              {useCircle ? (
+              {usePin ? (
+                <Marker
+                  position={
+                    disabled
+                      ? { lat: coordinates.lat, lng: coordinates.long }
+                      : { lat: cameraPos.lat, lng: cameraPos.long }
+                  }
+                />
+              ) : (
                 <Circle
                   radius={300}
                   center={
@@ -196,14 +204,6 @@ export default function MapComponent({
                   strokeWeight={3}
                   fillColor="#16A34A"
                   fillOpacity={0.3}
-                />
-              ) : (
-                <Marker
-                  position={
-                    disabled
-                      ? { lat: coordinates.lat, lng: coordinates.long }
-                      : { lat: cameraPos.lat, lng: cameraPos.long }
-                  }
                 />
               )}
             </Map>

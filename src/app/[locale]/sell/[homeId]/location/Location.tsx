@@ -56,7 +56,7 @@ export default function Location({
       ? { lat: currentHome.latitude, long: currentHome.longitude }
       : { lat: 0, long: 0 }
   );
-  const [isExactLocation, setIsExactLocation] = useState(false);
+  const [isExactLocation, setIsExactLocation] = useState(currentHome?.exactLocation || false);
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -135,7 +135,7 @@ export default function Location({
                 setNewHome={setNewHome}
                 setNextLoading={setNextLoading}
                 setPrevLoading={setPrevLoading}
-                useCircle={!isExactLocation}
+                usePin={isExactLocation}
               />
             </div>
           </div>

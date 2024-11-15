@@ -19,7 +19,7 @@ export default function SmallMapWrapper() {
             currentHome={home}
             coordinates={{ long: home.longitude, lat: home.latitude }}
             disabled={true}
-            useCircle={home.exactLocation ? false : true}
+            usePin={home.exactLocation}
             editMode={true}
           />
         </div>
@@ -35,7 +35,7 @@ export default function SmallMapWrapper() {
       currentHome={home}
       coordinates={{ long: home.longitude, lat: home.latitude }}
       disabled={true}
-      useCircle={home.exactLocation ? false : true}
+      usePin={home.exactLocation}
     />
   );
 }
