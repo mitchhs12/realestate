@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useScopedI18n } from "@/locales/client";
 import { HomeContext } from "@/context/HomeContext";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { Circle, Pin } from "lucide-react";
 
 interface SearchResult {
   text: string;
@@ -17,6 +18,8 @@ export default function Location() {
   const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
   const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
   const [saveDisabled, setSaveDisabled] = useState(true);
+
+  const [isExactLocation, setIsExactLocation] = useState(editedHome?.exactLocation || false);
 
   const [currentCoords, setCurrentCoords] = useState(
     editedHome?.latitude && editedHome?.longitude
@@ -58,7 +61,7 @@ export default function Location() {
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-6">
-      <div className="flex flex-col w-full max-w-8xl h-full overflow-y-auto justify-start items-center text-center">
+      <div className="flex flex-col w-full max-w-8xl gap-8 h-full overflow-y-auto justify-start items-center text-center">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center py-3">
             <h1 className="flex items-center text-3xl">{t("title")}</h1>
@@ -75,6 +78,26 @@ export default function Location() {
               text={s("search-button")}
             />
           </div>
+          {currentCoords.lat !== 0 && currentCoords.long !== 0 && (
+            <div className="flex justify-center items-center gap-x-4">
+              <Button
+                disabled={isExactLocation}
+                onClick={() => setIsExactLocation(true)}
+                className="flex gap-3 items-center"
+              >
+                <Pin size={20} />
+                {t("exact")}
+              </Button>
+              <Button
+                disabled={!isExactLocation}
+                onClick={() => setIsExactLocation(false)}
+                className="flex gap-3 items-center"
+              >
+                <Circle size={20} />
+                {t("approximate")}
+              </Button>
+            </div>
+          )}
         </div>
         {currentCoords.lat !== 0 && currentCoords.long !== 0 && (
           <div className="flex flex-col items-start justify-center h-full w-full gap-8">
@@ -84,6 +107,7 @@ export default function Location() {
                 currentHome={editedHome}
                 setNewHome={setEditedHome}
                 setSaveDisabled={setSaveDisabled}
+                usePin={isExactLocation}
               />
             </div>
           </div>
