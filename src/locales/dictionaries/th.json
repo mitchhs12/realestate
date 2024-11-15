@@ -219,6 +219,7 @@
         "language": "ภาษา",
         "my-properties": "คุณสมบัติของฉัน",
         "my-lists": "รายการสิ่งที่ฉันปรารถนา",
+        "ai-studio": "เอไอสตูดิโอ",
         "currency": "สกุลเงิน",
         "settings": "การตั้งค่า",
         "exit": "บันทึกและออก",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "ที่ตั้ง",
-      "subtitle": "ทรัพย์สินของคุณอยู่ที่ไหน?"
+      "subtitle": "ทรัพย์สินของคุณอยู่ที่ไหน?",
+      "exact": "ที่แน่นอน",
+      "approximate": "ประมาณ"
     },
     "photos": {
       "title": "ภาพถ่าย",
@@ -723,6 +726,27 @@
     "propertiesText": "คุณสมบัติ",
     "otherCategories": "หมวดหมู่อื่นๆ...",
     "loading": "กำลังโหลด..."
+  },
+  "ai-studio": {
+    "title": "เอไอสตูดิโอ",
+    "subtitle": "ออกแบบคุณสมบัติและห้องของคุณใหม่",
+    "redesign": "ออกแบบใหม่ของฉัน",
+    "kind-room-placeholder": "เลือกประเภทห้องที่ต้องการ",
+    "kind-property-placeholder": "เลือกประเภททรัพย์สินที่ต้องการ",
+    "style-property-placeholder": "เลือกสไตล์ทรัพย์สินใหม่",
+    "style-room-placeholder": "เลือกสไตล์ห้องใหม่",
+    "room-kind-title": "ประเภทห้องปัจจุบัน",
+    "room-style-title": "สไตล์ห้องใหม่",
+    "property-kind-title": "ประเภททรัพย์สินปัจจุบัน",
+    "property-style-title": "รูปแบบอสังหาฯใหม่",
+    "isRoomButton": {
+      "room": "ห้อง",
+      "property": "คุณสมบัติ"
+    },
+    "executeButton": {
+      "submit": "ออกแบบใหม่ด้วย AI",
+      "loading": "กำลังสร้าง"
+    }
   },
   "homes": {
     "units": {

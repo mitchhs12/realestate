@@ -217,8 +217,9 @@
           "system": "Sistem"
         },
         "language": "Dil",
-        "my-properties": "Benim mülklerim",
-        "my-lists": "İstek listelerim",
+        "my-properties": "Benim Özelliklerim",
+        "my-lists": "İstek Listelerim",
+        "ai-studio": "AI Stüdyosu",
         "currency": "Para birimi",
         "settings": "Ayarlar",
         "exit": "Kaydet ve çık",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "Konum",
-      "subtitle": "Eşyanız nerede?"
+      "subtitle": "Eşyanız nerede?",
+      "exact": "Bire bir aynı",
+      "approximate": "Yaklaşık"
     },
     "photos": {
       "title": "Fotoğraflar",
@@ -723,6 +726,27 @@
     "propertiesText": "Özellikler",
     "otherCategories": "diğer kategoriler...",
     "loading": "Yükleniyor..."
+  },
+  "ai-studio": {
+    "title": "AI Stüdyosu",
+    "subtitle": "Özelliklerinizi ve odalarınızı yeniden tasarlayın",
+    "redesign": "Yeniden tasarla",
+    "kind-room-placeholder": "Odanın türünü seçin",
+    "kind-property-placeholder": "Mülkün türünü seçin",
+    "style-property-placeholder": "Yeni bir mülk stili seçin",
+    "style-room-placeholder": "Yeni bir oda stili seçin",
+    "room-kind-title": "Mevcut oda tipi",
+    "room-style-title": "Yeni oda stili",
+    "property-kind-title": "Mevcut mülk türü",
+    "property-style-title": "Yeni mülk stili",
+    "isRoomButton": {
+      "room": "Oda",
+      "property": "Mülk"
+    },
+    "executeButton": {
+      "submit": "Yapay Zeka ile yeniden tasarlayın",
+      "loading": "Üretiliyor"
+    }
   },
   "homes": {
     "units": {

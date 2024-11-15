@@ -219,6 +219,7 @@ export default {
         "language": "Sprache",
         "my-properties": "Meine Immobilien",
         "my-lists": "Meine Wunschlisten",
+        "ai-studio": "AI Studio",
         "currency": "Währung",
         "settings": "Einstellungen",
         "exit": "Speichern und beenden",
@@ -602,7 +603,9 @@ export default {
     },
     "location": {
       "title": "Standort",
-      "subtitle": "Wo befindet sich Ihr Eigentum?"
+      "subtitle": "Wo befindet sich Ihr Eigentum?",
+      "exact": "Genau",
+      "approximate": "Ungefähr"
     },
     "photos": {
       "title": "Fotos",
@@ -723,6 +726,27 @@ export default {
     "propertiesText": "Eigenschaften",
     "otherCategories": "andere Kategorien...",
     "loading": "Laden..."
+  },
+  "ai-studio": {
+    "title": "AI Studio",
+    "subtitle": "Gestalten Sie Ihre Immobilien und Räume neu",
+    "redesign": "Neugestaltung meiner",
+    "kind-room-placeholder": "Wählen Sie den Zimmertyp aus",
+    "kind-property-placeholder": "Wählen Sie die Art der Immobilie aus",
+    "style-property-placeholder": "Einen neuen Eigenschaftsstil auswählen",
+    "style-room-placeholder": "Wählen Sie einen neuen Raumstil",
+    "room-kind-title": "Aktuelle Zimmerkategorie",
+    "room-style-title": "Neuer Zimmerstil",
+    "property-kind-title": "Aktueller Immobilientyp",
+    "property-style-title": "Neuer Immobilienstil",
+    "isRoomButton": {
+      "room": "Zimmer",
+      "property": "Eigentum"
+    },
+    "executeButton": {
+      "submit": "Redesign mit KI",
+      "loading": "Generieren"
+    }
   },
   "homes": {
     "units": {

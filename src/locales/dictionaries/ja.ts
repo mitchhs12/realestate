@@ -217,8 +217,9 @@ export default {
           "system": "システム"
         },
         "language": "言語",
-        "my-properties": "私の財産",
+        "my-properties": "私のプロパティ",
         "my-lists": "私のウィッシュリスト",
+        "ai-studio": "AIスタジオ",
         "currency": "通貨",
         "settings": "設定",
         "exit": "保存して終了",
@@ -602,7 +603,9 @@ export default {
     },
     "location": {
       "title": "位置",
-      "subtitle": "あなたの財産はどこですか？"
+      "subtitle": "あなたの財産はどこですか？",
+      "exact": "ちょうど",
+      "approximate": "近似"
     },
     "photos": {
       "title": "写真",
@@ -723,6 +726,27 @@ export default {
     "propertiesText": "プロパティ",
     "otherCategories": "その他のカテゴリー...",
     "loading": "読み込み中..."
+  },
+  "ai-studio": {
+    "title": "AIスタジオ",
+    "subtitle": "物件や部屋を再設計する",
+    "redesign": "私のデザインを変更",
+    "kind-room-placeholder": "部屋の種類を選択してください",
+    "kind-property-placeholder": "物件の種類を選択してください",
+    "style-property-placeholder": "新しいプロパティスタイルを選択",
+    "style-room-placeholder": "新しい部屋のスタイルを選択",
+    "room-kind-title": "現在の部屋タイプ",
+    "room-style-title": "新しい部屋のスタイル",
+    "property-kind-title": "現在のプロパティタイプ",
+    "property-style-title": "新しいプロパティスタイル",
+    "isRoomButton": {
+      "room": "部屋",
+      "property": "財産"
+    },
+    "executeButton": {
+      "submit": "AIによる再設計",
+      "loading": "生成中"
+    }
   },
   "homes": {
     "units": {

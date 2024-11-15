@@ -70,12 +70,12 @@ export default function Description({
           </div>
         </div>
 
-        <div className="flex flex-col max-w-8xl h-auto w-full justify-center mt-10 shadow-lg dark:shadow-white rounded-xl">
+        <div className="flex flex-col max-w-8xl h-auto w-full justify-center mt-10 px-4rounded-xl px-4">
           <ReactQuill
             value={description}
             theme={"snow"}
             placeholder={placeholder}
-            className={`flex flex-col h-full max-w-8xl w-full overflow-auto text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${description.length === 3000 && "border-red-500"}`}
+            className={`flex flex-col h-full min-h-[250px] max-w-8xl w-full overflow-auto shadow-lg dark:shadow-white text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${description.length === 3000 && "border-red-500"}`}
             onChange={(value: string) => {
               if (value.length <= 3000) {
                 setDescription(value);

@@ -81,6 +81,7 @@ model Home {
   country         String?
   latitude        Float           @default(0)
   longitude       Float           @default(0)
+  exactLocation   Boolean         @default(false)
   type            String[]
   features        String[]
   bedrooms        Int?             @default(0)

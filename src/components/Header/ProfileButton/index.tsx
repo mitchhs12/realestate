@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useSession, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,13 +16,13 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
-import { CircleUser, Menu } from "lucide-react";
+import { CircleUser, Menu, Sparkles } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { languages, LanguageType, locales } from "@/lib/validations";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import { getFullLanguageName } from "@/lib/utils";
 import { useChangeLocale, useCurrentLocale } from "@/locales/client";
@@ -46,6 +46,9 @@ import {
   Lock,
   LogIn,
 } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import AIContent from "@/components/InteriorAI/Content";
+import { I18nProviderClient } from "@/locales/client";
 
 interface Props {
   openSignUpModal: () => void;
@@ -53,13 +56,20 @@ interface Props {
 }
 
 export default function ProfileButton({ openSignUpModal, openLogInModal }: Props) {
-  const { defaultCurrency, setDefaultCurrency, currencyData, user, sessionLoading, sessionUnauthenticated } =
-    useContext(LocaleContext);
+  const {
+    defaultCurrency,
+    defaultLanguage,
+    setDefaultCurrency,
+    currencyData,
+    user,
+    sessionLoading,
+    sessionUnauthenticated,
+  } = useContext(LocaleContext);
   const { headerValues } = useContext(QueryContext);
   const router = useRouter();
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();
-  const lang = useCurrentLocale();
+  const [modalOpen, setModalOpen] = useState(false);
   const {
     greeting,
     log_in,
@@ -74,6 +84,7 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
     settings,
     myproperties,
     mylists,
+    aiStudio,
     admin,
   } = headerValues;
 
@@ -81,6 +92,10 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
     await updateLanguage({ language: newLang });
     changeLang(newLang);
   };
+
+  useEffect(() => {
+    console.log("Modal Open State: ", modalOpen);
+  }, [modalOpen]);
 
   // Function to get initials from username
   const getInitials = (username: string) => {
@@ -141,6 +156,29 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
                 <Heart width={20} height={20} strokeWidth={1.25} />
                 {mylists}
               </DropdownMenuItem>
+              <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+                <DialogTrigger asChild>
+                  <DropdownMenuItem
+                    className="cursor-pointer flex w-full items-center gap-2"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      setModalOpen(true);
+                    }}
+                  >
+                    <Sparkles width={20} height={20} strokeWidth={1.25} />
+                    {aiStudio}
+                  </DropdownMenuItem>
+                </DialogTrigger>
+                <DialogContent
+                  className="flex flex-col justify-start items-center w-full h-full max-w-[90%] max-h-[85%] px-0 pb-4"
+                  onOpenAutoFocus={(e) => e.preventDefault()}
+                >
+                  <I18nProviderClient locale={defaultLanguage}>
+                    <AIContent />
+                  </I18nProviderClient>
+                </DialogContent>
+              </Dialog>
             </DropdownMenuGroup>
           </>
         ) : (
@@ -178,7 +216,7 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="p-2 max-h-60 overflow-y-auto">
                 <DropdownMenuRadioGroup
-                  value={lang}
+                  value={defaultLanguage}
                   onValueChange={(newLanguage) => {
                     handleUpdateLanguage(newLanguage as LanguageType);
                   }}

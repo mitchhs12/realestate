@@ -219,6 +219,7 @@
         "language": "ენა",
         "my-properties": "ჩემი თვისებები",
         "my-lists": "ჩემი სურვილების სია",
+        "ai-studio": "AI სტუდია",
         "currency": "ვალუტა",
         "settings": "პარამეტრები",
         "exit": "შენახვა და გამოსვლა",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "მდებარეობა",
-      "subtitle": "სად არის შენი ქონება?"
+      "subtitle": "სად არის შენი ქონება?",
+      "exact": "ზუსტი",
+      "approximate": "მიახლოებითი"
     },
     "photos": {
       "title": "ფოტოები",
@@ -723,6 +726,27 @@
     "propertiesText": "თვისებები",
     "otherCategories": "სხვა კატეგორიები...",
     "loading": "იტვირთება..."
+  },
+  "ai-studio": {
+    "title": "AI სტუდია",
+    "subtitle": "გადააკეთეთ თქვენი ქონება და ოთახები",
+    "redesign": "ხელახლა დიზაინი ჩემი",
+    "kind-room-placeholder": "აირჩიეთ ოთახის ტიპი",
+    "kind-property-placeholder": "აირჩიეთ რა სახის ქონებაა",
+    "style-property-placeholder": "აირჩიეთ ქონების ახალი სტილი",
+    "style-room-placeholder": "აირჩიეთ ოთახის ახალი სტილი",
+    "room-kind-title": "ოთახის ამჟამინდელი ტიპი",
+    "room-style-title": "ოთახის ახალი სტილი",
+    "property-kind-title": "ამჟამინდელი ქონების ტიპი",
+    "property-style-title": "ახალი საკუთრების სტილი",
+    "isRoomButton": {
+      "room": "ოთახი",
+      "property": "საკუთრება"
+    },
+    "executeButton": {
+      "submit": "ხელახალი დიზაინი AI-ით",
+      "loading": "გენერირება"
+    }
   },
   "homes": {
     "units": {

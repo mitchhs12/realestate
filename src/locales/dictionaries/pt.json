@@ -217,8 +217,9 @@
           "system": "Sistema"
         },
         "language": "Linguagem",
-        "my-properties": "Minhas propriedades",
+        "my-properties": "Minhas Propriedades",
         "my-lists": "Minhas listas de desejos",
+        "ai-studio": "Estúdio de IA",
         "currency": "Moeda",
         "settings": "Configurações",
         "exit": "Salvar e sair",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "Localização",
-      "subtitle": "Onde fica sua propriedade?"
+      "subtitle": "Onde fica sua propriedade?",
+      "exact": "Exato",
+      "approximate": "Aproximado"
     },
     "photos": {
       "title": "Fotos",
@@ -723,6 +726,27 @@
     "propertiesText": "Propriedades",
     "otherCategories": "outras categorias...",
     "loading": "Carregando..."
+  },
+  "ai-studio": {
+    "title": "Estúdio de IA",
+    "subtitle": "Redesenhe suas propriedades e quartos",
+    "redesign": "Redesenhar meu",
+    "kind-room-placeholder": "Selecione o tipo de sala",
+    "kind-property-placeholder": "Selecione o tipo de propriedade que é",
+    "style-property-placeholder": "Selecione um novo estilo de propriedade",
+    "style-room-placeholder": "Selecione um novo estilo de sala",
+    "room-kind-title": "Tipo de quarto atual",
+    "room-style-title": "Novo estilo de quarto",
+    "property-kind-title": "Tipo de propriedade atual",
+    "property-style-title": "Novo estilo de propriedade",
+    "isRoomButton": {
+      "room": "Sala",
+      "property": "Propriedade"
+    },
+    "executeButton": {
+      "submit": "Redesenho com IA",
+      "loading": "Gerando"
+    }
   },
   "homes": {
     "units": {

@@ -217,8 +217,9 @@
           "system": "Système"
         },
         "language": "Langue",
-        "my-properties": "Mes biens",
+        "my-properties": "Mes propriétés",
         "my-lists": "Mes listes de souhaits",
+        "ai-studio": "Studio d'IA",
         "currency": "Devise",
         "settings": "Paramètres",
         "exit": "Enregistrer et quitter",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "Emplacement",
-      "subtitle": "Où est votre propriété?"
+      "subtitle": "Où est votre propriété?",
+      "exact": "Exact",
+      "approximate": "Approximatif"
     },
     "photos": {
       "title": "Photos",
@@ -723,6 +726,27 @@
     "propertiesText": "Propriétés",
     "otherCategories": "autres catégories...",
     "loading": "Chargement..."
+  },
+  "ai-studio": {
+    "title": "Studio d'IA",
+    "subtitle": "Repensez vos propriétés et vos pièces",
+    "redesign": "Repenser mon",
+    "kind-room-placeholder": "Sélectionnez le type de pièce dont il s'agit",
+    "kind-property-placeholder": "Sélectionnez le type de propriété dont il s'agit",
+    "style-property-placeholder": "Sélectionnez un nouveau style de propriété",
+    "style-room-placeholder": "Sélectionnez un nouveau style de pièce",
+    "room-kind-title": "Type de chambre actuel",
+    "room-style-title": "Nouveau style de chambre",
+    "property-kind-title": "Type de propriété actuel",
+    "property-style-title": "Nouveau style de propriété",
+    "isRoomButton": {
+      "room": "Chambre",
+      "property": "Propriété"
+    },
+    "executeButton": {
+      "submit": "Refonte avec l'IA",
+      "loading": "Générateur"
+    }
   },
   "homes": {
     "units": {

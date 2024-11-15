@@ -219,6 +219,7 @@ export default {
         "language": "Jezik",
         "my-properties": "Moja svojstva",
         "my-lists": "Moje liste želja",
+        "ai-studio": "AI Studio",
         "currency": "Valuta",
         "settings": "postavke",
         "exit": "Spremi i izađi",
@@ -602,7 +603,9 @@ export default {
     },
     "location": {
       "title": "Mjesto",
-      "subtitle": "Gdje je vaša imovina?"
+      "subtitle": "Gdje je vaša imovina?",
+      "exact": "Točan",
+      "approximate": "Približno"
     },
     "photos": {
       "title": "Fotografije",
@@ -723,6 +726,27 @@ export default {
     "propertiesText": "Svojstva",
     "otherCategories": "ostale kategorije...",
     "loading": "Učitavanje..."
+  },
+  "ai-studio": {
+    "title": "AI Studio",
+    "subtitle": "Redizajnirajte svoje nekretnine i sobe",
+    "redesign": "Redizajniraj moju",
+    "kind-room-placeholder": "Odaberite vrstu sobe",
+    "kind-property-placeholder": "Odaberite vrstu nekretnine",
+    "style-property-placeholder": "Odaberite novi stil svojstva",
+    "style-room-placeholder": "Odaberite novi stil sobe",
+    "room-kind-title": "Trenutačni tip sobe",
+    "room-style-title": "Novi stil sobe",
+    "property-kind-title": "Trenutačna vrsta nekretnine",
+    "property-style-title": "Novi stil nekretnine",
+    "isRoomButton": {
+      "room": "Soba",
+      "property": "Vlasništvo"
+    },
+    "executeButton": {
+      "submit": "Redizajnirajte s AI",
+      "loading": "Generiranje"
+    }
   },
   "homes": {
     "units": {

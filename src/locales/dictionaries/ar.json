@@ -219,6 +219,7 @@
         "language": "لغة",
         "my-properties": "ممتلكاتي",
         "my-lists": "قائمة أمنياتي",
+        "ai-studio": "استوديو الذكاء الاصطناعي",
         "currency": "عملة",
         "settings": "إعدادات",
         "exit": "حفظ وخروج",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "موقع",
-      "subtitle": "أين ممتلكاتك؟"
+      "subtitle": "أين ممتلكاتك؟",
+      "exact": "بالضبط",
+      "approximate": "تقريبي"
     },
     "photos": {
       "title": "الصور",
@@ -723,6 +726,27 @@
     "propertiesText": "ملكيات",
     "otherCategories": "فئات أخرى...",
     "loading": "تحميل..."
+  },
+  "ai-studio": {
+    "title": "استوديو الذكاء الاصطناعي",
+    "subtitle": "أعد تصميم خصائصك وغرفك",
+    "redesign": "أعد تصميمي",
+    "kind-room-placeholder": "حدد نوع الغرفة",
+    "kind-property-placeholder": "حدد نوع العقار",
+    "style-property-placeholder": "حدد نمط خاصية جديد",
+    "style-room-placeholder": "حدد نمط الغرفة الجديد",
+    "room-kind-title": "نوع الغرفة الحالية",
+    "room-style-title": "نمط الغرفة الجديد",
+    "property-kind-title": "نوع العقار الحالي",
+    "property-style-title": "نمط الملكية الجديد",
+    "isRoomButton": {
+      "room": "غرفة",
+      "property": "ملكية"
+    },
+    "executeButton": {
+      "submit": "إعادة التصميم باستخدام الذكاء الاصطناعي",
+      "loading": "توليد"
+    }
   },
   "homes": {
     "units": {

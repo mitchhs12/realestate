@@ -219,6 +219,7 @@
         "language": "Idioma",
         "my-properties": "Mis propiedades",
         "my-lists": "Mis listas de deseos",
+        "ai-studio": "Estudio de IA",
         "currency": "Divisa",
         "settings": "Ajustes",
         "exit": "Guardar y salir",
@@ -501,8 +502,8 @@
       "change-to-feet": "Cambiar a ft²",
       "change-to-metres": "Cambiar a m²",
       "units": {
-        "m": "metro",
-        "ft": "pie"
+        "m": "metros",
+        "ft": "pies"
       },
       "capacity": "Ahora calcule cuántas personas podrían vivir cómodamente en su propiedad."
     },
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "Ubicación",
-      "subtitle": "¿Dónde está tu propiedad?"
+      "subtitle": "¿Dónde está tu propiedad?",
+      "exact": "Exacto",
+      "approximate": "Aproximado"
     },
     "photos": {
       "title": "Fotos",
@@ -723,6 +726,27 @@
     "propertiesText": "Propiedades",
     "otherCategories": "Otras categorías...",
     "loading": "Cargando..."
+  },
+  "ai-studio": {
+    "title": "Estudio de IA",
+    "subtitle": "Rediseña tus propiedades y habitaciones",
+    "redesign": "Rediseñar mi",
+    "kind-room-placeholder": "Seleccione el tipo de habitación que es",
+    "kind-property-placeholder": "Seleccione el tipo de propiedad que es",
+    "style-property-placeholder": "Seleccione un nuevo estilo de propiedad",
+    "style-room-placeholder": "Seleccione un nuevo estilo de habitación",
+    "room-kind-title": "Tipo de habitación actual",
+    "room-style-title": "Nuevo estilo de habitación",
+    "property-kind-title": "Tipo de propiedad actual",
+    "property-style-title": "Nuevo estilo de propiedad",
+    "isRoomButton": {
+      "room": "Habitación",
+      "property": "Propiedad"
+    },
+    "executeButton": {
+      "submit": "Rediseño con IA",
+      "loading": "Generando"
+    }
   },
   "homes": {
     "units": {

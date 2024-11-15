@@ -39,6 +39,7 @@ export default async function MainLayout({ children }: Props) {
     filters: h("filters"),
     myproperties: p("my-properties"),
     mylists: p("my-lists"),
+    aiStudio: p("ai-studio"),
     features: h("features"),
     featuresSub: h("subtitles.features"),
     categories: h("categories"),

@@ -219,6 +219,7 @@ export default {
         "language": "语言",
         "my-properties": "我的房产",
         "my-lists": "我的愿望清单",
+        "ai-studio": "人工智能工作室",
         "currency": "货币",
         "settings": "设置",
         "exit": "保存并退出",
@@ -602,7 +603,9 @@ export default {
     },
     "location": {
       "title": "地点",
-      "subtitle": "你的财产在哪里？"
+      "subtitle": "你的财产在哪里？",
+      "exact": "精确的",
+      "approximate": "近似"
     },
     "photos": {
       "title": "相片",
@@ -723,6 +726,27 @@ export default {
     "propertiesText": "特性",
     "otherCategories": "其他类别...",
     "loading": "加载中..."
+  },
+  "ai-studio": {
+    "title": "人工智能工作室",
+    "subtitle": "重新设计您的房产和房间",
+    "redesign": "重新设计我的",
+    "kind-room-placeholder": "选择房间类型",
+    "kind-property-placeholder": "选择房产类型",
+    "style-property-placeholder": "选择新的房产风格",
+    "style-room-placeholder": "选择新的房间风格",
+    "room-kind-title": "現有房型",
+    "room-style-title": "新的房间风格",
+    "property-kind-title": "現有房產類型",
+    "property-style-title": "新的房产风格",
+    "isRoomButton": {
+      "room": "房间",
+      "property": "财产"
+    },
+    "executeButton": {
+      "submit": "利用人工智能重新设计",
+      "loading": "生成"
+    }
   },
   "homes": {
     "units": {

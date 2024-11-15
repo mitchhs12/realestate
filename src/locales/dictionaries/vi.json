@@ -217,8 +217,9 @@
           "system": "Hệ thống"
         },
         "language": "Ngôn ngữ",
-        "my-properties": "Tài sản của tôi",
+        "my-properties": "Thuộc tính của tôi",
         "my-lists": "Danh sách mong muốn của tôi",
+        "ai-studio": "Phòng thu AI",
         "currency": "Tiền tệ",
         "settings": "Cài đặt",
         "exit": "Lưu và thoát",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "Vị trí",
-      "subtitle": "Bất động sản của bạn ở đâu?"
+      "subtitle": "Bất động sản của bạn ở đâu?",
+      "exact": "Chính xác",
+      "approximate": "Xấp xỉ"
     },
     "photos": {
       "title": "Hình ảnh",
@@ -723,6 +726,27 @@
     "propertiesText": "Của cải",
     "otherCategories": "các danh mục khác...",
     "loading": "Đang tải..."
+  },
+  "ai-studio": {
+    "title": "Phòng thu AI",
+    "subtitle": "Thiết kế lại tài sản và phòng của bạn",
+    "redesign": "Thiết kế lại của tôi",
+    "kind-room-placeholder": "Chọn loại phòng đó là",
+    "kind-property-placeholder": "Chọn loại tài sản đó là",
+    "style-property-placeholder": "Chọn một kiểu thuộc tính mới",
+    "style-room-placeholder": "Chọn một phong cách phòng mới",
+    "room-kind-title": "Loại phòng hiện tại",
+    "room-style-title": "Phong cách phòng mới",
+    "property-kind-title": "Loại tài sản hiện tại",
+    "property-style-title": "Phong cách bất động sản mới",
+    "isRoomButton": {
+      "room": "Phòng",
+      "property": "Tài sản"
+    },
+    "executeButton": {
+      "submit": "Thiết kế lại với AI",
+      "loading": "Tạo ra"
+    }
   },
   "homes": {
     "units": {

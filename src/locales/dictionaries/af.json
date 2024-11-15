@@ -217,8 +217,9 @@
           "system": "Stelsel"
         },
         "language": "Taal",
-        "my-properties": "My eiendomme",
-        "my-lists": "My wenslyste",
+        "my-properties": "My Eienskappe",
+        "my-lists": "My wenslys",
+        "ai-studio": "AI Studio",
         "currency": "Geldeenheid",
         "settings": "Instellings",
         "exit": "Stoor en gaan uit",
@@ -602,7 +603,9 @@
     },
     "location": {
       "title": "Ligging",
-      "subtitle": "Waar is jou eiendom?"
+      "subtitle": "Waar is jou eiendom?",
+      "exact": "Presies",
+      "approximate": "Ongeveer"
     },
     "photos": {
       "title": "Foto's",
@@ -723,6 +726,27 @@
     "propertiesText": "Eienskappe",
     "otherCategories": "ander kategorieë...",
     "loading": "Laai tans..."
+  },
+  "ai-studio": {
+    "title": "AI Studio",
+    "subtitle": "Herontwerp jou eiendomme en kamers",
+    "redesign": "Herontwerp my",
+    "kind-room-placeholder": "Kies die soort kamer wat dit is",
+    "kind-property-placeholder": "Kies die soort eiendom wat dit is",
+    "style-property-placeholder": "Kies 'n nuwe eiendomstyl",
+    "style-room-placeholder": "Kies 'n nuwe kamerstyl",
+    "room-kind-title": "Huidige kamer tipe",
+    "room-style-title": "Nuwe kamerstyl",
+    "property-kind-title": "Huidige tipe eiendom",
+    "property-style-title": "Nuwe eiendomstyl",
+    "isRoomButton": {
+      "room": "Kamer",
+      "property": "Eiendom"
+    },
+    "executeButton": {
+      "submit": "Herontwerp met AI",
+      "loading": "Genereer"
+    }
   },
   "homes": {
     "units": {

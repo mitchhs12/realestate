@@ -147,6 +147,7 @@ export const homeSchema = z.object({
   country: z.string().nullable(),
   latitude: z.number(),
   longitude: z.number(),
+  exactLocation: z.boolean(),
   type: z.array(z.string()),
   features: z.array(z.string()),
   bedrooms: z.number().int().nullable(),

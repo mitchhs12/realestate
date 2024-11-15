@@ -82,7 +82,7 @@ export default function Type({
         </div>
         <div className="w-full h-full justify-center items-center px-4 sm:px-8 overflow-auto">
           <ToggleGroup type="multiple" value={selection} defaultValue={selection} onValueChange={handleValueChange}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:gap-8 items-center justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:gap-8 items-center justify-center pb-4">
               {options.map((feature, index) => {
                 const IconComponent = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
                 return (

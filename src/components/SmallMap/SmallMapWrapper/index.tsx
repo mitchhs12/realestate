@@ -19,6 +19,7 @@ export default function SmallMapWrapper() {
             currentHome={home}
             coordinates={{ long: home.longitude, lat: home.latitude }}
             disabled={true}
+            useCircle={home.exactLocation ? false : true}
             editMode={true}
           />
         </div>
@@ -30,6 +31,11 @@ export default function SmallMapWrapper() {
       </DialogContent>
     </Dialog>
   ) : (
-    <MapComponent currentHome={home} coordinates={{ long: home.longitude, lat: home.latitude }} disabled={true} />
+    <MapComponent
+      currentHome={home}
+      coordinates={{ long: home.longitude, lat: home.latitude }}
+      disabled={true}
+      useCircle={home.exactLocation ? false : true}
+    />
   );
 }

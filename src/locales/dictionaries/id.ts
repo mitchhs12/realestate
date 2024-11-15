@@ -217,8 +217,9 @@ export default {
           "system": "Sistem"
         },
         "language": "Bahasa",
-        "my-properties": "Properti saya",
-        "my-lists": "Daftar keinginanku",
+        "my-properties": "Properti Saya",
+        "my-lists": "Daftar Keinginanku",
+        "ai-studio": "Studio AI",
         "currency": "Mata uang",
         "settings": "Pengaturan",
         "exit": "Simpan dan keluar",
@@ -602,7 +603,9 @@ export default {
     },
     "location": {
       "title": "Lokasi",
-      "subtitle": "Di mana properti Anda?"
+      "subtitle": "Di mana properti Anda?",
+      "exact": "Akurat",
+      "approximate": "Perkiraan"
     },
     "photos": {
       "title": "Foto",
@@ -723,6 +726,27 @@ export default {
     "propertiesText": "Properti",
     "otherCategories": "kategori lainnya...",
     "loading": "Memuat..."
+  },
+  "ai-studio": {
+    "title": "Studio AI",
+    "subtitle": "Desain ulang properti dan kamar Anda",
+    "redesign": "Mendesain ulang saya",
+    "kind-room-placeholder": "Pilih jenis ruangannya",
+    "kind-property-placeholder": "Pilih jenis properti itu",
+    "style-property-placeholder": "Pilih gaya properti baru",
+    "style-room-placeholder": "Pilih gaya ruangan baru",
+    "room-kind-title": "Tipe kamar saat ini",
+    "room-style-title": "Gaya ruangan baru",
+    "property-kind-title": "Tipe properti saat ini",
+    "property-style-title": "Gaya properti baru",
+    "isRoomButton": {
+      "room": "Ruang",
+      "property": "Milik"
+    },
+    "executeButton": {
+      "submit": "Mendesain ulang dengan AI",
+      "loading": "Menghasilkan"
+    }
   },
   "homes": {
     "units": {

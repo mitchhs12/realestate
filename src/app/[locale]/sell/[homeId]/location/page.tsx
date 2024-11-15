@@ -42,6 +42,8 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
   const placeholderShort = s("placeholder-short");
   const title = t("title");
   const subtitle = t("subtitle");
+  const exactText = t("exact");
+  const approximateText = t("approximate");
 
   return (
     <Location
@@ -54,6 +56,8 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
       placeholderShort={placeholderShort}
       title={title}
       subtitle={subtitle}
+      exactText={exactText}
+      approximateText={approximateText}
     />
   );
 }

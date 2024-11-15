@@ -217,8 +217,9 @@ export default {
           "system": "System"
         },
         "language": "Language",
-        "my-properties": "My properties",
-        "my-lists": "My wishlists",
+        "my-properties": "My Properties",
+        "my-lists": "My Wishlists",
+        "ai-studio": "AI Studio",
         "currency": "Currency",
         "settings": "Settings",
         "exit": "Save and exit",
@@ -602,7 +603,9 @@ export default {
     },
     "location": {
       "title": "Location",
-      "subtitle": "Where is your property?"
+      "subtitle": "Where is your property?",
+      "exact": "Exact",
+      "approximate": "Approximate"
     },
     "photos": {
       "title": "Photos",
@@ -723,6 +726,27 @@ export default {
     "propertiesText": "Properties",
     "otherCategories": "other categories...",
     "loading": "Loading..."
+  },
+  "ai-studio": {
+    "title": "AI Studio",
+    "subtitle": "Redesign your properties and rooms",
+    "redesign": "Redesign my",
+    "kind-room-placeholder": "Select the kind of room it is",
+    "kind-property-placeholder": "Select the kind of property it is",
+    "style-property-placeholder": "Select a new property style",
+    "style-room-placeholder": "Select a new room style",
+    "room-kind-title": "Current room type",
+    "room-style-title": "New room style",
+    "property-kind-title": "Current property type",
+    "property-style-title": "New property style",
+    "isRoomButton": {
+      "room": "Room",
+      "property": "Property"
+    },
+    "executeButton": {
+      "submit": "Redesign with AI",
+      "loading": "Generating"
+    }
   },
   "homes": {
     "units": {

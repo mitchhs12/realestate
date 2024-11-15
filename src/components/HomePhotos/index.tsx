@@ -7,7 +7,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { HomeContext } from "@/context/HomeContext";
 import { LocaleContext } from "@/context/LocaleContext";
-import InteriorAI from "@/components/InteriorAI";
+import InteriorAI from "@/components/InteriorAI/MainButton";
 import { FavoriteComponent } from "../FavoriteComponent";
 import TitleDialog from "./TitleDialog";
 import PhotoDialog from "./PhotoDialog";

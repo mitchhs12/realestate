@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import InteriorAI from "@/components/InteriorAI";
+import InteriorAI from "@/components/InteriorAI/MainButton";
 
 interface Props {
   photos: string[];

@@ -209,7 +209,7 @@ export default function Price({
                 )}
               />
             </div>
-            <div className="flex justify-center items-end gap-x-4">
+            <div className="flex justify-center items-center gap-x-4">
               <Label htmlFor="price-negotiable">{negotiable}</Label>
               <Switch
                 id="price-negotiable"
