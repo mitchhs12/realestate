@@ -155,7 +155,9 @@ export default function InteriorAI({ imageUrl }: Props) {
               <div className="flex w-full gap-3 items-center justify-between">
                 <Select key={isRoom ? "room" : "property"} onValueChange={setType} disabled={isRoom ? false : true}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={isRoom ? "Select a type of room" : matchingTypes[0].translation} />
+                    <SelectValue
+                      placeholder={isRoom ? "Select what kind of room it is" : matchingTypes[0].translation}
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
