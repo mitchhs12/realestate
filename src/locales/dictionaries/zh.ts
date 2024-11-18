@@ -739,6 +739,13 @@ export default {
     "room-style-title": "新的房间风格",
     "property-kind-title": "現有房產類型",
     "property-style-title": "新的房产风格",
+    "images-expire-warning": "图片 1 小时后过期",
+    "fetching-previous-generations": "获取前几代",
+    "images-get-started": "生成一些图像来开始吧！",
+    "created": "创建",
+    "upload-new": "新上传",
+    "old-photo": "以前的",
+    "completed": "完全的",
     "isRoomButton": {
       "room": "房间",
       "property": "财产"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useContext } from "react";
-import { Sparkles } from "lucide-react";
+import { ChevronLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import CountUpClock from "@/components/CountUpClock";
@@ -36,6 +36,8 @@ export default function AIContent({ imageUrl }: Props) {
   const [newPredictionId, setNewPredictionId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
   const [previousError, setPreviousError] = useState<string | null>(null);
   const [historicalImage, setHistoricalImage] = useState<{
     id: string;
@@ -46,6 +48,8 @@ export default function AIContent({ imageUrl }: Props) {
   const [type, setType] = useState<string | null>(null);
   const [style, setStyle] = useState<string | null>(null);
   const [isRoom, setIsRoom] = useState<boolean>(true);
+  const [uploadedImage, setUploadedImage] = useState<null | string>(null);
+  const [uploadNew, setUploadNew] = useState<boolean>(true);
   const [previousGenerations, setPreviousGenerations] = useState<any[]>([]);
   const { resolvedTheme: theme } = useTheme();
   const [fetchingPrevious, setFetchingPrevious] = useState<boolean>(true);
@@ -90,7 +94,7 @@ export default function AIContent({ imageUrl }: Props) {
       },
       body: JSON.stringify({
         userId: user?.id,
-        imageUrl: `${imageUrl}`,
+        imageUrl: uploadedImage ? uploadedImage : imageUrl,
         type: isRoom,
         room: type,
         style: style,
@@ -174,10 +178,6 @@ export default function AIContent({ imageUrl }: Props) {
     }
   }, [!isRoom]);
 
-  useEffect(() => {
-    console.log("historical Image", historicalImage);
-  }, [historicalImage]);
-
   return (
     <>
       <DialogHeader className="items-center">
@@ -254,7 +254,7 @@ export default function AIContent({ imageUrl }: Props) {
                 variant="default"
                 className="flex justify-center items-center gap-3 text-md"
                 onClick={callRedesign}
-                disabled={status === "pending" || !type || !style}
+                disabled={status === "pending" || !type || !style || (!imageUrl && !uploadedImage)}
               >
                 {status === "pending" ? (
                   <span className="flex justify-center items-center gap-3">
@@ -273,32 +273,95 @@ export default function AIContent({ imageUrl }: Props) {
         </div>
         <div className="flex flex-col w-full gap-6 items-center justify-start">
           <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-8 p-8 justify-items-center max-w-8xl">
-            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg overflow-hidden order-1 xl:order-none">
+            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-1 xl:order-none">
               {imageUrl || historicalImage ? (
-                <Image
-                  src={
-                    historicalImage?.originalImg ||
-                    imageUrl ||
-                    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
-                  }
-                  alt="Original Image"
-                  className="object-cover object-center"
-                  fill={true}
-                  sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
-                />
+                <div>
+                  <Image
+                    src={
+                      historicalImage?.originalImg ||
+                      imageUrl ||
+                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                    }
+                    alt="Original Image"
+                    className="object-cover object-center"
+                    fill={true}
+                    sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                  />
+                  <div className="absolute top-0 left-0">
+                    <Button
+                      variant="default"
+                      className="flex justify-center items-center gap-3 text-md"
+                      onClick={() => setUploadNew(true)}
+                    >
+                      <ChevronUp />
+                      <p>{t("upload-new")}</p>
+                    </Button>
+                  </div>
+                </div>
               ) : (
                 <div className="w-full h-full justify-center items-center">
-                  <ImageUpload
-                    filePath={`${user!.id}/ai`}
-                    onlyImagesError={p("onlyImages")}
-                    tooNarrowError={p("tooNarrow")}
-                    tooShortError={p("tooShort")}
-                    fileSizeError={p("fileSize")}
-                  />
+                  {!uploadedImage && uploadNew ? (
+                    <ImageUpload
+                      filePath={`${user!.id}/ai`}
+                      onlyImagesError={p("onlyImages")}
+                      tooNarrowError={p("tooNarrow")}
+                      tooShortError={p("tooShort")}
+                      fileSizeError={p("fileSize")}
+                      setUploadedImage={setUploadedImage}
+                      setUploadNew={setUploadNew}
+                      isUploading={isUploading}
+                      setIsUploading={setIsUploading}
+                    />
+                  ) : uploadedImage && !uploadNew ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={uploadedImage}
+                        alt="Generated Image"
+                        className="object-cover object-center"
+                        fill={true}
+                        sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                      />
+                      <div className="absolute top-0 left-0">
+                        <Button
+                          variant="default"
+                          className="flex justify-center items-center gap-3 text-md"
+                          onClick={() => setUploadNew(true)}
+                        >
+                          <ChevronUp />
+                          <p>{t("upload-new")}</p>
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full">
+                      <ImageUpload
+                        filePath={`${user!.id}/ai`}
+                        onlyImagesError={p("onlyImages")}
+                        tooNarrowError={p("tooNarrow")}
+                        tooShortError={p("tooShort")}
+                        fileSizeError={p("fileSize")}
+                        setUploadedImage={setUploadedImage}
+                        setUploadNew={setUploadNew}
+                        isUploading={isUploading}
+                        setIsUploading={setIsUploading}
+                      />
+                      <div className="absolute top-0 left-0">
+                        <Button
+                          disabled={isUploading}
+                          variant="default"
+                          className="flex justify-center items-center gap-3 text-md"
+                          onClick={() => setUploadNew(false)}
+                        >
+                          <ChevronLeft />
+                          <p>{t("old-photo")}</p>
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
-            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg overflow-hidden order-2 xl:order-none">
+            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-2 xl:order-none">
               {status === "pending" ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Skeleton className="absolute inset-0 w-full h-full" />
@@ -326,14 +389,14 @@ export default function AIContent({ imageUrl }: Props) {
             </div>
 
             <div className="flex flex-col gap-2 w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] order-4 xl:order-none rounded-xl overflow-hidden">
-              <h1 className="text-center text-lg">Images Expire in 1 Hour</h1>
+              <h1 className="text-center text-lg">{t("images-expire-warning")}</h1>
               {fetchingPrevious ? (
                 <div className="relative flex w-full h-full">
                   <Skeleton className="absolute inset-0 w-full h-full" />
                   <div className="flex justify-center items-center w-full">
                     <div className="flex items-center gap-3 text-sm sm:text-medium">
                       <ReloadIcon className="animate-spin w-6 h-6" />
-                      <p className="text-start">Fetching Previous Generations</p>
+                      <p className="text-start">{t("fetching-previous-generations")}</p>
                     </div>
                   </div>
                 </div>
@@ -347,7 +410,7 @@ export default function AIContent({ imageUrl }: Props) {
                         <Button
                           key={index}
                           asChild
-                          className="hover:cursor-pointer shadow-lg p-0 rounded-xl overflow-hidden"
+                          className="hover:cursor-pointer shadow-lg dark:shadow-white/10 p-0 rounded-xl overflow-hidden"
                           variant={"outline"}
                           onClick={() => {
                             setHistoricalImage({
@@ -369,11 +432,11 @@ export default function AIContent({ imageUrl }: Props) {
                             </div>
                             <div className="flex flex-col py-4 gap-5 items-center justify-center text-center sm:text-start w-1/2">
                               <div className="flex flex-col gap-2 text-center items-center">
-                                <div className="text-md">Created</div>
+                                <div className="text-md">{t("created")}</div>
                                 <div>{new Date(generation[Object.keys(generation)[0]].createdAt).toLocaleString()}</div>
                               </div>
                               <div className="flex flex-col gap-2 text-center items-center">
-                                <div className="text-md">Completed</div>
+                                <div className="text-md">{t("completed")}</div>
                                 <div>
                                   {new Date(generation[Object.keys(generation)[0]].completedAt).toLocaleString()}
                                 </div>
@@ -385,14 +448,14 @@ export default function AIContent({ imageUrl }: Props) {
                     </div>
                   ) : (
                     <div className="flex text-center justify-center items-center w-full h-full">
-                      Generate some images to get started!
+                      {t("images-get-started")}
                     </div>
                   )}
                 </div>
               )}
             </div>
 
-            <div className="w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg overflow-hidden order-3 xl:order-none">
+            <div className="w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-3 xl:order-none">
               {status === "pending" ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Skeleton className="absolute inset-0 w-full h-full" />
@@ -407,6 +470,7 @@ export default function AIContent({ imageUrl }: Props) {
                   <CompareSlider
                     original={
                       historicalImage?.originalImg ||
+                      uploadedImage ||
                       imageUrl ||
                       `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
                     }

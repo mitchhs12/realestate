@@ -739,6 +739,13 @@
     "room-style-title": "Yeni oda stili",
     "property-kind-title": "Mevcut mülk türü",
     "property-style-title": "Yeni mülk stili",
+    "images-expire-warning": "Görseller 1 Saat İçinde Sona Eriyor",
+    "fetching-previous-generations": "Önceki Nesilleri Getirme",
+    "images-get-started": "Başlamak için birkaç görsel oluşturun!",
+    "created": "Oluşturuldu",
+    "upload-new": "Yeni yükleme",
+    "old-photo": "Öncesi",
+    "completed": "Tamamlanmış",
     "isRoomButton": {
       "room": "Oda",
       "property": "Mülk"

@@ -739,6 +739,13 @@
     "room-style-title": "Nuwe kamerstyl",
     "property-kind-title": "Huidige tipe eiendom",
     "property-style-title": "Nuwe eiendomstyl",
+    "images-expire-warning": "Prente verval oor 1 uur",
+    "fetching-previous-generations": "Haal vorige generasies",
+    "images-get-started": "Genereer 'n paar beelde om te begin!",
+    "created": "Geskep",
+    "upload-new": "Nuwe oplaai",
+    "old-photo": "Vorige",
+    "completed": "Voltooi",
     "isRoomButton": {
       "room": "Kamer",
       "property": "Eiendom"

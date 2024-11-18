@@ -739,6 +739,13 @@ export default {
     "room-style-title": "New room style",
     "property-kind-title": "Current property type",
     "property-style-title": "New property style",
+    "images-expire-warning": "Images Expire in 1 Hour",
+    "fetching-previous-generations": "Fetching Previous Generations",
+    "images-get-started": "Generate some images to get started!",
+    "created": "Created",
+    "upload-new": "New upload",
+    "old-photo": "Previous",
+    "completed": "Completed",
     "isRoomButton": {
       "room": "Room",
       "property": "Property"

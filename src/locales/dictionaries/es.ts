@@ -739,6 +739,13 @@ export default {
     "room-style-title": "Nuevo estilo de habitación",
     "property-kind-title": "Tipo de propiedad actual",
     "property-style-title": "Nuevo estilo de propiedad",
+    "images-expire-warning": "Las imágenes caducan en 1 hora",
+    "fetching-previous-generations": "Recuperando generaciones anteriores",
+    "images-get-started": "¡Genera algunas imágenes para comenzar!",
+    "created": "Creado",
+    "upload-new": "Nueva subida",
+    "old-photo": "Anterior",
+    "completed": "Terminado",
     "isRoomButton": {
       "room": "Habitación",
       "property": "Propiedad"

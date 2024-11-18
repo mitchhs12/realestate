@@ -739,6 +739,13 @@ export default {
     "room-style-title": "Phong cách phòng mới",
     "property-kind-title": "Loại tài sản hiện tại",
     "property-style-title": "Phong cách bất động sản mới",
+    "images-expire-warning": "Hình ảnh hết hạn sau 1 giờ",
+    "fetching-previous-generations": "Lấy các thế hệ trước",
+    "images-get-started": "Tạo một số hình ảnh để bắt đầu!",
+    "created": "Tạo",
+    "upload-new": "Tải lên mới",
+    "old-photo": "Trước",
+    "completed": "Hoàn thành",
     "isRoomButton": {
       "room": "Phòng",
       "property": "Tài sản"

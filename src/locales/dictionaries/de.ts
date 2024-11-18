@@ -739,6 +739,13 @@ export default {
     "room-style-title": "Neuer Zimmerstil",
     "property-kind-title": "Aktueller Immobilientyp",
     "property-style-title": "Neuer Immobilienstil",
+    "images-expire-warning": "Bilder laufen in 1 Stunde ab",
+    "fetching-previous-generations": "Abrufen vorheriger Generationen",
+    "images-get-started": "Erstellen Sie einige Bilder, um loszulegen!",
+    "created": "Erstellt",
+    "upload-new": "Neuer Upload",
+    "old-photo": "Vorherige",
+    "completed": "Vollendet",
     "isRoomButton": {
       "room": "Zimmer",
       "property": "Eigentum"

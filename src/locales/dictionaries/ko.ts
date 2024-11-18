@@ -739,6 +739,13 @@ export default {
     "room-style-title": "새로운 객실 스타일",
     "property-kind-title": "현재 속성 유형",
     "property-style-title": "새로운 속성 스타일",
+    "images-expire-warning": "이미지는 1시간 후에 만료됩니다",
+    "fetching-previous-generations": "이전 세대 가져오기",
+    "images-get-started": "시작하려면 이미지를 생성하세요!",
+    "created": "생성됨",
+    "upload-new": "새로운 업로드",
+    "old-photo": "이전의",
+    "completed": "완전한",
     "isRoomButton": {
       "room": "방",
       "property": "재산"

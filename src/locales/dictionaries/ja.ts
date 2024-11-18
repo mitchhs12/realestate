@@ -739,6 +739,13 @@ export default {
     "room-style-title": "新しい部屋のスタイル",
     "property-kind-title": "現在のプロパティタイプ",
     "property-style-title": "新しいプロパティスタイル",
+    "images-expire-warning": "画像は1時間で期限切れになります",
+    "fetching-previous-generations": "前の世代の取得",
+    "images-get-started": "始める前にいくつかの画像を生成してください。",
+    "created": "作成",
+    "upload-new": "新規アップロード",
+    "old-photo": "前の",
+    "completed": "完了",
     "isRoomButton": {
       "room": "部屋",
       "property": "財産"

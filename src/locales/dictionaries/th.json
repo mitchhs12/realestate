@@ -739,6 +739,13 @@
     "room-style-title": "สไตล์ห้องใหม่",
     "property-kind-title": "ประเภททรัพย์สินปัจจุบัน",
     "property-style-title": "รูปแบบอสังหาฯใหม่",
+    "images-expire-warning": "รูปภาพจะหมดอายุใน 1 ชั่วโมง",
+    "fetching-previous-generations": "การดึงข้อมูลรุ่นก่อนหน้า",
+    "images-get-started": "สร้างภาพบางส่วนเพื่อเริ่มต้น!",
+    "created": "สร้าง",
+    "upload-new": "อัพโหลดใหม่",
+    "old-photo": "ก่อนหน้า",
+    "completed": "สมบูรณ์",
     "isRoomButton": {
       "room": "ห้อง",
       "property": "คุณสมบัติ"

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Form, FormItem, FormField, FormControl } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { resizeImageToMinDimensions } from "@/lib/utils";
@@ -14,6 +14,10 @@ interface Props {
   tooNarrowError: string;
   fileSizeError: string;
   tooShortError: string;
+  setUploadedImage: (url: string) => void;
+  setUploadNew: (url: boolean) => void;
+  isUploading: boolean;
+  setIsUploading: (isUploading: boolean) => void;
 }
 
 export default function ImageUpload({
@@ -22,8 +26,11 @@ export default function ImageUpload({
   tooNarrowError,
   tooShortError,
   fileSizeError,
+  setUploadedImage,
+  setUploadNew,
+  isUploading,
+  setIsUploading,
 }: Props) {
-  const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const form = useForm();
   const { control } = form;
@@ -50,24 +57,6 @@ export default function ImageUpload({
 
       // Resize and compress the file
       const resizedFile = await resizeImageToMinDimensions(file, 700, tooShortError, tooNarrowError);
-    } catch (error: any) {
-      setErrorMessage(error.message || "Error processing files");
-      setIsUploading(false);
-      return;
-    }
-
-    try {
-      // Validate the file
-      if (!file.type.startsWith("image/")) {
-        throw new Error(onlyImagesError);
-      }
-
-      if (file.size > 4000000) {
-        throw new Error(fileSizeError);
-      }
-
-      // Resize and compress the file
-      const resizedFile = await resizeImageToMinDimensions(file, 700, tooShortError, tooNarrowError);
 
       const options = {
         maxSizeMB: 1,
@@ -81,8 +70,19 @@ export default function ImageUpload({
       // Prepare and upload the file
       const formData = new FormData();
       formData.append("file", webpFile);
+      try {
+        const url = await uploadAIPhoto(formData, filePath);
+        console.log(url);
+        const newUrl = url.replace(
+          "https://vivaidealfinalbucket.s3.amazonaws.com",
+          process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL!
+        );
+        setUploadedImage(newUrl);
 
-      await uploadAIPhoto(formData, filePath);
+        setUploadNew(false);
+      } catch (uploadError: any) {
+        throw new Error(`File upload failed: ${uploadError.message || "Unknown error"}`);
+      }
     } catch (error: any) {
       console.error("Error during file processing:", error);
       setErrorMessage(error.message || "Error uploading the file");
@@ -92,7 +92,7 @@ export default function ImageUpload({
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex flex-col items-center justify-center w-full h-full">
       <Form {...form}>
         <form className="flex justify-start space-y-6 w-full h-full">
           <FormField
@@ -104,7 +104,7 @@ export default function ImageUpload({
                   <div
                     className={`relative flex w-full h-full justify-center items-center bg-card ${
                       !isUploading && "hover:bg-muted"
-                    } `}
+                    }`}
                   >
                     <div className="absolute flex justify-center items-center w-full h-full">
                       {isUploading ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Icons.image_icon />}
@@ -123,7 +123,7 @@ export default function ImageUpload({
           />
         </form>
       </Form>
-      {errorMessage && <p className="text-red-600 mt-2">{errorMessage}</p>}
+      {errorMessage && <p className="absolute p-4 bottom-0 text-center text-red-600 mt-2">{errorMessage}</p>}
     </div>
   );
 }

@@ -203,12 +203,13 @@ export async function deleteFavoriteList(listId: number, url: string) {
   }
 }
 
-async function uploadToS3(file: Buffer, filePath: string, fileName: string, fileType: string) {
+async function uploadToS3(file: Buffer, filePath: string, fileType: string) {
   const params = {
     Bucket: "vivaidealfinalbucket",
-    Key: `${filePath}/${fileName}`,
+    Key: `${filePath}/latestPhoto${Date.now()}`,
     Body: file,
     ContentType: fileType,
+    CacheControl: "no-cache, no-store, must-revalidate", // Prevent caching
   };
 
   const command = new PutObjectCommand(params);
@@ -217,41 +218,34 @@ async function uploadToS3(file: Buffer, filePath: string, fileName: string, file
   return fileUrl;
 }
 
-export async function uploadAIPhoto(formData: FormData, filePath: string) {
+export async function uploadAIPhoto(formData: FormData, folder: string) {
   try {
     const session = await auth();
     const userId = session?.user?.id;
 
     if (!userId) {
-      return "User not found";
+      throw new Error("User not found");
     }
 
     const file = formData.get("file");
-    const homeId = formData.get("homeId") as string;
-
-    if (!homeId) {
-      return "Home ID is required";
-    }
 
     if (!file) {
-      return "You forgot to attach a photo";
+      throw new Error("You forgot to attach a photo");
     }
 
     if (typeof file !== "object" || !("arrayBuffer" in file)) {
-      return "Invalid file";
+      throw new Error("Invalid file");
     }
 
     if (!file.type.startsWith("image/")) {
-      return "File is not an image!";
+      throw new Error("File is not an image!");
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    const fileName = file.name; // Keep the original file name and extension
-
-    return await uploadToS3(buffer, filePath, fileName, file.type);
+    return await uploadToS3(buffer, folder, file.type);
   } catch (error: any) {
     console.error("Error uploading photo:", error);
-    return error.message;
+    throw new Error(error.message || "Internal Server Error: Failed to upload the photo.");
   }
 }

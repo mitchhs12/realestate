@@ -739,6 +739,13 @@ export default {
     "room-style-title": "Novi stil sobe",
     "property-kind-title": "Trenutačna vrsta nekretnine",
     "property-style-title": "Novi stil nekretnine",
+    "images-expire-warning": "Slike ističu za 1 sat",
+    "fetching-previous-generations": "Dohvaćanje prethodnih generacija",
+    "images-get-started": "Generirajte nekoliko slika za početak!",
+    "created": "Stvoreno",
+    "upload-new": "Novo učitavanje",
+    "old-photo": "Prethodno",
+    "completed": "Završeno",
     "isRoomButton": {
       "room": "Soba",
       "property": "Vlasništvo"

@@ -739,6 +739,13 @@ export default {
     "room-style-title": "نمط الغرفة الجديد",
     "property-kind-title": "نوع العقار الحالي",
     "property-style-title": "نمط الملكية الجديد",
+    "images-expire-warning": "تنتهي صلاحية الصور خلال ساعة واحدة",
+    "fetching-previous-generations": "جلب الأجيال السابقة",
+    "images-get-started": "قم بإنشاء بعض الصور للبدء!",
+    "created": "مخلوق",
+    "upload-new": "تحميل جديد",
+    "old-photo": "سابق",
+    "completed": "مكتمل",
     "isRoomButton": {
       "room": "غرفة",
       "property": "ملكية"

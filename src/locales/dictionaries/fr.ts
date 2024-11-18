@@ -739,6 +739,13 @@ export default {
     "room-style-title": "Nouveau style de chambre",
     "property-kind-title": "Type de propriété actuel",
     "property-style-title": "Nouveau style de propriété",
+    "images-expire-warning": "Les images expirent dans 1 heure",
+    "fetching-previous-generations": "Récupérer les générations précédentes",
+    "images-get-started": "Générez quelques images pour commencer !",
+    "created": "Créé",
+    "upload-new": "Nouveau téléchargement",
+    "old-photo": "Précédent",
+    "completed": "Complété",
     "isRoomButton": {
       "room": "Chambre",
       "property": "Propriété"

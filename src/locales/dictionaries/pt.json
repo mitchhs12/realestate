@@ -739,6 +739,13 @@
     "room-style-title": "Novo estilo de quarto",
     "property-kind-title": "Tipo de propriedade atual",
     "property-style-title": "Novo estilo de propriedade",
+    "images-expire-warning": "As imagens expiram em 1 hora",
+    "fetching-previous-generations": "Buscando Gerações Anteriores",
+    "images-get-started": "Gere algumas imagens para começar!",
+    "created": "Criado",
+    "upload-new": "Novo upload",
+    "old-photo": "Anterior",
+    "completed": "Concluído",
     "isRoomButton": {
       "room": "Sala",
       "property": "Propriedade"

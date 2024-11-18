@@ -739,6 +739,13 @@ export default {
     "room-style-title": "Gaya ruangan baru",
     "property-kind-title": "Tipe properti saat ini",
     "property-style-title": "Gaya properti baru",
+    "images-expire-warning": "Gambar Kedaluwarsa dalam 1 Jam",
+    "fetching-previous-generations": "Mengambil Generasi Sebelumnya",
+    "images-get-started": "Hasilkan beberapa gambar untuk memulai!",
+    "created": "Dibuat",
+    "upload-new": "Unggahan baru",
+    "old-photo": "Sebelumnya",
+    "completed": "Selesai",
     "isRoomButton": {
       "room": "Ruang",
       "property": "Milik"

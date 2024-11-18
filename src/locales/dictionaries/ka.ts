@@ -739,6 +739,13 @@ export default {
     "room-style-title": "ოთახის ახალი სტილი",
     "property-kind-title": "ამჟამინდელი ქონების ტიპი",
     "property-style-title": "ახალი საკუთრების სტილი",
+    "images-expire-warning": "სურათები იწურება 1 საათში",
+    "fetching-previous-generations": "წინა თაობების მიღება",
+    "images-get-started": "შექმენით რამდენიმე სურათი დასაწყებად!",
+    "created": "შექმნილია",
+    "upload-new": "ახალი ატვირთვა",
+    "old-photo": "წინა",
+    "completed": "დასრულებული",
     "isRoomButton": {
       "room": "ოთახი",
       "property": "საკუთრება"
