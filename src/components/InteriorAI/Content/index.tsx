@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import { CompareSlider } from "@/components/ReactCompareSlider";
 import { roomTypesMap, roomStylesMap, propertyStylesMap, typesMap } from "@/lib/sellFlowData";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -19,9 +20,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { HomeContext } from "@/context/HomeContext";
+import { LocaleContext } from "@/context/LocaleContext";
 import { typeIcons } from "@/components/Icons/typeIcons";
 import { useScopedI18n } from "@/locales/client";
+import { useTheme } from "next-themes";
+import ImageUpload from "@/components/ImageUpload";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -30,14 +33,23 @@ interface Props {
 }
 
 export default function AIContent({ imageUrl }: Props) {
-  const [predictionId, setPredictionId] = useState<string | null>(null);
+  const [newPredictionId, setNewPredictionId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [previousError, setPreviousError] = useState<string | null>(null);
+  const [historicalImage, setHistoricalImage] = useState<{
+    id: string;
+    originalImg: string;
+    generatedImg: string;
+  } | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [type, setType] = useState<string | null>(null);
   const [style, setStyle] = useState<string | null>(null);
   const [isRoom, setIsRoom] = useState<boolean>(true);
-  const { matchingTypes } = useContext(HomeContext);
+  const [previousGenerations, setPreviousGenerations] = useState<any[]>([]);
+  const { resolvedTheme: theme } = useTheme();
+  const [fetchingPrevious, setFetchingPrevious] = useState<boolean>(true);
+  const { user } = useContext(LocaleContext);
   const HomeIcon = typeIcons["house"];
   const RoomIcon = typeIcons["room"];
   const t = useScopedI18n("ai-studio");
@@ -46,6 +58,7 @@ export default function AIContent({ imageUrl }: Props) {
   const rt = useScopedI18n("home.roomTypes");
   const rs = useScopedI18n("home.roomStyles");
   const ps = useScopedI18n("home.propertyStyles");
+  const p = useScopedI18n("sell.photos");
 
   const propertyTypes = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -76,6 +89,7 @@ export default function AIContent({ imageUrl }: Props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        userId: user?.id,
         imageUrl: `${imageUrl}`,
         type: isRoom,
         room: type,
@@ -84,34 +98,61 @@ export default function AIContent({ imageUrl }: Props) {
     });
 
     const data = await result.json();
-    setPredictionId(data.id);
+    setNewPredictionId(data.id);
   }
 
   useEffect(() => {
-    if (!predictionId || status === "succeeded" || status === "failed") return;
+    const getPreviouslyGenerated = async () => {
+      try {
+        const response = await fetch("/api/redis/previousGenerations/" + user!.id);
+        const predictions = await response.json();
 
-    const fetchPredictionStatus = async () => {
+        if (response.status === 200) {
+          setPreviousGenerations(predictions.data);
+        } else {
+          setPreviousError(predictions.error || "An error occurred");
+          setStatus("Unable to fetch previously generated ");
+        }
+      } catch (err) {
+        setPreviousError(`An unexpected error occurred: ${error}`);
+      }
+      setFetchingPrevious(false);
+    };
+    getPreviouslyGenerated();
+  }, []);
+
+  useEffect(() => {
+    const fetchPrediction = async () => {
       try {
         while (status === "pending") {
-          await sleep(2000);
-          const response = await fetch("/api/predictions/" + predictionId);
-          const prediction = await response.json();
+          await sleep(5000);
+          const response = await fetch("/api/redis/getSpecificPrediction", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: user!.id,
+              predictionId: newPredictionId,
+            }),
+          });
+          const result = await response.json();
 
-          if (response.status !== 200) {
-            setError(prediction.detail || "An error occurred");
+          if (response.status === 500) {
+            setError(result.prediction.detail || "An error occurred");
             setStatus("failed");
-            return;
-          }
+          } else if (response.status === 200) {
+            if (result.prediction.status === "succeeded") {
+              setGeneratedImage(result.prediction.generatedImg);
+              const newPreviousGenerations = previousGenerations;
+              setPreviousGenerations([{ [newPredictionId!]: result.prediction }, ...newPreviousGenerations]);
 
-          if (prediction.status === "succeeded") {
-            if (prediction.input.image === imageUrl) {
-              setGeneratedImage(prediction.output[1]);
               setStatus("succeeded");
               break;
+            } else if (result.prediction.status === "failed") {
+              setError("Prediction failed");
+              setStatus("failed");
             }
-          } else if (prediction.status === "failed") {
-            setError("Prediction failed");
-            setStatus("failed");
           }
         }
       } catch (err) {
@@ -120,8 +161,8 @@ export default function AIContent({ imageUrl }: Props) {
       }
     };
 
-    fetchPredictionStatus();
-  }, [predictionId, status]);
+    fetchPrediction();
+  }, [newPredictionId]);
 
   useEffect(() => {
     if (!isRoom) {
@@ -133,14 +174,18 @@ export default function AIContent({ imageUrl }: Props) {
     }
   }, [!isRoom]);
 
+  useEffect(() => {
+    console.log("historical Image", historicalImage);
+  }, [historicalImage]);
+
   return (
     <>
       <DialogHeader className="items-center">
         <DialogTitle className="text-lg lg:text-xl">{t("title")}</DialogTitle>
         <DialogDescription className="text-md lg:text-lg">{t("subtitle")}</DialogDescription>
       </DialogHeader>
-      <div className="flex flex-col justify-star w-full h-full overflow-y-auto gap-6">
-        <div className="flex justify-center items-start w-full h-full">
+      <div className="flex flex-col justify-start w-full h-full overflow-y-auto gap-6">
+        <div className="flex justify-center items-start w-full">
           <div className="flex flex-col justify-start items-center gap-3 w-[500px] h-full px-4">
             <div className="flex w-full gap-3">
               <div className="flex text-nowrap items-center gap-3">{t("redesign")}</div>
@@ -204,46 +249,7 @@ export default function AIContent({ imageUrl }: Props) {
                 </SelectContent>
               </Select>
             </div>
-          </div>
-        </div>
-        <div className="flex flex-col w-full h-full gap-6 items-center">
-          <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-6 px-4 justify-items-center">
-            {imageUrl && (
-              <div className="relative w-full h-[250px] xs:h-[350px] sm:h-[400px] md:h-[450px] xl:h-[400px] max-w-[700px] rounded-xl shadow-xl overflow-hidden border">
-                <Image
-                  src={imageUrl}
-                  alt="Original Image"
-                  className="object-cover object-center"
-                  fill={true}
-                  sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
-                />
-              </div>
-            )}
-            <div className="relative w-full h-[250px] xs:h-[350px] sm:h-[400px] md:h-[450px] xl:h-[400px] max-w-[700px] rounded-xl shadow-xl overflow-hidden border">
-              {status === "pending" ? (
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <Skeleton className="absolute inset-0 w-full h-full" />
-                  <div className="relative z-10">
-                    <CountUpClock />
-                  </div>
-                </div>
-              ) : status === "failed" ? (
-                <p className="text-center text-red-500">Failed to generate design!</p>
-              ) : (
-                generatedImage && (
-                  <Image
-                    src={generatedImage}
-                    alt="Generated Image"
-                    className="object-cover object-center"
-                    fill={true}
-                    sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
-                  />
-                )
-              )}
-            </div>
-          </div>
-          <div className="flex flex-col h-full w-full items-center gap-12 px-4 pb-8">
-            <div className="flex flex-col gap-3 h-[30px]">
+            <div className="flex flex-col gap-3">
               <Button
                 variant="default"
                 className="flex justify-center items-center gap-3 text-md"
@@ -262,9 +268,37 @@ export default function AIContent({ imageUrl }: Props) {
                   </span>
                 )}
               </Button>
-              {status === "pending" && <p>(this may take 20+ seconds...)</p>}
             </div>
-            <div className="w-full h-[250px] xs:h-[350px] sm:h-[400px] md:h-[450px] xl:h-[400px] max-w-[700px] shadow-xl overflow-hidden rounded-xl border">
+          </div>
+        </div>
+        <div className="flex flex-col w-full gap-6 items-center justify-start">
+          <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-8 p-8 justify-items-center max-w-8xl">
+            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg overflow-hidden order-1 xl:order-none">
+              {imageUrl || historicalImage ? (
+                <Image
+                  src={
+                    historicalImage?.originalImg ||
+                    imageUrl ||
+                    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                  }
+                  alt="Original Image"
+                  className="object-cover object-center"
+                  fill={true}
+                  sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                />
+              ) : (
+                <div className="w-full h-full justify-center items-center">
+                  <ImageUpload
+                    filePath={`${user!.id}/ai`}
+                    onlyImagesError={p("onlyImages")}
+                    tooNarrowError={p("tooNarrow")}
+                    tooShortError={p("tooShort")}
+                    fileSizeError={p("fileSize")}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg overflow-hidden order-2 xl:order-none">
               {status === "pending" ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Skeleton className="absolute inset-0 w-full h-full" />
@@ -275,7 +309,113 @@ export default function AIContent({ imageUrl }: Props) {
               ) : status === "failed" ? (
                 <p className="text-center text-red-500">Failed to generate design!</p>
               ) : (
-                generatedImage && <CompareSlider original={imageUrl!} restored={generatedImage!} />
+                (generatedImage || historicalImage) && (
+                  <Image
+                    src={
+                      historicalImage?.generatedImg ||
+                      generatedImage ||
+                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                    }
+                    alt="Generated Image"
+                    className="object-cover object-center"
+                    fill={true}
+                    sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                  />
+                )
+              )}
+            </div>
+
+            <div className="flex flex-col gap-2 w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] order-4 xl:order-none rounded-xl overflow-hidden">
+              <h1 className="text-center text-lg">Images Expire in 1 Hour</h1>
+              {fetchingPrevious ? (
+                <div className="relative flex w-full h-full">
+                  <Skeleton className="absolute inset-0 w-full h-full" />
+                  <div className="flex justify-center items-center w-full">
+                    <div className="flex items-center gap-3 text-sm sm:text-medium">
+                      <ReloadIcon className="animate-spin w-6 h-6" />
+                      <p className="text-start">Fetching Previous Generations</p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex w-full pb-6 justify-start items-start overflow-y-auto">
+                  {previousError ? (
+                    <h3 className="text-center text-red-500">{previousError}</h3>
+                  ) : previousGenerations.length > 0 ? (
+                    <div className="flex flex-col gap-3 w-full items-start justify-start">
+                      {previousGenerations.map((generation, index) => (
+                        <Button
+                          asChild
+                          className="hover:cursor-pointer shadow-lg p-0 rounded-xl overflow-hidden"
+                          variant={"outline"}
+                          onClick={() => {
+                            setHistoricalImage({
+                              id: generation[Object.keys(generation)[0]],
+                              originalImg: generation[Object.keys(generation)[0]].originalImg,
+                              generatedImg: generation[Object.keys(generation)[0]].generatedImg,
+                            });
+                          }}
+                        >
+                          <div className="flex flex-col sm:flex-row w-full h-full sm:gap-5">
+                            <div key={index} className="relative w-full h-[200px]">
+                              <Image
+                                src={generation[Object.keys(generation)[0]].generatedImg}
+                                alt="Generated Image"
+                                className="object-cover object-center"
+                                fill={true}
+                                sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                              />
+                            </div>
+                            <div className="flex flex-col py-4 gap-5 items-center justify-center text-center sm:text-start w-1/2">
+                              <div className="flex flex-col gap-2 text-center items-center">
+                                <div className="text-md">Created</div>
+                                <div>{new Date(generation[Object.keys(generation)[0]].createdAt).toLocaleString()}</div>
+                              </div>
+                              <div className="flex flex-col gap-2 text-center items-center">
+                                <div className="text-md">Completed</div>
+                                <div>
+                                  {new Date(generation[Object.keys(generation)[0]].completedAt).toLocaleString()}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </Button>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex text-center justify-center items-center w-full h-full">
+                      Generate some images to get started!
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg overflow-hidden order-3 xl:order-none">
+              {status === "pending" ? (
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Skeleton className="absolute inset-0 w-full h-full" />
+                  <div className="relative z-10">
+                    <CountUpClock />
+                  </div>
+                </div>
+              ) : status === "failed" ? (
+                <p className="text-center text-red-500">Failed to generate design!</p>
+              ) : (
+                (generatedImage || historicalImage) && (
+                  <CompareSlider
+                    original={
+                      historicalImage?.originalImg ||
+                      imageUrl ||
+                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                    }
+                    restored={
+                      historicalImage?.generatedImg ||
+                      generatedImage ||
+                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                    }
+                  />
+                )
               )}
             </div>
           </div>

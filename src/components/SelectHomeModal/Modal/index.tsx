@@ -1,12 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState, useEffect, useContext } from "react";
-import { Icons } from "@/components/Icons/icons";
-import { useTheme } from "next-themes";
 import { useScopedI18n } from "@/locales/client";
 import { HomeType } from "@/lib/validations";
 import { findMatching } from "@/lib/utils";

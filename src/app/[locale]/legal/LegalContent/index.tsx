@@ -34,19 +34,6 @@ export default async function LegalContent() {
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-3 items-center sm:items-start">
-        <h3 className="text-semibold text-2xl text-center sm:text-start">{l("images")}</h3>
-        <p className="text-center max-w-[80%] sm:max-w-[100%]">
-          Real Estate Icons by{" "}
-          <a href="https://www.figma.com/@karthik_shyam?ref=svgrepo.com" target="_blank">
-            Karthik Shyam
-          </a>{" "}
-          in CC Attribution License via{" "}
-          <a href="https://www.svgrepo.com/" target="_blank">
-            SVG Repo.
-          </a>
-        </p>
-      </div>
     </div>
   );
 }

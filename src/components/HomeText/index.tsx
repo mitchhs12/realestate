@@ -138,7 +138,7 @@ export default function HomeText({
     setEditMode,
   } = useContext(HomeContext);
 
-  const { defaultCurrency, currencyData, numerals, defaultLanguage, sessionLoading, sessionUnauthenticated, user } =
+  const { defaultCurrency, currencyData, numerals, sessionLoading, sessionUnauthenticated, user } =
     useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);

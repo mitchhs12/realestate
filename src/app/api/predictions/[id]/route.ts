@@ -5,7 +5,7 @@ const replicate = new Replicate({
   auth: process.env.REPLICATE_API_KEY,
 });
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }): Promise<NextResponse> {
+export async function GET({ params }: { params: { id: string } }): Promise<NextResponse> {
   const { id } = params;
 
   const prediction = await replicate.predictions.get(id);

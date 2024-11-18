@@ -146,7 +146,6 @@ export default function Photos({
   const [activeId, setActiveId] = useState<string | null>(null);
   const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const pathname = usePathname();
 
   useEffect(() => {
     setCurrentHome(currentHome);

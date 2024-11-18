@@ -108,8 +108,8 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>
-        <Button className="h-12" variant="outline">
+      <DropdownMenuTrigger asChild disabled={sessionLoading}>
+        <Button className="h-12" variant="outline" disabled={sessionLoading}>
           <div className="flex items-center gap-2">
             {!user && <div>{log_in}</div>}
             {user && <Menu width={20} height={20} strokeWidth={1.75} className="hidden sm:flex" />}
