@@ -345,6 +345,7 @@ export default function AIContent({ imageUrl }: Props) {
                     <div className="flex flex-col gap-3 w-full items-start justify-start">
                       {previousGenerations.map((generation, index) => (
                         <Button
+                          key={index}
                           asChild
                           className="hover:cursor-pointer shadow-lg p-0 rounded-xl overflow-hidden"
                           variant={"outline"}
@@ -357,7 +358,7 @@ export default function AIContent({ imageUrl }: Props) {
                           }}
                         >
                           <div className="flex flex-col sm:flex-row w-full h-full sm:gap-5">
-                            <div key={index} className="relative w-full h-[200px]">
+                            <div className="relative w-full h-[200px]">
                               <Image
                                 src={generation[Object.keys(generation)[0]].generatedImg}
                                 alt="Generated Image"
