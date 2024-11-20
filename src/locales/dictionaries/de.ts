@@ -746,6 +746,7 @@ export default {
     "upload-new": "Neuer Upload",
     "old-photo": "Vorherige",
     "completed": "Vollendet",
+    "historical-images": "Zuvor erstellte Bilder",
     "isRoomButton": {
       "room": "Zimmer",
       "property": "Eigentum"

@@ -746,6 +746,7 @@ export default {
     "upload-new": "新規アップロード",
     "old-photo": "前の",
     "completed": "完了",
+    "historical-images": "以前に生成された画像",
     "isRoomButton": {
       "room": "部屋",
       "property": "財産"

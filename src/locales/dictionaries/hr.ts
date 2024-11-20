@@ -746,6 +746,7 @@ export default {
     "upload-new": "Novo učitavanje",
     "old-photo": "Prethodno",
     "completed": "Završeno",
+    "historical-images": "Prethodno generirane slike",
     "isRoomButton": {
       "room": "Soba",
       "property": "Vlasništvo"

@@ -746,6 +746,7 @@
     "upload-new": "새로운 업로드",
     "old-photo": "이전의",
     "completed": "완전한",
+    "historical-images": "이전에 생성된 이미지",
     "isRoomButton": {
       "room": "방",
       "property": "재산"

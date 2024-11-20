@@ -746,6 +746,7 @@ export default {
     "upload-new": "Unggahan baru",
     "old-photo": "Sebelumnya",
     "completed": "Selesai",
+    "historical-images": "Gambar yang Dihasilkan Sebelumnya",
     "isRoomButton": {
       "room": "Ruang",
       "property": "Milik"

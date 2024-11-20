@@ -37,21 +37,22 @@ export default function AIContent({ imageUrl }: Props) {
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const { resolvedTheme: theme } = useTheme();
 
   const [previousError, setPreviousError] = useState<string | null>(null);
-  const [historicalImage, setHistoricalImage] = useState<{
-    id: string;
-    originalImg: string;
-    generatedImg: string;
-  } | null>(null);
+  const [historicalImage, setHistoricalImage] = useState<string | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [type, setType] = useState<string | null>(null);
   const [style, setStyle] = useState<string | null>(null);
   const [isRoom, setIsRoom] = useState<boolean>(true);
+  const [originalImage, setOriginalImage] = useState<string>(
+    imageUrl
+      ? imageUrl
+      : `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+  );
   const [uploadedImage, setUploadedImage] = useState<null | string>(null);
-  const [uploadNew, setUploadNew] = useState<boolean>(true);
+  const [uploadNew, setUploadNew] = useState<boolean>(imageUrl ? false : true);
   const [previousGenerations, setPreviousGenerations] = useState<any[]>([]);
-  const { resolvedTheme: theme } = useTheme();
   const [fetchingPrevious, setFetchingPrevious] = useState<boolean>(true);
   const { user } = useContext(LocaleContext);
   const HomeIcon = typeIcons["house"];
@@ -63,6 +64,19 @@ export default function AIContent({ imageUrl }: Props) {
   const rs = useScopedI18n("home.roomStyles");
   const ps = useScopedI18n("home.propertyStyles");
   const p = useScopedI18n("sell.photos");
+
+  const sortByCreation = (input: any[]) => {
+    return input.sort((a, b) => {
+      return new Date(b[Object.keys(b)[0]].createdAt).getTime() - new Date(a[Object.keys(a)[0]].createdAt).getTime();
+    });
+  };
+
+  useEffect(() => {
+    if (uploadedImage) {
+      setOriginalImage(uploadedImage);
+      console.log("originalImage", originalImage);
+    }
+  }, [uploadedImage]);
 
   const propertyTypes = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -94,7 +108,7 @@ export default function AIContent({ imageUrl }: Props) {
       },
       body: JSON.stringify({
         userId: user?.id,
-        imageUrl: uploadedImage ? uploadedImage : imageUrl,
+        imageUrl: originalImage,
         type: isRoom,
         room: type,
         style: style,
@@ -111,8 +125,10 @@ export default function AIContent({ imageUrl }: Props) {
         const response = await fetch("/api/redis/previousGenerations/" + user!.id);
         const predictions = await response.json();
 
+        console.log(predictions);
+
         if (response.status === 200) {
-          setPreviousGenerations(predictions.data);
+          setPreviousGenerations(sortByCreation(predictions.data));
         } else {
           setPreviousError(predictions.error || "An error occurred");
           setStatus("Unable to fetch previously generated ");
@@ -147,6 +163,7 @@ export default function AIContent({ imageUrl }: Props) {
             setStatus("failed");
           } else if (response.status === 200) {
             if (result.prediction.status === "succeeded") {
+              setHistoricalImage(result.prediction.originalImg);
               setGeneratedImage(result.prediction.generatedImg);
               const newPreviousGenerations = previousGenerations;
               setPreviousGenerations([{ [newPredictionId!]: result.prediction }, ...newPreviousGenerations]);
@@ -274,14 +291,10 @@ export default function AIContent({ imageUrl }: Props) {
         <div className="flex flex-col w-full gap-6 items-center justify-start">
           <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-8 p-8 justify-items-center max-w-8xl">
             <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-1 xl:order-none">
-              {imageUrl || historicalImage ? (
+              {originalImage && !uploadNew ? (
                 <div>
                   <Image
-                    src={
-                      historicalImage?.originalImg ||
-                      imageUrl ||
-                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
-                    }
+                    src={originalImage}
                     alt="Original Image"
                     className="object-cover object-center"
                     fill={true}
@@ -291,7 +304,9 @@ export default function AIContent({ imageUrl }: Props) {
                     <Button
                       variant="default"
                       className="flex justify-center items-center gap-3 text-md"
-                      onClick={() => setUploadNew(true)}
+                      onClick={() => {
+                        setUploadNew(true);
+                      }}
                     >
                       <ChevronUp />
                       <p>{t("upload-new")}</p>
@@ -300,7 +315,7 @@ export default function AIContent({ imageUrl }: Props) {
                 </div>
               ) : (
                 <div className="w-full h-full justify-center items-center">
-                  {!uploadedImage && uploadNew ? (
+                  {!uploadedImage && uploadNew && !imageUrl ? (
                     <ImageUpload
                       filePath={`${user!.id}/ai`}
                       onlyImagesError={p("onlyImages")}
@@ -312,26 +327,6 @@ export default function AIContent({ imageUrl }: Props) {
                       isUploading={isUploading}
                       setIsUploading={setIsUploading}
                     />
-                  ) : uploadedImage && !uploadNew ? (
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={uploadedImage}
-                        alt="Generated Image"
-                        className="object-cover object-center"
-                        fill={true}
-                        sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
-                      />
-                      <div className="absolute top-0 left-0">
-                        <Button
-                          variant="default"
-                          className="flex justify-center items-center gap-3 text-md"
-                          onClick={() => setUploadNew(true)}
-                        >
-                          <ChevronUp />
-                          <p>{t("upload-new")}</p>
-                        </Button>
-                      </div>
-                    </div>
                   ) : (
                     <div className="relative w-full h-full">
                       <ImageUpload
@@ -375,7 +370,6 @@ export default function AIContent({ imageUrl }: Props) {
                 (generatedImage || historicalImage) && (
                   <Image
                     src={
-                      historicalImage?.generatedImg ||
                       generatedImage ||
                       `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
                     }
@@ -413,11 +407,10 @@ export default function AIContent({ imageUrl }: Props) {
                           className="hover:cursor-pointer shadow-lg dark:shadow-white/10 p-0 rounded-xl overflow-hidden"
                           variant={"outline"}
                           onClick={() => {
-                            setHistoricalImage({
-                              id: generation[Object.keys(generation)[0]],
-                              originalImg: generation[Object.keys(generation)[0]].originalImg,
-                              generatedImg: generation[Object.keys(generation)[0]].generatedImg,
-                            });
+                            setUploadNew(false);
+                            setOriginalImage(generation[Object.keys(generation)[0]].originalImg);
+                            setHistoricalImage(generation[Object.keys(generation)[0]].originalImg);
+                            setGeneratedImage(generation[Object.keys(generation)[0]].generatedImg);
                           }}
                         >
                           <div className="flex flex-col sm:flex-row w-full h-full sm:gap-5">
@@ -469,13 +462,11 @@ export default function AIContent({ imageUrl }: Props) {
                 (generatedImage || historicalImage) && (
                   <CompareSlider
                     original={
-                      historicalImage?.originalImg ||
-                      uploadedImage ||
+                      historicalImage ||
                       imageUrl ||
                       `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
                     }
                     restored={
-                      historicalImage?.generatedImg ||
                       generatedImage ||
                       `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
                     }

@@ -746,6 +746,7 @@ export default {
     "upload-new": "ახალი ატვირთვა",
     "old-photo": "წინა",
     "completed": "დასრულებული",
+    "historical-images": "ადრე გენერირებული სურათები",
     "isRoomButton": {
       "room": "ოთახი",
       "property": "საკუთრება"

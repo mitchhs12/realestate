@@ -746,6 +746,7 @@ export default {
     "upload-new": "新上传",
     "old-photo": "以前的",
     "completed": "完全的",
+    "historical-images": "先前生成的图像",
     "isRoomButton": {
       "room": "房间",
       "property": "财产"

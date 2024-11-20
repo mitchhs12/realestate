@@ -746,6 +746,7 @@ export default {
     "upload-new": "تحميل جديد",
     "old-photo": "سابق",
     "completed": "مكتمل",
+    "historical-images": "الصور التي تم إنشاؤها مسبقًا",
     "isRoomButton": {
       "room": "غرفة",
       "property": "ملكية"

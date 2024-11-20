@@ -746,6 +746,7 @@ export default {
     "upload-new": "Nuwe oplaai",
     "old-photo": "Vorige",
     "completed": "Voltooi",
+    "historical-images": "Voorheen gegenereerde beelde",
     "isRoomButton": {
       "room": "Kamer",
       "property": "Eiendom"

@@ -746,6 +746,7 @@ export default {
     "upload-new": "Yeni yükleme",
     "old-photo": "Öncesi",
     "completed": "Tamamlanmış",
+    "historical-images": "Daha Önce Oluşturulmuş Görüntüler",
     "isRoomButton": {
       "room": "Oda",
       "property": "Mülk"

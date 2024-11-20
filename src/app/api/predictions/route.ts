@@ -22,9 +22,9 @@ export async function POST(request: NextRequest) {
     input: {
       image: imageUrl,
       prompt: `A ${kind} ${isRoom ? "room" : "property"} designed in ${style} style and with ${style} aesthetics.`,
-      a_prompt: `best quality, extremely detailed, photo from Pinterest, cinematic photo, ${isRoom ? "indoor lighting accents" : "outdoor natural lighting"}, ultra-detailed, ultra-realistic, award-winning`,
+      a_prompt: `best quality, extremely detailed, photo from Pinterest, cinematic photo, ${isRoom ? "indoor lighting accents" : "outdoor natural lighting"}, ultra-detailed, ultra-realistic, award-winning, same background`,
       n_prompt:
-        "longbody, blurry, distorted edges, unrealistic proportions, bad lighting, oversaturation, overly cartoonish, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
+        "longbody, blurry, distorted edges, unrealistic proportions, bad lighting, oversaturation, overly cartoonish, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, different background",
       userId: userId,
     },
   };
