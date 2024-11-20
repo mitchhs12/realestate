@@ -29,10 +29,8 @@ export async function POST(request: NextRequest) {
     },
   };
 
-  if (WEBHOOK_HOST) {
-    options.webhook = `${WEBHOOK_HOST}/api/webhooks/ai`;
-    options.webhook_events_filter = ["start", "completed"];
-  }
+  options.webhook = `${WEBHOOK_HOST}/api/webhooks/ai`;
+  options.webhook_events_filter = ["start", "completed"];
 
   const prediction = await replicate.predictions.create(options);
 
