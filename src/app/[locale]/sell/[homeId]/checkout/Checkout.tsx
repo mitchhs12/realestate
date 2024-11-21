@@ -68,9 +68,7 @@ export default function Checkout({
   }, []);
 
   useEffect(() => {
-    if (currentHome && currentHome.listingType === "premium") {
-      setSelected("premium");
-      setHasPaid(true);
+    if (currentHome && currentHome.listingType) {
       setNextDisabled(false);
     }
   }, [currentHome]);

@@ -50,12 +50,10 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
 
   const shouldIncrementFlowStep = () => {
     const nextStepUpTo = checkStepPositionForNextNavigation();
-    // console.log("nextStepUpTo", nextStepUpTo);
-    // console.log("sellFlowFlatIndex", sellFlowFlatIndex);
-    // console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
-    if (sellFlowFlatIndex < nextStepUpTo) {
-      return false;
-    } else if (sellFlowFlatIndex === nextStepUpTo) {
+    console.log("nextStepUpTo", nextStepUpTo);
+    console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+    console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
+    if (sellFlowFlatIndex === nextStepUpTo) {
       return true;
     } else {
       return false;
@@ -63,10 +61,6 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   };
 
   const isButtonDisabled = (): boolean => {
-    if (nextLoading) {
-      return true; // Button disabled if loading
-    }
-
     const _shouldIncreaseListingFlowStep = shouldIncrementFlowStep();
     // console.log("shouldIncreaseListingFlowStep:", _shouldIncreaseListingFlowStep);
     if (_shouldIncreaseListingFlowStep) {
@@ -81,11 +75,10 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
       } else if (pathname.startsWith(`/sell/${currentHome?.id}/review`)) {
         console.log("button should be active because we are on the final page");
         return false;
-      } else if (currentHome?.listingType === "premium") {
+      } else if (currentHome?.listingType) {
         return false;
       } else {
         // console.log("button should be DISABLED because new home is the same as current home");
-        console.log("return true here");
         return true;
       }
     } else {
@@ -193,7 +186,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
               variant="default"
               size="lg"
               onClick={handleNext}
-              disabled={nextButtonDisabled || nextDisabled || prevLoading}
+              disabled={nextLoading || prevLoading || nextButtonDisabled || nextDisabled}
             >
               {!nextLoading
                 ? prevStep !== ""
