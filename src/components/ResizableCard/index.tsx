@@ -49,6 +49,7 @@ export default function ResizableCard({
   const { user, sessionLoading } = useContext(LocaleContext);
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
+  const isSell = path.includes("/sell");
   const isMyProperties = path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const { resolvedTheme: theme } = useTheme();
@@ -197,7 +198,7 @@ export default function ResizableCard({
           {!visibilityChanging ? home.isActive ? <Eye /> : <EyeOff /> : <ReloadIcon className="animate-spin w-5 h-5" />}
         </Button>
       )}
-      {isMyProperties && user?.id === home.ownerId && <DeleteButton homeId={home.id} />}
+      {isMyProperties || (isSell && user?.id === home.ownerId && <DeleteButton homeId={home.id} />)}
     </div>
   );
 }
