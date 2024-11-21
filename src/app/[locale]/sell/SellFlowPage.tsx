@@ -9,6 +9,7 @@ import { LanguageType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { formatNumber } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   currentHome: HomeType | null;
@@ -25,6 +26,8 @@ interface Props {
   step3: string;
   step3Sub: string;
   completed: string;
+  unfinishedHomes?: HomeType[];
+  setModalOpen?: (value: boolean) => void;
 }
 
 export default function SellFlowPage({
@@ -41,6 +44,8 @@ export default function SellFlowPage({
   step3,
   step3Sub,
   completed,
+  unfinishedHomes,
+  setModalOpen,
 }: Props) {
   const { numerals } = useContext(LocaleContext);
 
@@ -71,94 +76,110 @@ export default function SellFlowPage({
   const step = currentHome?.listingFlowStep;
 
   return (
-    <div className="flex flex-col h-full justify-start md:justify-center items-center gap-y-20 md:gap-y-0 md:flex-row w-full">
-      <div className="flex flex-col md:flex-row w-full h-full justify-start items-center">
-        <div className="flex w-1/2 items-center md:items-center justify-center py-3 text-center text-nowrap">
-          <h1 className="flex items-center text-3xl">{currentHome ? titleContinue : title}</h1>
-        </div>
-        <div className="flex h-full justify-center items-center flex-col md:items-start gap-8 md:gap-20 w-1/2 md:mr-8 text-wrap">
-          <div className="flex flex-col gap-y-12 justify-center w-[52vw] md:w-[40vw]">
-            <div className="flex flex-col items-start">
-              <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
-                {step1}
-                {step && (
-                  <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {step > stepLengthsWithoutStepPages[0]
-                      ? formatNumber(stepLengthsWithoutStepPages[0], numerals)
-                      : formatNumber(step, numerals)}
-                    /{getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
-                    <span className="hidden 2xl:flex">{completed}</span>
-                    <Checkbox
-                      id="state"
-                      disabled={true}
-                      checked={step > stepLengthsWithoutStepPages[0] ? true : false}
-                    />
-                  </label>
-                )}
-              </h3>
-              <div>{step1Sub}</div>
-            </div>
-            <Separator />
-            <div className="flex flex-col items-start">
-              <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
-                {step2}
-                {step && (
-                  <label className="hidden lg:flex items-center gap-3 text-sm">
-                    {formatNumber(
-                      Math.min(
-                        step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0,
-                        stepLengthsWithoutStepPages[1]
-                      ),
-                      numerals
-                    )}
-                    /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
-                    <span className="hidden 2xl:flex">{completed}</span>
-                    <Checkbox
-                      id="state"
-                      disabled={true}
-                      checked={
-                        step > stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] + 1 ? true : false
-                      }
-                    />
-                  </label>
-                )}
-              </h3>
-              <div>{step2Sub}</div>
-            </div>
-            <Separator />
-            <div className="flex flex-col items-start">
-              <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
-                {step3}
-                {step && (
-                  <label className="hidden lg:flex text-md items-center gap-3 text-sm">
-                    {step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2 > 0
-                      ? formatNumber(
-                          step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2,
-                          numerals
-                        )
-                      : formatNumber(0, numerals)}
-                    /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[1])}
-                    <span className="hidden 2xl:flex">{completed}</span>
-                    <Checkbox
-                      id="state"
-                      disabled={true}
-                      checked={
-                        step >
-                        stepLengthsWithoutStepPages[0] +
-                          stepLengthsWithoutStepPages[1] +
-                          stepLengthsWithoutStepPages[2] +
-                          2
-                          ? true
-                          : false
-                      }
-                    />
-                  </label>
-                )}
-              </h3>
-              <div>{step3Sub}</div>
+    <div className="flex flex-col relative h-full justify-start md:justify-center items-center gap-y-20 md:gap-y-0 md:flex-row w-full">
+      <div className="flex flex-col h-full w-full gap-6 justify-start items-center">
+        <div className="flex flex-col md:flex-row w-full h-full justify-start items-center">
+          <div className="flex w-1/2 items-center md:items-center justify-center py-3 text-center text-nowrap">
+            <h1 className="flex items-center text-3xl">{currentHome ? titleContinue : title}</h1>
+          </div>
+          <div className="flex h-full justify-center items-center flex-col md:items-start gap-8 md:gap-20 w-1/2 md:mr-8 text-wrap">
+            <div className="flex flex-col gap-y-12 justify-center w-[52vw] md:w-[40vw]">
+              <div className="flex flex-col items-start">
+                <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
+                  {step1}
+                  {step && (
+                    <label className="hidden lg:flex items-center gap-3 text-sm">
+                      {step > stepLengthsWithoutStepPages[0]
+                        ? formatNumber(stepLengthsWithoutStepPages[0], numerals)
+                        : formatNumber(step, numerals)}
+                      /{getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
+                      <span className="hidden 2xl:flex">{completed}</span>
+                      <Checkbox
+                        id="state"
+                        disabled={true}
+                        checked={step > stepLengthsWithoutStepPages[0] ? true : false}
+                      />
+                    </label>
+                  )}
+                </h3>
+                <div>{step1Sub}</div>
+              </div>
+              <Separator />
+              <div className="flex flex-col items-start">
+                <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
+                  {step2}
+                  {step && (
+                    <label className="hidden lg:flex items-center gap-3 text-sm">
+                      {formatNumber(
+                        Math.min(
+                          step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0,
+                          stepLengthsWithoutStepPages[1]
+                        ),
+                        numerals
+                      )}
+                      /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
+                      <span className="hidden 2xl:flex">{completed}</span>
+                      <Checkbox
+                        id="state"
+                        disabled={true}
+                        checked={
+                          step > stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] + 1 ? true : false
+                        }
+                      />
+                    </label>
+                  )}
+                </h3>
+                <div>{step2Sub}</div>
+              </div>
+              <Separator />
+              <div className="flex flex-col items-start">
+                <h3 className="flex items-center justify-between w-full text-xl font-semibold gap-5">
+                  {step3}
+                  {step && (
+                    <label className="hidden lg:flex text-md items-center gap-3 text-sm">
+                      {step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2 > 0
+                        ? formatNumber(
+                            step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2,
+                            numerals
+                          )
+                        : formatNumber(0, numerals)}
+                      /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[1])}
+                      <span className="hidden 2xl:flex">{completed}</span>
+                      <Checkbox
+                        id="state"
+                        disabled={true}
+                        checked={
+                          step >
+                          stepLengthsWithoutStepPages[0] +
+                            stepLengthsWithoutStepPages[1] +
+                            stepLengthsWithoutStepPages[2] +
+                            2
+                            ? true
+                            : false
+                        }
+                      />
+                    </label>
+                  )}
+                </h3>
+                <div>{step3Sub}</div>
+              </div>
             </div>
           </div>
         </div>
+        {unfinishedHomes && unfinishedHomes.length > 0 && (
+          <div className="absolute flex flex-col gap-3 items-center bottom-20">
+            <h3 className="text-2xl font-semibold">You have unfinished properties!</h3>
+            <Button
+              className="text-lg"
+              size={"lg"}
+              onClick={() => {
+                setModalOpen && setModalOpen(true);
+              }}
+            >
+              View
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

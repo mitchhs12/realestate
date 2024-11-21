@@ -31,9 +31,6 @@ export default async function Page({ params: { locale } }: any) {
   }
 
   const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
-  if (unfinishedHomes.length >= 1) {
-    return <SelectHomeWrapper locale={locale} unfinishedHomes={unfinishedHomes} user={user} />;
-  }
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");
@@ -49,22 +46,28 @@ export default async function Page({ params: { locale } }: any) {
   const step3Sub = t("step-3-sub");
   const completed = t("completed");
 
+  const sellFlowText = {
+    title,
+    titleContinue,
+    step1,
+    step1Sub,
+    step2,
+    step2Sub,
+    step3,
+    step3Sub,
+    completed,
+  };
+
   return (
-    <SellFlowPage
+    <SelectHomeWrapper
+      locale={locale}
+      unfinishedHomes={unfinishedHomes}
+      user={user}
       currentHome={null}
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
-      locale={locale}
-      title={title}
-      titleContinue={titleContinue}
-      step1={step1}
-      step1Sub={step1Sub}
-      step2={step2}
-      step2Sub={step2Sub}
-      step3={step3}
-      step3Sub={step3Sub}
-      completed={completed}
+      sellFlowText={sellFlowText}
     />
   );
 }

@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Verkoop jou eiendom",
+      "title": "Verkoop 'n nuwe eiendom",
       "title-continue": "Voltooi jou lysinskrywing",
       "step-1": "1. Vertel ons van jou plek",
       "step-1-sub": "Ligging, grootte en besonderhede.",

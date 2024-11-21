@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Verkaufen Sie Ihre Immobilie",
+      "title": "Eine neue Immobilie verkaufen",
       "title-continue": "Eintrag abschließen",
       "step-1": "1. Erzähl uns von deinem Ort",
       "step-1-sub": "Lage, Größe und Details.",

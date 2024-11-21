@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Sell your property",
+      "title": "Sell a new property",
       "title-continue": "Finish your listing",
       "step-1": "1. Tell us about your place",
       "step-1-sub": "Location, size and details.",

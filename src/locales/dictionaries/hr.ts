@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Prodaj svoju nekretninu",
+      "title": "Prodajte novu nekretninu",
       "title-continue": "Završite svoj unos",
       "step-1": "1. Recite nam nešto o svom mjestu",
       "step-1-sub": "Lokacija, veličina i detalji.",

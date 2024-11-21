@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Vendez votre propriété",
+      "title": "Vendre un bien neuf",
       "title-continue": "Terminez votre annonce",
       "step-1": "1. Parlez-nous de votre lieu",
       "step-1-sub": "Localisation, taille et détails.",

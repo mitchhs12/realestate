@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Bán tài sản của bạn",
+      "title": "Bán một bất động sản mới",
       "title-continue": "Hoàn thiện danh sách của bạn",
       "step-1": "1. Hãy cho chúng tôi biết về nơi của bạn",
       "step-1-sub": "Vị trí, kích thước và thông tin chi tiết.",

@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "不動産を売る",
+      "title": "新しい不動産を売る",
       "title-continue": "リストを完了する",
       "step-1": "1. あなたの場所について教えてください",
       "step-1-sub": "場所、サイズ、詳細。",

@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Mülkünüzü satın",
+      "title": "Yeni bir mülk satmak",
       "title-continue": "Listelemenizi tamamlayın",
       "step-1": "1. Bize yerinizden bahsedin",
       "step-1-sub": "Konum, büyüklük ve detaylar.",

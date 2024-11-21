@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "出售您的房产",
+      "title": "出售新房产",
       "title-continue": "完成您的列表",
       "step-1": "1. 告诉我们您的住所",
       "step-1-sub": "位置、大小和详细信息。",

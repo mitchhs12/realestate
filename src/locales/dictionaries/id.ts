@@ -570,7 +570,7 @@ export default {
   },
   "sell": {
     "sell-flow": {
-      "title": "Jual properti Anda",
+      "title": "Jual properti baru",
       "title-continue": "Selesaikan daftar Anda",
       "step-1": "1. Ceritakan tentang tempatmu",
       "step-1-sub": "Lokasi, ukuran dan detail.",

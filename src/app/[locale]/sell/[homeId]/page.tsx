@@ -37,10 +37,11 @@ export default async function Page({ params: { locale, homeId } }: any) {
         <p className="text-center">Home not found</p>
       </main>
     );
-  } else if (home.isComplete === true) {
-    // If the home is complete, mount the unfinished homes component
-    return <SelectHomeWrapper locale={locale} unfinishedHomes={unfinishedHomes} user={user} />;
   }
+  // else if (home.isComplete === true) {
+  //   // If the home is complete, mount the unfinished homes component
+  //   return <SelectHomeWrapper locale={locale} unfinishedHomes={unfinishedHomes} user={user} />;
+  // }
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");

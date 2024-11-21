@@ -3,6 +3,7 @@
 import { useScopedI18n } from "@/locales/client";
 import { HomeType } from "@/lib/validations";
 import { findMatching } from "@/lib/utils";
+import { useState } from "react";
 import { typesMap } from "@/lib/sellFlowData";
 import ResizableCard from "@/components/ResizableCard";
 import { User } from "next-auth";
@@ -15,7 +16,17 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
-export function Modal({ unfinishedHomes, user }: { unfinishedHomes: HomeType[]; user: User }) {
+export function Modal({
+  unfinishedHomes,
+  user,
+  modalOpen,
+  setModalOpen,
+}: {
+  unfinishedHomes: HomeType[];
+  user: User;
+  modalOpen: boolean;
+  setModalOpen: (open: boolean) => void;
+}) {
   const mp = useScopedI18n("my-properties");
   const t = useScopedI18n("sell.type");
   const p = useScopedI18n("sell.checkout.premium");
@@ -28,8 +39,8 @@ export function Modal({ unfinishedHomes, user }: { unfinishedHomes: HomeType[]; 
   }));
 
   return (
-    <Dialog open={true}>
-      <DialogContent close={false} className="flex flex-col w-[90%] max-w-7xl h-[90%]">
+    <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+      <DialogContent className="flex flex-col w-[90%] max-w-7xl h-[90%]">
         <DialogHeader className="p-2 sm:p-4 md:px-6">
           <DialogTitle className="text-2xl font-semibold">{u("title")}</DialogTitle>
           <DialogDescription>{u("subtitle")}</DialogDescription>
