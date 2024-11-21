@@ -65,7 +65,7 @@ export default function Header({
   const pathname = usePathname();
   const router = useRouter();
   const { currentHome, openLogInModal, openSignUpModal } = useContext(QueryContext);
-  const { defaultLanguage, user } = useContext(LocaleContext);
+  const { defaultLanguage, user, sessionLoading } = useContext(LocaleContext);
   const isSearchPage = pathname.includes("/search");
   const isRootPage = pathname === "/" || pathname === `/${defaultLanguage}`;
   const isHomesPage = pathname.includes("/homes");
@@ -222,6 +222,7 @@ export default function Header({
           <div className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-2 2xs:gap-4 md:gap-6 justify-end`}>
             {!isSearchPage && (
               <Button
+                disabled={sessionLoading}
                 className="flex h-12 gap-2 items-center text-sm font-medium"
                 onClick={() => {
                   user ? router.push("/sell") : openSignUpModal();
