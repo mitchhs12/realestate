@@ -29,6 +29,10 @@ export async function POST(request: NextRequest) {
         price: 299,
         "yearly-total-price": 1699,
       },
+      basic: {
+        price: 8,
+        "yearly-total-price": 99,
+      },
     };
 
     const amount = interval === "year" ? map[planId]["yearly-total-price"] * 100 : map[planId].price * 100;

@@ -41,6 +41,82 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   setStaticParamsLocale(locale);
   const billing = await getScopedI18n("billing");
 
+  const freeBilling = {
+    title: billing("free.title"),
+    price: Number(billing("free.price")),
+    yearlyPrice: Number(billing("free.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("free.yearly-total-price")),
+    perks: [
+      {
+        title: billing("free.perks.0.title"),
+        subtitle: billing("free.perks.0.subtitle"),
+      },
+      {
+        title: billing("free.perks.1.title"),
+        subtitle: billing("free.perks.1.subtitle"),
+      },
+    ],
+  };
+
+  const basicBilling = {
+    title: billing("basic.title"),
+    price: Number(billing("basic.price")),
+    yearlyPrice: Number(billing("basic.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("basic.yearly-total-price")),
+    perks: [
+      {
+        title: billing("basic.perks.0.title"),
+        subtitle: billing("basic.perks.0.subtitle"),
+      },
+      {
+        title: billing("basic.perks.1.title"),
+        subtitle: billing("basic.perks.1.subtitle"),
+      },
+    ],
+  };
+
+  const insightBilling = {
+    title: billing("insight.title"),
+    price: Number(billing("insight.price")),
+    yearlyPrice: Number(billing("insight.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("insight.yearly-total-price")),
+    perks: [
+      {
+        title: billing("insight.perks.0.title"),
+        subtitle: billing("insight.perks.0.subtitle"),
+      },
+      {
+        title: billing("insight.perks.1.title"),
+        subtitle: billing("insight.perks.1.subtitle"),
+      },
+      {
+        title: billing("insight.perks.2.title"),
+        subtitle: billing("insight.perks.2.subtitle"),
+      },
+    ],
+  };
+
+  const maxBilling = {
+    title: billing("max.title"),
+    price: Number(billing("max.price")),
+    yearlyPrice: Number(billing("max.yearly-monthly-price")),
+    totalYearlyPrice: Number(billing("max.yearly-total-price")),
+    perks: [
+      {
+        title: billing("max.perks.0.title"),
+        subtitle: billing("max.perks.0.subtitle"),
+      },
+      {
+        title: billing("max.perks.1.title"),
+        subtitle: billing("max.perks.1.subtitle"),
+      },
+      {
+        title: billing("max.perks.2.title"),
+        subtitle: billing("max.perks.2.subtitle"),
+      },
+    ],
+  };
+
   const starterBilling = {
     title: billing("starter.title"),
     price: Number(billing("starter.price")),
@@ -62,6 +138,14 @@ export default async function Page({ params: { locale } }: { params: { locale: L
       {
         title: billing("starter.perks.3.title"),
         subtitle: billing("starter.perks.3.subtitle"),
+      },
+      {
+        title: billing("starter.perks.4.title"),
+        subtitle: billing("starter.perks.4.subtitle"),
+      },
+      {
+        title: billing("starter.perks.5.title"),
+        subtitle: billing("starter.perks.5.subtitle"),
       },
     ],
   };
@@ -156,11 +240,18 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     ],
   };
 
-  const billingObject = {
+  const sellerObject = {
     starter: starterBilling,
     pro: proBilling,
     premium: premiumBilling,
     business: businessBilling,
+  };
+
+  const buyerObject = {
+    free: freeBilling,
+    basic: basicBilling,
+    insight: insightBilling,
+    max: maxBilling,
   };
 
   const billingText = {
@@ -199,7 +290,12 @@ export default async function Page({ params: { locale } }: { params: { locale: L
         <PricingTitle locale={locale} />
       </div>
 
-      <PricingPageContent locale={locale} billingObject={billingObject} billingText={billingText} />
+      <PricingPageContent
+        locale={locale}
+        sellerObject={sellerObject}
+        buyerObject={buyerObject}
+        billingText={billingText}
+      />
     </div>
   );
 }

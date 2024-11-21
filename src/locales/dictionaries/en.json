@@ -14,6 +14,62 @@
     "view-monthly-billing": "View monthly billing ↗",
     "save-with-yearly": "Save with yearly",
     "six-months-free": "(6+ months free ↗)",
+    "free": {
+      "title": "Free",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": [
+        { "title": "View All Listing Locations", "subtitle": "As published by the seller." },
+        { "title": "Browse in 15+ Languages", "subtitle": "AI-powered translations." },
+        { "title": "Prices in 25+ Currencies", "subtitle": "Currency conversions updated daily." },
+        { "title": "Free Support", "subtitle": "Responses in 1-3 business days." }
+      ]
+    },
+    "basic": {
+      "title": "Basic",
+      "blurb": "All free features, plus",
+      "price": "19",
+      "yearly-monthly-price": "9",
+      "yearly-total-price": "99",
+      "perks": [
+        {
+          "title": "View 3 Property Owners",
+          "subtitle": "View the owner contact details for 3 properties."
+        },
+        { "title": "Basic Support", "subtitle": "Responses in 24 hours." }
+      ]
+    },
+    "insight": {
+      "title": "Insight",
+      "blurb": "All basic features, plus",
+      "price": "49",
+      "yearly-monthly-price": "24",
+      "yearly-total-price": "289",
+      "perks": [
+        { "title": "View 25 Property Owners", "subtitle": "View the owner contact details for 25 properties." },
+        { "title": "Insight Support", "subtitle": "Responses in 8 hours." },
+        {
+          "title": "Access to AI Design Studio",
+          "subtitle": "Redesign your homes in just 1 click."
+        }
+      ]
+    },
+    "max": {
+      "title": "Max",
+      "blurb": "All insight features, plus",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": [
+        { "title": "View All Property Owners", "subtitle": "View all owner contact details." },
+        { "title": "Max Support", "subtitle": "Responses in 1 hour." },
+        {
+          "title": "Complete Legal Support",
+          "subtitle": "Our lawyers handle the entire transactional process."
+        }
+      ]
+    },
     "starter": {
       "title": "Starter",
       "price": "19",
@@ -21,18 +77,20 @@
       "yearly-total-price": "99",
       "perks": [
         {
-          "title": "View 1 property",
-          "subtitle": "View 1 property's contact details and location."
-        },
-        {
           "title": "Sell 1 Property",
-          "subtitle": "List 1 property per month."
+          "subtitle": "Advertise 1 property as a standard listing."
         },
         {
-          "title": "5 Photos",
-          "subtitle": "Upload 5 photos per listing."
+          "title": "Upload 5 Photos",
+          "subtitle": "Upload 5 photos for your property listing."
         },
-        { "title": "Basic Support", "subtitle": "Get support within 24-48 hours." }
+        {
+          "title": "View 3 Property Owners",
+          "subtitle": "View the owner contact details for 3 properties."
+        },
+        { "title": "Basic Support", "subtitle": "Responses in 1-3 business days." },
+        { "title": "Translated Advertisment", "subtitle": "Advertise to 170+ countries." },
+        { "title": "Sale Price Conversions", "subtitle": "Automatically updated daily." }
       ]
     },
     "pro": {
@@ -42,10 +100,10 @@
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
       "perks": [
-        { "title": "View 100 properties", "subtitle": "View 10 property's contact details and location." },
-        { "title": "Sell 10 properties", "subtitle": "List 10 properties per month." },
-        { "title": "10 photos", "subtitle": "Upload 10 photos per property." },
-        { "title": "Pro Support", "subtitle": "Get support within 12-24 hours." }
+        { "title": "Sell 10 Properties", "subtitle": "Advertise 10 properties as a standard listing." },
+        { "title": "View 10 Property Owners", "subtitle": "View the owner contact details for 10 properties." },
+        { "title": "Pro Support", "subtitle": "Responses in 24 hours." },
+        { "title": "Upload 15 Photos", "subtitle": "Upload 15 photos for your property listing." }
       ]
     },
     "premium": {
@@ -55,15 +113,18 @@
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
       "perks": [
-        { "title": "View all properties", "subtitle": "View all property contact details." },
-        { "title": "Sell 30 properties", "subtitle": "List 30 properties per month." },
-        { "title": "30 photos", "subtitle": "Upload 30 photos per property." },
-        { "title": "Video", "subtitle": "Add videos to your properties." },
+        { "title": "Sell 100 Properties", "subtitle": "View the owner contact details for 100 properties." },
+        { "title": "View 100 Property Owners", "subtitle": "View the owner contact details for 100 properties." },
+        { "title": "Premium Support", "subtitle": "Responses in 8 hours." },
+        { "title": "Video Uploads", "subtitle": "Add videos to your property listings." },
         {
-          "title": "Premium Banner",
-          "subtitle": "Your properties will be highlighted and appear at the top of user searches."
+          "title": "Gold Premium Banner",
+          "subtitle": "Advertise your properties as a premium listing."
         },
-        { "title": "Premium Support", "subtitle": "Get support within 8 hours." }
+        {
+          "title": "Access to AI Design Studio",
+          "subtitle": "Show how people could redesign your property in just 1 click."
+        }
       ]
     },
     "business": {
@@ -75,23 +136,23 @@
       "perks": [
         {
           "title": "Sell unlimited properties",
-          "subtitle": "List unlimited properties every month"
+          "subtitle": "List unlimited properties."
         },
         {
           "title": "Unlimited photos",
-          "subtitle": "Upload unlimited photos per property"
-        },
-        {
-          "title": "Featured Listings",
-          "subtitle": "Your properties will be highlighted and appear at the top of user searches"
-        },
-        {
-          "title": "Social Media Promotion",
-          "subtitle": "Your listings will be promoted on our social media channels"
+          "subtitle": "Upload unlimited photos per property."
         },
         {
           "title": "Business Support",
           "subtitle": "Get support within 1 hour"
+        },
+        {
+          "title": "Featured Listings",
+          "subtitle": "Your properties will appear at the top of user search results."
+        },
+        {
+          "title": "On-Site Content Creation",
+          "subtitle": "We will travel to you to help you record and promote your property."
         }
       ]
     }

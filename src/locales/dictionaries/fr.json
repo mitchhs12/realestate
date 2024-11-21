@@ -17,27 +17,118 @@
     "view-monthly-billing": "Voir la facturation mensuelle ↗",
     "save-with-yearly": "Économisez avec l'annuelle",
     "six-months-free": "(6+ mois gratuits ↗)",
+    "free": {
+      "title": "Gratuit",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": {
+        "0": {
+          "title": "Afficher tous les emplacements des annonces",
+          "subtitle": "Tel que publié par le vendeur."
+        },
+        "1": {
+          "title": "Naviguez dans plus de 15 langues",
+          "subtitle": "Traductions alimentées par l'IA."
+        },
+        "2": {
+          "title": "Prix dans plus de 25 devises",
+          "subtitle": "Conversions de devises mises à jour quotidiennement."
+        },
+        "3": {
+          "title": "Assistance gratuite",
+          "subtitle": "Réponses dans 1 à 3 jours ouvrables."
+        }
+      }
+    },
+    "basic": {
+      "title": "Basique",
+      "blurb": "Toutes les fonctionnalités gratuites, plus",
+      "price": "19",
+      "yearly-monthly-price": "8",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Voir 3 propriétaires",
+          "subtitle": "Afficher les coordonnées du propriétaire pour 3 propriétés."
+        },
+        "1": {
+          "title": "Assistance de base",
+          "subtitle": "Réponses en 24 heures."
+        }
+      }
+    },
+    "insight": {
+      "title": "Aperçu",
+      "blurb": "Toutes les fonctionnalités de base, plus",
+      "price": "49",
+      "yearly-monthly-price": "20",
+      "yearly-total-price": "249",
+      "perks": {
+        "0": {
+          "title": "Accès à AI Design Studio",
+          "subtitle": "Redessinez vos maisons en 1 clic."
+        },
+        "1": {
+          "title": "Voir 25 propriétaires",
+          "subtitle": "Consultez les coordonnées du propriétaire pour 25 propriétés."
+        },
+        "2": {
+          "title": "Assistance Insight",
+          "subtitle": "Réponses dans 8 heures."
+        }
+      }
+    },
+    "max": {
+      "title": "Max",
+      "blurb": "Toutes les fonctionnalités d'Insight, plus",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Voir tous les propriétaires",
+          "subtitle": "Afficher toutes les coordonnées du propriétaire."
+        },
+        "1": {
+          "title": "Soutien maximal",
+          "subtitle": "Réponses dans 1 heure."
+        },
+        "2": {
+          "title": "Assistance juridique complète",
+          "subtitle": "Nos avocats prennent en charge l’ensemble du processus transactionnel."
+        }
+      }
+    },
     "starter": {
-      "title": "Célibataire",
+      "title": "Démarreur",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
       "perks": {
         "0": {
-          "title": "Voir 1 propriété",
-          "subtitle": "Afficher les coordonnées et l'emplacement d'une propriété."
+          "title": "Vendre 1 propriété",
+          "subtitle": "Annoncez 1 propriété en tant qu'annonce standard."
         },
         "1": {
-          "title": "Vendre 1 propriété",
-          "subtitle": "Listez 1 propriété par mois."
+          "title": "Télécharger 5 photos",
+          "subtitle": "Téléchargez 5 photos pour votre annonce de propriété."
         },
         "2": {
-          "title": "5 Photos",
-          "subtitle": "Téléchargez 5 photos par annonce."
+          "title": "Voir 3 propriétaires",
+          "subtitle": "Afficher les coordonnées du propriétaire pour 3 propriétés."
         },
         "3": {
           "title": "Assistance de base",
-          "subtitle": "Obtenez de l'aide dans les 24 à 48 heures."
+          "subtitle": "Réponses dans 1 à 3 jours ouvrables."
+        },
+        "4": {
+          "title": "Publicité traduite",
+          "subtitle": "Faites de la publicité dans plus de 170 pays."
+        },
+        "5": {
+          "title": "Conversions de prix de vente",
+          "subtitle": "Mis à jour automatiquement quotidiennement."
         }
       }
     },
@@ -49,20 +140,20 @@
       "yearly-total-price": "199",
       "perks": {
         "0": {
-          "title": "Voir 100 propriétés",
-          "subtitle": "Afficher les coordonnées et l'emplacement de 10 propriétés."
+          "title": "Vendre 10 propriétés",
+          "subtitle": "Annoncez 10 propriétés sous forme d'annonce standard."
         },
         "1": {
-          "title": "Vendre 100 propriétés",
-          "subtitle": "Listez 10 propriétés par mois."
+          "title": "Voir 10 propriétaires",
+          "subtitle": "Consultez les coordonnées du propriétaire pour 10 propriétés."
         },
         "2": {
-          "title": "10 photos",
-          "subtitle": "Téléchargez 10 photos par propriété."
+          "title": "Assistance Pro",
+          "subtitle": "Réponses en 24 heures."
         },
         "3": {
-          "title": "Assistance Pro",
-          "subtitle": "Obtenez de l'aide dans les 12 à 24 heures."
+          "title": "Télécharger 15 photos",
+          "subtitle": "Téléchargez 15 photos pour votre annonce de propriété."
         }
       }
     },
@@ -74,28 +165,28 @@
       "yearly-total-price": "499",
       "perks": {
         "0": {
-          "title": "Voir toutes les propriétés",
-          "subtitle": "Afficher toutes les coordonnées de la propriété."
+          "title": "Vendre 100 propriétés",
+          "subtitle": "Consultez les coordonnées des propriétaires pour 100 propriétés."
         },
         "1": {
-          "title": "Vendre 30 propriétés",
-          "subtitle": "Listez 30 propriétés par mois."
+          "title": "Voir 100 propriétaires",
+          "subtitle": "Consultez les coordonnées des propriétaires pour 100 propriétés."
         },
         "2": {
-          "title": "30 photos",
-          "subtitle": "Téléchargez 30 photos par propriété."
+          "title": "Assistance Premium",
+          "subtitle": "Réponses dans 8 heures."
         },
         "3": {
-          "title": "Vidéo",
-          "subtitle": "Ajoutez des vidéos à vos propriétés."
+          "title": "Téléchargements de vidéos",
+          "subtitle": "Ajoutez des vidéos à vos annonces immobilières."
         },
         "4": {
-          "title": "Bannière Premium",
-          "subtitle": "Vos propriétés seront mises en valeur et apparaîtront en haut des recherches des utilisateurs."
+          "title": "Bannière Premium en or",
+          "subtitle": "Annoncez vos propriétés en tant qu'annonce premium."
         },
         "5": {
-          "title": "Assistance Premium",
-          "subtitle": "Obtenez de l'aide dans les 8 heures."
+          "title": "Accès à AI Design Studio",
+          "subtitle": "Montrez comment les gens pourraient réaménager votre propriété en un seul clic."
         }
       }
     },
@@ -108,23 +199,23 @@
       "perks": {
         "0": {
           "title": "Vendez des propriétés illimitées",
-          "subtitle": "Listez un nombre illimité de propriétés chaque mois"
+          "subtitle": "Listez un nombre illimité de propriétés."
         },
         "1": {
           "title": "Photos illimitées",
-          "subtitle": "Téléchargez un nombre illimité de photos par propriété"
+          "subtitle": "Téléchargez un nombre illimité de photos par propriété."
         },
         "2": {
-          "title": "Annonces en vedette",
-          "subtitle": "Vos propriétés seront mises en valeur et apparaîtront en haut des recherches des utilisateurs"
-        },
-        "3": {
-          "title": "Promotion des médias sociaux",
-          "subtitle": "Vos annonces seront promues sur nos réseaux sociaux"
-        },
-        "4": {
           "title": "Soutien aux entreprises",
           "subtitle": "Obtenez de l'aide dans un délai d'une heure"
+        },
+        "3": {
+          "title": "Annonces en vedette",
+          "subtitle": "Vos propriétés apparaîtront en haut des résultats de recherche des utilisateurs."
+        },
+        "4": {
+          "title": "Création de contenu sur site",
+          "subtitle": "Nous nous déplacerons chez vous pour vous aider à enregistrer et promouvoir votre propriété."
         }
       }
     }

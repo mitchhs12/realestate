@@ -17,27 +17,118 @@
     "view-monthly-billing": "查看每月账单 ↗",
     "save-with-yearly": "每年节省",
     "six-months-free": "（6 个月以上免费↗）",
+    "free": {
+      "title": "自由的",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": {
+        "0": {
+          "title": "查看所有房源位置",
+          "subtitle": "如同卖家所发布的那样。"
+        },
+        "1": {
+          "title": "支持 15 种以上语言",
+          "subtitle": "人工智能翻译。"
+        },
+        "2": {
+          "title": "25 种以上货币的价格",
+          "subtitle": "货币换算每日更新。"
+        },
+        "3": {
+          "title": "免费支持",
+          "subtitle": "1-3 个工作日内回复。"
+        }
+      }
+    },
+    "basic": {
+      "title": "基本的",
+      "blurb": "所有免费功能，以及",
+      "price": "19",
+      "yearly-monthly-price": "8",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "查看 3 房主",
+          "subtitle": "查看 3 处房产的业主联系方式。"
+        },
+        "1": {
+          "title": "基础支持",
+          "subtitle": "24 小时内回复。"
+        }
+      }
+    },
+    "insight": {
+      "title": "洞察力",
+      "blurb": "所有基本功能，以及",
+      "price": "49",
+      "yearly-monthly-price": "20",
+      "yearly-total-price": "249",
+      "perks": {
+        "0": {
+          "title": "访问人工智能设计工作室",
+          "subtitle": "只需单击一次即可重新设计您的家。"
+        },
+        "1": {
+          "title": "查看 25 位业主",
+          "subtitle": "查看 25 处房产的业主联系方式。"
+        },
+        "2": {
+          "title": "洞察支持",
+          "subtitle": "8 小时内回复。"
+        }
+      }
+    },
+    "max": {
+      "title": "最大限度",
+      "blurb": "所有洞察功能，以及",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "查看所有业主",
+          "subtitle": "查看所有业主的联系方式。"
+        },
+        "1": {
+          "title": "最大支持",
+          "subtitle": "1 小时内回复。"
+        },
+        "2": {
+          "title": "完整的法律支持",
+          "subtitle": "我们的律师处理整个交易过程。"
+        }
+      }
+    },
     "starter": {
-      "title": "单身的",
+      "title": "起动机",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
       "perks": {
         "0": {
-          "title": "查看 1 处房产",
-          "subtitle": "查看 1 家酒店的联系方式和位置。"
+          "title": "出售 1 处房产",
+          "subtitle": "将 1 处房产作为标准列表进行宣传。"
         },
         "1": {
-          "title": "出售 1 处房产",
-          "subtitle": "每月列出 1 处房产。"
+          "title": "上传 5 张照片",
+          "subtitle": "为您的房产列表上传 5 张照片。"
         },
         "2": {
-          "title": "5 张照片",
-          "subtitle": "每个列表上传 5 张照片。"
+          "title": "查看 3 房主",
+          "subtitle": "查看 3 处房产的业主联系方式。"
         },
         "3": {
           "title": "基础支持",
-          "subtitle": "在 24-48 小时内获得支持。"
+          "subtitle": "1-3 个工作日内回复。"
+        },
+        "4": {
+          "title": "翻译广告",
+          "subtitle": "向 170 多个国家投放广告。"
+        },
+        "5": {
+          "title": "销售价格转换",
+          "subtitle": "每日自动更新。"
         }
       }
     },
@@ -49,20 +140,20 @@
       "yearly-total-price": "199",
       "perks": {
         "0": {
-          "title": "查看 100 处房产",
-          "subtitle": "查看 10 家酒店的联系方式和位置。"
+          "title": "出售 10 处房产",
+          "subtitle": "将 10 处房产作为标准列表进行宣传。"
         },
         "1": {
-          "title": "出售 100 处房产",
-          "subtitle": "每月列出 10 处房产。"
+          "title": "查看 10 位业主",
+          "subtitle": "查看 10 处房产的业主联系方式。"
         },
         "2": {
-          "title": "10 张照片",
-          "subtitle": "每个房产上传 10 张照片。"
+          "title": "专业支持",
+          "subtitle": "24 小时内回复。"
         },
         "3": {
-          "title": "专业支持",
-          "subtitle": "在 12-24 小时内获得支持。"
+          "title": "上传 15 张照片",
+          "subtitle": "为您的房产列表上传 15 张照片。"
         }
       }
     },
@@ -74,28 +165,28 @@
       "yearly-total-price": "499",
       "perks": {
         "0": {
-          "title": "查看所有房产",
-          "subtitle": "查看所有酒店的联系方式。"
+          "title": "出售 100 处房产",
+          "subtitle": "查看 100 处房产的业主联系方式。"
         },
         "1": {
-          "title": "出售 30 处房产",
-          "subtitle": "每月列出 30 处房产。"
+          "title": "查看 100 位业主",
+          "subtitle": "查看 100 处房产的业主联系方式。"
         },
         "2": {
-          "title": "30 张照片",
-          "subtitle": "每个房产上传 30 张照片。"
+          "title": "高级支持",
+          "subtitle": "8 小时内回复。"
         },
         "3": {
-          "title": "视频",
-          "subtitle": "将视频添加到您的属性中。"
+          "title": "视频上传",
+          "subtitle": "将视频添加到您的房产列表中。"
         },
         "4": {
-          "title": "优质横幅",
-          "subtitle": "您的房产将会突出显示并出现在用户搜索的顶部。"
+          "title": "黄金优质横幅",
+          "subtitle": "将你的房产作为优质房源进行宣传。"
         },
         "5": {
-          "title": "高级支持",
-          "subtitle": "8 小时内获得支持。"
+          "title": "访问人工智能设计工作室",
+          "subtitle": "展示人们如何只需单击一次即可重新设计您的房产。"
         }
       }
     },
@@ -108,23 +199,23 @@
       "perks": {
         "0": {
           "title": "出售无限的财产",
-          "subtitle": "每月列出无限数量的房产"
+          "subtitle": "列出无限的属性。"
         },
         "1": {
           "title": "无限照片",
-          "subtitle": "每个房产可上传无限数量的照片"
+          "subtitle": "每个房产可上传无限量的照片。"
         },
         "2": {
-          "title": "精选房源",
-          "subtitle": "您的房产将会被突出显示，并出现在用户搜索的顶部"
-        },
-        "3": {
-          "title": "社交媒体推广",
-          "subtitle": "您的列表将在我们的社交媒体渠道上推广"
-        },
-        "4": {
           "title": "商业支持",
           "subtitle": "1 小时内获得支持"
+        },
+        "3": {
+          "title": "精选房源",
+          "subtitle": "您的房产将显示在用户搜索结果的顶部。"
+        },
+        "4": {
+          "title": "现场内容创作",
+          "subtitle": "我们将前往您所在地，帮助您记录和推广您的房产。"
         }
       }
     }

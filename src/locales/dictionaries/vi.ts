@@ -17,27 +17,118 @@ export default {
     "view-monthly-billing": "Xem hóa đơn hàng tháng ↗",
     "save-with-yearly": "Tiết kiệm với hàng năm",
     "six-months-free": "(6 tháng miễn phí trở lên ↗)",
+    "free": {
+      "title": "Miễn phí",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": {
+        "0": {
+          "title": "Xem tất cả các vị trí niêm yết",
+          "subtitle": "Theo như người bán công bố."
+        },
+        "1": {
+          "title": "Duyệt bằng hơn 15 ngôn ngữ",
+          "subtitle": "Bản dịch được hỗ trợ bởi AI."
+        },
+        "2": {
+          "title": "Giá cả bằng hơn 25 loại tiền tệ",
+          "subtitle": "Tỷ giá chuyển đổi tiền tệ được cập nhật hàng ngày."
+        },
+        "3": {
+          "title": "Hỗ trợ miễn phí",
+          "subtitle": "Trả lời trong vòng 1-3 ngày làm việc."
+        }
+      }
+    },
+    "basic": {
+      "title": "Nền tảng",
+      "blurb": "Tất cả các tính năng miễn phí, cộng thêm",
+      "price": "19",
+      "yearly-monthly-price": "8",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Xem 3 Chủ sở hữu bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 3 bất động sản."
+        },
+        "1": {
+          "title": "Hỗ trợ cơ bản",
+          "subtitle": "Trả lời trong vòng 24 giờ."
+        }
+      }
+    },
+    "insight": {
+      "title": "Cái nhìn thấu suốt",
+      "blurb": "Tất cả các tính năng cơ bản, cộng thêm",
+      "price": "49",
+      "yearly-monthly-price": "20",
+      "yearly-total-price": "249",
+      "perks": {
+        "0": {
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Thiết kế lại ngôi nhà của bạn chỉ bằng 1 cú nhấp chuột."
+        },
+        "1": {
+          "title": "Xem 25 Chủ sở hữu Bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 25 bất động sản."
+        },
+        "2": {
+          "title": "Hỗ trợ Insight",
+          "subtitle": "Trả lời trong vòng 8 giờ."
+        }
+      }
+    },
+    "max": {
+      "title": "Tối đa",
+      "blurb": "Tất cả các tính năng thông tin chi tiết, cộng với",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Xem tất cả chủ sở hữu bất động sản",
+          "subtitle": "Xem tất cả thông tin liên lạc của chủ sở hữu."
+        },
+        "1": {
+          "title": "Hỗ trợ tối đa",
+          "subtitle": "Trả lời trong vòng 1 giờ."
+        },
+        "2": {
+          "title": "Hỗ trợ pháp lý toàn diện",
+          "subtitle": "Luật sư của chúng tôi xử lý toàn bộ quá trình giao dịch."
+        }
+      }
+    },
     "starter": {
-      "title": "Đơn",
+      "title": "Người khởi đầu",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
       "perks": {
         "0": {
-          "title": "Xem 1 bất động sản",
-          "subtitle": "Xem thông tin liên lạc và vị trí của 1 bất động sản."
+          "title": "Bán 1 Bất động sản",
+          "subtitle": "Quảng cáo 1 bất động sản dưới dạng danh sách tiêu chuẩn."
         },
         "1": {
-          "title": "Bán 1 Bất động sản",
-          "subtitle": "Đăng 1 bất động sản mỗi tháng."
+          "title": "Tải lên 5 ảnh",
+          "subtitle": "Tải lên 5 ảnh cho danh sách bất động sản của bạn."
         },
         "2": {
-          "title": "5 Ảnh",
-          "subtitle": "Tải lên 5 ảnh cho mỗi danh sách."
+          "title": "Xem 3 Chủ sở hữu bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 3 bất động sản."
         },
         "3": {
           "title": "Hỗ trợ cơ bản",
-          "subtitle": "Nhận hỗ trợ trong vòng 24-48 giờ."
+          "subtitle": "Trả lời trong vòng 1-3 ngày làm việc."
+        },
+        "4": {
+          "title": "Quảng cáo được dịch",
+          "subtitle": "Quảng cáo tới hơn 170 quốc gia."
+        },
+        "5": {
+          "title": "Chuyển đổi giá bán",
+          "subtitle": "Tự động cập nhật hàng ngày."
         }
       }
     },
@@ -49,20 +140,20 @@ export default {
       "yearly-total-price": "199",
       "perks": {
         "0": {
-          "title": "Xem 100 bất động sản",
-          "subtitle": "Xem thông tin liên lạc và vị trí của 10 bất động sản."
+          "title": "Bán 10 Bất động sản",
+          "subtitle": "Quảng cáo 10 bất động sản dưới dạng danh sách tiêu chuẩn."
         },
         "1": {
-          "title": "Bán 100 bất động sản",
-          "subtitle": "Liệt kê 10 bất động sản mỗi tháng."
+          "title": "Xem 10 Chủ sở hữu Bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 10 bất động sản."
         },
         "2": {
-          "title": "10 bức ảnh",
-          "subtitle": "Tải lên 10 ảnh cho mỗi bất động sản."
+          "title": "Hỗ trợ chuyên nghiệp",
+          "subtitle": "Trả lời trong vòng 24 giờ."
         },
         "3": {
-          "title": "Hỗ trợ chuyên nghiệp",
-          "subtitle": "Nhận hỗ trợ trong vòng 12-24 giờ."
+          "title": "Tải lên 15 ảnh",
+          "subtitle": "Tải lên 15 ảnh cho danh sách bất động sản của bạn."
         }
       }
     },
@@ -74,28 +165,28 @@ export default {
       "yearly-total-price": "499",
       "perks": {
         "0": {
-          "title": "Xem tất cả các thuộc tính",
-          "subtitle": "Xem tất cả thông tin liên hệ của bất động sản."
+          "title": "Bán 100 Bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 100 bất động sản."
         },
         "1": {
-          "title": "Bán 30 bất động sản",
-          "subtitle": "Đăng 30 bất động sản mỗi tháng."
+          "title": "Xem 100 Chủ sở hữu Bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 100 bất động sản."
         },
         "2": {
-          "title": "30 bức ảnh",
-          "subtitle": "Tải lên 30 ảnh cho mỗi bất động sản."
+          "title": "Hỗ trợ cao cấp",
+          "subtitle": "Trả lời trong vòng 8 giờ."
         },
         "3": {
-          "title": "Băng hình",
-          "subtitle": "Thêm video vào thuộc tính của bạn."
+          "title": "Tải lên video",
+          "subtitle": "Thêm video vào danh sách bất động sản của bạn."
         },
         "4": {
-          "title": "Biểu ngữ cao cấp",
-          "subtitle": "Thuộc tính của bạn sẽ được đánh dấu và xuất hiện ở đầu kết quả tìm kiếm của người dùng."
+          "title": "Biểu ngữ cao cấp vàng",
+          "subtitle": "Quảng cáo bất động sản của bạn dưới dạng danh sách cao cấp."
         },
         "5": {
-          "title": "Hỗ trợ cao cấp",
-          "subtitle": "Nhận hỗ trợ trong vòng 8 giờ."
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Hiển thị cách mọi người có thể thiết kế lại tài sản của bạn chỉ bằng 1 cú nhấp chuột."
         }
       }
     },
@@ -108,23 +199,23 @@ export default {
       "perks": {
         "0": {
           "title": "Bán bất động sản không giới hạn",
-          "subtitle": "Liệt kê các bất động sản không giới hạn mỗi tháng"
+          "subtitle": "Liệt kê các bất động sản không giới hạn."
         },
         "1": {
           "title": "Ảnh không giới hạn",
-          "subtitle": "Tải lên ảnh không giới hạn cho mỗi tài sản"
+          "subtitle": "Tải lên không giới hạn ảnh cho mỗi tài sản."
         },
         "2": {
-          "title": "Danh sách nổi bật",
-          "subtitle": "Thuộc tính của bạn sẽ được đánh dấu và xuất hiện ở đầu tìm kiếm của người dùng"
-        },
-        "3": {
-          "title": "Quảng cáo trên mạng xã hội",
-          "subtitle": "Danh sách của bạn sẽ được quảng bá trên các kênh truyền thông xã hội của chúng tôi"
-        },
-        "4": {
           "title": "Hỗ trợ doanh nghiệp",
           "subtitle": "Nhận hỗ trợ trong vòng 1 giờ"
+        },
+        "3": {
+          "title": "Danh sách nổi bật",
+          "subtitle": "Bất động sản của bạn sẽ xuất hiện ở đầu kết quả tìm kiếm của người dùng."
+        },
+        "4": {
+          "title": "Tạo nội dung tại chỗ",
+          "subtitle": "Chúng tôi sẽ đến tận nơi để giúp bạn ghi chép và quảng bá bất động sản của bạn."
         }
       }
     }

@@ -17,27 +17,118 @@ export default {
     "view-monthly-billing": "Ver faturamento mensal ↗",
     "save-with-yearly": "Economize com anual",
     "six-months-free": "(6+ meses grátis ↗)",
+    "free": {
+      "title": "Livre",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": {
+        "0": {
+          "title": "Ver todos os locais de listagem",
+          "subtitle": "Conforme publicado pelo vendedor."
+        },
+        "1": {
+          "title": "Navegue em mais de 15 idiomas",
+          "subtitle": "Traduções com tecnologia de IA."
+        },
+        "2": {
+          "title": "Preços em mais de 25 moedas",
+          "subtitle": "Conversões de moeda atualizadas diariamente."
+        },
+        "3": {
+          "title": "Suporte gratuito",
+          "subtitle": "Respostas em 1 a 3 dias úteis."
+        }
+      }
+    },
+    "basic": {
+      "title": "Básico",
+      "blurb": "Todos os recursos gratuitos, mais",
+      "price": "19",
+      "yearly-monthly-price": "8",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Ver 3 Proprietários de Imóveis",
+          "subtitle": "Veja os detalhes de contato do proprietário de 3 imóveis."
+        },
+        "1": {
+          "title": "Suporte Básico",
+          "subtitle": "Respostas em 24 horas."
+        }
+      }
+    },
+    "insight": {
+      "title": "Entendimento",
+      "blurb": "Todos os recursos básicos, mais",
+      "price": "49",
+      "yearly-monthly-price": "20",
+      "yearly-total-price": "249",
+      "perks": {
+        "0": {
+          "title": "Acesso ao AI Design Studio",
+          "subtitle": "Redesenhe sua casa com apenas 1 clique."
+        },
+        "1": {
+          "title": "Ver 25 Proprietários de Imóveis",
+          "subtitle": "Veja os detalhes de contato do proprietário de 25 imóveis."
+        },
+        "2": {
+          "title": "Suporte Insight",
+          "subtitle": "Respostas em 8 horas."
+        }
+      }
+    },
+    "max": {
+      "title": "Máx.",
+      "blurb": "Todos os recursos de insight, mais",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Ver todos os proprietários de imóveis",
+          "subtitle": "Veja todos os detalhes de contato do proprietário."
+        },
+        "1": {
+          "title": "Suporte Máximo",
+          "subtitle": "Respostas em 1 hora."
+        },
+        "2": {
+          "title": "Suporte Jurídico Completo",
+          "subtitle": "Nossos advogados cuidam de todo o processo transacional."
+        }
+      }
+    },
     "starter": {
-      "title": "Solteiro",
+      "title": "Iniciante",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
       "perks": {
         "0": {
-          "title": "Ver 1 propriedade",
-          "subtitle": "Veja os detalhes de contato e a localização de 1 propriedade."
+          "title": "Vender 1 Propriedade",
+          "subtitle": "Anuncie 1 imóvel como listagem padrão."
         },
         "1": {
-          "title": "Vender 1 Propriedade",
-          "subtitle": "Liste 1 imóvel por mês."
+          "title": "Carregar 5 fotos",
+          "subtitle": "Carregue 5 fotos para o anúncio do seu imóvel."
         },
         "2": {
-          "title": "5 fotos",
-          "subtitle": "Carregue 5 fotos por anúncio."
+          "title": "Ver 3 Proprietários de Imóveis",
+          "subtitle": "Veja os detalhes de contato do proprietário de 3 imóveis."
         },
         "3": {
           "title": "Suporte Básico",
-          "subtitle": "Obtenha suporte dentro de 24 a 48 horas."
+          "subtitle": "Respostas em 1 a 3 dias úteis."
+        },
+        "4": {
+          "title": "Anúncio Traduzido",
+          "subtitle": "Anuncie em mais de 170 países."
+        },
+        "5": {
+          "title": "Conversões de preço de venda",
+          "subtitle": "Atualizado automaticamente todos os dias."
         }
       }
     },
@@ -49,20 +140,20 @@ export default {
       "yearly-total-price": "199",
       "perks": {
         "0": {
-          "title": "Ver 100 propriedades",
-          "subtitle": "Veja os detalhes de contato e a localização de 10 propriedades."
+          "title": "Vender 10 Propriedades",
+          "subtitle": "Anuncie 10 propriedades como um anúncio padrão."
         },
         "1": {
-          "title": "Vender 100 imóveis",
-          "subtitle": "Liste 10 propriedades por mês."
+          "title": "Ver 10 Proprietários de Imóveis",
+          "subtitle": "Veja os detalhes de contato do proprietário de 10 propriedades."
         },
         "2": {
-          "title": "10 fotos",
-          "subtitle": "Carregue 10 fotos por propriedade."
+          "title": "Suporte profissional",
+          "subtitle": "Respostas em 24 horas."
         },
         "3": {
-          "title": "Suporte profissional",
-          "subtitle": "Obtenha suporte dentro de 12 a 24 horas."
+          "title": "Carregar 15 fotos",
+          "subtitle": "Envie 15 fotos para o anúncio do seu imóvel."
         }
       }
     },
@@ -74,28 +165,28 @@ export default {
       "yearly-total-price": "499",
       "perks": {
         "0": {
-          "title": "Ver todas as propriedades",
-          "subtitle": "Veja todos os detalhes de contato da propriedade."
+          "title": "Vender 100 Propriedades",
+          "subtitle": "Veja os detalhes de contato do proprietário de 100 propriedades."
         },
         "1": {
-          "title": "Vender 30 imóveis",
-          "subtitle": "Liste 30 propriedades por mês."
+          "title": "Ver 100 Proprietários de Imóveis",
+          "subtitle": "Veja os detalhes de contato do proprietário de 100 propriedades."
         },
         "2": {
-          "title": "30 fotos",
-          "subtitle": "Carregue 30 fotos por propriedade."
+          "title": "Suporte Premium",
+          "subtitle": "Respostas em 8 horas."
         },
         "3": {
-          "title": "Vídeo",
-          "subtitle": "Adicione vídeos às suas propriedades."
+          "title": "Envios de vídeo",
+          "subtitle": "Adicione vídeos aos seus anúncios de imóveis."
         },
         "4": {
-          "title": "Banner Premium",
-          "subtitle": "Suas propriedades serão destacadas e aparecerão no topo das pesquisas dos usuários."
+          "title": "Banner Premium Ouro",
+          "subtitle": "Anuncie seus imóveis como um anúncio premium."
         },
         "5": {
-          "title": "Suporte Premium",
-          "subtitle": "Obtenha suporte em até 8 horas."
+          "title": "Acesso ao AI Design Studio",
+          "subtitle": "Mostre como as pessoas podem redesenhar sua propriedade com apenas 1 clique."
         }
       }
     },
@@ -108,23 +199,23 @@ export default {
       "perks": {
         "0": {
           "title": "Vender propriedades ilimitadas",
-          "subtitle": "Liste propriedades ilimitadas todo mês"
+          "subtitle": "Liste propriedades ilimitadas."
         },
         "1": {
           "title": "Fotos ilimitadas",
-          "subtitle": "Carregue fotos ilimitadas por propriedade"
+          "subtitle": "Carregue fotos ilimitadas por propriedade."
         },
         "2": {
-          "title": "Listagens em destaque",
-          "subtitle": "Suas propriedades serão destacadas e aparecerão no topo das pesquisas dos usuários"
-        },
-        "3": {
-          "title": "Promoção de mídia social",
-          "subtitle": "Suas listagens serão promovidas em nossos canais de mídia social"
-        },
-        "4": {
           "title": "Suporte Empresarial",
           "subtitle": "Obtenha suporte em até 1 hora"
+        },
+        "3": {
+          "title": "Listagens em destaque",
+          "subtitle": "Suas propriedades aparecerão no topo dos resultados de pesquisa do usuário."
+        },
+        "4": {
+          "title": "Criação de conteúdo no local",
+          "subtitle": "Iremos até você para ajudar a registrar e promover sua propriedade."
         }
       }
     }

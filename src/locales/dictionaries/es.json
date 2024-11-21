@@ -17,27 +17,118 @@
     "view-monthly-billing": "Ver facturación mensual ↗",
     "save-with-yearly": "Ahorre con el pago anual",
     "six-months-free": "(6+ meses gratis ↗)",
+    "free": {
+      "title": "Gratis",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": {
+        "0": {
+          "title": "Ver todas las ubicaciones del listado",
+          "subtitle": "Según lo publicado por el vendedor."
+        },
+        "1": {
+          "title": "Navegar en más de 15 idiomas",
+          "subtitle": "Traducciones impulsadas por IA."
+        },
+        "2": {
+          "title": "Precios en más de 25 monedas",
+          "subtitle": "Conversiones de moneda actualizadas diariamente."
+        },
+        "3": {
+          "title": "Soporte gratuito",
+          "subtitle": "Respuestas en 1-3 días hábiles."
+        }
+      }
+    },
+    "basic": {
+      "title": "Básico",
+      "blurb": "Todas las funciones gratuitas, más",
+      "price": "19",
+      "yearly-monthly-price": "8",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Ver 3 propietarios de propiedades",
+          "subtitle": "Ver los datos de contacto del propietario de 3 propiedades."
+        },
+        "1": {
+          "title": "Soporte básico",
+          "subtitle": "Respuestas en 24 horas."
+        }
+      }
+    },
+    "insight": {
+      "title": "Conocimiento",
+      "blurb": "Todas las funciones básicas, más",
+      "price": "49",
+      "yearly-monthly-price": "20",
+      "yearly-total-price": "249",
+      "perks": {
+        "0": {
+          "title": "Acceso a AI Design Studio",
+          "subtitle": "Rediseña tu hogar en sólo 1 clic."
+        },
+        "1": {
+          "title": "Ver 25 propietarios de propiedades",
+          "subtitle": "Ver los datos de contacto del propietario de 25 propiedades."
+        },
+        "2": {
+          "title": "Soporte de Insight",
+          "subtitle": "Respuestas en 8 horas."
+        }
+      }
+    },
+    "max": {
+      "title": "Máximo",
+      "blurb": "Todas las funciones de información, más",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699",
+      "perks": {
+        "0": {
+          "title": "Ver todos los propietarios",
+          "subtitle": "Ver todos los datos de contacto del propietario."
+        },
+        "1": {
+          "title": "Soporte máximo",
+          "subtitle": "Respuestas en 1 hora."
+        },
+        "2": {
+          "title": "Soporte legal completo",
+          "subtitle": "Nuestros abogados se encargan de todo el proceso transaccional."
+        }
+      }
+    },
     "starter": {
-      "title": "Inicio",
+      "title": "Motor de arranque",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
       "perks": {
         "0": {
-          "title": "Ver 1 propiedad",
-          "subtitle": "Ver los detalles de contacto y la ubicación de 1 propiedad."
+          "title": "Vender 1 propiedad",
+          "subtitle": "Anuncie 1 propiedad como listado estándar."
         },
         "1": {
-          "title": "Vender 1 propiedad",
-          "subtitle": "Listado de 1 propiedad por mes."
+          "title": "Subir 5 fotos",
+          "subtitle": "Sube 5 fotos para el listado de tu propiedad."
         },
         "2": {
-          "title": "5 fotos",
-          "subtitle": "Sube 5 fotos por anuncio."
+          "title": "Ver 3 propietarios de propiedades",
+          "subtitle": "Ver los datos de contacto del propietario de 3 propiedades."
         },
         "3": {
           "title": "Soporte básico",
-          "subtitle": "Obtenga asistencia en un plazo de 24 a 48 horas."
+          "subtitle": "Respuestas en 1-3 días hábiles."
+        },
+        "4": {
+          "title": "Anuncio traducido",
+          "subtitle": "Publicidad en más de 170 países."
+        },
+        "5": {
+          "title": "Conversiones de precios de venta",
+          "subtitle": "Actualizado automáticamente diariamente."
         }
       }
     },
@@ -49,20 +140,20 @@
       "yearly-total-price": "199",
       "perks": {
         "0": {
-          "title": "Ver 100 propiedades",
-          "subtitle": "Ver detalles de contacto y ubicación de 10 propiedades."
+          "title": "Vender 10 propiedades",
+          "subtitle": "Anuncie 10 propiedades como un listado estándar."
         },
         "1": {
-          "title": "Vender 100 propiedades",
-          "subtitle": "Listado de 10 propiedades por mes."
+          "title": "Ver 10 propietarios de propiedades",
+          "subtitle": "Ver los datos de contacto del propietario de 10 propiedades."
         },
         "2": {
-          "title": "10 fotos",
-          "subtitle": "Sube 10 fotos por propiedad."
+          "title": "Soporte profesional",
+          "subtitle": "Respuestas en 24 horas."
         },
         "3": {
-          "title": "Soporte profesional",
-          "subtitle": "Obtenga asistencia en un plazo de 12 a 24 horas."
+          "title": "Subir 15 fotos",
+          "subtitle": "Sube 15 fotos para el listado de tu propiedad."
         }
       }
     },
@@ -74,28 +165,28 @@
       "yearly-total-price": "499",
       "perks": {
         "0": {
-          "title": "Ver todas las propiedades",
-          "subtitle": "Ver todos los detalles de contacto de la propiedad."
+          "title": "Vender 100 propiedades",
+          "subtitle": "Ver los datos de contacto del propietario de 100 propiedades."
         },
         "1": {
-          "title": "Vender 30 propiedades",
-          "subtitle": "Listado de 30 propiedades por mes."
+          "title": "Ver 100 propietarios de propiedades",
+          "subtitle": "Ver los datos de contacto del propietario de 100 propiedades."
         },
         "2": {
-          "title": "30 fotos",
-          "subtitle": "Sube 30 fotos por propiedad."
+          "title": "Soporte Premium",
+          "subtitle": "Respuestas en 8 horas."
         },
         "3": {
-          "title": "Video",
-          "subtitle": "Añade vídeos a tus propiedades."
+          "title": "Subidas de videos",
+          "subtitle": "Añade vídeos a tus listados de propiedades."
         },
         "4": {
-          "title": "Banner premium",
-          "subtitle": "Sus propiedades se resaltarán y aparecerán en la parte superior de las búsquedas de los usuarios."
+          "title": "Banner Premium Dorado",
+          "subtitle": "Publicite sus propiedades como listado premium."
         },
         "5": {
-          "title": "Soporte Premium",
-          "subtitle": "Obtenga asistencia en un plazo de 8 horas."
+          "title": "Acceso a AI Design Studio",
+          "subtitle": "Muestra cómo la gente podría rediseñar tu propiedad con solo 1 clic."
         }
       }
     },
@@ -108,23 +199,23 @@
       "perks": {
         "0": {
           "title": "Vende propiedades ilimitadas",
-          "subtitle": "Enumere propiedades ilimitadas cada mes"
+          "subtitle": "Listado de propiedades ilimitadas."
         },
         "1": {
           "title": "Fotos ilimitadas",
-          "subtitle": "Sube fotos ilimitadas por propiedad"
+          "subtitle": "Sube fotos ilimitadas por propiedad."
         },
         "2": {
-          "title": "Listados destacados",
-          "subtitle": "Tus propiedades se resaltarán y aparecerán en la parte superior de las búsquedas de los usuarios."
-        },
-        "3": {
-          "title": "Promoción en redes sociales",
-          "subtitle": "Sus anuncios se promocionarán en nuestros canales de redes sociales."
-        },
-        "4": {
           "title": "Soporte empresarial",
           "subtitle": "Obtenga asistencia en 1 hora"
+        },
+        "3": {
+          "title": "Listados destacados",
+          "subtitle": "Sus propiedades aparecerán en la parte superior de los resultados de búsqueda de los usuarios."
+        },
+        "4": {
+          "title": "Creación de contenido en el sitio",
+          "subtitle": "Viajaremos hasta usted para ayudarle a registrar y promocionar su propiedad."
         }
       }
     }

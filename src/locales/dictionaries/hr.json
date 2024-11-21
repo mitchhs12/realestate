@@ -17,27 +17,118 @@
     "view-monthly-billing": "Pogledajte mjesečnu naplatu ↗",
     "save-with-yearly": "Uštedite uz godišnje",
     "six-months-free": "(6+ mjeseci besplatno ↗)",
+    "free": {
+      "title": "Besplatno",
+      "price": "0",
+      "yearly-monthly-price": "0",
+      "yearly-total-price": "0",
+      "perks": {
+        "0": {
+          "title": "Pogledajte sve lokacije popisa",
+          "subtitle": "Kako je objavio prodavač."
+        },
+        "1": {
+          "title": "Pregledavajte na više od 15 jezika",
+          "subtitle": "Prijevodi pomoću umjetne inteligencije."
+        },
+        "2": {
+          "title": "Cijene u 25+ valuta",
+          "subtitle": "Pretvorbe valuta ažuriraju se svakodnevno."
+        },
+        "3": {
+          "title": "Besplatna podrška",
+          "subtitle": "Odgovori u roku od 1-3 radna dana."
+        }
+      }
+    },
+    "basic": {
+      "title": "Osnovno",
+      "blurb": "Sve besplatne značajke, plus",
+      "price": "19",
+      "yearly-monthly-price": "8",
+      "yearly-total-price": "99",
+      "perks": {
+        "0": {
+          "title": "Pogledajte 3 vlasnika nekretnine",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 3 nekretnine."
+        },
+        "1": {
+          "title": "Osnovna podrška",
+          "subtitle": "Odgovori u roku od 24 sata."
+        }
+      }
+    },
+    "insight": {
+      "title": "Uvid",
+      "blurb": "Sve osnovne karakteristike, plus",
+      "price": "49",
+      "yearly-monthly-price": "20",
+      "yearly-total-price": "249",
+      "perks": {
+        "0": {
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Redizajnirajte svoje domove u samo 1 kliku."
+        },
+        "1": {
+          "title": "Pogledajte 25 vlasnika nekretnina",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 25 objekata."
+        },
+        "2": {
+          "title": "Podrška za uvid",
+          "subtitle": "Odgovori za 8 sati."
+        }
+      }
+    },
+    "max": {
+      "title": "Maks",
+      "blurb": "Sve značajke uvida, plus",
+      "price": "299",
+      "yearly-monthly-price": "142",
+      "yearly-total-price": "1699. godine",
+      "perks": {
+        "0": {
+          "title": "Pogledajte sve vlasnike nekretnina",
+          "subtitle": "Pogledajte sve podatke o kontaktu vlasnika."
+        },
+        "1": {
+          "title": "Maksimalna podrška",
+          "subtitle": "Odgovori za 1 sat."
+        },
+        "2": {
+          "title": "Potpuna pravna podrška",
+          "subtitle": "Naši odvjetnici vode cijeli proces transakcije."
+        }
+      }
+    },
     "starter": {
-      "title": "Singl",
+      "title": "Starter",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
       "perks": {
         "0": {
-          "title": "Pogledajte 1 nekretninu",
-          "subtitle": "Pregledajte kontakt podatke i lokaciju 1 objekta."
+          "title": "Prodajem 1 nekretninu",
+          "subtitle": "Oglašavajte 1 nekretninu kao standardni popis."
         },
         "1": {
-          "title": "Prodajem 1 nekretninu",
-          "subtitle": "Navedite 1 nekretninu mjesečno."
+          "title": "Učitajte 5 fotografija",
+          "subtitle": "Učitajte 5 fotografija za svoj popis nekretnina."
         },
         "2": {
-          "title": "5 fotografija",
-          "subtitle": "Učitajte 5 fotografija po oglasu."
+          "title": "Pogledajte 3 vlasnika nekretnine",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 3 nekretnine."
         },
         "3": {
           "title": "Osnovna podrška",
-          "subtitle": "Dobijte podršku u roku od 24-48 sati."
+          "subtitle": "Odgovori u roku od 1-3 radna dana."
+        },
+        "4": {
+          "title": "Prevedeni oglas",
+          "subtitle": "Oglašavajte u više od 170 zemalja."
+        },
+        "5": {
+          "title": "Pretvorbe prodajne cijene",
+          "subtitle": "Automatski se ažurira dnevno."
         }
       }
     },
@@ -49,20 +140,20 @@
       "yearly-total-price": "199",
       "perks": {
         "0": {
-          "title": "Pogledajte 100 nekretnina",
-          "subtitle": "Pogledajte podatke o kontaktu i lokaciji 10 nekretnina."
+          "title": "Prodajem 10 nekretnina",
+          "subtitle": "Oglašavajte 10 nekretnina kao standardni popis."
         },
         "1": {
-          "title": "Prodaj 100 nekretnina",
-          "subtitle": "Navedite 10 nekretnina mjesečno."
+          "title": "Pogledajte 10 vlasnika nekretnina",
+          "subtitle": "Pogledajte podatke o kontaktu vlasnika za 10 nekretnina."
         },
         "2": {
-          "title": "10 fotografija",
-          "subtitle": "Učitajte 10 fotografija po objektu."
+          "title": "Pro Podrška",
+          "subtitle": "Odgovori u roku od 24 sata."
         },
         "3": {
-          "title": "Pro Podrška",
-          "subtitle": "Dobijte podršku u roku od 12-24 sata."
+          "title": "Učitajte 15 fotografija",
+          "subtitle": "Učitajte 15 fotografija za svoj popis nekretnina."
         }
       }
     },
@@ -74,28 +165,28 @@
       "yearly-total-price": "499",
       "perks": {
         "0": {
-          "title": "Pogledajte sve nekretnine",
-          "subtitle": "Pogledajte sve podatke o kontaktu nekretnine."
+          "title": "Prodajem 100 nekretnina",
+          "subtitle": "Pregledajte kontakt podatke vlasnika za 100 nekretnina."
         },
         "1": {
-          "title": "Prodajem 30 nekretnina",
-          "subtitle": "Navedite 30 nekretnina mjesečno."
+          "title": "Pogledajte 100 vlasnika nekretnina",
+          "subtitle": "Pregledajte kontakt podatke vlasnika za 100 nekretnina."
         },
         "2": {
-          "title": "30 fotografija",
-          "subtitle": "Učitajte 30 fotografija po objektu."
+          "title": "Premium podrška",
+          "subtitle": "Odgovori za 8 sati."
         },
         "3": {
-          "title": "Video",
-          "subtitle": "Dodajte videozapise svojim svojstvima."
+          "title": "Video prijenosi",
+          "subtitle": "Dodajte videozapise svojim popisima nekretnina."
         },
         "4": {
-          "title": "Premium banner",
-          "subtitle": "Vaša svojstva bit će istaknuta i prikazana na vrhu korisničkih pretraživanja."
+          "title": "Zlatni Premium banner",
+          "subtitle": "Oglašavajte svoje nekretnine kao vrhunski oglas."
         },
         "5": {
-          "title": "Premium podrška",
-          "subtitle": "Dobijte podršku u roku od 8 sati."
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Pokažite kako ljudi mogu redizajnirati vašu nekretninu u samo 1 kliku."
         }
       }
     },
@@ -108,23 +199,23 @@
       "perks": {
         "0": {
           "title": "Prodajte neograničene nekretnine",
-          "subtitle": "Navedite neograničen broj svojstava svakog mjeseca"
+          "subtitle": "Popis neograničenih svojstava."
         },
         "1": {
           "title": "Neograničene fotografije",
-          "subtitle": "Prenesite neograničen broj fotografija po objektu"
+          "subtitle": "Prenesite neograničen broj fotografija po objektu."
         },
         "2": {
-          "title": "Istaknuti oglasi",
-          "subtitle": "Vaša svojstva bit će istaknuta i prikazana na vrhu korisničkih pretraživanja"
-        },
-        "3": {
-          "title": "Promocija na društvenim mrežama",
-          "subtitle": "Vaši oglasi bit će promovirani na našim kanalima društvenih medija"
-        },
-        "4": {
           "title": "Poslovna podrška",
           "subtitle": "Dobijte podršku u roku od 1 sata"
+        },
+        "3": {
+          "title": "Istaknuti oglasi",
+          "subtitle": "Vaša svojstva će se pojaviti na vrhu rezultata pretraživanja korisnika."
+        },
+        "4": {
+          "title": "Stvaranje sadržaja na licu mjesta",
+          "subtitle": "Otputovat ćemo do vas kako bismo vam pomogli snimiti i promovirati svoju nekretninu."
         }
       }
     }
