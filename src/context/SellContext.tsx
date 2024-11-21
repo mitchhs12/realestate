@@ -79,6 +79,8 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children }) => {
           : `/sell/${currentHome?.id}/${stepsFlattened[sellFlowFlatIndex + 1]}`
         : `/sell/${currentHome?.id}/${stepsFlattened[0]}`
     );
+    console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+    console.log("sellFlowIndices", JSON.stringify(sellFlowIndices, null, 2));
     setPrevStep(
       sellFlowFlatIndex !== -1
         ? sellFlowIndices.outerIndex === 0 && sellFlowIndices.innerIndex === 0

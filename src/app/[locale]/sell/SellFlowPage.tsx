@@ -116,7 +116,9 @@ export default function SellFlowPage({
                     <Checkbox
                       id="state"
                       disabled={true}
-                      checked={step > stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] ? true : false}
+                      checked={
+                        step > stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] + 1 ? true : false
+                      }
                     />
                   </label>
                 )}
@@ -142,7 +144,10 @@ export default function SellFlowPage({
                       disabled={true}
                       checked={
                         step >
-                        stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] + stepLengthsWithoutStepPages[2]
+                        stepLengthsWithoutStepPages[0] +
+                          stepLengthsWithoutStepPages[1] +
+                          stepLengthsWithoutStepPages[2] +
+                          2
                           ? true
                           : false
                       }

@@ -32,7 +32,7 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
   const url = getPath(headers());
   const unfinishedHome = await getUnfinishedHome(homeId, url);
 
-  const { array, innerIndex, outerIndex } = await getStepData("/contact");
+  const { array, innerIndex, outerIndex } = await getStepData("contact");
   const sellFlatIndex = await getSellFlowIndex("contact");
   const phoneLocale = await getPhoneLocale(locale);
 

@@ -31,7 +31,6 @@ export default async function Page({ params: { locale, homeId } }: any) {
   }
   const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
   const home = user.homes.find((home) => home.id === Number(homeId));
-  console.log(home);
   if (!home) {
     return (
       <main className="mx-auto my-10">
