@@ -55,6 +55,14 @@ export default async function Page({ params: { locale } }: { params: { locale: L
         title: billing("free.perks.1.title"),
         subtitle: billing("free.perks.1.subtitle"),
       },
+      {
+        title: billing("free.perks.2.title"),
+        subtitle: billing("free.perks.2.subtitle"),
+      },
+      {
+        title: billing("free.perks.3.title"),
+        subtitle: billing("free.perks.3.subtitle"),
+      },
     ],
   };
 

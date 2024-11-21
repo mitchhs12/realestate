@@ -71,7 +71,7 @@ function SortableItem({
       className="draggable relative flex items-center justify-center h-[112px] sm:h-[184px] lg:h-[252px]"
     >
       <Image
-        src={url}
+        src={`${url}?cache=${new Date().getTime()}`}
         alt={`Uploaded ${id}`}
         fill={true}
         className="object-cover"
