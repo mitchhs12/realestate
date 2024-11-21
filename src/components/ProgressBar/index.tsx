@@ -50,9 +50,9 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
 
   const shouldIncrementFlowStep = () => {
     const nextStepUpTo = checkStepPositionForNextNavigation();
-    console.log("nextStepUpTo", nextStepUpTo);
-    console.log("sellFlowFlatIndex", sellFlowFlatIndex);
-    console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
+    // console.log("nextStepUpTo", nextStepUpTo);
+    // console.log("sellFlowFlatIndex", sellFlowFlatIndex);
+    // console.log("equivalent", sellFlowFlatIndex === nextStepUpTo);
     if (sellFlowFlatIndex === nextStepUpTo) {
       return true;
     } else {

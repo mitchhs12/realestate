@@ -29,7 +29,7 @@ export default async function Page({ params: { locale, homeId } }: any) {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
+  // const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
   const home = user.homes.find((home) => home.id === Number(homeId));
   if (!home) {
     return (
