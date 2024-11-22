@@ -968,6 +968,9 @@ export default {
     "submit": "Stoor"
   },
   "stripe": {
-    "pay": "Betaal nou"
+    "pay": "Betaal nou",
+    "payment_success": "Betaling suksesvol",
+    "payment_loading": "Verwerking van betaling",
+    "payment_error": "'n Onverwagte fout het voorgekom!"
   }
 } as const;

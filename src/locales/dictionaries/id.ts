@@ -968,6 +968,9 @@ export default {
     "submit": "Menyimpan"
   },
   "stripe": {
-    "pay": "Bayar sekarang"
+    "pay": "Bayar sekarang",
+    "payment_success": "Pembayaran Berhasil",
+    "payment_loading": "Pemrosesan Pembayaran",
+    "payment_error": "Terjadi kesalahan tak terduga!"
   }
 } as const;

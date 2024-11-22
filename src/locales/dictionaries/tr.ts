@@ -968,6 +968,9 @@ export default {
     "submit": "Kaydetmek"
   },
   "stripe": {
-    "pay": "Şimdi öde"
+    "pay": "Şimdi öde",
+    "payment_success": "Ödeme Başarılı",
+    "payment_loading": "Ödeme İşleniyor",
+    "payment_error": "Beklenmeyen bir hata oluştu!"
   }
 } as const;

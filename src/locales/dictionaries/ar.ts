@@ -968,6 +968,9 @@ export default {
     "submit": "يحفظ"
   },
   "stripe": {
-    "pay": "ادفع الآن"
+    "pay": "ادفع الآن",
+    "payment_success": "تم الدفع بنجاح",
+    "payment_loading": "معالجة الدفع",
+    "payment_error": "حدث خطأ غير متوقع!"
   }
 } as const;

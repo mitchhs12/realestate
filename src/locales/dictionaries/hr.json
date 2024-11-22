@@ -968,6 +968,9 @@
     "submit": "Uštedjeti"
   },
   "stripe": {
-    "pay": "Platite sada"
+    "pay": "Platite sada",
+    "payment_success": "Plaćanje uspješno",
+    "payment_loading": "Obrada plaćanja",
+    "payment_error": "Došlo je do neočekivane pogreške!"
   }
 }

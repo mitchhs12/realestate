@@ -7,7 +7,6 @@ import { CurrencyType } from "@/lib/validations";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import CheckoutForm from "@/components/Stripe/CheckoutForm";
-import CompletePage from "@/components/Stripe/CompletePage";
 import { I18nProviderClient } from "@/locales/client";
 import { LocaleContext } from "@/context/LocaleContext";
 import { StripeServer } from "./stripeServer";
@@ -28,9 +27,7 @@ export default function Stripe({ defaultCurrency, planId, interval, accountId, a
   );
 
   const { resolvedTheme: theme } = useTheme();
-  const [confirmed, setConfirmed] = useState(false);
   const [clientSecret, setClientSecret] = useState<string>("");
-  const [dpmCheckerLink, setDpmCheckerLink] = useState<string>("");
   const { defaultLanguage } = useContext(LocaleContext);
 
   useEffect(() => {
@@ -58,13 +55,9 @@ export default function Stripe({ defaultCurrency, planId, interval, accountId, a
     <div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          {confirmed ? (
-            <CompletePage />
-          ) : (
-            <I18nProviderClient locale={defaultLanguage}>
-              <CheckoutForm />
-            </I18nProviderClient>
-          )}
+          <I18nProviderClient locale={defaultLanguage}>
+            <CheckoutForm />
+          </I18nProviderClient>
         </Elements>
       )}
     </div>

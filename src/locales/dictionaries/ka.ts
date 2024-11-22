@@ -968,6 +968,9 @@ export default {
     "submit": "შენახვა"
   },
   "stripe": {
-    "pay": "გადაიხადე ახლა"
+    "pay": "გადაიხადე ახლა",
+    "payment_success": "გადახდა წარმატებით დასრულდა",
+    "payment_loading": "გადახდის დამუშავება",
+    "payment_error": "მოხდა მოულოდნელი შეცდომა!"
   }
 } as const;

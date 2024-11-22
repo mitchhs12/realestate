@@ -968,6 +968,9 @@ export default {
     "submit": "Save"
   },
   "stripe": {
-    "pay": "Pay now"
+    "pay": "Pay now",
+    "payment_success": "Payment Successful",
+    "payment_loading": "Processing Payment",
+    "payment_error": "An unexpected error occurred!"
   }
 } as const;

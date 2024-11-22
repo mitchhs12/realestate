@@ -968,6 +968,9 @@ export default {
     "submit": "节省"
   },
   "stripe": {
-    "pay": "立即付款"
+    "pay": "立即付款",
+    "payment_success": "付款成功",
+    "payment_loading": "处理付款",
+    "payment_error": "发生意外错误！"
   }
 } as const;

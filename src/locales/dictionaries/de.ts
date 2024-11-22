@@ -968,6 +968,9 @@ export default {
     "submit": "Speichern"
   },
   "stripe": {
-    "pay": "Jetzt bezahlen"
+    "pay": "Jetzt bezahlen",
+    "payment_success": "Zahlung erfolgreich",
+    "payment_loading": "Zahlungsabwicklung",
+    "payment_error": "Ein unerwarteter Fehler ist aufgetreten!"
   }
 } as const;

@@ -7,6 +7,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import PriceCard from "@/components/StartPageContent/PricingTable/Card";
 import { Button } from "@/components/ui/button";
 import { QueryContext } from "@/context/QueryContext";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Tier {
   title: string;
@@ -66,6 +67,8 @@ export default function PricingTable({
   const [selected, setSelected] = useState<string>("");
   const [yearly, setYearly] = useState(true);
 
+  const { sessionLoading } = useContext(LocaleContext);
+
   const tier1 = isSeller ? "starter" : "free";
   const tier2 = isSeller ? "pro" : "basic";
   const tier3 = isSeller ? "premium" : "insight";
@@ -94,7 +97,7 @@ export default function PricingTable({
         setCurrentPlan("max");
       }
     }
-  }, [user]);
+  }, [user, isSeller]);
 
   useEffect(() => {
     if (!subscriptionType && selected) {
@@ -139,88 +142,64 @@ export default function PricingTable({
               {yearlyText}
             </Button>
           </div>
-          {defaultCurrency && (
-            <div
-              className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-start w-full gap-8 sm:gap-8 lg:gap-5`}
-            >
-              <PriceCard
-                id={tier1}
-                perks={starter.perks}
-                title={starter.title}
-                button={yearly ? starter.yearlyPrice : starter.price}
-                annualPrice={starter.totalYearlyPrice}
-                buttonDisabled={currentPlan === tier1 ? true : false}
-                originalPrice={starter.anchor}
-                buttonFunction={() => setSelected(tier1)}
-                selected={selected}
-                defaultCurrency={defaultCurrency}
-                yearly={yearly}
-                setYearly={setYearly}
-                subscribe={subscribeText}
-                currentPlan={currentPlanText}
-                billedAnnually={billedAnnually}
-                monthlyBilling={monthlyBilling}
-                yearlyBilling={yearlyBilling}
-                sixMonthsFree={sixMonthsFree}
-                subText={subText}
-              />
-              <PriceCard
-                id={tier2}
-                perks={pro.perks}
-                title={pro.title}
-                button={yearly ? pro.yearlyPrice : pro.price}
-                annualPrice={pro.totalYearlyPrice}
-                buttonDisabled={currentPlan === tier2 ? true : false}
-                buttonFunction={() => setSelected(tier2)}
-                selected={selected}
-                defaultCurrency={defaultCurrency}
-                yearly={yearly}
-                setYearly={setYearly}
-                subscribe={subscribeText}
-                currentPlan={currentPlanText}
-                billedAnnually={billedAnnually}
-                monthlyBilling={monthlyBilling}
-                yearlyBilling={yearlyBilling}
-                sixMonthsFree={sixMonthsFree}
-                blurb={pro.blurb}
-                subText={subText}
-              />
-              <div className="relative flex flex-col justify-center items-center">
-                <div className="absolute -top-2 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-start w-full h-full gap-8 sm:gap-8 lg:gap-5`}
+          >
+            <PriceCard
+              id={tier1}
+              perks={starter.perks}
+              title={starter.title}
+              button={yearly ? starter.yearlyPrice : starter.price}
+              annualPrice={starter.totalYearlyPrice}
+              buttonDisabled={currentPlan === tier1 ? true : false}
+              originalPrice={starter.anchor}
+              buttonFunction={() => setSelected(tier1)}
+              selected={selected}
+              yearly={yearly}
+              setYearly={setYearly}
+              subscribe={subscribeText}
+              currentPlan={currentPlanText}
+              billedAnnually={billedAnnually}
+              monthlyBilling={monthlyBilling}
+              yearlyBilling={yearlyBilling}
+              sixMonthsFree={sixMonthsFree}
+              subText={subText}
+            />
+            <PriceCard
+              id={tier2}
+              perks={pro.perks}
+              title={pro.title}
+              button={yearly ? pro.yearlyPrice : pro.price}
+              annualPrice={pro.totalYearlyPrice}
+              buttonDisabled={currentPlan === tier2 ? true : false}
+              buttonFunction={() => setSelected(tier2)}
+              selected={selected}
+              yearly={yearly}
+              setYearly={setYearly}
+              subscribe={subscribeText}
+              currentPlan={currentPlanText}
+              billedAnnually={billedAnnually}
+              monthlyBilling={monthlyBilling}
+              yearlyBilling={yearlyBilling}
+              sixMonthsFree={sixMonthsFree}
+              blurb={pro.blurb}
+              subText={subText}
+            />
+            <div className="relative flex flex-col justify-center items-center">
+              {!sessionLoading && (
+                <div className="absolute -top-2 z-30 shadow-lg transform -translate-x-1/2 bg-[#0C7A33] text-white text-sm px-4 rounded-full animate-bounce w-[150px]">
                   {mostPopularText}
                 </div>
-                <PriceCard
-                  id={tier3}
-                  perks={premium.perks}
-                  title={premium.title}
-                  button={yearly ? premium.yearlyPrice : premium.price}
-                  annualPrice={premium.totalYearlyPrice}
-                  buttonDisabled={currentPlan === tier3 ? true : false}
-                  buttonFunction={() => setSelected(tier3)}
-                  selected={selected}
-                  defaultCurrency={defaultCurrency}
-                  yearly={yearly}
-                  setYearly={setYearly}
-                  subscribe={subscribeText}
-                  currentPlan={currentPlanText}
-                  billedAnnually={billedAnnually}
-                  monthlyBilling={monthlyBilling}
-                  yearlyBilling={yearlyBilling}
-                  sixMonthsFree={sixMonthsFree}
-                  blurb={premium.blurb}
-                  subText={subText}
-                />
-              </div>
+              )}
               <PriceCard
-                id={tier4}
-                perks={business.perks}
-                title={business.title}
-                button={yearly ? business.yearlyPrice : business.price}
-                annualPrice={business.totalYearlyPrice}
-                buttonDisabled={currentPlan === tier4 ? true : false}
-                buttonFunction={() => setSelected(tier4)}
+                id={tier3}
+                perks={premium.perks}
+                title={premium.title}
+                button={yearly ? premium.yearlyPrice : premium.price}
+                annualPrice={premium.totalYearlyPrice}
+                buttonDisabled={currentPlan === tier3 ? true : false}
+                buttonFunction={() => setSelected(tier3)}
                 selected={selected}
-                defaultCurrency={defaultCurrency}
                 yearly={yearly}
                 setYearly={setYearly}
                 subscribe={subscribeText}
@@ -229,11 +208,31 @@ export default function PricingTable({
                 monthlyBilling={monthlyBilling}
                 yearlyBilling={yearlyBilling}
                 sixMonthsFree={sixMonthsFree}
-                blurb={business.blurb}
+                blurb={premium.blurb}
                 subText={subText}
               />
             </div>
-          )}
+            <PriceCard
+              id={tier4}
+              perks={business.perks}
+              title={business.title}
+              button={yearly ? business.yearlyPrice : business.price}
+              annualPrice={business.totalYearlyPrice}
+              buttonDisabled={currentPlan === tier4 ? true : false}
+              buttonFunction={() => setSelected(tier4)}
+              selected={selected}
+              yearly={yearly}
+              setYearly={setYearly}
+              subscribe={subscribeText}
+              currentPlan={currentPlanText}
+              billedAnnually={billedAnnually}
+              monthlyBilling={monthlyBilling}
+              yearlyBilling={yearlyBilling}
+              sixMonthsFree={sixMonthsFree}
+              blurb={business.blurb}
+              subText={subText}
+            />
+          </div>
         </div>
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>

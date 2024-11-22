@@ -3,7 +3,9 @@
 import PricingTable from "@/components/StartPageContent/PricingTable";
 import { urbanist } from "@/app/[locale]/fonts";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LocaleContext } from "@/context/LocaleContext";
+import { Skeleton } from "../ui/skeleton";
 
 interface Props {
   locale: string;
@@ -25,6 +27,7 @@ interface Props {
 
 export default function StartPageContent({ locale, sellerObject, buyerObject, billingText }: Props) {
   const [seller, setSeller] = useState(true);
+  const { sessionLoading } = useContext(LocaleContext);
 
   return (
     <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full">
@@ -39,7 +42,6 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             Plans & pricing
           </h2>
         </div>
-
         <div className="flex flex-col w-full justify-center items-center gap-3">
           <div className="flex gap-3">
             <Button
@@ -64,7 +66,6 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             </Button>
           </div>
         </div>
-
         {seller ? (
           <PricingTable
             starter={sellerObject.starter}

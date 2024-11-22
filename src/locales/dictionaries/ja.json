@@ -968,6 +968,9 @@
     "submit": "保存"
   },
   "stripe": {
-    "pay": "今すぐ支払う"
+    "pay": "今すぐ支払う",
+    "payment_success": "支払いが完了しました",
+    "payment_loading": "支払い処理",
+    "payment_error": "予期しないエラーが発生しました!"
   }
 }

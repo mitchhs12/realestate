@@ -968,6 +968,9 @@ export default {
     "submit": "บันทึก"
   },
   "stripe": {
-    "pay": "ชำระเงินทันที"
+    "pay": "ชำระเงินทันที",
+    "payment_success": "การชำระเงินสำเร็จแล้ว",
+    "payment_loading": "การประมวลผลการชำระเงิน",
+    "payment_error": "เกิดข้อผิดพลาดที่ไม่คาดคิด!"
   }
 } as const;

@@ -968,6 +968,9 @@
     "submit": "구하다"
   },
   "stripe": {
-    "pay": "지금 결제하세요"
+    "pay": "지금 결제하세요",
+    "payment_success": "결제 성공",
+    "payment_loading": "결제 처리",
+    "payment_error": "예상치 못한 오류가 발생했습니다!"
   }
 }

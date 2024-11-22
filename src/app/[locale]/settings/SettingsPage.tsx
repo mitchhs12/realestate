@@ -89,7 +89,7 @@ export default function SettingsPage({ user, title, name, currency, language, su
               {(user.sellerSubscription || (user.buyerSubscription && user.buyerSubscription !== "free")) && (
                 <Button variant={"destructive"}>Cancel Plan</Button>
               )}
-              <Button className="bg-amber-500 hover:bg-amber-500/90">Change Plan</Button>
+              <Button className="bg-amber-500 hover:bg-amber-500/90">Billing Settings</Button>
             </div>
           </div>
           <div className="flex flex-col w-full h-full gap-3">
