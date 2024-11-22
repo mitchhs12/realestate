@@ -18,25 +18,47 @@ export async function StripeServer(
     }
     let user: any = session.user;
 
-    const yearlyMap = {
-      starter: "prod_RGLO3eC3u8UV4g",
-      pro: "prod_RGLPk0aTA0eQNj",
-      premium: "prod_RGLQnQkrHVRdNI",
-      business: "prod_RGLR20Cw48qjAm",
-      basic: "prod_RGLSfdHUPIXMQr",
-      insight: "prod_RGLTYBAcedO7yK",
-      max: "prod_RGLTynXTLL7rso",
-    };
+    const yearlyMap =
+      process.env.NODE_ENV === "development"
+        ? {
+            starter: "prod_RGLO3eC3u8UV4g",
+            pro: "prod_RGLPk0aTA0eQNj",
+            premium: "prod_RGLQnQkrHVRdNI",
+            business: "prod_RGLR20Cw48qjAm",
+            basic: "prod_RGLSfdHUPIXMQr",
+            insight: "prod_RGLTYBAcedO7yK",
+            max: "prod_RGLTynXTLL7rso",
+          }
+        : {
+            starter: "prod_RGMIA7FN39OnjS",
+            pro: "prod_RGMIeSAl2jBW8z",
+            premium: "prod_RGMIFuNf3D7QdR",
+            business: "prod_RGMIX0vF11i8A6",
+            basic: "prod_RGMIP1K2ZfnGdk",
+            insight: "prod_RGMIRrkMd42hHK",
+            max: "prod_RGMIugLIn0BoMo",
+          };
 
-    const monthlyMap = {
-      starter: "prod_RGLNV8JyUl0O08",
-      pro: "prod_RGLPUgIDaZDALY",
-      premium: "prod_RGLQXLsK3K4DPO",
-      business: "prod_RGLRJjGAvhr2Vk",
-      basic: "prod_RGLS9MYuC36eCc",
-      insight: "prod_RGLSF2ZUemii2K",
-      max: "prod_RGLTf9kzcyw8jd",
-    };
+    const monthlyMap =
+      process.env.NODE_ENV === "development"
+        ? {
+            starter: "prod_RGLNV8JyUl0O08",
+            pro: "prod_RGLPUgIDaZDALY",
+            premium: "prod_RGLQXLsK3K4DPO",
+            business: "prod_RGLRJjGAvhr2Vk",
+            basic: "prod_RGLS9MYuC36eCc",
+            insight: "prod_RGLSF2ZUemii2K",
+            max: "prod_RGLTf9kzcyw8jd",
+          }
+        : {
+            starter: "prod_RGMIOS7SjcNKeZ",
+            pro: "prod_RGMICT7LjP9h7z",
+            premium: "prod_RGMIOK2OMNhwsB",
+            business: "prod_RGMIs9MVCZTJRI",
+            basic: "prod_RGMIvCVmIzDLtd",
+            insight: "prod_RGMIkIaWmFbKHU",
+            max: "prod_RGMIYRPt3GkORH",
+          };
 
     const map = {
       starter: {
