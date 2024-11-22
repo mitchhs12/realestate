@@ -4,6 +4,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { useScopedI18n } from "@/locales/client";
 import { LocaleContext } from "@/context/LocaleContext";
+import { StripePaymentElementOptions } from "@stripe/stripe-js";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -25,10 +26,14 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    if (!user) {
+      throw new Error("User is not logged in");
+    }
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        receipt_email: user?.email,
+        receipt_email: user.email!,
         // Make sure to change this to your payment completion page
         return_url: "http://localhost:3000",
       },
@@ -40,7 +45,7 @@ export default function CheckoutForm() {
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+      setMessage(error.message || "An unexpected error occurred.");
     } else {
       setMessage("An unexpected error occurred.");
     }
@@ -48,8 +53,9 @@ export default function CheckoutForm() {
     setIsLoading(false);
   };
 
-  const paymentElementOptions = {
+  const paymentElementOptions: StripePaymentElementOptions = {
     layout: "accordion",
+    paymentMethodOrder: ["apple_pay", "google_pay", "card"],
   };
 
   return (

@@ -14,7 +14,7 @@ import { StripeServer } from "./stripeServer";
 
 interface Props {
   defaultCurrency: CurrencyType;
-  planId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max";
+  planId: any; //starter pro premium business basic insight max;
   interval: "year" | "month";
   accountId: string;
   accountEmail: string | null;

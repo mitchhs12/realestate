@@ -4,6 +4,7 @@ import stripeClient from "@/lib/stripe";
 import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import Stripe from "stripe";
+import { revalidatePath } from "next/cache";
 
 export async function StripeServer(
   currency: string,
@@ -15,7 +16,7 @@ export async function StripeServer(
     if (!session || !session.user) {
       throw new Error("Unauthorized");
     }
-    const userId = session.user.id;
+    let user: any = session.user;
 
     const yearlyMap = {
       starter: "prod_RGLO3eC3u8UV4g",
@@ -70,11 +71,7 @@ export async function StripeServer(
 
     const amount = interval === "year" ? map[planId]["yearly-total-price"] * 100 : map[planId].price * 100;
 
-    let user = await prisma.user.findUnique({
-      where: { id: userId },
-    });
-
-    if (!user) {
+    if (!user || !user.id) {
       throw new Error("User not found");
     }
 
@@ -83,12 +80,12 @@ export async function StripeServer(
       const customer = await stripeClient.customers.create({
         email: user.email || undefined,
         metadata: {
-          userId: user.id,
+          userId: user.id!,
         },
       });
       // Update the user with the new Stripe customer id
       user = await prisma.user.update({
-        where: { id: userId },
+        where: { id: user.id },
         data: { customerId: customer.id },
       });
     }
