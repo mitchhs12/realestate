@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Aylık faturalandırmayı görüntüle ↗",
     "save-with-yearly": "Yıllık tasarruf edin",
     "six-months-free": "(6+ ay ücretsiz ↗)",
+    "lowest-prices": "En Düşük Fiyat Garantisi",
+    "title": "Planlar ve Fiyatlandırma",
+    "buyers": "Alıcılar",
+    "sellers": "Satıcılar",
     "free": {
       "title": "Özgür",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Emlak fiyatları bu para biriminde gösterilecek"
     },
     "submit": "Kaydetmek"
+  },
+  "stripe": {
+    "pay": "Şimdi öde"
   }
 } as const;

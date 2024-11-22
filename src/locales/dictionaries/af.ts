@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Bekyk maandelikse fakturering ↗",
     "save-with-yearly": "Spaar met jaarlikse",
     "six-months-free": "(6+ maande gratis ↗)",
+    "lowest-prices": "Laagste pryse gewaarborg",
+    "title": "Planne en pryse",
+    "buyers": "Kopers",
+    "sellers": "Verkopers",
     "free": {
       "title": "Gratis",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Eiendomspryse sal in hierdie geldeenheid vertoon word"
     },
     "submit": "Stoor"
+  },
+  "stripe": {
+    "pay": "Betaal nou"
   }
 } as const;

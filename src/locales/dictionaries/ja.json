@@ -17,6 +17,10 @@
     "view-monthly-billing": "月々の請求額を表示↗",
     "save-with-yearly": "年間で節約",
     "six-months-free": "（6か月以上無料↗）",
+    "lowest-prices": "最低価格保証",
+    "title": "プランと価格",
+    "buyers": "購入者",
+    "sellers": "販売者",
     "free": {
       "title": "無料",
       "price": "0",
@@ -962,5 +966,8 @@
       "subtitle": "不動産価格はこの通貨で表示されます"
     },
     "submit": "保存"
+  },
+  "stripe": {
+    "pay": "今すぐ支払う"
   }
 }

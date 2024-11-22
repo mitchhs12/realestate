@@ -5,7 +5,7 @@ import { SellContext } from "@/context/SellContext";
 import CheckoutCard from "./CheckoutCard";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
-import Stripe from "@/app/[locale]/Stripe";
+import Stripe from "@/app/[locale]/stripe";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Tier {

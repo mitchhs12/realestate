@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "View monthly billing ↗",
     "save-with-yearly": "Save with yearly",
     "six-months-free": "(6+ months free ↗)",
+    "lowest-prices": "Lowest Prices Guaranteed",
+    "title": "Plans and Pricing",
+    "buyers": "Buyers",
+    "sellers": "Sellers",
     "free": {
       "title": "Free",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Property prices will be displayed in this currency"
     },
     "submit": "Save"
+  },
+  "stripe": {
+    "pay": "Pay now"
   }
 } as const;

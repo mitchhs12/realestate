@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Xem hóa đơn hàng tháng ↗",
     "save-with-yearly": "Tiết kiệm với hàng năm",
     "six-months-free": "(6 tháng miễn phí trở lên ↗)",
+    "lowest-prices": "Giá thấp nhất được đảm bảo",
+    "title": "Kế hoạch và giá cả",
+    "buyers": "Người mua",
+    "sellers": "Người bán",
     "free": {
       "title": "Miễn phí",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Giá bất động sản sẽ được hiển thị bằng loại tiền tệ này"
     },
     "submit": "Cứu"
+  },
+  "stripe": {
+    "pay": "Thanh toán ngay"
   }
 } as const;

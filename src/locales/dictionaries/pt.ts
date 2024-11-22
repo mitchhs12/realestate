@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Ver faturamento mensal ↗",
     "save-with-yearly": "Economize com anual",
     "six-months-free": "(6+ meses grátis ↗)",
+    "lowest-prices": "Preços mais baixos garantidos",
+    "title": "Planos e Preços",
+    "buyers": "Compradores",
+    "sellers": "Vendedores",
     "free": {
       "title": "Livre",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Os preços dos imóveis serão exibidos nesta moeda"
     },
     "submit": "Salvar"
+  },
+  "stripe": {
+    "pay": "Pague agora"
   }
 } as const;

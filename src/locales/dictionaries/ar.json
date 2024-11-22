@@ -17,6 +17,10 @@
     "view-monthly-billing": "عرض الفواتير الشهرية ↗",
     "save-with-yearly": "وفر مع سنوي",
     "six-months-free": "(6+ أشهر مجانية ↗)",
+    "lowest-prices": "أدنى الأسعار مضمونة",
+    "title": "الخطط والأسعار",
+    "buyers": "المشترين",
+    "sellers": "الباعة",
     "free": {
       "title": "حر",
       "price": "0",
@@ -962,5 +966,8 @@
       "subtitle": "سيتم عرض أسعار العقارات بهذه العملة"
     },
     "submit": "يحفظ"
+  },
+  "stripe": {
+    "pay": "ادفع الآن"
   }
 }

@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "ყოველთვიური ბილინგის ნახვა ↗",
     "save-with-yearly": "დაზოგეთ ყოველწლიურად",
     "six-months-free": "(6+ თვე უფასოდ ↗)",
+    "lowest-prices": "ყველაზე დაბალი ფასები გარანტირებულია",
+    "title": "გეგმები და ფასები",
+    "buyers": "მყიდველები",
+    "sellers": "გამყიდველები",
     "free": {
       "title": "უფასო",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "ქონების ფასები ნაჩვენები იქნება ამ ვალუტაში"
     },
     "submit": "შენახვა"
+  },
+  "stripe": {
+    "pay": "გადაიხადე ახლა"
   }
 } as const;

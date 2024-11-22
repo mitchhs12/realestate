@@ -17,6 +17,10 @@
     "view-monthly-billing": "Monatliche Abrechnung anzeigen ↗",
     "save-with-yearly": "Sparen Sie mit jährlich",
     "six-months-free": "(6+ Monate gratis ↗)",
+    "lowest-prices": "Tiefpreis-Garantie",
+    "title": "Pläne und Preise",
+    "buyers": "Käufer",
+    "sellers": "Verkäufer",
     "free": {
       "title": "Frei",
       "price": "0",
@@ -962,5 +966,8 @@
       "subtitle": "Immobilienpreise werden in dieser Währung angezeigt"
     },
     "submit": "Speichern"
+  },
+  "stripe": {
+    "pay": "Jetzt bezahlen"
   }
 }

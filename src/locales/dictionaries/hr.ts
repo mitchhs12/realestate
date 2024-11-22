@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Pogledajte mjesečnu naplatu ↗",
     "save-with-yearly": "Uštedite uz godišnje",
     "six-months-free": "(6+ mjeseci besplatno ↗)",
+    "lowest-prices": "Zajamčeno najniže cijene",
+    "title": "Planovi i cijene",
+    "buyers": "Kupci",
+    "sellers": "Prodavači",
     "free": {
       "title": "Besplatno",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Cijene nekretnina bit će prikazane u ovoj valuti"
     },
     "submit": "Uštedjeti"
+  },
+  "stripe": {
+    "pay": "Platite sada"
   }
 } as const;

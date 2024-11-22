@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Ver facturación mensual ↗",
     "save-with-yearly": "Ahorre con el pago anual",
     "six-months-free": "(6+ meses gratis ↗)",
+    "lowest-prices": "Precios más bajos garantizados",
+    "title": "Planes y precios",
+    "buyers": "Compradores",
+    "sellers": "Vendedores",
     "free": {
       "title": "Gratis",
       "price": "0",
@@ -101,7 +105,7 @@ export default {
       }
     },
     "starter": {
-      "title": "Motor de arranque",
+      "title": "Inicio",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Los precios de las propiedades se mostrarán en esta moneda."
     },
     "submit": "Guardar"
+  },
+  "stripe": {
+    "pay": "Pagar ahora"
   }
 } as const;

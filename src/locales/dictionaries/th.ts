@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "ดูการเรียกเก็บเงินรายเดือน ↗",
     "save-with-yearly": "ประหยัดเงินด้วยรายปี",
     "six-months-free": "(ฟรี 6 เดือนขึ้นไป ↗)",
+    "lowest-prices": "รับประกันราคาถูกที่สุด",
+    "title": "แผนการและราคา",
+    "buyers": "ผู้ซื้อ",
+    "sellers": "ผู้ขาย",
     "free": {
       "title": "ฟรี",
       "price": "0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "ราคาทรัพย์สินจะแสดงเป็นสกุลเงินนี้"
     },
     "submit": "บันทึก"
+  },
+  "stripe": {
+    "pay": "ชำระเงินทันที"
   }
 } as const;

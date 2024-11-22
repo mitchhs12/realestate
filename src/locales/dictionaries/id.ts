@@ -17,6 +17,10 @@ export default {
     "view-monthly-billing": "Lihat tagihan bulanan ↗",
     "save-with-yearly": "Hemat dengan tahunan",
     "six-months-free": "(6+ bulan gratis ↗)",
+    "lowest-prices": "Harga Terendah Dijamin",
+    "title": "Rencana dan Harga",
+    "buyers": "Pembeli",
+    "sellers": "Penjual",
     "free": {
       "title": "Bebas",
       "price": "angka 0",
@@ -962,5 +966,8 @@ export default {
       "subtitle": "Harga properti akan ditampilkan dalam mata uang ini"
     },
     "submit": "Menyimpan"
+  },
+  "stripe": {
+    "pay": "Bayar sekarang"
   }
 } as const;

@@ -11,6 +11,7 @@ datasource db {
 model User {
   id            String          @id @default(cuid())
   name          String?
+  customerId    String?         @unique
   currency      String?
   language      String?
   email         String?         @unique

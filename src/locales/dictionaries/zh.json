@@ -17,6 +17,10 @@
     "view-monthly-billing": "查看每月账单 ↗",
     "save-with-yearly": "每年节省",
     "six-months-free": "（6 个月以上免费↗）",
+    "lowest-prices": "最低价格保证",
+    "title": "计划和定价",
+    "buyers": "买家",
+    "sellers": "卖家",
     "free": {
       "title": "自由的",
       "price": "0",
@@ -962,5 +966,8 @@
       "subtitle": "房产价格将以此货币显示"
     },
     "submit": "节省"
+  },
+  "stripe": {
+    "pay": "立即付款"
   }
 }

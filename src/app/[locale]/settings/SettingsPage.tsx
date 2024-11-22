@@ -66,73 +66,103 @@ export default function SettingsPage({ user, title, name, currency, language, su
     <main className="flex flex-col px-10 py-10 w-full items-center">
       <div className="flex flex-col max-w-7xl w-full items-center mx-8">
         <h1 className="flex text-xl lg:text-3xl w-full space-y-8 font-bold">{title}</h1>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col py-10 w-full gap-8">
-            <div className="justify-start space-y-8">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{name.title}</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Enter a username" {...field} />
-                    </FormControl>
-                    <FormDescription>{name.subtitle}</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="language"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{language.title}</FormLabel>
-                    <FormControl>
-                      <select className="block w-full mt-1" {...field}>
-                        {languages.map((lang) => (
-                          <option key={`${lang}`} value={lang}>
-                            {getFullLanguageName(lang)}
-                          </option>
-                        ))}
-                      </select>
-                    </FormControl>
-                    <FormDescription>{language.subtitle}</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="currency"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{currency.title}</FormLabel>
-                    <FormControl>
-                      <select className="block w-full mt-1" {...field}>
-                        {locales.map((config) => (
-                          <option key={`${config.locale}${config.currency}`} value={config.currency}>
-                            {config.currency}{" "}
-                            {/* <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} /> */}
-                          </option>
-                        ))}
-                      </select>
-                    </FormControl>
-                    <FormDescription>{currency.subtitle}</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+        <div className="flex flex-col w-full h-full py-10 gap-16">
+          <div className="flex flex-col w-full h-full gap-3">
+            <h2 className="flex text-lg lg:text-2xl font-semibold">{"Billing"}</h2>
+            <div className="flex gap-3 items-center">
+              <h3 className="font-semibold">Seller Subscription Plan:</h3>
+              <div className={`font-medium ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
+                {user.sellerSubscription
+                  ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
+                  : "Unsubscribed"}
+              </div>
             </div>
+            <div className="flex gap-3 items-center">
+              <h3 className="font-semibold">Buyer Subscription Plan:</h3>
+              <div className={`font-medium ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
+                {user.buyerSubscription
+                  ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
+                  : "Unsubscribed"}
+              </div>
+            </div>
+            <div className="flex gap-3 items-center">
+              {(user.sellerSubscription || (user.buyerSubscription && user.buyerSubscription !== "free")) && (
+                <Button variant={"destructive"}>Cancel Plan</Button>
+              )}
+              <Button className="bg-amber-500 hover:bg-amber-500/90">Change Plan</Button>
+            </div>
+          </div>
+          <div className="flex flex-col w-full h-full gap-3">
+            <h2 className="flex text-lg lg:text-2xl font-semibold">{"Account"}</h2>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full gap-8">
+                <div className="justify-start space-y-8">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{name.title}</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter a username" {...field} />
+                        </FormControl>
+                        <FormDescription>{name.subtitle}</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="language"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{language.title}</FormLabel>
+                        <FormControl>
+                          <select className="block w-full mt-1" {...field}>
+                            {languages.map((lang) => (
+                              <option key={`${lang}`} value={lang}>
+                                {getFullLanguageName(lang)}
+                              </option>
+                            ))}
+                          </select>
+                        </FormControl>
+                        <FormDescription>{language.subtitle}</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="currency"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{currency.title}</FormLabel>
+                        <FormControl>
+                          <select className="block w-full mt-1" {...field}>
+                            {locales.map((config) => (
+                              <option key={`${config.locale}${config.currency}`} value={config.currency}>
+                                {config.currency}{" "}
+                                {/* <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} /> */}
+                              </option>
+                            ))}
+                          </select>
+                        </FormControl>
+                        <FormDescription>{currency.subtitle}</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-            <div className="flex justify-end">
-              <Button type="submit" disabled={form.formState.isSubmitting}>
-                {submit}
-              </Button>
-            </div>
-          </form>
-        </Form>
+                <div className="flex justify-end">
+                  <Button type="submit" disabled={form.formState.isSubmitting}>
+                    {submit}
+                  </Button>
+                </div>
+              </form>
+            </Form>
+          </div>
+        </div>
       </div>
     </main>
   );

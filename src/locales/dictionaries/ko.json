@@ -17,6 +17,10 @@
     "view-monthly-billing": "월별 청구 보기 ↗",
     "save-with-yearly": "연간으로 절약하세요",
     "six-months-free": "(6개월 이상 무료 ↗)",
+    "lowest-prices": "최저가 보장",
+    "title": "계획 및 가격",
+    "buyers": "구매자",
+    "sellers": "판매자",
     "free": {
       "title": "무료",
       "price": "0",
@@ -962,5 +966,8 @@
       "subtitle": "부동산 가격은 이 통화로 표시됩니다."
     },
     "submit": "구하다"
+  },
+  "stripe": {
+    "pay": "지금 결제하세요"
   }
 }
