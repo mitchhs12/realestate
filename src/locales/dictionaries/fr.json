@@ -310,7 +310,7 @@
         "language": "Langue",
         "my-properties": "Mes propriétés",
         "my-lists": "Mes listes de souhaits",
-        "ai-studio": "Studio d'IA",
+        "ai-studio": "Studio de conception d'IA",
         "currency": "Devise",
         "settings": "Paramètres",
         "exit": "Enregistrer et quitter",
@@ -819,7 +819,7 @@
     "loading": "Chargement..."
   },
   "ai-studio": {
-    "title": "Studio d'IA",
+    "title": "Studio de conception d'IA",
     "subtitle": "Repensez vos propriétés et vos pièces",
     "redesign": "Repenser mon",
     "kind-room-placeholder": "Sélectionnez le type de pièce dont il s'agit",

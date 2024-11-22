@@ -310,7 +310,7 @@ export default {
         "language": "言語",
         "my-properties": "私のプロパティ",
         "my-lists": "私のウィッシュリスト",
-        "ai-studio": "AIスタジオ",
+        "ai-studio": "AIデザインスタジオ",
         "currency": "通貨",
         "settings": "設定",
         "exit": "保存して終了",
@@ -819,7 +819,7 @@ export default {
     "loading": "読み込み中..."
   },
   "ai-studio": {
-    "title": "AIスタジオ",
+    "title": "AIデザインスタジオ",
     "subtitle": "物件や部屋を再設計する",
     "redesign": "私のデザインを変更",
     "kind-room-placeholder": "部屋の種類を選択してください",

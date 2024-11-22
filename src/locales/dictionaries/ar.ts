@@ -310,7 +310,7 @@ export default {
         "language": "لغة",
         "my-properties": "ممتلكاتي",
         "my-lists": "قائمة أمنياتي",
-        "ai-studio": "استوديو الذكاء الاصطناعي",
+        "ai-studio": "استوديو تصميم الذكاء الاصطناعي",
         "currency": "عملة",
         "settings": "إعدادات",
         "exit": "حفظ وخروج",
@@ -819,7 +819,7 @@ export default {
     "loading": "تحميل..."
   },
   "ai-studio": {
-    "title": "استوديو الذكاء الاصطناعي",
+    "title": "استوديو تصميم الذكاء الاصطناعي",
     "subtitle": "أعد تصميم خصائصك وغرفك",
     "redesign": "أعد تصميمي",
     "kind-room-placeholder": "حدد نوع الغرفة",

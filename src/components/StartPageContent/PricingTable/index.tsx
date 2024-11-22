@@ -66,8 +66,14 @@ export default function PricingTable({
   const [selected, setSelected] = useState<string>("");
   const [yearly, setYearly] = useState(true);
 
+  const tier1 = isSeller ? "starter" : "free";
+  const tier2 = isSeller ? "pro" : "basic";
+  const tier3 = isSeller ? "premium" : "insight";
+  const tier4 = isSeller ? "business" : "max";
+  const subscriptionType = isSeller ? user?.sellerSubscription : user?.buyerSubscription;
+
   useEffect(() => {
-    if (user?.sellerSubscription) {
+    if (user && isSeller) {
       if (user.sellerSubscription === "starter") {
         setCurrentPlan("starter");
       } else if (user.sellerSubscription === "pro") {
@@ -77,7 +83,7 @@ export default function PricingTable({
       } else if (user.sellerSubscription === "business") {
         setCurrentPlan("business");
       }
-    } else if (user?.buyerSubscription) {
+    } else if (user && !isSeller) {
       if (user.buyerSubscription === "free") {
         setCurrentPlan("free");
       } else if (user.buyerSubscription === "basic") {
@@ -91,23 +97,25 @@ export default function PricingTable({
   }, [user]);
 
   useEffect(() => {
-    if (!user?.subscription && selected) {
+    console.log("running this 2");
+
+    if (subscriptionType && selected) {
       if (!user?.id) {
         openSignUpModal();
       } else {
         setIsOpen(true);
       }
-    } else if (user?.subscription && selected) {
-      if (selected !== user.subscription) {
+      if (selected !== subscriptionType) {
         setIsOpen(true);
       }
     }
   }, [selected]);
 
   useEffect(() => {
+    console.log("running this");
     if (!isOpen) {
-      if (user?.subscription) {
-        setSelected(user?.subscription);
+      if (subscriptionType) {
+        setSelected(subscriptionType);
       } else {
         setSelected("");
       }
@@ -137,14 +145,14 @@ export default function PricingTable({
               className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-start w-full gap-8 sm:gap-8 lg:gap-5`}
             >
               <PriceCard
-                id={"starter"}
+                id={tier1}
                 perks={starter.perks}
                 title={starter.title}
                 button={yearly ? starter.yearlyPrice : starter.price}
                 annualPrice={starter.totalYearlyPrice}
-                buttonDisabled={currentPlan === "starter" ? true : false}
+                buttonDisabled={currentPlan === tier1 ? true : false}
                 originalPrice={starter.anchor}
-                buttonFunction={() => setSelected("starter")}
+                buttonFunction={() => setSelected(tier1)}
                 selected={selected}
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
@@ -158,13 +166,13 @@ export default function PricingTable({
                 subText={subText}
               />
               <PriceCard
-                id={"pro"}
+                id={tier2}
                 perks={pro.perks}
                 title={pro.title}
                 button={yearly ? pro.yearlyPrice : pro.price}
                 annualPrice={pro.totalYearlyPrice}
-                buttonDisabled={currentPlan === "pro" ? true : false}
-                buttonFunction={() => setSelected("pro")}
+                buttonDisabled={currentPlan === tier2 ? true : false}
+                buttonFunction={() => setSelected(tier2)}
                 selected={selected}
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}
@@ -183,13 +191,13 @@ export default function PricingTable({
                   {mostPopularText}
                 </div>
                 <PriceCard
-                  id={"premium"}
+                  id={tier3}
                   perks={premium.perks}
                   title={premium.title}
                   button={yearly ? premium.yearlyPrice : premium.price}
                   annualPrice={premium.totalYearlyPrice}
-                  buttonDisabled={currentPlan === "premium" ? true : false}
-                  buttonFunction={() => setSelected("premium")}
+                  buttonDisabled={currentPlan === tier3 ? true : false}
+                  buttonFunction={() => setSelected(tier3)}
                   selected={selected}
                   defaultCurrency={defaultCurrency}
                   yearly={yearly}
@@ -205,13 +213,13 @@ export default function PricingTable({
                 />
               </div>
               <PriceCard
-                id={"business"}
+                id={tier4}
                 perks={business.perks}
                 title={business.title}
                 button={yearly ? business.yearlyPrice : business.price}
                 annualPrice={business.totalYearlyPrice}
-                buttonDisabled={currentPlan === "business" ? true : false}
-                buttonFunction={() => setSelected("business")}
+                buttonDisabled={currentPlan === tier4 ? true : false}
+                buttonFunction={() => setSelected(tier4)}
                 selected={selected}
                 defaultCurrency={defaultCurrency}
                 yearly={yearly}

@@ -310,7 +310,7 @@ export default {
         "language": "Bahasa",
         "my-properties": "Properti Saya",
         "my-lists": "Daftar Keinginanku",
-        "ai-studio": "Studio AI",
+        "ai-studio": "Studio Desain AI",
         "currency": "Mata uang",
         "settings": "Pengaturan",
         "exit": "Simpan dan keluar",
@@ -819,7 +819,7 @@ export default {
     "loading": "Memuat..."
   },
   "ai-studio": {
-    "title": "Studio AI",
+    "title": "Studio Desain AI",
     "subtitle": "Desain ulang properti dan kamar Anda",
     "redesign": "Mendesain ulang saya",
     "kind-room-placeholder": "Pilih jenis ruangannya",

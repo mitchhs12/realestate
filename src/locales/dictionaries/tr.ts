@@ -310,7 +310,7 @@ export default {
         "language": "Dil",
         "my-properties": "Benim Özelliklerim",
         "my-lists": "İstek Listelerim",
-        "ai-studio": "AI Stüdyosu",
+        "ai-studio": "AI Tasarım Stüdyosu",
         "currency": "Para birimi",
         "settings": "Ayarlar",
         "exit": "Kaydet ve çık",
@@ -819,7 +819,7 @@ export default {
     "loading": "Yükleniyor..."
   },
   "ai-studio": {
-    "title": "AI Stüdyosu",
+    "title": "AI Tasarım Stüdyosu",
     "subtitle": "Özelliklerinizi ve odalarınızı yeniden tasarlayın",
     "redesign": "Yeniden tasarla",
     "kind-room-placeholder": "Odanın türünü seçin",

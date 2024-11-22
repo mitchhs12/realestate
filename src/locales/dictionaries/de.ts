@@ -310,7 +310,7 @@ export default {
         "language": "Sprache",
         "my-properties": "Meine Immobilien",
         "my-lists": "Meine Wunschlisten",
-        "ai-studio": "AI Studio",
+        "ai-studio": "AI Design Studio",
         "currency": "Währung",
         "settings": "Einstellungen",
         "exit": "Speichern und beenden",
@@ -819,7 +819,7 @@ export default {
     "loading": "Laden..."
   },
   "ai-studio": {
-    "title": "AI Studio",
+    "title": "AI Design Studio",
     "subtitle": "Gestalten Sie Ihre Immobilien und Räume neu",
     "redesign": "Neugestaltung meiner",
     "kind-room-placeholder": "Wählen Sie den Zimmertyp aus",

@@ -310,7 +310,7 @@ export default {
         "language": "Language",
         "my-properties": "My Properties",
         "my-lists": "My Wishlists",
-        "ai-studio": "AI Studio",
+        "ai-studio": "AI Design Studio",
         "currency": "Currency",
         "settings": "Settings",
         "exit": "Save and exit",
@@ -819,7 +819,7 @@ export default {
     "loading": "Loading..."
   },
   "ai-studio": {
-    "title": "AI Studio",
+    "title": "AI Design Studio",
     "subtitle": "Redesign your properties and rooms",
     "redesign": "Redesign my",
     "kind-room-placeholder": "Select the kind of room it is",

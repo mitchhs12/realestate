@@ -310,7 +310,7 @@
         "language": "언어",
         "my-properties": "내 속성",
         "my-lists": "내 위시리스트",
-        "ai-studio": "AI 스튜디오",
+        "ai-studio": "AI 디자인 스튜디오",
         "currency": "통화",
         "settings": "설정",
         "exit": "저장하고 종료",
@@ -819,7 +819,7 @@
     "loading": "로딩중..."
   },
   "ai-studio": {
-    "title": "AI 스튜디오",
+    "title": "AI 디자인 스튜디오",
     "subtitle": "귀하의 부동산과 객실을 재설계하세요",
     "redesign": "내 재설계",
     "kind-room-placeholder": "객실 종류를 선택하세요",

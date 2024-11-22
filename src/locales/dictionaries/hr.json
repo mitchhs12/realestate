@@ -310,7 +310,7 @@
         "language": "Jezik",
         "my-properties": "Moja svojstva",
         "my-lists": "Moje liste želja",
-        "ai-studio": "AI Studio",
+        "ai-studio": "AI Design Studio",
         "currency": "Valuta",
         "settings": "postavke",
         "exit": "Spremi i izađi",
@@ -819,7 +819,7 @@
     "loading": "Učitavanje..."
   },
   "ai-studio": {
-    "title": "AI Studio",
+    "title": "AI Design Studio",
     "subtitle": "Redizajnirajte svoje nekretnine i sobe",
     "redesign": "Redizajniraj moju",
     "kind-room-placeholder": "Odaberite vrstu sobe",

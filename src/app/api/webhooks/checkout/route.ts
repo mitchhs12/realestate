@@ -37,28 +37,43 @@ export async function POST(req: Request, res: NextApiResponse) {
         const planId = session.metadata?.planId;
 
         if (accountId && planId) {
-          // Update the home listing in the database to "premium"
-          await prisma.user.update({
-            where: { id: accountId },
-            data: { subscription: planId },
-          });
+          if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
+            // Update the home listing in the database to "premium"
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { sellerSubscription: planId },
+            });
+          } else if (planId === "basic" || planId === "insight" || planId === "max") {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { buyerSubscription: planId },
+            });
+          }
         } else {
-          console.error("Missing homeId in subscription metadata.");
+          console.error("Missing accountId in subscription metadata.");
         }
         break;
       }
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
-        const homeId = subscription.metadata?.homeId;
+        const accountId = subscription.metadata?.accountId;
+        const planId = subscription.metadata?.planId;
 
-        if (homeId) {
+        if (accountId && planId) {
           // Update the home listing in the database back to "basic" (or another default)
-          await prisma.home.update({
-            where: { id: parseInt(homeId) },
-            data: { listingType: "basic" }, // Revert to the default listing type
-          });
+          if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { sellerSubscription: null }, // Revert to the default listing type
+            });
+          } else if (planId === "basic" || planId === "insight" || planId === "max") {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { buyerSubscription: "free" }, // Revert to the default listing type
+            });
+          }
         } else {
-          console.error("Missing homeId in subscription metadata.");
+          console.error("Missing accountId in subscription metadata.");
         }
         break;
       }
@@ -68,16 +83,24 @@ export async function POST(req: Request, res: NextApiResponse) {
 
         // You might want to use the subscription ID to update related data
         const stripeSubscription = await stripe.subscriptions.retrieve(subscription);
-        const homeId = stripeSubscription.metadata?.homeId;
+        const accountId = stripeSubscription.metadata?.accountId;
+        const planId = stripeSubscription.metadata?.planId;
 
-        if (homeId) {
+        if (accountId) {
           // Handle payment failure logic (e.g., notifying the user, downgrading the listing)
-          await prisma.home.update({
-            where: { id: parseInt(homeId) },
-            data: { listingType: "basic" }, // Revert to default if payment fails
-          });
+          if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { sellerSubscription: null }, // Revert to default if payment fails
+            });
+          } else if (planId === "basic" || planId === "insight" || planId === "max") {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { buyerSubscription: "free" }, // Revert to default if payment fails
+            });
+          }
         } else {
-          console.error("Missing homeId in subscription metadata.");
+          console.error("Missing accountId in subscription metadata.");
         }
         break;
       }

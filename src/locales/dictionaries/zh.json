@@ -310,7 +310,7 @@
         "language": "语言",
         "my-properties": "我的房产",
         "my-lists": "我的愿望清单",
-        "ai-studio": "人工智能工作室",
+        "ai-studio": "人工智能设计工作室",
         "currency": "货币",
         "settings": "设置",
         "exit": "保存并退出",
@@ -819,7 +819,7 @@
     "loading": "加载中..."
   },
   "ai-studio": {
-    "title": "人工智能工作室",
+    "title": "人工智能设计工作室",
     "subtitle": "重新设计您的房产和房间",
     "redesign": "重新设计我的",
     "kind-room-placeholder": "选择房间类型",

@@ -310,7 +310,7 @@ export default {
         "language": "Idioma",
         "my-properties": "Mis propiedades",
         "my-lists": "Mis listas de deseos",
-        "ai-studio": "Estudio de IA",
+        "ai-studio": "Estudio de diseño de IA",
         "currency": "Divisa",
         "settings": "Ajustes",
         "exit": "Guardar y salir",
@@ -819,7 +819,7 @@ export default {
     "loading": "Cargando..."
   },
   "ai-studio": {
-    "title": "Estudio de IA",
+    "title": "Estudio de diseño de IA",
     "subtitle": "Rediseña tus propiedades y habitaciones",
     "redesign": "Rediseñar mi",
     "kind-room-placeholder": "Seleccione el tipo de habitación que es",

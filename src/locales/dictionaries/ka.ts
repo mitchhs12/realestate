@@ -310,7 +310,7 @@ export default {
         "language": "ენა",
         "my-properties": "ჩემი თვისებები",
         "my-lists": "ჩემი სურვილების სია",
-        "ai-studio": "AI სტუდია",
+        "ai-studio": "AI დიზაინის სტუდია",
         "currency": "ვალუტა",
         "settings": "პარამეტრები",
         "exit": "შენახვა და გამოსვლა",
@@ -819,7 +819,7 @@ export default {
     "loading": "იტვირთება..."
   },
   "ai-studio": {
-    "title": "AI სტუდია",
+    "title": "AI დიზაინის სტუდია",
     "subtitle": "გადააკეთეთ თქვენი ქონება და ოთახები",
     "redesign": "ხელახლა დიზაინი ჩემი",
     "kind-room-placeholder": "აირჩიეთ ოთახის ტიპი",

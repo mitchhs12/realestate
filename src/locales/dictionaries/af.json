@@ -310,7 +310,7 @@
         "language": "Taal",
         "my-properties": "My Eienskappe",
         "my-lists": "My wenslys",
-        "ai-studio": "AI Studio",
+        "ai-studio": "AI Design Studio",
         "currency": "Geldeenheid",
         "settings": "Instellings",
         "exit": "Stoor en gaan uit",
@@ -819,7 +819,7 @@
     "loading": "Laai tans..."
   },
   "ai-studio": {
-    "title": "AI Studio",
+    "title": "AI Design Studio",
     "subtitle": "Herontwerp jou eiendomme en kamers",
     "redesign": "Herontwerp my",
     "kind-room-placeholder": "Kies die soort kamer wat dit is",

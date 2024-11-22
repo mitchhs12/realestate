@@ -310,7 +310,7 @@
         "language": "Ngôn ngữ",
         "my-properties": "Thuộc tính của tôi",
         "my-lists": "Danh sách mong muốn của tôi",
-        "ai-studio": "Phòng thu AI",
+        "ai-studio": "Phòng thiết kế AI",
         "currency": "Tiền tệ",
         "settings": "Cài đặt",
         "exit": "Lưu và thoát",
@@ -819,7 +819,7 @@
     "loading": "Đang tải..."
   },
   "ai-studio": {
-    "title": "Phòng thu AI",
+    "title": "Phòng thiết kế AI",
     "subtitle": "Thiết kế lại tài sản và phòng của bạn",
     "redesign": "Thiết kế lại của tôi",
     "kind-room-placeholder": "Chọn loại phòng đó là",
