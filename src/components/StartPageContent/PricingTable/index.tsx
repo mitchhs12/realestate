@@ -39,6 +39,7 @@ interface Props {
     "six-months-free": string;
     "per-month": string;
   };
+  isSeller: boolean;
 }
 
 export default function PricingTable({
@@ -56,6 +57,7 @@ export default function PricingTable({
   yearlyBilling,
   sixMonthsFree,
   subText,
+  isSeller,
 }: Props) {
   const { defaultCurrency, user } = useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
@@ -65,15 +67,25 @@ export default function PricingTable({
   const [yearly, setYearly] = useState(true);
 
   useEffect(() => {
-    if (user?.subscription) {
-      if (user.subscription === "starter") {
+    if (user?.sellerSubscription) {
+      if (user.sellerSubscription === "starter") {
         setCurrentPlan("starter");
-      } else if (user.subscription === "pro") {
+      } else if (user.sellerSubscription === "pro") {
         setCurrentPlan("pro");
-      } else if (user.subscription === "premium") {
+      } else if (user.sellerSubscription === "premium") {
         setCurrentPlan("premium");
-      } else if (user.subscription === "business") {
+      } else if (user.sellerSubscription === "business") {
         setCurrentPlan("business");
+      }
+    } else if (user?.buyerSubscription) {
+      if (user.buyerSubscription === "free") {
+        setCurrentPlan("free");
+      } else if (user.buyerSubscription === "basic") {
+        setCurrentPlan("basic");
+      } else if (user.buyerSubscription === "insight") {
+        setCurrentPlan("insight");
+      } else if (user.buyerSubscription === "max") {
+        setCurrentPlan("max");
       }
     }
   }, [user]);

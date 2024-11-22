@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
   try {
     const { currency, planId, interval, accountId, accountEmail } = (await request.json()) as {
       currency: string;
-      planId: "starter" | "pro" | "premium" | "business";
+      planId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max";
       interval: "year" | "month";
       accountId: string;
       accountEmail: string | null;
@@ -30,8 +30,16 @@ export async function POST(request: NextRequest) {
         "yearly-total-price": 1699,
       },
       basic: {
-        price: 8,
+        price: 19,
         "yearly-total-price": 99,
+      },
+      insight: {
+        price: 49,
+        "yearly-total-price": 289,
+      },
+      max: {
+        price: 299,
+        "yearly-total-price": 1699,
       },
     };
 

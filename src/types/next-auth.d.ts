@@ -10,7 +10,8 @@ declare module "next-auth" {
   interface User {
     role: string | null;
     currency: string | null;
-    subscription: string | null;
+    buyerSubscription: string | null;
+    sellerSubscription: string | null;
     language: LanguageType;
     phoneNumber: string | null;
     favoritedLists: (FavoriteList & { homes: HomeType[] })[];

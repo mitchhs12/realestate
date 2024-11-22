@@ -22,7 +22,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   homes         Home[]
-  subscription  String?
+  buyerSubscription  String?    @default("free")
+  sellerSubscription String?    
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

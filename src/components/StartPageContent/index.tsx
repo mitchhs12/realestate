@@ -81,6 +81,7 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             yearlyBilling={billingText["save-with-yearly"]}
             sixMonthsFree={billingText["six-months-free"]}
             subText={billingText.subText}
+            isSeller={seller}
           />
         ) : (
           <PricingTable
@@ -98,6 +99,7 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             yearlyBilling={billingText["save-with-yearly"]}
             sixMonthsFree={billingText["six-months-free"]}
             subText={billingText.subText}
+            isSeller={seller}
           />
         )}
       </div>
