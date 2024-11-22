@@ -57,7 +57,9 @@ export default function PriceCard({
 }: Props) {
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
-      <Card className={`flex flex-col w-full h-full border-2 rounded-lg ${selected === id ? "border-primary" : ""}`}>
+      <Card
+        className={`flex flex-col w-full h-full border-2 rounded-lg ${buttonDisabled && "border-none shadow-none opacity-70"} ${selected === id ? "border-primary" : ""}`}
+      >
         <CardHeader>
           <CardTitle className="flex justify-center items-center text-bold text-2xl">{title}</CardTitle>
         </CardHeader>
@@ -106,7 +108,7 @@ export default function PriceCard({
         </CardContent>
         <CardFooter className="flex flex-col items-center h-[90px] justify-end pb-5 gap-2">
           <Button
-            variant={"default"}
+            variant={!buttonDisabled ? "default" : "secondary"}
             className="flex items-center w-full text-xl gap-1"
             disabled={buttonDisabled}
             onClick={buttonFunction}

@@ -97,14 +97,13 @@ export default function PricingTable({
   }, [user]);
 
   useEffect(() => {
-    console.log("running this 2");
-
-    if (subscriptionType && selected) {
+    if (!subscriptionType && selected) {
       if (!user?.id) {
         openSignUpModal();
       } else {
         setIsOpen(true);
       }
+    } else if (subscriptionType && selected) {
       if (selected !== subscriptionType) {
         setIsOpen(true);
       }

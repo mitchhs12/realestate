@@ -27,9 +27,9 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
   const [seller, setSeller] = useState(true);
 
   return (
-    <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full h-full">
+    <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full">
       <div className="flex flex-col pb-4 md:pb-12 gap-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
-        <div className="flex flex-col items-center gap-2 pt-6 justify-center text-center">
+        <div className="flex flex-col items-center gap-2 pt-6 justify-start text-center">
           <h3
             className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
           >
