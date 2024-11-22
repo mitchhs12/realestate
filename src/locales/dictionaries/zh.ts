@@ -971,6 +971,8 @@ export default {
     "pay": "立即付款",
     "payment_success": "付款成功",
     "payment_loading": "处理付款",
-    "payment_error": "发生意外错误！"
+    "payment_error": "发生意外错误！",
+    "seller_billing": "卖家账单",
+    "buyer_billing": "买家账单"
   }
 } as const;

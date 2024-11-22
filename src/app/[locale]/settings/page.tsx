@@ -27,6 +27,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   const language = { title: language_title, subtitle: language_sub };
 
   const session = await getSession();
+
   const user = session?.user;
   if (!user) {
     redirect("/api/auth/signin?callbackUrl=/settings");

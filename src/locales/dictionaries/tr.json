@@ -971,6 +971,8 @@
     "pay": "Şimdi öde",
     "payment_success": "Ödeme Başarılı",
     "payment_loading": "Ödeme İşleniyor",
-    "payment_error": "Beklenmeyen bir hata oluştu!"
+    "payment_error": "Beklenmeyen bir hata oluştu!",
+    "seller_billing": "Satıcı Faturalandırması",
+    "buyer_billing": "Alıcı Faturalandırması"
   }
 }

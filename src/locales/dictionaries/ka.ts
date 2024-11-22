@@ -971,6 +971,8 @@ export default {
     "pay": "გადაიხადე ახლა",
     "payment_success": "გადახდა წარმატებით დასრულდა",
     "payment_loading": "გადახდის დამუშავება",
-    "payment_error": "მოხდა მოულოდნელი შეცდომა!"
+    "payment_error": "მოხდა მოულოდნელი შეცდომა!",
+    "seller_billing": "გამყიდველი ბილინგი",
+    "buyer_billing": "მყიდველის ბილინგი"
   }
 } as const;

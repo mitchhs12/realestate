@@ -971,6 +971,8 @@ export default {
     "pay": "Pay now",
     "payment_success": "Payment Successful",
     "payment_loading": "Processing Payment",
-    "payment_error": "An unexpected error occurred!"
+    "payment_error": "An unexpected error occurred!",
+    "seller_billing": "Seller Billing",
+    "buyer_billing": "Buyer Billing"
   }
 } as const;

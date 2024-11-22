@@ -971,6 +971,8 @@ export default {
     "pay": "Thanh toán ngay",
     "payment_success": "Thanh toán thành công",
     "payment_loading": "Xử lý thanh toán",
-    "payment_error": "Đã xảy ra lỗi không mong muốn!"
+    "payment_error": "Đã xảy ra lỗi không mong muốn!",
+    "seller_billing": "Thanh toán của người bán",
+    "buyer_billing": "Thanh toán của người mua"
   }
 } as const;

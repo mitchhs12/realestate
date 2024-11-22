@@ -971,6 +971,8 @@ export default {
     "pay": "Platite sada",
     "payment_success": "Plaćanje uspješno",
     "payment_loading": "Obrada plaćanja",
-    "payment_error": "Došlo je do neočekivane pogreške!"
+    "payment_error": "Došlo je do neočekivane pogreške!",
+    "seller_billing": "Naplata prodavatelja",
+    "buyer_billing": "Naplata kupcu"
   }
 } as const;

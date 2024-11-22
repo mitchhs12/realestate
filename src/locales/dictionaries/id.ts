@@ -971,6 +971,8 @@ export default {
     "pay": "Bayar sekarang",
     "payment_success": "Pembayaran Berhasil",
     "payment_loading": "Pemrosesan Pembayaran",
-    "payment_error": "Terjadi kesalahan tak terduga!"
+    "payment_error": "Terjadi kesalahan tak terduga!",
+    "seller_billing": "Penagihan Penjual",
+    "buyer_billing": "Penagihan Pembeli"
   }
 } as const;

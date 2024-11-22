@@ -11,13 +11,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { locales, languages } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getFullLanguageName } from "@/lib/utils";
 import { FlagComponent } from "@/components/ui/phone-input";
 import { useChangeLocale } from "@/locales/client";
 import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
 import { languageToFlagMap } from "@/lib/validations";
+import Link from "next/link";
+import { StripeBilling } from "../stripeServer";
 
 interface Props {
   user: User;
@@ -32,6 +34,8 @@ export default function SettingsPage({ user, title, name, currency, language, su
   const session = useSession();
   const changeLocale = useChangeLocale();
   const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } = useContext(LocaleContext);
+  const [stripeBuyerBillingUrl, setStripeBuyerBillingUrl] = useState<string | null>(null);
+  const [stripeSellerBillingUrl, setStripeSellerBillingUrl] = useState<string | null>(null);
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -62,36 +66,29 @@ export default function SettingsPage({ user, title, name, currency, language, su
     }
   }
 
+  useEffect(() => {
+    if (user.buyerSubscriptionId) {
+      getBuyerStripeBilling();
+    } else if (user.sellerSubscriptionId) {
+      getSellerStripeBilling();
+    }
+  }, [user]);
+
+  async function getSellerStripeBilling() {
+    const sellerSessionUrl = await StripeBilling(true, defaultLanguage);
+    setStripeSellerBillingUrl(sellerSessionUrl);
+  }
+
+  async function getBuyerStripeBilling() {
+    const buyerSessionUrl = await StripeBilling(false, defaultLanguage);
+    setStripeBuyerBillingUrl(buyerSessionUrl);
+  }
+
   return (
     <main className="flex flex-col px-10 py-10 w-full items-center">
       <div className="flex flex-col max-w-7xl w-full items-center mx-8">
         <h1 className="flex text-xl lg:text-3xl w-full space-y-8 font-bold">{title}</h1>
         <div className="flex flex-col w-full h-full py-10 gap-16">
-          <div className="flex flex-col w-full h-full gap-3">
-            <h2 className="flex text-lg lg:text-2xl font-semibold">{"Billing"}</h2>
-            <div className="flex gap-3 items-center">
-              <h3 className="font-semibold">Seller Subscription Plan:</h3>
-              <div className={`font-medium ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
-                {user.sellerSubscription
-                  ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
-                  : "Unsubscribed"}
-              </div>
-            </div>
-            <div className="flex gap-3 items-center">
-              <h3 className="font-semibold">Buyer Subscription Plan:</h3>
-              <div className={`font-medium ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
-                {user.buyerSubscription
-                  ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
-                  : "Unsubscribed"}
-              </div>
-            </div>
-            <div className="flex gap-3 items-center">
-              {(user.sellerSubscription || (user.buyerSubscription && user.buyerSubscription !== "free")) && (
-                <Button variant={"destructive"}>Cancel Plan</Button>
-              )}
-              <Button className="bg-amber-500 hover:bg-amber-500/90">Billing Settings</Button>
-            </div>
-          </div>
           <div className="flex flex-col w-full h-full gap-3">
             <h2 className="flex text-lg lg:text-2xl font-semibold">{"Account"}</h2>
             <Form {...form}>
@@ -154,13 +151,70 @@ export default function SettingsPage({ user, title, name, currency, language, su
                   />
                 </div>
 
-                <div className="flex justify-end">
+                <div className="flex justify-start">
                   <Button type="submit" disabled={form.formState.isSubmitting}>
                     {submit}
                   </Button>
                 </div>
               </form>
             </Form>
+          </div>
+          <div className="flex flex-col w-full h-full gap-3">
+            <h2 className="flex text-lg lg:text-2xl font-semibold">{"Billing"}</h2>
+            <div className="flex flex-col gap-12">
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-3 items-center">
+                  <h3 className="font-semibold">Buyer Subscription Plan:</h3>
+                  <div className={`font-medium ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
+                    {user.buyerSubscription
+                      ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
+                      : "Unsubscribed"}
+                  </div>
+                </div>
+                <div>
+                  {user.buyerSubscriptionId ? (
+                    <Button
+                      asChild
+                      className="bg-amber-500 hover:bg-amber-500/90"
+                      disabled={stripeBuyerBillingUrl ? false : true}
+                    >
+                      {stripeBuyerBillingUrl && <Link href={stripeBuyerBillingUrl}>Buyer Subscription Settings</Link>}
+                    </Button>
+                  ) : (
+                    <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                      Buyer Subscription Settings
+                    </Button>
+                  )}
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-3 items-center">
+                  <h3 className="font-semibold">Seller Subscription Plan:</h3>
+                  <div className={`font-medium ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
+                    {user.sellerSubscription
+                      ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
+                      : "Unsubscribed"}
+                  </div>
+                </div>
+                <div className="flex gap-3 items-center w-full justify-start">
+                  {user.sellerSubscriptionId ? (
+                    <Button
+                      asChild
+                      className="bg-amber-500 hover:bg-amber-500/90"
+                      disabled={stripeSellerBillingUrl ? false : true}
+                    >
+                      {stripeSellerBillingUrl && (
+                        <Link href={stripeSellerBillingUrl}>Seller Subscription Settings</Link>
+                      )}
+                    </Button>
+                  ) : (
+                    <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                      Seller Subscription Settings
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

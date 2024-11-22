@@ -971,6 +971,8 @@ export default {
     "pay": "ادفع الآن",
     "payment_success": "تم الدفع بنجاح",
     "payment_loading": "معالجة الدفع",
-    "payment_error": "حدث خطأ غير متوقع!"
+    "payment_error": "حدث خطأ غير متوقع!",
+    "seller_billing": "فاتورة البائع",
+    "buyer_billing": "فواتير المشتري"
   }
 } as const;

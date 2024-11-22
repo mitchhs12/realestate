@@ -971,6 +971,8 @@ export default {
     "pay": "Payer maintenant",
     "payment_success": "Paiement réussi",
     "payment_loading": "Traitement des paiements",
-    "payment_error": "Une erreur inattendue s'est produite !"
+    "payment_error": "Une erreur inattendue s'est produite !",
+    "seller_billing": "Facturation du vendeur",
+    "buyer_billing": "Facturation de l'acheteur"
   }
 } as const;

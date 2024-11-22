@@ -971,6 +971,8 @@ export default {
     "pay": "Betaal nou",
     "payment_success": "Betaling suksesvol",
     "payment_loading": "Verwerking van betaling",
-    "payment_error": "'n Onverwagte fout het voorgekom!"
+    "payment_error": "'n Onverwagte fout het voorgekom!",
+    "seller_billing": "Verkoperfakturering",
+    "buyer_billing": "Koper-fakturering"
   }
 } as const;

@@ -114,7 +114,6 @@ export default function PricingTable({
   }, [selected]);
 
   useEffect(() => {
-    console.log("running this");
     if (!isOpen) {
       if (subscriptionType) {
         setSelected(subscriptionType);

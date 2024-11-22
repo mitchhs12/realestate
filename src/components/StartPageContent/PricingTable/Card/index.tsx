@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface Props {
   id: string;
@@ -55,9 +56,10 @@ export default function PriceCard({
   subText,
 }: Props) {
   const { sessionLoading, defaultCurrency } = useContext(LocaleContext);
+  console.log(blurb);
 
   return (
-    <div className={`flex w-full h-[800px] justify-center items-center`}>
+    <div className={`flex w-full h-[850px] justify-center items-center`}>
       {sessionLoading ? (
         <Skeleton className="flex flex-grow w-full h-full" />
       ) : (
@@ -101,15 +103,19 @@ export default function PriceCard({
               </Button>
 
               <div>{blurb}</div>
-              {perks.map((perk, index) => (
-                <div key={index} className="flex items-start gap-4 px-3">
-                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary" />
-                  <div className="flex flex-col justify-start space-y-1 text-start">
-                    <p className="flex justify-start text-md font-medium leading-none">{perk.title}</p>
-                    <p className="flex justify-start text-sm text-muted-foreground">{perk.subtitle}</p>
+              <div className="flex flex-col gap-5 w-full h-full">
+                {perks.map((perk, index) => (
+                  <div key={index} className="flex items-start gap-4 px-3">
+                    <div>
+                      <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary" />
+                    </div>
+                    <div className="flex flex-col justify-start gap-1 text-start">
+                      <p className="flex justify-start text-md font-medium leading-none">{perk.title}</p>
+                      <p className="flex justify-start text-sm text-muted-foreground">{perk.subtitle}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </CardContent>
             <CardFooter className="flex flex-col items-center h-[90px] justify-end pb-5 gap-2">
               <Button
@@ -118,7 +124,15 @@ export default function PriceCard({
                 disabled={buttonDisabled}
                 onClick={buttonFunction}
               >
-                {buttonDisabled ? currentPlan : subscribe}
+                {buttonDisabled ? (
+                  currentPlan
+                ) : selected === id ? (
+                  <span className="flex items-center gap-3">
+                    <ReloadIcon className="w-6 h-6 animate-spin" />
+                  </span>
+                ) : (
+                  subscribe
+                )}
               </Button>
             </CardFooter>
           </Card>

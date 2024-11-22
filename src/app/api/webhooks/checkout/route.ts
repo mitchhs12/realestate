@@ -36,18 +36,21 @@ export async function POST(req: Request, res: NextApiResponse) {
         const metadata = session?.metadata;
         const accountId = metadata?.accountId;
         const planId = metadata?.planId;
+        const subscriptionId = event.data.object.subscription as string;
+
+        console.log(event.data);
 
         if (accountId && planId) {
           if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
             // Update the home listing in the database to "premium"
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: planId },
+              data: { sellerSubscription: planId, sellerSubscriptionId: subscriptionId },
             });
           } else if (planId === "basic" || planId === "insight" || planId === "max") {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: planId },
+              data: { buyerSubscription: planId, buyerSubscriptionId: subscriptionId },
             });
           }
         } else {
@@ -65,12 +68,12 @@ export async function POST(req: Request, res: NextApiResponse) {
           if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: null }, // Revert to the default listing type
+              data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to the default listing type
             });
           } else if (planId === "basic" || planId === "insight" || planId === "max") {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: "free" }, // Revert to the default listing type
+              data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to the default listing type
             });
           }
         } else {
@@ -92,12 +95,12 @@ export async function POST(req: Request, res: NextApiResponse) {
           if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: null }, // Revert to default if payment fails
+              data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to default if payment fails
             });
           } else if (planId === "basic" || planId === "insight" || planId === "max") {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: "free" }, // Revert to default if payment fails
+              data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to default if payment fails
             });
           }
         } else {

@@ -971,6 +971,8 @@
     "pay": "今すぐ支払う",
     "payment_success": "支払いが完了しました",
     "payment_loading": "支払い処理",
-    "payment_error": "予期しないエラーが発生しました!"
+    "payment_error": "予期しないエラーが発生しました!",
+    "seller_billing": "販売者への請求",
+    "buyer_billing": "購入者への請求"
   }
 }

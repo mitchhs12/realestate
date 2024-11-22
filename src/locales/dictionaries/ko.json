@@ -971,6 +971,8 @@
     "pay": "지금 결제하세요",
     "payment_success": "결제 성공",
     "payment_loading": "결제 처리",
-    "payment_error": "예상치 못한 오류가 발생했습니다!"
+    "payment_error": "예상치 못한 오류가 발생했습니다!",
+    "seller_billing": "판매자 청구",
+    "buyer_billing": "구매자 청구"
   }
 }

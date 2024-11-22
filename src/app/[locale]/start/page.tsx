@@ -71,6 +71,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     price: Number(billing("basic.price")),
     yearlyPrice: Number(billing("basic.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("basic.yearly-total-price")),
+    blurb: billing("basic.blurb"),
     perks: [
       {
         title: billing("basic.perks.0.title"),
@@ -88,6 +89,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     price: Number(billing("insight.price")),
     yearlyPrice: Number(billing("insight.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("insight.yearly-total-price")),
+    blurb: billing("insight.blurb"),
     perks: [
       {
         title: billing("insight.perks.0.title"),
@@ -109,6 +111,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     price: Number(billing("max.price")),
     yearlyPrice: Number(billing("max.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("max.yearly-total-price")),
+    blurb: billing("max.blurb"),
     perks: [
       {
         title: billing("max.perks.0.title"),
@@ -189,7 +192,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     price: Number(billing("premium.price")),
     yearlyPrice: Number(billing("premium.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("premium.yearly-total-price")),
-    premium: billing("premium.blurb"),
+    blurb: billing("premium.blurb"),
     perks: [
       {
         title: billing("premium.perks.0.title"),
@@ -273,6 +276,8 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     "save-with-yearly": billing("save-with-yearly"),
     "six-months-free": billing("six-months-free"),
     subText: { "six-months-free": billing("subText.six-months-free"), "per-month": billing("subText.per-month") },
+    "lowest-prices": billing("lowest-prices"),
+    title: billing("title"),
   };
 
   return (

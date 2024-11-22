@@ -47,7 +47,7 @@ export default {
     },
     "basic": {
       "title": "Básico",
-      "blurb": "Todas las funciones gratuitas, más",
+      "blurb": "Todo de Free, más",
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
@@ -63,8 +63,8 @@ export default {
       }
     },
     "insight": {
-      "title": "Conocimiento",
-      "blurb": "Todas las funciones básicas, más",
+      "title": "Insight",
+      "blurb": "Todo de Basic, más",
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
@@ -84,8 +84,8 @@ export default {
       }
     },
     "max": {
-      "title": "Máximo",
-      "blurb": "Todas las funciones de información, más",
+      "title": "Max",
+      "blurb": "Todo de Insight, más",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
@@ -105,7 +105,7 @@ export default {
       }
     },
     "starter": {
-      "title": "Inicio",
+      "title": "Starter",
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
@@ -138,7 +138,7 @@ export default {
     },
     "pro": {
       "title": "Pro",
-      "blurb": "Todas las funciones iniciales, más",
+      "blurb": "Todo de starter, más",
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
@@ -162,8 +162,8 @@ export default {
       }
     },
     "premium": {
-      "title": "De primera calidad",
-      "blurb": "Todas las funciones profesionales, más",
+      "title": "Premium",
+      "blurb": "Todo de pro, más",
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
@@ -195,8 +195,8 @@ export default {
       }
     },
     "business": {
-      "title": "Negocio",
-      "blurb": "Todas las funciones premium, más",
+      "title": "Business",
+      "blurb": "Todo de premium, más",
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
@@ -971,6 +971,8 @@ export default {
     "pay": "Pagar ahora",
     "payment_success": "Pago exitoso",
     "payment_loading": "Procesando pago",
-    "payment_error": "¡Ocurrió un error inesperado!"
+    "payment_error": "¡Ocurrió un error inesperado!",
+    "seller_billing": "Facturación del vendedor",
+    "buyer_billing": "Facturación del comprador"
   }
 } as const;
