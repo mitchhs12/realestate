@@ -31,10 +31,11 @@ export async function POST(req: Request, res: NextApiResponse) {
     // Handle the event based on its type
     switch (event.type) {
       // When a checkout session completes (e.g., a subscription is purchased)
-      case "checkout.session.completed": {
-        const session = event.data.object;
-        const accountId = session.metadata?.accountId;
-        const planId = session.metadata?.planId;
+      case "invoice.paid": {
+        const session = event.data.object.subscription_details;
+        const metadata = session?.metadata;
+        const accountId = metadata?.accountId;
+        const planId = metadata?.planId;
 
         if (accountId && planId) {
           if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
