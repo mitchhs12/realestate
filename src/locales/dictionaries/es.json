@@ -585,8 +585,10 @@
       "completed": "Terminado",
       "unfinishedProperties": {
         "title": "Propiedades sin terminar",
-        "subtitle": "¡Selecciona una de tus propiedades sin terminar para continuar!"
-      }
+        "subtitle": "¡Selecciona una de tus propiedades sin terminar para continuar!",
+        "sell-new": "Vender una propiedad nueva"
+      },
+      "view": "Ver propiedades sin terminar"
     },
     "capacity": {
       "title": "Capacidad",

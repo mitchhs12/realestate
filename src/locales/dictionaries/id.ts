@@ -585,8 +585,10 @@ export default {
       "completed": "Selesai",
       "unfinishedProperties": {
         "title": "Properti yang Belum Selesai",
-        "subtitle": "Pilih salah satu properti Anda yang belum selesai untuk melanjutkan!"
-      }
+        "subtitle": "Pilih salah satu properti Anda yang belum selesai untuk melanjutkan!",
+        "sell-new": "Jual properti baru"
+      },
+      "view": "Lihat Properti yang Belum Selesai"
     },
     "capacity": {
       "title": "Kapasitas",

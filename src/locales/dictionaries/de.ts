@@ -585,8 +585,10 @@ export default {
       "completed": "Vollendet",
       "unfinishedProperties": {
         "title": "Unfertige Immobilien",
-        "subtitle": "Wählen Sie eine Ihrer unfertigen Immobilien aus, um fortzufahren!"
-      }
+        "subtitle": "Wählen Sie eine Ihrer unfertigen Immobilien aus, um fortzufahren!",
+        "sell-new": "Eine neue Immobilie verkaufen"
+      },
+      "view": "Unfertige Immobilien anzeigen"
     },
     "capacity": {
       "title": "Kapazität",

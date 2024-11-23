@@ -45,6 +45,7 @@ export default async function Page({ params: { locale } }: any) {
   const step3 = t("step-3");
   const step3Sub = t("step-3-sub");
   const completed = t("completed");
+  const viewText = t("view");
 
   const sellFlowText = {
     title,
@@ -56,6 +57,7 @@ export default async function Page({ params: { locale } }: any) {
     step3,
     step3Sub,
     completed,
+    viewText,
   };
 
   return (

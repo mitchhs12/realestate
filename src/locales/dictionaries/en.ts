@@ -585,8 +585,10 @@ export default {
       "completed": "Completed",
       "unfinishedProperties": {
         "title": "Unfinished Properties",
-        "subtitle": "Select one of your unfinished properties to continue!"
-      }
+        "subtitle": "Select one of your unfinished properties to continue!",
+        "sell-new": "Sell a new property"
+      },
+      "view": "View Unfinished Properties"
     },
     "capacity": {
       "title": "Capacity",
@@ -972,7 +974,7 @@ export default {
     "payment_success": "Payment Successful",
     "payment_loading": "Processing Payment",
     "payment_error": "An unexpected error occurred!",
-    "seller_billing": "Seller Billing",
-    "buyer_billing": "Buyer Billing"
+    "seller_billing": "Sellers",
+    "buyer_billing": "Buyers"
   }
 } as const;

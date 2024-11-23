@@ -585,8 +585,10 @@ export default {
       "completed": "Hoàn thành",
       "unfinishedProperties": {
         "title": "Bất động sản chưa hoàn thiện",
-        "subtitle": "Chọn một trong những bất động sản còn dang dở của bạn để tiếp tục!"
-      }
+        "subtitle": "Chọn một trong những bất động sản còn dang dở của bạn để tiếp tục!",
+        "sell-new": "Bán một bất động sản mới"
+      },
+      "view": "Xem Bất động sản chưa hoàn thiện"
     },
     "capacity": {
       "title": "Dung tích",

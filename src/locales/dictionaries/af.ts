@@ -585,8 +585,10 @@ export default {
       "completed": "Voltooi",
       "unfinishedProperties": {
         "title": "Onvoltooide eiendomme",
-        "subtitle": "Kies een van jou onvoltooide eiendomme om voort te gaan!"
-      }
+        "subtitle": "Kies een van jou onvoltooide eiendomme om voort te gaan!",
+        "sell-new": "Verkoop 'n nuwe eiendom"
+      },
+      "view": "Bekyk onvoltooide eiendomme"
     },
     "capacity": {
       "title": "Kapasiteit",

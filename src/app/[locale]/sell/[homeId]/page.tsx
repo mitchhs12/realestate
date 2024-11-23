@@ -56,6 +56,7 @@ export default async function Page({ params: { locale, homeId } }: any) {
   const step3 = t("step-3");
   const step3Sub = t("step-3-sub");
   const completed = t("completed");
+  const view = t("view");
 
   return (
     <SellFlowPage
@@ -73,6 +74,7 @@ export default async function Page({ params: { locale, homeId } }: any) {
       step3={step3}
       step3Sub={step3Sub}
       completed={completed}
+      viewText={view}
     />
   );
 }

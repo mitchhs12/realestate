@@ -585,8 +585,10 @@
       "completed": "Tamamlanmış",
       "unfinishedProperties": {
         "title": "Tamamlanmamış Mülkler",
-        "subtitle": "Devam etmek için tamamlanmamış mülklerinizden birini seçin!"
-      }
+        "subtitle": "Devam etmek için tamamlanmamış mülklerinizden birini seçin!",
+        "sell-new": "Yeni bir mülk satmak"
+      },
+      "view": "Tamamlanmamış Özellikleri Görüntüle"
     },
     "capacity": {
       "title": "Kapasite",

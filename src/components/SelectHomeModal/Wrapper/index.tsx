@@ -23,6 +23,7 @@ interface Props {
     step3: string;
     step3Sub: string;
     completed: string;
+    viewText: string;
   };
   unfinishedHomes: HomeType[];
   user: User;
@@ -69,6 +70,7 @@ export default function LockedLogin({
           step3={sellFlowText.step3}
           step3Sub={sellFlowText.step3Sub}
           completed={sellFlowText.completed}
+          viewText={sellFlowText.viewText}
           unfinishedHomes={unfinishedHomes}
           setModalOpen={setModalOpen}
         />

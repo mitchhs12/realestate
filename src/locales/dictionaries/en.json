@@ -491,8 +491,10 @@
       "completed": "Completed",
       "unfinishedProperties": {
         "title": "Unfinished Properties",
-        "subtitle": "Select one of your unfinished properties to continue!"
-      }
+        "subtitle": "Select one of your unfinished properties to continue!",
+        "sell-new": "Sell a new property"
+      },
+      "view": "View Unfinished Properties"
     },
     "capacity": {
       "title": "Capacity",

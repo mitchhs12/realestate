@@ -585,8 +585,10 @@ export default {
       "completed": "Complété",
       "unfinishedProperties": {
         "title": "Propriétés inachevées",
-        "subtitle": "Sélectionnez l'une de vos propriétés inachevées pour continuer !"
-      }
+        "subtitle": "Sélectionnez l'une de vos propriétés inachevées pour continuer !",
+        "sell-new": "Vendre un bien neuf"
+      },
+      "view": "Voir les propriétés inachevées"
     },
     "capacity": {
       "title": "Capacité",

@@ -585,8 +585,10 @@
       "completed": "完了",
       "unfinishedProperties": {
         "title": "未完成物件",
-        "subtitle": "続行するには、未完了のプロパティの 1 つを選択してください。"
-      }
+        "subtitle": "続行するには、未完了のプロパティの 1 つを選択してください。",
+        "sell-new": "新しい不動産を売る"
+      },
+      "view": "未完成の物件を見る"
     },
     "capacity": {
       "title": "容量",

@@ -26,6 +26,7 @@ interface Props {
   step3: string;
   step3Sub: string;
   completed: string;
+  viewText: string;
   unfinishedHomes?: HomeType[];
   setModalOpen?: (value: boolean) => void;
 }
@@ -44,6 +45,7 @@ export default function SellFlowPage({
   step3,
   step3Sub,
   completed,
+  viewText,
   unfinishedHomes,
   setModalOpen,
 }: Props) {
@@ -167,16 +169,13 @@ export default function SellFlowPage({
           </div>
         </div>
         {unfinishedHomes && unfinishedHomes.length > 0 && (
-          <div className="absolute flex flex-col gap-3 items-center bottom-20">
-            <h3 className="text-2xl font-semibold">You have unfinished properties!</h3>
+          <div className="flex flex-col gap-3 items-center pb-10">
             <Button
-              className="text-lg"
-              size={"lg"}
               onClick={() => {
                 setModalOpen && setModalOpen(true);
               }}
             >
-              View
+              {viewText}
             </Button>
           </div>
         )}

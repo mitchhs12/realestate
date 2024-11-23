@@ -15,6 +15,7 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export function Modal({
   unfinishedHomes,
@@ -41,8 +42,13 @@ export function Modal({
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
       <DialogContent className="flex flex-col w-[90%] max-w-7xl h-[90%]">
-        <DialogHeader className="p-2 sm:p-4 md:px-6">
-          <DialogTitle className="text-2xl font-semibold">{u("title")}</DialogTitle>
+        <DialogHeader className="flex p-2 sm:p-4 md:px-6 w-full">
+          <DialogTitle className="flex items-center justify-between text-2xl font-semibold">
+            {u("title")}
+            <Button variant={"outline"} onClick={() => setModalOpen(false)}>
+              {u("sell-new")}
+            </Button>
+          </DialogTitle>
           <DialogDescription>{u("subtitle")}</DialogDescription>
         </DialogHeader>
         <div className="p-2 sm:p-4 md:px-6 overflow-y-auto w-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">

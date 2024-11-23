@@ -585,8 +585,10 @@ export default {
       "completed": "完全的",
       "unfinishedProperties": {
         "title": "未完成的房产",
-        "subtitle": "选择您的一处未完成的房产并继续！"
-      }
+        "subtitle": "选择您的一处未完成的房产并继续！",
+        "sell-new": "出售新房产"
+      },
+      "view": "查看未完成的属性"
     },
     "capacity": {
       "title": "容量",
