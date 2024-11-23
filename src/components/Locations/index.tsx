@@ -49,7 +49,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
   const [currentIndexes, setCurrentIndexes] = useState(Object.keys(countries).map(() => 0));
   const [hoveredCarousel, setHoveredCarousel] = useState<string | null>(null); // Track which carousel is being hovered
-  const [isoCode, setIsoCode] = useState("ar");
+  const [isoCode, setIsoCode] = useState("AR");
 
   const handleMouseLeave = () => {
     setHoveredCarousel(null);
