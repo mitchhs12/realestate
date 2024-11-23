@@ -48,8 +48,10 @@ export default function CheckoutForm() {
       // redirected to the `return_url`.
       if (error) {
         if (error.type === "card_error" || error.type === "validation_error") {
+          console.log(error.message);
           showErrorForLimitedTime(error.message || "An unexpected error occurred.");
         } else {
+          console.log(error.message);
           showErrorForLimitedTime("An unexpected error occurred.");
         }
       } else if (paymentIntent?.status === "succeeded") {

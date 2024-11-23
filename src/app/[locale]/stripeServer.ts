@@ -121,12 +121,30 @@ export async function StripeServer(
     let subscription;
 
     if (user.sellerSubscriptionId || user.buyerSubscriptionId) {
-      subscription = await stripeClient.subscriptions.update(
+      const subscriptionId =
         planId === "starter" || planId === "pro" || planId === "premium" || planId === "business"
           ? user.sellerSubscriptionId
-          : (planId === "basic" || planId === "insight" || planId === "max") && user.buyerSubscriptionId,
-        { metadata: { accountId: user.id, planId: planId } }
-      );
+          : user.buyerSubscriptionId;
+
+      subscription = await stripeClient.subscriptions.update(subscriptionId, {
+        items: [
+          {
+            price_data: {
+              currency: currency,
+              product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
+              unit_amount: amount, // Amount in cents
+              recurring: {
+                interval: interval,
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        payment_behavior: "default_incomplete",
+        payment_settings: { save_default_payment_method: "on_subscription" },
+        expand: ["latest_invoice.payment_intent"],
+        metadata: { accountId: user.id, planId: planId },
+      });
     } else {
       // Create a new subscription
       subscription = await stripeClient.subscriptions.create({

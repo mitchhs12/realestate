@@ -142,7 +142,7 @@ export default function PricingTable({
             </Button>
           </div>
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-start w-full h-full gap-8 sm:gap-8 lg:gap-5`}
+            className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 justify-start w-full h-full gap-8 sm:gap-8 lg:gap-5`}
           >
             <PriceCard
               id={tier1}
