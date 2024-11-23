@@ -49,6 +49,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
   const [loadingImages, setLoadingImages] = useState(new Set(Object.keys(urlMap)));
   const [currentIndexes, setCurrentIndexes] = useState(Object.keys(countries).map(() => 0));
   const [hoveredCarousel, setHoveredCarousel] = useState<string | null>(null); // Track which carousel is being hovered
+  const [isoCode, setIsoCode] = useState("ar");
 
   const handleMouseLeave = () => {
     setHoveredCarousel(null);
@@ -68,14 +69,20 @@ export default function Locations({ countries }: { countries: CountryProps }) {
     });
   };
 
-  const handleHover = (imageUrl: string, key: { id: string; translation: string }, searchString: string) => {
+  const handleHover = (
+    imageUrl: string,
+    key: { id: string; translation: string },
+    searchString: string,
+    isoCode: string
+  ) => {
     setHoveredImage(imageUrl);
     setHoveredImageSearch(searchString);
     setUnderlinedImage(searchString);
     setKey(key);
+    setIsoCode(isoCode);
   };
 
-  const handlePreviousClick = (canScrollPrev: boolean, cityIndex: number) => {
+  const handlePreviousClick = (canScrollPrev: boolean, cityIndex: number, isoCode: string) => {
     setCurrentIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
       const city = imageMap[cityIndex];
@@ -84,14 +91,14 @@ export default function Locations({ countries }: { countries: CountryProps }) {
 
       const imageKey = newIndexes[cityIndex] === 0 ? city.city : city.neighborhoods[newIndexes[cityIndex] - 1];
 
-      handleHover(urlMap[imageKey.id], imageKey, imageKey.id);
+      handleHover(urlMap[imageKey.id], imageKey, imageKey.id, isoCode);
       // setUnderlinedImage(imageKey.id);
 
       return newIndexes;
     });
   };
 
-  const handleNextClick = (canScrollNext: boolean, cityIndex: number) => {
+  const handleNextClick = (canScrollNext: boolean, cityIndex: number, isoCode: string) => {
     setCurrentIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
       const city = imageMap[cityIndex];
@@ -99,7 +106,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
 
       const imageKey = newIndexes[cityIndex] === 0 ? city.city : city.neighborhoods[newIndexes[cityIndex] - 1];
 
-      handleHover(urlMap[imageKey.id], imageKey, imageKey.id);
+      handleHover(urlMap[imageKey.id], imageKey, imageKey.id, isoCode);
       // setUnderlinedImage(imageKey.id);
 
       return newIndexes;
@@ -121,7 +128,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                 key={country.city.id}
                 className="pl-0 h-full w-full"
                 onMouseOver={() => {
-                  handleHover(getUrl(country.folder, country.city.id), country.city, country.city.id);
+                  handleHover(getUrl(country.folder, country.city.id), country.city, country.city.id, isoCode);
                 }}
               >
                 <div className="relative flex justify-center items-center h-40 w-full ">
@@ -169,7 +176,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                   key={neighborhood.id}
                   className="h-full w-full pl-0"
                   onMouseOver={() => {
-                    handleHover(getUrl(country.folder, neighborhood.id), neighborhood, neighborhood.id);
+                    handleHover(getUrl(country.folder, neighborhood.id), neighborhood, neighborhood.id, isoCode);
                   }}
                 >
                   <div className="relative flex justify-center items-center h-40 w-full">
@@ -209,7 +216,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
               <CarouselPrevious
                 className="hidden md:flex absolute left-4 size-4 md:size-6 lg:size-8"
                 onCustomClick={(canScrollPrev: boolean) => {
-                  handlePreviousClick(canScrollPrev, countryIndex);
+                  handlePreviousClick(canScrollPrev, countryIndex, isoCode);
                 }}
                 onMouseOver={() => {
                   setUnderlinedImage(hoveredImageSearch);
@@ -220,7 +227,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
               <CarouselNext
                 className="hidden md:flex absolute right-4 size-4 md:size-6 lg:size-8"
                 onCustomClick={(canScrollNext: boolean) => {
-                  handleNextClick(canScrollNext, countryIndex);
+                  handleNextClick(canScrollNext, countryIndex, isoCode);
                 }}
                 onMouseOver={() => {
                   setUnderlinedImage(hoveredImageSearch);
@@ -252,11 +259,12 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             onLoad={() => handleImageLoad(hoveredImage)}
           />
           <CardTitle
-            className={`relative z-1 flex flex-col pt-2 pb-2 justify-start items-center text-4xl font-normal bg-white/70 dark:bg-secondary/70 text-black dark:text-white rounded-t-lg ${
+            className={`relative z-1 flex py-2 gap-4 justify-center items-center text-4xl font-normal bg-white/70 dark:bg-secondary/70 text-black dark:text-white rounded-t-lg ${
               underlinedImage === key.id && "underline"
             }`}
           >
-            {key.translation}
+            {key.translation}{" "}
+            <FlagComponent width={"w-[45px]"} height={"h-[30px]"} country={isoCode as Country} countryName={isoCode} />
           </CardTitle>
         </div>
       </div>
