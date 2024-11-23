@@ -3,7 +3,7 @@ import HeroContent from "@/components/Hero/HeroContent";
 
 export default function Hero() {
   return (
-    <div className="relative h-[25vh] flex w-full bg-[#e8f6ed]/70 dark:bg-[#021007]/70">
+    <div className="relative h-[20vh] flex w-full bg-[#e8f6ed]/70 dark:bg-[#021007]/70">
       <Image
         src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner1.webp`}
         alt="background"

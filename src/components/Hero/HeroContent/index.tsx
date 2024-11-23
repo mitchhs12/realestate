@@ -9,7 +9,7 @@ export default async function HeroContent() {
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
       <div className="flex flex-col items-center gap-y-12 w-full max-w-8xl p-2 px-4 sm:p-4 md:px-6">
         <h1
-          className={`${urbanist.className} flex text-center font-semibold tracking-wider text-[#4F4F4F] dark:text-white justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl`}
+          className={`${urbanist.className} flex text-center font-semibold tracking-wider text-[#4F4F4F] dark:text-white justify-center text-xl xs:text-2xl sm:text-3xl lg:text-4xl`}
         >
           {scopedT("title")}
         </h1>

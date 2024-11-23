@@ -252,7 +252,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             onLoad={() => handleImageLoad(hoveredImage)}
           />
           <CardTitle
-            className={`relative z-1 flex flex-col pt-2 pb-2 justify-start items-center font-normal text-4xl bg-white/70 dark:bg-secondary/70 text-black dark:text-white rounded-t-lg ${
+            className={`relative z-1 flex flex-col pt-2 pb-2 justify-start items-center text-4xl font-normal bg-white/70 dark:bg-secondary/70 text-black dark:text-white rounded-t-lg ${
               underlinedImage === key.id && "underline"
             }`}
           >
