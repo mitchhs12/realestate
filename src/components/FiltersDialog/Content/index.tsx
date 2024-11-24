@@ -56,8 +56,8 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
 
   const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const [isRoomsOpen, setIsRoomsOpen] = useState(true);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+  const [isRoomsOpen, setIsRoomsOpen] = useState(false);
   const { categories, features, rooms, apply, reset, selectAll, deselectAll } = headerValues;
   const pathname = usePathname();
 
@@ -85,7 +85,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
           <DialogDescription />
         </VisuallyHidden.Root>
         <div className="flex flex-col h-full overflow-y-auto gap-4 justify-between">
-          <div className="flex flex-col h-full overflow-y-auto gap-4 justify-start">
+          <div className="flex flex-col h-full p-1 overflow-y-auto gap-4 justify-start">
             <SearchBox
               rawBox={true}
               isSmallMap={isSmallMap}
@@ -119,7 +119,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                 <DollarSign width={15} height={15} strokeWidth={1.25} />
               </div>
             </div>
-            <div className="flex flex-col gap-4 overflow-y-auto justify-start">
+            <div className="flex flex-col gap-4 p-1 overflow-y-auto justify-start">
               <div className={`flex flex-col gap-2 ${isCategoriesOpen && "overflow-y-auto"}`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                   </Button>
                 </div>
                 {isCategoriesOpen && (
-                  <div className="flex flex-col overflow-y-auto">
+                  <div className="flex flex-col p-1 overflow-y-auto">
                     <I18nProviderClient locale={defaultLanguage}>
                       <Button className="flex text-sm w-full" variant={"outline"} onClick={handleAllTypes}>
                         {allSelectedTypes ? deselectAll : selectAll}
@@ -157,7 +157,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                   </Button>
                 </div>
                 {isFeaturesOpen && (
-                  <div className="flex flex-col overflow-y-auto">
+                  <div className="flex flex-col p-1 overflow-y-auto">
                     <I18nProviderClient locale={defaultLanguage}>
                       <Button className="flex text-sm w-full" variant={"outline"} onClick={handleAllFeatures}>
                         {allSelectedFeatures ? deselectAll : selectAll}
@@ -194,7 +194,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                   </Button>
                 </div>
                 {isRoomsOpen && (
-                  <div className="flex flex-col overflow-y-auto">
+                  <div className="flex flex-col p-1 overflow-y-auto">
                     <I18nProviderClient locale={defaultLanguage}>
                       <div className="flex flex-col overflow-y-auto">
                         <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
