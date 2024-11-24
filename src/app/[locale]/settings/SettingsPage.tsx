@@ -36,6 +36,12 @@ export default function SettingsPage({ user, title, name, currency, language, su
   const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } = useContext(LocaleContext);
   const [stripeBuyerBillingUrl, setStripeBuyerBillingUrl] = useState<string | null>(null);
   const [stripeSellerBillingUrl, setStripeSellerBillingUrl] = useState<string | null>(null);
+  const [updateBuyerSubscriptionUrl, setUpdateBuyerSubscriptionUrl] = useState<string | null>(null);
+  const [updateBuyerPaymentUrl, setUpdateBuyerPaymentUrl] = useState<string | null>(null);
+  const [cancelBuyerSubscriptionUrl, setCancelBuyerSubscriptionUrl] = useState<string | null>(null);
+  const [updateSellerSubscriptionUrl, setUpdateSellerSubscriptionUrl] = useState<string | null>(null);
+  const [updateSellerPaymentUrl, setUpdateSellerPaymentUrl] = useState<string | null>(null);
+  const [cancelSellerSubscriptionUrl, setCancelSellerSubscriptionUrl] = useState<string | null>(null);
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -67,7 +73,10 @@ export default function SettingsPage({ user, title, name, currency, language, su
   }
 
   useEffect(() => {
-    if (user.buyerSubscriptionId) {
+    if (user.buyerSubscriptionId && user.sellerSubscriptionId) {
+      getBuyerStripeBilling();
+      getSellerStripeBilling();
+    } else if (user.buyerSubscriptionId) {
       getBuyerStripeBilling();
     } else if (user.sellerSubscriptionId) {
       getSellerStripeBilling();
@@ -75,13 +84,27 @@ export default function SettingsPage({ user, title, name, currency, language, su
   }, [user]);
 
   async function getSellerStripeBilling() {
-    const sellerSessionUrl = await StripeBilling(true, defaultLanguage);
-    setStripeSellerBillingUrl(sellerSessionUrl);
+    const [updateSubscriptionUrl, updatePaymentUrl, cancelUrl] = await Promise.all([
+      StripeBilling(true, defaultLanguage, "subUpdate"),
+      StripeBilling(true, defaultLanguage, "updatePayment"),
+      StripeBilling(true, defaultLanguage, "cancel"),
+    ]);
+
+    setUpdateSellerSubscriptionUrl(updateSubscriptionUrl);
+    setUpdateSellerPaymentUrl(updatePaymentUrl);
+    setCancelSellerSubscriptionUrl(cancelUrl);
   }
 
   async function getBuyerStripeBilling() {
-    const buyerSessionUrl = await StripeBilling(false, defaultLanguage);
-    setStripeBuyerBillingUrl(buyerSessionUrl);
+    const [updateSubscriptionUrl, updatePaymentUrl, cancelUrl] = await Promise.all([
+      StripeBilling(true, defaultLanguage, "subUpdate"),
+      StripeBilling(true, defaultLanguage, "updatePayment"),
+      StripeBilling(true, defaultLanguage, "cancel"),
+    ]);
+
+    setUpdateBuyerSubscriptionUrl(updateSubscriptionUrl);
+    setUpdateBuyerPaymentUrl(updatePaymentUrl);
+    setCancelBuyerSubscriptionUrl(cancelUrl);
   }
 
   return (
@@ -181,9 +204,17 @@ export default function SettingsPage({ user, title, name, currency, language, su
                       {stripeBuyerBillingUrl && <Link href={stripeBuyerBillingUrl}>Buyer Subscription Settings</Link>}
                     </Button>
                   ) : (
-                    <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                      Buyer Subscription Settings
-                    </Button>
+                    <div className="flex gap-3">
+                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                        Update Subscription
+                      </Button>
+                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                        Update Payment Information
+                      </Button>
+                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                        Cancel Subscription
+                      </Button>
+                    </div>
                   )}
                 </div>
               </div>
@@ -198,19 +229,47 @@ export default function SettingsPage({ user, title, name, currency, language, su
                 </div>
                 <div className="flex gap-3 items-center w-full justify-start">
                   {user.sellerSubscriptionId ? (
-                    <Button
-                      asChild
-                      className="bg-amber-500 hover:bg-amber-500/90"
-                      disabled={stripeSellerBillingUrl ? false : true}
-                    >
-                      {stripeSellerBillingUrl && (
-                        <Link href={stripeSellerBillingUrl}>Seller Subscription Settings</Link>
-                      )}
-                    </Button>
+                    <div className="flex gap-3">
+                      <Button
+                        asChild
+                        className="bg-amber-500 hover:bg-amber-500/90"
+                        disabled={updateSellerSubscriptionUrl ? false : true}
+                      >
+                        {updateSellerSubscriptionUrl && (
+                          <Link href={updateSellerSubscriptionUrl}>Update Subscription</Link>
+                        )}
+                      </Button>
+                      <Button
+                        asChild
+                        className="bg-amber-500 hover:bg-amber-500/90"
+                        disabled={updateSellerPaymentUrl ? false : true}
+                      >
+                        {updateSellerPaymentUrl && (
+                          <Link href={updateSellerPaymentUrl}>Update Payment Information</Link>
+                        )}
+                      </Button>
+                      <Button
+                        asChild
+                        className="bg-amber-500 hover:bg-amber-500/90"
+                        disabled={cancelSellerSubscriptionUrl ? false : true}
+                      >
+                        {cancelSellerSubscriptionUrl && (
+                          <Link href={cancelSellerSubscriptionUrl}>Cancel Subscription</Link>
+                        )}
+                      </Button>
+                    </div>
                   ) : (
-                    <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                      Seller Subscription Settings
-                    </Button>
+                    <div className="flex gap-3">
+                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                        Update Subscription
+                      </Button>
+                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                        Update Payment Information
+                      </Button>
+                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
+                        Cancel Subscription
+                      </Button>
+                    </div>
                   )}
                 </div>
               </div>

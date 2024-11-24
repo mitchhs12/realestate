@@ -278,6 +278,8 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     subText: { "six-months-free": billing("subText.six-months-free"), "per-month": billing("subText.per-month") },
     "lowest-prices": billing("lowest-prices"),
     title: billing("title"),
+    buyersText: billing("buyers"),
+    sellersText: billing("sellers"),
   };
 
   return (

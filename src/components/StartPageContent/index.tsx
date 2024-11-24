@@ -24,6 +24,8 @@ interface Props {
     subText: { "six-months-free": string; "per-month": string };
     title: string;
     "lowest-prices": string;
+    buyersText: string;
+    sellersText: string;
   };
 }
 
@@ -54,7 +56,7 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
                 setSeller(false);
               }}
             >
-              {"Buyers"}
+              {billingText.buyersText}
             </Button>
             <Button
               className="text-xl"
@@ -63,7 +65,7 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
               disabled={seller}
               onClick={() => setSeller(true)}
             >
-              {"Sellers"}
+              {billingText.sellersText}
             </Button>
           </div>
         </div>

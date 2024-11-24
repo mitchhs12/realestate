@@ -4,9 +4,23 @@ import stripeClient from "@/lib/stripe";
 import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import Stripe from "stripe";
-import { revalidatePath } from "next/cache";
-import stripe from "@/lib/stripe";
 import { getScopedI18n } from "@/locales/server";
+
+const getConfigId = (isSeller: boolean) => {
+  const configId = isSeller ? "bpc_1QOWTWLWTS7QT7kvbV10yCSt" : "bpc_1QOWTMLWTS7QT7kvlo9TCLo8";
+  return configId;
+};
+
+export async function GetPortalConfig(isSeller: boolean) {
+  const configId = getConfigId(isSeller);
+  const config = await stripeClient.billingPortal.configurations.retrieve(configId);
+  return config;
+}
+
+export async function ListPortalConfigs() {
+  const configurations = await stripeClient.billingPortal.configurations.list();
+  return configurations;
+}
 
 const yearlyMap =
   process.env.NODE_ENV === "development"
@@ -50,11 +64,60 @@ const monthlyMap =
         max: { product: "prod_RGMIYRPt3GkORH", price: "price_1QNpZpLWTS7QT7kvDSYhRatb" },
       };
 
+const getProducts = (isSeller: boolean) => {
+  const products = isSeller
+    ? [
+        {
+          prices: [yearlyMap.starter.price],
+          product: yearlyMap.starter.product,
+        },
+        {
+          prices: [yearlyMap.pro.price],
+          product: yearlyMap.pro.product,
+        },
+        { prices: [yearlyMap.premium.price], product: yearlyMap.premium.product },
+        { prices: [yearlyMap.business.price], product: yearlyMap.business.product },
+        { prices: [monthlyMap.starter.price], product: monthlyMap.starter.product },
+        { prices: [monthlyMap.pro.price], product: monthlyMap.pro.product },
+        { prices: [monthlyMap.premium.price], product: monthlyMap.premium.product },
+        { prices: [monthlyMap.business.price], product: monthlyMap.business.product },
+      ]
+    : [
+        {
+          prices: [yearlyMap.basic.price],
+          product: yearlyMap.basic.product,
+        },
+        {
+          prices: [yearlyMap.insight.price],
+          product: yearlyMap.insight.product,
+        },
+        {
+          prices: [yearlyMap.max.price],
+          product: yearlyMap.max.product,
+        },
+        {
+          prices: [monthlyMap.basic.price],
+          product: monthlyMap.basic.product,
+        },
+        {
+          prices: [monthlyMap.insight.price],
+          product: monthlyMap.insight.product,
+        },
+        {
+          prices: [monthlyMap.max.price],
+          product: monthlyMap.max.product,
+        },
+      ];
+  return products;
+};
+
+// MAIN: Stripe Server Function //
 export async function StripeServer(
   currency: string,
   planId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max",
   interval: "year" | "month"
 ) {
+  console.log("running this");
   try {
     const session = await auth();
     if (!session || !session.user) {
@@ -115,12 +178,20 @@ export async function StripeServer(
     }
 
     if (!user.customerId) {
-      throw new Error("Customer not found");
+      throw new Error("Customer ID was not written to the database!");
     }
 
     let subscription;
 
+    console.log("initial subscription", subscription);
+
     if (user.sellerSubscriptionId || user.buyerSubscriptionId) {
+      const subscriptions = await stripeClient.subscriptions.list({
+        customer: user.customerId,
+      });
+
+      console.log("subscriptions", subscriptions);
+
       const subscriptionId =
         planId === "starter" || planId === "pro" || planId === "premium" || planId === "business"
           ? user.sellerSubscriptionId
@@ -129,21 +200,12 @@ export async function StripeServer(
       subscription = await stripeClient.subscriptions.update(subscriptionId, {
         items: [
           {
-            price_data: {
-              currency: currency,
-              product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
-              unit_amount: amount, // Amount in cents
-              recurring: {
-                interval: interval,
-              },
-            },
+            id: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
+            price: interval === "year" ? yearlyMap[planId]["price"] : monthlyMap[planId]["price"],
             quantity: 1,
           },
         ],
-        payment_behavior: "default_incomplete",
-        payment_settings: { save_default_payment_method: "on_subscription" },
-        expand: ["latest_invoice.payment_intent"],
-        metadata: { accountId: user.id, planId: planId },
+        proration_behavior: "always_invoice",
       });
     } else {
       // Create a new subscription
@@ -188,7 +250,7 @@ export async function StripeServer(
   }
 }
 
-export async function StripeBilling(isSeller: boolean, defaultLanguage: any) {
+export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flowType: string) {
   const session = await auth();
   if (!session || !session.user) {
     throw new Error("Unauthorized");
@@ -200,9 +262,42 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any) {
     throw new Error("User not found");
   }
 
-  const subscriptionId = isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId;
+  const cancel: Stripe.BillingPortal.SessionCreateParams.FlowData = {
+    type: "subscription_cancel",
+    subscription_cancel: {
+      subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
+      retention: {
+        type: "coupon_offer",
+        coupon_offer: { coupon: "EyX4XW9I" },
+      },
+    },
+  };
 
-  const configuration = await CreatePortalConfig(isSeller, subscriptionId);
+  const subUpdate: Stripe.BillingPortal.SessionCreateParams.FlowData = {
+    type: "subscription_update",
+    subscription_update: {
+      subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
+    },
+  };
+
+  const updatePayment: Stripe.BillingPortal.SessionCreateParams.FlowData = {
+    type: "payment_method_update",
+  };
+
+  const subUpdateConfirm: Stripe.BillingPortal.SessionCreateParams.FlowData = {
+    type: "subscription_update_confirm",
+    subscription_update_confirm: {
+      items: [
+        {
+          id: "si_1QOY5nLWTS7QT7kv4V6j0xZg",
+          price: "price_1QNoi8LWTS7QT7kvotVt79Dz",
+        },
+      ],
+      subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
+    },
+  };
+
+  const configuration = getConfigId(isSeller ? true : false);
 
   const stripeSession = await stripeClient.billingPortal.sessions.create({
     customer: user.customerId,
@@ -211,57 +306,24 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any) {
         ? `https://localhost:3000/settings`
         : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
     locale: defaultLanguage,
-    configuration: configuration.id,
+    configuration: configuration,
+    flow_data:
+      flowType === "cancel"
+        ? cancel
+        : flowType === "subUpdate"
+          ? subUpdate
+          : flowType === "updatePayment"
+            ? updatePayment
+            : subUpdateConfirm,
   });
+
   return stripeSession.url;
 }
 
-export async function CreatePortalConfig(isSeller: boolean, subscriptionId: string) {
+export async function CreatePortalConfig(isSeller: boolean) {
   const t = await getScopedI18n("stripe");
-  const products = isSeller
-    ? [
-        {
-          prices: [yearlyMap.starter.price],
-          product: yearlyMap.starter.product,
-        },
-        {
-          prices: [yearlyMap.pro.price],
-          product: yearlyMap.pro.product,
-        },
-        { prices: [yearlyMap.premium.price], product: yearlyMap.premium.product },
-        { prices: [yearlyMap.business.price], product: yearlyMap.business.product },
-        { prices: [monthlyMap.starter.price], product: monthlyMap.starter.product },
-        { prices: [monthlyMap.pro.price], product: monthlyMap.pro.product },
-        { prices: [monthlyMap.premium.price], product: monthlyMap.premium.product },
-        { prices: [monthlyMap.business.price], product: monthlyMap.business.product },
-      ]
-    : [
-        {
-          prices: [yearlyMap.basic.price],
-          product: yearlyMap.basic.product,
-        },
-        {
-          prices: [yearlyMap.insight.price],
-          product: yearlyMap.insight.product,
-        },
-        {
-          prices: [yearlyMap.max.price],
-          product: yearlyMap.max.product,
-        },
-        {
-          prices: [monthlyMap.basic.price],
-          product: monthlyMap.basic.product,
-        },
-        {
-          prices: [monthlyMap.insight.price],
-          product: monthlyMap.insight.product,
-        },
-        {
-          prices: [monthlyMap.max.price],
-          product: monthlyMap.max.product,
-        },
-      ];
-  const stripeSession = await stripeClient.billingPortal.configurations.create({
+
+  const portalConfig = await stripeClient.billingPortal.configurations.create({
     features: {
       customer_update: {
         allowed_updates: ["email", "tax_id"],
@@ -294,7 +356,7 @@ export async function CreatePortalConfig(isSeller: boolean, subscriptionId: stri
       subscription_update: {
         enabled: true,
         default_allowed_updates: ["price"],
-        products: products,
+        products: getProducts(isSeller),
         proration_behavior: "always_invoice",
       },
     },
@@ -305,5 +367,67 @@ export async function CreatePortalConfig(isSeller: boolean, subscriptionId: stri
       terms_of_service_url: "https://www.vivaideal.com/terms-and-conditions",
     },
   });
-  return stripeSession;
+  return portalConfig;
+}
+
+export async function UpdatePortalConfig(isSeller: boolean) {
+  const configId = getConfigId(isSeller);
+  const newConfig = await stripeClient.billingPortal.configurations.update(configId, {
+    features: {
+      customer_update: {
+        allowed_updates: ["email", "tax_id"],
+        enabled: true,
+      },
+      invoice_history: {
+        enabled: true,
+      },
+      payment_method_update: {
+        enabled: true,
+      },
+      subscription_cancel: {
+        enabled: true,
+        cancellation_reason: {
+          enabled: true,
+          options: [
+            "customer_service",
+            "low_quality",
+            "missing_features",
+            "other",
+            "switched_service",
+            "too_complex",
+            "too_expensive",
+            "unused",
+          ],
+        },
+        mode: "at_period_end",
+        proration_behavior: "none",
+      },
+      subscription_update: {
+        enabled: true,
+        default_allowed_updates: ["price"],
+        products: getProducts(isSeller),
+        proration_behavior: "always_invoice",
+      },
+    },
+    login_page: { enabled: false },
+    business_profile: {
+      headline: isSeller ? "Viva Ideal Seller Billing" : "Viva Ideal Buyer Billing",
+      privacy_policy_url: "https://www.vivaideal.com/privacy-policy",
+      terms_of_service_url: "https://www.vivaideal.com/terms-and-conditions",
+    },
+  });
+  return newConfig;
+}
+
+export async function CreateCoupon(
+  amount: number,
+  duration: "once" | "repeating" | "forever",
+  repeatingDuration?: number
+) {
+  const coupon = await stripeClient.coupons.create({
+    percent_off: amount,
+    duration: duration,
+    duration_in_months: repeatingDuration,
+  });
+  return coupon.id;
 }

@@ -4,6 +4,13 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { HomeType, homeSchema } from "@/lib/validations";
 import { auth } from "@/auth";
+import {
+  CreatePortalConfig,
+  UpdatePortalConfig,
+  ListPortalConfigs,
+  GetPortalConfig,
+  CreateCoupon,
+} from "@/app/[locale]/stripeServer";
 
 // Admin Page Actions
 
@@ -154,4 +161,88 @@ export async function transferMultiplePropertiesToAnotherUser(propertyIds: numbe
   }
 
   revalidatePath("/admin");
+}
+
+export async function createPortalConfig(isSeller: boolean) {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user?.id) {
+    throw new Error("User not found");
+  }
+
+  if (user.role !== "admin") {
+    throw new Error("User is not an admin");
+  }
+
+  const config = await CreatePortalConfig(isSeller);
+  return config;
+}
+
+export async function updatePortalConfig(isSeller: boolean) {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user?.id) {
+    throw new Error("User not found");
+  }
+
+  if (user.role !== "admin") {
+    throw new Error("User is not an admin");
+  }
+
+  const config = await UpdatePortalConfig(isSeller);
+  return config;
+}
+
+export async function listPortalConfigs() {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user?.id) {
+    throw new Error("User not found");
+  }
+
+  if (user.role !== "admin") {
+    throw new Error("User is not an admin");
+  }
+
+  const configs = await ListPortalConfigs();
+  return configs;
+}
+
+export async function getPortalConfig(isSeller: boolean) {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user?.id) {
+    throw new Error("User not found");
+  }
+
+  if (user.role !== "admin") {
+    throw new Error("User is not an admin");
+  }
+
+  const config = await GetPortalConfig(isSeller);
+  return config;
+}
+
+export async function createCoupon(
+  amount: number,
+  duration: "forever" | "once" | "repeating",
+  repeatingDuration?: number
+) {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user?.id) {
+    throw new Error("User not found");
+  }
+
+  if (user.role !== "admin") {
+    throw new Error("User is not an admin");
+  }
+
+  const coupon = await CreateCoupon(amount, duration, repeatingDuration);
+  return coupon;
 }

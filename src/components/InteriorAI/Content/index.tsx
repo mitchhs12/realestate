@@ -213,9 +213,9 @@ export default function AIContent({ imageUrl }: Props) {
                 onClick={() => setIsRoom(!isRoom)}
               >
                 {isRoom ? (
-                  <RoomIcon color="black" width={30} height={30} />
+                  <RoomIcon color={theme === "dark" ? "white" : "black"} width={30} height={30} />
                 ) : (
-                  <HomeIcon color="black" width={30} height={30} />
+                  <HomeIcon color={theme === "dark" ? "white" : "black"} width={30} height={30} />
                 )}
                 {isRoom ? t("isRoomButton.room") : t("isRoomButton.property")}
               </Button>
