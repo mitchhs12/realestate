@@ -97,13 +97,16 @@ export default function AdminPage({ user }: Props) {
               <div className="flex gap-3 items-center">
                 Buyers:
                 <Button
+                  disabled={true}
                   onClick={() => {
                     createPortalConfig(false);
                   }}
                 >
                   Create
                 </Button>
-                <Button onClick={() => updatePortalConfig(false)}>Update</Button>
+                <Button disabled={true} onClick={() => updatePortalConfig(false)}>
+                  Update
+                </Button>
                 <Button
                   onClick={() =>
                     getPortalConfig(true).then((result) => {
@@ -117,13 +120,16 @@ export default function AdminPage({ user }: Props) {
               <div className="flex gap-3 items-center">
                 Sellers:
                 <Button
+                  disabled={true}
                   onClick={() => {
                     createPortalConfig(true);
                   }}
                 >
                   Create
                 </Button>
-                <Button onClick={() => updatePortalConfig(true)}>Update</Button>
+                <Button disabled={true} onClick={() => updatePortalConfig(true)}>
+                  Update
+                </Button>
                 <Button
                   onClick={() =>
                     getPortalConfig(true).then((result) => {
@@ -135,89 +141,88 @@ export default function AdminPage({ user }: Props) {
                 </Button>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              Generate a coupon code for a % discount:
-              <div className="flex flex-col justify-center items-start gap-3">
-                <Select onValueChange={setDuration}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a coupon duration" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Durations</SelectLabel>
-                      <SelectItem value="once">
-                        Once (Applies to the first charge from a subscription with this coupon applied. )
-                      </SelectItem>
-                      <SelectItem value="repeating">
-                        Repeating (Applies to charges in the first months from a subscription with this coupon applied.
-                        )
-                      </SelectItem>
-                      <SelectItem value="forever">
-                        Forever (Applies to all charges from a subscription with this coupon applied. )
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-                {duration === "repeating" && (
-                  <div className="flex items-center gap-3">
-                    <div className="w-full">Enter time in months:</div>
-                    <Input
-                      className="w-32"
-                      placeholder={String(12)}
-                      type={"number"}
-                      onChange={(e) => {
-                        setRepeatingDuration(Number(e.target.value));
-                      }}
-                    />
-                  </div>
-                )}
-                <div className="flex gap-2 items-center text-2xl">
-                  <Input
-                    placeholder={String(33.3)}
-                    type={"number"}
-                    onChange={(e) => {
-                      setCouponAmount(Number(e.target.value));
-                    }}
-                  />
-                  %
-                </div>
-                <Button
-                  disabled={
-                    !couponAmount ||
-                    couponAmount < 0 ||
-                    couponAmount > 100 ||
-                    !duration ||
-                    (duration === "repeating" && (!repeatingDuration || repeatingDuration < 1)) ||
-                    generatingCoupon
-                  }
-                  onClick={() => {
-                    if (couponAmount) {
-                      setGeneratingCoupon(true);
-                      createCoupon(couponAmount, duration, repeatingDuration).then((coupon) => {
-                        setNewCouponCode(coupon);
-                        setGeneratingCoupon(false);
-                      });
-                    }
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <h2 className="text-xl">Coupon Codes</h2>
+          <div className="flex flex-col justify-center items-start gap-3">
+            <Select onValueChange={setDuration}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a coupon duration" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Durations</SelectLabel>
+                  <SelectItem value="once">
+                    Once (Applies to the first charge from a subscription with this coupon applied. )
+                  </SelectItem>
+                  <SelectItem value="repeating">
+                    Repeating (Applies to charges in the first months from a subscription with this coupon applied. )
+                  </SelectItem>
+                  <SelectItem value="forever">
+                    Forever (Applies to all charges from a subscription with this coupon applied. )
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            {duration === "repeating" && (
+              <div className="flex items-center gap-3">
+                <div className="w-full">Enter time in months:</div>
+                <Input
+                  className="w-32"
+                  placeholder={String(12)}
+                  type={"number"}
+                  onChange={(e) => {
+                    setRepeatingDuration(Number(e.target.value));
                   }}
-                  type={"submit"}
-                >
-                  {generatingCoupon ? (
-                    <div className="flex gap-3 items-center">
-                      <ReloadIcon className="w-6 h-6 animate-spin" />
-                      Loading...{" "}
-                    </div>
-                  ) : (
-                    "Generate Coupon"
-                  )}
-                </Button>
-                {newCouponCode && (
-                  <div className="flex items-center gap-3">
-                    <div>New Coupon Code:</div>
-                    <div>{newCouponCode}</div>
-                  </div>
-                )}
+                />
               </div>
+            )}
+            <div className="flex gap-2 items-center text-2xl">
+              <Input
+                placeholder={String(33.3)}
+                type={"number"}
+                onChange={(e) => {
+                  setCouponAmount(Number(e.target.value));
+                }}
+              />
+              %
             </div>
+            <Button
+              disabled={
+                !couponAmount ||
+                couponAmount < 0 ||
+                couponAmount > 100 ||
+                !duration ||
+                (duration === "repeating" && (!repeatingDuration || repeatingDuration < 1)) ||
+                generatingCoupon
+              }
+              onClick={() => {
+                if (couponAmount) {
+                  setGeneratingCoupon(true);
+                  createCoupon(couponAmount, duration, repeatingDuration).then((coupon) => {
+                    setNewCouponCode(coupon);
+                    setGeneratingCoupon(false);
+                  });
+                }
+              }}
+              type={"submit"}
+            >
+              {generatingCoupon ? (
+                <div className="flex gap-3 items-center">
+                  <ReloadIcon className="w-6 h-6 animate-spin" />
+                  Loading...{" "}
+                </div>
+              ) : (
+                "Generate Coupon"
+              )}
+            </Button>
+            {newCouponCode && (
+              <div className="flex items-center gap-3">
+                <div>New Coupon Code:</div>
+                <div>{newCouponCode}</div>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex flex-col w-full gap-3">

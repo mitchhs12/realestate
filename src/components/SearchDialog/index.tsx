@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Button } from "../ui/button";
 import { Search } from "lucide-react";
-import { Dialog } from "../ui/dialog";
+import { Dialog, DialogTitle, DialogHeader } from "../ui/dialog";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import FilterContent from "@/components/FiltersDialog/Content";
 import { QueryContext } from "@/context/QueryContext";

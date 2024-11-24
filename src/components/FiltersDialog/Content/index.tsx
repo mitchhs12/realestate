@@ -58,7 +58,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const [isRoomsOpen, setIsRoomsOpen] = useState(false);
-  const { categories, features, rooms, apply, reset, selectAll, deselectAll } = headerValues;
+  const { categories, features, rooms, apply, reset, selectAll, deselectAll, search, filters } = headerValues;
   const pathname = usePathname();
 
   const toggleFeatures = () => {
@@ -79,13 +79,14 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
 
   return (
     <>
-      <DialogContent close={false} className="w-[85%] h-[85%] items-start p-4 rounded-md slide-in-from-top-0">
-        <VisuallyHidden.Root>
-          <DialogTitle />
-          <DialogDescription />
-        </VisuallyHidden.Root>
+      <DialogContent className="flex flex-col h-[85%] w-[85%] p-4 rounded-md">
+        <DialogHeader>
+          <DialogTitle>{search}</DialogTitle>
+          <DialogDescription>{filters}</DialogDescription>
+          <DialogClose asChild />
+        </DialogHeader>
         <div className="flex flex-col h-full overflow-y-auto gap-4 justify-between">
-          <div className="flex flex-col h-full p-1 overflow-y-auto gap-4 justify-start">
+          <div className="flex flex-col h-full p-1 overflow-y-auto gap-5 justify-start">
             <SearchBox
               rawBox={true}
               isSmallMap={isSmallMap}
