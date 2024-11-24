@@ -100,7 +100,7 @@ export default function FiltersDialog() {
       </Button>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="w-80 p-4 rounded-md">
+        <DialogContent className="w-[85%] p-4 rounded-md">
           <DialogHeader>
             <DialogTitle>{filters}</DialogTitle>
             <DialogClose asChild />

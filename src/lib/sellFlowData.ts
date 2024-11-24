@@ -48,7 +48,7 @@ export const features = [
   "Patio", // patio heater
   "Pool", // pool MUI
   "Security system", // cctv lucide
-  "Ski-in/Ski-out", // person skiing font awesome
+  "Ski-in / Ski-out", // person skiing font awesome
   "Solar panels", // solar panel tabler
   "Terrace", // Deck google
   "Walk-in closet", // Hanger Tabler
@@ -93,7 +93,7 @@ export const typesMap = [
   { id: "house", name: "House" },
   { id: "apartment", name: "Apartment" },
   { id: "cabin", name: "Cabin" },
-  { id: "country-house", name: "Country House" },
+  { id: "country-house", name: "Country house" },
   { id: "castle", name: "Castle" },
   { id: "commercial-building", name: "Commercial building" },
   { id: "container", name: "Container" },
