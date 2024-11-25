@@ -11,6 +11,7 @@
     "monthly": "每月",
     "yearly": "每年：（免费获得 6 个月以上）",
     "current-plan": "当前计划",
+    "change-plan": "变更计划",
     "billed-annually": "每年计费",
     "subscribe": "订阅",
     "most-popular": "最受欢迎",
@@ -960,7 +961,7 @@
       "subtitle": "这就是你在公众面前的形象"
     },
     "language": {
-      "title": "更改语言",
+      "title": "更改默认语言",
       "subtitle": "这是您登录时将看到的语言"
     },
     "currency": {

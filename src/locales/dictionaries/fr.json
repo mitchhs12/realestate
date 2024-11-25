@@ -11,6 +11,7 @@
     "monthly": "Mensuel",
     "yearly": "Annuel : (obtenez 6 mois ou plus gratuits)",
     "current-plan": "Plan actuel",
+    "change-plan": "Changer de plan",
     "billed-annually": "Facturé annuellement",
     "subscribe": "S'abonner",
     "most-popular": "Le plus populaire",
@@ -960,7 +961,7 @@
       "subtitle": "Voici comment vous apparaîtrez publiquement"
     },
     "language": {
-      "title": "Changer votre langue",
+      "title": "Changer votre langue par défaut",
       "subtitle": "C'est la langue que vous verrez lorsque vous vous connecterez"
     },
     "currency": {

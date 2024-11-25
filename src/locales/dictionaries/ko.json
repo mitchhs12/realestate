@@ -11,6 +11,7 @@
     "monthly": "월간 간행물",
     "yearly": "연간: (6개월 이상 무료)",
     "current-plan": "현재 계획",
+    "change-plan": "변경 계획",
     "billed-annually": "연간 청구",
     "subscribe": "구독하다",
     "most-popular": "가장 인기 있는",
@@ -960,7 +961,7 @@
       "subtitle": "이렇게 공개적으로 나타납니다."
     },
     "language": {
-      "title": "언어를 변경하세요",
+      "title": "기본 언어 변경",
       "subtitle": "로그인 시 표시되는 언어입니다."
     },
     "currency": {

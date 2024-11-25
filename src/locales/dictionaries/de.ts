@@ -11,6 +11,7 @@ export default {
     "monthly": "Monatlich",
     "yearly": "Jährlich: (erhalten Sie 6+ Monate kostenlos)",
     "current-plan": "Aktueller Plan",
+    "change-plan": "Plan ändern",
     "billed-annually": "Jährliche Abrechnung",
     "subscribe": "Abonnieren",
     "most-popular": "Am beliebtesten",
@@ -960,7 +961,7 @@ export default {
       "subtitle": "So treten Sie in der Öffentlichkeit auf"
     },
     "language": {
-      "title": "Ändern Sie Ihre Sprache",
+      "title": "Ändern Sie Ihre Standardsprache",
       "subtitle": "Dies ist die Sprache, die Ihnen bei der Anmeldung angezeigt wird"
     },
     "currency": {

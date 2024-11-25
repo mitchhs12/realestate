@@ -11,6 +11,7 @@ export default {
     "monthly": "Mensual",
     "yearly": "Anual: (obtenga 6+ meses gratis)",
     "current-plan": "Plan actual",
+    "change-plan": "Plan de cambio",
     "billed-annually": "Facturado anualmente",
     "subscribe": "Suscribir",
     "most-popular": "Más populares",
@@ -960,7 +961,7 @@ export default {
       "subtitle": "Así es como aparecerás públicamente"
     },
     "language": {
-      "title": "Cambia tu idioma",
+      "title": "Cambiar el idioma predeterminado",
       "subtitle": "Este es el idioma que verás cuando inicies sesión"
     },
     "currency": {

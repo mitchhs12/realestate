@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma"; // Import your Prisma client
 import { NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import { headers } from "next/headers";
+import { GetSubscription } from "@/app/[locale]/stripeServer";
 
 export async function POST(req: Request, res: NextApiResponse) {
   const sig = headers().get("stripe-signature");
@@ -35,22 +36,21 @@ export async function POST(req: Request, res: NextApiResponse) {
         const session = event.data.object.subscription_details;
         const metadata = session?.metadata;
         const accountId = metadata?.accountId;
-        const planId = metadata?.planId;
+        const isSeller = metadata?.userType === "seller" ? true : false;
         const subscriptionId = event.data.object.subscription as string;
+        const plan = await GetSubscription(subscriptionId);
 
-        console.log(event.data);
-
-        if (accountId && planId) {
-          if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
+        if (accountId && plan) {
+          if (isSeller) {
             // Update the home listing in the database to "premium"
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: planId, sellerSubscriptionId: subscriptionId },
+              data: { sellerSubscription: plan.name, sellerSubscriptionId: subscriptionId },
             });
-          } else if (planId === "basic" || planId === "insight" || planId === "max") {
+          } else {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: planId, buyerSubscriptionId: subscriptionId },
+              data: { buyerSubscription: plan.name, buyerSubscriptionId: subscriptionId },
             });
           }
         } else {
@@ -59,18 +59,20 @@ export async function POST(req: Request, res: NextApiResponse) {
         break;
       }
       case "customer.subscription.deleted": {
-        const subscription = event.data.object as Stripe.Subscription;
-        const accountId = subscription.metadata?.accountId;
-        const planId = subscription.metadata?.planId;
+        const subscription = event.data.object;
+        const subscriptionId = subscription.id;
+        const { metadata } = subscription;
+        const accountId = metadata?.accountId;
+        const isSeller = metadata?.userType === "seller" ? true : false;
 
-        if (accountId && planId) {
+        if (accountId) {
           // Update the home listing in the database back to "basic" (or another default)
-          if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
+          if (isSeller) {
             await prisma.user.update({
               where: { id: accountId },
               data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to the default listing type
             });
-          } else if (planId === "basic" || planId === "insight" || planId === "max") {
+          } else {
             await prisma.user.update({
               where: { id: accountId },
               data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to the default listing type
@@ -85,19 +87,19 @@ export async function POST(req: Request, res: NextApiResponse) {
         const invoice = event.data.object as Stripe.Invoice;
         const subscription = invoice.subscription as string;
 
-        // You might want to use the subscription ID to update related data
         const stripeSubscription = await stripe.subscriptions.retrieve(subscription);
-        const accountId = stripeSubscription.metadata?.accountId;
-        const planId = stripeSubscription.metadata?.planId;
+        const { metadata } = stripeSubscription;
+        const accountId = metadata?.accountId;
+        const isSeller = metadata?.userType === "seller" ? true : false;
 
         if (accountId) {
           // Handle payment failure logic (e.g., notifying the user, downgrading the listing)
-          if (planId === "starter" || planId === "pro" || planId === "premium" || planId === "business") {
+          if (isSeller) {
             await prisma.user.update({
               where: { id: accountId },
               data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to default if payment fails
             });
-          } else if (planId === "basic" || planId === "insight" || planId === "max") {
+          } else {
             await prisma.user.update({
               where: { id: accountId },
               data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to default if payment fails

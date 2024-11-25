@@ -7,7 +7,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import PriceCard from "@/components/StartPageContent/PricingTable/Card";
 import { Button } from "@/components/ui/button";
 import { QueryContext } from "@/context/QueryContext";
-import { Skeleton } from "@/components/ui/skeleton";
+import { ChangeSpecificSub } from "@/app/[locale]/stripeServer";
+import { useRouter } from "next/navigation";
 
 interface Tier {
   title: string;
@@ -30,6 +31,7 @@ interface Props {
   mostPopularText: string;
   subscribeText: string;
   currentPlanText: string;
+  changePlanText: string;
   yearlyText: string;
   monthlyText: string;
   billedAnnually: string;
@@ -51,6 +53,7 @@ export default function PricingTable({
   mostPopularText,
   subscribeText,
   currentPlanText,
+  changePlanText,
   yearlyText,
   monthlyText,
   billedAnnually,
@@ -60,14 +63,13 @@ export default function PricingTable({
   subText,
   isSeller,
 }: Props) {
-  const { defaultCurrency, user } = useContext(LocaleContext);
+  const { sessionLoading, defaultCurrency, user, defaultLanguage } = useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
   const [isOpen, setIsOpen] = useState(false);
   const [currentPlan, setCurrentPlan] = useState("");
   const [selected, setSelected] = useState<string>("");
   const [yearly, setYearly] = useState(true);
-
-  const { sessionLoading } = useContext(LocaleContext);
+  const router = useRouter();
 
   const tier1 = isSeller ? "starter" : "free";
   const tier2 = isSeller ? "pro" : "basic";
@@ -99,19 +101,31 @@ export default function PricingTable({
     }
   }, [user, isSeller]);
 
-  useEffect(() => {
-    if (!subscriptionType && selected) {
+  const handleButton = async (tierId: any) => {
+    setSelected(tierId);
+    if (!subscriptionType) {
       if (!user?.id) {
         openSignUpModal();
       } else {
         setIsOpen(true);
       }
-    } else if (subscriptionType && selected) {
-      if (selected !== subscriptionType) {
-        setIsOpen(true);
-      }
+    } else if (subscriptionType) {
+      const billingConfirm = await ChangeSpecificSub(isSeller, tierId, yearly, defaultLanguage);
+      router.push(billingConfirm);
     }
-  }, [selected]);
+  };
+
+  // useEffect(() => {
+  //   if (!subscriptionType && selected) {
+  //     if (!user?.id) {
+  //       openSignUpModal();
+  //     } else {
+  //       setIsOpen(true);
+  //     }
+  //   } else if (subscriptionType && selected) {
+  //     StripeBilling(isSeller, defaultLanguage, "subUpdateConfirm");
+  //   }
+  // }, [selected]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -152,11 +166,11 @@ export default function PricingTable({
               annualPrice={starter.totalYearlyPrice}
               buttonDisabled={currentPlan === tier1 ? true : false}
               originalPrice={starter.anchor}
-              buttonFunction={() => setSelected(tier1)}
+              buttonFunction={() => handleButton(tier1)}
               selected={selected}
               yearly={yearly}
               setYearly={setYearly}
-              subscribe={subscribeText}
+              subscribe={currentPlan ? changePlanText : subscribeText}
               currentPlan={currentPlanText}
               billedAnnually={billedAnnually}
               monthlyBilling={monthlyBilling}
@@ -171,11 +185,11 @@ export default function PricingTable({
               button={yearly ? pro.yearlyPrice : pro.price}
               annualPrice={pro.totalYearlyPrice}
               buttonDisabled={currentPlan === tier2 ? true : false}
-              buttonFunction={() => setSelected(tier2)}
+              buttonFunction={() => handleButton(tier2)}
               selected={selected}
               yearly={yearly}
               setYearly={setYearly}
-              subscribe={subscribeText}
+              subscribe={currentPlan ? changePlanText : subscribeText}
               currentPlan={currentPlanText}
               billedAnnually={billedAnnually}
               monthlyBilling={monthlyBilling}
@@ -197,11 +211,11 @@ export default function PricingTable({
                 button={yearly ? premium.yearlyPrice : premium.price}
                 annualPrice={premium.totalYearlyPrice}
                 buttonDisabled={currentPlan === tier3 ? true : false}
-                buttonFunction={() => setSelected(tier3)}
+                buttonFunction={() => handleButton(tier3)}
                 selected={selected}
                 yearly={yearly}
                 setYearly={setYearly}
-                subscribe={subscribeText}
+                subscribe={currentPlan ? changePlanText : subscribeText}
                 currentPlan={currentPlanText}
                 billedAnnually={billedAnnually}
                 monthlyBilling={monthlyBilling}
@@ -218,11 +232,11 @@ export default function PricingTable({
               button={yearly ? business.yearlyPrice : business.price}
               annualPrice={business.totalYearlyPrice}
               buttonDisabled={currentPlan === tier4 ? true : false}
-              buttonFunction={() => setSelected(tier4)}
+              buttonFunction={() => handleButton(tier4)}
               selected={selected}
               yearly={yearly}
               setYearly={setYearly}
-              subscribe={subscribeText}
+              subscribe={currentPlan ? changePlanText : subscribeText}
               currentPlan={currentPlanText}
               billedAnnually={billedAnnually}
               monthlyBilling={monthlyBilling}

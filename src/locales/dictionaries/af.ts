@@ -11,6 +11,7 @@ export default {
     "monthly": "Maandeliks",
     "yearly": "Jaarliks: (kry 6+ maande gratis)",
     "current-plan": "Huidige Plan",
+    "change-plan": "Verander Plan",
     "billed-annually": "Jaarliks ​​gefaktureer",
     "subscribe": "Teken in",
     "most-popular": "Gewildste",
@@ -960,7 +961,7 @@ export default {
       "subtitle": "Dit is hoe jy in die openbaar sal verskyn"
     },
     "language": {
-      "title": "Verander jou taal",
+      "title": "Verander jou verstektaal",
       "subtitle": "Dit is die taal wat jy sal sien wanneer jy aanmeld"
     },
     "currency": {

@@ -269,6 +269,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     "most-popular": billing("most-popular"),
     subscribe: billing("subscribe"),
     "current-plan": billing("current-plan"),
+    "change-plan": billing("change-plan"),
     yearly: billing("yearly"),
     monthly: billing("monthly"),
     "billed-annually": billing("billed-annually"),

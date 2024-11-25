@@ -11,6 +11,7 @@
     "monthly": "Hàng tháng",
     "yearly": "Hàng năm: (nhận 6 tháng miễn phí trở lên)",
     "current-plan": "Kế hoạch hiện tại",
+    "change-plan": "Thay đổi kế hoạch",
     "billed-annually": "Được thanh toán hàng năm",
     "subscribe": "Đặt mua",
     "most-popular": "Phổ biến nhất",
@@ -960,7 +961,7 @@
       "subtitle": "Đây là cách bạn sẽ xuất hiện trước công chúng"
     },
     "language": {
-      "title": "Thay đổi ngôn ngữ của bạn",
+      "title": "Thay đổi ngôn ngữ mặc định của bạn",
       "subtitle": "Đây là ngôn ngữ bạn sẽ thấy khi đăng nhập"
     },
     "currency": {

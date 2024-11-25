@@ -15,6 +15,7 @@ interface Props {
     "most-popular": string;
     subscribe: string;
     "current-plan": string;
+    "change-plan": string;
     yearly: string;
     monthly: string;
     "billed-annually": string;
@@ -78,6 +79,7 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             mostPopularText={billingText["most-popular"]}
             subscribeText={billingText.subscribe}
             currentPlanText={billingText["current-plan"]}
+            changePlanText={billingText["change-plan"]}
             yearlyText={billingText.yearly}
             monthlyText={billingText.monthly}
             billedAnnually={billingText["billed-annually"]}
@@ -96,6 +98,7 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             mostPopularText={billingText["most-popular"]}
             subscribeText={billingText.subscribe}
             currentPlanText={billingText["current-plan"]}
+            changePlanText={billingText["change-plan"]}
             yearlyText={billingText.yearly}
             monthlyText={billingText.monthly}
             billedAnnually={billingText["billed-annually"]}

@@ -11,6 +11,7 @@ export default {
     "monthly": "Mjesečno",
     "yearly": "Godišnje: (dobite 6+ mjeseci besplatno)",
     "current-plan": "Trenutni plan",
+    "change-plan": "Promjena plana",
     "billed-annually": "Naplaćuje se godišnje",
     "subscribe": "Pretplatite se",
     "most-popular": "Najpopularniji",
@@ -960,7 +961,7 @@ export default {
       "subtitle": "Ovako ćete se javno pojaviti"
     },
     "language": {
-      "title": "Promijenite jezik",
+      "title": "Promijenite zadani jezik",
       "subtitle": "Ovo je jezik koji ćete vidjeti kada se prijavite"
     },
     "currency": {

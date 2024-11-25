@@ -11,6 +11,7 @@ export default {
     "monthly": "月次",
     "yearly": "年間: (6 か月以上無料)",
     "current-plan": "現在の計画",
+    "change-plan": "プランの変更",
     "billed-annually": "年払い",
     "subscribe": "購読する",
     "most-popular": "最も人気",
@@ -960,7 +961,7 @@ export default {
       "subtitle": "これが公の場でのあなたの姿です"
     },
     "language": {
-      "title": "言語を変更する",
+      "title": "デフォルトの言語を変更する",
       "subtitle": "サインイン時に表示される言語です"
     },
     "currency": {

@@ -11,6 +11,7 @@ export default {
     "monthly": "Aylık",
     "yearly": "Yıllık: (6+ ay ücretsiz alın)",
     "current-plan": "Güncel Plan",
+    "change-plan": "Planı Değiştir",
     "billed-annually": "Yıllık olarak faturalandırılır",
     "subscribe": "Abone",
     "most-popular": "En Popüler",
@@ -960,7 +961,7 @@ export default {
       "subtitle": "Kamuoyunda böyle görüneceksiniz"
     },
     "language": {
-      "title": "Dilinizi değiştirin",
+      "title": "Varsayılan dilinizi değiştirin",
       "subtitle": "Bu, oturum açtığınızda göreceğiniz dildir"
     },
     "currency": {

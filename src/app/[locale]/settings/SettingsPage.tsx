@@ -19,7 +19,9 @@ import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
 import { languageToFlagMap } from "@/lib/validations";
 import Link from "next/link";
-import { StripeBilling } from "../stripeServer";
+import { StripeBilling, GetUserCurrentSubscriptionProductId } from "../stripeServer";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 interface Props {
   user: User;
@@ -42,6 +44,7 @@ export default function SettingsPage({ user, title, name, currency, language, su
   const [updateSellerSubscriptionUrl, setUpdateSellerSubscriptionUrl] = useState<string | null>(null);
   const [updateSellerPaymentUrl, setUpdateSellerPaymentUrl] = useState<string | null>(null);
   const [cancelSellerSubscriptionUrl, setCancelSellerSubscriptionUrl] = useState<string | null>(null);
+  const router = useRouter();
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -74,37 +77,49 @@ export default function SettingsPage({ user, title, name, currency, language, su
 
   useEffect(() => {
     if (user.buyerSubscriptionId && user.sellerSubscriptionId) {
-      getBuyerStripeBilling();
-      getSellerStripeBilling();
+      getBillingUrls(true);
+      getBillingUrls(false);
     } else if (user.buyerSubscriptionId) {
-      getBuyerStripeBilling();
+      getBillingUrls(false);
+      setUpdateSellerSubscriptionUrl("n/a");
+      setUpdateSellerPaymentUrl("n/a");
+      setCancelSellerSubscriptionUrl("n/a");
     } else if (user.sellerSubscriptionId) {
-      getSellerStripeBilling();
+      getBillingUrls(true);
+      setUpdateBuyerSubscriptionUrl("n/a");
+      setUpdateBuyerPaymentUrl("n/a");
+      setCancelBuyerSubscriptionUrl("n/a");
     }
   }, [user]);
 
-  async function getSellerStripeBilling() {
-    const [updateSubscriptionUrl, updatePaymentUrl, cancelUrl] = await Promise.all([
-      StripeBilling(true, defaultLanguage, "subUpdate"),
-      StripeBilling(true, defaultLanguage, "updatePayment"),
-      StripeBilling(true, defaultLanguage, "cancel"),
+  async function getBillingUrls(isSeller: boolean) {
+    const [updateSubscription, updatePayment, cancel] = await Promise.all([
+      StripeBilling(isSeller, defaultLanguage, "subUpdate"),
+      StripeBilling(isSeller, defaultLanguage, "updatePayment"),
+      StripeBilling(isSeller, defaultLanguage, "cancel"),
     ]);
 
-    setUpdateSellerSubscriptionUrl(updateSubscriptionUrl);
-    setUpdateSellerPaymentUrl(updatePaymentUrl);
-    setCancelSellerSubscriptionUrl(cancelUrl);
-  }
-
-  async function getBuyerStripeBilling() {
-    const [updateSubscriptionUrl, updatePaymentUrl, cancelUrl] = await Promise.all([
-      StripeBilling(true, defaultLanguage, "subUpdate"),
-      StripeBilling(true, defaultLanguage, "updatePayment"),
-      StripeBilling(true, defaultLanguage, "cancel"),
-    ]);
-
-    setUpdateBuyerSubscriptionUrl(updateSubscriptionUrl);
-    setUpdateBuyerPaymentUrl(updatePaymentUrl);
-    setCancelBuyerSubscriptionUrl(cancelUrl);
+    if (updateSubscription.url) {
+      isSeller
+        ? setUpdateSellerSubscriptionUrl(updateSubscription.url)
+        : setUpdateBuyerSubscriptionUrl(updateSubscription.url);
+    } else {
+      console.log(updateSubscription.error);
+    }
+    if (updatePayment.url) {
+      isSeller ? setUpdateSellerPaymentUrl(updatePayment.url) : setUpdateBuyerPaymentUrl(updatePayment.url);
+    } else {
+      console.log(updatePayment.error);
+    }
+    if (cancel.url) {
+      isSeller ? setCancelSellerSubscriptionUrl(cancel.url) : setCancelBuyerSubscriptionUrl(cancel.url);
+    } else {
+      if (cancel.error.includes("canceled at period end")) {
+        console.log("will cancel");
+        setCancelSellerSubscriptionUrl("cancel");
+      }
+      console.log(cancel.error);
+    }
   }
 
   return (
@@ -194,28 +209,52 @@ export default function SettingsPage({ user, title, name, currency, language, su
                       : "Unsubscribed"}
                   </div>
                 </div>
-                <div>
-                  {user.buyerSubscriptionId ? (
-                    <Button
-                      asChild
-                      className="bg-amber-500 hover:bg-amber-500/90"
-                      disabled={stripeBuyerBillingUrl ? false : true}
-                    >
-                      {stripeBuyerBillingUrl && <Link href={stripeBuyerBillingUrl}>Buyer Subscription Settings</Link>}
-                    </Button>
-                  ) : (
-                    <div className="flex gap-3">
-                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                        Update Subscription
-                      </Button>
-                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                        Update Payment Information
-                      </Button>
-                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                        Cancel Subscription
-                      </Button>
-                    </div>
-                  )}
+                <div className="flex flex-col gap-3 items-start w-full justify-center">
+                  <Button
+                    className="bg-primary hover:bg-primary/90"
+                    disabled={user.buyerSubscriptionId && updateBuyerSubscriptionUrl ? false : true}
+                    onClick={() => {
+                      updateBuyerSubscriptionUrl && router.push(updateBuyerSubscriptionUrl);
+                    }}
+                  >
+                    {updateBuyerSubscriptionUrl ? (
+                      <span>Update Subscription</span>
+                    ) : (
+                      <div className="w-full">
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      </div>
+                    )}
+                  </Button>
+                  <Button
+                    className="bg-amber-500 hover:bg-amber-500/90"
+                    disabled={user.buyerSubscriptionId && updateBuyerPaymentUrl ? false : true}
+                    onClick={() => {
+                      updateBuyerPaymentUrl && router.push(updateBuyerPaymentUrl);
+                    }}
+                  >
+                    {updateBuyerPaymentUrl ? (
+                      <span>Update Payment Information</span>
+                    ) : (
+                      <div className="w-full">
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      </div>
+                    )}
+                  </Button>
+                  <Button
+                    variant={"destructive"}
+                    disabled={user.buyerSubscriptionId && cancelBuyerSubscriptionUrl ? false : true}
+                    onClick={() => {
+                      cancelBuyerSubscriptionUrl && router.push(cancelBuyerSubscriptionUrl);
+                    }}
+                  >
+                    {cancelBuyerSubscriptionUrl ? (
+                      <span>Cancel Subscription</span>
+                    ) : (
+                      <div className="w-full">
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      </div>
+                    )}
+                  </Button>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
@@ -227,50 +266,58 @@ export default function SettingsPage({ user, title, name, currency, language, su
                       : "Unsubscribed"}
                   </div>
                 </div>
-                <div className="flex gap-3 items-center w-full justify-start">
-                  {user.sellerSubscriptionId ? (
-                    <div className="flex gap-3">
-                      <Button
-                        asChild
-                        className="bg-amber-500 hover:bg-amber-500/90"
-                        disabled={updateSellerSubscriptionUrl ? false : true}
-                      >
-                        {updateSellerSubscriptionUrl && (
-                          <Link href={updateSellerSubscriptionUrl}>Update Subscription</Link>
-                        )}
-                      </Button>
-                      <Button
-                        asChild
-                        className="bg-amber-500 hover:bg-amber-500/90"
-                        disabled={updateSellerPaymentUrl ? false : true}
-                      >
-                        {updateSellerPaymentUrl && (
-                          <Link href={updateSellerPaymentUrl}>Update Payment Information</Link>
-                        )}
-                      </Button>
-                      <Button
-                        asChild
-                        className="bg-amber-500 hover:bg-amber-500/90"
-                        disabled={cancelSellerSubscriptionUrl ? false : true}
-                      >
-                        {cancelSellerSubscriptionUrl && (
-                          <Link href={cancelSellerSubscriptionUrl}>Cancel Subscription</Link>
-                        )}
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="flex gap-3">
-                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                        Update Subscription
-                      </Button>
-                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                        Update Payment Information
-                      </Button>
-                      <Button className="bg-amber-500 hover:bg-amber-500/90" disabled={true}>
-                        Cancel Subscription
-                      </Button>
-                    </div>
-                  )}
+                <div className="flex flex-col gap-3 items-start w-full justify-center">
+                  <Button
+                    className="bg-primary hover:bg-primary/90"
+                    onClick={() => {
+                      updateSellerSubscriptionUrl && router.push(updateSellerSubscriptionUrl);
+                    }}
+                    disabled={user.sellerSubscriptionId && updateSellerSubscriptionUrl ? false : true}
+                  >
+                    {updateSellerSubscriptionUrl ? (
+                      <span>Update Subscription</span>
+                    ) : (
+                      <div className="w-full">
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      </div>
+                    )}
+                  </Button>
+                  <Button
+                    className="bg-amber-500 hover:bg-amber-500/90"
+                    onClick={() => {
+                      updateSellerPaymentUrl && router.push(updateSellerPaymentUrl);
+                    }}
+                    disabled={user.sellerSubscriptionId && updateSellerPaymentUrl ? false : true}
+                  >
+                    {updateSellerPaymentUrl ? (
+                      <span>Update Payment Information</span>
+                    ) : (
+                      <div className="w-full">
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      </div>
+                    )}
+                  </Button>
+                  <Button
+                    variant={"destructive"}
+                    onClick={() => {
+                      cancelSellerSubscriptionUrl && router.push(cancelSellerSubscriptionUrl);
+                    }}
+                    disabled={
+                      user.sellerSubscriptionId && cancelSellerSubscriptionUrl
+                        ? cancelSellerSubscriptionUrl === "cancel"
+                          ? true
+                          : false
+                        : true
+                    }
+                  >
+                    {cancelSellerSubscriptionUrl ? (
+                      <span>{cancelSellerSubscriptionUrl === "cancel" && "Subscription Ends This Month"}</span>
+                    ) : (
+                      <div className="w-full">
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      </div>
+                    )}
+                  </Button>
                 </div>
               </div>
             </div>
