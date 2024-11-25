@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import Stripe from "stripe";
 import { getScopedI18n } from "@/locales/server";
+import { createCoupon } from "./admin/actions";
 
 const getConfigId = (isSeller: boolean) => {
   const configId = isSeller ? "bpc_1QOWTWLWTS7QT7kvbV10yCSt" : "bpc_1QOWTMLWTS7QT7kvlo9TCLo8";
@@ -239,7 +240,6 @@ export async function StripeServer(
             : "buyer",
       },
     });
-    console.log(subscription);
     const latestInvoice = subscription.latest_invoice as Stripe.Invoice;
 
     const paymentIntent = latestInvoice.payment_intent as Stripe.PaymentIntent;
@@ -270,6 +270,12 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
     throw new Error("User not found");
   }
 
+  let couponCode;
+  if (flowType === "cancel") {
+    couponCode = await createCoupon(50, "forever");
+    console.log("coupon", couponCode);
+  }
+
   const cancel: Stripe.BillingPortal.SessionCreateParams.FlowData = {
     type: "subscription_cancel",
     after_completion: {
@@ -285,7 +291,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
       retention: {
         type: "coupon_offer",
-        coupon_offer: { coupon: "HvFxwx01" },
+        coupon_offer: { coupon: couponCode as string },
       },
     },
   };
@@ -542,4 +548,9 @@ export async function GetSubscription(subscriptionId?: string, isSeller?: boolea
 
   const productId = await GetUserCurrentSubscriptionProductId(subId);
   return productIdMap[productId as keyof typeof productIdMap];
+}
+
+export async function GetFullSubscription(subscriptionId: string): Promise<Stripe.Subscription> {
+  const subscription = await stripeClient.subscriptions.retrieve(subscriptionId);
+  return subscription;
 }

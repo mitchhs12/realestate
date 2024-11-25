@@ -59,27 +59,24 @@ export async function POST(req: Request, res: NextApiResponse) {
         break;
       }
       case "customer.subscription.deleted": {
-        const subscription = event.data.object;
-        const subscriptionId = subscription.id as string;
-        const subscriptionObj = await stripe.subscriptions.retrieve(subscriptionId);
-        console.log(JSON.stringify(subscriptionObj, null, 2));
+        const accountId = event.data.object.metadata.accountId;
+        const isSeller = event.data.object.metadata.userType === "seller" ? true : false;
 
-        // if (accountId) {
-        //   // Update the home listing in the database back to "basic" (or another default)
-        //   if (isSeller) {
-        //     await prisma.user.update({
-        //       where: { id: accountId },
-        //       data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to the default listing type
-        //     });
-        //   } else {
-        //     await prisma.user.update({
-        //       where: { id: accountId },
-        //       data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to the default listing type
-        //     });
-        //   }
-        // } else {
-        //   console.error("Missing accountId in subscription metadata.");
-        // }
+        if (accountId) {
+          if (isSeller) {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to the default listing type
+            });
+          } else {
+            await prisma.user.update({
+              where: { id: accountId },
+              data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to the default listing type
+            });
+          }
+        } else {
+          console.error("Missing accountId in subscription metadata.");
+        }
         break;
       }
       case "invoice.payment_failed": {

@@ -5,6 +5,7 @@ import getSession from "@/lib/getSession";
 import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
+import { GetFullSubscription } from "../stripeServer";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -32,5 +33,26 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   if (!user) {
     redirect("/api/auth/signin?callbackUrl=/settings");
   }
-  return <SettingsPage user={user} title={title} name={name} currency={currency} language={language} submit={submit} />;
+
+  let buyerSubscription: Stripe.Subscription | null = null;
+  let sellerSubscription: Stripe.Subscription | null = null;
+  if (user.buyerSubscriptionId) {
+    buyerSubscription = await GetFullSubscription(user.buyerSubscriptionId);
+  }
+  if (user.sellerSubscriptionId) {
+    sellerSubscription = await GetFullSubscription(user.sellerSubscriptionId);
+  }
+
+  return (
+    <SettingsPage
+      user={user}
+      title={title}
+      name={name}
+      currency={currency}
+      language={language}
+      submit={submit}
+      buyerSubscription={buyerSubscription}
+      sellerSubscription={sellerSubscription}
+    />
+  );
 }

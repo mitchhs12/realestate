@@ -22,6 +22,7 @@ import Link from "next/link";
 import { StripeBilling, GetUserCurrentSubscriptionProductId } from "../stripeServer";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
+import { Stripe } from "stripe";
 
 interface Props {
   user: User;
@@ -30,21 +31,30 @@ interface Props {
   currency: { title: string; subtitle: string };
   language: { title: string; subtitle: string };
   submit: string;
+  buyerSubscription: Stripe.Subscription | null;
+  sellerSubscription: Stripe.Subscription | null;
 }
 
-export default function SettingsPage({ user, title, name, currency, language, submit }: Props) {
+export default function SettingsPage({
+  user,
+  title,
+  name,
+  currency,
+  language,
+  submit,
+  buyerSubscription,
+  sellerSubscription,
+}: Props) {
   const session = useSession();
   const changeLocale = useChangeLocale();
   const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } = useContext(LocaleContext);
-  const [stripeBuyerBillingUrl, setStripeBuyerBillingUrl] = useState<string | null>(null);
-  const [stripeSellerBillingUrl, setStripeSellerBillingUrl] = useState<string | null>(null);
-  const [updateBuyerSubscriptionUrl, setUpdateBuyerSubscriptionUrl] = useState<string | null>(null);
-  const [updateBuyerPaymentUrl, setUpdateBuyerPaymentUrl] = useState<string | null>(null);
-  const [cancelBuyerSubscriptionUrl, setCancelBuyerSubscriptionUrl] = useState<string | null>(null);
-  const [updateSellerSubscriptionUrl, setUpdateSellerSubscriptionUrl] = useState<string | null>(null);
-  const [updateSellerPaymentUrl, setUpdateSellerPaymentUrl] = useState<string | null>(null);
-  const [cancelSellerSubscriptionUrl, setCancelSellerSubscriptionUrl] = useState<string | null>(null);
   const router = useRouter();
+  const [sellerCancelLoading, setSellerCancelLoading] = useState<boolean>(false);
+  const [sellerPaymentLoading, setSellerPaymentLoading] = useState<boolean>(false);
+  const [sellerSubscriptionLoading, setSellerSubscriptionLoading] = useState<boolean>(false);
+  const [buyerCancelLoading, setBuyerCancelLoading] = useState<boolean>(false);
+  const [buyerPaymentLoading, setBuyerPaymentLoading] = useState<boolean>(false);
+  const [buyerSubscriptionLoading, setBuyerSubscriptionLoading] = useState<boolean>(false);
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -75,50 +85,11 @@ export default function SettingsPage({ user, title, name, currency, language, su
     }
   }
 
-  useEffect(() => {
-    if (user.buyerSubscriptionId && user.sellerSubscriptionId) {
-      getBillingUrls(false);
-      getBillingUrls(true);
-    } else if (user.buyerSubscriptionId) {
-      getBillingUrls(false);
-      setUpdateSellerSubscriptionUrl("n/a");
-      setUpdateSellerPaymentUrl("n/a");
-      setCancelSellerSubscriptionUrl("n/a");
-    } else if (user.sellerSubscriptionId) {
-      getBillingUrls(true);
-      setUpdateBuyerSubscriptionUrl("n/a");
-      setUpdateBuyerPaymentUrl("n/a");
-      setCancelBuyerSubscriptionUrl("n/a");
-    }
-  }, [user]);
+  async function getBillingUrl(isSeller: boolean, type: "subUpdate" | "updatePayment" | "cancel") {
+    const result = await StripeBilling(isSeller, defaultLanguage, type);
 
-  async function getBillingUrls(isSeller: boolean) {
-    const [updateSubscription, updatePayment, cancel] = await Promise.all([
-      StripeBilling(isSeller, defaultLanguage, "subUpdate"),
-      StripeBilling(isSeller, defaultLanguage, "updatePayment"),
-      StripeBilling(isSeller, defaultLanguage, "cancel"),
-    ]);
-
-    if (updateSubscription.url) {
-      isSeller
-        ? setUpdateSellerSubscriptionUrl(updateSubscription.url)
-        : setUpdateBuyerSubscriptionUrl(updateSubscription.url);
-    } else {
-      console.log(updateSubscription.error);
-    }
-    if (updatePayment.url) {
-      isSeller ? setUpdateSellerPaymentUrl(updatePayment.url) : setUpdateBuyerPaymentUrl(updatePayment.url);
-    } else {
-      console.log(updatePayment.error);
-    }
-    if (cancel.url) {
-      isSeller ? setCancelSellerSubscriptionUrl(cancel.url) : setCancelBuyerSubscriptionUrl(cancel.url);
-    } else {
-      if (cancel.error.includes("canceled at period end")) {
-        console.log("will cancel");
-        setCancelSellerSubscriptionUrl("cancel");
-      }
-      console.log(cancel.error);
+    if (result.url) {
+      router.push(result.url);
     }
   }
 
@@ -211,60 +182,63 @@ export default function SettingsPage({ user, title, name, currency, language, su
                     </span>
                   </h3>
                 </div>
-                <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-between">
-                  <Button
-                    className="bg-primary hover:bg-primary/90 w-full"
-                    disabled={user.buyerSubscriptionId && updateBuyerSubscriptionUrl ? false : true}
-                    onClick={() => {
-                      updateBuyerSubscriptionUrl && router.push(updateBuyerSubscriptionUrl);
-                    }}
-                  >
-                    {updateBuyerSubscriptionUrl ? (
-                      <span>Update Subscription</span>
-                    ) : (
-                      <div className="flex w-full justify-center">
-                        <ReloadIcon className="w-5 h-5 animate-spin" />
-                      </div>
-                    )}
-                  </Button>
-                  <Button
-                    className="bg-amber-500 hover:bg-amber-500/90 w-full"
-                    disabled={user.buyerSubscriptionId && updateBuyerPaymentUrl ? false : true}
-                    onClick={() => {
-                      updateBuyerPaymentUrl && router.push(updateBuyerPaymentUrl);
-                    }}
-                  >
-                    {updateBuyerPaymentUrl ? (
-                      <span>Payment Information</span>
-                    ) : (
-                      <div className="flex w-full justify-center">
-                        <ReloadIcon className="w-5 h-5 animate-spin" />
-                      </div>
-                    )}
-                  </Button>
-                  <Button
-                    className="w-full"
-                    variant={"destructive"}
-                    disabled={
-                      user.buyerSubscriptionId && cancelBuyerSubscriptionUrl
-                        ? cancelBuyerSubscriptionUrl === "cancel"
-                          ? true
-                          : false
-                        : true
-                    }
-                    onClick={() => {
-                      cancelBuyerSubscriptionUrl && router.push(cancelBuyerSubscriptionUrl);
-                    }}
-                  >
-                    {cancelBuyerSubscriptionUrl ? (
-                      <span>Cancel Subscription</span>
-                    ) : (
-                      <div className="flex w-full justify-center">
-                        <ReloadIcon className="w-5 h-5 animate-spin" />
-                      </div>
-                    )}
-                  </Button>
-                </div>
+                {buyerSubscription && (
+                  <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-between">
+                    <Button
+                      className="bg-primary hover:bg-primary/90 w-full"
+                      disabled={buyerSubscriptionLoading}
+                      onClick={() => {
+                        setBuyerSubscriptionLoading(true);
+                        getBillingUrl(false, "subUpdate");
+                      }}
+                    >
+                      {!buyerSubscriptionLoading ? (
+                        <span>Change Subscription</span>
+                      ) : (
+                        <div className="flex w-full justify-center">
+                          <ReloadIcon className="w-5 h-5 animate-spin" />
+                        </div>
+                      )}
+                    </Button>
+                    <Button
+                      className="bg-amber-500 hover:bg-amber-500/90 w-full"
+                      disabled={buyerPaymentLoading}
+                      onClick={() => {
+                        setBuyerPaymentLoading(true);
+                        getBillingUrl(false, "updatePayment");
+                      }}
+                    >
+                      {!buyerPaymentLoading ? (
+                        <span>Payment Methods</span>
+                      ) : (
+                        <div className="flex w-full justify-center">
+                          <ReloadIcon className="w-5 h-5 animate-spin" />
+                        </div>
+                      )}
+                    </Button>
+                    <Button
+                      className="w-full"
+                      variant={"destructive"}
+                      disabled={buyerCancelLoading || buyerSubscription.cancel_at ? true : false}
+                      onClick={() => {
+                        setBuyerCancelLoading(true);
+                        getBillingUrl(false, "cancel");
+                      }}
+                    >
+                      {!buyerCancelLoading ? (
+                        <span className="w-full">
+                          {buyerSubscription.cancel_at
+                            ? `Subscription Ends ${new Date(buyerSubscription.cancel_at * 1000).toLocaleString()}`
+                            : "Cancel Subscription"}
+                        </span>
+                      ) : (
+                        <div className="flex w-full justify-center">
+                          <ReloadIcon className="w-5 h-5 animate-spin" />
+                        </div>
+                      )}
+                    </Button>
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
@@ -277,64 +251,62 @@ export default function SettingsPage({ user, title, name, currency, language, su
                     </span>
                   </h3>
                 </div>
-                <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-start">
-                  <Button
-                    className="bg-primary hover:bg-primary/90 w-full"
-                    onClick={() => {
-                      updateSellerSubscriptionUrl && router.push(updateSellerSubscriptionUrl);
-                    }}
-                    disabled={user.sellerSubscriptionId && updateSellerSubscriptionUrl ? false : true}
-                  >
-                    {updateSellerSubscriptionUrl ? (
-                      <span>Update Subscription</span>
-                    ) : (
-                      <div className="flex w-full justify-center">
-                        <ReloadIcon className="w-5 h-5 animate-spin" />
-                      </div>
-                    )}
-                  </Button>
-                  <Button
-                    className="bg-amber-500 hover:bg-amber-500/90 w-full"
-                    onClick={() => {
-                      updateSellerPaymentUrl && router.push(updateSellerPaymentUrl);
-                    }}
-                    disabled={user.sellerSubscriptionId && updateSellerPaymentUrl ? false : true}
-                  >
-                    {updateSellerPaymentUrl ? (
-                      <span>Payment Information</span>
-                    ) : (
-                      <div className="flex w-full justify-center">
-                        <ReloadIcon className="w-5 h-5 animate-spin" />
-                      </div>
-                    )}
-                  </Button>
-                  <Button
-                    className="w-full"
-                    variant={"destructive"}
-                    onClick={() => {
-                      cancelSellerSubscriptionUrl && router.push(cancelSellerSubscriptionUrl);
-                    }}
-                    disabled={
-                      user.sellerSubscriptionId && cancelSellerSubscriptionUrl
-                        ? cancelSellerSubscriptionUrl === "cancel"
-                          ? true
-                          : false
-                        : true
-                    }
-                  >
-                    {cancelSellerSubscriptionUrl ? (
-                      <span className="w-full">
-                        {cancelSellerSubscriptionUrl === "cancel"
-                          ? "Subscription Ends This Month"
-                          : "Cancel Subscription"}
-                      </span>
-                    ) : (
-                      <div className="flex w-full justify-center">
-                        <ReloadIcon className="w-5 h-5 animate-spin" />
-                      </div>
-                    )}
-                  </Button>
-                </div>
+                {sellerSubscription && (
+                  <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-start">
+                    <Button
+                      className="bg-primary hover:bg-primary/90 w-full"
+                      onClick={() => {
+                        getBillingUrl(true, "subUpdate");
+                      }}
+                      disabled={sellerSubscriptionLoading}
+                    >
+                      {!sellerSubscriptionLoading ? (
+                        <span>Change Subscription</span>
+                      ) : (
+                        <div className="flex w-full justify-center">
+                          <ReloadIcon className="w-5 h-5 animate-spin" />
+                        </div>
+                      )}
+                    </Button>
+                    <Button
+                      className="bg-amber-500 hover:bg-amber-500/90 w-full"
+                      onClick={() => {
+                        setSellerPaymentLoading(true);
+                        getBillingUrl(true, "updatePayment");
+                      }}
+                      disabled={sellerPaymentLoading}
+                    >
+                      {!sellerPaymentLoading ? (
+                        <span>Payment Methods</span>
+                      ) : (
+                        <div className="flex w-full justify-center">
+                          <ReloadIcon className="w-5 h-5 animate-spin" />
+                        </div>
+                      )}
+                    </Button>
+                    <Button
+                      className="w-full"
+                      variant={"destructive"}
+                      onClick={() => {
+                        setSellerCancelLoading(true);
+                        getBillingUrl(true, "cancel");
+                      }}
+                      disabled={sellerCancelLoading || sellerSubscription.cancel_at ? true : false}
+                    >
+                      {!sellerCancelLoading ? (
+                        <span className="w-full">
+                          {sellerSubscription.cancel_at
+                            ? `Subscription Ends ${new Date(sellerSubscription.cancel_at * 1000).toLocaleString()}`
+                            : "Cancel Subscription"}
+                        </span>
+                      ) : (
+                        <div className="flex w-full justify-center">
+                          <ReloadIcon className="w-5 h-5 animate-spin" />
+                        </div>
+                      )}
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
