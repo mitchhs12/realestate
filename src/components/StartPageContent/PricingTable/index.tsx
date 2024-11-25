@@ -75,7 +75,10 @@ export default function PricingTable({
   const tier2 = isSeller ? "pro" : "basic";
   const tier3 = isSeller ? "premium" : "insight";
   const tier4 = isSeller ? "business" : "max";
-  const subscriptionType = isSeller ? user?.sellerSubscription : user?.buyerSubscription;
+  const userSubscription = isSeller ? user?.sellerSubscription : user?.buyerSubscription;
+  const userSubscriptionId = isSeller ? user?.sellerSubscriptionId : user?.buyerSubscriptionId;
+
+  console.log("userSUBSCRIPTION", userSubscription);
 
   useEffect(() => {
     if (user && isSeller) {
@@ -103,13 +106,13 @@ export default function PricingTable({
 
   const handleButton = async (tierId: any) => {
     setSelected(tierId);
-    if (!subscriptionType) {
+    if (!userSubscriptionId) {
       if (!user?.id) {
         openSignUpModal();
       } else {
         setIsOpen(true);
       }
-    } else if (subscriptionType) {
+    } else if (userSubscriptionId) {
       const billingConfirm = await ChangeSpecificSub(isSeller, tierId, yearly, defaultLanguage);
       router.push(billingConfirm);
     }
@@ -129,8 +132,8 @@ export default function PricingTable({
 
   useEffect(() => {
     if (!isOpen) {
-      if (subscriptionType) {
-        setSelected(subscriptionType);
+      if (userSubscription) {
+        setSelected(userSubscription);
       } else {
         setSelected("");
       }
@@ -164,7 +167,6 @@ export default function PricingTable({
               title={starter.title}
               button={yearly ? starter.yearlyPrice : starter.price}
               annualPrice={starter.totalYearlyPrice}
-              buttonDisabled={currentPlan === tier1 ? true : false}
               originalPrice={starter.anchor}
               buttonFunction={() => handleButton(tier1)}
               selected={selected}
@@ -177,6 +179,7 @@ export default function PricingTable({
               yearlyBilling={yearlyBilling}
               sixMonthsFree={sixMonthsFree}
               subText={subText}
+              isSeller={isSeller}
             />
             <PriceCard
               id={tier2}
@@ -184,7 +187,6 @@ export default function PricingTable({
               title={pro.title}
               button={yearly ? pro.yearlyPrice : pro.price}
               annualPrice={pro.totalYearlyPrice}
-              buttonDisabled={currentPlan === tier2 ? true : false}
               buttonFunction={() => handleButton(tier2)}
               selected={selected}
               yearly={yearly}
@@ -197,6 +199,7 @@ export default function PricingTable({
               sixMonthsFree={sixMonthsFree}
               blurb={pro.blurb}
               subText={subText}
+              isSeller={isSeller}
             />
             <div className="relative flex flex-col justify-center items-center">
               {!sessionLoading && (
@@ -210,7 +213,6 @@ export default function PricingTable({
                 title={premium.title}
                 button={yearly ? premium.yearlyPrice : premium.price}
                 annualPrice={premium.totalYearlyPrice}
-                buttonDisabled={currentPlan === tier3 ? true : false}
                 buttonFunction={() => handleButton(tier3)}
                 selected={selected}
                 yearly={yearly}
@@ -223,6 +225,7 @@ export default function PricingTable({
                 sixMonthsFree={sixMonthsFree}
                 blurb={premium.blurb}
                 subText={subText}
+                isSeller={isSeller}
               />
             </div>
             <PriceCard
@@ -231,7 +234,6 @@ export default function PricingTable({
               title={business.title}
               button={yearly ? business.yearlyPrice : business.price}
               annualPrice={business.totalYearlyPrice}
-              buttonDisabled={currentPlan === tier4 ? true : false}
               buttonFunction={() => handleButton(tier4)}
               selected={selected}
               yearly={yearly}
@@ -244,6 +246,7 @@ export default function PricingTable({
               sixMonthsFree={sixMonthsFree}
               blurb={business.blurb}
               subText={subText}
+              isSeller={isSeller}
             />
           </div>
         </div>

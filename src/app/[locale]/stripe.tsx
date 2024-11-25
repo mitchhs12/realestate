@@ -19,7 +19,7 @@ interface Props {
   accountEmail: string | null;
 }
 
-export default function Stripe({ defaultCurrency, planId, interval, accountId, accountEmail }: Props) {
+export default function Stripe({ defaultCurrency, planId, interval }: Props) {
   const currency = defaultCurrency.symbol.toLowerCase();
 
   const stripePromise = loadStripe(

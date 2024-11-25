@@ -1,11 +1,12 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
 
 interface Props {
   id: string;
@@ -16,7 +17,6 @@ interface Props {
   title: string;
   button: number;
   annualPrice: number;
-  buttonDisabled: boolean;
   originalPrice?: number;
   buttonFunction: () => void;
   selected: string;
@@ -33,7 +33,11 @@ interface Props {
     "six-months-free": string;
     "per-month": string;
   };
+  isSeller: boolean;
 }
+
+type BuyerSubscriptionTier = "free" | "basic" | "insight" | "max";
+type SellerSubscriptionTier = "starter" | "pro" | "premium" | "business";
 
 export default function PriceCard({
   id,
@@ -41,7 +45,6 @@ export default function PriceCard({
   title,
   button,
   annualPrice,
-  buttonDisabled,
   buttonFunction,
   selected,
   yearly,
@@ -54,9 +57,32 @@ export default function PriceCard({
   sixMonthsFree,
   blurb,
   subText,
+  isSeller,
 }: Props) {
   const { sessionLoading, defaultCurrency } = useContext(LocaleContext);
-  console.log(blurb);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    if (!sessionLoading) {
+      const sellIndex: Record<SellerSubscriptionTier, number> = {
+        starter: 1,
+        pro: 2,
+        premium: 3,
+        business: 4,
+      };
+      const buyIndex: Record<BuyerSubscriptionTier, number> = {
+        free: 1,
+        basic: 2,
+        insight: 3,
+        max: 4,
+      };
+      const index = isSeller ? sellIndex : buyIndex;
+      const bool = index[id as keyof typeof index] > index[currentPlan as keyof typeof index];
+      setButtonDisabled(bool);
+    }
+  }, [sessionLoading, currentPlan, id, isSeller]);
+
+  // const buttonDisabled = isButtonDisabled(id as SellerSubscriptionTier | BuyerSubscriptionTier, isSeller);
 
   return (
     <div className={`flex w-full h-[850px] justify-center items-center`}>

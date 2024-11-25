@@ -211,35 +211,8 @@ export async function StripeServer(
       throw new Error("Customer ID was not written to the database!");
     }
 
-    let subscription;
-
-    console.log("initial subscription", subscription);
-
-    // if (user.sellerSubscriptionId || user.buyerSubscriptionId) {
-    //   const subscriptions = await stripeClient.subscriptions.list({
-    //     customer: user.customerId,
-    //   });
-
-    //   console.log("subscriptions", subscriptions);
-
-    //   const subscriptionId =
-    //     planId === "starter" || planId === "pro" || planId === "premium" || planId === "business"
-    //       ? user.sellerSubscriptionId
-    //       : user.buyerSubscriptionId;
-
-    //   subscription = await stripeClient.subscriptions.update(subscriptionId, {
-    //     items: [
-    //       {
-    //         id: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
-    //         price: interval === "year" ? yearlyMap[planId]["price"] : monthlyMap[planId]["price"],
-    //         quantity: 1,
-    //       },
-    //     ],
-    //     proration_behavior: "always_invoice",
-    //   });
-    // } else {
     // Create a new subscription
-    subscription = await stripeClient.subscriptions.create({
+    const subscription = await stripeClient.subscriptions.create({
       customer: user.customerId,
       items: [
         {
@@ -266,7 +239,7 @@ export async function StripeServer(
             : "buyer",
       },
     });
-    // }
+    console.log(subscription);
     const latestInvoice = subscription.latest_invoice as Stripe.Invoice;
 
     const paymentIntent = latestInvoice.payment_intent as Stripe.PaymentIntent;
