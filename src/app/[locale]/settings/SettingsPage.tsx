@@ -77,8 +77,8 @@ export default function SettingsPage({ user, title, name, currency, language, su
 
   useEffect(() => {
     if (user.buyerSubscriptionId && user.sellerSubscriptionId) {
-      getBillingUrls(true);
       getBillingUrls(false);
+      getBillingUrls(true);
     } else if (user.buyerSubscriptionId) {
       getBillingUrls(false);
       setUpdateSellerSubscriptionUrl("n/a");
@@ -202,16 +202,18 @@ export default function SettingsPage({ user, title, name, currency, language, su
             <div className="flex flex-col gap-12">
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
-                  <h3 className="font-semibold">Buyer Subscription Plan:</h3>
-                  <div className={`font-medium ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
-                    {user.buyerSubscription
-                      ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
-                      : "Unsubscribed"}
-                  </div>
+                  <h3 className="font-semibold">
+                    Buyer Subscription Plan:{" "}
+                    <span className={`font-semibold ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
+                      {user.buyerSubscription
+                        ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
+                        : "Unsubscribed"}
+                    </span>
+                  </h3>
                 </div>
-                <div className="flex flex-col gap-3 items-start w-full justify-center">
+                <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-between">
                   <Button
-                    className="bg-primary hover:bg-primary/90"
+                    className="bg-primary hover:bg-primary/90 w-full"
                     disabled={user.buyerSubscriptionId && updateBuyerSubscriptionUrl ? false : true}
                     onClick={() => {
                       updateBuyerSubscriptionUrl && router.push(updateBuyerSubscriptionUrl);
@@ -220,29 +222,36 @@ export default function SettingsPage({ user, title, name, currency, language, su
                     {updateBuyerSubscriptionUrl ? (
                       <span>Update Subscription</span>
                     ) : (
-                      <div className="w-full">
+                      <div className="flex w-full justify-center">
                         <ReloadIcon className="w-5 h-5 animate-spin" />
                       </div>
                     )}
                   </Button>
                   <Button
-                    className="bg-amber-500 hover:bg-amber-500/90"
+                    className="bg-amber-500 hover:bg-amber-500/90 w-full"
                     disabled={user.buyerSubscriptionId && updateBuyerPaymentUrl ? false : true}
                     onClick={() => {
                       updateBuyerPaymentUrl && router.push(updateBuyerPaymentUrl);
                     }}
                   >
                     {updateBuyerPaymentUrl ? (
-                      <span>Update Payment Information</span>
+                      <span>Payment Information</span>
                     ) : (
-                      <div className="w-full">
+                      <div className="flex w-full justify-center">
                         <ReloadIcon className="w-5 h-5 animate-spin" />
                       </div>
                     )}
                   </Button>
                   <Button
+                    className="w-full"
                     variant={"destructive"}
-                    disabled={user.buyerSubscriptionId && cancelBuyerSubscriptionUrl ? false : true}
+                    disabled={
+                      user.buyerSubscriptionId && cancelBuyerSubscriptionUrl
+                        ? cancelBuyerSubscriptionUrl === "cancel"
+                          ? true
+                          : false
+                        : true
+                    }
                     onClick={() => {
                       cancelBuyerSubscriptionUrl && router.push(cancelBuyerSubscriptionUrl);
                     }}
@@ -250,7 +259,7 @@ export default function SettingsPage({ user, title, name, currency, language, su
                     {cancelBuyerSubscriptionUrl ? (
                       <span>Cancel Subscription</span>
                     ) : (
-                      <div className="w-full">
+                      <div className="flex w-full justify-center">
                         <ReloadIcon className="w-5 h-5 animate-spin" />
                       </div>
                     )}
@@ -259,16 +268,18 @@ export default function SettingsPage({ user, title, name, currency, language, su
               </div>
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
-                  <h3 className="font-semibold">Seller Subscription Plan:</h3>
-                  <div className={`font-medium ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
-                    {user.sellerSubscription
-                      ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
-                      : "Unsubscribed"}
-                  </div>
+                  <h3 className="font-semibold">
+                    Seller Subscription Plan:{" "}
+                    <span className={`font-semibold ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
+                      {user.sellerSubscription
+                        ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
+                        : "Unsubscribed"}
+                    </span>
+                  </h3>
                 </div>
-                <div className="flex flex-col gap-3 items-start w-full justify-center">
+                <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-start">
                   <Button
-                    className="bg-primary hover:bg-primary/90"
+                    className="bg-primary hover:bg-primary/90 w-full"
                     onClick={() => {
                       updateSellerSubscriptionUrl && router.push(updateSellerSubscriptionUrl);
                     }}
@@ -277,27 +288,28 @@ export default function SettingsPage({ user, title, name, currency, language, su
                     {updateSellerSubscriptionUrl ? (
                       <span>Update Subscription</span>
                     ) : (
-                      <div className="w-full">
+                      <div className="flex w-full justify-center">
                         <ReloadIcon className="w-5 h-5 animate-spin" />
                       </div>
                     )}
                   </Button>
                   <Button
-                    className="bg-amber-500 hover:bg-amber-500/90"
+                    className="bg-amber-500 hover:bg-amber-500/90 w-full"
                     onClick={() => {
                       updateSellerPaymentUrl && router.push(updateSellerPaymentUrl);
                     }}
                     disabled={user.sellerSubscriptionId && updateSellerPaymentUrl ? false : true}
                   >
                     {updateSellerPaymentUrl ? (
-                      <span>Update Payment Information</span>
+                      <span>Payment Information</span>
                     ) : (
-                      <div className="w-full">
+                      <div className="flex w-full justify-center">
                         <ReloadIcon className="w-5 h-5 animate-spin" />
                       </div>
                     )}
                   </Button>
                   <Button
+                    className="w-full"
                     variant={"destructive"}
                     onClick={() => {
                       cancelSellerSubscriptionUrl && router.push(cancelSellerSubscriptionUrl);
@@ -311,9 +323,13 @@ export default function SettingsPage({ user, title, name, currency, language, su
                     }
                   >
                     {cancelSellerSubscriptionUrl ? (
-                      <span>{cancelSellerSubscriptionUrl === "cancel" && "Subscription Ends This Month"}</span>
+                      <span className="w-full">
+                        {cancelSellerSubscriptionUrl === "cancel"
+                          ? "Subscription Ends This Month"
+                          : "Cancel Subscription"}
+                      </span>
                     ) : (
-                      <div className="w-full">
+                      <div className="flex w-full justify-center">
                         <ReloadIcon className="w-5 h-5 animate-spin" />
                       </div>
                     )}

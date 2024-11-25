@@ -23,7 +23,8 @@ interface Props {
   yearly: boolean;
   setYearly: (yearly: boolean) => void;
   subscribe: string;
-  currentPlan: string;
+  currentPlan: string | null;
+  currentPlanText: string;
   billedAnnually: string;
   monthlyBilling: string;
   yearlyBilling: string;
@@ -51,6 +52,7 @@ export default function PriceCard({
   setYearly,
   subscribe,
   currentPlan,
+  currentPlanText,
   billedAnnually,
   monthlyBilling,
   yearlyBilling,
@@ -61,28 +63,31 @@ export default function PriceCard({
 }: Props) {
   const { sessionLoading, defaultCurrency } = useContext(LocaleContext);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonDisabledSet, setButtonDisabledSet] = useState(false);
 
   useEffect(() => {
-    if (!sessionLoading) {
-      const sellIndex: Record<SellerSubscriptionTier, number> = {
-        starter: 1,
-        pro: 2,
-        premium: 3,
-        business: 4,
-      };
-      const buyIndex: Record<BuyerSubscriptionTier, number> = {
-        free: 1,
-        basic: 2,
-        insight: 3,
-        max: 4,
-      };
-      const index = isSeller ? sellIndex : buyIndex;
-      const bool = index[id as keyof typeof index] > index[currentPlan as keyof typeof index];
-      setButtonDisabled(bool);
+    if (!sessionLoading && currentPlan) {
+      isButtonDisabled();
     }
-  }, [sessionLoading, currentPlan, id, isSeller]);
+  }, [currentPlan, sessionLoading, isSeller]);
 
-  // const buttonDisabled = isButtonDisabled(id as SellerSubscriptionTier | BuyerSubscriptionTier, isSeller);
+  const isButtonDisabled = () => {
+    const sellIndex: Record<SellerSubscriptionTier, number> = {
+      starter: 1,
+      pro: 2,
+      premium: 3,
+      business: 4,
+    };
+    const buyIndex: Record<BuyerSubscriptionTier, number> = {
+      free: 1,
+      basic: 2,
+      insight: 3,
+      max: 4,
+    };
+    const index = isSeller ? sellIndex : buyIndex;
+    const bool = index[id as keyof typeof index] <= index[currentPlan as keyof typeof index];
+    return bool;
+  };
 
   return (
     <div className={`flex w-full h-[850px] justify-center items-center`}>
@@ -91,7 +96,7 @@ export default function PriceCard({
       ) : (
         defaultCurrency && (
           <Card
-            className={`flex flex-col w-full h-full border-2 rounded-lg ${buttonDisabled && "border-none shadow-none opacity-70"} ${selected === id ? "border-primary" : ""}`}
+            className={`flex flex-col w-full h-full border-2 rounded-lg ${isButtonDisabled() && "border-none shadow-none opacity-70"} ${selected === id ? "border-primary" : ""}`}
           >
             <CardHeader>
               <CardTitle className="flex justify-center items-center text-bold text-2xl">{title}</CardTitle>
@@ -144,22 +149,24 @@ export default function PriceCard({
               </div>
             </CardContent>
             <CardFooter className="flex flex-col items-center h-[90px] justify-end pb-5 gap-2">
-              <Button
-                variant={!buttonDisabled ? "default" : "secondary"}
-                className="flex items-center w-full text-xl gap-1"
-                disabled={buttonDisabled}
-                onClick={buttonFunction}
-              >
-                {buttonDisabled ? (
-                  currentPlan
-                ) : selected === id ? (
-                  <span className="flex items-center gap-3">
-                    <ReloadIcon className="w-6 h-6 animate-spin" />
-                  </span>
-                ) : (
-                  subscribe
-                )}
-              </Button>
+              {(currentPlan === id || !isButtonDisabled()) && (
+                <Button
+                  variant={!isButtonDisabled() ? "default" : "secondary"}
+                  className="flex items-center w-full text-xl gap-1"
+                  disabled={isButtonDisabled()}
+                  onClick={buttonFunction}
+                >
+                  {currentPlan === id ? (
+                    currentPlanText
+                  ) : selected === id ? (
+                    <span className="flex items-center gap-3">
+                      <ReloadIcon className="w-6 h-6 animate-spin" />
+                    </span>
+                  ) : (
+                    subscribe
+                  )}
+                </Button>
+              )}
             </CardFooter>
           </Card>
         )

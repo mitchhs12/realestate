@@ -11,7 +11,7 @@ export default {
     "monthly": "ყოველთვიური",
     "yearly": "ყოველწლიურად: (მიიღეთ 6+ თვე უფასოდ)",
     "current-plan": "მიმდინარე გეგმა",
-    "change-plan": "გეგმის შეცვლა",
+    "change-plan": "განახლების გეგმა",
     "billed-annually": "დარიცხულია ყოველწლიურად",
     "subscribe": "გამოწერა",
     "most-popular": "ყველაზე პოპულარული",

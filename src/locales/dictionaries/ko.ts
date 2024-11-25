@@ -11,7 +11,7 @@ export default {
     "monthly": "월간 간행물",
     "yearly": "연간: (6개월 이상 무료)",
     "current-plan": "현재 계획",
-    "change-plan": "변경 계획",
+    "change-plan": "업그레이드 계획",
     "billed-annually": "연간 청구",
     "subscribe": "구독하다",
     "most-popular": "가장 인기 있는",

@@ -11,7 +11,7 @@ export default {
     "monthly": "Bulanan",
     "yearly": "Tahunan: (dapatkan 6+ bulan gratis)",
     "current-plan": "Rencana Saat Ini",
-    "change-plan": "Ubah Rencana",
+    "change-plan": "Rencana Peningkatan",
     "billed-annually": "Ditagih setiap tahun",
     "subscribe": "Berlangganan",
     "most-popular": "Paling Populer",

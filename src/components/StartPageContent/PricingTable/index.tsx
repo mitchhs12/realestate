@@ -31,7 +31,7 @@ interface Props {
   mostPopularText: string;
   subscribeText: string;
   currentPlanText: string;
-  changePlanText: string;
+  updatePlanText: string;
   yearlyText: string;
   monthlyText: string;
   billedAnnually: string;
@@ -53,7 +53,7 @@ export default function PricingTable({
   mostPopularText,
   subscribeText,
   currentPlanText,
-  changePlanText,
+  updatePlanText,
   yearlyText,
   monthlyText,
   billedAnnually,
@@ -66,7 +66,8 @@ export default function PricingTable({
   const { sessionLoading, defaultCurrency, user, defaultLanguage } = useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentPlan, setCurrentPlan] = useState("");
+  const [currentPlan, setCurrentPlan] = useState<string | null>(null);
+  const [currentPlanExists, setCurrentPlanExists] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
   const [yearly, setYearly] = useState(true);
   const router = useRouter();
@@ -78,31 +79,45 @@ export default function PricingTable({
   const userSubscription = isSeller ? user?.sellerSubscription : user?.buyerSubscription;
   const userSubscriptionId = isSeller ? user?.sellerSubscriptionId : user?.buyerSubscriptionId;
 
-  console.log("userSUBSCRIPTION", userSubscription);
-
   useEffect(() => {
     if (user && isSeller) {
       if (user.sellerSubscription === "starter") {
         setCurrentPlan("starter");
+        setCurrentPlanExists(true);
       } else if (user.sellerSubscription === "pro") {
         setCurrentPlan("pro");
+        setCurrentPlanExists(true);
       } else if (user.sellerSubscription === "premium") {
         setCurrentPlan("premium");
+        setCurrentPlanExists(true);
       } else if (user.sellerSubscription === "business") {
         setCurrentPlan("business");
+        setCurrentPlanExists(true);
+      } else {
+        setCurrentPlanExists(false);
       }
     } else if (user && !isSeller) {
       if (user.buyerSubscription === "free") {
         setCurrentPlan("free");
+        setCurrentPlanExists(true);
       } else if (user.buyerSubscription === "basic") {
         setCurrentPlan("basic");
+        setCurrentPlanExists(true);
       } else if (user.buyerSubscription === "insight") {
         setCurrentPlan("insight");
+        setCurrentPlanExists(true);
       } else if (user.buyerSubscription === "max") {
         setCurrentPlan("max");
+        setCurrentPlanExists(true);
+      } else {
+        setCurrentPlanExists(false);
       }
     }
   }, [user, isSeller]);
+
+  useEffect(() => {
+    console.log(currentPlan);
+  }, [currentPlan]);
 
   const handleButton = async (tierId: any) => {
     setSelected(tierId);
@@ -172,8 +187,9 @@ export default function PricingTable({
               selected={selected}
               yearly={yearly}
               setYearly={setYearly}
-              subscribe={currentPlan ? changePlanText : subscribeText}
-              currentPlan={currentPlanText}
+              subscribe={currentPlanExists ? updatePlanText : subscribeText}
+              currentPlan={currentPlan}
+              currentPlanText={currentPlanText}
               billedAnnually={billedAnnually}
               monthlyBilling={monthlyBilling}
               yearlyBilling={yearlyBilling}
@@ -191,8 +207,9 @@ export default function PricingTable({
               selected={selected}
               yearly={yearly}
               setYearly={setYearly}
-              subscribe={currentPlan ? changePlanText : subscribeText}
-              currentPlan={currentPlanText}
+              subscribe={currentPlanExists ? updatePlanText : subscribeText}
+              currentPlan={currentPlan}
+              currentPlanText={currentPlanText}
               billedAnnually={billedAnnually}
               monthlyBilling={monthlyBilling}
               yearlyBilling={yearlyBilling}
@@ -217,8 +234,9 @@ export default function PricingTable({
                 selected={selected}
                 yearly={yearly}
                 setYearly={setYearly}
-                subscribe={currentPlan ? changePlanText : subscribeText}
-                currentPlan={currentPlanText}
+                subscribe={currentPlanExists ? updatePlanText : subscribeText}
+                currentPlan={currentPlan}
+                currentPlanText={currentPlanText}
                 billedAnnually={billedAnnually}
                 monthlyBilling={monthlyBilling}
                 yearlyBilling={yearlyBilling}
@@ -238,8 +256,9 @@ export default function PricingTable({
               selected={selected}
               yearly={yearly}
               setYearly={setYearly}
-              subscribe={currentPlan ? changePlanText : subscribeText}
-              currentPlan={currentPlanText}
+              subscribe={currentPlanExists ? updatePlanText : subscribeText}
+              currentPlan={currentPlan}
+              currentPlanText={currentPlanText}
               billedAnnually={billedAnnually}
               monthlyBilling={monthlyBilling}
               yearlyBilling={yearlyBilling}

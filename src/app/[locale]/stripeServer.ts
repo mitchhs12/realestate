@@ -277,7 +277,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       redirect: {
         return_url:
           process.env.NODE_ENV === "development"
-            ? `https://localhost:3000/settings`
+            ? `http://localhost:3000/settings`
             : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
       },
     },
@@ -297,7 +297,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       redirect: {
         return_url:
           process.env.NODE_ENV === "development"
-            ? `https://localhost:3000/settings`
+            ? `http://localhost:3000/settings`
             : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
       },
     },
@@ -316,7 +316,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       customer: user.customerId,
       return_url:
         process.env.NODE_ENV === "development"
-          ? `https://localhost:3000/settings`
+          ? `http://localhost:3000/settings`
           : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
       locale: defaultLanguage,
       configuration: configuration,
@@ -359,7 +359,7 @@ export async function ChangeSpecificSub(
       redirect: {
         return_url:
           process.env.NODE_ENV === "development"
-            ? `https://localhost:3000/start`
+            ? `http://localhost:3000/start`
             : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/start`,
       },
     },
@@ -386,7 +386,7 @@ export async function ChangeSpecificSub(
     customer: user.customerId,
     return_url:
       process.env.NODE_ENV === "development"
-        ? `https://localhost:3000/start`
+        ? `http://localhost:3000/start`
         : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/start`,
     locale: defaultLanguage,
     configuration: configuration,

@@ -11,7 +11,7 @@ export default {
     "monthly": "Aylık",
     "yearly": "Yıllık: (6+ ay ücretsiz alın)",
     "current-plan": "Güncel Plan",
-    "change-plan": "Planı Değiştir",
+    "change-plan": "Yükseltme Planı",
     "billed-annually": "Yıllık olarak faturalandırılır",
     "subscribe": "Abone",
     "most-popular": "En Popüler",

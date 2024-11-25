@@ -11,7 +11,7 @@ export default {
     "monthly": "Mensual",
     "yearly": "Anual: (obtenga 6+ meses gratis)",
     "current-plan": "Plan actual",
-    "change-plan": "Plan de cambio",
+    "change-plan": "Plan de actualización",
     "billed-annually": "Facturado anualmente",
     "subscribe": "Suscribir",
     "most-popular": "Más populares",

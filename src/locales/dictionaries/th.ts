@@ -11,7 +11,7 @@ export default {
     "monthly": "รายเดือน",
     "yearly": "รายปี : (รับฟรี 6 เดือนขึ้นไป)",
     "current-plan": "แผนปัจจุบัน",
-    "change-plan": "แผนการเปลี่ยนแปลง",
+    "change-plan": "แผนอัพเกรด",
     "billed-annually": "เรียกเก็บเงินเป็นรายปี",
     "subscribe": "สมัครสมาชิก",
     "most-popular": "ได้รับความนิยมมากที่สุด",
