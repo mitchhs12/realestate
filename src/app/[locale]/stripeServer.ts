@@ -8,7 +8,14 @@ import { getScopedI18n } from "@/locales/server";
 import { createCoupon } from "./admin/actions";
 
 const getConfigId = (isSeller: boolean) => {
-  const configId = isSeller ? "bpc_1QOWTWLWTS7QT7kvbV10yCSt" : "bpc_1QOWTMLWTS7QT7kvlo9TCLo8";
+  const configId =
+    process.env.NODE_ENV === "development"
+      ? isSeller // development
+        ? "bpc_1QOWTWLWTS7QT7kvbV10yCSt"
+        : "bpc_1QOWTMLWTS7QT7kvlo9TCLo8"
+      : isSeller // production
+        ? "bpc_1QPYLoLWTS7QT7kvGK14M0Mp"
+        : "bpc_1QPYLfLWTS7QT7kvkC4hlzM5";
   return configId;
 };
 
