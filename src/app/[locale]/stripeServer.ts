@@ -284,7 +284,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
         return_url:
           process.env.NODE_ENV === "development"
             ? `http://localhost:3000/settings`
-            : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
+            : `https://www.vivaideal.com/${defaultLanguage}/settings`,
       },
     },
     subscription_cancel: {
@@ -304,7 +304,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
         return_url:
           process.env.NODE_ENV === "development"
             ? `http://localhost:3000/settings`
-            : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
+            : `https://www.vivaideal.com/${defaultLanguage}/settings`,
       },
     },
     subscription_update: {
@@ -323,7 +323,7 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       return_url:
         process.env.NODE_ENV === "development"
           ? `http://localhost:3000/settings`
-          : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/settings`,
+          : `https://www.vivaideal.com/${defaultLanguage}/settings`,
       locale: defaultLanguage,
       configuration: configuration,
       flow_data: flowType === "cancel" ? cancel : flowType === "subUpdate" ? subUpdate : updatePayment,
@@ -366,7 +366,7 @@ export async function ChangeSpecificSub(
         return_url:
           process.env.NODE_ENV === "development"
             ? `http://localhost:3000/start`
-            : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/start`,
+            : `https://www.vivaideal.com/${defaultLanguage}/start`,
       },
     },
     subscription_update_confirm: {
@@ -393,7 +393,7 @@ export async function ChangeSpecificSub(
     return_url:
       process.env.NODE_ENV === "development"
         ? `http://localhost:3000/start`
-        : `${process.env.NEXT_PUBLIC_BASE_URL}/${defaultLanguage}/start`,
+        : `https://www.vivaideal.com/${defaultLanguage}/start`,
     locale: defaultLanguage,
     configuration: configuration,
     flow_data: subUpdateConfirm,
