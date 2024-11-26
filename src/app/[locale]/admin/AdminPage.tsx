@@ -97,14 +97,14 @@ export default function AdminPage({ user }: Props) {
               <div className="flex gap-3 items-center">
                 Buyers:
                 <Button
-                  disabled={true}
+                  disabled={false}
                   onClick={() => {
                     createPortalConfig(false);
                   }}
                 >
                   Create
                 </Button>
-                <Button disabled={true} onClick={() => updatePortalConfig(false)}>
+                <Button disabled={false} onClick={() => updatePortalConfig(false)}>
                   Update
                 </Button>
                 <Button
@@ -120,14 +120,14 @@ export default function AdminPage({ user }: Props) {
               <div className="flex gap-3 items-center">
                 Sellers:
                 <Button
-                  disabled={true}
+                  disabled={false}
                   onClick={() => {
                     createPortalConfig(true);
                   }}
                 >
                   Create
                 </Button>
-                <Button disabled={true} onClick={() => updatePortalConfig(true)}>
+                <Button disabled={false} onClick={() => updatePortalConfig(true)}>
                   Update
                 </Button>
                 <Button
