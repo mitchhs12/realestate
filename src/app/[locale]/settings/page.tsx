@@ -34,8 +34,8 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     redirect("/api/auth/signin?callbackUrl=/settings");
   }
 
-  let buyerSubscription: Stripe.Subscription | null = null;
-  let sellerSubscription: Stripe.Subscription | null = null;
+  let buyerSubscription = null;
+  let sellerSubscription = null;
   if (user.buyerSubscriptionId) {
     buyerSubscription = await GetFullSubscription(user.buyerSubscriptionId);
   }
