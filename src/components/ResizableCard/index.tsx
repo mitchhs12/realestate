@@ -199,11 +199,6 @@ export default function ResizableCard({
             e.preventDefault();
             setVisibilityChanging(true);
             const result = await changeHomeVisibility(home.id, home.isActive, pathname);
-            if (result) {
-              console.log("result", result.isActive);
-              home.isActive = result.isActive;
-            }
-            setVisibilityChanging(false);
           }}
           size={"icon"}
           disabled={visibilityChanging}

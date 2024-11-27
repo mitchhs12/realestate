@@ -52,7 +52,7 @@ export async function changeHomeVisibility(homeId: number, currentState: boolean
     },
   });
 
-  revalidatePath("/my-properties");
+  revalidatePath("/[locale]/my-properties", "page");
   return home;
 }
 
@@ -73,7 +73,7 @@ export async function deleteHome(homeId: number) {
       isActive: false,
     },
   });
-  revalidatePath("/my-properties");
+  revalidatePath("/[locale]/my-properties", "page");
   return home;
 }
 

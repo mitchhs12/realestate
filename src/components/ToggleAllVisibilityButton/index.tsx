@@ -4,6 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { changeAllHomeVisibilities } from "@/app/[locale]/my-properties/actions";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { HomeType } from "@/lib/validations";
 
 interface Props {
   hideAllText: string;
@@ -20,9 +21,9 @@ export default function ToggleAllVisbilityButton({ hideAllText, showAllText, all
 
   return (
     <Button
-      onClick={() => {
+      onClick={async () => {
         setIsLoading(true);
-        changeAllHomeVisibilities(allCompletedHomesActive);
+        await changeAllHomeVisibilities(allCompletedHomesActive);
       }}
       disabled={isLoading}
       className="text-xs sm:text-normal gap-3"

@@ -82,6 +82,10 @@ export default function MyHomes({
 
   useEffect(() => {
     sortHomes(user.homes);
+  }, [user]);
+
+  useEffect(() => {
+    sortHomes(user.homes);
   }, [sortOption]);
 
   const activeHomes = user.homes.filter((home) => home.isComplete);
