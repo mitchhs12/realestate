@@ -79,33 +79,6 @@ export async function POST(req: Request, res: NextApiResponse) {
         }
         break;
       }
-      case "invoice.payment_failed": {
-        const invoice = event.data.object as Stripe.Invoice;
-        const subscription = invoice.subscription as string;
-
-        const stripeSubscription = await stripe.subscriptions.retrieve(subscription);
-        const { metadata } = stripeSubscription;
-        const accountId = metadata?.accountId;
-        const isSeller = metadata?.userType === "seller" ? true : false;
-
-        if (accountId) {
-          // Handle payment failure logic (e.g., notifying the user, downgrading the listing)
-          if (isSeller) {
-            await prisma.user.update({
-              where: { id: accountId },
-              data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to default if payment fails
-            });
-          } else {
-            await prisma.user.update({
-              where: { id: accountId },
-              data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to default if payment fails
-            });
-          }
-        } else {
-          console.error("Missing accountId in subscription metadata.");
-        }
-        break;
-      }
       default:
         console.log(`Unhandled Event Type: ${event.type}`);
     }

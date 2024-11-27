@@ -256,6 +256,7 @@ export default function SettingsPage({
                     <Button
                       className="bg-primary hover:bg-primary/90 w-full"
                       onClick={() => {
+                        setSellerSubscriptionLoading(true);
                         getBillingUrl(true, "subUpdate");
                       }}
                       disabled={sellerSubscriptionLoading}
