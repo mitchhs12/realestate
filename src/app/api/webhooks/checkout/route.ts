@@ -58,6 +58,42 @@ export async function POST(req: Request, res: NextApiResponse) {
         }
         break;
       }
+      // make all homes premium
+      case "customer.subscription.updated": {
+        const session = event.data.object;
+        const metadata = session?.metadata;
+        const accountId = metadata?.accountId;
+        const isSeller = metadata?.userType === "seller" ? true : false;
+        const subscriptionId = event.data.object.id as string;
+        const plan = await GetSubscription(subscriptionId);
+
+        if (accountId && plan) {
+          if (isSeller) {
+            console.log("adding premium to ", accountId);
+            console.log("plan", plan);
+            if (plan.name === "premium") {
+              // Update the home listing in the database to "premium"
+              await prisma.home.updateMany({
+                where: { ownerId: accountId },
+                data: {
+                  listingType: "premium",
+                },
+              });
+            } else {
+              console.log("removing premium from", accountId);
+              await prisma.home.updateMany({
+                where: { ownerId: accountId },
+                data: {
+                  listingType: null,
+                },
+              });
+            }
+          }
+        } else {
+          console.error("Missing accountId in subscription metadata.");
+        }
+        break;
+      }
       case "customer.subscription.deleted": {
         const accountId = event.data.object.metadata.accountId;
         const isSeller = event.data.object.metadata.userType === "seller" ? true : false;
