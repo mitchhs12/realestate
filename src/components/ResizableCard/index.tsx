@@ -70,12 +70,6 @@ export default function ResizableCard({
       ? getCountryNameForLocale(iso.iso2, defaultLanguage || home.country || "")
       : home?.country;
 
-  useEffect(() => {
-    if (home) {
-      console.log("home", home.id, "isActive", home.isActive);
-    }
-  }, [home]);
-
   return !home || isLoading ? (
     <div
       className={`flex flex-col h-full w-full shadow-lg rounded-xl overflow-hidden ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
@@ -198,7 +192,7 @@ export default function ResizableCard({
             e.stopPropagation();
             e.preventDefault();
             setVisibilityChanging(true);
-            const result = await changeHomeVisibility(home.id, home.isActive, pathname);
+            await changeHomeVisibility(home.id, home.isActive, pathname);
           }}
           size={"icon"}
           disabled={visibilityChanging}
@@ -207,7 +201,7 @@ export default function ResizableCard({
           {!visibilityChanging ? home.isActive ? <Eye /> : <EyeOff /> : <ReloadIcon className="animate-spin w-5 h-5" />}
         </Button>
       )}
-      {isMyProperties || (isSell && user?.id === home.ownerId && <DeleteButton homeId={home.id} />)}
+      {(isMyProperties || isSell) && user?.id === home.ownerId && <DeleteButton homeId={home.id} />}
     </div>
   );
 }
