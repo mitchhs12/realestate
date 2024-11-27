@@ -54,24 +54,17 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
           title: t("premium.perks.2.title"),
           subtitle: t("premium.perks.2.subtitle"),
         },
-      ],
-    },
-    standard: {
-      title: t("standard.title"),
-      subtitle: t("standard.subtitle"),
-      price: t("standard.price"),
-      perks: [
         {
-          title: t("standard.perks.0.title"),
-          subtitle: t("standard.perks.0.subtitle"),
+          title: t("premium.perks.3.title"),
+          subtitle: t("premium.perks.3.subtitle"),
         },
         {
-          title: t("standard.perks.1.title"),
-          subtitle: t("standard.perks.1.subtitle"),
+          title: t("premium.perks.4.title"),
+          subtitle: t("premium.perks.4.subtitle"),
         },
         {
-          title: t("standard.perks.2.title"),
-          subtitle: t("standard.perks.2.subtitle"),
+          title: t("premium.perks.5.title"),
+          subtitle: t("premium.perks.5.subtitle"),
         },
       ],
     },
@@ -86,7 +79,6 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
       title={checkoutData.title}
       subtitle={checkoutData.subtitle}
       premium={checkoutData.premium}
-      standard={checkoutData.standard}
       paidText={t("paidText")}
     />
   );

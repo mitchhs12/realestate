@@ -62,8 +62,6 @@ export default function PriceCard({
   isSeller,
 }: Props) {
   const { sessionLoading, defaultCurrency } = useContext(LocaleContext);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [buttonDisabledSet, setButtonDisabledSet] = useState(false);
 
   useEffect(() => {
     if (!sessionLoading && currentPlan) {
@@ -90,9 +88,9 @@ export default function PriceCard({
   };
 
   return (
-    <div className={`flex w-full h-[850px] justify-center items-center`}>
+    <div className={`flex w-full h-full justify-center items-center`}>
       {sessionLoading ? (
-        <Skeleton className="flex flex-grow w-full h-full" />
+        <Skeleton className="flex flex-grow w-[30vw] h-[60vh]" />
       ) : (
         defaultCurrency && (
           <Card

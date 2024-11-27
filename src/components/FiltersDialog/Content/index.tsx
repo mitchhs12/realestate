@@ -79,7 +79,7 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
 
   return (
     <>
-      <DialogContent className="flex flex-col h-[85%] w-[85%] p-4 rounded-md">
+      <DialogContent className="flex flex-col h-[90%] w-[90%] p-4 rounded-md">
         <DialogHeader>
           <DialogTitle>{search}</DialogTitle>
           <DialogDescription>{filters}</DialogDescription>

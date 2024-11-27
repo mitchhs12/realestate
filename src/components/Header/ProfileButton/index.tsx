@@ -19,7 +19,7 @@ import {
 import { CircleUser, Menu, Sparkles } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { languages, LanguageType, locales } from "@/lib/validations";
 import { useContext, useEffect, useState } from "react";
@@ -49,6 +49,7 @@ import {
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import AIContent from "@/components/InteriorAI/Content";
 import { I18nProviderClient } from "@/locales/client";
+import PricingDialog from "@/components/StartPageContent/Dialog";
 
 interface Props {
   openSignUpModal: () => void;
@@ -70,6 +71,7 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
   const { setTheme } = useTheme();
   const changeLang = useChangeLocale();
   const [modalOpen, setModalOpen] = useState(false);
+  const [openPricing, setOpenPricing] = useState(false);
   const {
     greeting,
     log_in,
@@ -88,14 +90,23 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
     admin,
   } = headerValues;
 
+  const pathname = usePathname();
+
+  const redirectUrl =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:3000/${defaultLanguage}${pathname}`
+      : `https://www.vivaideal.com/${defaultLanguage}${pathname}`;
+
   const handleUpdateLanguage = async (newLang: LanguageType) => {
     await updateLanguage({ language: newLang });
     changeLang(newLang);
   };
 
   useEffect(() => {
-    console.log("Modal Open State: ", modalOpen);
-  }, [modalOpen]);
+    if (openPricing) {
+      setModalOpen(false);
+    }
+  }, [openPricing]);
 
   // Function to get initials from username
   const getInitials = (username: string) => {
@@ -175,8 +186,13 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
                   onOpenAutoFocus={(e) => e.preventDefault()}
                 >
                   <I18nProviderClient locale={defaultLanguage}>
-                    <AIContent />
+                    <AIContent setOpenPricing={setOpenPricing} />
                   </I18nProviderClient>
+                </DialogContent>
+              </Dialog>
+              <Dialog open={openPricing} onOpenChange={setOpenPricing}>
+                <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
+                  <PricingDialog redirectUrl={redirectUrl} />
                 </DialogContent>
               </Dialog>
             </DropdownMenuGroup>

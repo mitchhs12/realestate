@@ -100,7 +100,7 @@ export default function FiltersDialog() {
       </Button>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="flex flex-col h-[85%] w-[85%] p-4 rounded-md">
+        <DialogContent className="flex flex-col h-[90%] w-[90%] p-4 rounded-md">
           <DialogHeader>
             <DialogTitle>{filters}</DialogTitle>
             <DialogClose asChild />

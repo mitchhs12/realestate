@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "チェックアウト",
-      "subtitle": "リストの種類を選択してください",
+      "subtitle": "プレミアムにアップグレードしますか?",
       "paidText": "有料",
       "premium": {
         "title": "プレミアム",
@@ -624,28 +624,22 @@
           "2": {
             "title": "ソーシャルメディアプロモーション",
             "subtitle": "あなたのリストは当社のソーシャル メディア チャネルで宣伝されます。"
+          },
+          "3": {
+            "title": "動画のアップロード",
+            "subtitle": "動画を追加する"
+          },
+          "4": {
+            "title": "ゴールドプレミアムバナー",
+            "subtitle": "あなたの物件をプレミアムリストとして宣伝しましょう。"
+          },
+          "5": {
+            "title": "AIデザインスタジオへのアクセス",
+            "subtitle": "たった 1 回のクリックで、どのように物件を再設計できるかを示します。"
           }
         }
       },
-      "standard": {
-        "title": "標準",
-        "subtitle": "基本的な機能のリスト",
-        "price": "無料！",
-        "perks": {
-          "0": {
-            "title": "標準リスト",
-            "subtitle": "あなたの物件は基本的な可視性でリストされます。"
-          },
-          "1": {
-            "title": "基本サポート",
-            "subtitle": "24 ～ 48 時間以内にサポートを受けられます。"
-          },
-          "2": {
-            "title": "限定写真",
-            "subtitle": "最大5枚の写真をアップロードします。"
-          }
-        }
-      }
+      "no-thanks": "いいえ、結構です。現在の計画を続けます。"
     },
     "contact": {
       "title": "接触",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "写真",
-      "requirement": "少なくとも 5 枚の写真をアップロードしてください。",
-      "restriction": "最大20枚の写真をアップロードできます。",
+      "requirement": "少なくとも 5 枚の写真をアップロードする必要があります。",
+      "restriction-starter": "最大5枚の写真をアップロードします。",
+      "restriction-pro": "最大 15 枚の写真をアップロードします。",
+      "restriction-premium": "最大30枚の写真をアップロードできます。",
+      "restriction-business": "最大 50 枚の写真をアップロードできます。",
       "drag": "写真をドラッグして順序を並べ替えます。",
+      "photo-warning-starter": "スタータープランの最大枚数の写真をアップロードしました。",
+      "photo-warning-pro": "プロプランの最大枚数の写真をアップロードしました。",
+      "photo-warning-premium": "プレミアムプランの最大枚数の写真をアップロードしました。",
+      "photo-warning-business": "ビジネスプランの最大枚数の写真をアップロードしました。",
+      "upgrade-plan": "プランをアップグレードしてさらにアップロードしましょう",
+      "upgrade-button": "アップグレードプラン",
       "maximum": "アップロードした写真の数が上限に達しました。",
       "onlyImages": "アップロードできるのは画像のみです。",
       "tooNarrow": "画像の 1 つが狭すぎます。幅の広い画像をアップロードしてください。",
@@ -840,6 +843,9 @@
     "images-expire-warning": "画像は1時間で期限切れになります",
     "fetching-previous-generations": "前の世代の取得",
     "images-get-started": "始める前にいくつかの画像を生成してください。",
+    "fail": "デザインの生成に失敗しました。",
+    "subscribe-button": "アップグレードプラン",
+    "subscribe-warning": "Insight、Premium、Business、またはMaxプランにご登録ください。",
     "created": "作成",
     "upload-new": "新規アップロード",
     "old-photo": "前の",

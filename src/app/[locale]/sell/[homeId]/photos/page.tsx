@@ -34,7 +34,40 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
   const t = await getScopedI18n("sell.photos");
   const title = t("title");
   const requirement = t("requirement");
-  const restriction = t("restriction");
+  const photoWarningStarter = t("photo-warning-starter");
+  const photoWarningpro = t("photo-warning-pro");
+  const photoWarningpremium = t("photo-warning-premium");
+  const photoWarningbusiness = t("photo-warning-business");
+  const restrictionStarter = t("restriction-starter");
+  const restrictionPro = t("restriction-pro");
+  const restrictionPremium = t("restriction-premium");
+  const restrictionBusiness = t("restriction-business");
+
+  const uploadLimit =
+    user.sellerSubscription === "starter"
+      ? 5
+      : user.sellerSubscription === "pro"
+        ? 15
+        : user.sellerSubscription === "premium"
+          ? 30
+          : 50;
+
+  const photoRestrictions = {
+    starter: restrictionStarter,
+    pro: restrictionPro,
+    premium: restrictionPremium,
+    business: restrictionBusiness,
+  };
+  const photoWarnings = {
+    starter: photoWarningStarter,
+    pro: photoWarningpro,
+    premium: photoWarningpremium,
+    business: photoWarningbusiness,
+  };
+  const upgrade = {
+    upgradePlan: t("upgrade-plan"),
+    upgradeButton: t("upgrade-button"),
+  };
   const drag = t("drag");
   const maximum = t("maximum");
   const onlyImages = t("onlyImages");
@@ -44,13 +77,17 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
 
   return (
     <Photos
+      user={user}
+      uploadLimit={uploadLimit}
       currentHome={unfinishedHome}
       sellFlowIndices={{ innerIndex, outerIndex }}
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
       title={title}
       requirement={requirement}
-      restriction={restriction}
+      upgrade={upgrade}
+      photoRestrictions={photoRestrictions}
+      photoWarnings={photoWarnings}
       drag={drag}
       maximum={maximum}
       onlyImages={onlyImages}

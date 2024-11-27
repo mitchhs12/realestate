@@ -10,7 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import { CompareSlider } from "@/components/ReactCompareSlider";
 import { roomTypesMap, roomStylesMap, propertyStylesMap, typesMap } from "@/lib/sellFlowData";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -25,14 +25,16 @@ import { typeIcons } from "@/components/Icons/typeIcons";
 import { useScopedI18n } from "@/locales/client";
 import { useTheme } from "next-themes";
 import ImageUpload from "@/components/ImageUpload";
+import { useRouter } from "next/navigation";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 interface Props {
   imageUrl?: string;
+  setOpenPricing: (value: boolean) => void;
 }
 
-export default function AIContent({ imageUrl }: Props) {
+export default function AIContent({ imageUrl, setOpenPricing }: Props) {
   const [newPredictionId, setNewPredictionId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -55,6 +57,7 @@ export default function AIContent({ imageUrl }: Props) {
   const [previousGenerations, setPreviousGenerations] = useState<any[]>([]);
   const [fetchingPrevious, setFetchingPrevious] = useState<boolean>(true);
   const { user } = useContext(LocaleContext);
+
   const HomeIcon = typeIcons["house"];
   const RoomIcon = typeIcons["room"];
   const t = useScopedI18n("ai-studio");
@@ -107,16 +110,23 @@ export default function AIContent({ imageUrl }: Props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: user?.id,
         imageUrl: originalImage,
         type: isRoom,
         room: type,
         style: style,
       }),
     });
-
     const data = await result.json();
-    setNewPredictionId(data.id);
+    if (result.status !== 200) {
+      setError(data.error || "An error occurred");
+      if (data.accountValid === false) {
+        setStatus("subscribe");
+      } else {
+        setStatus("failed");
+      }
+    } else {
+      setNewPredictionId(data.id);
+    }
   }
 
   useEffect(() => {
@@ -203,7 +213,7 @@ export default function AIContent({ imageUrl }: Props) {
       </DialogHeader>
       <div className="flex flex-col justify-start w-full h-full overflow-y-auto gap-6">
         <div className="flex justify-center items-start w-full">
-          <div className="flex flex-col justify-start items-center gap-3 w-[500px] h-full px-4">
+          <div className="flex flex-col justify-start items-center gap-3 w-[600px] h-full px-4">
             <div className="flex w-full gap-3">
               <div className="flex text-nowrap items-center gap-3">{t("redesign")}</div>
               <Button
@@ -269,14 +279,20 @@ export default function AIContent({ imageUrl }: Props) {
             <div className="flex flex-col gap-3">
               <Button
                 variant="default"
-                className="flex justify-center items-center gap-3 text-md"
-                onClick={callRedesign}
+                className={`flex justify-center items-center gap-3 text-md`}
+                onClick={() => {
+                  status === "subscribe" ? setOpenPricing(true) : callRedesign();
+                }}
                 disabled={status === "pending" || !type || !style || (!imageUrl && !uploadedImage)}
               >
                 {status === "pending" ? (
                   <span className="flex justify-center items-center gap-3">
                     <ReloadIcon className="animate-spin w-6 h-6" />
                     <p>{t("executeButton.loading")}</p>
+                  </span>
+                ) : status === "subscribe" ? (
+                  <span className="flex justify-center items-center">
+                    <p>{t("subscribe-button")}</p>
                   </span>
                 ) : (
                   <span className="flex justify-center items-center gap-3">
@@ -285,6 +301,7 @@ export default function AIContent({ imageUrl }: Props) {
                   </span>
                 )}
               </Button>
+              {status === "subscribe" && <h3 className="text-center">{t("subscribe-warning")}</h3>}
             </div>
           </div>
         </div>
@@ -365,7 +382,7 @@ export default function AIContent({ imageUrl }: Props) {
                   </div>
                 </div>
               ) : status === "failed" ? (
-                <p className="text-center text-red-500">Failed to generate design!</p>
+                <p className="text-center text-red-500">{t("fail")}</p>
               ) : (
                 (generatedImage || historicalImage) && (
                   <Image
@@ -457,7 +474,7 @@ export default function AIContent({ imageUrl }: Props) {
                   </div>
                 </div>
               ) : status === "failed" ? (
-                <p className="text-center text-red-500">Failed to generate design!</p>
+                <p className="text-center text-red-500">{t("fail")}</p>
               ) : (
                 (generatedImage || historicalImage) && (
                   <CompareSlider

@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "Vérifier",
-      "subtitle": "Sélectionnez votre type d'annonce",
+      "subtitle": "Voulez-vous passer à Premium ?",
       "paidText": "Payé",
       "premium": {
         "title": "Prime",
@@ -624,28 +624,22 @@
           "2": {
             "title": "Promotion des médias sociaux",
             "subtitle": "Votre annonce sera promue sur nos réseaux sociaux."
+          },
+          "3": {
+            "title": "Téléchargements de vidéos",
+            "subtitle": "Ajoutez des vidéos à votre"
+          },
+          "4": {
+            "title": "Bannière Premium en or",
+            "subtitle": "Annoncez vos propriétés en tant qu'annonce premium."
+          },
+          "5": {
+            "title": "Accès à AI Design Studio",
+            "subtitle": "Montrez comment les gens pourraient réaménager votre propriété en un seul clic."
           }
         }
       },
-      "standard": {
-        "title": "Standard",
-        "subtitle": "Liste avec les fonctionnalités de base",
-        "price": "Gratuit!",
-        "perks": {
-          "0": {
-            "title": "Liste standard",
-            "subtitle": "Votre propriété sera répertoriée avec une visibilité de base."
-          },
-          "1": {
-            "title": "Assistance de base",
-            "subtitle": "Obtenez de l'aide dans les 24 à 48 heures."
-          },
-          "2": {
-            "title": "Photos limitées",
-            "subtitle": "Téléchargez jusqu'à 5 photos."
-          }
-        }
-      }
+      "no-thanks": "Non merci, je vais m'en tenir à mon plan actuel."
     },
     "contact": {
       "title": "Contact",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "Photos",
-      "requirement": "Téléchargez au moins 5 photos.",
-      "restriction": "Téléchargez jusqu'à 20 photos.",
+      "requirement": "Vous devez télécharger au moins 5 photos.",
+      "restriction-starter": "Téléchargez jusqu'à 5 photos.",
+      "restriction-pro": "Téléchargez jusqu'à 15 photos.",
+      "restriction-premium": "Téléchargez jusqu'à 30 photos.",
+      "restriction-business": "Téléchargez jusqu'à 50 photos.",
       "drag": "Faites glisser vos photos pour réorganiser leur ordre.",
+      "photo-warning-starter": "Vous avez téléchargé le nombre maximum de photos pour le plan Starter.",
+      "photo-warning-pro": "Vous avez téléchargé le nombre maximum de photos pour le forfait Pro.",
+      "photo-warning-premium": "Vous avez téléchargé le nombre maximum de photos pour le forfait Premium.",
+      "photo-warning-business": "Vous avez téléchargé le nombre maximum de photos pour le plan Business.",
+      "upgrade-plan": "Mettez à niveau votre forfait pour télécharger davantage",
+      "upgrade-button": "Plan de mise à niveau",
       "maximum": "Vous avez téléchargé le nombre maximum de photos.",
       "onlyImages": "Vous ne pouvez télécharger que des images.",
       "tooNarrow": "L'une de vos images est trop étroite. Veuillez télécharger une image avec une largeur plus grande.",
@@ -840,6 +843,9 @@
     "images-expire-warning": "Les images expirent dans 1 heure",
     "fetching-previous-generations": "Récupérer les générations précédentes",
     "images-get-started": "Générez quelques images pour commencer !",
+    "fail": "Échec de la génération de la conception !",
+    "subscribe-button": "Plan de mise à niveau",
+    "subscribe-warning": "Veuillez vous abonner au forfait Insight, Premium, Business ou Max !",
     "created": "Créé",
     "upload-new": "Nouveau téléchargement",
     "old-photo": "Précédent",

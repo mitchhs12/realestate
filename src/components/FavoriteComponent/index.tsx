@@ -35,7 +35,7 @@ export function FavoriteComponent({ user, home, large }: Props) {
         />
       </DialogTrigger>
       <DialogContent
-        className="w-[85%] max-w-5xl h-full max-h-[540px] rounded-md p-0"
+        className="w-[90%] max-w-5xl h-full max-h-[540px] rounded-md p-0"
         close={false}
         onOpenAutoFocus={(e) => e.preventDefault()}
       >

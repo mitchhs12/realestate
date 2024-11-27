@@ -607,7 +607,7 @@ export default {
     },
     "checkout": {
       "title": "Kasse",
-      "subtitle": "Wählen Sie Ihren Inseratstyp aus",
+      "subtitle": "Möchten Sie auf Premium upgraden?",
       "paidText": "Bezahlt",
       "premium": {
         "title": "Prämie",
@@ -624,28 +624,22 @@ export default {
           "2": {
             "title": "Social Media-Werbung",
             "subtitle": "Ihr Eintrag wird auf unseren Social-Media-Kanälen beworben."
+          },
+          "3": {
+            "title": "Video-Uploads",
+            "subtitle": "Fügen Sie Videos zu Ihrem"
+          },
+          "4": {
+            "title": "Gold-Premium-Banner",
+            "subtitle": "Bewerben Sie Ihre Immobilien als Premium-Inserat."
+          },
+          "5": {
+            "title": "Zugriff auf AI Design Studio",
+            "subtitle": "Zeigen Sie, wie Menschen Ihr Anwesen mit nur einem Klick umgestalten könnten."
           }
         }
       },
-      "standard": {
-        "title": "Standard",
-        "subtitle": "Liste mit Grundfunktionen",
-        "price": "Frei!",
-        "perks": {
-          "0": {
-            "title": "Standardauflistung",
-            "subtitle": "Ihre Immobilie wird mit grundlegender Sichtbarkeit gelistet."
-          },
-          "1": {
-            "title": "Grundlegende Unterstützung",
-            "subtitle": "Erhalten Sie innerhalb von 24–48 Stunden Unterstützung."
-          },
-          "2": {
-            "title": "Begrenzte Fotos",
-            "subtitle": "Laden Sie bis zu 5 Fotos hoch."
-          }
-        }
-      }
+      "no-thanks": "Nein danke, ich bleibe bei meinem aktuellen Plan."
     },
     "contact": {
       "title": "Kontakt",
@@ -707,9 +701,18 @@ export default {
     },
     "photos": {
       "title": "Fotos",
-      "requirement": "Laden Sie mindestens 5 Fotos hoch.",
-      "restriction": "Laden Sie bis zu 20 Fotos hoch.",
+      "requirement": "Sie müssen mindestens 5 Fotos hochladen.",
+      "restriction-starter": "Laden Sie bis zu 5 Fotos hoch.",
+      "restriction-pro": "Laden Sie bis zu 15 Fotos hoch.",
+      "restriction-premium": "Laden Sie bis zu 30 Fotos hoch.",
+      "restriction-business": "Laden Sie bis zu 50 Fotos hoch.",
       "drag": "Ziehen Sie Ihre Fotos, um ihre Reihenfolge zu ändern.",
+      "photo-warning-starter": "Sie haben die maximale Anzahl an Fotos für den Starter-Plan hochgeladen.",
+      "photo-warning-pro": "Sie haben die maximale Anzahl an Fotos für den Pro-Plan hochgeladen.",
+      "photo-warning-premium": "Sie haben die maximale Anzahl an Fotos für den Premium-Plan hochgeladen.",
+      "photo-warning-business": "Sie haben die maximale Anzahl an Fotos für den Business-Plan hochgeladen.",
+      "upgrade-plan": "Aktualisieren Sie Ihren Plan, um mehr hochzuladen",
+      "upgrade-button": "Upgrade-Plan",
       "maximum": "Sie haben die maximale Anzahl an Fotos hochgeladen.",
       "onlyImages": "Sie können nur Bilder hochladen.",
       "tooNarrow": "Eines Ihrer Bilder ist zu schmal. Bitte laden Sie ein Bild mit einer größeren Breite hoch.",
@@ -840,6 +843,9 @@ export default {
     "images-expire-warning": "Bilder laufen in 1 Stunde ab",
     "fetching-previous-generations": "Abrufen vorheriger Generationen",
     "images-get-started": "Erstellen Sie einige Bilder, um loszulegen!",
+    "fail": "Design konnte nicht generiert werden!",
+    "subscribe-button": "Upgrade-Plan",
+    "subscribe-warning": "Bitte abonnieren Sie den Insight-, Premium-, Business- oder Max-Plan!",
     "created": "Erstellt",
     "upload-new": "Neuer Upload",
     "old-photo": "Vorherige",

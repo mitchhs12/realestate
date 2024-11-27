@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "Odjava",
-      "subtitle": "Odaberite vrstu unosa",
+      "subtitle": "Želite li prijeći na Premium?",
       "paidText": "Plaćeno",
       "premium": {
         "title": "Premija",
@@ -624,28 +624,22 @@
           "2": {
             "title": "Promocija na društvenim mrežama",
             "subtitle": "Vaš unos će biti promoviran na našim kanalima društvenih medija."
+          },
+          "3": {
+            "title": "Video prijenosi",
+            "subtitle": "Dodajte videozapise u svoj"
+          },
+          "4": {
+            "title": "Zlatni Premium banner",
+            "subtitle": "Oglašavajte svoje nekretnine kao vrhunski oglas."
+          },
+          "5": {
+            "title": "Pristup AI Design Studiju",
+            "subtitle": "Pokažite kako ljudi mogu redizajnirati vašu nekretninu u samo 1 kliku."
           }
         }
       },
-      "standard": {
-        "title": "Standard",
-        "subtitle": "Popis s osnovnim značajkama",
-        "price": "Besplatno!",
-        "perks": {
-          "0": {
-            "title": "Standardni popis",
-            "subtitle": "Vaša nekretnina bit će navedena s osnovnom vidljivošću."
-          },
-          "1": {
-            "title": "Osnovna podrška",
-            "subtitle": "Dobijte podršku u roku od 24-48 sati."
-          },
-          "2": {
-            "title": "Ograničene fotografije",
-            "subtitle": "Učitajte do 5 fotografija."
-          }
-        }
-      }
+      "no-thanks": "Ne hvala, držat ću se svog trenutnog plana."
     },
     "contact": {
       "title": "Kontakt",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "Fotografije",
-      "requirement": "Učitajte najmanje 5 fotografija.",
-      "restriction": "Učitajte do 20 fotografija.",
+      "requirement": "Morate učitati najmanje 5 fotografija.",
+      "restriction-starter": "Učitajte do 5 fotografija.",
+      "restriction-pro": "Učitajte do 15 fotografija.",
+      "restriction-premium": "Učitajte do 30 fotografija.",
+      "restriction-business": "Učitajte do 50 fotografija.",
       "drag": "Povucite fotografije da biste promijenili redoslijed.",
+      "photo-warning-starter": "Prenijeli ste maksimalnu količinu fotografija za početni plan.",
+      "photo-warning-pro": "Prenijeli ste maksimalnu količinu fotografija za Pro plan.",
+      "photo-warning-premium": "Prenijeli ste maksimalnu količinu fotografija za Premium plan.",
+      "photo-warning-business": "Učitali ste maksimalan broj fotografija za poslovni plan.",
+      "upgrade-plan": "Nadogradite svoj plan za prijenos više",
+      "upgrade-button": "Plan nadogradnje",
       "maximum": "Učitali ste maksimalan broj fotografija.",
       "onlyImages": "Možete učitavati samo slike.",
       "tooNarrow": "Jedna od vaših slika je preuska. Učitajte sliku veće širine.",
@@ -840,6 +843,9 @@
     "images-expire-warning": "Slike ističu za 1 sat",
     "fetching-previous-generations": "Dohvaćanje prethodnih generacija",
     "images-get-started": "Generirajte nekoliko slika za početak!",
+    "fail": "Generiranje dizajna nije uspjelo!",
+    "subscribe-button": "Plan nadogradnje",
+    "subscribe-warning": "Pretplatite se na paket Insight, Premium, Business ili Max!",
     "created": "Stvoreno",
     "upload-new": "Novo učitavanje",
     "old-photo": "Prethodno",

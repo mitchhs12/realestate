@@ -34,15 +34,37 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { HomeType } from "@/lib/validations";
+import { User } from "next-auth";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import PricingDialog from "@/components/StartPageContent/Dialog";
+import { usePathname } from "next/navigation";
+import { LocaleContext } from "@/context/LocaleContext";
 
 interface Props {
+  user: User;
+  uploadLimit: number;
   currentHome: HomeType | null;
   sellFlatIndex: number;
   sellFlowIndices: { outerIndex: number; innerIndex: number };
   stepPercentage: number[];
   title: string;
   requirement: string;
-  restriction: string;
+  upgrade: {
+    upgradePlan: string;
+    upgradeButton: string;
+  };
+  photoRestrictions: {
+    starter: string;
+    pro: string;
+    premium: string;
+    business: string;
+  };
+  photoWarnings: {
+    starter: string;
+    pro: string;
+    premium: string;
+    business: string;
+  };
   drag: string;
   maximum: string;
   onlyImages: string;
@@ -115,13 +137,17 @@ function SortableItem({
 }
 
 export default function Photos({
+  user,
+  uploadLimit,
   currentHome,
   sellFlatIndex,
   sellFlowIndices,
   stepPercentage,
   title,
   requirement,
-  restriction,
+  upgrade,
+  photoRestrictions,
+  photoWarnings,
   drag,
   maximum,
   onlyImages,
@@ -145,6 +171,13 @@ export default function Photos({
   const [activeId, setActiveId] = useState<string | null>(null);
   const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { defaultLanguage } = useContext(LocaleContext);
+  const pathname = usePathname();
+  const redirectUrl =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:3000/${defaultLanguage}${pathname}`
+      : `https://www.vivaideal.com/${defaultLanguage}${pathname}`;
+  const sellerSubscription = user?.sellerSubscription as keyof typeof photoRestrictions;
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -223,8 +256,8 @@ export default function Photos({
       return;
     }
 
-    if (files.length + uploadedImageUrls.length > 12) {
-      setErrorMessage(restriction);
+    if (files.length + uploadedImageUrls.length > uploadLimit) {
+      setErrorMessage(photoWarnings[sellerSubscription]);
       setIsUploading(false);
       return;
     }
@@ -325,11 +358,26 @@ export default function Photos({
             <h1 className="flex items-center text-3xl">{title}</h1>
           </div>
           <div className="flex flex-col px-8 mt-5">
-            <h3 className={`text-lg w-full ${uploadedImageUrls.length === 12 && "text-green-500"}`}>
-              {uploadedImageUrls.length < 5 ? requirement : uploadedImageUrls.length < 20 ? restriction : maximum}
+            <h3 className={`text-lg w-full`}>
+              {uploadedImageUrls.length > 0 && <h4>{drag}</h4>}
+              {uploadedImageUrls.length < 5 && <h4>{requirement}</h4>}
+              {uploadedImageUrls.length < uploadLimit ? (
+                photoRestrictions[sellerSubscription]
+              ) : (
+                <div className="flex flex-col gap-3">
+                  <div className="text-red-500">{maximum}</div>
+                  <div>{upgrade.upgradePlan}</div>
+                  <Dialog>
+                    <DialogTrigger>
+                      <Button>{upgrade.upgradeButton}</Button>
+                    </DialogTrigger>
+                    <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
+                      <PricingDialog redirectUrl={redirectUrl} sellersOnly={true} />
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              )}
             </h3>
-            {uploadedImageUrls.length > 0 && <h4>{drag}</h4>}
-            {uploadedImageUrls.length < 5 && <h4>{restriction}</h4>}
           </div>
         </div>
         <div className="flex flex-col px-8 gap-4 w-full lg:h-full justify-start items-center h-full overflow-auto">
@@ -370,7 +418,7 @@ export default function Photos({
                   )}
                 </DragOverlay>
               </DndContext>
-              {uploadedImageUrls.length < 12 && (
+              {uploadedImageUrls.length < uploadLimit && (
                 <div className="flex items-center justify-center border row-start-1 row-end-1 h-[112px] sm:h-[184px] lg:h-[252px]">
                   <Form {...form}>
                     <form className="flex justify-start space-y-6 w-full h-full">

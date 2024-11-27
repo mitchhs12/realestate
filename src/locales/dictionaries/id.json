@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "Check-out",
-      "subtitle": "Pilih jenis listing Anda",
+      "subtitle": "Apakah Anda ingin meningkatkan ke Premium?",
       "paidText": "Dibayar",
       "premium": {
         "title": "Premi",
@@ -624,28 +624,22 @@
           "2": {
             "title": "Promosi Media Sosial",
             "subtitle": "Daftar Anda akan dipromosikan di saluran media sosial kami."
+          },
+          "3": {
+            "title": "Unggahan Video",
+            "subtitle": "Tambahkan video ke"
+          },
+          "4": {
+            "title": "Spanduk Premium Emas",
+            "subtitle": "Iklankan properti Anda sebagai iklan premium."
+          },
+          "5": {
+            "title": "Akses ke AI Design Studio",
+            "subtitle": "Tunjukkan bagaimana orang dapat mendesain ulang properti Anda hanya dengan 1 klik."
           }
         }
       },
-      "standard": {
-        "title": "Standar",
-        "subtitle": "Daftar dengan fitur dasar",
-        "price": "Bebas!",
-        "perks": {
-          "0": {
-            "title": "Daftar Standar",
-            "subtitle": "Properti Anda akan terdaftar dengan visibilitas dasar."
-          },
-          "1": {
-            "title": "Dukungan Dasar",
-            "subtitle": "Dapatkan dukungan dalam waktu 24-48 jam."
-          },
-          "2": {
-            "title": "Foto Terbatas",
-            "subtitle": "Unggah hingga 5 foto."
-          }
-        }
-      }
+      "no-thanks": "Tidak, terima kasih. Aku akan tetap dengan rencanaku saat ini."
     },
     "contact": {
       "title": "Kontak",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "Foto",
-      "requirement": "Unggah setidaknya 5 foto.",
-      "restriction": "Unggah hingga 20 foto.",
+      "requirement": "Anda harus mengunggah setidaknya 5 foto.",
+      "restriction-starter": "Unggah hingga 5 foto.",
+      "restriction-pro": "Unggah hingga 15 foto.",
+      "restriction-premium": "Unggah hingga 30 foto.",
+      "restriction-business": "Unggah hingga 50 foto.",
       "drag": "Tarik foto Anda untuk mengatur ulang urutannya.",
+      "photo-warning-starter": "Anda telah mengunggah jumlah foto maksimum untuk paket Pemula.",
+      "photo-warning-pro": "Anda telah mengunggah jumlah foto maksimum untuk paket Pro.",
+      "photo-warning-premium": "Anda telah mengunggah jumlah foto maksimum untuk paket Premium.",
+      "photo-warning-business": "Anda telah mengunggah jumlah foto maksimum untuk paket Bisnis.",
+      "upgrade-plan": "Tingkatkan paket Anda untuk mengunggah lebih banyak",
+      "upgrade-button": "Rencana Peningkatan",
       "maximum": "Anda telah mengunggah foto dalam jumlah maksimum.",
       "onlyImages": "Anda hanya dapat mengunggah gambar.",
       "tooNarrow": "Salah satu gambar Anda terlalu sempit. Harap unggah gambar dengan lebar yang lebih besar.",
@@ -840,6 +843,9 @@
     "images-expire-warning": "Gambar Kedaluwarsa dalam 1 Jam",
     "fetching-previous-generations": "Mengambil Generasi Sebelumnya",
     "images-get-started": "Hasilkan beberapa gambar untuk memulai!",
+    "fail": "Gagal membuat desain!",
+    "subscribe-button": "Rencana Peningkatan",
+    "subscribe-warning": "Silakan berlangganan paket Insight, Premium, Business atau Max!",
     "created": "Dibuat",
     "upload-new": "Unggahan baru",
     "old-photo": "Sebelumnya",

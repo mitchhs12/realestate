@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "Confira",
-      "subtitle": "Selecione o seu tipo de listagem",
+      "subtitle": "Você quer fazer upgrade para Premium?",
       "paidText": "Pago",
       "premium": {
         "title": "Prêmio",
@@ -624,28 +624,22 @@
           "2": {
             "title": "Promoção de mídia social",
             "subtitle": "Seu anúncio será promovido em nossos canais de mídia social."
+          },
+          "3": {
+            "title": "Envios de vídeo",
+            "subtitle": "Adicione vídeos ao seu"
+          },
+          "4": {
+            "title": "Banner Premium Ouro",
+            "subtitle": "Anuncie seus imóveis como um anúncio premium."
+          },
+          "5": {
+            "title": "Acesso ao AI Design Studio",
+            "subtitle": "Mostre como as pessoas podem redesenhar sua propriedade com apenas 1 clique."
           }
         }
       },
-      "standard": {
-        "title": "Padrão",
-        "subtitle": "Lista com características básicas",
-        "price": "Livre!",
-        "perks": {
-          "0": {
-            "title": "Listagem Padrão",
-            "subtitle": "Seu imóvel será listado com visibilidade básica."
-          },
-          "1": {
-            "title": "Suporte Básico",
-            "subtitle": "Obtenha suporte dentro de 24 a 48 horas."
-          },
-          "2": {
-            "title": "Fotos limitadas",
-            "subtitle": "Envie até 5 fotos."
-          }
-        }
-      }
+      "no-thanks": "Não, obrigado. Vou continuar com meu plano atual."
     },
     "contact": {
       "title": "Contato",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "Fotos",
-      "requirement": "Envie pelo menos 5 fotos.",
-      "restriction": "Carregue até 20 fotos.",
+      "requirement": "Você deve enviar pelo menos 5 fotos.",
+      "restriction-starter": "Envie até 5 fotos.",
+      "restriction-pro": "Envie até 15 fotos.",
+      "restriction-premium": "Carregue até 30 fotos.",
+      "restriction-business": "Carregue até 50 fotos.",
       "drag": "Arraste suas fotos para reorganizá-las.",
+      "photo-warning-starter": "Você carregou a quantidade máxima de fotos para o plano Starter.",
+      "photo-warning-pro": "Você carregou a quantidade máxima de fotos para o plano Pro.",
+      "photo-warning-premium": "Você carregou a quantidade máxima de fotos para o plano Premium.",
+      "photo-warning-business": "Você carregou a quantidade máxima de fotos para o plano Business.",
+      "upgrade-plan": "Atualize seu plano para fazer upload de mais",
+      "upgrade-button": "Plano de atualização",
       "maximum": "Você carregou a quantidade máxima de fotos.",
       "onlyImages": "Você só pode carregar imagens.",
       "tooNarrow": "Uma das suas imagens é muito estreita. Por favor, carregue uma imagem com uma largura maior.",
@@ -840,6 +843,9 @@
     "images-expire-warning": "As imagens expiram em 1 hora",
     "fetching-previous-generations": "Buscando Gerações Anteriores",
     "images-get-started": "Gere algumas imagens para começar!",
+    "fail": "Falha ao gerar design!",
+    "subscribe-button": "Plano de atualização",
+    "subscribe-warning": "Assine o plano Insight, Premium, Business ou Max!",
     "created": "Criado",
     "upload-new": "Novo upload",
     "old-photo": "Anterior",

@@ -1,12 +1,11 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { SellContext } from "@/context/SellContext";
-import CheckoutCard from "./CheckoutCard";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
-import Stripe from "@/app/[locale]/stripe";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { usePathname } from "next/navigation";
+import PricingDialog from "@/components/StartPageContent/Dialog";
 
 interface Tier {
   title: string;
@@ -27,7 +26,6 @@ interface Props {
   title: string;
   subtitle: string;
   premium: Tier;
-  standard: Tier;
   paidText: string;
 }
 
@@ -38,9 +36,6 @@ export default function Checkout({
   stepPercentage,
   title,
   subtitle,
-  premium,
-  standard,
-  paidText,
 }: Props) {
   const {
     setSellFlowFlatIndex,
@@ -49,14 +44,16 @@ export default function Checkout({
     setNextLoading,
     setPrevLoading,
     setCurrentHome,
-    setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
 
-  const [selected, setSelected] = useState<string>(currentHome?.listingType ? currentHome?.listingType : "");
-  const { defaultCurrency } = useContext(LocaleContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const [hasPaid, setHasPaid] = useState(false);
+  const { defaultLanguage } = useContext(LocaleContext);
+
+  const pathname = usePathname();
+  const redirectUrl =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:3000/${defaultLanguage}${pathname}`
+      : `https://www.vivaideal.com/${defaultLanguage}${pathname}`;
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -73,15 +70,6 @@ export default function Checkout({
     }
   }, [currentHome]);
 
-  useEffect(() => {
-    if (currentHome) {
-      setNewHome({
-        ...currentHome,
-        listingType: selected,
-      });
-    }
-  }, [selected]);
-
   return (
     <>
       <div className="flex flex-col h-full w-full gap-y-20">
@@ -94,46 +82,11 @@ export default function Checkout({
               <h3 className="text-lg w-full">{subtitle}</h3>
             </div>
           </div>
-          {defaultCurrency && (
-            <div className={`flex flex-col md:flex-row justify-start w-full md:w-auto pb-6 gap-8 overflow-auto`}>
-              <CheckoutCard
-                id={"premium"}
-                perks={premium.perks}
-                title={premium.title}
-                description={premium.subtitle}
-                button={hasPaid ? paidText : premium.price}
-                buttonDisabled={true} // currently disabled because changed how purchasing works
-                originalPrice={premium.anchor}
-                buttonFunction={() => setIsOpen(true)}
-                selected={selected}
-                defaultCurrency={defaultCurrency}
-              />
-              <CheckoutCard
-                id={"standard"}
-                perks={standard.perks}
-                title={standard.title}
-                description={standard.subtitle}
-                button={standard.price}
-                buttonDisabled={hasPaid ? true : false}
-                buttonFunction={() => setSelected("standard")}
-                selected={selected}
-                defaultCurrency={defaultCurrency}
-              />
-            </div>
-          )}
+          <div>
+            <PricingDialog redirectUrl={redirectUrl} sellersOnly={true} justPremium={true} />
+          </div>
         </div>
       </div>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="p-0 border-0 bg-none w-80 md:w-full" close={false}>
-          {/* {defaultCurrency && currentHome && (
-            <Stripe
-              amount={defaultCurrency.usdPrice * (premium.price as number)}
-              defaultCurrency={defaultCurrency}
-              accountId={user?.id}
-            />
-          )} */}
-        </DialogContent>
-      </Dialog>
     </>
   );
 }

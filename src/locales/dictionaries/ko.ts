@@ -607,7 +607,7 @@ export default {
     },
     "checkout": {
       "title": "점검",
-      "subtitle": "리스트 유형을 선택하세요",
+      "subtitle": "프리미엄으로 업그레이드 하시겠습니까?",
       "paidText": "유급의",
       "premium": {
         "title": "프리미엄",
@@ -624,28 +624,22 @@ export default {
           "2": {
             "title": "소셜 미디어 프로모션",
             "subtitle": "귀하의 리스트는 당사의 소셜 미디어 채널에 홍보됩니다."
+          },
+          "3": {
+            "title": "비디오 업로드",
+            "subtitle": "비디오를 추가하세요"
+          },
+          "4": {
+            "title": "골드 프리미엄 배너",
+            "subtitle": "귀하의 부동산을 프리미엄 매물로 광고하세요."
+          },
+          "5": {
+            "title": "AI Design Studio에 접속",
+            "subtitle": "사람들이 단 한 번의 클릭으로 귀하의 부동산을 재설계할 수 있는 방법을 보여주세요."
           }
         }
       },
-      "standard": {
-        "title": "기준",
-        "subtitle": "기본 기능이 있는 목록",
-        "price": "무료!",
-        "perks": {
-          "0": {
-            "title": "표준 목록",
-            "subtitle": "귀하의 부동산은 기본적인 가시성을 갖추고 등록됩니다."
-          },
-          "1": {
-            "title": "기본 지원",
-            "subtitle": "24~48시간 내에 지원을 받으세요."
-          },
-          "2": {
-            "title": "제한된 사진",
-            "subtitle": "최대 5장의 사진을 업로드하세요."
-          }
-        }
-      }
+      "no-thanks": "아니요, 괜찮습니다. 지금의 계획을 고수하겠습니다."
     },
     "contact": {
       "title": "연락하다",
@@ -707,9 +701,18 @@ export default {
     },
     "photos": {
       "title": "사진",
-      "requirement": "최소 5장의 사진을 업로드하세요.",
-      "restriction": "최대 20장의 사진을 업로드하세요.",
+      "requirement": "최소 5장의 사진을 업로드해야 합니다.",
+      "restriction-starter": "최대 5장의 사진을 업로드하세요.",
+      "restriction-pro": "최대 15장의 사진을 업로드하세요.",
+      "restriction-premium": "최대 30장의 사진을 업로드하세요.",
+      "restriction-business": "최대 50장의 사진을 업로드하세요.",
       "drag": "사진을 드래그하여 순서를 바꾸세요.",
+      "photo-warning-starter": "Starter 플랜에 업로드할 수 있는 최대 사진 수를 초과했습니다.",
+      "photo-warning-pro": "Pro 플랜에 업로드할 수 있는 최대 사진 수를 초과했습니다.",
+      "photo-warning-premium": "프리미엄 플랜에 업로드할 수 있는 최대 사진 수를 초과했습니다.",
+      "photo-warning-business": "비즈니스 플랜에 대한 최대 한도의 사진을 업로드했습니다.",
+      "upgrade-plan": "더 많은 것을 업로드하려면 플랜을 업그레이드하세요",
+      "upgrade-button": "업그레이드 계획",
       "maximum": "업로드한 사진의 최대 개수에 도달했습니다.",
       "onlyImages": "이미지만 업로드할 수 있습니다.",
       "tooNarrow": "이미지 중 하나가 너무 좁습니다. 더 넓은 너비의 이미지를 업로드하세요.",
@@ -840,6 +843,9 @@ export default {
     "images-expire-warning": "이미지는 1시간 후에 만료됩니다",
     "fetching-previous-generations": "이전 세대 가져오기",
     "images-get-started": "시작하려면 이미지를 생성하세요!",
+    "fail": "디자인을 생성하는 데 실패했습니다!",
+    "subscribe-button": "업그레이드 계획",
+    "subscribe-warning": "Insight, Premium, Business 또는 Max 플랜을 구독하세요!",
     "created": "생성됨",
     "upload-new": "새로운 업로드",
     "old-photo": "이전의",

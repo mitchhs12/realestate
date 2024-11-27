@@ -513,45 +513,27 @@
     },
     "checkout": {
       "title": "Checkout",
-      "subtitle": "Select your listing type",
+      "subtitle": "Do you want to upgrade to Premium?",
       "paidText": "Paid",
       "premium": {
         "title": "Premium",
-        "subtitle": "Get more views and sell faster",
+        "subtitle": "Get more views and sell faster!",
         "perks": [
+          { "title": "Sell 100 Properties", "subtitle": "View the owner contact details for 100 properties." },
+          { "title": "View 100 Property Owners", "subtitle": "View the owner contact details for 100 properties." },
+          { "title": "Premium Support", "subtitle": "Responses in 8 hours." },
+          { "title": "Video Uploads", "subtitle": "Add videos to your property listings." },
           {
-            "title": "Featured Listing",
-            "subtitle": "Your property will be highlighted and appear at the top of user searches."
+            "title": "Gold Premium Banner",
+            "subtitle": "Advertise your properties as a premium listing."
           },
           {
-            "title": "30 Photos",
-            "subtitle": "Upload a maximum of 30 photos."
-          },
-          {
-            "title": "Social Media Promotion",
-            "subtitle": "Your listing will be promoted on our social media channels."
+            "title": "Access to AI Design Studio",
+            "subtitle": "Show how people could redesign your property in just 1 click."
           }
         ]
       },
-      "standard": {
-        "title": "Standard",
-        "subtitle": "List with basic features",
-        "price": "Free!",
-        "perks": [
-          {
-            "title": "Standard Listing",
-            "subtitle": "Your property will be listed with basic visibility."
-          },
-          {
-            "title": "Basic Support",
-            "subtitle": "Get support within 24-48 hours."
-          },
-          {
-            "title": "Limited Photos",
-            "subtitle": "Upload up to 5 photos."
-          }
-        ]
-      }
+      "no-thanks": "No thanks, I'll stick with my current plan."
     },
     "contact": {
       "title": "Contact",
@@ -613,9 +595,18 @@
     },
     "photos": {
       "title": "Photos",
-      "requirement": "Upload at least 5 photos.",
-      "restriction": "Upload up to 20 photos.",
+      "requirement": "You must upload at least 5 photos.",
+      "restriction-starter": "Upload up to 5 photos.",
+      "restriction-pro": "Upload up to 15 photos.",
+      "restriction-premium": "Upload up to 30 photos.",
+      "restriction-business": "Upload up to 50 photos.",
       "drag": "Drag your photos to rearrange their order.",
+      "photo-warning-starter": "You have uploaded the maximum amount of photos for the Starter plan.",
+      "photo-warning-pro": "You have uploaded the maximum amount of photos for the Pro plan.",
+      "photo-warning-premium": "You have uploaded the maximum amount of photos for the Premium plan.",
+      "photo-warning-business": "You have uploaded the maximum amount of photos for the Business plan.",
+      "upgrade-plan": "Upgrade your plan to upload more",
+      "upgrade-button": "Upgrade Plan",
       "maximum": "You have uploaded the maximum amount of photos.",
       "onlyImages": "You can only upload images.",
       "tooNarrow": "One of your images is too narrow. Please upload an image with a larger width.",
@@ -743,6 +734,9 @@
     "images-expire-warning": "Images Expire in 1 Hour",
     "fetching-previous-generations": "Fetching Previous Generations",
     "images-get-started": "Generate some images to get started!",
+    "fail": "Failed to generate design!",
+    "subscribe-button": "Upgrade Plan",
+    "subscribe-warning": "Please subscribe to the Insight, Premium, Business or Max plan!",
     "created": "Created",
     "upload-new": "New upload",
     "old-photo": "Previous",

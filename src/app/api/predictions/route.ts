@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+import { auth } from "@/auth";
 import Replicate from "replicate";
 
 const replicate = new Replicate({
@@ -8,11 +9,34 @@ const replicate = new Replicate({
 const WEBHOOK_HOST = process.env.VERCEL_URL ? `https://www.vivaideal.com` : process.env.NGROK_HOST;
 
 export async function POST(request: NextRequest) {
-  if (!process.env.REPLICATE_API_KEY) {
-    return NextResponse.json({ detail: "REPLICATE_API_KEY is not set." }, { status: 500 });
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user) {
+    return NextResponse.json({ error: "User not found", accountValid: false }, { status: 404 });
   }
 
-  const { userId, imageUrl, isRoom, kind, style } = await request.json();
+  const { id: userId, sellerSubscription, buyerSubscription } = user;
+
+  console.log(sellerSubscription);
+  console.log(buyerSubscription);
+
+  if (
+    !sellerSubscription ||
+    !buyerSubscription ||
+    (sellerSubscription && sellerSubscription !== "premium") ||
+    (sellerSubscription && sellerSubscription !== "business") ||
+    (buyerSubscription && buyerSubscription !== "insight") ||
+    (buyerSubscription && buyerSubscription !== "max")
+  ) {
+    return NextResponse.json({ error: "User is not on a tier 3 plan", accountValid: false }, { status: 500 });
+  }
+
+  if (!process.env.REPLICATE_API_KEY) {
+    return NextResponse.json({ error: "REPLICATE_API_KEY is not set.", accountValid: true }, { status: 500 });
+  }
+
+  const { imageUrl, isRoom, kind, style } = await request.json();
   // isRoom = "room" | "property"
   // kind = "kind of property" / "kind of room"
   // style = "style of design"
@@ -35,7 +59,7 @@ export async function POST(request: NextRequest) {
   const prediction = await replicate.predictions.create(options);
 
   if (prediction?.error) {
-    return NextResponse.json({ detail: prediction.error }, { status: 500 });
+    return NextResponse.json({ error: prediction.error, accountValid: true }, { status: 500 });
   }
 
   return NextResponse.json(prediction, { status: 201 });

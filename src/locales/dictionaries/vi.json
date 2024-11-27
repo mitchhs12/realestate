@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "Thanh toán",
-      "subtitle": "Chọn loại danh sách của bạn",
+      "subtitle": "Bạn có muốn nâng cấp lên gói Premium không?",
       "paidText": "Trả",
       "premium": {
         "title": "Phần thưởng",
@@ -624,28 +624,22 @@
           "2": {
             "title": "Quảng cáo trên mạng xã hội",
             "subtitle": "Danh sách của bạn sẽ được quảng bá trên các kênh truyền thông xã hội của chúng tôi."
+          },
+          "3": {
+            "title": "Tải lên video",
+            "subtitle": "Thêm video vào"
+          },
+          "4": {
+            "title": "Biểu ngữ cao cấp vàng",
+            "subtitle": "Quảng cáo bất động sản của bạn dưới dạng danh sách cao cấp."
+          },
+          "5": {
+            "title": "Truy cập vào AI Design Studio",
+            "subtitle": "Hiển thị cách mọi người có thể thiết kế lại tài sản của bạn chỉ bằng 1 cú nhấp chuột."
           }
         }
       },
-      "standard": {
-        "title": "Tiêu chuẩn",
-        "subtitle": "Danh sách với các tính năng cơ bản",
-        "price": "Miễn phí!",
-        "perks": {
-          "0": {
-            "title": "Tiêu chuẩn niêm yết",
-            "subtitle": "Bất động sản của bạn sẽ được niêm yết với khả năng hiển thị cơ bản."
-          },
-          "1": {
-            "title": "Hỗ trợ cơ bản",
-            "subtitle": "Nhận hỗ trợ trong vòng 24-48 giờ."
-          },
-          "2": {
-            "title": "Ảnh có giới hạn",
-            "subtitle": "Tải lên tối đa 5 ảnh."
-          }
-        }
-      }
+      "no-thanks": "Không, cảm ơn, tôi sẽ giữ nguyên kế hoạch hiện tại."
     },
     "contact": {
       "title": "Liên hệ",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "Hình ảnh",
-      "requirement": "Tải lên ít nhất 5 ảnh.",
-      "restriction": "Tải lên tối đa 20 ảnh.",
+      "requirement": "Bạn phải tải lên ít nhất 5 ảnh.",
+      "restriction-starter": "Tải lên tối đa 5 ảnh.",
+      "restriction-pro": "Tải lên tối đa 15 ảnh.",
+      "restriction-premium": "Tải lên tối đa 30 ảnh.",
+      "restriction-business": "Tải lên tối đa 50 ảnh.",
       "drag": "Kéo ảnh để sắp xếp lại thứ tự.",
+      "photo-warning-starter": "Bạn đã tải lên số lượng ảnh tối đa cho gói Starter.",
+      "photo-warning-pro": "Bạn đã tải lên số lượng ảnh tối đa cho gói Pro.",
+      "photo-warning-premium": "Bạn đã tải lên số lượng ảnh tối đa cho gói Cao cấp.",
+      "photo-warning-business": "Bạn đã tải lên số lượng ảnh tối đa cho gói Doanh nghiệp.",
+      "upgrade-plan": "Nâng cấp gói của bạn để tải lên nhiều hơn",
+      "upgrade-button": "Kế hoạch nâng cấp",
       "maximum": "Bạn đã tải lên số lượng ảnh tối đa.",
       "onlyImages": "Bạn chỉ có thể tải lên hình ảnh.",
       "tooNarrow": "Một trong những hình ảnh của bạn quá hẹp. Vui lòng tải lên hình ảnh có chiều rộng lớn hơn.",
@@ -840,6 +843,9 @@
     "images-expire-warning": "Hình ảnh hết hạn sau 1 giờ",
     "fetching-previous-generations": "Lấy các thế hệ trước",
     "images-get-started": "Tạo một số hình ảnh để bắt đầu!",
+    "fail": "Không tạo được thiết kế!",
+    "subscribe-button": "Kế hoạch nâng cấp",
+    "subscribe-warning": "Vui lòng đăng ký gói Insight, Premium, Business hoặc Max!",
     "created": "Tạo",
     "upload-new": "Tải lên mới",
     "old-photo": "Trước",

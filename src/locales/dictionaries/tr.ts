@@ -607,7 +607,7 @@ export default {
     },
     "checkout": {
       "title": "Çıkış yapmak",
-      "subtitle": "Listeleme türünüzü seçin",
+      "subtitle": "Premium'a yükseltmek ister misiniz?",
       "paidText": "Paralı",
       "premium": {
         "title": "prim",
@@ -624,28 +624,22 @@ export default {
           "2": {
             "title": "Sosyal Medya Tanıtımı",
             "subtitle": "İlanınız sosyal medya kanallarımızda tanıtılacaktır."
+          },
+          "3": {
+            "title": "Video Yüklemeleri",
+            "subtitle": "Videolarınızı ekleyin"
+          },
+          "4": {
+            "title": "Altın Premium Banner",
+            "subtitle": "Emlaklarınızı premium listeleme olarak ilan edin."
+          },
+          "5": {
+            "title": "AI Tasarım Stüdyosuna Erişim",
+            "subtitle": "İnsanların mülkünüzü tek bir tıklamayla nasıl yeniden tasarlayabileceklerini gösterin."
           }
         }
       },
-      "standard": {
-        "title": "Standart",
-        "subtitle": "Temel özelliklerin yer aldığı liste",
-        "price": "Özgür!",
-        "perks": {
-          "0": {
-            "title": "Standart Listeleme",
-            "subtitle": "Emlakınız temel görünürlükle listelenecektir."
-          },
-          "1": {
-            "title": "Temel Destek",
-            "subtitle": "24-48 saat içerisinde destek alın."
-          },
-          "2": {
-            "title": "Sınırlı Fotoğraflar",
-            "subtitle": "En fazla 5 fotoğraf yükleyin."
-          }
-        }
-      }
+      "no-thanks": "Hayır teşekkürler, mevcut planıma devam edeceğim."
     },
     "contact": {
       "title": "Temas etmek",
@@ -707,9 +701,18 @@ export default {
     },
     "photos": {
       "title": "Fotoğraflar",
-      "requirement": "En az 5 adet fotoğraf yükleyin.",
-      "restriction": "En fazla 20 fotoğraf yükleyin.",
+      "requirement": "En az 5 adet fotoğraf yüklemeniz gerekmektedir.",
+      "restriction-starter": "En fazla 5 fotoğraf yükleyin.",
+      "restriction-pro": "En fazla 15 fotoğraf yükleyin.",
+      "restriction-premium": "30 adede kadar fotoğraf yükleyin.",
+      "restriction-business": "En fazla 50 fotoğraf yükleyin.",
       "drag": "Fotoğraflarınızı sürükleyerek sıralarını değiştirebilirsiniz.",
+      "photo-warning-starter": "Başlangıç planı için maksimum sayıda fotoğraf yüklediniz.",
+      "photo-warning-pro": "Pro planı için maksimum sayıda fotoğraf yüklediniz.",
+      "photo-warning-premium": "Premium plan için maksimum sayıda fotoğraf yüklediniz.",
+      "photo-warning-business": "Business planı için maksimum sayıda fotoğraf yüklediniz.",
+      "upgrade-plan": "Daha fazlasını yüklemek için planınızı yükseltin",
+      "upgrade-button": "Yükseltme Planı",
       "maximum": "Maksimum sayıda fotoğraf yüklediniz.",
       "onlyImages": "Sadece resim yükleyebilirsiniz.",
       "tooNarrow": "Resimlerinizden biri çok dar. Lütfen daha geniş bir genişliğe sahip bir resim yükleyin.",
@@ -840,6 +843,9 @@ export default {
     "images-expire-warning": "Görseller 1 Saat İçinde Sona Eriyor",
     "fetching-previous-generations": "Önceki Nesilleri Getirme",
     "images-get-started": "Başlamak için birkaç görsel oluşturun!",
+    "fail": "Tasarım oluşturulamadı!",
+    "subscribe-button": "Yükseltme Planı",
+    "subscribe-warning": "Lütfen Insight, Premium, Business veya Max planına abone olun!",
     "created": "Oluşturuldu",
     "upload-new": "Yeni yükleme",
     "old-photo": "Öncesi",

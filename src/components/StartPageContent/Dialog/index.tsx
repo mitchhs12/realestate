@@ -1,44 +1,20 @@
-import Image from "next/image";
-import { setStaticParamsLocale } from "next-international/server";
-import { LanguageType } from "@/lib/validations";
+"use client";
 
 import StartPageContent from "@/components/StartPageContent";
+import { I18nProviderClient, useScopedI18n } from "@/locales/client";
+import { useContext } from "react";
+import { LocaleContext } from "@/context/LocaleContext";
 
-import { languages } from "@/lib/validations";
-import { Metadata } from "next";
-import { getScopedI18n } from "@/locales/server";
-
-export const revalidate = 30;
-
-const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/start/${lang}`;
-  return acc;
-}, {});
-
-export const metadata: Metadata = {
-  title: "Start",
-  description: "Get started and compare subscription plans on Viva Ideal.",
-  metadataBase: new URL("https://www.vivaideal.com/start"),
-  alternates: {
-    canonical: "/start",
-    languages: languageAlternates,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
-  },
-};
-
-export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
-  setStaticParamsLocale(locale);
-  const billing = await getScopedI18n("billing");
+function StartPageWrapper({
+  redirectUrl,
+  sellersOnly,
+  justPremium,
+}: {
+  redirectUrl: string;
+  sellersOnly?: boolean;
+  justPremium?: boolean;
+}) {
+  const billing = useScopedI18n("billing");
 
   const freeBilling = {
     title: billing("free.title"),
@@ -282,19 +258,32 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     sellersText: billing("sellers"),
   };
 
-  const redirectUrl =
-    process.env.NODE_ENV === "development"
-      ? `http://localhost:3000/start`
-      : `https://www.vivaideal.com/${locale}/start`;
+  return (
+    <StartPageContent
+      redirectUrl={redirectUrl}
+      sellerObject={sellerObject}
+      buyerObject={buyerObject}
+      billingText={billingText}
+      sellersOnly={sellersOnly}
+      justPremium={justPremium}
+    />
+  );
+}
+
+export default function PricingDialog({
+  redirectUrl,
+  sellersOnly,
+  justPremium,
+}: {
+  redirectUrl: string;
+  sellersOnly?: boolean;
+  justPremium?: boolean;
+}) {
+  const { defaultLanguage } = useContext(LocaleContext);
 
   return (
-    <div className="flex flex-col h-full w-full items-center">
-      <StartPageContent
-        sellerObject={sellerObject}
-        buyerObject={buyerObject}
-        billingText={billingText}
-        redirectUrl={redirectUrl}
-      />
-    </div>
+    <I18nProviderClient locale={defaultLanguage}>
+      <StartPageWrapper redirectUrl={redirectUrl} sellersOnly={sellersOnly} justPremium={justPremium} />
+    </I18nProviderClient>
   );
 }

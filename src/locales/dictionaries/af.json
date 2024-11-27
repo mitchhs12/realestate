@@ -607,7 +607,7 @@
     },
     "checkout": {
       "title": "Betaal",
-      "subtitle": "Kies jou lysinskrywing tipe",
+      "subtitle": "Wil jy opgradeer na Premium?",
       "paidText": "Betaal",
       "premium": {
         "title": "Premie",
@@ -624,28 +624,22 @@
           "2": {
             "title": "Sosiale media promosie",
             "subtitle": "Jou lysinskrywing sal op ons sosiale media-kanale bevorder word."
+          },
+          "3": {
+            "title": "Video-oplaaie",
+            "subtitle": "Voeg video's by jou"
+          },
+          "4": {
+            "title": "Goue Premium Banier",
+            "subtitle": "Adverteer jou eiendomme as 'n premium-notering."
+          },
+          "5": {
+            "title": "Toegang tot AI Design Studio",
+            "subtitle": "Wys hoe mense jou eiendom in net 1 klik kan herontwerp."
           }
         }
       },
-      "standard": {
-        "title": "Standaard",
-        "subtitle": "Lys met basiese kenmerke",
-        "price": "Gratis!",
-        "perks": {
-          "0": {
-            "title": "Standaardlys",
-            "subtitle": "Jou eiendom sal met basiese sigbaarheid gelys word."
-          },
-          "1": {
-            "title": "Basiese ondersteuning",
-            "subtitle": "Kry ondersteuning binne 24-48 uur."
-          },
-          "2": {
-            "title": "Beperkte foto's",
-            "subtitle": "Laai tot 5 foto's op."
-          }
-        }
-      }
+      "no-thanks": "Nee dankie, ek sal by my huidige plan hou."
     },
     "contact": {
       "title": "Kontak",
@@ -707,9 +701,18 @@
     },
     "photos": {
       "title": "Foto's",
-      "requirement": "Laai ten minste 5 foto's op.",
-      "restriction": "Laai tot 20 foto's op.",
+      "requirement": "Jy moet ten minste 5 foto's oplaai.",
+      "restriction-starter": "Laai tot 5 foto's op.",
+      "restriction-pro": "Laai tot 15 foto's op.",
+      "restriction-premium": "Laai tot 30 foto's op.",
+      "restriction-business": "Laai tot 50 foto's op.",
       "drag": "Sleep jou foto's om hul volgorde te herrangskik.",
+      "photo-warning-starter": "Jy het die maksimum aantal foto's vir die Beginner-plan opgelaai.",
+      "photo-warning-pro": "Jy het die maksimum aantal foto's vir die Pro-plan opgelaai.",
+      "photo-warning-premium": "Jy het die maksimum aantal foto's vir die Premium-plan opgelaai.",
+      "photo-warning-business": "Jy het die maksimum aantal foto's vir die Besigheidsplan opgelaai.",
+      "upgrade-plan": "Gradeer jou plan op om meer op te laai",
+      "upgrade-button": "Gradeer plan op",
       "maximum": "Jy het die maksimum aantal foto's opgelaai.",
       "onlyImages": "Jy kan net beelde oplaai.",
       "tooNarrow": "Een van jou beelde is te smal. Laai asseblief 'n prent met 'n groter breedte op.",
@@ -840,6 +843,9 @@
     "images-expire-warning": "Prente verval oor 1 uur",
     "fetching-previous-generations": "Haal vorige generasies",
     "images-get-started": "Genereer 'n paar beelde om te begin!",
+    "fail": "Kon nie ontwerp genereer nie!",
+    "subscribe-button": "Gradeer plan op",
+    "subscribe-warning": "Teken asseblief in op die Insight-, Premium-, Business- of Max-plan!",
     "created": "Geskep",
     "upload-new": "Nuwe oplaai",
     "old-photo": "Vorige",

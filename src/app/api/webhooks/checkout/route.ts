@@ -69,8 +69,6 @@ export async function POST(req: Request, res: NextApiResponse) {
 
         if (accountId && plan) {
           if (isSeller) {
-            console.log("adding premium to ", accountId);
-            console.log("plan", plan);
             if (plan.name === "premium") {
               // Update the home listing in the database to "premium"
               await prisma.home.updateMany({
@@ -80,7 +78,6 @@ export async function POST(req: Request, res: NextApiResponse) {
                 },
               });
             } else {
-              console.log("removing premium from", accountId);
               await prisma.home.updateMany({
                 where: { ownerId: accountId },
                 data: {

@@ -348,8 +348,10 @@ export async function ChangeSpecificSub(
   isSeller: boolean,
   newPlanId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max",
   isYearly: boolean,
-  defaultLanguage: any
+  defaultLanguage: any,
+  redirectUrl: string
 ) {
+  console.log("redirect", redirectUrl);
   const session = await auth();
   if (!session || !session.user) {
     throw new Error("Unauthorized");
@@ -370,10 +372,7 @@ export async function ChangeSpecificSub(
     after_completion: {
       type: "redirect",
       redirect: {
-        return_url:
-          process.env.NODE_ENV === "development"
-            ? `http://localhost:3000/start`
-            : `https://www.vivaideal.com/${defaultLanguage}/start`,
+        return_url: redirectUrl,
       },
     },
     subscription_update_confirm: {

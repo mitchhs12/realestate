@@ -3,12 +3,9 @@
 import PricingTable from "@/components/StartPageContent/PricingTable";
 import { urbanist } from "@/app/[locale]/fonts";
 import { Button } from "@/components/ui/button";
-import { useContext, useState } from "react";
-import { LocaleContext } from "@/context/LocaleContext";
-import { Skeleton } from "../ui/skeleton";
+import { useState } from "react";
 
 interface Props {
-  locale: string;
   sellerObject: any;
   buyerObject: any;
   billingText: {
@@ -28,29 +25,41 @@ interface Props {
     buyersText: string;
     sellersText: string;
   };
+  redirectUrl: string;
+  sellersOnly?: boolean;
+  justPremium?: boolean;
 }
 
-export default function StartPageContent({ locale, sellerObject, buyerObject, billingText }: Props) {
+export default function StartPageContent({
+  sellerObject,
+  buyerObject,
+  billingText,
+  redirectUrl,
+  sellersOnly,
+  justPremium,
+}: Props) {
   const [seller, setSeller] = useState(true);
 
   return (
-    <section className="flex flex-col bg-gradient-to-b from-[#fbf4f8] to-[#fbfaf4]  dark:from-[#10020b] dark:to-[#100e02] justify-center items-center w-full">
-      <div className="flex flex-col pb-4 md:pb-12 gap-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
-        <div className="flex flex-col items-center gap-2 pt-6 justify-start text-center">
-          <h3
-            className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
-          >
-            {billingText["lowest-prices"]}
-          </h3>
-          <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
-            {billingText.title}
-          </h2>
-        </div>
-        <div className="flex flex-col w-full justify-center items-center gap-3">
-          <div className="flex gap-3">
+    <section className="flex flex-col justify-center items-center w-full">
+      <div className="flex flex-col pb-4 md:pb-12 gap-6 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
+        {!justPremium && (
+          <div className="flex flex-col items-center gap-2 pt-6 justify-start text-center">
+            <h3
+              className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
+            >
+              {billingText["lowest-prices"]}
+            </h3>
+            <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              {billingText.title}
+            </h2>
+          </div>
+        )}
+        {!sellersOnly && (
+          <div className="flex justify-center gap-3">
             <Button
-              className="text-xl"
-              variant={"default"}
+              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100 text-xl"
+              variant={"outline"}
               size={"lg"}
               disabled={!seller}
               onClick={() => {
@@ -60,8 +69,8 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
               {billingText.buyersText}
             </Button>
             <Button
-              className="text-xl"
-              variant={"default"}
+              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100 text-xl"
+              variant={"outline"}
               size={"lg"}
               disabled={seller}
               onClick={() => setSeller(true)}
@@ -69,9 +78,11 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
               {billingText.sellersText}
             </Button>
           </div>
-        </div>
+        )}
+
         {seller ? (
           <PricingTable
+            redirectUrl={redirectUrl}
             starter={sellerObject.starter}
             pro={sellerObject.pro}
             premium={sellerObject.premium}
@@ -88,9 +99,11 @@ export default function StartPageContent({ locale, sellerObject, buyerObject, bi
             sixMonthsFree={billingText["six-months-free"]}
             subText={billingText.subText}
             isSeller={seller}
+            justPremium={justPremium}
           />
         ) : (
           <PricingTable
+            redirectUrl={redirectUrl}
             starter={buyerObject.free}
             pro={buyerObject.basic}
             premium={buyerObject.insight}

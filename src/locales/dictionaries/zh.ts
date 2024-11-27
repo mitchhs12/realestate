@@ -607,7 +607,7 @@ export default {
     },
     "checkout": {
       "title": "查看",
-      "subtitle": "选择您的列表类型",
+      "subtitle": "您想升级到 Premium 吗？",
       "paidText": "有薪酬的",
       "premium": {
         "title": "优质的",
@@ -624,28 +624,22 @@ export default {
           "2": {
             "title": "社交媒体推广",
             "subtitle": "您的列表将在我们的社交媒体渠道上推广。"
+          },
+          "3": {
+            "title": "视频上传",
+            "subtitle": "将视频添加到您的"
+          },
+          "4": {
+            "title": "黄金优质横幅",
+            "subtitle": "将你的房产作为优质房源进行宣传。"
+          },
+          "5": {
+            "title": "访问人工智能设计工作室",
+            "subtitle": "展示人们如何只需单击一次即可重新设计您的房产。"
           }
         }
       },
-      "standard": {
-        "title": "标准",
-        "subtitle": "具有基本特征的列表",
-        "price": "自由的！",
-        "perks": {
-          "0": {
-            "title": "标准清单",
-            "subtitle": "您的财产将以基本可见性的形式列出。"
-          },
-          "1": {
-            "title": "基础支持",
-            "subtitle": "在 24-48 小时内获得支持。"
-          },
-          "2": {
-            "title": "有限的照片",
-            "subtitle": "最多上传 5 张照片。"
-          }
-        }
-      }
+      "no-thanks": "不用了，我会坚持我目前的计划。"
     },
     "contact": {
       "title": "接触",
@@ -707,9 +701,18 @@ export default {
     },
     "photos": {
       "title": "相片",
-      "requirement": "上传至少 5 张照片。",
-      "restriction": "最多上传 20 张照片。",
+      "requirement": "您必须上传至少 5 张照片。",
+      "restriction-starter": "最多上传 5 张照片。",
+      "restriction-pro": "最多上传 15 张照片。",
+      "restriction-premium": "最多上传 30 张照片。",
+      "restriction-business": "上传最多 50 张照片。",
       "drag": "拖动照片以重新排列其顺序。",
+      "photo-warning-starter": "您上传的照片数量已达到入门计划的最大数量。",
+      "photo-warning-pro": "您上传的照片数量已达到专业版计划的最大数量。",
+      "photo-warning-premium": "您上传的照片数量已达到高级计划的最大数量。",
+      "photo-warning-business": "您上传的照片数量已达到商业计划的最大数量。",
+      "upgrade-plan": "升级您的计划以上传更多内容",
+      "upgrade-button": "升级计划",
       "maximum": "您上传的照片数量已达到上限。",
       "onlyImages": "您只能上传图像。",
       "tooNarrow": "您的其中一张图片太窄。请上传宽度更大的图片。",
@@ -840,6 +843,9 @@ export default {
     "images-expire-warning": "图片 1 小时后过期",
     "fetching-previous-generations": "获取前几代",
     "images-get-started": "生成一些图像来开始吧！",
+    "fail": "生成设计失败！",
+    "subscribe-button": "升级计划",
+    "subscribe-warning": "请订阅 Insight、Premium、Business 或 Max 计划！",
     "created": "创建",
     "upload-new": "新上传",
     "old-photo": "以前的",
