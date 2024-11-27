@@ -52,10 +52,10 @@ export async function changeHomeVisibility(homeId: number, currentState: boolean
     },
   });
   console.log("revalidating");
-  revalidatePath("/[locale]/my-properties", "layout");
+  revalidatePath("/my-properties");
 }
 
-export async function deleteHome(homeId: number, url: string) {
+export async function deleteHome(homeId: number) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -72,10 +72,10 @@ export async function deleteHome(homeId: number, url: string) {
       isActive: false,
     },
   });
-  revalidatePath(url);
+  revalidatePath("/my-properties");
 }
 
-export async function changeAllHomeVisibilities(currentState: boolean, url: string) {
+export async function changeAllHomeVisibilities(currentState: boolean) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -92,5 +92,5 @@ export async function changeAllHomeVisibilities(currentState: boolean, url: stri
       isActive: !currentState,
     },
   });
-  revalidatePath(url);
+  revalidatePath("/my-properties");
 }
