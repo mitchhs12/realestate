@@ -19,7 +19,7 @@ import { Country } from "react-phone-number-input";
 import lookup from "country-code-lookup";
 import { languageToFlagMap } from "@/lib/validations";
 import Link from "next/link";
-import { StripeBilling, GetUserCurrentSubscriptionProductId } from "../stripeServer";
+import { StripeBilling } from "../stripeServer";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { Stripe } from "stripe";
@@ -33,6 +33,14 @@ interface Props {
   submit: string;
   buyerSubscription: Stripe.Subscription | null;
   sellerSubscription: Stripe.Subscription | null;
+  billingText: {
+    title: string;
+    buyerSubscription: string;
+    sellerSubscription: string;
+    updateSub: string;
+    paymentMethods: string;
+    cancel: string;
+  };
 }
 
 export default function SettingsPage({
@@ -44,6 +52,7 @@ export default function SettingsPage({
   submit,
   buyerSubscription,
   sellerSubscription,
+  billingText,
 }: Props) {
   const session = useSession();
   const changeLocale = useChangeLocale();
@@ -169,12 +178,12 @@ export default function SettingsPage({
             </Form>
           </div>
           <div className="flex flex-col w-full h-full gap-3">
-            <h2 className="flex text-lg lg:text-2xl font-semibold">{"Billing"}</h2>
+            <h2 className="flex text-lg lg:text-2xl font-semibold">{billingText.title}</h2>
             <div className="flex flex-col gap-12">
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
                   <h3 className="font-semibold">
-                    Buyer Subscription Plan:{" "}
+                    {billingText.buyerSubscription} |{" "}
                     <span className={`font-semibold ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
                       {user.buyerSubscription
                         ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
@@ -193,7 +202,7 @@ export default function SettingsPage({
                       }}
                     >
                       {!buyerSubscriptionLoading ? (
-                        <span>Change Subscription</span>
+                        <span>{billingText.updateSub}</span>
                       ) : (
                         <div className="flex w-full justify-center">
                           <ReloadIcon className="w-5 h-5 animate-spin" />
@@ -209,7 +218,7 @@ export default function SettingsPage({
                       }}
                     >
                       {!buyerPaymentLoading ? (
-                        <span>Payment Methods</span>
+                        <span>{billingText.paymentMethods}</span>
                       ) : (
                         <div className="flex w-full justify-center">
                           <ReloadIcon className="w-5 h-5 animate-spin" />
@@ -229,7 +238,7 @@ export default function SettingsPage({
                         <span className="w-full">
                           {buyerSubscription.cancel_at
                             ? `Subscription Ends ${new Date(buyerSubscription.cancel_at * 1000).toLocaleString()}`
-                            : "Cancel Subscription"}
+                            : billingText.cancel}
                         </span>
                       ) : (
                         <div className="flex w-full justify-center">
@@ -243,7 +252,7 @@ export default function SettingsPage({
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
                   <h3 className="font-semibold">
-                    Seller Subscription Plan:{" "}
+                    {billingText.sellerSubscription} |{" "}
                     <span className={`font-semibold ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
                       {user.sellerSubscription
                         ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
@@ -262,7 +271,7 @@ export default function SettingsPage({
                       disabled={sellerSubscriptionLoading}
                     >
                       {!sellerSubscriptionLoading ? (
-                        <span>Change Subscription</span>
+                        <span>{billingText.updateSub}</span>
                       ) : (
                         <div className="flex w-full justify-center">
                           <ReloadIcon className="w-5 h-5 animate-spin" />
@@ -278,7 +287,7 @@ export default function SettingsPage({
                       disabled={sellerPaymentLoading}
                     >
                       {!sellerPaymentLoading ? (
-                        <span>Payment Methods</span>
+                        <span>{billingText.paymentMethods}</span>
                       ) : (
                         <div className="flex w-full justify-center">
                           <ReloadIcon className="w-5 h-5 animate-spin" />
@@ -298,7 +307,7 @@ export default function SettingsPage({
                         <span className="w-full">
                           {sellerSubscription.cancel_at
                             ? `Subscription Ends ${new Date(sellerSubscription.cancel_at * 1000).toLocaleString()}`
-                            : "Cancel Subscription"}
+                            : billingText.cancel}
                         </span>
                       ) : (
                         <div className="flex w-full justify-center">

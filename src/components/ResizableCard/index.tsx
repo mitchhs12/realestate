@@ -20,6 +20,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiTypeButton from "../MultiTypeButton";
 import { useTheme } from "next-themes";
 import DeleteButton from "@/components/DeleteButton";
+import { useCurrentLocale } from "@/locales/client";
 
 interface Props {
   home: HomeType | null;
@@ -53,6 +54,9 @@ export default function ResizableCard({
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const { resolvedTheme: theme } = useTheme();
 
+  const localePathname = usePathname();
+  const pathname = localePathname.replace(`/${defaultLanguage}`, "");
+
   useEffect(() => {
     if (home && home.language) {
       setLang(home.language);
@@ -65,6 +69,12 @@ export default function ResizableCard({
     iso && typeof iso !== "string"
       ? getCountryNameForLocale(iso.iso2, defaultLanguage || home.country || "")
       : home?.country;
+
+  useEffect(() => {
+    if (home) {
+      console.log("home", home.id, "isActive", home.isActive);
+    }
+  }, [home]);
 
   return !home || isLoading ? (
     <div
@@ -184,11 +194,16 @@ export default function ResizableCard({
       {isMyProperties && home.isComplete && user?.id === home.ownerId && (
         <Button
           variant={home.isActive ? "default" : "destructive"}
-          onClick={(e) => {
+          onClick={async (e) => {
             e.stopPropagation();
             e.preventDefault();
             setVisibilityChanging(true);
-            changeHomeVisibility(home.id, home.isActive, path);
+            const result = await changeHomeVisibility(home.id, home.isActive, pathname);
+            if (result) {
+              console.log("result", result.isActive);
+              home.isActive = result.isActive;
+            }
+            setVisibilityChanging(false);
           }}
           size={"icon"}
           disabled={visibilityChanging}

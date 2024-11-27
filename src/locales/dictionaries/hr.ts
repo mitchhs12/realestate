@@ -974,6 +974,14 @@ export default {
       "title": "Promijenite zadanu valutu",
       "subtitle": "Cijene nekretnina bit će prikazane u ovoj valuti"
     },
+    "billing": {
+      "title": "Naplata",
+      "Buyer Subscription": "Pretplata kupca",
+      "Seller Subscription": "Pretplata prodavača",
+      "updateSub": "Promjena pretplate",
+      "paymentMethods": "Ažurirajte način plaćanja",
+      "cancel": "Otkaži pretplatu"
+    },
     "submit": "Uštedjeti"
   },
   "stripe": {

@@ -974,6 +974,14 @@ export default {
       "title": "Verander jou verstek geldeenheid",
       "subtitle": "Eiendomspryse sal in hierdie geldeenheid vertoon word"
     },
+    "billing": {
+      "title": "Fakturering",
+      "Buyer Subscription": "Koperintekening",
+      "Seller Subscription": "Verkoperintekening",
+      "updateSub": "Verander intekening",
+      "paymentMethods": "Dateer betaalmetode op",
+      "cancel": "Kanselleer intekening"
+    },
     "submit": "Stoor"
   },
   "stripe": {

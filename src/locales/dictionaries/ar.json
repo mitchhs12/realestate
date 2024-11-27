@@ -974,6 +974,14 @@
       "title": "تغيير العملة الافتراضية الخاصة بك",
       "subtitle": "سيتم عرض أسعار العقارات بهذه العملة"
     },
+    "billing": {
+      "title": "الفواتير",
+      "Buyer Subscription": "اشتراك المشتري",
+      "Seller Subscription": "اشتراك البائع",
+      "updateSub": "تغيير الاشتراك",
+      "paymentMethods": "تحديث طريقة الدفع",
+      "cancel": "إلغاء الاشتراك"
+    },
     "submit": "يحفظ"
   },
   "stripe": {

@@ -974,6 +974,14 @@
       "title": "デフォルトの通貨を変更する",
       "subtitle": "不動産価格はこの通貨で表示されます"
     },
+    "billing": {
+      "title": "請求する",
+      "Buyer Subscription": "購入者サブスクリプション",
+      "Seller Subscription": "販売者サブスクリプション",
+      "updateSub": "サブスクリプションの変更",
+      "paymentMethods": "支払い方法の更新",
+      "cancel": "サブスクリプションをキャンセル"
+    },
     "submit": "保存"
   },
   "stripe": {

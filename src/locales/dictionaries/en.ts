@@ -974,6 +974,14 @@ export default {
       "title": "Change your default currency",
       "subtitle": "Property prices will be displayed in this currency"
     },
+    "billing": {
+      "title": "Billing",
+      "Buyer Subscription": "Buyer Subscription",
+      "Seller Subscription": "Seller Subscription",
+      "updateSub": "Change Subscription",
+      "paymentMethods": "Update Payment Method",
+      "cancel": "Cancel Subscription"
+    },
     "submit": "Save"
   },
   "stripe": {

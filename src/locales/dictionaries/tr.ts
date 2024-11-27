@@ -974,6 +974,14 @@ export default {
       "title": "Varsayılan para biriminizi değiştirin",
       "subtitle": "Emlak fiyatları bu para biriminde gösterilecek"
     },
+    "billing": {
+      "title": "Faturalama",
+      "Buyer Subscription": "Alıcı Aboneliği",
+      "Seller Subscription": "Satıcı Aboneliği",
+      "updateSub": "Aboneliği Değiştir",
+      "paymentMethods": "Ödeme Yöntemini Güncelle",
+      "cancel": "Aboneliği İptal Et"
+    },
     "submit": "Kaydetmek"
   },
   "stripe": {

@@ -27,6 +27,15 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   const currency = { title: currency_title, subtitle: currency_sub };
   const language = { title: language_title, subtitle: language_sub };
 
+  const billingText = {
+    title: t("billing.title"),
+    buyerSubscription: t("billing.Buyer Subscription"),
+    sellerSubscription: t("billing.Seller Subscription"),
+    updateSub: t("billing.updateSub"),
+    paymentMethods: t("billing.paymentMethods"),
+    cancel: t("billing.cancel"),
+  };
+
   const session = await getSession();
 
   const user = session?.user;
@@ -53,6 +62,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
       submit={submit}
       buyerSubscription={buyerSubscription}
       sellerSubscription={sellerSubscription}
+      billingText={billingText}
     />
   );
 }

@@ -974,6 +974,14 @@ export default {
       "title": "Alterar sua moeda padrão",
       "subtitle": "Os preços dos imóveis serão exibidos nesta moeda"
     },
+    "billing": {
+      "title": "Cobrança",
+      "Buyer Subscription": "Assinatura do comprador",
+      "Seller Subscription": "Assinatura do vendedor",
+      "updateSub": "Alterar assinatura",
+      "paymentMethods": "Atualizar método de pagamento",
+      "cancel": "Cancelar assinatura"
+    },
     "submit": "Salvar"
   },
   "stripe": {

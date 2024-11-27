@@ -974,6 +974,14 @@ export default {
       "title": "Changer votre devise par défaut",
       "subtitle": "Les prix des propriétés seront affichés dans cette devise"
     },
+    "billing": {
+      "title": "Facturation",
+      "Buyer Subscription": "Abonnement de l'acheteur",
+      "Seller Subscription": "Abonnement du vendeur",
+      "updateSub": "Changer d'abonnement",
+      "paymentMethods": "Mettre à jour le mode de paiement",
+      "cancel": "Annuler l'abonnement"
+    },
     "submit": "Sauvegarder"
   },
   "stripe": {

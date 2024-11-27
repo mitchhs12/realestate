@@ -974,6 +974,14 @@
       "title": "Cambiar su moneda predeterminada",
       "subtitle": "Los precios de las propiedades se mostrarán en esta moneda."
     },
+    "billing": {
+      "title": "Facturación",
+      "Buyer Subscription": "Suscripción del comprador",
+      "Seller Subscription": "Suscripción de vendedor",
+      "updateSub": "Cambiar suscripción",
+      "paymentMethods": "Actualizar método de pago",
+      "cancel": "Cancelar suscripción"
+    },
     "submit": "Guardar"
   },
   "stripe": {

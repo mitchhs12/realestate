@@ -974,6 +974,14 @@ export default {
       "title": "기본 통화 변경",
       "subtitle": "부동산 가격은 이 통화로 표시됩니다."
     },
+    "billing": {
+      "title": "청구",
+      "Buyer Subscription": "구매자 구독",
+      "Seller Subscription": "판매자 구독",
+      "updateSub": "구독 변경",
+      "paymentMethods": "결제 방법 업데이트",
+      "cancel": "구독 취소"
+    },
     "submit": "구하다"
   },
   "stripe": {

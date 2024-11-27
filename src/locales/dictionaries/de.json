@@ -974,6 +974,14 @@
       "title": "Ändern Sie Ihre Standardwährung",
       "subtitle": "Immobilienpreise werden in dieser Währung angezeigt"
     },
+    "billing": {
+      "title": "Abrechnung",
+      "Buyer Subscription": "Käuferabonnement",
+      "Seller Subscription": "Verkäuferabonnement",
+      "updateSub": "Abonnement ändern",
+      "paymentMethods": "Zahlungsmethode aktualisieren",
+      "cancel": "Abonnement kündigen"
+    },
     "submit": "Speichern"
   },
   "stripe": {

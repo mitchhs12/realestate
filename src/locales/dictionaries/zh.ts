@@ -974,6 +974,14 @@ export default {
       "title": "更改您的默认货币",
       "subtitle": "房产价格将以此货币显示"
     },
+    "billing": {
+      "title": "计费",
+      "Buyer Subscription": "买家订阅",
+      "Seller Subscription": "卖家订阅",
+      "updateSub": "更改订阅",
+      "paymentMethods": "更新付款方式",
+      "cancel": "取消订阅"
+    },
     "submit": "节省"
   },
   "stripe": {

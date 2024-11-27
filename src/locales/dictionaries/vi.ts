@@ -974,6 +974,14 @@ export default {
       "title": "Thay đổi tiền tệ mặc định của bạn",
       "subtitle": "Giá bất động sản sẽ được hiển thị bằng loại tiền tệ này"
     },
+    "billing": {
+      "title": "Thanh toán",
+      "Buyer Subscription": "Đăng ký người mua",
+      "Seller Subscription": "Đăng ký của người bán",
+      "updateSub": "Thay đổi đăng ký",
+      "paymentMethods": "Cập nhật phương thức thanh toán",
+      "cancel": "Hủy đăng ký"
+    },
     "submit": "Cứu"
   },
   "stripe": {

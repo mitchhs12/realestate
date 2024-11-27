@@ -974,6 +974,14 @@ export default {
       "title": "Ubah mata uang default Anda",
       "subtitle": "Harga properti akan ditampilkan dalam mata uang ini"
     },
+    "billing": {
+      "title": "Penagihan",
+      "Buyer Subscription": "Langganan Pembeli",
+      "Seller Subscription": "Langganan Penjual",
+      "updateSub": "Ubah Langganan",
+      "paymentMethods": "Perbarui Metode Pembayaran",
+      "cancel": "Batalkan Langganan"
+    },
     "submit": "Menyimpan"
   },
   "stripe": {

@@ -124,35 +124,36 @@ export default function MyHomes({
           </CardContent>
         </Card>
       </div>
-      <div className="flex gap-3 px-4 md:px-6 items-center justify-between w-full py-6">
-        <div className="flex justify-start items-center w-full">
-          <ToggleAllVisbilityButton
-            hideAllText={hideAllText}
-            showAllText={showAllText}
-            allCompletedHomesActive={allCompletedHomesActive}
-          />
+      <div className="flex flex-col w-full">
+        <div className="flex flex-col xs:flex-row gap-3 px-4 md:px-6 items-center xs:justify-between w-full py-6">
+          <div className="flex items-center">
+            <ToggleAllVisbilityButton
+              hideAllText={hideAllText}
+              showAllText={showAllText}
+              allCompletedHomesActive={allCompletedHomesActive}
+            />
+          </div>
+          <div className="flex items-center">
+            <Select onValueChange={setSortOption}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder={selection.orderBy} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="date">{selection.date}</SelectItem>
+                  <SelectItem value="favorited">{selection.favorited}</SelectItem>
+                  <SelectItem value="price">{selection.price}</SelectItem>
+                  <SelectItem value="incomplete">{selection.incomplete}</SelectItem>
+                  <SelectItem value="visible">{selection.visible}</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
         <div className="flex justify-center items-center">
           <PaginationComponent homes={homes} ITEMS_PER_PAGE={20} setVisibleHomes={setVisibleHomes} />
         </div>
-        <div className="flex justify-end items-center w-full">
-          <Select onValueChange={setSortOption}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={selection.orderBy} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="date">{selection.date}</SelectItem>
-                <SelectItem value="favorited">{selection.favorited}</SelectItem>
-                <SelectItem value="price">{selection.price}</SelectItem>
-                <SelectItem value="incomplete">{selection.incomplete}</SelectItem>
-                <SelectItem value="visible">{selection.visible}</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
       </div>
-
       <div className="p-2 px-4 sm:p-4 md:px-6 overflow-y-auto w-full h-full grid grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
         {visibleHomes.map((home: HomeType, index: number) => {
           const matchingTypes = findMatching(typesObject, home, "type");
