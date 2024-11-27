@@ -43,10 +43,9 @@ export default function ResizableCard({
   loginToViewPrice,
   premiumText,
 }: Props) {
-  const { defaultCurrency, defaultLanguage } = useContext(LocaleContext);
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { user, sessionLoading } = useContext(LocaleContext);
+  const { user, defaultLanguage, defaultCurrency, sessionLoading } = useContext(LocaleContext);
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
   const isSell = path.includes("/sell");
@@ -189,7 +188,7 @@ export default function ResizableCard({
             e.stopPropagation();
             e.preventDefault();
             setVisibilityChanging(true);
-            changeHomeVisibility(home.id, home.isActive);
+            changeHomeVisibility(home.id, home.isActive, path);
           }}
           size={"icon"}
           disabled={visibilityChanging}
