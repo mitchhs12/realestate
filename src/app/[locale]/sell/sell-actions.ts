@@ -11,9 +11,14 @@ export async function getObjectCount(bucketName: string, prefix: string): Promis
       Prefix: prefix, // Folder path in the bucket
     };
 
+    console.log("running list command");
     // List objects in the bucket with the specified prefix
     const command = new ListObjectsV2Command(params);
+
+    console.log("command", command);
     const response = await s3Client.send(command);
+
+    console.log("response", response);
 
     // Count the objects
     const count = response.Contents ? response.Contents.length : 0;
@@ -45,11 +50,11 @@ export async function uploadPhotos(formData: FormData) {
     const user = session?.user;
 
     if (!user) {
-      return "User not found";
+      throw new Error("User not found");
     }
 
     if (!user.sellerSubscription) {
-      return "User does not have a subscription";
+      throw new Error("User does not have a subscription");
     }
 
     const uploadLimit =
@@ -65,31 +70,31 @@ export async function uploadPhotos(formData: FormData) {
     const homeId = formData.get("homeId") as string;
 
     if (!homeId) {
-      return "Home ID is required";
+      throw new Error("Home ID is required");
     }
 
     if (!file) {
-      return "You forgot to attach a photo";
+      throw new Error("You forgot to attach a photo");
     }
 
     if (typeof file !== "object" || !("arrayBuffer" in file)) {
-      return "Invalid file";
+      throw new Error("Invalid file");
     }
 
     if (!file.type.startsWith("image/")) {
-      return "File is not an image!";
+      throw new Error("File is not an image!");
     }
 
-    const homeExists = user.homes.some((home) => home.id === homeId);
+    const homeExists = user.homes.some((home) => home.id === Number(homeId));
 
     if (!homeExists) {
-      return "You do not have permission to upload photos to this home.";
+      throw new Error("You do not have permission to upload photos to this home.");
     }
 
     const objectCount = await getObjectCount("vivaidealfinalbucket", `${homeId}/`);
 
     if (objectCount >= uploadLimit) {
-      return `Photo limit exceeded. Current count: ${objectCount}. Maximum allowed: ${uploadLimit}`;
+      throw new Error(`Photo limit exceeded. Current count: ${objectCount}. Maximum allowed: ${uploadLimit}`);
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
@@ -97,12 +102,11 @@ export async function uploadPhotos(formData: FormData) {
     const fileName = file.name; // Keep the original file name and extension
 
     if (buffer.length > 4 * 1024 * 1024) {
-      return "File size exceeded. File size exceeds 4MB";
+      throw new Error("File size exceeded. File size exceeds 4MB");
     }
 
     return await uploadToS3(buffer, homeId, fileName, file.type);
   } catch (error: any) {
-    console.error("Error uploading photo:", error);
-    return error.message;
+    throw new Error(error.message || "An error occurred while trying to upload photos");
   }
 }

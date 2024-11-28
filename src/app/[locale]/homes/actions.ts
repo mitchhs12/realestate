@@ -94,7 +94,7 @@ export async function sendBuyMessage(homeId: number) {
 export async function saveHome(newHome: HomeType, url: string) {
   const session = await auth();
   const user = session?.user;
-  const { id, ...homeData } = homeSchema.parse(newHome);
+  const { id, ...homeData } = newHome;
 
   if (newHome.ownerId === user?.id) {
     const home = await prisma.home.update({
