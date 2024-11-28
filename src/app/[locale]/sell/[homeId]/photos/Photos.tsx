@@ -299,13 +299,14 @@ export default function Photos({
         formData.append("file", webpFile);
         formData.append("homeId", currentHome.id.toString());
 
-        return uploadPhotos(formData);
+        return uploadPhotos(formData).catch((error) => {
+          setErrorMessage(`Error uploading ${file.name}: ${error.message}` || `Error uploading ${file.name}`);
+        });
       });
 
       await Promise.all(uploadPromises);
       await retrievePhotos(); // Refresh the photo URLs
     } catch (error: any) {
-      console.error("Error during file processing:", error);
       setErrorMessage(error.message || "Error uploading files");
     }
 
