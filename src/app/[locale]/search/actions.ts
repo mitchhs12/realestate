@@ -125,11 +125,11 @@ export async function getSearchResults(
         ],
       },
     });
-    console.log("homes", homes);
+    // console.log("homes", homes);
   }
   // Case 2: Normal longitude and latitude range
   else {
-    console.log("RUNNING CASE 2");
+    // console.log("RUNNING CASE 2");
     homes = await prisma.home.findMany({
       where: {
         ...commonFilters,
