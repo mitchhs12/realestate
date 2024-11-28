@@ -38,3 +38,4 @@ googlekey.json
 *.tsbuildinfo
 next-env.d.ts
 sales/credentials.json
+sales/token.pickle
