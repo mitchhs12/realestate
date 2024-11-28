@@ -273,11 +273,9 @@ export default function Photos() {
 
         return uploadPhotos(formData);
       });
-      try {
-        await Promise.all(uploadPromises);
-      } catch (error: any) {
-        throw new Error(error.message || "Error uploading files");
-      }
+      await Promise.all(uploadPromises).catch((error) => {
+        setErrorMessage(error.message || "Error uploading files");
+      });
       await retrievePhotos(); // Refresh the photo URLs
     } catch (error: any) {
       console.error("Error during file processing:", error);
