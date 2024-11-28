@@ -352,7 +352,7 @@ export default {
       }
     },
     "hero": {
-      "laurel": "Aplicación inmobiliaria n.° 1",
+      "laurel": "App #1 de Propiedades",
       "title": "Encuentra la casa de tus sueños.",
       "search": {
         "placeholder": "Buscar cualquier ubicación...",
