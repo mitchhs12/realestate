@@ -1,25 +1,51 @@
 import SearchBox from "@/components/SearchBox";
-import { poppins, urbanist } from "@/app/[locale]/fonts";
+import { urbanist } from "@/app/[locale]/fonts";
 import { getScopedI18n } from "@/locales/server";
+import { Star } from "lucide-react";
 import { laurel } from "@/components/Icons/laurel";
 
 export default async function HeroContent() {
   const scopedT = await getScopedI18n("home.hero");
+  const LeftLeaf = laurel.left; // Get the corresponding icon
+  const RightLeaf = laurel.right; // Get the corresponding icon
+
   return (
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
-      <div className="flex flex-col items-center gap-y-12 w-full max-w-8xl p-2 px-4 sm:p-4 md:px-6">
-        <h1
-          className={`${urbanist.className} flex text-center font-semibold tracking-wider text-[#4F4F4F] dark:text-white justify-center text-xl xs:text-2xl sm:text-3xl lg:text-4xl`}
-        >
-          {scopedT("title")}
-        </h1>
-        <div className="flex justify-center items-center w-full max-w-6xl">
-          <SearchBox
-            isSmallMap={false}
-            text={scopedT("search.search-button")}
-            placeholder={scopedT("search.placeholder")}
-            placeholderShort={scopedT("search.placeholderShort")}
-          />
+      <div className="flex flex-col gap-8 items-center justify-between pt-6 pb-12 h-full w-full max-w-8xl px-4 md:px-6">
+        <div className="flex gap-5">
+          <div className="flex justify-center items-center w-[40px] h-full">
+            <LeftLeaf fill={"#16A34A"} stem={"#16A34A"} />
+          </div>
+          <div className="flex flex-col justify-center items-center text-center gap-1">
+            <text className={`${urbanist.className} text-md sm:text-lg text-nowrap font-semibold`}>
+              #1 Property App
+            </text>
+            <div className="flex gap-2">
+              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
+              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
+              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
+              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
+              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
+            </div>
+          </div>
+          <div className="flex justify-center items-center w-[40px] h-full">
+            <RightLeaf fill={"#16A34A"} stem={"#16A34A"} />
+          </div>
+        </div>
+        <div className="flex flex-col gap-6 w-full items-center">
+          <h1
+            className={`${urbanist.className} flex text-center font-semibold tracking-wider text-[#4F4F4F] dark:text-white justify-center text-xl xs:text-2xl sm:text-3xl lg:text-4xl`}
+          >
+            {scopedT("title")}
+          </h1>
+          <div className="flex justify-center items-center w-full max-w-6xl">
+            <SearchBox
+              isSmallMap={false}
+              text={scopedT("search.search-button")}
+              placeholder={scopedT("search.placeholder")}
+              placeholderShort={scopedT("search.placeholderShort")}
+            />
+          </div>
         </div>
       </div>
     </div>
