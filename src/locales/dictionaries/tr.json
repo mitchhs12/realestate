@@ -976,11 +976,16 @@
     },
     "billing": {
       "title": "Faturalama",
+      "contact-credits": "Toplam Kalan İletişim Kredileri",
+      "contact-credits-description": "İletişim bilgileri, mülk sahiplerinin iletişim bilgilerini görüntülemek için kullanılır.",
+      "seller-credits": "Kalan Toplam Satıcı Kredileri",
+      "seller-credits-description": "Satıcı kredileri, platformda mülkleri listelemek için kullanılır.",
       "Buyer Subscription": "Alıcı Aboneliği",
       "Seller Subscription": "Satıcı Aboneliği",
       "updateSub": "Aboneliği Değiştir",
       "paymentMethods": "Ödeme Yöntemini Güncelle",
-      "cancel": "Aboneliği İptal Et"
+      "cancel": "Aboneliği İptal Et",
+      "view-subscriptions": "Abonelik Planlarını Görüntüle"
     },
     "submit": "Kaydetmek"
   },

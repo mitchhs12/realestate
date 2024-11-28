@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "Thanh toán",
+      "contact-credits": "Tổng số tín chỉ liên lạc còn lại",
+      "contact-credits-description": "Thông tin liên hệ được sử dụng để xem thông tin liên hệ của chủ sở hữu bất động sản.",
+      "seller-credits": "Tổng số tín dụng của người bán còn lại",
+      "seller-credits-description": "Tín dụng của người bán được sử dụng để niêm yết bất động sản trên nền tảng.",
       "Buyer Subscription": "Đăng ký người mua",
       "Seller Subscription": "Đăng ký của người bán",
       "updateSub": "Thay đổi đăng ký",
       "paymentMethods": "Cập nhật phương thức thanh toán",
-      "cancel": "Hủy đăng ký"
+      "cancel": "Hủy đăng ký",
+      "view-subscriptions": "Xem các gói đăng ký"
     },
     "submit": "Cứu"
   },

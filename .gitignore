@@ -37,3 +37,4 @@ googlekey.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+sales/credentials.json

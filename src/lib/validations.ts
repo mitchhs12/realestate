@@ -86,6 +86,17 @@ interface CityInfo {
 
 export type CountryProps = Record<CountryKey, CityInfo>;
 
+export const contactCredits = {
+  free: 0,
+  basic: 7,
+  insight: 20,
+  max: -1,
+  starter: 3,
+  pro: 5,
+  premium: 10,
+  business: -1,
+};
+
 export const locationImageIds = {
   AR: {
     folder: "argentina",

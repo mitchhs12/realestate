@@ -35,7 +35,7 @@ export async function getMyHomes(): Promise<HomeType[]> {
   }));
 }
 
-export async function changeHomeVisibility(homeId: number, currentState: boolean, url: string) {
+export async function changeHomeVisibility(homeId: number, currentState: boolean) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {

@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "Fakturering",
+      "contact-credits": "Totale kontakkrediete wat oorbly",
+      "contact-credits-description": "Kontakkrediete word gebruik om die kontakbesonderhede van eiendomseienaars te sien.",
+      "seller-credits": "Totale verkoperkrediete wat oorbly",
+      "seller-credits-description": "Verkoperkrediete word gebruik om eiendomme op die platform te lys.",
       "Buyer Subscription": "Koperintekening",
       "Seller Subscription": "Verkoperintekening",
       "updateSub": "Verander intekening",
       "paymentMethods": "Dateer betaalmetode op",
-      "cancel": "Kanselleer intekening"
+      "cancel": "Kanselleer intekening",
+      "view-subscriptions": "Bekyk intekeningplanne"
     },
     "submit": "Stoor"
   },

@@ -66,6 +66,7 @@ export default function CheckoutForm() {
   };
 
   const showErrorForLimitedTime = (errorMsg: string) => {
+    console.log(errorMsg);
     setMessage(errorMsg);
     setIsError(true);
     setTimeout(() => {

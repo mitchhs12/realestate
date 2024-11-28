@@ -976,11 +976,16 @@
     },
     "billing": {
       "title": "Facturation",
+      "contact-credits": "Total des crédits de contact restants",
+      "contact-credits-description": "Les crédits de contact permettent de visualiser les coordonnées des propriétaires.",
+      "seller-credits": "Total des crédits restants du vendeur",
+      "seller-credits-description": "Les crédits vendeur sont utilisés pour répertorier les propriétés sur la plateforme.",
       "Buyer Subscription": "Abonnement de l'acheteur",
       "Seller Subscription": "Abonnement du vendeur",
       "updateSub": "Changer d'abonnement",
       "paymentMethods": "Mettre à jour le mode de paiement",
-      "cancel": "Annuler l'abonnement"
+      "cancel": "Annuler l'abonnement",
+      "view-subscriptions": "Voir les formules d'abonnement"
     },
     "submit": "Sauvegarder"
   },

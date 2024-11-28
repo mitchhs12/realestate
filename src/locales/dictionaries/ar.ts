@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "الفواتير",
+      "contact-credits": "إجمالي رصيد الاتصال المتبقي",
+      "contact-credits-description": "يتم استخدام بيانات الاتصال لعرض تفاصيل الاتصال الخاصة بأصحاب العقارات.",
+      "seller-credits": "إجمالي رصيد البائع المتبقي",
+      "seller-credits-description": "يتم استخدام أرصدة البائع لإدراج العقارات على المنصة.",
       "Buyer Subscription": "اشتراك المشتري",
       "Seller Subscription": "اشتراك البائع",
       "updateSub": "تغيير الاشتراك",
       "paymentMethods": "تحديث طريقة الدفع",
-      "cancel": "إلغاء الاشتراك"
+      "cancel": "إلغاء الاشتراك",
+      "view-subscriptions": "عرض خطط الاشتراك"
     },
     "submit": "يحفظ"
   },

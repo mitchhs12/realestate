@@ -7,6 +7,7 @@ import { NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import { headers } from "next/headers";
 import { GetSubscription } from "@/app/[locale]/stripeServer";
+import { contactCredits } from "@/lib/validations";
 
 export async function POST(req: Request, res: NextApiResponse) {
   const sig = headers().get("stripe-signature");
@@ -41,16 +42,26 @@ export async function POST(req: Request, res: NextApiResponse) {
         const plan = await GetSubscription(subscriptionId);
 
         if (accountId && plan) {
+          const amountToAdd = contactCredits[plan.name as keyof typeof contactCredits] || 0;
+
           if (isSeller) {
             // Update the home listing in the database to "premium"
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: plan.name, sellerSubscriptionId: subscriptionId },
+              data: {
+                sellerSubscription: plan.name,
+                sellerSubscriptionId: subscriptionId,
+                contactCredits: { increment: amountToAdd },
+              },
             });
           } else {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: plan.name, buyerSubscriptionId: subscriptionId },
+              data: {
+                buyerSubscription: plan.name,
+                buyerSubscriptionId: subscriptionId,
+                contactCredits: { increment: amountToAdd },
+              },
             });
           }
         } else {

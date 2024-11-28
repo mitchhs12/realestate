@@ -976,11 +976,16 @@
     },
     "billing": {
       "title": "Naplata",
+      "contact-credits": "Ukupni preostali krediti za kontakt",
+      "contact-credits-description": "Kontakt krediti se koriste za pregled podataka o kontaktu vlasnika nekretnine.",
+      "seller-credits": "Ukupni preostali krediti prodavača",
+      "seller-credits-description": "Krediti prodavača koriste se za popis nekretnina na platformi.",
       "Buyer Subscription": "Pretplata kupca",
       "Seller Subscription": "Pretplata prodavača",
       "updateSub": "Promjena pretplate",
       "paymentMethods": "Ažurirajte način plaćanja",
-      "cancel": "Otkaži pretplatu"
+      "cancel": "Otkaži pretplatu",
+      "view-subscriptions": "Pogledajte planove pretplate"
     },
     "submit": "Uštedjeti"
   },

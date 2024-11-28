@@ -13,14 +13,13 @@ import { Country } from "react-phone-number-input";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Eye, EyeOff, Star } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 import { usePathname } from "next/navigation";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiTypeButton from "../MultiTypeButton";
 import { useTheme } from "next-themes";
 import DeleteButton from "@/components/DeleteButton";
-import { useCurrentLocale } from "@/locales/client";
 
 interface Props {
   home: HomeType | null;
@@ -53,9 +52,6 @@ export default function ResizableCard({
   const isMyProperties = path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const { resolvedTheme: theme } = useTheme();
-
-  const localePathname = usePathname();
-  const pathname = localePathname.replace(`/${defaultLanguage}`, "");
 
   useEffect(() => {
     if (home && home.language) {
@@ -192,7 +188,7 @@ export default function ResizableCard({
             e.stopPropagation();
             e.preventDefault();
             setVisibilityChanging(true);
-            await changeHomeVisibility(home.id, home.isActive, pathname);
+            await changeHomeVisibility(home.id, home.isActive);
           }}
           size={"icon"}
           disabled={visibilityChanging}

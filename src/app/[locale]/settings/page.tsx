@@ -34,6 +34,11 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     updateSub: t("billing.updateSub"),
     paymentMethods: t("billing.paymentMethods"),
     cancel: t("billing.cancel"),
+    contactCredits: t("billing.contact-credits"),
+    contactCreditsDesc: t("billing.contact-credits-description"),
+    sellCredits: t("billing.seller-credits"),
+    sellCreditsDesc: t("billing.seller-credits-description"),
+    subscriptions: t("billing.view-subscriptions"),
   };
 
   const session = await getSession();

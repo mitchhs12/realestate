@@ -46,7 +46,8 @@ export default function StickyPrice({
   originalPrice,
   negotiable,
 }: Props) {
-  const { home, editMode } = useContext(HomeContext);
+  const { home, editMode, homeOwnerEmail, homeOwnerName, homeOwnerPhone, fetchingContactInfo, handleGetContactInfo } =
+    useContext(HomeContext);
   const { defaultCurrency, currencyData, sessionLoading, user } = useContext(LocaleContext);
   const { openLogInModal, isModalOpen, revealPrice, setRevealPrice } = useContext(QueryContext);
   const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
@@ -141,6 +142,7 @@ export default function StickyPrice({
                 className={`flex ${user ? "w-full" : "w-1/2"} px-4 justify-center gap-2 text-center`}
                 variant={"default"}
                 onClick={() => {
+                  handleGetContactInfo();
                   setContactModalOpen(true);
                 }}
               >
@@ -169,58 +171,64 @@ export default function StickyPrice({
             <DialogTitle>{contactTitleMobile}</DialogTitle>
             <DialogClose asChild></DialogClose>
           </DialogHeader>
-          <div className="max-h-[85vh] overflow-y-auto grid grid-cols-1 gap-4 p-4">
-            <div className="flex flex-col items-start">
-              <span className="text-start text-xs md:text-sm">{contactNameText}</span>
-              <div
-                className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
-              >
-                <div className="text-start">{home.contactName}</div>
-                <Button
-                  onClick={() => home.contactName && handleCopy(home.contactName, "name", setCopiedField)}
-                  variant="outline"
-                  size="icon"
-                  className="flex text-xs gap-2 p-2"
-                >
-                  {copiedField === "name" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
-                </Button>
-              </div>
+          {fetchingContactInfo ? (
+            <div className="flex justify-center items-center w-full">
+              <ReloadIcon className="w-6 h-6 animate-spin" />
             </div>
+          ) : (
+            <div className="max-h-[85vh] overflow-y-auto grid grid-cols-1 gap-4 p-4">
+              <div className="flex flex-col items-start">
+                <span className="text-start text-xs md:text-sm">{contactNameText}</span>
+                <div
+                  className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
+                >
+                  <div className="text-start">{homeOwnerName}</div>
+                  <Button
+                    onClick={() => homeOwnerName && handleCopy(homeOwnerName, "name", setCopiedField)}
+                    variant="outline"
+                    size="icon"
+                    className="flex text-xs gap-2 p-2"
+                  >
+                    {copiedField === "name" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                  </Button>
+                </div>
+              </div>
 
-            <div className="flex flex-col items-start">
-              <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
-              <div
-                className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
-              >
-                <div className="justify-start truncate">{home.contactEmail}</div>
-                <Button
-                  onClick={() => home.contactEmail && handleCopy(home.contactEmail, "email", setCopiedField)}
-                  variant="outline"
-                  size="icon"
-                  className="flex text-xs gap-2 p-2"
+              <div className="flex flex-col items-start">
+                <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
+                <div
+                  className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                 >
-                  {copiedField === "email" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
-                </Button>
+                  <div className="justify-start truncate">{homeOwnerEmail}</div>
+                  <Button
+                    onClick={() => homeOwnerEmail && handleCopy(homeOwnerEmail, "email", setCopiedField)}
+                    variant="outline"
+                    size="icon"
+                    className="flex text-xs gap-2 p-2"
+                  >
+                    {copiedField === "email" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <div className="flex flex-col items-start">
-              <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
-              <div
-                className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
-              >
-                <div className="justify-start">{home.contactPhone}</div>
-                <Button
-                  onClick={() => home.contactPhone && handleCopy(home.contactPhone, "phone", setCopiedField)}
-                  variant="outline"
-                  className="flex text-xs gap-2 p-2"
-                  size="icon"
+              <div className="flex flex-col items-start">
+                <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
+                <div
+                  className={`flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                 >
-                  {copiedField === "phone" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
-                </Button>
+                  <div className="justify-start">{homeOwnerPhone}</div>
+                  <Button
+                    onClick={() => homeOwnerPhone && handleCopy(homeOwnerPhone, "phone", setCopiedField)}
+                    variant="outline"
+                    className="flex text-xs gap-2 p-2"
+                    size="icon"
+                  >
+                    {copiedField === "phone" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </DialogContent>
       </Dialog>
     </>

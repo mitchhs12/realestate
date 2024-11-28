@@ -11,6 +11,7 @@ import {
   EyeClosedIcon,
   CopyIcon,
   CheckIcon,
+  ReloadIcon,
 } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
@@ -51,6 +52,8 @@ import ContactDialog from "./ContactDialog";
 import CapacityDialog from "./CapacityDialog";
 import RoomsDialog from "./RoomsDialog";
 import FeaturesDialog from "./FeaturesDialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import PricingDialog from "@/components/StartPageContent/Dialog";
 
 interface Props {
   units: { m: string; ft: string };
@@ -111,16 +114,8 @@ export default function HomeText({
   edit,
   save,
 }: Props) {
-  const {
-    setCurrentHome,
-    setQuery,
-    openLogInModal,
-    revealPrice,
-    setRevealPrice,
-    revealContact,
-    setRevealContact,
-    isModalOpen,
-  } = useContext(QueryContext);
+  const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice, revealContact, isModalOpen } =
+    useContext(QueryContext);
   const {
     home,
     matchingTypes,
@@ -136,6 +131,14 @@ export default function HomeText({
     countryName,
     editMode,
     setEditMode,
+    homeOwnerName,
+    homeOwnerEmail,
+    homeOwnerPhone,
+    handleGetContactInfo,
+    fetchingContactInfo,
+    billingError,
+    contactInfoError,
+    redirectUrl,
   } = useContext(HomeContext);
 
   const { defaultCurrency, currencyData, numerals, sessionLoading, sessionUnauthenticated, user } =
@@ -145,6 +148,7 @@ export default function HomeText({
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
   const [editLoading, setEditLoading] = useState<boolean>(false);
+  const [openBillingModal, setOpenBillingModal] = useState<boolean>(false);
 
   const quillRef = useRef<ReactQuill | null>(null);
   const [quillDimensions, setQuillDimensions] = useState({ width: 0, height: 0 });
@@ -578,9 +582,9 @@ export default function HomeText({
                       !revealContact ? "blur-sm select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
-                    <div className="text-start">{home.contactName}</div>
+                    <div className="text-start">{homeOwnerName}</div>
                     <Button
-                      onClick={() => home.contactName && handleCopy(home.contactName, "name", setCopiedField)}
+                      onClick={() => homeOwnerName && handleCopy(homeOwnerName, "name", setCopiedField)}
                       variant="outline"
                       size="icon"
                       className="flex text-xs gap-2 p-2"
@@ -598,9 +602,9 @@ export default function HomeText({
                       !revealContact ? "blur-sm select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
-                    <div className="justify-start truncate">{home.contactEmail}</div>
+                    <div className="justify-start truncate">{homeOwnerEmail}</div>
                     <Button
-                      onClick={() => home.contactEmail && handleCopy(home.contactEmail, "email", setCopiedField)}
+                      onClick={() => homeOwnerEmail && handleCopy(homeOwnerEmail, "email", setCopiedField)}
                       variant="outline"
                       size="icon"
                       className="flex text-xs gap-2 p-2"
@@ -618,9 +622,9 @@ export default function HomeText({
                       !revealContact ? "blur-sm select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
-                    <div className="justify-start">{home.contactPhone}</div>
+                    <div className="justify-start">{homeOwnerPhone}</div>
                     <Button
-                      onClick={() => home.contactPhone && handleCopy(home.contactPhone, "phone", setCopiedField)}
+                      onClick={() => homeOwnerPhone && handleCopy(homeOwnerPhone, "phone", setCopiedField)}
                       variant="outline"
                       className="flex text-xs gap-2 p-2"
                       size="icon"
@@ -634,20 +638,37 @@ export default function HomeText({
                 <div className="flex items-center justify-center mt-4">
                   <Button
                     onClick={() => {
-                      user ? setRevealContact(!revealContact) : openLogInModal();
+                      !billingError ? (user ? handleGetContactInfo() : openLogInModal()) : setOpenBillingModal(true);
                     }}
                     variant="default"
                     className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
                   >
                     <div className="flex gap-3 justify-center text-lg items-center">
-                      {revealContact || isModalOpen ? <PhoneCall className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
-                      <span className="text-xs md:text-sm lg:text-base">{contactButton}</span>
+                      {fetchingContactInfo ? (
+                        <ReloadIcon className="w-5 h-5 animate-spin" />
+                      ) : revealContact || isModalOpen ? (
+                        <PhoneCall className="w-5 h-5" />
+                      ) : (
+                        <Phone className="w-5 h-5" />
+                      )}
+                      <span className="text-xs md:text-sm lg:text-base">
+                        {contactInfoError
+                          ? billingError
+                            ? "Subscribe to reveal!"
+                            : "An unknown error occured!"
+                          : contactButton}
+                      </span>
                     </div>
                   </Button>
                 </div>
               </CardContent>
             </Card>
           )}
+          <Dialog open={openBillingModal} onOpenChange={setOpenBillingModal}>
+            <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
+              <PricingDialog redirectUrl={redirectUrl} />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>

@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "Billing",
+      "contact-credits": "Total Contact Credits Remaining",
+      "contact-credits-description": "Contact credits are used to view the contact details of property owners.",
+      "seller-credits": "Total Seller Credits Remaining",
+      "seller-credits-description": "Seller credits are used to list properties on the platform.",
       "Buyer Subscription": "Buyer Subscription",
       "Seller Subscription": "Seller Subscription",
       "updateSub": "Change Subscription",
       "paymentMethods": "Update Payment Method",
-      "cancel": "Cancel Subscription"
+      "cancel": "Cancel Subscription",
+      "view-subscriptions": "View Subscription Plans"
     },
     "submit": "Save"
   },

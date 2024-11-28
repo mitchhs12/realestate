@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "Penagihan",
+      "contact-credits": "Total Kredit Kontak yang Tersisa",
+      "contact-credits-description": "Kredit kontak digunakan untuk melihat rincian kontak pemilik properti.",
+      "seller-credits": "Total Kredit Penjual yang Tersisa",
+      "seller-credits-description": "Kredit penjual digunakan untuk mencantumkan properti di platform.",
       "Buyer Subscription": "Langganan Pembeli",
       "Seller Subscription": "Langganan Penjual",
       "updateSub": "Ubah Langganan",
       "paymentMethods": "Perbarui Metode Pembayaran",
-      "cancel": "Batalkan Langganan"
+      "cancel": "Batalkan Langganan",
+      "view-subscriptions": "Lihat Paket Langganan"
     },
     "submit": "Menyimpan"
   },

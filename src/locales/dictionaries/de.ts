@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "Abrechnung",
+      "contact-credits": "Insgesamt verbleibende Kontaktguthaben",
+      "contact-credits-description": "Kontaktguthaben dienen dazu, die Kontaktdaten von Immobilieneigentümern einzusehen.",
+      "seller-credits": "Gesamtsumme der verbleibenden Verkäufergutschriften",
+      "seller-credits-description": "Verkäuferguthaben werden zum Auflisten von Immobilien auf der Plattform verwendet.",
       "Buyer Subscription": "Käuferabonnement",
       "Seller Subscription": "Verkäuferabonnement",
       "updateSub": "Abonnement ändern",
       "paymentMethods": "Zahlungsmethode aktualisieren",
-      "cancel": "Abonnement kündigen"
+      "cancel": "Abonnement kündigen",
+      "view-subscriptions": "Abonnements anzeigen"
     },
     "submit": "Speichern"
   },

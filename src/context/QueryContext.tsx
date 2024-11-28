@@ -200,10 +200,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
 
   const pathname = usePathname();
 
-  const [messageSent, setMessageSent] = useState(false);
-  const [buyingLoading, setBuyingLoading] = useState(false);
-  const [buyingError, setBuyingError] = useState<string | null>(null);
-
   const handleAllFeatures = () => {
     if (allSelectedFeatures) {
       setSelectedFeatures([]);

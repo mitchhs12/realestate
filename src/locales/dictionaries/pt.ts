@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "Cobrança",
+      "contact-credits": "Total de créditos de contato restantes",
+      "contact-credits-description": "Os créditos de contato são usados para visualizar os detalhes de contato dos proprietários dos imóveis.",
+      "seller-credits": "Total de créditos restantes do vendedor",
+      "seller-credits-description": "Os créditos do vendedor são usados para listar propriedades na plataforma.",
       "Buyer Subscription": "Assinatura do comprador",
       "Seller Subscription": "Assinatura do vendedor",
       "updateSub": "Alterar assinatura",
       "paymentMethods": "Atualizar método de pagamento",
-      "cancel": "Cancelar assinatura"
+      "cancel": "Cancelar assinatura",
+      "view-subscriptions": "Ver Planos de Assinatura"
     },
     "submit": "Salvar"
   },

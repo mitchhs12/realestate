@@ -15,6 +15,8 @@ declare module "next-auth" {
     sellerSubscription: string | null;
     buyerSubscriptionId: string | null;
     sellerSubscriptionId: string | null;
+    contactCredits: number;
+    sellCredits: number;
     language: LanguageType;
     phoneNumber: string | null;
     favoritedLists: (FavoriteList & { homes: HomeType[] })[];

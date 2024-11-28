@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "請求する",
+      "contact-credits": "残りのコンタクトクレジット合計",
+      "contact-credits-description": "連絡先クレジットは、不動産所有者の連絡先の詳細を表示するために使用されます。",
+      "seller-credits": "販売者クレジット残高合計",
+      "seller-credits-description": "販売者クレジットは、プラットフォーム上に物件を掲載するために使用されます。",
       "Buyer Subscription": "購入者サブスクリプション",
       "Seller Subscription": "販売者サブスクリプション",
       "updateSub": "サブスクリプションの変更",
       "paymentMethods": "支払い方法の更新",
-      "cancel": "サブスクリプションをキャンセル"
+      "cancel": "サブスクリプションをキャンセル",
+      "view-subscriptions": "サブスクリプションプランを表示"
     },
     "submit": "保存"
   },

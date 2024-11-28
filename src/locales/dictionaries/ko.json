@@ -976,11 +976,16 @@
     },
     "billing": {
       "title": "청구",
+      "contact-credits": "남은 총 연락처 크레딧",
+      "contact-credits-description": "연락처 크레딧은 부동산 소유자의 연락처 정보를 보는 데 사용됩니다.",
+      "seller-credits": "총 판매자 크레딧 잔액",
+      "seller-credits-description": "판매자 크레딧은 플랫폼에 부동산을 등록하는 데 사용됩니다.",
       "Buyer Subscription": "구매자 구독",
       "Seller Subscription": "판매자 구독",
       "updateSub": "구독 변경",
       "paymentMethods": "결제 방법 업데이트",
-      "cancel": "구독 취소"
+      "cancel": "구독 취소",
+      "view-subscriptions": "구독 계획 보기"
     },
     "submit": "구하다"
   },

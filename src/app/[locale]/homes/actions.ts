@@ -6,11 +6,50 @@ import { HomeType } from "@/lib/validations";
 import { homeSchema } from "@/lib/validations";
 import { revalidatePath } from "next/cache";
 
-export async function getHomeById(homeId: string): Promise<HomeType | null> {
+export async function getHomeById(
+  homeId: string
+): Promise<Omit<HomeType, "contactName" | "contactEmail" | "contactPhone"> | null> {
   const home = await prisma.home.findFirst({
     where: {
       isActive: true,
       id: Number(homeId),
+    },
+    select: {
+      id: true,
+      ownerId: true,
+      title: true,
+      description: true,
+      address: true,
+      municipality: true,
+      subRegion: true,
+      region: true,
+      country: true,
+      latitude: true,
+      longitude: true,
+      exactLocation: true,
+      type: true,
+      features: true,
+      bedrooms: true,
+      bathrooms: true,
+      livingrooms: true,
+      kitchens: true,
+      capacity: true,
+      photos: true,
+      price: true,
+      currency: true,
+      language: true,
+      priceUsd: true,
+      priceNegotiable: true,
+      listingType: true,
+      areaSqm: true,
+      isActive: true,
+      isComplete: true,
+      completedAt: true,
+      listingFlowStep: true,
+      // Omit the following fields:
+      // contactName: false,
+      // contactEmail: false,
+      // contactPhone: false,
     },
   });
 

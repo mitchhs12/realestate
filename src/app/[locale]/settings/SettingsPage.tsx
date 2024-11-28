@@ -40,6 +40,11 @@ interface Props {
     updateSub: string;
     paymentMethods: string;
     cancel: string;
+    contactCredits: string;
+    contactCreditsDesc: string;
+    sellCredits: string;
+    sellCreditsDesc: string;
+    subscriptions: string;
   };
 }
 
@@ -179,6 +184,20 @@ export default function SettingsPage({
           </div>
           <div className="flex flex-col w-full h-full gap-3">
             <h2 className="flex text-lg lg:text-2xl font-semibold">{billingText.title}</h2>
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col">
+                <span className="flex items-center text-lg">
+                  {billingText.contactCredits} | {user.contactCredits}
+                </span>
+                <span className="text-sm">{billingText.contactCreditsDesc}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="flex items-center text-lg">
+                  {billingText.sellCredits} | {user.sellCredits}
+                </span>
+                <span className="text-sm">{billingText.sellCreditsDesc}</span>
+              </div>
+            </div>
             <div className="flex flex-col gap-12">
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
@@ -191,7 +210,7 @@ export default function SettingsPage({
                     </span>
                   </h3>
                 </div>
-                {buyerSubscription && (
+                {buyerSubscription ? (
                   <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-between">
                     <Button
                       className="bg-primary hover:bg-primary/90 w-full"
@@ -245,6 +264,16 @@ export default function SettingsPage({
                           <ReloadIcon className="w-5 h-5 animate-spin" />
                         </div>
                       )}
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex gap-3 items-center">
+                    <Button
+                      onClick={() => {
+                        router.push("/start");
+                      }}
+                    >
+                      {billingText.subscriptions}
                     </Button>
                   </div>
                 )}

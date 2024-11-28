@@ -976,11 +976,16 @@ export default {
     },
     "billing": {
       "title": "计费",
+      "contact-credits": "剩余联系积分总额",
+      "contact-credits-description": "联系积分用于查看业主的联系方式。",
+      "seller-credits": "卖家剩余信用总额",
+      "seller-credits-description": "卖家积分用于在平台上列出房产。",
       "Buyer Subscription": "买家订阅",
       "Seller Subscription": "卖家订阅",
       "updateSub": "更改订阅",
       "paymentMethods": "更新付款方式",
-      "cancel": "取消订阅"
+      "cancel": "取消订阅",
+      "view-subscriptions": "查看订阅计划"
     },
     "submit": "节省"
   },

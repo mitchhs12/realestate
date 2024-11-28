@@ -3,6 +3,7 @@
 import React, { createContext, useState, ReactNode, useEffect, useContext } from "react";
 import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
+import { QueryContext } from "@/context/QueryContext";
 import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 import lookup from "country-code-lookup";
 import { findMatching, getCountryNameForLocale } from "@/lib/utils";
@@ -38,6 +39,14 @@ interface HomeContextProps {
   editedHome: HomeType;
   setEditedHome: (value: HomeType) => void;
   saveLoading: boolean;
+  homeOwnerName: string;
+  homeOwnerEmail: string;
+  homeOwnerPhone: string;
+  handleGetContactInfo: () => void;
+  fetchingContactInfo: boolean;
+  billingError: boolean;
+  contactInfoError: string | null;
+  redirectUrl: string;
 }
 
 const HomeContext = createContext<HomeContextProps>({
@@ -139,13 +148,21 @@ const HomeContext = createContext<HomeContextProps>({
   },
   setEditedHome: () => {},
   saveLoading: false,
+  homeOwnerName: "",
+  homeOwnerEmail: "",
+  homeOwnerPhone: "",
+  handleGetContactInfo: () => {},
+  fetchingContactInfo: false,
+  billingError: false,
+  contactInfoError: null,
+  redirectUrl: "",
 });
 
 interface HomeProviderProps {
   children: ReactNode;
   typesObject: { id: string; name: string; translation: string }[];
   featuresObject: { id: string; name: string; translation: string }[];
-  originalHome: HomeType;
+  originalHome: any;
   originalMatchingTypes: { id: string; name: string; translation: string }[];
   originalMatchingFeatures: { id: string; name: string; translation: string }[];
 }
@@ -175,8 +192,21 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
   const [title, setTitle] = useState<string | null>(home.title);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [saveLoading, setSaveLoading] = useState<boolean>(false);
-  const [editedHome, setEditedHome] = useState<HomeType>(home);
+  const [editedHome, setEditedHome] = useState<any>(home);
+  const [homeOwnerName, setHomeOwnerName] = useState<string>("Mitchell Spencer");
+  const [homeOwnerEmail, setHomeOwnerEmail] = useState<string>("mitchell@vivaideal.com");
+  const [haveContactInfo, setHaveContactInfo] = useState<boolean>(false);
+  const [homeOwnerPhone, setHomeOwnerPhone] = useState<string>("+51 958 751 401");
+  const [fetchingContactInfo, setFetchingContactInfo] = useState<boolean>(false);
+  const [billingError, setBillingError] = useState<boolean>(false);
+  const [contactInfoError, setContactInfoError] = useState<string | null>(null);
   const pathname = usePathname();
+  const { setRevealContact, revealContact } = useContext(QueryContext);
+
+  const redirectUrl =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:3000/${defaultLanguage}${pathname}`
+      : `https://www.vivaideal.com/${defaultLanguage}${pathname}`;
 
   const iso = home && home.country && lookup.byIso(home.country);
   const countryName =
@@ -192,6 +222,43 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
       setOriginalDescription(!originalDescription);
     }
   };
+
+  const handleGetContactInfo = async () => {
+    setFetchingContactInfo(true);
+    const response = await fetch("/api/contactData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        homeId: home.id,
+      }),
+    });
+    const data = await response.json();
+    if (response.status === 200) {
+      setHomeOwnerName(data.result.contactName);
+      setHomeOwnerEmail(data.result.contactEmail);
+      setHomeOwnerPhone(data.result.contactPhone);
+      setHaveContactInfo(true);
+    } else {
+      setContactInfoError(data.error);
+      if (data.error === "Insufficient credits") {
+        setBillingError(true);
+      } else if (data.error === "Not subscribed") {
+        setBillingError(true);
+      }
+    }
+
+    setFetchingContactInfo(false);
+  };
+
+  useEffect(() => {
+    console.log("running this nigger");
+    if (haveContactInfo && homeOwnerName && homeOwnerEmail && homeOwnerPhone) {
+      console.log("name", homeOwnerName);
+      setRevealContact(true);
+    }
+  }, [haveContactInfo, homeOwnerName, homeOwnerEmail, homeOwnerPhone]);
 
   useEffect(() => {
     translatedDescription !== home.description && setDescription(translatedDescription);
@@ -322,6 +389,14 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
         editedHome,
         setEditedHome,
         saveLoading,
+        homeOwnerName,
+        homeOwnerEmail,
+        homeOwnerPhone,
+        handleGetContactInfo,
+        fetchingContactInfo,
+        billingError,
+        contactInfoError,
+        redirectUrl,
       }}
     >
       {children}
