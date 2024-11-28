@@ -105,8 +105,9 @@ export async function uploadPhotos(formData: FormData) {
       throw new Error("File size exceeded. File size exceeds 4MB");
     }
 
-    return await uploadToS3(buffer, homeId, fileName, file.type);
+    const result = await uploadToS3(buffer, homeId, fileName, file.type);
+    return { success: true, data: result };
   } catch (error: any) {
-    throw new Error(error.message || "An error occurred while trying to upload photos");
+    return { success: false, error: error.message || "An error occurred while trying to upload photos" };
   }
 }

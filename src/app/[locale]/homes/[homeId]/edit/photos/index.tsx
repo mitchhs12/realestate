@@ -271,9 +271,12 @@ export default function Photos() {
         formData.append("file", webpFile);
         formData.append("homeId", editedHome.id.toString());
 
-        return uploadPhotos(formData).catch((error) => {
-          setErrorMessage(`Error uploading ${file.name}: ${error.message}` || `Error uploading ${file.name}`);
-        });
+        const result = await uploadPhotos(formData);
+        if (result.success) {
+          return result.data;
+        } else {
+          throw new Error(result.error);
+        }
       });
       await Promise.all(uploadPromises);
       await retrievePhotos(); // Refresh the photo URLs
