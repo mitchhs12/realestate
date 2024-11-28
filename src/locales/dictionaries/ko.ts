@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 부동산 앱",
       "title": "당신의 꿈의 집을 찾아보세요.",
       "search": {
         "placeholder": "모든 위치를 검색하세요...",

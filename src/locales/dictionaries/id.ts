@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "Aplikasi Properti #1",
       "title": "Temukan rumah impian Anda.",
       "search": {
         "placeholder": "Cari lokasi mana saja...",

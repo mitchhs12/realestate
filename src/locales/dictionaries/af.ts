@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 Eiendom-toepassing",
       "title": "Vind jou droomhuis.",
       "search": {
         "placeholder": "Soek vir enige ligging...",

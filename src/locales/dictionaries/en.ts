@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 Property App",
       "title": "Find your dream home",
       "search": {
         "placeholder": "Search for any location...",

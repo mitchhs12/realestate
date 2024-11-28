@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 Ứng dụng bất động sản",
       "title": "Tìm ngôi nhà mơ ước của bạn.",
       "search": {
         "placeholder": "Tìm kiếm bất kỳ vị trí nào...",

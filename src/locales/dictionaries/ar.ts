@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 تطبيق العقارات",
       "title": "ابحث عن منزل أحلامك",
       "search": {
         "placeholder": "ابحث عن أي موقع...",

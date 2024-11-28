@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 Aplicativo de Propriedade",
       "title": "Encontre a casa dos seus sonhos.",
       "search": {
         "placeholder": "Pesquise qualquer local...",

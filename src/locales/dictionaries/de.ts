@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "#1 Immobilien-App",
       "title": "Finden Sie Ihr Traumhaus.",
       "search": {
         "placeholder": "Suche nach einem beliebigen Ort...",

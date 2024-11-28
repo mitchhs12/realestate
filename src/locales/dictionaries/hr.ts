@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "Aplikacija broj 1 za nekretnine",
       "title": "Pronađite svoj dom iz snova.",
       "search": {
         "placeholder": "Potražite bilo koju lokaciju...",

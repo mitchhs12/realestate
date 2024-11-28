@@ -11,7 +11,7 @@ export default async function HeroContent() {
 
   return (
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
-      <div className="flex flex-col gap-8 items-center justify-between pt-6 pb-12 h-full w-full max-w-8xl px-4 md:px-6">
+      <div className="flex flex-col gap-7 items-center justify-between pt-6 pb-12 h-full w-full max-w-8xl px-4 md:px-6">
         <div className="flex gap-5">
           <div className="flex justify-center items-center w-[40px] h-full">
             <LeftLeaf className="text-[#4F4F4F] dark:text-white" />
@@ -20,7 +20,7 @@ export default async function HeroContent() {
             <text
               className={`${urbanist.className} text-[#4F4F4F] dark:text-white text-md sm:text-lg text-nowrap font-bold`}
             >
-              #1 Property App
+              {scopedT("laurel")}
             </text>
             <div className="flex gap-2">
               {[...Array(5)].map((_, i) => (

@@ -352,6 +352,7 @@
       }
     },
     "hero": {
+      "laurel": "#1 Emlak Uygulaması",
       "title": "Hayalinizdeki evi bulun.",
       "search": {
         "placeholder": "Herhangi bir lokasyonu arayın...",

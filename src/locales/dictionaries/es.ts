@@ -352,6 +352,7 @@ export default {
       }
     },
     "hero": {
+      "laurel": "Aplicación inmobiliaria n.° 1",
       "title": "Encuentra la casa de tus sueños.",
       "search": {
         "placeholder": "Buscar cualquier ubicación...",
