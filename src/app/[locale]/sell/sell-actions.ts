@@ -53,18 +53,23 @@ export async function uploadPhotos(formData: FormData) {
       throw new Error("User not found");
     }
 
-    if (!user.sellerSubscription) {
-      throw new Error("User does not have a subscription");
-    }
+    let uploadLimit;
 
-    const uploadLimit =
-      user.sellerSubscription === "starter"
-        ? 5
-        : user.sellerSubscription === "pro"
-          ? 15
-          : user.sellerSubscription === "premium"
-            ? 30
-            : 50;
+    if (user.role !== "admin") {
+      if (!user.sellerSubscription) {
+        throw new Error("User does not have a subscription");
+      }
+      uploadLimit =
+        user.sellerSubscription === "starter"
+          ? 5
+          : user.sellerSubscription === "pro"
+            ? 15
+            : user.sellerSubscription === "premium"
+              ? 30
+              : 50;
+    } else {
+      uploadLimit = 50;
+    }
 
     const file = formData.get("file");
     const homeId = formData.get("homeId") as string;
