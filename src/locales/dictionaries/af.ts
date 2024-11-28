@@ -572,7 +572,8 @@ export default {
     "how": {
       "title": "Ons Hoe",
       "content": "Die beste manier om dit moontlik te maak, is deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat hulle in staat stel om te verken hoe dit is om op plekke buite hul onmiddellike kulturele sfeer en bekende omgewing te woon."
-    }
+    },
+    "brochures": "Brosjures"
   },
   "sell": {
     "sell-flow": {

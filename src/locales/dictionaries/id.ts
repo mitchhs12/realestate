@@ -572,7 +572,8 @@ export default {
     "how": {
       "title": "Bagaimana Kami",
       "content": "Cara terbaik untuk mewujudkan hal ini adalah dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan mereka mengeksplorasi bagaimana rasanya tinggal di tempat-tempat di luar lingkup budaya langsung dan lingkungan yang mereka kenal."
-    }
+    },
+    "brochures": "Brosur"
   },
   "sell": {
     "sell-flow": {

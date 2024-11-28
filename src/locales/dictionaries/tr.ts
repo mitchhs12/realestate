@@ -572,7 +572,8 @@ export default {
     "how": {
       "title": "Bizim Nasıl",
       "content": "Bunu mümkün kılmanın en iyi yolu, sürtüşmeleri azaltmak ve farklı kültürel geçmişlere sahip insanları birbirine bağlamaktır; böylece onların kendi kültürel çevrelerinin ve aşina oldukları çevrelerinin dışındaki yerlerde yaşamanın nasıl bir şey olduğunu keşfetmelerini sağlamaktır."
-    }
+    },
+    "brochures": "Broşürler"
   },
   "sell": {
     "sell-flow": {

@@ -572,7 +572,8 @@ export default {
     "how": {
       "title": "Cách thức của chúng tôi",
       "content": "Cách tốt nhất để thực hiện điều này là giảm thiểu sự xung đột và kết nối những người có nền tảng văn hóa đa dạng; cho phép họ khám phá cuộc sống ở những nơi nằm ngoài phạm vi văn hóa gần và môi trường quen thuộc của họ."
-    }
+    },
+    "brochures": "Tờ rơi"
   },
   "sell": {
     "sell-flow": {

@@ -572,7 +572,8 @@ export default {
     "how": {
       "title": "Naš Kako",
       "content": "Najbolji način da se to učini je smanjenje trvenja i povezivanje ljudi iz različitih kulturnih sredina; omogućujući im da istraže kako je to živjeti na mjestima izvan njihove neposredne kulturne sfere i poznatog okruženja."
-    }
+    },
+    "brochures": "Brošure"
   },
   "sell": {
     "sell-flow": {

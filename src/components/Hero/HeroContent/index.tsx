@@ -22,7 +22,7 @@ export default async function HeroContent() {
             >
               {scopedT("laurel")}
             </text>
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-center">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}

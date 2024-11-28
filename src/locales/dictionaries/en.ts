@@ -572,7 +572,8 @@ export default {
     "how": {
       "title": "Our How",
       "content": "The best way to make this possible is by reducing friction and connecting people from diverse cultural backgrounds; enabling them to explore what it is like to live in places outside of their immediate cultural sphere and familiar surroundings."
-    }
+    },
+    "brochures": "Brochures"
   },
   "sell": {
     "sell-flow": {

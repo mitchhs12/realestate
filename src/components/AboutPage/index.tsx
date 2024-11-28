@@ -7,18 +7,20 @@ import { ArticleType } from "@/lib/validations";
 import { getScopedI18n } from "@/locales/server";
 import Image from "next/image";
 import { useState } from "react";
+import Brochure from "@/components/Brochure";
 
 export default async function AboutPageContent({ locale, data }: { locale: string; data: any }) {
   const t = await getScopedI18n("about");
   const mission = { title: t("mission.title"), content: t("mission.content") };
   const how = { title: t("how.title"), content: t("how.content") };
   const why = { title: t("why.title"), content: t("why.content") };
+  const brochures = t("brochures");
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="p-4 md:p-8 flex flex-col w-full h-full gap-10 justify-start items-start max-w-8xl">
-        <div className="flex flex-col gap-4">
-          <div className="text-2xl">Our Team</div>
+      <div className="flex flex-col justify-start items-center p-4 md:p-8 w-full h-full gap-16 max-w-8xl">
+        <div className="flex flex-col gap-4 w-full">
+          <div className="text-3xl">Our Team</div>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
             {data.map((person: { name: string; bio: string; image_url: string }) => {
               return (
@@ -42,17 +44,25 @@ export default async function AboutPageContent({ locale, data }: { locale: strin
             })}
           </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-2xl">{mission.title}</div>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="text-3xl">{mission.title}</div>
           <div className="text-xl italic">{mission.content}</div>
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-2xl">{how.title}</div>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="text-3xl">{how.title}</div>
           <div className="text-lg">{how.content}</div>
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-2xl">{why.title}</div>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="text-3xl">{why.title}</div>
           <div className="text-lg">{why.content}</div>
+        </div>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="text-3xl">{why.title}</div>
+          <div className="text-lg">{why.content}</div>
+        </div>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="text-3xl">{brochures}</div>
+          <Brochure />
         </div>
       </div>
     </div>

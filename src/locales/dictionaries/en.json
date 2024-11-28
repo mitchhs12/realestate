@@ -478,7 +478,15 @@
     "how": {
       "title": "Our How",
       "content": "The best way to make this possible is by reducing friction and connecting people from diverse cultural backgrounds; enabling them to explore what it is like to live in places outside of their immediate cultural sphere and familiar surroundings."
-    }
+    },
+    "latam": {
+      "title": "Why Latin America",
+      "content": {
+        "1": "Latin America is more than a destination—it’s a home waiting to be discovered. With its vibrant cultures, breathtaking landscapes, and warm, welcoming communities, this region has a way of making you feel like you belong. For remote workers and dreamers alike, it offers something rare: the chance to live beautifully and affordably, without compromising on quality of life. Here, your income stretches further, turning aspirations into reality while immersing you in a rich and diverse world.",
+        "2": "What makes Latin America truly special is its connection to people and opportunity. The region’s alignment with U.S. time zones makes collaboration seamless, while the rise of remote work is driving local growth and empowering communities. It’s a place where adventure meets possibility—a place to build not just a life, but a life worth living. At Viva Ideal, we believe Latin America is where dreams and reality come together, and we’re here to help you find your perfect place within it."
+      }
+    },
+    "brochures": "Brochures"
   },
   "sell": {
     "sell-flow": {
