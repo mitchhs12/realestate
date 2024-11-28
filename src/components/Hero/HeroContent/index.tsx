@@ -14,22 +14,28 @@ export default async function HeroContent() {
       <div className="flex flex-col gap-8 items-center justify-between pt-6 pb-12 h-full w-full max-w-8xl px-4 md:px-6">
         <div className="flex gap-5">
           <div className="flex justify-center items-center w-[40px] h-full">
-            <LeftLeaf fill={"#16A34A"} stem={"#16A34A"} />
+            <LeftLeaf className="text-[#4F4F4F] dark:text-white" />
           </div>
           <div className="flex flex-col justify-center items-center text-center gap-1">
-            <text className={`${urbanist.className} text-md sm:text-lg text-nowrap font-semibold`}>
+            <text
+              className={`${urbanist.className} text-[#4F4F4F] dark:text-white text-md sm:text-lg text-nowrap font-bold`}
+            >
               #1 Property App
             </text>
             <div className="flex gap-2">
-              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
-              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
-              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
-              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
-              <Star size={18} color={"#16A34A"} fill={"#16A34A"} />
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  size={18}
+                  color="currentColor"
+                  fill="currentColor"
+                  className="text-[#4F4F4F] dark:text-white"
+                />
+              ))}
             </div>
           </div>
           <div className="flex justify-center items-center w-[40px] h-full">
-            <RightLeaf fill={"#16A34A"} stem={"#16A34A"} />
+            <RightLeaf className="text-[#4F4F4F] dark:text-white" />
           </div>
         </div>
         <div className="flex flex-col gap-6 w-full items-center">
