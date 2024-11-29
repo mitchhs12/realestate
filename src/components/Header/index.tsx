@@ -98,7 +98,7 @@ export default function Header({
   const isHomesPage = pathname.includes("/homes");
   const isSearchPage = pathname.includes("/search");
   const isSellPage = pathname.includes("/sell");
-  const isStartPage = pathname.includes("/start");
+  const isPricingPage = pathname.includes("/pricing");
   const isStudioPage = pathname.includes("/studio");
 
   const getCurrentPage = () => {
@@ -108,7 +108,7 @@ export default function Header({
     if (isDataPage) return "data";
     if (isSearchPage) return "search";
     if (isSellPage) return "sell";
-    if (isStartPage) return "start";
+    if (isPricingPage) return "pricing";
   };
 
   return (
@@ -203,7 +203,7 @@ export default function Header({
                         <span>{explore}</span>
                       </DropdownMenuItem>
                       {/* </Link> */}
-                      <Link href={"/start"} passHref>
+                      <Link href={"/pricing"} passHref>
                         <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                           <div className="pl-[7px]">
                             <Tags />
@@ -242,7 +242,7 @@ export default function Header({
                         <span>{explore}</span>
                       </DropdownMenuRadioItem>
                       {/* </Link> */}
-                      <Link href={"/start"} passHref>
+                      <Link href={"/pricing"} passHref>
                         <DropdownMenuRadioItem value={"pricing"} className="flex gap-3 items-center font-medium">
                           <Tags />
                           <span>{pricing}</span>

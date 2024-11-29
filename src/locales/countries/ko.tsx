@@ -1,4 +1,4 @@
-export default {
+const countryData = {
   ext: "내선",
   country: "전화번호 국가",
   phone: "핸드폰",
@@ -258,3 +258,4 @@ export default {
   ZW: "짐바브웨",
   ZZ: "국제적인",
 };
+export default countryData;

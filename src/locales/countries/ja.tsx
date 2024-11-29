@@ -1,4 +1,4 @@
-export default {
+const countryData = {
   ext: "例",
   country: "電話番号 国",
   phone: "電話番号",
@@ -258,3 +258,4 @@ export default {
   ZW: "ジンバブエ",
   ZZ: "国際",
 };
+export default countryData;

@@ -270,7 +270,7 @@ export default function SettingsPage({
                   <div className="flex gap-3 items-center">
                     <Button
                       onClick={() => {
-                        router.push("/start");
+                        router.push("/pricing");
                       }}
                     >
                       {billingText.subscriptions}

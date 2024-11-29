@@ -36,7 +36,7 @@ import { Button } from "@/components/ui/button";
 import { HomeType } from "@/lib/validations";
 import { User } from "next-auth";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import PricingDialog from "@/components/StartPageContent/Dialog";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 import { usePathname } from "next/navigation";
 import { LocaleContext } from "@/context/LocaleContext";
 

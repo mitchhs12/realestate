@@ -49,7 +49,7 @@ import {
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import AIContent from "@/components/InteriorAI/Content";
 import { I18nProviderClient } from "@/locales/client";
-import PricingDialog from "@/components/StartPageContent/Dialog";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 interface Props {
   openSignUpModal: () => void;

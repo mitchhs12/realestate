@@ -1,6 +1,6 @@
 "use client";
 
-import PricingTable from "@/components/StartPageContent/PricingTable";
+import PricingTable from "@/components/PricingPageContent/PricingTable";
 import { urbanist } from "@/app/[locale]/fonts";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -30,7 +30,7 @@ interface Props {
   justPremium?: boolean;
 }
 
-export default function StartPageContent({
+export default function PricingPageContent({
   sellerObject,
   buyerObject,
   billingText,

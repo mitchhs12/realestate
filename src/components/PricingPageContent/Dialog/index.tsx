@@ -1,11 +1,11 @@
 "use client";
 
-import StartPageContent from "@/components/StartPageContent";
+import PricingPageContent from "@/components/PricingPageContent";
 import { I18nProviderClient, useScopedI18n } from "@/locales/client";
 import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 
-function StartPageWrapper({
+function PricingPageWrapper({
   redirectUrl,
   sellersOnly,
   justPremium,
@@ -259,7 +259,7 @@ function StartPageWrapper({
   };
 
   return (
-    <StartPageContent
+    <PricingPageContent
       redirectUrl={redirectUrl}
       sellerObject={sellerObject}
       buyerObject={buyerObject}
@@ -283,7 +283,7 @@ export default function PricingDialog({
 
   return (
     <I18nProviderClient locale={defaultLanguage}>
-      <StartPageWrapper redirectUrl={redirectUrl} sellersOnly={sellersOnly} justPremium={justPremium} />
+      <PricingPageWrapper redirectUrl={redirectUrl} sellersOnly={sellersOnly} justPremium={justPremium} />
     </I18nProviderClient>
   );
 }

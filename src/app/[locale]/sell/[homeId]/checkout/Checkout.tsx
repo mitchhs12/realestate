@@ -5,7 +5,7 @@ import { SellContext } from "@/context/SellContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeType } from "@/lib/validations";
 import { usePathname } from "next/navigation";
-import PricingDialog from "@/components/StartPageContent/Dialog";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 interface Tier {
   title: string;

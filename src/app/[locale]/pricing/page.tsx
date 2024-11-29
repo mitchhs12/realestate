@@ -2,7 +2,7 @@ import Image from "next/image";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 
-import StartPageContent from "@/components/StartPageContent";
+import PricingPageContent from "@/components/PricingPageContent";
 
 import { languages } from "@/lib/validations";
 import { Metadata } from "next";
@@ -11,16 +11,16 @@ import { getScopedI18n } from "@/locales/server";
 export const revalidate = 30;
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/start/${lang}`;
+  acc[lang] = `/pricing/${lang}`;
   return acc;
 }, {});
 
 export const metadata: Metadata = {
-  title: "Start",
+  title: "Pricing",
   description: "Get started and compare subscription plans on Viva Ideal.",
-  metadataBase: new URL("https://www.vivaideal.com/start"),
+  metadataBase: new URL("https://www.vivaideal.com/pricing"),
   alternates: {
-    canonical: "/start",
+    canonical: "/pricing",
     languages: languageAlternates,
   },
   robots: {
@@ -284,12 +284,12 @@ export default async function Page({ params: { locale } }: { params: { locale: L
 
   const redirectUrl =
     process.env.NODE_ENV === "development"
-      ? `http://localhost:3000/start`
-      : `https://www.vivaideal.com/${locale}/start`;
+      ? `http://localhost:3000/pricing`
+      : `https://www.vivaideal.com/${locale}/pricing`;
 
   return (
     <div className="flex flex-col h-full w-full items-center">
-      <StartPageContent
+      <PricingPageContent
         sellerObject={sellerObject}
         buyerObject={buyerObject}
         billingText={billingText}

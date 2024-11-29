@@ -398,8 +398,8 @@ export async function ChangeSpecificSub(
     customer: user.customerId,
     return_url:
       process.env.NODE_ENV === "development"
-        ? `http://localhost:3000/start`
-        : `https://www.vivaideal.com/${defaultLanguage}/start`,
+        ? `http://localhost:3000/pricing`
+        : `https://www.vivaideal.com/${defaultLanguage}/pricing`,
     locale: defaultLanguage,
     configuration: configuration,
     flow_data: subUpdateConfirm,

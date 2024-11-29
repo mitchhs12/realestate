@@ -153,56 +153,56 @@ export async function getPhoneLocale(currentLocale: string) {
 
   switch (currentLocale) {
     case "af":
-      localeModule = await import("@/locales/countries/af");
+      localeModule = (await import("@/locales/countries/af")).default;
       break;
     case "ar":
-      localeModule = await import("@/locales/countries/ar");
+      localeModule = (await import("@/locales/countries/ar")).default;
       break;
     case "de":
-      localeModule = await import("@/locales/countries/de");
+      localeModule = (await import("@/locales/countries/de")).default;
       break;
     case "es":
-      localeModule = await import("@/locales/countries/es");
+      localeModule = (await import("@/locales/countries/es")).default;
       break;
     case "fr":
-      localeModule = await import("@/locales/countries/fr");
+      localeModule = (await import("@/locales/countries/fr")).default;
       break;
     case "hr":
-      localeModule = await import("@/locales/countries/hr");
+      localeModule = (await import("@/locales/countries/hr")).default;
       break;
     case "id":
-      localeModule = await import("@/locales/countries/id");
+      localeModule = (await import("@/locales/countries/id")).default;
       break;
     case "ja":
-      localeModule = await import("@/locales/countries/ja");
+      localeModule = (await import("@/locales/countries/ja")).default;
       break;
     case "ka":
-      localeModule = await import("@/locales/countries/ka");
+      localeModule = (await import("@/locales/countries/ka")).default;
       break;
     case "ko":
-      localeModule = await import("@/locales/countries/ko");
+      localeModule = (await import("@/locales/countries/ko")).default;
       break;
     case "pt":
-      localeModule = await import("@/locales/countries/pt");
+      localeModule = (await import("@/locales/countries/pt")).default;
       break;
     case "th":
-      localeModule = await import("@/locales/countries/th");
+      localeModule = (await import("@/locales/countries/th")).default;
       break;
     case "tr":
-      localeModule = await import("@/locales/countries/tr");
+      localeModule = (await import("@/locales/countries/tr")).default;
       break;
     case "vi":
-      localeModule = await import("@/locales/countries/vi");
+      localeModule = (await import("@/locales/countries/vi")).default;
       break;
     case "zh":
-      localeModule = await import("@/locales/countries/zh");
+      localeModule = (await import("@/locales/countries/zh")).default;
       break;
     default:
-      localeModule = await import("@/locales/countries/en"); // Default to English
+      localeModule = (await import("@/locales/countries/en")).default; // Default to English
   }
 
   // Return the object as it is, since it's already structured correctly.
-  return localeModule.default;
+  return localeModule;
 }
 
 export function getPath(headers: any) {

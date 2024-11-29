@@ -53,7 +53,7 @@ import CapacityDialog from "./CapacityDialog";
 import RoomsDialog from "./RoomsDialog";
 import FeaturesDialog from "./FeaturesDialog";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import PricingDialog from "@/components/StartPageContent/Dialog";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 interface Props {
   units: { m: string; ft: string };

@@ -10,7 +10,7 @@ import { I18nProviderClient } from "@/locales/client";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { usePathname } from "next/navigation";
-import PricingDialog from "@/components/StartPageContent/Dialog";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 interface Props {
   imageUrl: string;

@@ -37,7 +37,7 @@ import { HomeContext } from "@/context/HomeContext";
 import { usePathname } from "next/navigation";
 import { LocaleContext } from "@/context/LocaleContext";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import PricingDialog from "@/components/StartPageContent/Dialog";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
