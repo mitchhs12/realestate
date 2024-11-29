@@ -119,7 +119,7 @@ export default function Header({
         } items-center h-[86px] z-[40] p-2 px-4 sm:p-4 md:px-6 bg-background`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-3 lg:gap-6"}`}>
+          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-4 lg:gap-5"}`}>
             {!isSearchPage && (
               <div className="hidden lg:inline">
                 <Button
@@ -151,13 +151,13 @@ export default function Header({
                   <Button
                     size={"largeIcon"}
                     variant={"outline"}
-                    className={`flex ${isRootPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
+                    className={`flex ${isRootPage && "lg:bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
                   >
                     <div className="flex px-1 justify-center items-center gap-1">
                       <div className="flex justify-center items-center">
                         {!isStudioPage && <Logo width={"40"} height={"40"} />}
                       </div>
-                      <h1 className={`flex items-center text-lg font-medium align-middle`}>Menu</h1>
+                      <h1 className={`flex items-center text-lg font-medium align-middle`}>{menu}</h1>
                     </div>
                   </Button>
                 </DropdownMenuTrigger>
@@ -188,7 +188,7 @@ export default function Header({
                         </DropdownMenuItem>
                       </Link>
                       <Link href={"/data"} passHref>
-                        <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
+                        <DropdownMenuItem disabled={true} className="flex gap-[12.5px] items-center font-medium">
                           <div className="pl-[7px]">
                             <ChartColumn />
                           </div>
@@ -227,7 +227,11 @@ export default function Header({
                         </DropdownMenuRadioItem>
                       </Link>
                       <Link href={"/data"} passHref>
-                        <DropdownMenuRadioItem value={"data"} className="flex gap-3 items-center font-medium">
+                        <DropdownMenuRadioItem
+                          disabled={true}
+                          value={"data"}
+                          className="flex gap-3 items-center font-medium"
+                        >
                           <ChartColumn />
                           <span>{data}</span>
                         </DropdownMenuRadioItem>
@@ -298,24 +302,45 @@ export default function Header({
 
             {!isSearchPage && !isHomesPage && (
               <Button
-                asChild
                 size={"largeIcon"}
                 variant="outline"
                 className={`hidden lg:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                 disabled={true}
               >
-                <Link href="/data">
+                {/* <Link href="/data"> */}
+                <div className="flex px-2 justify-center text-center items-center gap-2">
+                  <div className="flex justify-center items-center">
+                    <ChartColumn width={"22"} height={"22"} strokeWidth={2} />
+                  </div>
+                  <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                    {data}
+                  </h1>
+                </div>
+                {/* </Link> */}
+              </Button>
+            )}
+
+            {!isSearchPage && !isHomesPage && (
+              <Button
+                asChild
+                size={"largeIcon"}
+                variant="outline"
+                className={`hidden lg:flex ${isPricingPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                disabled={true}
+              >
+                <Link href="/pricing">
                   <div className="flex px-2 justify-center text-center items-center gap-2">
                     <div className="flex justify-center items-center">
-                      <ChartColumn width={"22"} height={"22"} strokeWidth={2} />
+                      <Tags width={"22"} height={"22"} />
                     </div>
-                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
-                      {data}
+                    <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                      {pricing}
                     </h1>
                   </div>
                 </Link>
               </Button>
             )}
+
             {isHomesPage && (
               <Button
                 asChild
@@ -370,7 +395,7 @@ export default function Header({
           </h1>
         )} */}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-3 lg:gap-6 justify-end`}>
+          <div className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-3 md:gap-4 lg:gap-5 justify-end`}>
             {!isSearchPage && (
               <Button
                 disabled={sessionLoading}
@@ -380,8 +405,8 @@ export default function Header({
                 }}
               >
                 <HousePlus width={22} height={22} strokeWidth={2} />
-                <span className="hidden xs:flex md:hidden">{sellButtonSmall}</span>
-                <span className="hidden md:inline">{sellButtonBig}</span>
+                <span className="hidden xs:flex md:hidden lg:inline xl:hidden">{sellButtonSmall}</span>
+                <span className="hidden md:inline lg:hidden xl:inline">{sellButtonBig}</span>
               </Button>
             )}
             <div className={`justify-between gap-3 items-center`}>

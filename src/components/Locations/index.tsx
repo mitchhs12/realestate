@@ -178,6 +178,10 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                   onMouseOver={() => {
                     handleHover(getUrl(country.folder, neighborhood.id), neighborhood, neighborhood.id, isoCode);
                   }}
+                  onClick={() => {
+                    setClickedLocation(true);
+                    setQuery(neighborhood.translation);
+                  }}
                 >
                   <div className="relative flex justify-center items-center h-40 w-full">
                     <Image
@@ -205,9 +209,6 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                         {<FlagComponent country={isoCode as Country} countryName={isoCode} />}
                       </p>
                     </div>
-                    {/* <div className="absolute bottom-2 right-2 text-black dark:text-white">
-                        {<FlagComponent country={city.countryCode as Country} countryName={city.countryCode} />}
-                      </div> */}
                   </div>
                 </CarouselItem>
               ))}
