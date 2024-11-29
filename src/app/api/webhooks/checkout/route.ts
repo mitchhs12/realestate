@@ -34,7 +34,6 @@ export async function POST(req: Request, res: NextApiResponse) {
     switch (event.type) {
       // When a checkout session completes (e.g., a subscription is purchased)
       case "invoice.paid": {
-        console.log(JSON.stringify(event.data.object.lines.data[0], null, 2));
         const currentLineItemPlan = event.data.object.lines.data[0].plan;
         const interval = currentLineItemPlan?.interval;
         const session = event.data.object.subscription_details;
@@ -44,33 +43,53 @@ export async function POST(req: Request, res: NextApiResponse) {
         const subscriptionId = event.data.object.subscription as string;
         const plan = await GetSubscription(subscriptionId);
 
-        if (accountId && plan) {
-          const amountToAddContact = contactCredits[plan.name as keyof typeof contactCredits] || 0;
-          const amountToAddSell = sellCredits[plan.name as keyof typeof sellCredits] || 0;
-
-          const contactCreditsAmount = amountToAddContact * (interval === "month" ? 1 : 12);
-          const sellCreditsAmount = amountToAddSell * (interval === "month" ? 1 : 12);
+        if (accountId && plan && interval) {
+          const intervalKey = interval as "year" | "month";
+          const amountToAddContact =
+            contactCredits[intervalKey]?.[plan.name as keyof (typeof contactCredits)[typeof intervalKey]] || 0;
+          const amountToAddSell =
+            sellCredits[intervalKey]?.[plan.name as keyof (typeof sellCredits)[typeof intervalKey]] || 0;
 
           if (isSeller) {
             // Update the home listing in the database to "premium"
-            await prisma.user.update({
-              where: { id: accountId },
-              data: {
-                sellerSubscription: plan.name,
-                sellerSubscriptionId: subscriptionId,
-                contactCredits: { increment: contactCreditsAmount },
-                sellCredits: { increment: sellCreditsAmount },
-              },
-            });
+            if (plan.name !== "business") {
+              await prisma.user.update({
+                where: { id: accountId },
+                data: {
+                  sellerSubscription: plan.name,
+                  sellerSubscriptionId: subscriptionId,
+                  contactCredits: { increment: amountToAddContact },
+                  sellCredits: { increment: amountToAddSell },
+                },
+              });
+            } else {
+              await prisma.user.update({
+                where: { id: accountId },
+                data: {
+                  sellerSubscription: plan.name,
+                  sellerSubscriptionId: subscriptionId,
+                },
+              });
+            }
           } else {
-            await prisma.user.update({
-              where: { id: accountId },
-              data: {
-                buyerSubscription: plan.name,
-                buyerSubscriptionId: subscriptionId,
-                contactCredits: { increment: contactCreditsAmount },
-              },
-            });
+            if (plan.name !== "max") {
+              await prisma.user.update({
+                where: { id: accountId },
+                data: {
+                  buyerSubscription: plan.name,
+                  buyerSubscriptionId: subscriptionId,
+                  contactCredits: { increment: amountToAddContact },
+                },
+              });
+            } else {
+              await prisma.user.update({
+                where: { id: accountId },
+                data: {
+                  buyerSubscription: plan.name,
+                  buyerSubscriptionId: subscriptionId,
+                },
+              });
+            }
           }
         } else {
           console.error("Missing accountId in subscription metadata.");

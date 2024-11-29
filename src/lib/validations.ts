@@ -87,21 +87,31 @@ interface CityInfo {
 export type CountryProps = Record<CountryKey, CityInfo>;
 
 export const contactCredits = {
-  free: 0,
-  basic: 7,
-  insight: 20,
-  max: -1,
-  starter: 3,
-  pro: 5,
-  premium: 10,
-  business: -1,
+  year: {
+    free: 0,
+    basic: 20,
+    insight: 100,
+    max: -1,
+    starter: 3,
+    pro: 10,
+    premium: 100,
+    business: -1,
+  },
+  month: {
+    free: 0,
+    basic: 3,
+    insight: 25,
+    max: -1,
+    starter: 3,
+    pro: 3,
+    premium: 20,
+    business: -1,
+  },
 };
 
 export const sellCredits = {
-  starter: 1,
-  pro: 10,
-  premium: 100,
-  business: -1,
+  year: { starter: 1, pro: 10, premium: 100, business: -1 },
+  month: { starter: 1, pro: 10, premium: 100, business: -1 },
 };
 
 export const locationImageIds = {
