@@ -91,8 +91,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
 
       const imageKey = newIndexes[cityIndex] === 0 ? city.city : city.neighborhoods[newIndexes[cityIndex] - 1];
 
-      handleHover(urlMap[imageKey.id], imageKey, imageKey.id, isoCode);
-      // setUnderlinedImage(imageKey.id);
+      handleHover(urlMap[imageKey.id], imageKey, imageKey.translation, isoCode);
 
       return newIndexes;
     });
@@ -106,7 +105,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
 
       const imageKey = newIndexes[cityIndex] === 0 ? city.city : city.neighborhoods[newIndexes[cityIndex] - 1];
 
-      handleHover(urlMap[imageKey.id], imageKey, imageKey.id, isoCode);
+      handleHover(urlMap[imageKey.id], imageKey, imageKey.translation, isoCode);
       // setUnderlinedImage(imageKey.id);
 
       return newIndexes;
@@ -126,9 +125,13 @@ export default function Locations({ countries }: { countries: CountryProps }) {
             <CarouselContent className="h-full w-full ml-0">
               <CarouselItem
                 key={country.city.id}
-                className="pl-0 h-full w-full"
+                className="pl-0 h-full w-full hover:cursor-pointer"
                 onMouseOver={() => {
-                  handleHover(getUrl(country.folder, country.city.id), country.city, country.city.id, isoCode);
+                  handleHover(getUrl(country.folder, country.city.id), country.city, country.city.translation, isoCode);
+                }}
+                onClick={() => {
+                  setClickedLocation(true);
+                  setQuery(country.city.translation);
                 }}
               >
                 <div className="relative flex justify-center items-center h-40 w-full ">
@@ -174,9 +177,14 @@ export default function Locations({ countries }: { countries: CountryProps }) {
               {country.neighborhoods.map((neighborhood) => (
                 <CarouselItem
                   key={neighborhood.id}
-                  className="h-full w-full pl-0"
+                  className="h-full w-full pl-0 hover:cursor-pointer"
                   onMouseOver={() => {
-                    handleHover(getUrl(country.folder, neighborhood.id), neighborhood, neighborhood.id, isoCode);
+                    handleHover(
+                      getUrl(country.folder, neighborhood.id),
+                      neighborhood,
+                      neighborhood.translation,
+                      isoCode
+                    );
                   }}
                   onClick={() => {
                     setClickedLocation(true);

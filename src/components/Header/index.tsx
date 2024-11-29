@@ -100,6 +100,7 @@ export default function Header({
   const isSellPage = pathname.includes("/sell");
   const isPricingPage = pathname.includes("/pricing");
   const isStudioPage = pathname.includes("/studio");
+  const [dropDownOpen, setDropDownOpen] = useState(false);
 
   const getCurrentPage = () => {
     if (isRootPage) return "home";
@@ -146,7 +147,7 @@ export default function Header({
               </div>
             )}
             <div className={`${!isSearchPage && "flex lg:hidden"}`}>
-              <DropdownMenu modal={false}>
+              <DropdownMenu open={dropDownOpen} onOpenChange={setDropDownOpen} modal={false}>
                 <DropdownMenuTrigger>
                   <Button
                     size={"largeIcon"}
@@ -162,7 +163,13 @@ export default function Header({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent side={"bottom"} align={"start"} className="text-[#2dac5c]">
-                  <Link href={"/"} passHref>
+                  <Link
+                    href={"/"}
+                    passHref
+                    onClick={() => {
+                      setDropDownOpen(false);
+                    }}
+                  >
                     <DropdownMenuLabel className={`flex items-center text-[#2dac5c] gap-1`}>
                       <Logo width={"40"} height={"40"} />
                       Viva Ideal
