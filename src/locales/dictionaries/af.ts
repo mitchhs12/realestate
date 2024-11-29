@@ -27,7 +27,25 @@ export default {
       "price": "0",
       "yearly-monthly-price": "0",
       "yearly-total-price": "0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Bekyk alle lysliggings",
+          "subtitle": "Soos gepubliseer deur die verkoper."
+        },
+        "1": {
+          "title": "Blaai in 15+ tale",
+          "subtitle": "KI-aangedrewe vertalings."
+        },
+        "2": {
+          "title": "Pryse in 25+ geldeenhede",
+          "subtitle": "Valuta-omskakelings word daagliks opgedateer."
+        },
+        "3": {
+          "title": "Gratis Ondersteuning",
+          "subtitle": "Antwoorde binne 1-3 werksdae."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Bekyk alle lysliggings",
           "subtitle": "Soos gepubliseer deur die verkoper."
@@ -52,9 +70,19 @@ export default {
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "Bekyk 3 Eiendomseienaars",
+          "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 3 eiendomme."
+        },
+        "1": {
+          "title": "Basiese ondersteuning",
+          "subtitle": "Antwoorde binne 24 uur."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Bekyk 20 Eiendomseienaars",
           "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 3 eiendomme."
         },
         "1": {
@@ -69,18 +97,32 @@ export default {
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Toegang tot AI Design Studio",
-          "subtitle": "Herontwerp jou huise in net 1 klik."
-        },
-        "1": {
           "title": "Bekyk 25 Eiendomseienaars",
           "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 25 eiendomme."
         },
-        "2": {
+        "1": {
           "title": "Insig Ondersteuning",
           "subtitle": "Antwoorde binne 8 uur."
+        },
+        "2": {
+          "title": "Toegang tot AI Design Studio",
+          "subtitle": "Herontwerp jou huise in net 1 klik."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Bekyk 100 Eiendomseienaars",
+          "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 25 eiendomme."
+        },
+        "1": {
+          "title": "Insig Ondersteuning",
+          "subtitle": "Antwoorde binne 8 uur."
+        },
+        "2": {
+          "title": "Toegang tot AI Design Studio",
+          "subtitle": "Herontwerp jou huise in net 1 klik."
         }
       }
     },
@@ -90,7 +132,21 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Bekyk alle eiendomseienaars",
+          "subtitle": "Bekyk alle eienaar se kontakbesonderhede."
+        },
+        "1": {
+          "title": "Maksimum ondersteuning",
+          "subtitle": "Antwoorde binne 1 uur."
+        },
+        "2": {
+          "title": "Volledige regsondersteuning",
+          "subtitle": "Ons prokureurs hanteer die hele transaksionele proses."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Bekyk alle eiendomseienaars",
           "subtitle": "Bekyk alle eienaar se kontakbesonderhede."
@@ -110,7 +166,33 @@ export default {
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Verkoop 1 Eiendom",
+          "subtitle": "Adverteer 1 eiendom as 'n standaardlys."
+        },
+        "1": {
+          "title": "Laai 5 foto's op",
+          "subtitle": "Laai 5 foto's op vir jou eiendomlys."
+        },
+        "2": {
+          "title": "Bekyk 3 Eiendomseienaars",
+          "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 3 eiendomme."
+        },
+        "3": {
+          "title": "Basiese ondersteuning",
+          "subtitle": "Antwoorde binne 1-3 werksdae."
+        },
+        "4": {
+          "title": "Vertaalde advertensie",
+          "subtitle": "Adverteer in 170+ lande."
+        },
+        "5": {
+          "title": "Verkoopprys-omskakelings",
+          "subtitle": "Daagliks outomaties opgedateer."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Verkoop 1 Eiendom",
           "subtitle": "Adverteer 1 eiendom as 'n standaardlys."
@@ -143,7 +225,25 @@ export default {
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Verkoop 3 Eiendomme",
+          "subtitle": "Adverteer 3 eiendomme as 'n standaardlys."
+        },
+        "1": {
+          "title": "Bekyk 3 Eiendomseienaars",
+          "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 3 eiendomme."
+        },
+        "2": {
+          "title": "Pro Ondersteuning",
+          "subtitle": "Antwoorde binne 24 uur."
+        },
+        "3": {
+          "title": "Laai 15 foto's op",
+          "subtitle": "Laai 15 foto's op vir jou eiendomlys."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Verkoop 10 eiendomme",
           "subtitle": "Adverteer 10 eiendomme as 'n standaardlys."
@@ -168,10 +268,40 @@ export default {
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Verkoop 100 Eiendomme",
-          "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 100 eiendomme."
+          "title": "Verkoop 20 Eiendomme",
+          "subtitle": "Adverteer 20 eiendomme as 'n premium-notering."
+        },
+        "1": {
+          "title": "Bekyk 20 Eiendomseienaars",
+          "subtitle": "Bekyk die eienaar se kontakbesonderhede vir 20 eiendomme."
+        },
+        "2": {
+          "title": "Premium Ondersteuning",
+          "subtitle": "Antwoorde binne 8 uur."
+        },
+        "3": {
+          "title": "Video-oplaaie",
+          "subtitle": "Voeg video's by jou eiendomlys."
+        },
+        "4": {
+          "title": "Goue Premium Banier",
+          "subtitle": "Adverteer jou eiendomme as 'n premium-notering."
+        },
+        "5": {
+          "title": "Toegang tot AI Design Studio",
+          "subtitle": "Wys hoe mense jou eiendom in net 1 klik kan herontwerp."
+        },
+        "6": {
+          "title": "Toegang tot AI Design Studio",
+          "subtitle": "Wys hoe mense jou eiendom in net 1 klik kan herontwerp."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Verkoop 100 eiendomme",
+          "subtitle": "Adverteer 100 eiendomme as 'n premium-notering."
         },
         "1": {
           "title": "Bekyk 100 Eiendomseienaars",
@@ -192,6 +322,10 @@ export default {
         "5": {
           "title": "Toegang tot AI Design Studio",
           "subtitle": "Wys hoe mense jou eiendom in net 1 klik kan herontwerp."
+        },
+        "6": {
+          "title": "Toegang tot AI Design Studio",
+          "subtitle": "Wys hoe mense jou eiendom in net 1 klik kan herontwerp."
         }
       }
     },
@@ -201,14 +335,14 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Verkoop onbeperkte eiendomme",
-          "subtitle": "Lys onbeperkte eiendomme."
+          "title": "Verkoop 100 eiendomme",
+          "subtitle": "Lys 100 eiendomme."
         },
         "1": {
-          "title": "Onbeperkte foto's",
-          "subtitle": "Laai onbeperkte foto's per eiendom op."
+          "title": "Laai 50 foto's op",
+          "subtitle": "Laai 50 foto's per eiendom op."
         },
         "2": {
           "title": "Besigheidsondersteuning",
@@ -219,6 +353,36 @@ export default {
           "subtitle": "Jou eiendomme sal boaan gebruikersoekresultate verskyn."
         },
         "4": {
+          "title": "Skep van inhoud op die terrein",
+          "subtitle": "Ons sal na jou reis om jou te help om jou eiendom op te teken en te bevorder."
+        },
+        "5": {
+          "title": "Skep van inhoud op die terrein",
+          "subtitle": "Ons sal na jou reis om jou te help om jou eiendom op te teken en te bevorder."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Verkoop onbeperkte eiendomme",
+          "subtitle": "Lys onbeperkte eiendomme."
+        },
+        "1": {
+          "title": "Laai 50 foto's op",
+          "subtitle": "Laai 50 foto's per eiendom op."
+        },
+        "2": {
+          "title": "Besigheidsondersteuning",
+          "subtitle": "Kry ondersteuning binne 1 uur"
+        },
+        "3": {
+          "title": "Uitstallys",
+          "subtitle": "Jou eiendomme sal boaan gebruikersoekresultate verskyn."
+        },
+        "4": {
+          "title": "Skep van inhoud op die terrein",
+          "subtitle": "Ons sal na jou reis om jou te help om jou eiendom op te teken en te bevorder."
+        },
+        "5": {
           "title": "Skep van inhoud op die terrein",
           "subtitle": "Ons sal na jou reis om jou te help om jou eiendom op te teken en te bevorder."
         }

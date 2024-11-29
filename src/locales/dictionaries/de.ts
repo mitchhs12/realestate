@@ -27,7 +27,25 @@ export default {
       "price": "0",
       "yearly-monthly-price": "0",
       "yearly-total-price": "0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Alle Standorte anzeigen",
+          "subtitle": "Wie vom Verkäufer veröffentlicht."
+        },
+        "1": {
+          "title": "Durchsuchen Sie mehr als 15 Sprachen",
+          "subtitle": "KI-gestützte Übersetzungen."
+        },
+        "2": {
+          "title": "Preise in über 25 Währungen",
+          "subtitle": "Währungsumrechnungen werden täglich aktualisiert."
+        },
+        "3": {
+          "title": "Kostenloser Support",
+          "subtitle": "Antworten innerhalb von 1-3 Werktagen."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Alle Standorte anzeigen",
           "subtitle": "Wie vom Verkäufer veröffentlicht."
@@ -52,9 +70,19 @@ export default {
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "3 Immobilieneigentümer anzeigen",
+          "subtitle": "Sehen Sie sich die Eigentümerkontaktdaten für 3 Objekte an."
+        },
+        "1": {
+          "title": "Grundlegende Unterstützung",
+          "subtitle": "Antworten innerhalb von 24 Stunden."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "20 Immobilienbesitzer anzeigen",
           "subtitle": "Sehen Sie sich die Eigentümerkontaktdaten für 3 Objekte an."
         },
         "1": {
@@ -69,18 +97,32 @@ export default {
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Zugriff auf AI Design Studio",
-          "subtitle": "Gestalten Sie Ihr Zuhause mit nur einem Klick neu."
-        },
-        "1": {
           "title": "25 Immobilieneigentümer anzeigen",
           "subtitle": "Sehen Sie sich die Eigentümerkontaktdaten für 25 Unterkünfte an."
         },
-        "2": {
+        "1": {
           "title": "Insight-Unterstützung",
           "subtitle": "Antworten innerhalb von 8 Stunden."
+        },
+        "2": {
+          "title": "Zugriff auf AI Design Studio",
+          "subtitle": "Gestalten Sie Ihr Zuhause mit nur einem Klick neu."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "100 Immobilienbesitzer anzeigen",
+          "subtitle": "Sehen Sie sich die Eigentümerkontaktdaten für 25 Unterkünfte an."
+        },
+        "1": {
+          "title": "Insight-Unterstützung",
+          "subtitle": "Antworten innerhalb von 8 Stunden."
+        },
+        "2": {
+          "title": "Zugriff auf AI Design Studio",
+          "subtitle": "Gestalten Sie Ihr Zuhause mit nur einem Klick neu."
         }
       }
     },
@@ -90,7 +132,21 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Alle Immobilieneigentümer anzeigen",
+          "subtitle": "Alle Kontaktdaten des Eigentümers anzeigen."
+        },
+        "1": {
+          "title": "Maximale Unterstützung",
+          "subtitle": "Antworten innerhalb von 1 Stunde."
+        },
+        "2": {
+          "title": "Umfassende rechtliche Unterstützung",
+          "subtitle": "Unsere Anwälte kümmern sich um den gesamten Transaktionsprozess."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Alle Immobilieneigentümer anzeigen",
           "subtitle": "Alle Kontaktdaten des Eigentümers anzeigen."
@@ -110,14 +166,40 @@ export default {
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "1 Immobilie verkaufen",
           "subtitle": "Bewerben Sie 1 Immobilie als Standardeintrag."
         },
         "1": {
           "title": "5 Fotos hochladen",
-          "subtitle": "Laden Sie 5 Fotos für Ihr Immobilieninserat hoch."
+          "subtitle": "Laden Sie 5 Fotos für Ihr Immobilienangebot hoch."
+        },
+        "2": {
+          "title": "3 Immobilieneigentümer anzeigen",
+          "subtitle": "Sehen Sie sich die Eigentümerkontaktdaten für 3 Objekte an."
+        },
+        "3": {
+          "title": "Grundlegende Unterstützung",
+          "subtitle": "Antworten innerhalb von 1-3 Werktagen."
+        },
+        "4": {
+          "title": "Übersetzte Anzeige",
+          "subtitle": "Werben Sie in über 170 Ländern."
+        },
+        "5": {
+          "title": "Verkaufspreisumrechnungen",
+          "subtitle": "Täglich automatisch aktualisiert."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "1 Immobilie verkaufen",
+          "subtitle": "Bewerben Sie 1 Immobilie als Standardeintrag."
+        },
+        "1": {
+          "title": "5 Fotos hochladen",
+          "subtitle": "Laden Sie 5 Fotos für Ihr Immobilienangebot hoch."
         },
         "2": {
           "title": "3 Immobilieneigentümer anzeigen",
@@ -143,10 +225,28 @@ export default {
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "3 Immobilien verkaufen",
+          "subtitle": "Bewerben Sie 3 Objekte als Standardeintrag."
+        },
+        "1": {
+          "title": "3 Immobilieneigentümer anzeigen",
+          "subtitle": "Sehen Sie sich die Kontaktdaten der Eigentümer für 3 Unterkünfte an."
+        },
+        "2": {
+          "title": "Pro Support",
+          "subtitle": "Antworten innerhalb von 24 Stunden."
+        },
+        "3": {
+          "title": "15 Fotos hochladen",
+          "subtitle": "Laden Sie 15 Fotos für Ihr Immobilieninserat hoch."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "10 Immobilien verkaufen",
-          "subtitle": "Bewerben Sie 10 Objekte als Standardinserat."
+          "subtitle": "Bewerben Sie 10 Objekte als Standardeintrag."
         },
         "1": {
           "title": "10 Immobilieneigentümer anzeigen",
@@ -168,10 +268,40 @@ export default {
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "20 Immobilien verkaufen",
+          "subtitle": "Bewerben Sie 20 Objekte als Premium-Inserat."
+        },
+        "1": {
+          "title": "20 Immobilienbesitzer anzeigen",
+          "subtitle": "Sehen Sie sich die Eigentümerkontaktdaten für 20 Unterkünfte an."
+        },
+        "2": {
+          "title": "Premium Kunden-Support",
+          "subtitle": "Antworten innerhalb von 8 Stunden."
+        },
+        "3": {
+          "title": "Video-Uploads",
+          "subtitle": "Fügen Sie Ihren Immobilienanzeigen Videos hinzu."
+        },
+        "4": {
+          "title": "Gold-Premium-Banner",
+          "subtitle": "Bewerben Sie Ihre Immobilien als Premium-Inserat."
+        },
+        "5": {
+          "title": "Zugriff auf AI Design Studio",
+          "subtitle": "Zeigen Sie, wie Menschen Ihr Anwesen mit nur einem Klick umgestalten könnten."
+        },
+        "6": {
+          "title": "Zugriff auf AI Design Studio",
+          "subtitle": "Zeigen Sie, wie Menschen Ihr Anwesen mit nur einem Klick umgestalten könnten."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "100 Immobilien verkaufen",
-          "subtitle": "Sehen Sie sich die Kontaktdaten der Eigentümer für über 100 Unterkünfte an."
+          "subtitle": "Bewerben Sie 100 Objekte als Premium-Inserat."
         },
         "1": {
           "title": "100 Immobilienbesitzer anzeigen",
@@ -192,6 +322,10 @@ export default {
         "5": {
           "title": "Zugriff auf AI Design Studio",
           "subtitle": "Zeigen Sie, wie Menschen Ihr Anwesen mit nur einem Klick umgestalten könnten."
+        },
+        "6": {
+          "title": "Zugriff auf AI Design Studio",
+          "subtitle": "Zeigen Sie, wie Menschen Ihr Anwesen mit nur einem Klick umgestalten könnten."
         }
       }
     },
@@ -201,14 +335,14 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Unbegrenzt Immobilien verkaufen",
-          "subtitle": "Listen Sie eine unbegrenzte Anzahl von Eigenschaften auf."
+          "title": "100 Immobilien verkaufen",
+          "subtitle": "Listen Sie 100 Eigenschaften auf."
         },
         "1": {
-          "title": "Unbegrenzte Fotos",
-          "subtitle": "Laden Sie pro Immobilie unbegrenzt Fotos hoch."
+          "title": "50 Fotos hochladen",
+          "subtitle": "Laden Sie 50 Fotos pro Immobilie hoch."
         },
         "2": {
           "title": "Unternehmensunterstützung",
@@ -219,6 +353,36 @@ export default {
           "subtitle": "Ihre Immobilien werden oben in den Suchergebnissen der Benutzer angezeigt."
         },
         "4": {
+          "title": "Erstellung von Inhalten vor Ort",
+          "subtitle": "Wir kommen zu Ihnen, um Sie bei der Aufnahme und Vermarktung Ihrer Immobilie zu unterstützen."
+        },
+        "5": {
+          "title": "Erstellung von Inhalten vor Ort",
+          "subtitle": "Wir kommen zu Ihnen, um Sie bei der Aufnahme und Vermarktung Ihrer Immobilie zu unterstützen."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Unbegrenzt Immobilien verkaufen",
+          "subtitle": "Listen Sie eine unbegrenzte Anzahl von Eigenschaften auf."
+        },
+        "1": {
+          "title": "50 Fotos hochladen",
+          "subtitle": "Laden Sie 50 Fotos pro Immobilie hoch."
+        },
+        "2": {
+          "title": "Unternehmensunterstützung",
+          "subtitle": "Erhalten Sie innerhalb von 1 Stunde Unterstützung"
+        },
+        "3": {
+          "title": "Ausgewählte Angebote",
+          "subtitle": "Ihre Immobilien werden oben in den Suchergebnissen der Benutzer angezeigt."
+        },
+        "4": {
+          "title": "Erstellung von Inhalten vor Ort",
+          "subtitle": "Wir kommen zu Ihnen, um Sie bei der Aufnahme und Vermarktung Ihrer Immobilie zu unterstützen."
+        },
+        "5": {
           "title": "Erstellung von Inhalten vor Ort",
           "subtitle": "Wir kommen zu Ihnen, um Sie bei der Aufnahme und Vermarktung Ihrer Immobilie zu unterstützen."
         }

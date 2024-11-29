@@ -97,6 +97,13 @@ export const contactCredits = {
   business: -1,
 };
 
+export const sellCredits = {
+  starter: 1,
+  pro: 10,
+  premium: 100,
+  business: -1,
+};
+
 export const locationImageIds = {
   AR: {
     folder: "argentina",

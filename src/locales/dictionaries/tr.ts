@@ -27,7 +27,25 @@ export default {
       "price": "0",
       "yearly-monthly-price": "0",
       "yearly-total-price": "0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Tüm Listeleme Yerlerini Görüntüle",
+          "subtitle": "Satıcının yayınladığı şekliyle."
+        },
+        "1": {
+          "title": "15+ Dilde Göz Atın",
+          "subtitle": "Yapay zeka destekli çeviriler."
+        },
+        "2": {
+          "title": "25+ Para Biriminde Fiyatlar",
+          "subtitle": "Döviz kurları günlük olarak güncellenmektedir."
+        },
+        "3": {
+          "title": "Ücretsiz Destek",
+          "subtitle": "1-3 iş günü içerisinde yanıt veriyoruz."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Tüm Listeleme Yerlerini Görüntüle",
           "subtitle": "Satıcının yayınladığı şekliyle."
@@ -52,9 +70,19 @@ export default {
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "3 Mülk Sahibini Görüntüle",
+          "subtitle": "3 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
+        },
+        "1": {
+          "title": "Temel Destek",
+          "subtitle": "24 saat içinde yanıt."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "20 Mülk Sahibini Görüntüle",
           "subtitle": "3 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
         },
         "1": {
@@ -69,18 +97,32 @@ export default {
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "AI Tasarım Stüdyosuna Erişim",
-          "subtitle": "Evlerinizi tek tıkla yeniden tasarlayın."
-        },
-        "1": {
           "title": "25 Mülk Sahibini Görüntüle",
           "subtitle": "25 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
         },
-        "2": {
+        "1": {
           "title": "İçgörü Desteği",
           "subtitle": "8 saat içinde yanıtlanır."
+        },
+        "2": {
+          "title": "AI Tasarım Stüdyosuna Erişim",
+          "subtitle": "Evlerinizi tek tıkla yeniden tasarlayın."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "100 Mülk Sahibini Görüntüle",
+          "subtitle": "25 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
+        },
+        "1": {
+          "title": "İçgörü Desteği",
+          "subtitle": "8 saat içinde yanıtlanır."
+        },
+        "2": {
+          "title": "AI Tasarım Stüdyosuna Erişim",
+          "subtitle": "Evlerinizi tek tıkla yeniden tasarlayın."
         }
       }
     },
@@ -90,7 +132,21 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Tüm Emlak Sahiplerini Görüntüle",
+          "subtitle": "Tüm sahiplerin iletişim bilgilerini görüntüleyin."
+        },
+        "1": {
+          "title": "Maksimum Destek",
+          "subtitle": "1 saat içinde yanıtlanır."
+        },
+        "2": {
+          "title": "Tam Hukuki Destek",
+          "subtitle": "Avukatlarımız tüm işlem sürecini yönetmektedir."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Tüm Emlak Sahiplerini Görüntüle",
           "subtitle": "Tüm sahiplerin iletişim bilgilerini görüntüleyin."
@@ -110,7 +166,7 @@ export default {
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "1 Mülkü Sat",
           "subtitle": "1 adet mülkü standart listeleme olarak ilan edin."
@@ -135,6 +191,32 @@ export default {
           "title": "Satış Fiyatı Dönüşümleri",
           "subtitle": "Otomatik olarak günlük olarak güncellenir."
         }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "1 Mülkü Sat",
+          "subtitle": "1 adet mülkü standart listeleme olarak ilan edin."
+        },
+        "1": {
+          "title": "5 Fotoğraf Yükle",
+          "subtitle": "Emlak ilanınız için 5 adet fotoğraf yükleyin."
+        },
+        "2": {
+          "title": "3 Mülk Sahibini Görüntüle",
+          "subtitle": "3 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
+        },
+        "3": {
+          "title": "Temel Destek",
+          "subtitle": "1-3 iş günü içerisinde yanıt veriyoruz."
+        },
+        "4": {
+          "title": "Tercüme Edilmiş Reklam",
+          "subtitle": "170'den fazla ülkede reklam verin."
+        },
+        "5": {
+          "title": "Satış Fiyatı Dönüşümleri",
+          "subtitle": "Günlük olarak otomatik olarak güncellenir."
+        }
       }
     },
     "pro": {
@@ -143,7 +225,25 @@ export default {
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "3 Emlak Sat",
+          "subtitle": "Standart listeleme olarak 3 adet mülkün reklamını yapın."
+        },
+        "1": {
+          "title": "3 Mülk Sahibini Görüntüle",
+          "subtitle": "3 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
+        },
+        "2": {
+          "title": "Profesyonel Destek",
+          "subtitle": "24 saat içinde yanıt."
+        },
+        "3": {
+          "title": "15 Fotoğraf Yükle",
+          "subtitle": "Emlak ilanınız için 15 adet fotoğraf yükleyin."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "10 Emlak Sat",
           "subtitle": "Standart listeleme olarak 10 adet mülkün reklamını yapın."
@@ -168,10 +268,40 @@ export default {
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "20 Emlak Sat",
+          "subtitle": "20 mülkü premium liste olarak ilan edin."
+        },
+        "1": {
+          "title": "20 Mülk Sahibini Görüntüle",
+          "subtitle": "20 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
+        },
+        "2": {
+          "title": "Premium Destek",
+          "subtitle": "8 saat içinde yanıtlanır."
+        },
+        "3": {
+          "title": "Video Yüklemeleri",
+          "subtitle": "Emlak ilanlarınıza videolar ekleyin."
+        },
+        "4": {
+          "title": "Altın Premium Banner",
+          "subtitle": "Emlaklarınızı premium listeleme olarak ilan edin."
+        },
+        "5": {
+          "title": "AI Tasarım Stüdyosuna Erişim",
+          "subtitle": "İnsanların mülkünüzü tek bir tıklamayla nasıl yeniden tasarlayabileceklerini gösterin."
+        },
+        "6": {
+          "title": "AI Tasarım Stüdyosuna Erişim",
+          "subtitle": "İnsanların mülkünüzü tek bir tıklamayla nasıl yeniden tasarlayabileceklerini gösterin."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "100 Mülkü Sat",
-          "subtitle": "100 mülkün sahiplerinin iletişim bilgilerini görüntüleyin."
+          "subtitle": "100 adet mülkü premium liste olarak ilan edin."
         },
         "1": {
           "title": "100 Mülk Sahibini Görüntüle",
@@ -192,6 +322,10 @@ export default {
         "5": {
           "title": "AI Tasarım Stüdyosuna Erişim",
           "subtitle": "İnsanların mülkünüzü tek bir tıklamayla nasıl yeniden tasarlayabileceklerini gösterin."
+        },
+        "6": {
+          "title": "AI Tasarım Stüdyosuna Erişim",
+          "subtitle": "İnsanların mülkünüzü tek bir tıklamayla nasıl yeniden tasarlayabileceklerini gösterin."
         }
       }
     },
@@ -201,14 +335,14 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Sınırsız mülk satışı",
-          "subtitle": "Sınırsız sayıda mülk listeleyin."
+          "title": "100 mülkü sat",
+          "subtitle": "100 adet mülk listeleyin."
         },
         "1": {
-          "title": "Sınırsız fotoğraf",
-          "subtitle": "Her mülk için sınırsız fotoğraf yükleyin."
+          "title": "50 fotoğraf yükleyin",
+          "subtitle": "Her mülk için 50 fotoğraf yükleyin."
         },
         "2": {
           "title": "İş Desteği",
@@ -219,6 +353,36 @@ export default {
           "subtitle": "Emlaklarınız kullanıcı arama sonuçlarının en üstünde görünecektir."
         },
         "4": {
+          "title": "Site İçi İçerik Oluşturma",
+          "subtitle": "Mülkünüzün kaydını yapmanıza ve tanıtımını yapmanıza yardımcı olmak için yanınıza geleceğiz."
+        },
+        "5": {
+          "title": "Site İçi İçerik Oluşturma",
+          "subtitle": "Mülkünüzün kaydını yapmanıza ve tanıtımını yapmanıza yardımcı olmak için yanınıza geleceğiz."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Sınırsız mülk satışı",
+          "subtitle": "Sınırsız sayıda mülk listeleyin."
+        },
+        "1": {
+          "title": "50 fotoğraf yükleyin",
+          "subtitle": "Her mülk için 50 fotoğraf yükleyin."
+        },
+        "2": {
+          "title": "İş Desteği",
+          "subtitle": "1 saat içinde destek alın"
+        },
+        "3": {
+          "title": "Öne Çıkan Listeler",
+          "subtitle": "Emlaklarınız kullanıcı arama sonuçlarının en üstünde görünecektir."
+        },
+        "4": {
+          "title": "Site İçi İçerik Oluşturma",
+          "subtitle": "Mülkünüzün kaydını yapmanıza ve tanıtımını yapmanıza yardımcı olmak için yanınıza geleceğiz."
+        },
+        "5": {
           "title": "Site İçi İçerik Oluşturma",
           "subtitle": "Mülkünüzün kaydını yapmanıza ve tanıtımını yapmanıza yardımcı olmak için yanınıza geleceğiz."
         }

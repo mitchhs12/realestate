@@ -45,22 +45,40 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     price: Number(billing("free.price")),
     yearlyPrice: Number(billing("free.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("free.yearly-total-price")),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("free.perks.0.title"),
-        subtitle: billing("free.perks.0.subtitle"),
+        title: billing("free.perks-monthly.0.title"),
+        subtitle: billing("free.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("free.perks.1.title"),
-        subtitle: billing("free.perks.1.subtitle"),
+        title: billing("free.perks-monthly.1.title"),
+        subtitle: billing("free.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("free.perks.2.title"),
-        subtitle: billing("free.perks.2.subtitle"),
+        title: billing("free.perks-monthly.2.title"),
+        subtitle: billing("free.perks-monthly.2.subtitle"),
       },
       {
-        title: billing("free.perks.3.title"),
-        subtitle: billing("free.perks.3.subtitle"),
+        title: billing("free.perks-monthly.3.title"),
+        subtitle: billing("free.perks-monthly.3.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("free.perks-yearly.0.title"),
+        subtitle: billing("free.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("free.perks-yearly.1.title"),
+        subtitle: billing("free.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("free.perks-yearly.2.title"),
+        subtitle: billing("free.perks-yearly.2.subtitle"),
+      },
+      {
+        title: billing("free.perks-yearly.3.title"),
+        subtitle: billing("free.perks-yearly.3.subtitle"),
       },
     ],
   };
@@ -71,14 +89,24 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     yearlyPrice: Number(billing("basic.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("basic.yearly-total-price")),
     blurb: billing("basic.blurb"),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("basic.perks.0.title"),
-        subtitle: billing("basic.perks.0.subtitle"),
+        title: billing("basic.perks-monthly.0.title"),
+        subtitle: billing("basic.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("basic.perks.1.title"),
-        subtitle: billing("basic.perks.1.subtitle"),
+        title: billing("basic.perks-monthly.1.title"),
+        subtitle: billing("basic.perks-monthly.1.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("basic.perks-yearly.0.title"),
+        subtitle: billing("basic.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("basic.perks-yearly.1.title"),
+        subtitle: billing("basic.perks-yearly.1.subtitle"),
       },
     ],
   };
@@ -89,18 +117,32 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     yearlyPrice: Number(billing("insight.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("insight.yearly-total-price")),
     blurb: billing("insight.blurb"),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("insight.perks.0.title"),
-        subtitle: billing("insight.perks.0.subtitle"),
+        title: billing("insight.perks-monthly.0.title"),
+        subtitle: billing("insight.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("insight.perks.1.title"),
-        subtitle: billing("insight.perks.1.subtitle"),
+        title: billing("insight.perks-monthly.1.title"),
+        subtitle: billing("insight.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("insight.perks.2.title"),
-        subtitle: billing("insight.perks.2.subtitle"),
+        title: billing("insight.perks-monthly.2.title"),
+        subtitle: billing("insight.perks-monthly.2.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("insight.perks-yearly.0.title"),
+        subtitle: billing("insight.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("insight.perks-yearly.1.title"),
+        subtitle: billing("insight.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("insight.perks-yearly.2.title"),
+        subtitle: billing("insight.perks-yearly.2.subtitle"),
       },
     ],
   };
@@ -111,18 +153,32 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     yearlyPrice: Number(billing("max.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("max.yearly-total-price")),
     blurb: billing("max.blurb"),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("max.perks.0.title"),
-        subtitle: billing("max.perks.0.subtitle"),
+        title: billing("max.perks-monthly.0.title"),
+        subtitle: billing("max.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("max.perks.1.title"),
-        subtitle: billing("max.perks.1.subtitle"),
+        title: billing("max.perks-monthly.1.title"),
+        subtitle: billing("max.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("max.perks.2.title"),
-        subtitle: billing("max.perks.2.subtitle"),
+        title: billing("max.perks-monthly.2.title"),
+        subtitle: billing("max.perks-monthly.2.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("max.perks-yearly.0.title"),
+        subtitle: billing("max.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("max.perks-yearly.1.title"),
+        subtitle: billing("max.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("max.perks-yearly.2.title"),
+        subtitle: billing("max.perks-yearly.2.subtitle"),
       },
     ],
   };
@@ -132,30 +188,56 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     price: Number(billing("starter.price")),
     yearlyPrice: Number(billing("starter.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("starter.yearly-total-price")),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("starter.perks.0.title"),
-        subtitle: billing("starter.perks.0.subtitle"),
+        title: billing("starter.perks-monthly.0.title"),
+        subtitle: billing("starter.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("starter.perks.1.title"),
-        subtitle: billing("starter.perks.1.subtitle"),
+        title: billing("starter.perks-monthly.1.title"),
+        subtitle: billing("starter.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("starter.perks.2.title"),
-        subtitle: billing("starter.perks.2.subtitle"),
+        title: billing("starter.perks-monthly.2.title"),
+        subtitle: billing("starter.perks-monthly.2.subtitle"),
       },
       {
-        title: billing("starter.perks.3.title"),
-        subtitle: billing("starter.perks.3.subtitle"),
+        title: billing("starter.perks-monthly.3.title"),
+        subtitle: billing("starter.perks-monthly.3.subtitle"),
       },
       {
-        title: billing("starter.perks.4.title"),
-        subtitle: billing("starter.perks.4.subtitle"),
+        title: billing("starter.perks-monthly.4.title"),
+        subtitle: billing("starter.perks-monthly.4.subtitle"),
       },
       {
-        title: billing("starter.perks.5.title"),
-        subtitle: billing("starter.perks.5.subtitle"),
+        title: billing("starter.perks-monthly.5.title"),
+        subtitle: billing("starter.perks-monthly.5.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("starter.perks-yearly.0.title"),
+        subtitle: billing("starter.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("starter.perks-yearly.1.title"),
+        subtitle: billing("starter.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("starter.perks-yearly.2.title"),
+        subtitle: billing("starter.perks-yearly.2.subtitle"),
+      },
+      {
+        title: billing("starter.perks-yearly.3.title"),
+        subtitle: billing("starter.perks-yearly.3.subtitle"),
+      },
+      {
+        title: billing("starter.perks-yearly.4.title"),
+        subtitle: billing("starter.perks-yearly.4.subtitle"),
+      },
+      {
+        title: billing("starter.perks-yearly.5.title"),
+        subtitle: billing("starter.perks-yearly.5.subtitle"),
       },
     ],
   };
@@ -166,22 +248,40 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     yearlyPrice: Number(billing("pro.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("pro.yearly-total-price")),
     blurb: billing("pro.blurb"),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("pro.perks.0.title"),
-        subtitle: billing("pro.perks.0.subtitle"),
+        title: billing("pro.perks-monthly.0.title"),
+        subtitle: billing("pro.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("pro.perks.1.title"),
-        subtitle: billing("pro.perks.1.subtitle"),
+        title: billing("pro.perks-monthly.1.title"),
+        subtitle: billing("pro.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("pro.perks.2.title"),
-        subtitle: billing("pro.perks.2.subtitle"),
+        title: billing("pro.perks-monthly.2.title"),
+        subtitle: billing("pro.perks-monthly.2.subtitle"),
       },
       {
-        title: billing("pro.perks.3.title"),
-        subtitle: billing("pro.perks.3.subtitle"),
+        title: billing("pro.perks-monthly.3.title"),
+        subtitle: billing("pro.perks-monthly.3.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("pro.perks-yearly.0.title"),
+        subtitle: billing("pro.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("pro.perks-yearly.1.title"),
+        subtitle: billing("pro.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("pro.perks-yearly.2.title"),
+        subtitle: billing("pro.perks-yearly.2.subtitle"),
+      },
+      {
+        title: billing("pro.perks-yearly.3.title"),
+        subtitle: billing("pro.perks-yearly.3.subtitle"),
       },
     ],
   };
@@ -192,30 +292,64 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     yearlyPrice: Number(billing("premium.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("premium.yearly-total-price")),
     blurb: billing("premium.blurb"),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("premium.perks.0.title"),
-        subtitle: billing("premium.perks.0.subtitle"),
+        title: billing("premium.perks-monthly.0.title"),
+        subtitle: billing("premium.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("premium.perks.1.title"),
-        subtitle: billing("premium.perks.1.subtitle"),
+        title: billing("premium.perks-monthly.1.title"),
+        subtitle: billing("premium.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("premium.perks.2.title"),
-        subtitle: billing("premium.perks.2.subtitle"),
+        title: billing("premium.perks-monthly.2.title"),
+        subtitle: billing("premium.perks-monthly.2.subtitle"),
       },
       {
-        title: billing("premium.perks.3.title"),
-        subtitle: billing("premium.perks.3.subtitle"),
+        title: billing("premium.perks-monthly.3.title"),
+        subtitle: billing("premium.perks-monthly.3.subtitle"),
       },
       {
-        title: billing("premium.perks.4.title"),
-        subtitle: billing("premium.perks.4.subtitle"),
+        title: billing("premium.perks-monthly.4.title"),
+        subtitle: billing("premium.perks-monthly.4.subtitle"),
       },
       {
-        title: billing("premium.perks.5.title"),
-        subtitle: billing("premium.perks.5.subtitle"),
+        title: billing("premium.perks-monthly.5.title"),
+        subtitle: billing("premium.perks-monthly.5.subtitle"),
+      },
+      {
+        title: billing("premium.perks-monthly.6.title"),
+        subtitle: billing("premium.perks-monthly.6.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("premium.perks-yearly.0.title"),
+        subtitle: billing("premium.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("premium.perks-yearly.1.title"),
+        subtitle: billing("premium.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("premium.perks-yearly.2.title"),
+        subtitle: billing("premium.perks-yearly.2.subtitle"),
+      },
+      {
+        title: billing("premium.perks-yearly.3.title"),
+        subtitle: billing("premium.perks-yearly.3.subtitle"),
+      },
+      {
+        title: billing("premium.perks-yearly.4.title"),
+        subtitle: billing("premium.perks-yearly.4.subtitle"),
+      },
+      {
+        title: billing("premium.perks-yearly.5.title"),
+        subtitle: billing("premium.perks-yearly.5.subtitle"),
+      },
+      {
+        title: billing("premium.perks-yearly.6.title"),
+        subtitle: billing("premium.perks-yearly.6.subtitle"),
       },
     ],
   };
@@ -226,26 +360,56 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     yearlyPrice: Number(billing("business.yearly-monthly-price")),
     totalYearlyPrice: Number(billing("business.yearly-total-price")),
     blurb: billing("business.blurb"),
-    perks: [
+    "monthly-perks": [
       {
-        title: billing("business.perks.0.title"),
-        subtitle: billing("business.perks.0.subtitle"),
+        title: billing("business.perks-monthly.0.title"),
+        subtitle: billing("business.perks-monthly.0.subtitle"),
       },
       {
-        title: billing("business.perks.1.title"),
-        subtitle: billing("business.perks.1.subtitle"),
+        title: billing("business.perks-monthly.1.title"),
+        subtitle: billing("business.perks-monthly.1.subtitle"),
       },
       {
-        title: billing("business.perks.2.title"),
-        subtitle: billing("business.perks.2.subtitle"),
+        title: billing("business.perks-monthly.2.title"),
+        subtitle: billing("business.perks-monthly.2.subtitle"),
       },
       {
-        title: billing("business.perks.3.title"),
-        subtitle: billing("business.perks.3.subtitle"),
+        title: billing("business.perks-monthly.3.title"),
+        subtitle: billing("business.perks-monthly.3.subtitle"),
       },
       {
-        title: billing("business.perks.4.title"),
-        subtitle: billing("business.perks.4.subtitle"),
+        title: billing("business.perks-monthly.4.title"),
+        subtitle: billing("business.perks-monthly.4.subtitle"),
+      },
+      {
+        title: billing("business.perks-monthly.5.title"),
+        subtitle: billing("business.perks-monthly.5.subtitle"),
+      },
+    ],
+    "yearly-perks": [
+      {
+        title: billing("business.perks-yearly.0.title"),
+        subtitle: billing("business.perks-yearly.0.subtitle"),
+      },
+      {
+        title: billing("business.perks-yearly.1.title"),
+        subtitle: billing("business.perks-yearly.1.subtitle"),
+      },
+      {
+        title: billing("business.perks-yearly.2.title"),
+        subtitle: billing("business.perks-yearly.2.subtitle"),
+      },
+      {
+        title: billing("business.perks-yearly.3.title"),
+        subtitle: billing("business.perks-yearly.3.subtitle"),
+      },
+      {
+        title: billing("business.perks-yearly.4.title"),
+        subtitle: billing("business.perks-yearly.4.subtitle"),
+      },
+      {
+        title: billing("business.perks-yearly.5.title"),
+        subtitle: billing("business.perks-yearly.5.subtitle"),
       },
     ],
   };

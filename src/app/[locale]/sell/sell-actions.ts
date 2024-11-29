@@ -68,7 +68,7 @@ export async function uploadPhotos(formData: FormData) {
               ? 30
               : 50;
     } else {
-      uploadLimit = 50;
+      uploadLimit = 50; // for admins
     }
 
     const file = formData.get("file");

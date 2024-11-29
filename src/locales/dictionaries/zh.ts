@@ -27,7 +27,25 @@ export default {
       "price": "0",
       "yearly-monthly-price": "0",
       "yearly-total-price": "0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "查看所有房源位置",
+          "subtitle": "如同卖家所发布的那样。"
+        },
+        "1": {
+          "title": "支持 15 种以上语言",
+          "subtitle": "人工智能翻译。"
+        },
+        "2": {
+          "title": "25 种以上货币的价格",
+          "subtitle": "货币换算每日更新。"
+        },
+        "3": {
+          "title": "免费支持",
+          "subtitle": "1-3 个工作日内回复。"
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "查看所有房源位置",
           "subtitle": "如同卖家所发布的那样。"
@@ -52,9 +70,19 @@ export default {
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "查看 3 房主",
+          "subtitle": "查看 3 处房产的业主联系方式。"
+        },
+        "1": {
+          "title": "基础支持",
+          "subtitle": "24 小时内回复。"
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "查看 20 位业主",
           "subtitle": "查看 3 处房产的业主联系方式。"
         },
         "1": {
@@ -69,18 +97,32 @@ export default {
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "访问人工智能设计工作室",
-          "subtitle": "只需单击一次即可重新设计您的家。"
-        },
-        "1": {
           "title": "查看 25 位业主",
           "subtitle": "查看 25 处房产的业主联系方式。"
         },
-        "2": {
+        "1": {
           "title": "洞察支持",
           "subtitle": "8 小时内回复。"
+        },
+        "2": {
+          "title": "访问人工智能设计工作室",
+          "subtitle": "只需单击一次即可重新设计您的家。"
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "查看 100 位业主",
+          "subtitle": "查看 25 处房产的业主联系方式。"
+        },
+        "1": {
+          "title": "洞察支持",
+          "subtitle": "8 小时内回复。"
+        },
+        "2": {
+          "title": "访问人工智能设计工作室",
+          "subtitle": "只需单击一次即可重新设计您的家。"
         }
       }
     },
@@ -90,7 +132,21 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "查看所有业主",
+          "subtitle": "查看所有业主的联系方式。"
+        },
+        "1": {
+          "title": "最大支持",
+          "subtitle": "1 小时内回复。"
+        },
+        "2": {
+          "title": "完整的法律支持",
+          "subtitle": "我们的律师处理整个交易过程。"
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "查看所有业主",
           "subtitle": "查看所有业主的联系方式。"
@@ -110,7 +166,33 @@ export default {
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "出售 1 处房产",
+          "subtitle": "将 1 处房产作为标准列表进行宣传。"
+        },
+        "1": {
+          "title": "上传 5 张照片",
+          "subtitle": "为您的房产列表上传 5 张照片。"
+        },
+        "2": {
+          "title": "查看 3 房主",
+          "subtitle": "查看 3 处房产的业主联系方式。"
+        },
+        "3": {
+          "title": "基础支持",
+          "subtitle": "1-3 个工作日内回复。"
+        },
+        "4": {
+          "title": "翻译广告",
+          "subtitle": "向 170 多个国家投放广告。"
+        },
+        "5": {
+          "title": "销售价格转换",
+          "subtitle": "每日自动更新。"
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "出售 1 处房产",
           "subtitle": "将 1 处房产作为标准列表进行宣传。"
@@ -143,7 +225,25 @@ export default {
       "price": "三十九",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "出售 3 处房产",
+          "subtitle": "将 3 处房产作为标准列表进行宣传。"
+        },
+        "1": {
+          "title": "查看 3 房主",
+          "subtitle": "查看 3 处房产的业主联系方式。"
+        },
+        "2": {
+          "title": "专业支持",
+          "subtitle": "24 小时内回复。"
+        },
+        "3": {
+          "title": "上传 15 张照片",
+          "subtitle": "为您的房产列表上传 15 张照片。"
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "出售 10 处房产",
           "subtitle": "将 10 处房产作为标准列表进行宣传。"
@@ -168,10 +268,40 @@ export default {
       "price": "99",
       "yearly-monthly-price": "四十二",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "出售 20 处房产",
+          "subtitle": "将 20 处房产作为优质房源进行宣传。"
+        },
+        "1": {
+          "title": "查看 20 位业主",
+          "subtitle": "查看 20 处房产的业主联系方式。"
+        },
+        "2": {
+          "title": "高级支持",
+          "subtitle": "8 小时内回复。"
+        },
+        "3": {
+          "title": "视频上传",
+          "subtitle": "将视频添加到您的房产列表中。"
+        },
+        "4": {
+          "title": "黄金优质横幅",
+          "subtitle": "将你的房产作为优质房源进行宣传。"
+        },
+        "5": {
+          "title": "访问人工智能设计工作室",
+          "subtitle": "展示人们如何只需单击一次即可重新设计您的房产。"
+        },
+        "6": {
+          "title": "访问人工智能设计工作室",
+          "subtitle": "展示人们如何只需单击一次即可重新设计您的房产。"
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "出售 100 处房产",
-          "subtitle": "查看 100 处房产的业主联系方式。"
+          "subtitle": "将 100 处房产作为优质房源进行宣传。"
         },
         "1": {
           "title": "查看 100 位业主",
@@ -192,6 +322,10 @@ export default {
         "5": {
           "title": "访问人工智能设计工作室",
           "subtitle": "展示人们如何只需单击一次即可重新设计您的房产。"
+        },
+        "6": {
+          "title": "访问人工智能设计工作室",
+          "subtitle": "展示人们如何只需单击一次即可重新设计您的房产。"
         }
       }
     },
@@ -201,14 +335,14 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "出售无限的财产",
-          "subtitle": "列出无限的属性。"
+          "title": "出售 100 处房产",
+          "subtitle": "列出 100 个属性。"
         },
         "1": {
-          "title": "无限照片",
-          "subtitle": "每个房产可上传无限量的照片。"
+          "title": "上传 50 张照片",
+          "subtitle": "每个房产上传 50 张照片。"
         },
         "2": {
           "title": "商业支持",
@@ -219,6 +353,36 @@ export default {
           "subtitle": "您的房产将显示在用户搜索结果的顶部。"
         },
         "4": {
+          "title": "现场内容创作",
+          "subtitle": "我们将前往您所在地，帮助您记录和推广您的房产。"
+        },
+        "5": {
+          "title": "现场内容创作",
+          "subtitle": "我们将前往您所在地，帮助您记录和推广您的房产。"
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "出售无限的财产",
+          "subtitle": "列出无限的属性。"
+        },
+        "1": {
+          "title": "上传 50 张照片",
+          "subtitle": "每个房产上传 50 张照片。"
+        },
+        "2": {
+          "title": "商业支持",
+          "subtitle": "1 小时内获得支持"
+        },
+        "3": {
+          "title": "精选房源",
+          "subtitle": "您的房产将显示在用户搜索结果的顶部。"
+        },
+        "4": {
+          "title": "现场内容创作",
+          "subtitle": "我们将前往您所在地，帮助您记录和推广您的房产。"
+        },
+        "5": {
           "title": "现场内容创作",
           "subtitle": "我们将前往您所在地，帮助您记录和推广您的房产。"
         }

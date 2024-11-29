@@ -17,7 +17,11 @@ interface Tier {
   totalYearlyPrice: number;
   anchor?: number;
   blurb?: string;
-  perks: {
+  "monthly-perks": {
+    title: string;
+    subtitle: string;
+  }[];
+  "yearly-perks": {
     title: string;
     subtitle: string;
   }[];
@@ -174,7 +178,7 @@ export default function PricingTable({
           {justPremium ? (
             <PriceCard
               id={tier3}
-              perks={premium.perks}
+              perks={yearly ? premium["yearly-perks"] : premium["monthly-perks"]}
               title={premium.title}
               button={yearly ? premium.yearlyPrice : premium.price}
               annualPrice={premium.totalYearlyPrice}
@@ -199,7 +203,7 @@ export default function PricingTable({
             >
               <PriceCard
                 id={tier1}
-                perks={starter.perks}
+                perks={yearly ? starter["yearly-perks"] : starter["monthly-perks"]}
                 title={starter.title}
                 button={yearly ? starter.yearlyPrice : starter.price}
                 annualPrice={starter.totalYearlyPrice}
@@ -220,7 +224,7 @@ export default function PricingTable({
               />
               <PriceCard
                 id={tier2}
-                perks={pro.perks}
+                perks={yearly ? pro["yearly-perks"] : pro["monthly-perks"]}
                 title={pro.title}
                 button={yearly ? pro.yearlyPrice : pro.price}
                 annualPrice={pro.totalYearlyPrice}
@@ -247,7 +251,7 @@ export default function PricingTable({
                 )}
                 <PriceCard
                   id={tier3}
-                  perks={premium.perks}
+                  perks={yearly ? premium["yearly-perks"] : premium["monthly-perks"]}
                   title={premium.title}
                   button={yearly ? premium.yearlyPrice : premium.price}
                   annualPrice={premium.totalYearlyPrice}
@@ -269,7 +273,7 @@ export default function PricingTable({
               </div>
               <PriceCard
                 id={tier4}
-                perks={business.perks}
+                perks={yearly ? business["yearly-perks"] : business["monthly-perks"]}
                 title={business.title}
                 button={yearly ? business.yearlyPrice : business.price}
                 annualPrice={business.totalYearlyPrice}

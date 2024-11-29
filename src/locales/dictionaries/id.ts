@@ -27,7 +27,25 @@ export default {
       "price": "angka 0",
       "yearly-monthly-price": "angka 0",
       "yearly-total-price": "angka 0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Lihat Semua Lokasi Daftar",
+          "subtitle": "Seperti yang dipublikasikan oleh penjual."
+        },
+        "1": {
+          "title": "Telusuri dalam 15+ Bahasa",
+          "subtitle": "Terjemahan bertenaga AI."
+        },
+        "2": {
+          "title": "Harga dalam 25+ Mata Uang",
+          "subtitle": "Konversi mata uang diperbarui setiap hari."
+        },
+        "3": {
+          "title": "Dukungan Gratis",
+          "subtitle": "Respons dalam 1-3 hari kerja."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Lihat Semua Lokasi Daftar",
           "subtitle": "Seperti yang dipublikasikan oleh penjual."
@@ -52,9 +70,19 @@ export default {
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "Lihat 3 Pemilik Properti",
+          "subtitle": "Lihat detail kontak pemilik untuk 3 properti."
+        },
+        "1": {
+          "title": "Dukungan Dasar",
+          "subtitle": "Respons dalam 24 jam."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Lihat 20 Pemilik Properti",
           "subtitle": "Lihat detail kontak pemilik untuk 3 properti."
         },
         "1": {
@@ -69,18 +97,32 @@ export default {
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Akses ke AI Design Studio",
-          "subtitle": "Desain ulang rumah Anda hanya dengan 1 klik."
-        },
-        "1": {
           "title": "Lihat 25 Pemilik Properti",
           "subtitle": "Lihat detail kontak pemilik untuk 25 properti."
         },
-        "2": {
+        "1": {
           "title": "Dukungan Wawasan",
           "subtitle": "Respons dalam 8 jam."
+        },
+        "2": {
+          "title": "Akses ke AI Design Studio",
+          "subtitle": "Desain ulang rumah Anda hanya dengan 1 klik."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Lihat 100 Pemilik Properti",
+          "subtitle": "Lihat detail kontak pemilik untuk 25 properti."
+        },
+        "1": {
+          "title": "Dukungan Wawasan",
+          "subtitle": "Respons dalam 8 jam."
+        },
+        "2": {
+          "title": "Akses ke AI Design Studio",
+          "subtitle": "Desain ulang rumah Anda hanya dengan 1 klik."
         }
       }
     },
@@ -90,7 +132,21 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "tahun 1699",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Lihat Semua Pemilik Properti",
+          "subtitle": "Lihat semua detail kontak pemilik."
+        },
+        "1": {
+          "title": "Dukungan Maksimal",
+          "subtitle": "Respons dalam 1 jam."
+        },
+        "2": {
+          "title": "Dukungan Hukum Lengkap",
+          "subtitle": "Pengacara kami menangani seluruh proses transaksi."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Lihat Semua Pemilik Properti",
           "subtitle": "Lihat semua detail kontak pemilik."
@@ -110,7 +166,33 @@ export default {
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Jual 1 Properti",
+          "subtitle": "Iklankan 1 properti sebagai daftar standar."
+        },
+        "1": {
+          "title": "Unggah 5 Foto",
+          "subtitle": "Unggah 5 foto untuk iklan properti Anda."
+        },
+        "2": {
+          "title": "Lihat 3 Pemilik Properti",
+          "subtitle": "Lihat detail kontak pemilik untuk 3 properti."
+        },
+        "3": {
+          "title": "Dukungan Dasar",
+          "subtitle": "Respons dalam 1-3 hari kerja."
+        },
+        "4": {
+          "title": "Iklan yang Diterjemahkan",
+          "subtitle": "Beriklan ke 170+ negara."
+        },
+        "5": {
+          "title": "Konversi Harga Jual",
+          "subtitle": "Diperbarui secara otomatis setiap hari."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Jual 1 Properti",
           "subtitle": "Iklankan 1 properti sebagai daftar standar."
@@ -143,7 +225,25 @@ export default {
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Jual 3 Properti",
+          "subtitle": "Iklankan 3 properti sebagai daftar standar."
+        },
+        "1": {
+          "title": "Lihat 3 Pemilik Properti",
+          "subtitle": "Lihat detail kontak pemilik untuk 3 properti."
+        },
+        "2": {
+          "title": "Dukungan Pro",
+          "subtitle": "Respons dalam 24 jam."
+        },
+        "3": {
+          "title": "Unggah 15 Foto",
+          "subtitle": "Unggah 15 foto untuk iklan properti Anda."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Jual 10 Properti",
           "subtitle": "Iklankan 10 properti sebagai daftar standar."
@@ -168,10 +268,40 @@ export default {
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Jual 20 Properti",
+          "subtitle": "Iklankan 20 properti sebagai daftar premium."
+        },
+        "1": {
+          "title": "Lihat 20 Pemilik Properti",
+          "subtitle": "Lihat detail kontak pemilik untuk 20 properti."
+        },
+        "2": {
+          "title": "Dukungan Premium",
+          "subtitle": "Respons dalam 8 jam."
+        },
+        "3": {
+          "title": "Unggahan Video",
+          "subtitle": "Tambahkan video ke daftar properti Anda."
+        },
+        "4": {
+          "title": "Spanduk Premium Emas",
+          "subtitle": "Iklankan properti Anda sebagai iklan premium."
+        },
+        "5": {
+          "title": "Akses ke AI Design Studio",
+          "subtitle": "Tunjukkan bagaimana orang dapat mendesain ulang properti Anda hanya dengan 1 klik."
+        },
+        "6": {
+          "title": "Akses ke AI Design Studio",
+          "subtitle": "Tunjukkan bagaimana orang dapat mendesain ulang properti Anda hanya dengan 1 klik."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Jual 100 Properti",
-          "subtitle": "Lihat detail kontak pemilik untuk 100 properti."
+          "subtitle": "Iklankan 100 properti sebagai daftar premium."
         },
         "1": {
           "title": "Lihat 100 Pemilik Properti",
@@ -192,6 +322,10 @@ export default {
         "5": {
           "title": "Akses ke AI Design Studio",
           "subtitle": "Tunjukkan bagaimana orang dapat mendesain ulang properti Anda hanya dengan 1 klik."
+        },
+        "6": {
+          "title": "Akses ke AI Design Studio",
+          "subtitle": "Tunjukkan bagaimana orang dapat mendesain ulang properti Anda hanya dengan 1 klik."
         }
       }
     },
@@ -201,14 +335,14 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "tahun 1699",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Jual properti tanpa batas",
-          "subtitle": "Daftarkan properti tanpa batas."
+          "title": "Jual 100 properti",
+          "subtitle": "Buat daftar 100 properti."
         },
         "1": {
-          "title": "Foto tak terbatas",
-          "subtitle": "Unggah foto tanpa batas per properti."
+          "title": "Unggah 50 foto",
+          "subtitle": "Unggah 50 foto per properti."
         },
         "2": {
           "title": "Dukungan Bisnis",
@@ -219,6 +353,36 @@ export default {
           "subtitle": "Properti Anda akan muncul di bagian atas hasil pencarian pengguna."
         },
         "4": {
+          "title": "Pembuatan Konten di Tempat",
+          "subtitle": "Kami akan datang ke tempat Anda untuk membantu Anda mencatat dan mempromosikan properti Anda."
+        },
+        "5": {
+          "title": "Pembuatan Konten di Tempat",
+          "subtitle": "Kami akan datang ke tempat Anda untuk membantu Anda mencatat dan mempromosikan properti Anda."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Jual properti tanpa batas",
+          "subtitle": "Daftarkan properti tanpa batas."
+        },
+        "1": {
+          "title": "Unggah 50 foto",
+          "subtitle": "Unggah 50 foto per properti."
+        },
+        "2": {
+          "title": "Dukungan Bisnis",
+          "subtitle": "Dapatkan dukungan dalam waktu 1 jam"
+        },
+        "3": {
+          "title": "Daftar Unggulan",
+          "subtitle": "Properti Anda akan muncul di bagian atas hasil pencarian pengguna."
+        },
+        "4": {
+          "title": "Pembuatan Konten di Tempat",
+          "subtitle": "Kami akan datang ke tempat Anda untuk membantu Anda mencatat dan mempromosikan properti Anda."
+        },
+        "5": {
           "title": "Pembuatan Konten di Tempat",
           "subtitle": "Kami akan datang ke tempat Anda untuk membantu Anda mencatat dan mempromosikan properti Anda."
         }

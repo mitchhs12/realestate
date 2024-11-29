@@ -27,7 +27,25 @@
       "price": "0",
       "yearly-monthly-price": "0",
       "yearly-total-price": "0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Xem tất cả các vị trí niêm yết",
+          "subtitle": "Theo như người bán công bố."
+        },
+        "1": {
+          "title": "Duyệt bằng hơn 15 ngôn ngữ",
+          "subtitle": "Bản dịch được hỗ trợ bởi AI."
+        },
+        "2": {
+          "title": "Giá cả bằng hơn 25 loại tiền tệ",
+          "subtitle": "Tỷ giá chuyển đổi tiền tệ được cập nhật hàng ngày."
+        },
+        "3": {
+          "title": "Hỗ trợ miễn phí",
+          "subtitle": "Trả lời trong vòng 1-3 ngày làm việc."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Xem tất cả các vị trí niêm yết",
           "subtitle": "Theo như người bán công bố."
@@ -52,9 +70,19 @@
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "Xem 3 Chủ sở hữu bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 3 bất động sản."
+        },
+        "1": {
+          "title": "Hỗ trợ cơ bản",
+          "subtitle": "Trả lời trong vòng 24 giờ."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Xem 20 Chủ sở hữu Bất động sản",
           "subtitle": "Xem thông tin liên lạc của chủ sở hữu 3 bất động sản."
         },
         "1": {
@@ -69,18 +97,32 @@
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Truy cập vào AI Design Studio",
-          "subtitle": "Thiết kế lại ngôi nhà của bạn chỉ bằng 1 cú nhấp chuột."
-        },
-        "1": {
           "title": "Xem 25 Chủ sở hữu Bất động sản",
           "subtitle": "Xem thông tin liên lạc của chủ sở hữu 25 bất động sản."
         },
-        "2": {
+        "1": {
           "title": "Hỗ trợ Insight",
           "subtitle": "Trả lời trong vòng 8 giờ."
+        },
+        "2": {
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Thiết kế lại ngôi nhà của bạn chỉ bằng 1 cú nhấp chuột."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Xem 100 Chủ sở hữu Bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 25 bất động sản."
+        },
+        "1": {
+          "title": "Hỗ trợ Insight",
+          "subtitle": "Trả lời trong vòng 8 giờ."
+        },
+        "2": {
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Thiết kế lại ngôi nhà của bạn chỉ bằng 1 cú nhấp chuột."
         }
       }
     },
@@ -90,7 +132,21 @@
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Xem tất cả chủ sở hữu bất động sản",
+          "subtitle": "Xem tất cả thông tin liên lạc của chủ sở hữu."
+        },
+        "1": {
+          "title": "Hỗ trợ tối đa",
+          "subtitle": "Trả lời trong vòng 1 giờ."
+        },
+        "2": {
+          "title": "Hỗ trợ pháp lý toàn diện",
+          "subtitle": "Luật sư của chúng tôi xử lý toàn bộ quá trình giao dịch."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Xem tất cả chủ sở hữu bất động sản",
           "subtitle": "Xem tất cả thông tin liên lạc của chủ sở hữu."
@@ -110,7 +166,7 @@
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "Bán 1 Bất động sản",
           "subtitle": "Quảng cáo 1 bất động sản dưới dạng danh sách tiêu chuẩn."
@@ -128,7 +184,33 @@
           "subtitle": "Trả lời trong vòng 1-3 ngày làm việc."
         },
         "4": {
-          "title": "Quảng cáo được dịch",
+          "title": "Quảng cáo đã dịch",
+          "subtitle": "Quảng cáo tới hơn 170 quốc gia."
+        },
+        "5": {
+          "title": "Chuyển đổi giá bán",
+          "subtitle": "Tự động cập nhật hàng ngày."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Bán 1 Bất động sản",
+          "subtitle": "Quảng cáo 1 bất động sản dưới dạng danh sách tiêu chuẩn."
+        },
+        "1": {
+          "title": "Tải lên 5 ảnh",
+          "subtitle": "Tải lên 5 ảnh cho danh sách bất động sản của bạn."
+        },
+        "2": {
+          "title": "Xem 3 Chủ sở hữu bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 3 bất động sản."
+        },
+        "3": {
+          "title": "Hỗ trợ cơ bản",
+          "subtitle": "Trả lời trong vòng 1-3 ngày làm việc."
+        },
+        "4": {
+          "title": "Quảng cáo đã dịch",
           "subtitle": "Quảng cáo tới hơn 170 quốc gia."
         },
         "5": {
@@ -143,7 +225,25 @@
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Bán 3 Bất động sản",
+          "subtitle": "Quảng cáo 3 bất động sản dưới dạng danh sách tiêu chuẩn."
+        },
+        "1": {
+          "title": "Xem 3 Chủ sở hữu bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 3 bất động sản."
+        },
+        "2": {
+          "title": "Hỗ trợ chuyên nghiệp",
+          "subtitle": "Trả lời trong vòng 24 giờ."
+        },
+        "3": {
+          "title": "Tải lên 15 ảnh",
+          "subtitle": "Tải lên 15 ảnh cho danh sách bất động sản của bạn."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Bán 10 Bất động sản",
           "subtitle": "Quảng cáo 10 bất động sản dưới dạng danh sách tiêu chuẩn."
@@ -168,10 +268,40 @@
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Bán 20 Bất động sản",
+          "subtitle": "Quảng cáo 20 bất động sản dưới dạng danh sách cao cấp."
+        },
+        "1": {
+          "title": "Xem 20 Chủ sở hữu Bất động sản",
+          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 20 bất động sản."
+        },
+        "2": {
+          "title": "Hỗ trợ cao cấp",
+          "subtitle": "Trả lời trong vòng 8 giờ."
+        },
+        "3": {
+          "title": "Tải lên video",
+          "subtitle": "Thêm video vào danh sách bất động sản của bạn."
+        },
+        "4": {
+          "title": "Biểu ngữ cao cấp vàng",
+          "subtitle": "Quảng cáo bất động sản của bạn dưới dạng danh sách cao cấp."
+        },
+        "5": {
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Hiển thị cách mọi người có thể thiết kế lại tài sản của bạn chỉ bằng 1 cú nhấp chuột."
+        },
+        "6": {
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Hiển thị cách mọi người có thể thiết kế lại tài sản của bạn chỉ bằng 1 cú nhấp chuột."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Bán 100 Bất động sản",
-          "subtitle": "Xem thông tin liên lạc của chủ sở hữu 100 bất động sản."
+          "subtitle": "Quảng cáo 100 bất động sản dưới dạng danh sách cao cấp."
         },
         "1": {
           "title": "Xem 100 Chủ sở hữu Bất động sản",
@@ -192,6 +322,10 @@
         "5": {
           "title": "Truy cập vào AI Design Studio",
           "subtitle": "Hiển thị cách mọi người có thể thiết kế lại tài sản của bạn chỉ bằng 1 cú nhấp chuột."
+        },
+        "6": {
+          "title": "Truy cập vào AI Design Studio",
+          "subtitle": "Hiển thị cách mọi người có thể thiết kế lại tài sản của bạn chỉ bằng 1 cú nhấp chuột."
         }
       }
     },
@@ -201,14 +335,14 @@
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Bán bất động sản không giới hạn",
-          "subtitle": "Liệt kê các bất động sản không giới hạn."
+          "title": "Bán 100 bất động sản",
+          "subtitle": "Liệt kê 100 bất động sản."
         },
         "1": {
-          "title": "Ảnh không giới hạn",
-          "subtitle": "Tải lên không giới hạn ảnh cho mỗi tài sản."
+          "title": "Tải lên 50 bức ảnh",
+          "subtitle": "Tải lên 50 ảnh cho mỗi bất động sản."
         },
         "2": {
           "title": "Hỗ trợ doanh nghiệp",
@@ -219,6 +353,36 @@
           "subtitle": "Bất động sản của bạn sẽ xuất hiện ở đầu kết quả tìm kiếm của người dùng."
         },
         "4": {
+          "title": "Tạo nội dung tại chỗ",
+          "subtitle": "Chúng tôi sẽ đến tận nơi để giúp bạn ghi chép và quảng bá bất động sản của bạn."
+        },
+        "5": {
+          "title": "Tạo nội dung tại chỗ",
+          "subtitle": "Chúng tôi sẽ đến tận nơi để giúp bạn ghi chép và quảng bá bất động sản của bạn."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Bán bất động sản không giới hạn",
+          "subtitle": "Liệt kê các bất động sản không giới hạn."
+        },
+        "1": {
+          "title": "Tải lên 50 bức ảnh",
+          "subtitle": "Tải lên 50 ảnh cho mỗi bất động sản."
+        },
+        "2": {
+          "title": "Hỗ trợ doanh nghiệp",
+          "subtitle": "Nhận hỗ trợ trong vòng 1 giờ"
+        },
+        "3": {
+          "title": "Danh sách nổi bật",
+          "subtitle": "Bất động sản của bạn sẽ xuất hiện ở đầu kết quả tìm kiếm của người dùng."
+        },
+        "4": {
+          "title": "Tạo nội dung tại chỗ",
+          "subtitle": "Chúng tôi sẽ đến tận nơi để giúp bạn ghi chép và quảng bá bất động sản của bạn."
+        },
+        "5": {
           "title": "Tạo nội dung tại chỗ",
           "subtitle": "Chúng tôi sẽ đến tận nơi để giúp bạn ghi chép và quảng bá bất động sản của bạn."
         }

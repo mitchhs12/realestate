@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import { headers } from "next/headers";
 import { GetSubscription } from "@/app/[locale]/stripeServer";
-import { contactCredits } from "@/lib/validations";
+import { contactCredits, sellCredits } from "@/lib/validations";
 
 export async function POST(req: Request, res: NextApiResponse) {
   const sig = headers().get("stripe-signature");
@@ -34,6 +34,9 @@ export async function POST(req: Request, res: NextApiResponse) {
     switch (event.type) {
       // When a checkout session completes (e.g., a subscription is purchased)
       case "invoice.paid": {
+        console.log(JSON.stringify(event.data.object.lines.data[0], null, 2));
+        const currentLineItemPlan = event.data.object.lines.data[0].plan;
+        const interval = currentLineItemPlan?.interval;
         const session = event.data.object.subscription_details;
         const metadata = session?.metadata;
         const accountId = metadata?.accountId;
@@ -42,7 +45,11 @@ export async function POST(req: Request, res: NextApiResponse) {
         const plan = await GetSubscription(subscriptionId);
 
         if (accountId && plan) {
-          const amountToAdd = contactCredits[plan.name as keyof typeof contactCredits] || 0;
+          const amountToAddContact = contactCredits[plan.name as keyof typeof contactCredits] || 0;
+          const amountToAddSell = sellCredits[plan.name as keyof typeof sellCredits] || 0;
+
+          const contactCreditsAmount = amountToAddContact * (interval === "month" ? 1 : 12);
+          const sellCreditsAmount = amountToAddSell * (interval === "month" ? 1 : 12);
 
           if (isSeller) {
             // Update the home listing in the database to "premium"
@@ -51,7 +58,8 @@ export async function POST(req: Request, res: NextApiResponse) {
               data: {
                 sellerSubscription: plan.name,
                 sellerSubscriptionId: subscriptionId,
-                contactCredits: { increment: amountToAdd },
+                contactCredits: { increment: contactCreditsAmount },
+                sellCredits: { increment: sellCreditsAmount },
               },
             });
           } else {
@@ -60,7 +68,7 @@ export async function POST(req: Request, res: NextApiResponse) {
               data: {
                 buyerSubscription: plan.name,
                 buyerSubscriptionId: subscriptionId,
-                contactCredits: { increment: amountToAdd },
+                contactCredits: { increment: contactCreditsAmount },
               },
             });
           }

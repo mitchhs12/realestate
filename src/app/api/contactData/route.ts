@@ -36,28 +36,39 @@ export async function POST(request: NextRequest) {
     });
     return NextResponse.json({ result: homeContactDetails, accountValid: true }, { status: 200 });
   } else {
-    if (user.contactCredits === 0) {
-      return NextResponse.json({ error: "Insufficient credits", accountValid: false }, { status: 500 });
-    }
-
     if (!sellerSubscription || !buyerSubscription) {
       return NextResponse.json({ error: "Not subscribed", accountValid: false }, { status: 500 });
     }
 
-    await prisma.$transaction([
-      prisma.user.update({
-        where: { id: userId },
-        data: {
-          contactCredits: { decrement: 1 },
-        },
-      }),
+    // Handle insufficient credits if not on "business" or "max"
+    if (user.contactCredits === 0 && sellerSubscription !== "business" && buyerSubscription !== "max") {
+      return NextResponse.json({ error: "Insufficient credits", accountValid: false }, { status: 500 });
+    }
+
+    const transactionSteps = [];
+
+    if (sellerSubscription !== "business" && buyerSubscription !== "max") {
+      transactionSteps.push(
+        prisma.user.update({
+          where: { id: userId },
+          data: {
+            contactCredits: { decrement: 1 },
+          },
+        })
+      );
+    }
+
+    // Add contact credit transaction step
+    transactionSteps.push(
       prisma.contactCreditTransaction.create({
         data: {
           userId: userId,
           homeId: homeId,
         },
-      }),
-    ]);
+      })
+    );
+
+    await prisma.$transaction(transactionSteps);
 
     const homeContactDetails = await prisma.home.findUnique({
       where: { id: homeId },

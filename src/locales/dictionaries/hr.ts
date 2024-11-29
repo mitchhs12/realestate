@@ -27,7 +27,25 @@ export default {
       "price": "0",
       "yearly-monthly-price": "0",
       "yearly-total-price": "0",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Pogledajte sve lokacije popisa",
+          "subtitle": "Kako je objavio prodavač."
+        },
+        "1": {
+          "title": "Pregledavajte na više od 15 jezika",
+          "subtitle": "Prijevodi pomoću umjetne inteligencije."
+        },
+        "2": {
+          "title": "Cijene u 25+ valuta",
+          "subtitle": "Pretvorbe valuta ažuriraju se svakodnevno."
+        },
+        "3": {
+          "title": "Besplatna podrška",
+          "subtitle": "Odgovori u roku od 1-3 radna dana."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Pogledajte sve lokacije popisa",
           "subtitle": "Kako je objavio prodavač."
@@ -52,9 +70,19 @@ export default {
       "price": "19",
       "yearly-monthly-price": "8",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
         "0": {
           "title": "Pogledajte 3 vlasnika nekretnine",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 3 nekretnine."
+        },
+        "1": {
+          "title": "Osnovna podrška",
+          "subtitle": "Odgovori u roku od 24 sata."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Pogledajte 20 vlasnika nekretnina",
           "subtitle": "Pogledajte kontakt podatke vlasnika za 3 nekretnine."
         },
         "1": {
@@ -69,18 +97,32 @@ export default {
       "price": "49",
       "yearly-monthly-price": "20",
       "yearly-total-price": "249",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Pristup AI Design Studiju",
-          "subtitle": "Redizajnirajte svoje domove u samo 1 kliku."
-        },
-        "1": {
           "title": "Pogledajte 25 vlasnika nekretnina",
           "subtitle": "Pogledajte kontakt podatke vlasnika za 25 objekata."
         },
-        "2": {
+        "1": {
           "title": "Podrška za uvid",
           "subtitle": "Odgovori za 8 sati."
+        },
+        "2": {
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Redizajnirajte svoje domove u samo 1 kliku."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Pogledajte 100 vlasnika nekretnina",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 25 objekata."
+        },
+        "1": {
+          "title": "Podrška za uvid",
+          "subtitle": "Odgovori za 8 sati."
+        },
+        "2": {
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Redizajnirajte svoje domove u samo 1 kliku."
         }
       }
     },
@@ -90,7 +132,21 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699. godine",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Pogledajte sve vlasnike nekretnina",
+          "subtitle": "Pogledajte sve podatke o kontaktu vlasnika."
+        },
+        "1": {
+          "title": "Maksimalna podrška",
+          "subtitle": "Odgovori za 1 sat."
+        },
+        "2": {
+          "title": "Potpuna pravna podrška",
+          "subtitle": "Naši odvjetnici vode cijeli proces transakcije."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Pogledajte sve vlasnike nekretnina",
           "subtitle": "Pogledajte sve podatke o kontaktu vlasnika."
@@ -110,7 +166,33 @@ export default {
       "price": "19",
       "yearly-monthly-price": "9",
       "yearly-total-price": "99",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Prodajem 1 nekretninu",
+          "subtitle": "Oglašavajte 1 nekretninu kao standardni popis."
+        },
+        "1": {
+          "title": "Učitajte 5 fotografija",
+          "subtitle": "Učitajte 5 fotografija za svoj popis nekretnina."
+        },
+        "2": {
+          "title": "Pogledajte 3 vlasnika nekretnine",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 3 nekretnine."
+        },
+        "3": {
+          "title": "Osnovna podrška",
+          "subtitle": "Odgovori u roku od 1-3 radna dana."
+        },
+        "4": {
+          "title": "Prevedeni oglas",
+          "subtitle": "Oglašavajte u više od 170 zemalja."
+        },
+        "5": {
+          "title": "Pretvorbe prodajne cijene",
+          "subtitle": "Automatski se ažurira dnevno."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Prodajem 1 nekretninu",
           "subtitle": "Oglašavajte 1 nekretninu kao standardni popis."
@@ -143,7 +225,25 @@ export default {
       "price": "39",
       "yearly-monthly-price": "17",
       "yearly-total-price": "199",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Prodajem 3 nekretnine",
+          "subtitle": "Oglašavajte 3 nekretnine kao standardni popis."
+        },
+        "1": {
+          "title": "Pogledajte 3 vlasnika nekretnine",
+          "subtitle": "Pogledajte kontakt podatke vlasnika za 3 nekretnine."
+        },
+        "2": {
+          "title": "Pro Podrška",
+          "subtitle": "Odgovori u roku od 24 sata."
+        },
+        "3": {
+          "title": "Učitajte 15 fotografija",
+          "subtitle": "Učitajte 15 fotografija za svoj popis nekretnina."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Prodajem 10 nekretnina",
           "subtitle": "Oglašavajte 10 nekretnina kao standardni popis."
@@ -153,7 +253,7 @@ export default {
           "subtitle": "Pogledajte podatke o kontaktu vlasnika za 10 nekretnina."
         },
         "2": {
-          "title": "Pro Podrška",
+          "title": "Profesionalna podrška",
           "subtitle": "Odgovori u roku od 24 sata."
         },
         "3": {
@@ -168,10 +268,40 @@ export default {
       "price": "99",
       "yearly-monthly-price": "42",
       "yearly-total-price": "499",
-      "perks": {
+      "perks-monthly": {
+        "0": {
+          "title": "Prodajem 20 nekretnina",
+          "subtitle": "Oglašavajte 20 nekretnina kao vrhunski oglas."
+        },
+        "1": {
+          "title": "Pogledajte 20 vlasnika nekretnina",
+          "subtitle": "Pogledajte podatke o kontaktu vlasnika za 20 nekretnina."
+        },
+        "2": {
+          "title": "Premium podrška",
+          "subtitle": "Odgovori za 8 sati."
+        },
+        "3": {
+          "title": "Video prijenosi",
+          "subtitle": "Dodajte videozapise svojim popisima nekretnina."
+        },
+        "4": {
+          "title": "Zlatni Premium banner",
+          "subtitle": "Oglašavajte svoje nekretnine kao vrhunski oglas."
+        },
+        "5": {
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Pokažite kako ljudi mogu redizajnirati vašu nekretninu u samo 1 kliku."
+        },
+        "6": {
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Pokažite kako ljudi mogu redizajnirati vašu nekretninu u samo 1 kliku."
+        }
+      },
+      "perks-yearly": {
         "0": {
           "title": "Prodajem 100 nekretnina",
-          "subtitle": "Pregledajte kontakt podatke vlasnika za 100 nekretnina."
+          "subtitle": "Oglašavajte 100 nekretnina kao vrhunski oglas."
         },
         "1": {
           "title": "Pogledajte 100 vlasnika nekretnina",
@@ -192,6 +322,10 @@ export default {
         "5": {
           "title": "Pristup AI Design Studiju",
           "subtitle": "Pokažite kako ljudi mogu redizajnirati vašu nekretninu u samo 1 kliku."
+        },
+        "6": {
+          "title": "Pristup AI Design Studiju",
+          "subtitle": "Pokažite kako ljudi mogu redizajnirati vašu nekretninu u samo 1 kliku."
         }
       }
     },
@@ -201,14 +335,14 @@ export default {
       "price": "299",
       "yearly-monthly-price": "142",
       "yearly-total-price": "1699. godine",
-      "perks": {
+      "perks-monthly": {
         "0": {
-          "title": "Prodajte neograničene nekretnine",
-          "subtitle": "Popis neograničenih svojstava."
+          "title": "Prodaj 100 nekretnina",
+          "subtitle": "Navedite 100 nekretnina."
         },
         "1": {
-          "title": "Neograničene fotografije",
-          "subtitle": "Prenesite neograničen broj fotografija po objektu."
+          "title": "Upload 50 fotografija",
+          "subtitle": "Učitajte 50 fotografija po objektu."
         },
         "2": {
           "title": "Poslovna podrška",
@@ -216,9 +350,39 @@ export default {
         },
         "3": {
           "title": "Istaknuti oglasi",
-          "subtitle": "Vaša svojstva će se pojaviti na vrhu rezultata pretraživanja korisnika."
+          "subtitle": "Vaša svojstva pojavit će se na vrhu rezultata pretraživanja korisnika."
         },
         "4": {
+          "title": "Stvaranje sadržaja na licu mjesta",
+          "subtitle": "Otputovat ćemo do vas kako bismo vam pomogli snimiti i promovirati svoju nekretninu."
+        },
+        "5": {
+          "title": "Stvaranje sadržaja na licu mjesta",
+          "subtitle": "Otputovat ćemo do vas kako bismo vam pomogli snimiti i promovirati svoju nekretninu."
+        }
+      },
+      "perks-yearly": {
+        "0": {
+          "title": "Prodajte neograničene nekretnine",
+          "subtitle": "Popis neograničenih svojstava."
+        },
+        "1": {
+          "title": "Upload 50 fotografija",
+          "subtitle": "Učitajte 50 fotografija po objektu."
+        },
+        "2": {
+          "title": "Poslovna podrška",
+          "subtitle": "Dobijte podršku u roku od 1 sata"
+        },
+        "3": {
+          "title": "Istaknuti oglasi",
+          "subtitle": "Vaša svojstva pojavit će se na vrhu rezultata pretraživanja korisnika."
+        },
+        "4": {
+          "title": "Stvaranje sadržaja na licu mjesta",
+          "subtitle": "Otputovat ćemo do vas kako bismo vam pomogli snimiti i promovirati svoju nekretninu."
+        },
+        "5": {
           "title": "Stvaranje sadržaja na licu mjesta",
           "subtitle": "Otputovat ćemo do vas kako bismo vam pomogli snimiti i promovirati svoju nekretninu."
         }
