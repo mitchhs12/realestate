@@ -291,6 +291,7 @@ export default {
         "categories": "Wys my net",
         "features": "Wys my eiendomme met"
       },
+      "menu": "Spyskaart",
       "articles": "Artikels",
       "about": "Oor",
       "data": "Data",
@@ -572,6 +573,13 @@ export default {
     "how": {
       "title": "Ons Hoe",
       "content": "Die beste manier om dit moontlik te maak, is deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat hulle in staat stel om te verken hoe dit is om op plekke buite hul onmiddellike kulturele sfeer en bekende omgewing te woon."
+    },
+    "latam": {
+      "title": "Hoekom Latyns-Amerika",
+      "content": {
+        "1": "Latyns-Amerika is meer as 'n bestemming - dit is 'n huis wat wag om ontdek te word. Met sy lewendige kulture, asemrowende landskappe en warm, verwelkomende gemeenskappe, het hierdie streek 'n manier om jou te laat voel jy behoort. Vir afgeleë werkers en dromers bied dit iets skaars: die kans om pragtig en bekostigbaar te leef, sonder om in te boet op lewenskwaliteit. Hier strek jou inkomste verder en verander aspirasies in werklikheid terwyl jy jou in 'n ryk en diverse wêreld dompel.",
+        "2": "Wat Latyns-Amerika werklik spesiaal maak, is sy verbintenis met mense en geleenthede. Die streek se belyning met Amerikaanse tydsones maak samewerking naatloos, terwyl die opkoms van afgeleë werk plaaslike groei aandryf en gemeenskappe bemagtig. Dit is 'n plek waar avontuur moontlikhede ontmoet - 'n plek om nie net 'n lewe te bou nie, maar 'n lewe wat die moeite werd is om te leef. By Viva Ideal glo ons dat Latyns-Amerika is waar drome en werklikheid bymekaar kom, en ons is hier om jou te help om jou perfekte plek daarin te vind."
+      }
     },
     "brochures": "Brosjures"
   },

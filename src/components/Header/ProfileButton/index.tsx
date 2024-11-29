@@ -123,7 +123,7 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
         <Button className="h-12" variant="outline" disabled={sessionLoading}>
           <div className="flex items-center gap-2">
             {!user && <div>{log_in}</div>}
-            {user && <Menu width={20} height={20} strokeWidth={1.75} className="hidden sm:flex" />}
+            {user && <Menu width={20} height={20} strokeWidth={1.75} className="hidden xs:flex" />}
             {sessionUnauthenticated ? (
               <CircleUser width={24} height={24} strokeWidth={1.5} />
             ) : sessionLoading ? (

@@ -291,6 +291,7 @@ export default {
         "categories": "Tunjukkan padaku saja",
         "features": "Tunjukkan saya properti dengan"
       },
+      "menu": "Menu",
       "articles": "Artikel",
       "about": "Tentang",
       "data": "Data",
@@ -572,6 +573,13 @@ export default {
     "how": {
       "title": "Bagaimana Kami",
       "content": "Cara terbaik untuk mewujudkan hal ini adalah dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan mereka mengeksplorasi bagaimana rasanya tinggal di tempat-tempat di luar lingkup budaya langsung dan lingkungan yang mereka kenal."
+    },
+    "latam": {
+      "title": "Mengapa Amerika Latin",
+      "content": {
+        "1": "Amerika Latin lebih dari sekadar destinasi—ini adalah rumah yang menunggu untuk dijelajahi. Dengan budaya yang semarak, pemandangan yang menakjubkan, dan masyarakat yang hangat dan ramah, kawasan ini memiliki cara untuk membuat Anda merasa diterima. Bagi para pekerja jarak jauh dan para pemimpi, kawasan ini menawarkan sesuatu yang langka: kesempatan untuk hidup dengan indah dan terjangkau, tanpa mengorbankan kualitas hidup. Di sini, penghasilan Anda akan meningkat lebih jauh, mengubah aspirasi menjadi kenyataan sekaligus membenamkan Anda dalam dunia yang kaya dan beragam.",
+        "2": "Yang membuat Amerika Latin benar-benar istimewa adalah hubungannya dengan orang-orang dan peluang. Kesesuaian wilayah ini dengan zona waktu AS membuat kolaborasi menjadi lancar, sementara maraknya kerja jarak jauh mendorong pertumbuhan lokal dan memberdayakan masyarakat. Ini adalah tempat di mana petualangan bertemu dengan kemungkinan—tempat untuk membangun bukan hanya kehidupan, tetapi kehidupan yang layak dijalani. Di Viva Ideal, kami percaya bahwa Amerika Latin adalah tempat mimpi dan kenyataan bersatu, dan kami di sini untuk membantu Anda menemukan tempat yang sempurna di dalamnya."
+      }
     },
     "brochures": "Brosur"
   },

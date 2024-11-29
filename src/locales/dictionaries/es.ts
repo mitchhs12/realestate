@@ -291,6 +291,7 @@ export default {
         "categories": "Muéstrame solo",
         "features": "Muéstrame propiedades con"
       },
+      "menu": "Menú",
       "articles": "Artículos",
       "about": "Nosotros",
       "data": "Datos",
@@ -572,6 +573,13 @@ export default {
     "how": {
       "title": "Nuestro Cómo",
       "content": "La mejor manera de hacer esto posible es reducir la fricción y conectar a personas de diversos orígenes culturales, permitiéndoles explorar cómo es vivir en lugares fuera de su esfera cultural inmediata y su entorno familiar."
+    },
+    "latam": {
+      "title": "¿Por qué América Latina?",
+      "content": {
+        "1": "América Latina es más que un destino: es un hogar que espera ser descubierto. Con sus culturas vibrantes, paisajes impresionantes y comunidades cálidas y acogedoras, esta región tiene una manera de hacerte sentir parte de ella. Tanto para los trabajadores remotos como para los soñadores, ofrece algo poco común: la oportunidad de vivir bellamente y a un precio asequible, sin comprometer la calidad de vida. Aquí, tus ingresos rinden más, convirtiendo tus aspiraciones en realidad mientras te sumerges en un mundo rico y diverso.",
+        "2": "Lo que hace que América Latina sea verdaderamente especial es su conexión con la gente y las oportunidades. La alineación de la región con las zonas horarias de EE. UU. hace que la colaboración sea fluida, mientras que el aumento del trabajo remoto está impulsando el crecimiento local y empoderando a las comunidades. Es un lugar donde la aventura se encuentra con la posibilidad, un lugar para construir no solo una vida, sino una vida que valga la pena vivir. En Viva Ideal, creemos que América Latina es donde los sueños y la realidad se unen, y estamos aquí para ayudarte a encontrar tu lugar perfecto en ella."
+      }
     },
     "brochures": "Folletos"
   },

@@ -291,6 +291,7 @@
         "categories": "Sadece bana göster",
         "features": "Bana şu özellikleri göster:"
       },
+      "menu": "Menü",
       "articles": "Makaleler",
       "about": "Hakkında",
       "data": "Veri",
@@ -572,6 +573,13 @@
     "how": {
       "title": "Bizim Nasıl",
       "content": "Bunu mümkün kılmanın en iyi yolu, sürtüşmeleri azaltmak ve farklı kültürel geçmişlere sahip insanları birbirine bağlamaktır; böylece onların kendi kültürel çevrelerinin ve aşina oldukları çevrelerinin dışındaki yerlerde yaşamanın nasıl bir şey olduğunu keşfetmelerini sağlamaktır."
+    },
+    "latam": {
+      "title": "Neden Latin Amerika",
+      "content": {
+        "1": "Latin Amerika bir varış noktasından daha fazlasıdır; keşfedilmeyi bekleyen bir yuvadır. Canlı kültürleri, nefes kesici manzaraları ve sıcak, misafirperver topluluklarıyla bu bölge, kendinizi ait hissetmenizi sağlamanın bir yolunu bulur. Uzaktan çalışanlar ve hayalperestler için nadir bir şey sunar: Yaşam kalitesinden ödün vermeden güzel ve uygun fiyatlı bir şekilde yaşama şansı. Burada, geliriniz daha da artar, sizi zengin ve çeşitli bir dünyaya daldırırken özlemlerinizi gerçeğe dönüştürür.",
+        "2": "Latin Amerika'yı gerçekten özel kılan şey, insanlara ve fırsatlara olan bağlantısıdır. Bölgenin ABD saat dilimleriyle uyumu, iş birliğini sorunsuz hale getirirken, uzaktan çalışmanın yükselişi yerel büyümeyi teşvik ediyor ve toplulukları güçlendiriyor. Maceranın olasılıklarla buluştuğu bir yer; sadece bir hayat değil, yaşamaya değer bir hayat inşa etmek için bir yer. Viva Ideal'de, Latin Amerika'nın hayallerin ve gerçekliğin bir araya geldiği yer olduğuna inanıyoruz ve sizin için mükemmel yeri bulmanıza yardımcı olmak için buradayız."
+      }
     },
     "brochures": "Broşürler"
   },

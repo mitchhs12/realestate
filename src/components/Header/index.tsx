@@ -5,7 +5,7 @@ import ProfileButton from "@/components/Header/ProfileButton";
 import { poppins } from "@/app/[locale]/fonts";
 import { ModalPortal } from "@/components/ModalPortal";
 import { Modal } from "@/components/Modal";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import SearchBox from "@/components/SearchBox";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/logo";
@@ -15,6 +15,22 @@ import { useRouter } from "next/navigation";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   ChevronLeft,
   HousePlus,
@@ -30,6 +46,8 @@ import {
   BookText,
   CircleHelp,
   Info,
+  Contact,
+  Compass,
 } from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
@@ -66,14 +84,25 @@ export default function Header({
   const router = useRouter();
   const { currentHome, openLogInModal, openSignUpModal } = useContext(QueryContext);
   const { defaultLanguage, user, sessionLoading } = useContext(LocaleContext);
-  const isSearchPage = pathname.includes("/search");
   const isRootPage = pathname === "/" || pathname === `/${defaultLanguage}`;
-  const isHomesPage = pathname.includes("/homes");
-  const isSellPage = pathname.includes("/sell");
-  const isArticlesPage = pathname.includes("/articles");
   const isAboutPage = pathname.includes("/about");
-  const isStudioPage = pathname.includes("/studio");
+  const isArticlesPage = pathname.includes("/articles");
   const isDataPage = pathname.includes("/data");
+  const isHomesPage = pathname.includes("/homes");
+  const isSearchPage = pathname.includes("/search");
+  const isSellPage = pathname.includes("/sell");
+  const isStartPage = pathname.includes("/start");
+  const isStudioPage = pathname.includes("/studio");
+
+  const getCurrentPage = () => {
+    if (isRootPage) return "home";
+    if (isAboutPage) return "about";
+    if (isArticlesPage) return "articles";
+    if (isDataPage) return "data";
+    if (isSearchPage) return "search";
+    if (isSellPage) return "sell";
+    if (isStartPage) return "start";
+  };
 
   return (
     <>
@@ -83,34 +112,142 @@ export default function Header({
         } items-center h-[86px] z-[40] p-2 px-4 sm:p-4 md:px-6 bg-background`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-6"}`}>
-            <Button
-              size={"largeIcon"}
-              variant="outline"
-              className={`flex ${isRootPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
-              onClick={() => {
-                isRootPage ? router.refresh() : router.push("/");
-              }}
-            >
-              <div className="flex px-1 justify-center items-center gap-1">
-                <div className="flex justify-center items-center">
-                  {!isStudioPage && <Logo width={"40"} height={"40"} />}
-                </div>
-                <h1
-                  className={`${poppins.className} ${
-                    isSearchPage ? "hidden 2xl:flex" : "hidden md:flex"
-                  } items-center text-lg font-medium align-middle`}
+          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-3 lg:gap-6"}`}>
+            {!isSearchPage && (
+              <div className="hidden md:inline">
+                <Button
+                  size={"largeIcon"}
+                  variant="outline"
+                  className={`flex ${isRootPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
+                  onClick={() => {
+                    isRootPage ? router.refresh() : router.push("/");
+                  }}
                 >
-                  Viva Ideal
-                </h1>
+                  <div className="flex px-1 justify-center items-center gap-1">
+                    <div className="flex justify-center items-center">
+                      {!isStudioPage && <Logo width={"40"} height={"40"} />}
+                    </div>
+                    <h1
+                      className={`${poppins.className} ${
+                        isSearchPage ? "hidden 2xl:flex" : "hidden md:flex"
+                      } items-center text-lg font-medium align-middle`}
+                    >
+                      Viva Ideal
+                    </h1>
+                  </div>
+                </Button>
               </div>
-            </Button>
+            )}
+            <div className={`${!isSearchPage && "flex md:hidden"}`}>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Button
+                    size={"largeIcon"}
+                    variant={"outline"}
+                    className={`flex ${isRootPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
+                  >
+                    <div className="flex px-1 justify-center items-center gap-1">
+                      <div className="flex justify-center items-center">
+                        {!isStudioPage && <Logo width={"40"} height={"40"} />}
+                      </div>
+                      <h1 className={`flex items-center text-lg font-medium align-middle`}>Menu</h1>
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side={"bottom"} align={"start"} className="text-[#2dac5c]">
+                  <Link href={"/"} passHref>
+                    <DropdownMenuLabel className={`flex items-center text-[#2dac5c] gap-1`}>
+                      <Logo width={"40"} height={"40"} />
+                      Viva Ideal
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                  </Link>
+                  {isRootPage ? (
+                    <DropdownMenuGroup className="flex flex-col gap-3 py-2">
+                      <Link href={"/about"} passHref>
+                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
+                          <Contact />
+                          <span>About</span>
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/articles"} passHref>
+                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
+                          <BookText />
+                          <span>Articles</span>
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/data"} passHref>
+                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
+                          <BookText />
+                          <span>Data</span>
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/explore"} passHref>
+                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
+                          <Compass />
+                          <span>Explore</span>
+                        </DropdownMenuItem>
+                      </Link>
+                    </DropdownMenuGroup>
+                  ) : (
+                    <DropdownMenuRadioGroup value={getCurrentPage()} className="flex flex-col gap-3 py-2">
+                      <Link href={"/about"} passHref>
+                        <DropdownMenuRadioItem value={"about"} className="flex gap-3 items-center font-medium">
+                          <Contact />
+                          <span>About</span>
+                        </DropdownMenuRadioItem>
+                      </Link>
+                      <Link href={"/articles"} passHref>
+                        <DropdownMenuRadioItem value={"articles"} className="flex gap-3 items-center font-medium">
+                          <BookText />
+                          <span>Articles</span>
+                        </DropdownMenuRadioItem>
+                      </Link>
+                      <Link href={"/data"} passHref>
+                        <DropdownMenuRadioItem value={"data"} className="flex gap-3 items-center font-medium">
+                          <ChartColumn />
+                          <span>Data</span>
+                        </DropdownMenuRadioItem>
+                      </Link>
+                      <Link href={"/explore"} passHref>
+                        <DropdownMenuRadioItem value={"explore"} className="flex gap-3 items-center font-medium">
+                          <Compass />
+                          <span>Explore</span>
+                        </DropdownMenuRadioItem>
+                      </Link>
+                    </DropdownMenuRadioGroup>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
             {!isSearchPage && !isHomesPage && (
               <Button
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className={`${isArticlesPage && "bg-secondary"} flex h-12 text-[#2dac5c] hover:text-primary/80 `}
+                className={`hidden md:flex ${isAboutPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                disabled={true}
+              >
+                <Link href="/about">
+                  <div className="flex px-2 justify-center text-center items-center gap-2">
+                    <div className="flex justify-center items-center">
+                      <Contact width={"22"} height={"22"} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                      {about}
+                    </h1>
+                  </div>
+                </Link>
+              </Button>
+            )}
+
+            {!isSearchPage && !isHomesPage && (
+              <Button
+                asChild
+                size={"largeIcon"}
+                variant="outline"
+                className={`hidden md:flex ${isArticlesPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
                 disabled={true}
               >
                 <Link href="/articles">
@@ -125,32 +262,13 @@ export default function Header({
                 </Link>
               </Button>
             )}
-            {/* {!isSearchPage && !isHomesPage && (
+
+            {!isSearchPage && !isHomesPage && (
               <Button
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className={`${isAboutPage && "bg-secondary"} flex h-12 text-[#2dac5c] hover:text-primary/80 `}
-                disabled={true}
-              >
-                <Link href="/about">
-                  <div className="flex px-2 justify-center text-center items-center gap-2">
-                    <div className="flex justify-center items-center">
-                      <Info width={"22"} height={"22"} />
-                    </div>
-                    <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
-                      {about}
-                    </h1>
-                  </div>
-                </Link>
-              </Button>
-            )} */}
-            {/* {!isSearchPage && !isHomesPage && (
-              <Button
-                asChild
-                size={"largeIcon"}
-                variant="outline"
-                className={`${isDataPage && "bg-secondary"} flex h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                className={`hidden md:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                 disabled={true}
               >
                 <Link href="/data">
@@ -164,7 +282,7 @@ export default function Header({
                   </div>
                 </Link>
               </Button>
-            )} */}
+            )}
             {isHomesPage && (
               <Button
                 asChild
@@ -219,7 +337,7 @@ export default function Header({
           </h1>
         )} */}
         {!isSellPage && (
-          <div className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-2 2xs:gap-4 md:gap-6 justify-end`}>
+          <div className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-3 lg:gap-6 justify-end`}>
             {!isSearchPage && (
               <Button
                 disabled={sessionLoading}
@@ -229,7 +347,7 @@ export default function Header({
                 }}
               >
                 <HousePlus width={22} height={22} strokeWidth={2} />
-                <span className="hidden xs:flex lg:hidden">{sellButtonSmall}</span>
+                <span className="xs:flex lg:hidden">{sellButtonSmall}</span>
                 <span className="hidden lg:inline">{sellButtonBig}</span>
               </Button>
             )}

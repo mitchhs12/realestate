@@ -291,6 +291,7 @@ export default {
         "categories": "Montre-moi seulement",
         "features": "Montrez-moi des propriétés avec"
       },
+      "menu": "Menu",
       "articles": "Articles",
       "about": "À propos",
       "data": "Données",
@@ -572,6 +573,13 @@ export default {
     "how": {
       "title": "Notre Comment",
       "content": "La meilleure façon d’y parvenir est de réduire les frictions et de connecter des personnes d’horizons culturels divers, en leur permettant d’explorer ce que c’est que de vivre dans des lieux extérieurs à leur sphère culturelle immédiate et à leur environnement familier."
+    },
+    "latam": {
+      "title": "Pourquoi l’Amérique latine",
+      "content": {
+        "1": "L’Amérique latine est bien plus qu’une destination : c’est un pays qui attend d’être découvert. Avec ses cultures dynamiques, ses paysages à couper le souffle et ses communautés chaleureuses et accueillantes, cette région a le don de vous faire sentir chez vous. Pour les travailleurs à distance comme pour les rêveurs, elle offre quelque chose de rare : la chance de vivre magnifiquement et à moindre coût, sans compromettre la qualité de vie. Ici, vos revenus s’étendent plus loin, transformant vos aspirations en réalité tout en vous immergeant dans un monde riche et diversifié.",
+        "2": "Ce qui rend l’Amérique latine si spéciale, c’est son lien avec les gens et les opportunités. L’alignement de la région sur les fuseaux horaires des États-Unis facilite la collaboration, tandis que l’essor du travail à distance stimule la croissance locale et renforce les communautés. C’est un endroit où l’aventure rencontre les possibilités, un endroit où construire non seulement une vie, mais une vie qui vaut la peine d’être vécue. Chez Viva Ideal, nous pensons que l’Amérique latine est le lieu où les rêves et la réalité se rencontrent, et nous sommes là pour vous aider à trouver votre place idéale en son sein."
+      }
     },
     "brochures": "Brochures"
   },

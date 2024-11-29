@@ -291,6 +291,7 @@ export default {
         "categories": "Pokaži mi samo",
         "features": "Prikaži mi svojstva s"
       },
+      "menu": "Jelovnik ",
       "articles": "Članci",
       "about": "Oko",
       "data": "Podaci",
@@ -572,6 +573,13 @@ export default {
     "how": {
       "title": "Naš Kako",
       "content": "Najbolji način da se to učini je smanjenje trvenja i povezivanje ljudi iz različitih kulturnih sredina; omogućujući im da istraže kako je to živjeti na mjestima izvan njihove neposredne kulturne sfere i poznatog okruženja."
+    },
+    "latam": {
+      "title": "Zašto Latinska Amerika",
+      "content": {
+        "1": "Latinska Amerika je više od odredišta - to je dom koji čeka da bude otkriven. Sa svojim živopisnim kulturama, krajolicima koji oduzimaju dah i toplim, gostoljubivim zajednicama, ova regija ima način da se osjećate kao da pripadate. Radnicima na daljinu i sanjarima nudi nešto rijetko: priliku da žive lijepo i pristupačno, bez ugrožavanja kvalitete života. Ovdje se vaš prihod proteže dalje, pretvarajući težnje u stvarnost dok vas uranja u bogat i raznolik svijet.",
+        "2": "Ono što Latinsku Ameriku čini uistinu posebnom je njezina povezanost s ljudima i prilikama. Usklađenost regije s vremenskim zonama SAD-a čini suradnju besprijekornom, dok porast rada na daljinu potiče lokalni rast i osnažuje zajednice. To je mjesto gdje se avantura susreće s mogućnostima - mjesto za izgradnju ne samo života, već života vrijednog življenja. Mi u Viva Ideal vjerujemo da je Latinska Amerika mjesto gdje se spajaju snovi i stvarnost, a mi smo tu da vam pomognemo pronaći svoje savršeno mjesto u njoj."
+      }
     },
     "brochures": "Brošure"
   },

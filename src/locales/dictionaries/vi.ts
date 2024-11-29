@@ -291,6 +291,7 @@ export default {
         "categories": "Chỉ cho tôi xem",
         "features": "Hiển thị cho tôi các thuộc tính với"
       },
+      "menu": "Thực đơn",
       "articles": "Bài viết",
       "about": "Về",
       "data": "Dữ liệu",
@@ -572,6 +573,13 @@ export default {
     "how": {
       "title": "Cách thức của chúng tôi",
       "content": "Cách tốt nhất để thực hiện điều này là giảm thiểu sự xung đột và kết nối những người có nền tảng văn hóa đa dạng; cho phép họ khám phá cuộc sống ở những nơi nằm ngoài phạm vi văn hóa gần và môi trường quen thuộc của họ."
+    },
+    "latam": {
+      "title": "Tại sao lại là Mỹ Latinh",
+      "content": {
+        "1": "Châu Mỹ Latinh không chỉ là một điểm đến—mà còn là một ngôi nhà đang chờ được khám phá. Với nền văn hóa sôi động, cảnh quan ngoạn mục và cộng đồng ấm áp, chào đón, khu vực này có cách khiến bạn cảm thấy mình thuộc về nơi này. Đối với những người làm việc từ xa và những người mơ mộng, nơi đây mang đến một điều hiếm có: cơ hội sống đẹp đẽ và tiết kiệm, mà không ảnh hưởng đến chất lượng cuộc sống. Ở đây, thu nhập của bạn sẽ được mở rộng hơn nữa, biến khát vọng thành hiện thực trong khi đắm mình vào một thế giới phong phú và đa dạng.",
+        "2": "Điều khiến Mỹ Latinh thực sự đặc biệt là mối liên hệ của nó với con người và cơ hội. Sự liên kết của khu vực này với múi giờ Hoa Kỳ giúp cho sự hợp tác trở nên liền mạch, trong khi sự gia tăng của công việc từ xa đang thúc đẩy tăng trưởng tại địa phương và trao quyền cho cộng đồng. Đây là nơi mà cuộc phiêu lưu gặp gỡ khả năng - một nơi để xây dựng không chỉ một cuộc sống, mà là một cuộc sống đáng sống. Tại Viva Ideal, chúng tôi tin rằng Mỹ Latinh là nơi ước mơ và hiện thực hòa quyện, và chúng tôi ở đây để giúp bạn tìm thấy nơi hoàn hảo của mình trong đó."
+      }
     },
     "brochures": "Tờ rơi"
   },
