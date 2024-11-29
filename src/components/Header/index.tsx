@@ -121,7 +121,7 @@ export default function Header({
         {!isSellPage && (
           <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-3 lg:gap-6"}`}>
             {!isSearchPage && (
-              <div className="hidden md:inline">
+              <div className="hidden lg:inline">
                 <Button
                   size={"largeIcon"}
                   variant="outline"
@@ -145,7 +145,7 @@ export default function Header({
                 </Button>
               </div>
             )}
-            <div className={`${!isSearchPage && "flex md:hidden"}`}>
+            <div className={`${!isSearchPage && "flex lg:hidden"}`}>
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger>
                   <Button
@@ -259,7 +259,7 @@ export default function Header({
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className={`hidden md:flex ${isAboutPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                className={`hidden lg:flex ${isAboutPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
                 disabled={true}
               >
                 <Link href="/about">
@@ -280,7 +280,7 @@ export default function Header({
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className={`hidden md:flex ${isArticlesPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                className={`hidden lg:flex ${isArticlesPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
                 disabled={true}
               >
                 <Link href="/articles">
@@ -301,7 +301,7 @@ export default function Header({
                 asChild
                 size={"largeIcon"}
                 variant="outline"
-                className={`hidden md:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                className={`hidden lg:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                 disabled={true}
               >
                 <Link href="/data">
@@ -380,8 +380,8 @@ export default function Header({
                 }}
               >
                 <HousePlus width={22} height={22} strokeWidth={2} />
-                <span className="xs:flex lg:hidden">{sellButtonSmall}</span>
-                <span className="hidden lg:inline">{sellButtonBig}</span>
+                <span className="hidden xs:flex md:hidden">{sellButtonSmall}</span>
+                <span className="hidden md:inline">{sellButtonBig}</span>
               </Button>
             )}
             <div className={`justify-between gap-3 items-center`}>

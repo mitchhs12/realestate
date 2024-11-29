@@ -16,7 +16,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
-import { CircleUser, Menu, Sparkles } from "lucide-react";
+import { CircleUser, Menu, Sparkles, UserRoundPlus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { usePathname, useRouter } from "next/navigation";
@@ -122,8 +122,8 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
       <DropdownMenuTrigger asChild disabled={sessionLoading}>
         <Button className="h-12" variant="outline" disabled={sessionLoading}>
           <div className="flex items-center gap-2">
-            {!user && <div>{log_in}</div>}
-            {user && <Menu width={20} height={20} strokeWidth={1.75} className="hidden xs:flex" />}
+            {!user && <div className="hidden xs:flex">{log_in}</div>}
+            {user && <Menu width={20} height={20} strokeWidth={1.75} className="flex" />}
             {sessionUnauthenticated ? (
               <CircleUser width={24} height={24} strokeWidth={1.5} />
             ) : sessionLoading ? (
@@ -199,10 +199,18 @@ export default function ProfileButton({ openSignUpModal, openLogInModal }: Props
           </>
         ) : (
           <DropdownMenuGroup className="cursor-pointer gap-y-2">
-            <DropdownMenuItem className="cursor-pointer font-semibold" onClick={() => openLogInModal()}>
+            <DropdownMenuItem
+              className="cursor-pointer flex items-center gap-2 font-semibold"
+              onClick={() => openLogInModal()}
+            >
+              <LogIn width={20} height={20} strokeWidth={1.25} />
               {log_in}
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" onClick={() => openSignUpModal()}>
+            <DropdownMenuItem
+              className="cursor-pointer flex items-center gap-2 font-semibold"
+              onClick={() => openSignUpModal()}
+            >
+              <UserRoundPlus width={20} height={20} strokeWidth={1.25} />
               {sign_up}
             </DropdownMenuItem>
           </DropdownMenuGroup>
