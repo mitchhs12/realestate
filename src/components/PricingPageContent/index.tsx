@@ -58,7 +58,7 @@ export default function PricingPageContent({
         {!sellersOnly && (
           <div className="flex justify-center gap-3">
             <Button
-              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100 text-xl"
+              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100 text-md sm:text-xl"
               variant={"outline"}
               size={"lg"}
               disabled={!seller}
@@ -69,7 +69,7 @@ export default function PricingPageContent({
               {billingText.buyersText}
             </Button>
             <Button
-              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100 text-xl"
+              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100 text-md sm:text-xl"
               variant={"outline"}
               size={"lg"}
               disabled={seller}

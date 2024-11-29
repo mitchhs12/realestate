@@ -9,7 +9,7 @@ export default {
       "per-month": "per bulan"
     },
     "monthly": "Bulanan",
-    "yearly": "Tahunan: (dapatkan 6+ bulan gratis)",
+    "yearly": "Tahunan: (6+ bulan gratis)",
     "current-plan": "Rencana Saat Ini",
     "change-plan": "Rencana Peningkatan",
     "billed-annually": "Ditagih setiap tahun",

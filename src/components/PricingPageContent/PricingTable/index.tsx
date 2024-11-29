@@ -151,7 +151,7 @@ export default function PricingTable({
     <>
       <div className="flex flex-col h-full w-full">
         <div className="flex flex-col w-full h-full justify-start items-center text-center gap-12">
-          <div className="flex flex-col-reverse sm:flex-row items-center gap-3">
+          <div className="flex flex-col-reverse xs:flex-row items-center gap-3">
             <Button
               className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100"
               variant={"outline"}

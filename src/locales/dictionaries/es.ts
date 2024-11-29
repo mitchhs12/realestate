@@ -9,7 +9,7 @@ export default {
       "per-month": "por mes"
     },
     "monthly": "Mensual",
-    "yearly": "Anual: (obtenga 6+ meses gratis)",
+    "yearly": "Anual: (6+ meses gratis)",
     "current-plan": "Plan actual",
     "change-plan": "Plan de actualización",
     "billed-annually": "Facturado anualmente",

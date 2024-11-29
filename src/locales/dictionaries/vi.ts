@@ -9,7 +9,7 @@ export default {
       "per-month": "mỗi tháng"
     },
     "monthly": "Hàng tháng",
-    "yearly": "Hàng năm: (nhận 6 tháng miễn phí trở lên)",
+    "yearly": "Hàng năm: (6 tháng trở lên miễn phí)",
     "current-plan": "Kế hoạch hiện tại",
     "change-plan": "Kế hoạch nâng cấp",
     "billed-annually": "Được thanh toán hàng năm",

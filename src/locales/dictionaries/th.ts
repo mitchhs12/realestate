@@ -9,7 +9,7 @@ export default {
       "per-month": "ต่อเดือน"
     },
     "monthly": "รายเดือน",
-    "yearly": "รายปี : (รับฟรี 6 เดือนขึ้นไป)",
+    "yearly": "รายปี: (6 เดือนขึ้นไป ฟรี)",
     "current-plan": "แผนปัจจุบัน",
     "change-plan": "แผนอัพเกรด",
     "billed-annually": "เรียกเก็บเงินเป็นรายปี",

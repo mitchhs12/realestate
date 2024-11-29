@@ -49,6 +49,7 @@ import {
   Contact,
   Tags,
   Compass,
+  Menu,
 } from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
@@ -120,7 +121,7 @@ export default function Header({
         } items-center h-[86px] z-[40] p-2 px-4 sm:p-4 md:px-6 bg-background`}
       >
         {!isSellPage && (
-          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-4 lg:gap-5"}`}>
+          <div className={`${isSearchPage ? "flex" : "flex md:flex gap-2 2xs:gap-4 md:gap-4 lg:gap-4"}`}>
             {!isSearchPage && (
               <div className="hidden lg:inline">
                 <Button
@@ -158,7 +159,14 @@ export default function Header({
                       <div className="flex justify-center items-center">
                         {!isStudioPage && <Logo width={"40"} height={"40"} />}
                       </div>
-                      <h1 className={`flex items-center text-lg font-medium align-middle`}>{menu}</h1>
+                      <h1
+                        className={`${isSearchPage && "hidden"} xs:inline items-center text-lg font-medium align-middle`}
+                      >
+                        {menu}
+                      </h1>
+                      {/* <div className="flex xs:hidden">
+                        <Menu width={20} height={20} strokeWidth={2} className="flex" />
+                      </div> */}
                     </div>
                   </Button>
                 </DropdownMenuTrigger>
@@ -186,6 +194,14 @@ export default function Header({
                           <div className="w-full">{about}</div>
                         </DropdownMenuItem>
                       </Link>
+                      <Link href={"/search"} passHref>
+                        <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
+                          <div className="pl-[7px]">
+                            <Compass />
+                          </div>
+                          <span>{explore}</span>
+                        </DropdownMenuItem>
+                      </Link>
                       <Link href={"/articles"} passHref>
                         <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                           <div className="pl-[7px]">
@@ -202,14 +218,6 @@ export default function Header({
                           <span>{data}</span>
                         </DropdownMenuItem>
                       </Link>
-                      {/* <Link href={"/explore"} passHref> */}
-                      <DropdownMenuItem disabled={true} className="flex gap-[12.5px] items-center font-medium">
-                        <div className="pl-[7px]">
-                          <Compass />
-                        </div>
-                        <span>{explore}</span>
-                      </DropdownMenuItem>
-                      {/* </Link> */}
                       <Link href={"/pricing"} passHref>
                         <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                           <div className="pl-[7px]">
@@ -243,16 +251,12 @@ export default function Header({
                           <span>{data}</span>
                         </DropdownMenuRadioItem>
                       </Link>
-                      {/* <Link href={"/explore"} passHref> */}
-                      <DropdownMenuRadioItem
-                        disabled={true}
-                        value={"explore"}
-                        className="flex gap-3 items-center font-medium"
-                      >
-                        <Compass />
-                        <span>{explore}</span>
-                      </DropdownMenuRadioItem>
-                      {/* </Link> */}
+                      <Link href={"/search"} passHref>
+                        <DropdownMenuRadioItem value={"search"} className="flex gap-3 items-center font-medium">
+                          <Compass />
+                          <span>{explore}</span>
+                        </DropdownMenuRadioItem>
+                      </Link>
                       <Link href={"/pricing"} passHref>
                         <DropdownMenuRadioItem value={"pricing"} className="flex gap-3 items-center font-medium">
                           <Tags />
@@ -288,6 +292,25 @@ export default function Header({
 
             {!isSearchPage && !isHomesPage && (
               <Button
+                size={"largeIcon"}
+                variant="outline"
+                className={`hidden lg:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+              >
+                <Link href="/search">
+                  <div className="flex px-2 justify-center text-center items-center gap-2">
+                    <div className="flex justify-center items-center">
+                      <Compass width={"22"} height={"22"} strokeWidth={2} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                      {explore}
+                    </h1>
+                  </div>
+                </Link>
+              </Button>
+            )}
+
+            {!isSearchPage && !isHomesPage && (
+              <Button
                 asChild
                 size={"largeIcon"}
                 variant="outline"
@@ -307,25 +330,25 @@ export default function Header({
               </Button>
             )}
 
-            {!isSearchPage && !isHomesPage && (
+            {/* {!isSearchPage && !isHomesPage && (
               <Button
                 size={"largeIcon"}
                 variant="outline"
                 className={`hidden lg:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                 disabled={true}
               >
-                {/* <Link href="/data"> */}
-                <div className="flex px-2 justify-center text-center items-center gap-2">
-                  <div className="flex justify-center items-center">
-                    <ChartColumn width={"22"} height={"22"} strokeWidth={2} />
+                <Link href="/data">
+                  <div className="flex px-2 justify-center text-center items-center gap-2">
+                    <div className="flex justify-center items-center">
+                      <ChartColumn width={"22"} height={"22"} strokeWidth={2} />
+                    </div>
+                    <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                      {data}
+                    </h1>
                   </div>
-                  <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
-                    {data}
-                  </h1>
-                </div>
-                {/* </Link> */}
+                </Link>
               </Button>
-            )}
+            )} */}
 
             {!isSearchPage && !isHomesPage && (
               <Button

@@ -9,7 +9,7 @@ export default {
       "per-month": "ayda"
     },
     "monthly": "Aylık",
-    "yearly": "Yıllık: (6+ ay ücretsiz alın)",
+    "yearly": "Yıllık: (6+ ay ücretsiz)",
     "current-plan": "Güncel Plan",
     "change-plan": "Yükseltme Planı",
     "billed-annually": "Yıllık olarak faturalandırılır",

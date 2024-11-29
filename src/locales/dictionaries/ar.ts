@@ -9,7 +9,7 @@ export default {
       "per-month": "كل شهر"
     },
     "monthly": "شهريا",
-    "yearly": "سنويًا: (احصل على 6 أشهر أو أكثر مجانًا)",
+    "yearly": "سنويًا: (6 أشهر أو أكثر مجانًا)",
     "current-plan": "الخطة الحالية",
     "change-plan": "خطة الترقية",
     "billed-annually": "يتم دفع الفاتورة سنويا",
