@@ -292,9 +292,11 @@ export default {
         "features": "Prikaži mi svojstva s"
       },
       "menu": "Jelovnik ",
-      "articles": "Članci",
       "about": "Oko",
+      "articles": "Članci",
       "data": "Podaci",
+      "explore": "Istražiti",
+      "pricing": "Cijene",
       "map": "Pogledaj u karti",
       "list": "Povratak na popise želja",
       "construction": "Ova stranica je u izradi.",

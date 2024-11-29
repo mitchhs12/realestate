@@ -292,9 +292,11 @@ export default {
         "features": "Mostre-me propriedades com"
       },
       "menu": "Menu",
-      "articles": "Artigos",
       "about": "Sobre",
+      "articles": "Artigos",
       "data": "Dados",
+      "explore": "Explorar",
+      "pricing": "Preços",
       "map": "Ver no mapa",
       "list": "Voltar para listas de desejos",
       "construction": "Este site está em construção.",

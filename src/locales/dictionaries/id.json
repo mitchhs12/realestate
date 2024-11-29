@@ -292,9 +292,11 @@
         "features": "Tunjukkan saya properti dengan"
       },
       "menu": "Menu",
-      "articles": "Artikel",
       "about": "Tentang",
+      "articles": "Artikel",
       "data": "Data",
+      "explore": "Mengeksplorasi",
+      "pricing": "Harga",
       "map": "Lihat di Peta",
       "list": "Kembali ke Daftar Keinginan",
       "construction": "Situs ini sedang dalam pembangunan.",

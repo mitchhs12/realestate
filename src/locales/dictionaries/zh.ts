@@ -292,9 +292,11 @@ export default {
         "features": "显示具有以下属性的属性"
       },
       "menu": "菜单",
-      "articles": "文章",
       "about": "关于",
+      "articles": "文章",
       "data": "数据",
+      "explore": "探索",
+      "pricing": "价格",
       "map": "查看地图",
       "list": "返回愿望清单",
       "construction": "该网站正在建设中。",

@@ -47,15 +47,19 @@ import {
   CircleHelp,
   Info,
   Contact,
+  Tags,
   Compass,
 } from "lucide-react";
 import SearchDialog from "@/components/SearchDialog";
 
 interface Props {
   map: string;
+  menu: string;
+  about: string;
   articles: string;
   data: string;
-  about: string;
+  explore: string;
+  pricing: string;
   searchPlaceholder: string;
   searchPlaceholderShort: string;
   searchText: string;
@@ -68,9 +72,12 @@ interface Props {
 
 export default function Header({
   map,
+  menu,
+  about,
   articles,
   data,
-  about,
+  explore,
+  pricing,
   searchPlaceholder,
   searchPlaceholderShort,
   searchText,
@@ -139,7 +146,7 @@ export default function Header({
               </div>
             )}
             <div className={`${!isSearchPage && "flex md:hidden"}`}>
-              <DropdownMenu>
+              <DropdownMenu modal={false}>
                 <DropdownMenuTrigger>
                   <Button
                     size={"largeIcon"}
@@ -165,27 +172,43 @@ export default function Header({
                   {isRootPage ? (
                     <DropdownMenuGroup className="flex flex-col gap-3 py-2">
                       <Link href={"/about"} passHref>
-                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
-                          <Contact />
-                          <span>About</span>
+                        <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
+                          <div className="pl-[7px]">
+                            <Contact />
+                          </div>
+                          <div className="w-full">{about}</div>
                         </DropdownMenuItem>
                       </Link>
                       <Link href={"/articles"} passHref>
-                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
-                          <BookText />
-                          <span>Articles</span>
+                        <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
+                          <div className="pl-[7px]">
+                            <BookText />
+                          </div>
+                          <span>{articles}</span>
                         </DropdownMenuItem>
                       </Link>
                       <Link href={"/data"} passHref>
-                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
-                          <BookText />
-                          <span>Data</span>
+                        <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
+                          <div className="pl-[7px]">
+                            <ChartColumn />
+                          </div>
+                          <span>{data}</span>
                         </DropdownMenuItem>
                       </Link>
-                      <Link href={"/explore"} passHref>
-                        <DropdownMenuItem className="flex gap-3 items-center font-medium">
+                      {/* <Link href={"/explore"} passHref> */}
+                      <DropdownMenuItem disabled={true} className="flex gap-[12.5px] items-center font-medium">
+                        <div className="pl-[7px]">
                           <Compass />
-                          <span>Explore</span>
+                        </div>
+                        <span>{explore}</span>
+                      </DropdownMenuItem>
+                      {/* </Link> */}
+                      <Link href={"/start"} passHref>
+                        <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
+                          <div className="pl-[7px]">
+                            <Tags />
+                          </div>
+                          <span>{pricing}</span>
                         </DropdownMenuItem>
                       </Link>
                     </DropdownMenuGroup>
@@ -194,25 +217,35 @@ export default function Header({
                       <Link href={"/about"} passHref>
                         <DropdownMenuRadioItem value={"about"} className="flex gap-3 items-center font-medium">
                           <Contact />
-                          <span>About</span>
+                          <span>{about}</span>
                         </DropdownMenuRadioItem>
                       </Link>
                       <Link href={"/articles"} passHref>
                         <DropdownMenuRadioItem value={"articles"} className="flex gap-3 items-center font-medium">
                           <BookText />
-                          <span>Articles</span>
+                          <span>{articles}</span>
                         </DropdownMenuRadioItem>
                       </Link>
                       <Link href={"/data"} passHref>
                         <DropdownMenuRadioItem value={"data"} className="flex gap-3 items-center font-medium">
                           <ChartColumn />
-                          <span>Data</span>
+                          <span>{data}</span>
                         </DropdownMenuRadioItem>
                       </Link>
-                      <Link href={"/explore"} passHref>
-                        <DropdownMenuRadioItem value={"explore"} className="flex gap-3 items-center font-medium">
-                          <Compass />
-                          <span>Explore</span>
+                      {/* <Link href={"/explore"} passHref> */}
+                      <DropdownMenuRadioItem
+                        disabled={true}
+                        value={"explore"}
+                        className="flex gap-3 items-center font-medium"
+                      >
+                        <Compass />
+                        <span>{explore}</span>
+                      </DropdownMenuRadioItem>
+                      {/* </Link> */}
+                      <Link href={"/start"} passHref>
+                        <DropdownMenuRadioItem value={"pricing"} className="flex gap-3 items-center font-medium">
+                          <Tags />
+                          <span>{pricing}</span>
                         </DropdownMenuRadioItem>
                       </Link>
                     </DropdownMenuRadioGroup>

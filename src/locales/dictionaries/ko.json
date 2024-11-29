@@ -292,9 +292,11 @@
         "features": "나에게 속성을 보여주세요"
       },
       "menu": "메뉴",
-      "articles": "조항",
       "about": "에 대한",
+      "articles": "조항",
       "data": "데이터",
+      "explore": "탐구하다",
+      "pricing": "가격",
       "map": "지도에서 보기",
       "list": "위시리스트로 돌아가기",
       "construction": "이 사이트는 현재 공사 중입니다.",

@@ -292,9 +292,11 @@
         "features": "Bana şu özellikleri göster:"
       },
       "menu": "Menü",
-      "articles": "Makaleler",
       "about": "Hakkında",
+      "articles": "Makaleler",
       "data": "Veri",
+      "explore": "Keşfetmek",
+      "pricing": "Fiyatlandırma",
       "map": "Haritada Görüntüle",
       "list": "İstek Listelerine Geri Dön",
       "construction": "Bu site yapım aşamasındadır.",

@@ -292,9 +292,11 @@ export default {
         "features": "次の物件を表示"
       },
       "menu": "メニュー",
-      "articles": "記事",
       "about": "について",
+      "articles": "記事",
       "data": "データ",
+      "explore": "探検する",
+      "pricing": "価格",
       "map": "地図で見る",
       "list": "ウィッシュリストに戻る",
       "construction": "このサイトは現在構築中です。",

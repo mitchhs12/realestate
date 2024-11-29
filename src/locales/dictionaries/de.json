@@ -292,9 +292,11 @@
         "features": "Zeigen Sie mir Immobilien mit"
       },
       "menu": "Speisekarte",
-      "articles": "Artikel",
       "about": "Um",
+      "articles": "Artikel",
       "data": "Daten",
+      "explore": "Erkunden",
+      "pricing": "Preise",
       "map": "Auf der Karte anzeigen",
       "list": "Zurück zur Wunschliste",
       "construction": "Diese Site befindet sich im Aufbau.",

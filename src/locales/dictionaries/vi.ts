@@ -292,9 +292,11 @@ export default {
         "features": "Hiển thị cho tôi các thuộc tính với"
       },
       "menu": "Thực đơn",
-      "articles": "Bài viết",
       "about": "Về",
+      "articles": "Bài viết",
       "data": "Dữ liệu",
+      "explore": "Khám phá",
+      "pricing": "Giá cả",
       "map": "Xem trong bản đồ",
       "list": "Quay lại danh sách mong muốn",
       "construction": "Trang web này đang được xây dựng.",

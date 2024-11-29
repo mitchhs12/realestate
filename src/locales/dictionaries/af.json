@@ -292,9 +292,11 @@
         "features": "Wys my eiendomme met"
       },
       "menu": "Spyskaart",
-      "articles": "Artikels",
       "about": "Oor",
+      "articles": "Artikels",
       "data": "Data",
+      "explore": "Verken",
+      "pricing": "Pryse",
       "map": "Bekyk in kaart",
       "list": "Terug na wenslys",
       "construction": "Hierdie webwerf is onder konstruksie.",
