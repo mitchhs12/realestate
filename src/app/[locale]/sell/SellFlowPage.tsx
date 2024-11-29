@@ -81,8 +81,10 @@ export default function SellFlowPage({
     <div className="flex flex-col relative h-full justify-start md:justify-center items-center gap-y-20 md:gap-y-0 md:flex-row w-full">
       <div className="flex flex-col h-full w-full gap-6 justify-start items-center">
         <div className="flex flex-col md:flex-row w-full h-full justify-start items-center">
-          <div className="flex w-1/2 items-center md:items-center justify-center py-3 text-center text-nowrap">
-            <h1 className="flex items-center text-3xl">{currentHome ? titleContinue : title}</h1>
+          <div className="flex w-1/2 items-center md:items-center justify-center py-3 text-center">
+            <h1 className="flex text-center text-2xl xs:text-3xl md:text-md px-10">
+              {currentHome ? titleContinue : title}
+            </h1>
           </div>
           <div className="flex h-full justify-center items-center flex-col md:items-start gap-8 md:gap-20 w-1/2 md:mr-8 text-wrap">
             <div className="flex flex-col gap-y-12 justify-center w-[52vw] md:w-[40vw]">
