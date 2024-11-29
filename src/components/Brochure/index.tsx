@@ -23,8 +23,8 @@ export default function Brochure() {
           className="shadow-2xl transition-transform ease-in-out duration-500 hover:rotate-6 hover:cursor-pointer"
         >
           <Image
-            src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/pdf-thumbnail.png`}
-            alt="pdf-thumbnail"
+            src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/en-thumbnail.png`}
+            alt="en-thumbnail"
             width={200} // Set width and height as needed
             height={300}
           />
@@ -37,8 +37,8 @@ export default function Brochure() {
           className="shadow-2xl transition-transform ease-in-out duration-500 hover:rotate-6 hover:cursor-pointer"
         >
           <Image
-            src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/pdf-thumbnail.png`}
-            alt="pdf-thumbnail"
+            src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/es-thumbnail.png`}
+            alt="es-thumbnail"
             width={200} // Set width and height as needed
             height={300}
           />
