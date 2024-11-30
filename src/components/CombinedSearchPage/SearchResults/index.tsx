@@ -51,7 +51,7 @@ export default function SearchResults({
               return (
                 <div key={index} className="flex justify-center items-start h-full w-full pt-4">
                   <div
-                    className={`flex justify-center rounded-xl h-full w-full space-y-2 shadow-lg dark:shadow-white/10 bg-zinc-100 dark:bg-zinc-900 ${
+                    className={`flex justify-center rounded-xl h-full w-full space-y-2${
                       isSearchLoading && index >= 4 && "hidden sm:block"
                     } ${isSearchLoading && index >= 9 && "sm:hidden lg:block"} ${
                       isSearchLoading && index >= 6 && "lg:hidden xl:block"
