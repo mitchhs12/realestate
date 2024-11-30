@@ -120,7 +120,7 @@ export default function ResizableCard({
         <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
           <div className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}>
             <h3
-              className={`text-md pl-10 pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${!home.isComplete && "text-red-500"} ${
+              className={`text-md pl-12 pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${!home.isComplete && "text-red-500"} ${
                 titleUnderlined && "underline"
               }`}
             >
@@ -140,9 +140,11 @@ export default function ResizableCard({
                     width={"w-[2rem]"}
                   />
                 </div>
-                <div lang={lang} className="flex flex-col">
-                  <text className="text-sm">{home.municipality}</text>
-                  <text className="text-xs">{countryName}</text>
+                <div lang={lang} className="flex flex-col w-full">
+                  <text className="text-sm w-full overflow-hidden whitespace-nowrap text-ellipsis">
+                    {home.municipality}
+                  </text>
+                  <text className="text-xs w-full overflow-hidden whitespace-nowrap text-ellipsis">{countryName}</text>
                 </div>
               </div>
             ) : (
