@@ -10,6 +10,7 @@ import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
 import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 export const metadata: Metadata = {
   title: "Sell Property",
@@ -21,6 +22,12 @@ export default async function Page({ params: { locale, homeId } }: any) {
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;
+
+  const redirectUrl =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:3000/${locale}/sell`
+      : `https://www.vivaideal.com/${locale}/sell`;
+
   if (!user) {
     try {
       return <LockedLogin locale={locale} />;
@@ -29,6 +36,16 @@ export default async function Page({ params: { locale, homeId } }: any) {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
+
+  if (!user.sellerSubscription) {
+    try {
+      return <PricingDialog redirectUrl={redirectUrl} />;
+    } catch (error) {
+      console.log("Failed to render PricingDialog component:", error);
+      redirect("/pricing");
+    }
+  }
+
   // const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
   const home = user.homes.find((home) => home.id === Number(homeId));
   if (!home) {
@@ -38,10 +55,6 @@ export default async function Page({ params: { locale, homeId } }: any) {
       </main>
     );
   }
-  // else if (home.isComplete === true) {
-  //   // If the home is complete, mount the unfinished homes component
-  //   return <SelectHomeWrapper locale={locale} unfinishedHomes={unfinishedHomes} user={user} />;
-  // }
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");

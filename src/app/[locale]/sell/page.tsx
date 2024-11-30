@@ -10,6 +10,7 @@ import { getUnfinishedHome } from "./actions";
 import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
 import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
+import PricingDialog from "@/components/PricingPageContent/Dialog";
 
 export const metadata: Metadata = {
   title: "Sell Your Property",
@@ -21,12 +22,25 @@ export default async function Page({ params: { locale } }: any) {
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;
+  const redirectUrl =
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:3000/${locale}/sell`
+      : `https://www.vivaideal.com/${locale}/sell`;
+
   if (!user) {
     try {
       return <LockedLogin locale={locale} />;
     } catch (error) {
       console.error("Failed to render LockedLogin component:", error);
       redirect("/api/auth/signin?callbackUrl=/sell");
+    }
+  }
+  if (!user.sellerSubscription) {
+    try {
+      return <PricingDialog redirectUrl={redirectUrl} />;
+    } catch (error) {
+      console.log("Failed to render PricingDialog component:", error);
+      redirect("/pricing");
     }
   }
 

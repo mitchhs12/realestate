@@ -56,7 +56,7 @@ export default function MultiTypeButton({
           setCurrentType(types[newIndex]);
         }}
         size={"icon"}
-        className={className ? `${className}` : "absolute bottom-2 left-2 disabled:opacity-100"}
+        className={className ? `${className}` : "absolute top-3 left-2.5 disabled:opacity-100"}
       >
         <IconComponent
           color={color ? color : premium ? "#F59E0B" : theme === "dark" ? "white" : "black"}

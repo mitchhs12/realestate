@@ -29,6 +29,7 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice, pr
       <div className="grid w-full h-full grid-cols-1 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 justify-center items-center gap-2 sm:gap-4 lg:gap-5 xl:gap-5">
         {homes.map((home, index) => {
           const matchingTypes = findMatching(typesObject, home, "type");
+          console.log("matchingTypes", matchingTypes);
 
           return (
             <div

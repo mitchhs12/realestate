@@ -51,6 +51,7 @@ export default function ResizableCard({
   const isSell = path.includes("/sell");
   const isMyProperties = path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
+  console.log("currentType", currentType);
   const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
@@ -107,7 +108,7 @@ export default function ResizableCard({
         </div>
       )}
       <div
-        className={`flex flex-col w-full h-full rounded-xl shadow-lg overflow-hidden ${home.listingType === "premium" && "border-[3px] border-amber-500"} ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
+        className={`flex flex-col w-full h-full overflow-hidden ${home.listingType === "premium" && "border-[3px] border-amber-500"} ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
       >
         <ResizableCarousel
           photos={home.photos}
@@ -117,12 +118,10 @@ export default function ResizableCard({
           link={true}
         />
         <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
-          <div
-            className={`flex flex-col bg-white dark:bg-black justify-center items-center w-full pt-2 gap-2 px-2 relative`}
-          >
+          <div className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}>
             <h3
-              className={`text-md md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
-                titleUnderlined ? "underline" : ""
+              className={`text-md pl-10 pt-2.5 md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
+                titleUnderlined && "underline"
               }`}
             >
               {home.isComplete
@@ -131,16 +130,18 @@ export default function ResizableCard({
                   : types.length > 0 && types[0].translation
                 : finishSelling}
             </h3>
-
-            <div lang={lang} className="flex text-center text-xs sm:text-sm lg:text-md">
-              {home.municipality ? home.municipality : "-"}
-            </div>
-            <div className="flex text-center gap-2 items-center text-sm sm:text-sm lg:text-md">
-              {home.country ? countryName : "-"}
-              {home.country && (
-                <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
-              )}
-            </div>
+            {home.municipality && home.country ? (
+              <div className="flex items-center gap-3 pt-2">
+                <div className="flex text-xs sm:text-sm lg:text-md">
+                  <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
+                </div>
+                <div lang={lang} className="flex text-xs sm:text-sm lg:text-md">
+                  {`${home.municipality}, ${countryName}`}
+                </div>
+              </div>
+            ) : (
+              <div>-</div>
+            )}
             <div className="pt-1">
               {sessionLoading ? (
                 <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
@@ -168,19 +169,19 @@ export default function ResizableCard({
                 </TooltipProvider>
               )}
             </div>
+            {!incompleteListing && (
+              <MultiTypeButton
+                types={types}
+                currentType={currentType}
+                setCurrentType={setCurrentType}
+                disabled={true}
+                premium={home.listingType === "premium"}
+              />
+            )}
           </div>
         </Link>
       </div>
 
-      {!incompleteListing && (
-        <MultiTypeButton
-          types={types}
-          currentType={currentType}
-          setCurrentType={setCurrentType}
-          disabled={true}
-          premium={home.listingType === "premium"}
-        />
-      )}
       {isMyProperties && home.isComplete && user?.id === home.ownerId && (
         <Button
           variant={home.isActive ? "default" : "destructive"}
