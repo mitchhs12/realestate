@@ -120,7 +120,7 @@ export default function ResizableCard({
         <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
           <div className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}>
             <h3
-              className={`text-md pl-10 pt-2.5 md:text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-center ${!home.isComplete && "text-red-500"} ${
+              className={`text-md pl-10 pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${!home.isComplete && "text-red-500"} ${
                 titleUnderlined && "underline"
               }`}
             >
@@ -131,12 +131,18 @@ export default function ResizableCard({
                 : finishSelling}
             </h3>
             {home.municipality && home.country ? (
-              <div className="flex items-center gap-3 pt-2">
-                <div className="flex text-xs sm:text-sm lg:text-md">
-                  <FlagComponent country={lookup.byIso(home.country)?.iso2 as Country} countryName={home.country} />
+              <div className="flex items-center gap-3 pt-1.5">
+                <div>
+                  <FlagComponent
+                    country={lookup.byIso(home.country)?.iso2 as Country}
+                    countryName={home.country}
+                    height={"h-[1.3125rem]"}
+                    width={"w-[2rem]"}
+                  />
                 </div>
-                <div lang={lang} className="flex text-xs sm:text-sm lg:text-md">
-                  {`${home.municipality}, ${countryName}`}
+                <div lang={lang} className="flex flex-col">
+                  <text className="text-sm">{home.municipality}</text>
+                  <text className="text-xs">{countryName}</text>
                 </div>
               </div>
             ) : (
