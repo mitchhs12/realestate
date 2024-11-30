@@ -41,7 +41,7 @@ export default function ResizableCarousel({
   const validPhotos = photos && photos.length > 0 ? photos : [placeholderImage];
 
   return (
-    <Carousel className="h-full w-full overflow-hidden rounded-2xl shadow-xl dark:shadow-white/20">
+    <Carousel className="h-full w-full overflow-hidden rounded-2xl shadow-lg dark:shadow-white/20">
       <CarouselContent className="ml-0">
         {validPhotos.map((photo: string, index) => (
           <CarouselItem key={index} className="h-full w-full pl-0">

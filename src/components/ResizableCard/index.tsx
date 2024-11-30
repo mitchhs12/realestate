@@ -68,13 +68,12 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div
-      className={`flex flex-col h-full w-full shadow-lg rounded-xl overflow-hidden ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
-    >
-      <Skeleton className="rounded-none h-[250px] w-full" />
-      <div className="pt-2 flex flex-col justify-center items-center w-full gap-3 px-2 pb-2 bg-white dark:bg-black rounded-b-lg">
+    <div className={`flex flex-col h-full w-full overflow-hidden`}>
+      <Skeleton
+        className={`rounded-2xl h-[250px] shadow-lg w-full ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/20"}`}
+      />
+      <div className="h-[144px] flex flex-col justify-center items-start w-full gap-5 pl-4 px-2">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
-        <Skeleton className="h-4 sm:h-4 lg:h-5 w-24" />
         <Skeleton className="h-4 sm:h-3 lg:h-5 w-28" />
         <Skeleton className="h-4 sm:h-5 lg:h-6 w-36 font-semibold" />
       </div>
@@ -120,7 +119,7 @@ export default function ResizableCard({
         <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
           <div className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}>
             <h3
-              className={`text-md pl-12 pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${!home.isComplete && "text-red-500"} ${
+              className={`text-md pl-11 pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${!home.isComplete && "text-red-500"} ${
                 titleUnderlined && "underline"
               }`}
             >
@@ -152,7 +151,7 @@ export default function ResizableCard({
             )}
             <div className="pt-1">
               {sessionLoading ? (
-                <Skeleton className="h-4 sm:h-5 lg:h-7 w-28 mb-2" />
+                <Skeleton className="h-[1.4rem] lg:h-7 w-28 mb-2" />
               ) : (
                 <TooltipProvider>
                   <Tooltip>
