@@ -31,7 +31,7 @@ export function FavoriteComponent({ user, home, large }: Props) {
             setModalOpen(true);
             setExistingDialog(true);
           }}
-          className={`flex absolute hover:cursor-pointer right-2 top-2 ${large ? "size-12" : "size-8"} ${modalOpen && "animate-pulse fill-primary"} text-white ${isFavorited && "fill-pink-500"} hover:fill-pink-500`}
+          className={`flex rounded-full absolute hover:cursor-pointer right-2 top-2 ${large ? "size-12" : "size-8"} ${modalOpen && "animate-pulse fill-primary"} text-white ${isFavorited && "fill-pink-500"} hover:fill-pink-500`}
         />
       </DialogTrigger>
       <DialogContent
