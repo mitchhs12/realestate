@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "GIÁ KHÔNG THỂ BẮT CHẠI",
     "newest": "Mới nhất",
     "newest-sub": "ĐÃ ĐƯỢC LIỆT KÊ GẦN ĐÂY",
+    "spotlight": "Điểm sáng",
+    "spotlight-sub": "MÓN ĂN YÊU THÍCH CỦA CHÚNG TÔI",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Bảo lưu mọi quyền.",
       "legal": {

@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "破格の価格",
     "newest": "最新",
     "newest-sub": "最近リストされた",
+    "spotlight": "スポットライト",
+    "spotlight-sub": "私たちのお気に入り",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal。無断複写・転載を禁じます。",
       "legal": {

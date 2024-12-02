@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "أسعار لا تقبل المنافسة",
     "newest": "الأحدث",
     "newest-sub": "تم إدراجه مؤخرا",
+    "spotlight": "مركز الاهتمام",
+    "spotlight-sub": "المفضلة لدينا",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. جميع الحقوق محفوظة.",
       "legal": {

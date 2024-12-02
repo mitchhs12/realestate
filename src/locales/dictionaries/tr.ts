@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "RAKİPSİZ FİYATLAR",
     "newest": "En yeni",
     "newest-sub": "SON LİSTELENENLER",
+    "spotlight": "Dikkat Çeken",
+    "spotlight-sub": "FAVORİLERİMİZ",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Tüm hakları saklıdır.",
       "legal": {

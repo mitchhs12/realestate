@@ -34,7 +34,7 @@ export default async function AboutPageContent({ locale, data }: { locale: strin
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-8 gap-8 justify-items-center">
             {data.map((person: { name: string; bio: string; image_url: string }) => {
               return (
-                <Dialog>
+                <Dialog key={person.name}>
                   <DialogTrigger>
                     <div
                       key={person.name} // Add a unique key here

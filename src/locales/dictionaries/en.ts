@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "UNBEATABLE PRICES",
     "newest": "Newest",
     "newest-sub": "RECENTLY LISTED",
+    "spotlight": "Spotlight",
+    "spotlight-sub": "OUR FAVORITES",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal PTE. LTD. All rights reserved.",
       "legal": {

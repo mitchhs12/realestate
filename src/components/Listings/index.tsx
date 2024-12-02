@@ -2,7 +2,7 @@
 import ResizableCard from "@/components/ResizableCard";
 import { findMatching } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { getCheapest, getNew, getPopular } from "@/app/[locale]/actions";
+import { getCheapest, getNew, getPopular, getSpotlight } from "@/app/[locale]/actions";
 import { HomeType } from "@/lib/validations";
 
 interface Props {
@@ -19,6 +19,8 @@ export default function Listings({ listingKey, typesObject, loginToViewPrice, pr
       getPopular(8).then((homes) => setHomes(homes));
     } else if (listingKey === "cheapest") {
       getCheapest(8).then((homes) => setHomes(homes));
+    } else if (listingKey === "spotlight") {
+      getSpotlight(8).then((homes) => setHomes(homes));
     } else {
       getNew(8).then((homes) => setHomes(homes));
     }

@@ -125,6 +125,27 @@ export default async function HomePageContent() {
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
             >
+              {t("spotlight-sub")}
+            </h3>
+            <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+              {/* <Newspaper strokeWidth={3} size={32} /> */}
+              {t("spotlight")}
+            </h2>
+          </div>
+          <Listings
+            listingKey={"spotlight"}
+            typesObject={typesObject}
+            loginToViewPrice={loginToViewPrice}
+            premiumText={premium("title")}
+          />
+        </div>
+      </section>
+      <section className="flex flex-col bg-gradient-to-b from-[#f4f5fb] to-[#fbf4f8]  dark:from-[#020410] dark:to-[#10020b] justify-center items-center w-full h-full">
+        <div className="flex flex-col pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
+            <h3
+              className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
+            >
               {t("newest-sub")}
             </h3>
             <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">

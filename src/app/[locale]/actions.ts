@@ -39,7 +39,7 @@ export async function getUserData(): Promise<any> {
   }
 }
 
-export async function getRecommended(): Promise<HomeType[]> {
+export async function getSpotlight(takeNumber: number): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,
@@ -47,7 +47,7 @@ export async function getRecommended(): Promise<HomeType[]> {
     orderBy: {
       price: "asc",
     },
-    take: 6,
+    take: takeNumber,
   });
   return homes;
 }

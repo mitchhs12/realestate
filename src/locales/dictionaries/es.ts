@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "PRECIOS IMBATIBLES",
     "newest": "El más nuevo",
     "newest-sub": "RECIENTEMENTE LISTADO",
+    "spotlight": "Destacar",
+    "spotlight-sub": "NUESTROS FAVORITOS",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. Todos los derechos reservados.",
       "legal": {

@@ -609,6 +609,8 @@ export default {
     "cheapest-sub": "비교할 수 없는 가격",
     "newest": "최신",
     "newest-sub": "최근 등록됨",
+    "spotlight": "스포트라이트",
+    "spotlight-sub": "우리가 좋아하는 것",
     "footer": {
       "allRightsReserved": "© 2024 Viva Ideal. 모든 권리 보유.",
       "legal": {
