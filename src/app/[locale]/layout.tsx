@@ -12,6 +12,7 @@ import MainLayout from "@/components/MainLayout";
 import { getStaticParams } from "@/locales/server";
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
+import Script from "next/script"; // Import Script component
 
 export const metadata: Metadata = {
   title: {
@@ -45,6 +46,18 @@ export default function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning={true}>
+      <head>
+        {/* Google Analytics Script */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-QWTRWYKPDF" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QWTRWYKPDF');
+          `}
+        </Script>
+      </head>
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
