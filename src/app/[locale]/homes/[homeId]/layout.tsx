@@ -10,7 +10,7 @@ import { languages } from "@/lib/validations";
 export async function generateMetadata({ params }: { params: { homeId: string } }): Promise<Metadata> {
   const home = await getHomeById(params.homeId);
   const languageAlternates = languages.reduce((acc: any, lang) => {
-    acc[lang] = `/pricing/${lang}`;
+    acc[lang] = `/homes/${lang}`;
     return acc;
   }, {});
   const homeTitle = home?.title || "Property Not Found";
@@ -18,8 +18,6 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
   const homeDescription = home?.description || "This property could not be found.";
   const placeholderImage = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/light4.jpg`; // Placeholder image URL
   const homePhotos = home?.photos || [placeholderImage];
-  const price = home?.price || 0;
-  const homecurrency = home?.currency || "USD";
 
   return {
     title: `${homeTitle} - ${homeType}`,
