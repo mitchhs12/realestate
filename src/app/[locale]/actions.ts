@@ -43,6 +43,9 @@ export async function getSpotlight(takeNumber: number): Promise<HomeType[]> {
   const homes = await prisma.home.findMany({
     where: {
       isActive: true,
+      id: {
+        in: [278, 177, 267, 241, 252, 254, 192, 225],
+      },
     },
     orderBy: {
       price: "asc",

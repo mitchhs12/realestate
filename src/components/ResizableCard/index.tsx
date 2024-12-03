@@ -107,7 +107,7 @@ export default function ResizableCard({
         </div>
       )}
       <div
-        className={`flex flex-col w-full h-full overflow-hidden ${home.listingType === "premium" && "border-[3px] border-amber-500"} ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
+        className={`flex flex-col w-full h-full overflow-hidden ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
       >
         <ResizableCarousel
           photos={home.photos}
