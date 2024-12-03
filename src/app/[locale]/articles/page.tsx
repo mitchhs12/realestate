@@ -8,7 +8,7 @@ import ArticlesTitle from "@/components/ArticlesPage/Title";
 import ArticlesPageContent from "@/components/ArticlesPage";
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/articles/${lang}`;
+  acc[lang] = `/${lang}/articles`;
   return acc;
 }, {});
 

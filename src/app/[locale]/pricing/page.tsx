@@ -11,7 +11,7 @@ import { getScopedI18n } from "@/locales/server";
 export const revalidate = 30;
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/pricing/${lang}`;
+  acc[lang] = `/${lang}/pricing`;
   return acc;
 }, {});
 

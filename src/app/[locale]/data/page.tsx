@@ -11,7 +11,7 @@ import { Metadata } from "next";
 export const revalidate = 30;
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/data/${lang}`;
+  acc[lang] = `/${lang}/data`;
   return acc;
 }, {});
 

@@ -21,7 +21,7 @@ async function getData() {
 }
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/about/${lang}`;
+  acc[lang] = `/${lang}/about`;
   return acc;
 }, {});
 

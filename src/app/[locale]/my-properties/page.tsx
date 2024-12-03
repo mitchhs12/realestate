@@ -9,9 +9,32 @@ import { typesMap } from "@/lib/sellFlowData";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Title from "./Title";
+import { languages } from "@/lib/validations";
+
+const languageAlternates = languages.reduce((acc: any, lang) => {
+  acc[lang] = `/${lang}/homes`;
+  return acc;
+}, {});
 
 export const metadata: Metadata = {
   title: "My Properties",
+  description: "My Properties that I have listed for sale on Viva Ideal",
+  metadataBase: new URL("https://www.vivaideal.com/my-properties"),
+  alternates: {
+    canonical: "/data",
+    languages: languageAlternates,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default async function Page({ params: { locale } }: { params: { locale: string } }) {

@@ -7,7 +7,7 @@ import { languages } from "@/lib/validations";
 import { Metadata } from "next";
 
 const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/articles/${lang}`;
+  acc[lang] = `/${lang}/articles`;
   return acc;
 }, {});
 

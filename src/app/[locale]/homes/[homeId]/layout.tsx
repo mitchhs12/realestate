@@ -10,7 +10,7 @@ import { languages } from "@/lib/validations";
 export async function generateMetadata({ params }: { params: { homeId: string } }): Promise<Metadata> {
   const home = await getHomeById(params.homeId);
   const languageAlternates = languages.reduce((acc: any, lang) => {
-    acc[lang] = `/homes/${lang}`;
+    acc[lang] = `/${lang}/homes`;
     return acc;
   }, {});
   const homeTitle = home?.title || "Property Not Found";
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
     description: homeDescription,
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `/homes/${params.homeId}`,
+      canonical: `/homes`,
       languages: languageAlternates,
     },
     robots: {
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
     openGraph: {
       title: homeTitle,
       description: homeDescription,
-      url: `https://www.vivaideal.com/en/homes/${params.homeId}`,
+      url: `https://www.vivaideal.com/homes/${params.homeId}`,
       type: "website",
       images: [
         {

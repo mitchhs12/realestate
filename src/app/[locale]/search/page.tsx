@@ -4,11 +4,34 @@ import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
 import { typesMap } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
+import { languages } from "@/lib/validations";
+
+const languageAlternates = languages.reduce((acc: any, lang) => {
+  acc[lang] = `/${lang}/search`;
+  return acc;
+}, {});
 
 export const metadata: Metadata = {
   title: "Search for Properties",
   description:
     "Find your ideal home, apartment, or land on Viva Ideal. Search properties across Latin America and discover your dream property today.",
+
+  metadataBase: new URL("https://www.vivaideal.com/search"),
+  alternates: {
+    canonical: "/search",
+    languages: languageAlternates,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default async function Page({ params }: { params: { locale: string; search: string } }) {
