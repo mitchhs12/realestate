@@ -68,9 +68,9 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div className={`flex flex-col h-full w-full overflow-hidden`}>
+    <div className={`flex flex-col h-full w-full justify-start overflow-hidden`}>
       <Skeleton
-        className={`rounded-2xl h-[250px] shadow-lg w-full ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/20"}`}
+        className={`rounded-2xl h-[250px] shadow-lg w-full ${home?.listingType === "premium" ? "border-2 border-amber-500 shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/20"}`}
       />
       <div className="h-[144px] flex flex-col justify-center items-start w-full gap-5 pl-4 px-2">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
@@ -106,16 +106,18 @@ export default function ResizableCard({
           </Link>
         </div>
       )}
-      <div
-        className={`flex flex-col w-full h-full overflow-hidden ${home?.listingType === "premium" ? "shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/10"}`}
-      >
-        <ResizableCarousel
-          photos={home.photos}
-          title={home.title!}
-          hovering={titleUnderlined}
-          home={home}
-          link={true}
-        />
+      <div className={`flex flex-col w-full h-full overflow-hidden`}>
+        <div
+          className={`rounded-2xl overflow-hidden shadow-lg border ${home.listingType === "premium" ? "border-2 border-amber-500 shadow-amber-500/50" : "dark:shadow-white/20"}`}
+        >
+          <ResizableCarousel
+            photos={home.photos}
+            title={home.title!}
+            hovering={titleUnderlined}
+            home={home}
+            link={true}
+          />
+        </div>
         <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
           <div className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}>
             <h3

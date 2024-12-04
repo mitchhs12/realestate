@@ -60,6 +60,38 @@
   }
 }
 
+.scroll-container {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-content.paused {
+  animation-play-state: paused !important;
+}
+
+.scroll-content:hover {
+  animation-play-state: paused; /* Pauses the animation when hovering over scroll-content */
+}
+
+.scroll-content {
+  display: inline-flex;
+  gap: 1.5rem; /* 6 in your code */
+  animation: scroll 60s linear infinite;
+  animation-play-state: running;
+  transition: animation-play-state 0.3s; /* Smooth transition */
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .type::after {
   content: "|";
   animation: cursor 1.1s infinite step-start;
