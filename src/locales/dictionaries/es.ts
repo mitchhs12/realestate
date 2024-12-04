@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "App #1 de Propiedades",
+      "year": "2024",
       "title": "Encuentra la casa de tus sueños.",
       "search": {
         "placeholder": "Buscar cualquier ubicación...",

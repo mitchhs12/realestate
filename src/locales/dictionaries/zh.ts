@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "排名第一的房产应用程序",
+      "year": "2024",
       "title": "找到您梦想的家。",
       "search": {
         "placeholder": "搜索任意位置...",

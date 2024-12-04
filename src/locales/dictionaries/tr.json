@@ -520,6 +520,7 @@
     },
     "hero": {
       "laurel": "#1 Emlak Uygulaması",
+      "year": "2024",
       "title": "Hayalinizdeki evi bulun.",
       "search": {
         "placeholder": "Herhangi bir lokasyonu arayın...",

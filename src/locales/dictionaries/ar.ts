@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "#1 تطبيق العقارات",
+      "year": "2024",
       "title": "ابحث عن منزل أحلامك",
       "search": {
         "placeholder": "ابحث عن أي موقع...",

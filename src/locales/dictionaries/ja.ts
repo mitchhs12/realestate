@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "不動産アプリNo.1",
+      "year": "2024",
       "title": "あなたの夢の家を見つけてください。",
       "search": {
         "placeholder": "任意の場所を検索...",

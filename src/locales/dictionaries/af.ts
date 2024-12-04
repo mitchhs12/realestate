@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "#1 Eiendom-toepassing",
+      "year": "2024",
       "title": "Vind jou droomhuis.",
       "search": {
         "placeholder": "Soek vir enige ligging...",

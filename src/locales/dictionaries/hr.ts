@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "Aplikacija broj 1 za nekretnine",
+      "year": "2024",
       "title": "Pronađite svoj dom iz snova.",
       "search": {
         "placeholder": "Potražite bilo koju lokaciju...",

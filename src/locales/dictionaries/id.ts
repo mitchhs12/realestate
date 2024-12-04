@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "Aplikasi Properti #1",
+      "year": "Tahun 2024",
       "title": "Temukan rumah impian Anda.",
       "search": {
         "placeholder": "Cari lokasi mana saja...",

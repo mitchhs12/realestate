@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "Application immobilière n°1",
+      "year": "2024",
       "title": "Trouvez la maison de vos rêves.",
       "search": {
         "placeholder": "Rechercher n'importe quel emplacement...",

@@ -520,6 +520,7 @@ export default {
     },
     "hero": {
       "laurel": "#1 Immobilien-App",
+      "year": "2024",
       "title": "Finden Sie Ihr Traumhaus.",
       "search": {
         "placeholder": "Suche nach einem beliebigen Ort...",
