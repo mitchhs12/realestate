@@ -12,12 +12,6 @@ import { Country } from "react-phone-number-input";
 import { getCountryNameForLocale } from "@/lib/utils";
 import { CountryProps } from "@/lib/validations";
 
-interface CityImage {
-  name: string;
-  countryCode: string;
-  neighborhoods: Neighborhood[];
-}
-
 interface Neighborhood {
   name: string;
 }
@@ -28,20 +22,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
     return `${baseUrl}/${folder}/${place}.webp`;
   }
 
-  const urlMap = Object.fromEntries(
-    Object.entries(countries).flatMap(([countryKey, country]) => [
-      [`${country.city.id}`, getUrl(country.folder, country.city.id)],
-      ...country.neighborhoods.map((neighborhood) => [`${neighborhood.id}`, getUrl(country.folder, neighborhood.id)]),
-    ])
-  );
-
-  const imageMap = Object.values(countries).map((country) => ({
-    city: { id: country.city.id, translation: country.city.translation },
-    neighborhoods: country.neighborhoods,
-  }));
-
   const [underlinedImage, setUnderlinedImage] = useState("");
-  const [key, setKey] = useState<{ id: string; translation: string }>(countries.AR.city);
   const { setQuery, setClickedLocation } = useContext(QueryContext);
   const { defaultLanguage } = useContext(LocaleContext);
 
@@ -58,7 +39,7 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                 setClickedLocation(true);
                 setQuery(country.city.translation);
               }}
-              className="flex flex-col w-full hover:cursor-pointer "
+              className="flex flex-col justify-center items-center w-full hover:cursor-pointer"
               key={`scroll-${isoCode}-${index}`}
             >
               <div className="relative flex justify-center items-center h-32 w-32 md:h-48 md:w-48 xl:h-64 xl:w-64 rounded-lg overflow-hidden">
@@ -70,11 +51,14 @@ export default function Locations({ countries }: { countries: CountryProps }) {
                   placeholder={"blur"}
                   blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
                   fill={true}
+                  loading={"lazy"}
                 />
               </div>
-              <div className="text-black dark:text-white text-center py-1 hover:cursor-pointer">
-                <div className="flex flex-col justify-center items-center">
-                  <p className={`flex items-center gap-x-2 ${underlinedImage === country.city.id && "underline"}`}>
+              <div className="text-black dark:text-white text-center py-2">
+                <div className="flex flex-col items-center">
+                  <p
+                    className={`flex items-center text-sm sm:text-md gap-x-2 ${underlinedImage === country.city.id && "underline"}`}
+                  >
                     {country.city.translation}
                   </p>
                   <p

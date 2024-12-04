@@ -51,7 +51,6 @@ export default function ResizableCard({
   const isSell = path.includes("/sell");
   const isMyProperties = path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
-  console.log("currentType", currentType);
   const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
