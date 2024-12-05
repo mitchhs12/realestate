@@ -268,7 +268,7 @@ export default function SearchBox({
                   ref={popoverRef}
                   sideOffset={1}
                   onOpenAutoFocus={(e) => e.preventDefault()}
-                  className={`${pathname.startsWith("/search") || pathname.startsWith(`/${defaultLanguage}/search`) ? (rawBox ? "flex" : "hidden sm:flex") : "flex"} flex-col PopoverContent rounded-b-3xl ${(pathname === "/sell/location" || pathname === `/${defaultLanguage}/sell/location`) && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
+                  className={`${pathname.startsWith("/search") || pathname.startsWith(`/${defaultLanguage}/search`) ? (rawBox ? "flex" : "hidden xs:flex") : "flex"} flex-col PopoverContent rounded-b-3xl ${(pathname === "/sell/location" || pathname === `/${defaultLanguage}/sell/location`) && "rounded-3xl lg:rounded-r-none lg:rounded-b-3xl"}`}
                 >
                   {results.length === 0 && "No results found."}
                   {results.length > 0 &&

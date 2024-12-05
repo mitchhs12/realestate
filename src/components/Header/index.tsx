@@ -424,7 +424,7 @@ export default function Header({
           </div>
           {isSearchPage && (
             <>
-              <div className="hidden sm:flex items-center justify-center w-full">
+              <div className="hidden xs:flex items-center justify-center w-full">
                 <SearchBox
                   rawBox={false}
                   isSmallMap={false}
@@ -433,7 +433,7 @@ export default function Header({
                   text={searchText}
                 />
               </div>
-              <div className="flex sm:hidden items-center justify-center gap-5 w-full">
+              <div className="flex xs:hidden items-center justify-center gap-5 w-full">
                 <SearchDialog
                   isSmallMap={false}
                   placeholder={placeholder}

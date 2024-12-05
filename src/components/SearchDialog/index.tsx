@@ -20,7 +20,7 @@ export default function SearchDialog({ isSmallMap, placeholder, placeholderShort
   return (
     <>
       <Button
-        className="rounded-full h-12 gap-2"
+        className="rounded-full h-12 gap-2 w-full"
         size={"default"}
         variant={"default"}
         disabled={isFiltering}
