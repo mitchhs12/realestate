@@ -65,6 +65,15 @@
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
+  --fade-width: 50px;
+}
+
+.scroll-content {
+  display: inline-flex;
+  gap: 1.5rem; /* 6 in your code */
+  animation: scroll 60s linear infinite;
+  animation-play-state: running;
+  transition: animation-play-state 0.3s; /* Smooth transition */
 }
 
 .scroll-content.paused {
@@ -75,12 +84,25 @@
   animation-play-state: paused; /* Pauses the animation when hovering over scroll-content */
 }
 
-.scroll-content {
-  display: inline-flex;
-  gap: 1.5rem; /* 6 in your code */
-  animation: scroll 60s linear infinite;
-  animation-play-state: running;
-  transition: animation-play-state 0.3s; /* Smooth transition */
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--fade-width);
+  pointer-events: none; /* Allow interaction with content */
+  z-index: 10;
+}
+
+.scroll-container::before {
+  left: 0;
+  background: linear-gradient(to right, hsl(var(--background)), transparent);
+}
+
+.scroll-container::after {
+  right: 0;
+  background: linear-gradient(to left, hsl(var(--background)), transparent);
 }
 
 @keyframes scroll {

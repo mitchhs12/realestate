@@ -60,6 +60,7 @@ export default function CombinedSearchPage({
     setIsFiltering,
     setNewFilters,
     convertedPriceRange,
+    headerValues,
   } = useContext(QueryContext);
   const { numerals, defaultCurrency } = useContext(LocaleContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
@@ -154,15 +155,16 @@ export default function CombinedSearchPage({
       <section
         className={`hidden md:flex flex-col w-full h-full ${
           mapFocused && "md:hidden"
-        } lg:flex lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900`}
+        } lg:flex lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900 items-center pt-6`}
       >
-        <h1 className="flex py-10 text-2xl justify-center items-center h-[32px] w-full">
+        <h1 className="flex py-10 text-xl xl:text-2xl justify-center items-center h-[32px] w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (
             `${formatNumber(homes.length, numerals)} ${homes.length === 1 ? propertyText : propertiesText} `
           )}
         </h1>
+
         <SearchResults
           homes={homes}
           isSearchLoading={isSearchLoading}
@@ -179,7 +181,6 @@ export default function CombinedSearchPage({
           snapPoints={[`${maxDrawerHeight}`]}
           activeSnapPoint={snap}
           handleOnly={true}
-          // setActiveSnapPoint={setSnap}
           open={isOpen}
           modal={false}
           onClose={() => {

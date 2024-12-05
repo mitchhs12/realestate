@@ -27,8 +27,10 @@ const config = {
         "screen-minus-header-footer": "calc(100vh - 86px - 100px)",
         "screen-minus-header-dvh": "calc(100dvh - 86px)",
         "screen-minus-header-svh": "calc(100svh - 86px)",
+        "screen-minus-header-double-svh": "calc(100svh - 140px)",
       },
       minHeight: {
+        "screen-minus-header-double-svh": "calc(100svh - 140px)",
         "screen-minus-header": "calc(100vh - 86px)",
         "screen-minus-header-footer": "calc(100vh - 86px - 100px)",
         "screen-minus-header-dvh": "calc(100dvh - 86px)",

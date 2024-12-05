@@ -64,13 +64,13 @@ export default async function MainLayout({ children }: Props) {
           data={h("data")}
           explore={h("explore")}
           pricing={h("pricing")}
-          searchPlaceholder={h("search.placeholder")}
-          searchPlaceholderShort={h("search.placeholder-short")}
-          searchText={h("search.search-button")}
           sellButtonBig={h("sell-button-big")}
           sellButtonSmall={h("sell-button-small")}
           exit={p("exit")}
           exit_short={p("exit-short")}
+          placeholder={h("search.placeholder")}
+          placeholderShort={h("search.search-button-small")}
+          searchText={h("search.search-button")}
           searchButtonSmall={h("search.search-button-small")}
         />
         {children}
