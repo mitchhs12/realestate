@@ -126,11 +126,8 @@ export default function MapComponent({
       ? { lat: currentHome.latitude, lng: currentHome.longitude }
       : { lat: coordinates.lat, lng: coordinates.long };
 
-  console.log("CURRENT THEME", theme);
-  console.log(MAP_CONFIGS[1].mapId);
-
   return (
-    <div className="flex flex-col w-full items-center justify-center">
+    <div className="w-full items-center justify-center">
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
         {!isMapLoading && (
           <Map

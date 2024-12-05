@@ -66,24 +66,22 @@ export default async function Page({ params }: { params: { locale: string; searc
   // case for different categories set initZoom:
 
   return (
-    <main className="flex flex-col-reverse  md:h-screen-minus-header-svh lg:flex-row justify-end">
-      <CombinedSearchPage
-        coordinates={coordinates}
-        label={label}
-        initZoom={initZoom}
-        propertyText={propertyText}
-        propertiesText={propertiesText}
-        resultsText={resultsText}
-        showMap={showMap}
-        showList={showList}
-        typesObject={typesObject}
-        noHomesFound={noHomesFound}
-        loginToViewPrice={loginToViewPrice}
-        propertiesMapText={propertiesMapText}
-        otherCategories={otherCategories}
-        loadingText={loadingText}
-        premiumText={premiumText}
-      />
-    </main>
+    <CombinedSearchPage
+      coordinates={coordinates}
+      label={label}
+      initZoom={initZoom}
+      propertyText={propertyText}
+      propertiesText={propertiesText}
+      resultsText={resultsText}
+      showMap={showMap}
+      showList={showList}
+      typesObject={typesObject}
+      noHomesFound={noHomesFound}
+      loginToViewPrice={loginToViewPrice}
+      propertiesMapText={propertiesMapText}
+      otherCategories={otherCategories}
+      loadingText={loadingText}
+      premiumText={premiumText}
+    />
   );
 }

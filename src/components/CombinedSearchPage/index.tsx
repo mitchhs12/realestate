@@ -3,7 +3,6 @@
 import SearchResults from "@/components/CombinedSearchPage/SearchResults";
 import MapComponent from "@/components/CombinedSearchPage/MainMap";
 import { getSearchResults, getAllHomesFiltered } from "@/app/[locale]/search/actions";
-import FloatingButton from "@/components/CombinedSearchPage/FloatingButtons";
 import FloatingDrawerButton from "@/components/CombinedSearchPage/FloatingButtons/FloatingDrawerButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
@@ -51,8 +50,6 @@ export default function CombinedSearchPage({
   premiumText,
 }: Props) {
   const {
-    mapFocused,
-    setMapFocused,
     selectedTypes,
     selectedFeatures,
     selectedRooms,
@@ -118,18 +115,17 @@ export default function CombinedSearchPage({
   }, [isFiltering]);
 
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setMaxDrawerHeight(window.innerHeight - 86);
-    } else if (window.innerWidth >= 768) {
+    if (window.innerWidth < 1024) {
+      setMaxDrawerHeight(window.innerHeight - 140);
+    } else if (window.innerWidth >= 1024) {
       setIsOpen(false);
-      setMapFocused(true);
     }
     setIsSearchLoading(false);
   }, [homes]);
 
   return (
-    <>
-      <section className={`flex w-full h-full ${!mapFocused && "md:hidden"} lg:flex lg:w-1/2 lg:h-full`}>
+    <div className="flex w-full h-screen-minus-header-double-svh ">
+      <section className={`flex w-full h-full lg:w-1/2`}>
         {homesGeoJson ? (
           <MapComponent
             coordinates={coordinates}
@@ -152,12 +148,8 @@ export default function CombinedSearchPage({
           </div>
         )}
       </section>
-      <section
-        className={`hidden md:flex flex-col w-full h-full ${
-          mapFocused && "md:hidden"
-        } lg:flex lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900 items-center pt-6`}
-      >
-        <h1 className="flex py-10 text-xl xl:text-2xl justify-center items-center h-[32px] w-full">
+      <section className={`hidden lg:flex flex-col w-full h-full lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900`}>
+        <h1 className="flex shadow-lg py-4 text-xl xl:text-2xl justify-center items-center w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (
@@ -176,7 +168,8 @@ export default function CombinedSearchPage({
           premiumText={premiumText}
         />
       </section>
-      <div className="flex md:hidden">
+      {/* DRAWER */}
+      <div className="flex lg:hidden">
         <Drawer
           snapPoints={[`${maxDrawerHeight}`]}
           activeSnapPoint={snap}
@@ -221,8 +214,6 @@ export default function CombinedSearchPage({
           />
         </Drawer>
       </div>
-
-      <FloatingButton showMap={showMap} showList={showList} />
-    </>
+    </div>
   );
 }

@@ -12,8 +12,6 @@ import { LocaleContext } from "./LocaleContext";
 interface QueryContextProps {
   query: string;
   setQuery: (value: string) => void;
-  mapFocused: boolean;
-  setMapFocused: (value: boolean) => void;
   clickedLocation: boolean;
   setClickedLocation: (value: boolean) => void;
   currentHome: HomeType | null;
@@ -86,8 +84,6 @@ const originalFilters = JSON.stringify({
 const QueryContext = createContext<QueryContextProps>({
   query: "",
   setQuery: () => {},
-  mapFocused: false,
-  setMapFocused: () => {},
   clickedLocation: false,
   setClickedLocation: () => {},
   currentHome: null,
@@ -161,7 +157,6 @@ interface SelectedRooms {
 const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerValues }) => {
   const { defaultLanguage } = useContext(LocaleContext);
   const [query, setQuery] = useState("");
-  const [mapFocused, setMapFocused] = useState(true);
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
   const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -264,8 +259,6 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
       value={{
         query,
         setQuery,
-        mapFocused,
-        setMapFocused,
         clickedLocation,
         setClickedLocation,
         currentHome,

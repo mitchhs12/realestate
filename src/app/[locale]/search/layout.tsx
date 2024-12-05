@@ -8,7 +8,7 @@ export default async function Searchlayout({
   return (
     <>
       <div className="flex flex-col items-center w-full">
-        <main className="flex-grow w-full h-full min-h-screen-minus-header-double-svh">{children}</main>
+        <main className="w-full h-screen-minus-header-double-svh">{children}</main>
         <footer className="flex justify-center items-center p-6 w-full bg-muted">
           <Footer />
         </footer>
