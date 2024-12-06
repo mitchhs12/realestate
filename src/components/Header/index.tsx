@@ -234,16 +234,16 @@ export default function Header({
                               <span>{articles}</span>
                             </DropdownMenuRadioItem>
                           </Link>
-                          <Link href={"/data"} passHref>
-                            <DropdownMenuRadioItem
-                              disabled={true}
-                              value={"data"}
-                              className="flex gap-3 items-center font-medium"
-                            >
-                              <ChartColumn />
-                              <span>{data}</span>
-                            </DropdownMenuRadioItem>
-                          </Link>
+                          {/* <Link href={"/data"} passHref> */}
+                          <DropdownMenuRadioItem
+                            disabled={true}
+                            value={"data"}
+                            className="flex gap-3 items-center font-medium"
+                          >
+                            <ChartColumn />
+                            <span>{data}</span>
+                          </DropdownMenuRadioItem>
+                          {/* </Link> */}
                           <Link href={"/search"} passHref scroll={true}>
                             <DropdownMenuRadioItem value={"search"} className="flex gap-3 items-center font-medium">
                               <Compass />
