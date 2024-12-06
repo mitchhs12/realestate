@@ -205,8 +205,8 @@ export default function CombinedSearchPage({
             setIsOpen(false);
           }}
         >
-          <DrawerContent className="max-h-[calc(100dvh-152px)] text-center overflow-hidden gap-y-2 pt-4">
-            <DrawerTitle>{resultsText}</DrawerTitle>
+          <DrawerContent className="max-h-[calc(100dvh-152px)] overflow-hidden gap-y-2 pt-4">
+            <DrawerTitle className="flex justify-center">{resultsText}</DrawerTitle>
             <DrawerDescription className="flex justify-center w-full">
               {isSearchLoading ? (
                 <Skeleton className="w-48 h-5" />
