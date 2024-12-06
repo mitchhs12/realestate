@@ -8,6 +8,7 @@ import PaginationComponent from "../../PaginationComponent";
 
 interface Props {
   homes: (HomeType | null)[];
+  visibleHomes: (HomeType | null)[];
   isSearchLoading: boolean;
   label: string;
   bounds: BoundsType | null;
@@ -19,6 +20,7 @@ interface Props {
 
 export default function SearchResults({
   homes,
+  visibleHomes,
   isSearchLoading,
   label,
   bounds,
@@ -28,9 +30,6 @@ export default function SearchResults({
   premiumText,
 }: Props) {
   const firstRender = useRef(true);
-
-  const ITEMS_PER_PAGE = 12;
-  const [visibleHomes, setVisibleHomes] = useState(homes.slice((1 - 1) * ITEMS_PER_PAGE, 1 * ITEMS_PER_PAGE));
 
   useEffect(() => {
     if (bounds) {
@@ -72,9 +71,6 @@ export default function SearchResults({
         ) : (
           <div className="flex justify-center w-full items-center p-6">{noHomesFound}</div>
         )}
-      </div>
-      <div className="flex py-4">
-        <PaginationComponent homes={homes} ITEMS_PER_PAGE={ITEMS_PER_PAGE} setVisibleHomes={setVisibleHomes} />
       </div>
     </>
   );
