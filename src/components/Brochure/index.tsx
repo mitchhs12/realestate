@@ -5,8 +5,8 @@ import { LocaleContext } from "@/context/LocaleContext";
 
 export default function Brochure() {
   const { defaultLanguage } = useContext(LocaleContext);
-  const english = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/viva-ideal-en.pdf`; // Replace with your PDF path
-  const spanish = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/viva-ideal-es.pdf`; // Replace with your PDF path
+  const english = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/english.pdf`; // Replace with your PDF path
+  const spanish = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/pdfs/español.pdf`; // Replace with your PDF path
   const englishName = new Intl.DisplayNames(defaultLanguage, { type: "language" }).of("en");
   const spanishName = new Intl.DisplayNames(defaultLanguage, { type: "language" }).of("es");
 
