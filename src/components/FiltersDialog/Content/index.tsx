@@ -79,7 +79,12 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
 
   return (
     <>
-      <DialogContent className="flex flex-col h-[90%] w-[90%] p-4 rounded-md">
+      <DialogContent
+        className="flex flex-col h-[90%] w-[90%] p-4 rounded-md"
+        onOpenAutoFocus={(event) => {
+          event.preventDefault();
+        }}
+      >
         <DialogHeader>
           <DialogTitle>{search}</DialogTitle>
           <DialogDescription>{filters}</DialogDescription>
