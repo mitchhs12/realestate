@@ -31,7 +31,7 @@ export default function FloatingDrawerButton({
       onClick={() => {
         setDrawerOpen(!drawerOpen);
       }}
-      className={`lg:hidden z-[30] fixed bottom-20 left-1/2 transform -translate-x-1/2 shadow-xl dark:shadow-white/10`}
+      className={`lg:hidden z-[30] absolute bottom-20 left-1/2 transform -translate-x-1/2 shadow-xl dark:shadow-white/10`}
     >
       {isLoading ? (
         <span className="flex justify-center items-center gap-3">

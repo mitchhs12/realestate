@@ -58,7 +58,6 @@ export default function CombinedSearchPage({
     setIsFiltering,
     setNewFilters,
     convertedPriceRange,
-    headerValues,
   } = useContext(QueryContext);
   const { numerals, defaultCurrency } = useContext(LocaleContext);
   const [bounds, setBounds] = useState<BoundsType | null>(null);
@@ -116,6 +115,29 @@ export default function CombinedSearchPage({
     }
   }, [isFiltering]);
 
+  // Lock background scrolling when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save the current scroll position
+      const scrollY = window.scrollY;
+      // Lock body scroll by fixing position
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    } else {
+      // Unlock body scroll
+      const scrollY = Math.abs(parseInt(document.body.style.top || "0", 10));
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY); // restore to previous scroll position
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     if (window.innerWidth >= 1024) {
       setIsOpen(false);
@@ -124,7 +146,7 @@ export default function CombinedSearchPage({
   }, [homes]);
 
   return (
-    <div className="flex w-full">
+    <div className="relative flex w-full">
       <section className={`flex w-full lg:w-1/2 sticky top-[152px] h-screen-minus-header-double-svh`}>
         {homesGeoJson ? (
           <MapComponent
@@ -209,16 +231,16 @@ export default function CombinedSearchPage({
               </div>
             </div>
           </DrawerContent>
-          <FloatingDrawerButton
-            isLoading={!isSearchLoading && !isMapLoading ? false : true}
-            loadingText={loadingText}
-            showMap={showMap}
-            showList={showList}
-            drawerOpen={isOpen}
-            setDrawerOpen={setIsOpen}
-          />
         </Drawer>
       </div>
+      <FloatingDrawerButton
+        isLoading={!isSearchLoading && !isMapLoading ? false : true}
+        loadingText={loadingText}
+        showMap={showMap}
+        showList={showList}
+        drawerOpen={isOpen}
+        setDrawerOpen={setIsOpen}
+      />
     </div>
   );
 }
