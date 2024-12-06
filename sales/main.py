@@ -16,7 +16,7 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
 # Path to your service account key file
 SERVICE_ACCOUNT_FILE = 'credentials.json'  # Replace with your JSON file path
-CSV_FILE="matching_emails.csv"
+CSV_FILE="csv.csv"
 
 SENDER_INFO = {
     'majo': {
@@ -61,7 +61,7 @@ SENDER_INFO = {
                     <span style="color: #6AA84F;">Sitio web: <a href="https://www.vivaideal.com" target="_blank">www.vivaideal.com</a></span><br>
                     """
     },
-    "mitch": {
+    "mitchell": {
         'name': "Mitchell",
         'email': "mitchell@vivaideal.com",
         "title": "Director de Negocios",
@@ -94,7 +94,7 @@ def create_email(sender_name, sender_email, sender_signature, recipient, subject
     message['subject'] = subject
     message['bcc'] = hubspot_bcc  # Add HubSpot BCC address
 
-    body_with_signature = body.format(first_name=recipient.split()[0].capitalize(), signature=sender_signature)
+    body_with_signature = body.format(name=recipient, signature=sender_signature)
     # HTML body with HubSpot tracking pixel
     html_body = f"""
     <html>
@@ -157,9 +157,9 @@ def bulk_send_emails(sender_key):
     sender_title = sender_info['title']
     sender_signature = sender_info['signature'] 
     sender_email = sender_info['email']
-    subject_template = """Hola {first_name}, ¡Puedo ayudarte a llegar a compradores internacionales!"""
+    subject_template = """Hola {name}, ¡Puedo ayudarte a llegar a compradores internacionales!"""
     body_template = """
-    ¡Hola {first_name} 😁🎄!<br><br>
+    ¡Hola {name} 😁🎄!<br><br>
     Soy {sender_name}, {sender_title} en Viva Ideal 🏡. Quiero invitarte a formar parte de nuestra comunidad exclusiva, donde conectamos tus propiedades de América Latina con compradores en Estados Unidos, Canadá y Europa.<br><br>
     Mi objetivo es ofrecerte la mejor visibilidad a precios accesibles, ayudando a que tus propiedades lleguen a un público global en +15 idiomas diferentes y 25+ tipos de cambio 🌎.<br><br>
     Además, por los próximos 5 días, estamos ofreciendo a las primeras 7 personas que se suscriban a algún plan la oportunidad de grabar contenido, sin costo adicional (para propiedades que cumplan con ciertos estándares).<br><br>
@@ -178,14 +178,17 @@ def bulk_send_emails(sender_key):
         with open(CSV_FILE, 'r', encoding='utf-8') as file:
             csv_reader = csv.DictReader(file)
             for row_number, row in enumerate(csv_reader, start=1):  # Start numbering from 1
-                first_name = row['NOMBRES'].split()[0].capitalize()  # Extract the first name
+                if sender_key != row["ENCARGADA"]: 
+                    print(f"Skipping row {row_number}: {sender_key} does not match {row['ENCARGADA']}")
+                    continue
+                name = row['NOMBRE']  # Extract the name
                 recipient_email = row['CORREO']
                 
                 # Personalize the email body
-                body = body_template.format(first_name=first_name, sender_name=sender_name, sender_title=sender_title, sender_signature=sender_signature)
-                subject = subject_template.format(first_name=first_name)
+                body = body_template.format(name=name, sender_name=sender_name, sender_title=sender_title, sender_signature=sender_signature)
+                subject = subject_template.format(name=name)
                 # Create and send the email
-                print(f"Processing row {row_number}: Sending email to {recipient_email} ({first_name})...")
+                print(f"Processing row {row_number}: Sending email to {recipient_email} ({name})...")
                 email = create_email(sender_name, sender_email, sender_signature, recipient_email, subject, body, hubspot_bcc, attachment_path)
                 send_email(service, email)
 

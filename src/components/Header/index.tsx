@@ -117,9 +117,9 @@ export default function Header({
       <header
         className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "shadow-lg dark:shadow-white/5 justify-between"
-        } items-center min-h-[86px] z-[40] p-4 md:px-6 bg-background`}
+        } items-center min-h-[86px] p-5 z-[40] md:px-6 bg-background`}
       >
-        <div className="flex flex-col gap-3 w-full h-full">
+        <div className="flex flex-col gap-4 w-full h-full justify-center">
           <div className="flex justify-between">
             {!isSellPage && (
               <div className={"flex md:flex gap-2 2xs:gap-4 md:gap-4 lg:gap-4"}>
@@ -187,7 +187,7 @@ export default function Header({
                               <div className="w-full">{about}</div>
                             </DropdownMenuItem>
                           </Link>
-                          <Link href={"/search"} passHref>
+                          <Link href={"/search"} passHref scroll={true}>
                             <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                               <div className="pl-[7px]">
                                 <Compass />
@@ -203,14 +203,14 @@ export default function Header({
                               <span>{articles}</span>
                             </DropdownMenuItem>
                           </Link>
-                          <Link href={"/data"} passHref>
-                            <DropdownMenuItem disabled={true} className="flex gap-[12.5px] items-center font-medium">
-                              <div className="pl-[7px]">
-                                <ChartColumn />
-                              </div>
-                              <span>{data}</span>
-                            </DropdownMenuItem>
-                          </Link>
+                          {/* <Link href={"/data"} passHref> */}
+                          <DropdownMenuItem disabled={true} className="flex gap-[12.5px] items-center font-medium">
+                            <div className="pl-[7px]">
+                              <ChartColumn />
+                            </div>
+                            <span>{data}</span>
+                          </DropdownMenuItem>
+                          {/* </Link> */}
                           <Link href={"/pricing"} passHref>
                             <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                               <div className="pl-[7px]">
@@ -244,7 +244,7 @@ export default function Header({
                               <span>{data}</span>
                             </DropdownMenuRadioItem>
                           </Link>
-                          <Link href={"/search"} passHref>
+                          <Link href={"/search"} passHref scroll={true}>
                             <DropdownMenuRadioItem value={"search"} className="flex gap-3 items-center font-medium">
                               <Compass />
                               <span>{explore}</span>
@@ -287,7 +287,7 @@ export default function Header({
                   <Button
                     size={"largeIcon"}
                     variant="outline"
-                    className={`hidden lg:flex ${isDataPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                    className={`hidden lg:flex ${isSearchPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                   >
                     <Link href="/search">
                       <div className="flex px-2 justify-center text-center items-center gap-2">
@@ -423,7 +423,7 @@ export default function Header({
             )}
           </div>
           {isSearchPage && (
-            <>
+            <div>
               <div className="hidden xs:flex items-center justify-center w-full">
                 <SearchBox
                   rawBox={false}
@@ -441,7 +441,7 @@ export default function Header({
                   text={searchButtonSmall}
                 />
               </div>
-            </>
+            </div>
           )}
         </div>
       </header>

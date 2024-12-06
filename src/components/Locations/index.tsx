@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { CardTitle } from "@/components/ui/card";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -17,6 +17,8 @@ interface Neighborhood {
 }
 
 export default function Locations({ countries }: { countries: CountryProps }) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   function getUrl(folder: string, place: string) {
     const baseUrl = `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home`;
     return `${baseUrl}/${folder}/${place}.webp`;

@@ -127,7 +127,7 @@ export default function MapComponent({
       : { lat: coordinates.lat, lng: coordinates.long };
 
   return (
-    <div className="w-full items-center justify-center">
+    <div className="w-full h-full items-center justify-center">
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
         {!isMapLoading && (
           <Map

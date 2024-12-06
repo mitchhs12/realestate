@@ -124,32 +124,36 @@ export default function CombinedSearchPage({
   }, [homes]);
 
   return (
-    <div className="flex w-full h-screen-minus-header-double-svh ">
+    <div className="flex w-full h-screen-minus-header-double-svh">
       <section className={`flex w-full h-full lg:w-1/2`}>
-        {homesGeoJson ? (
-          <MapComponent
-            coordinates={coordinates}
-            existingBounds={bounds}
-            setBounds={setBounds}
-            homesGeoJson={homesGeoJson}
-            isMapLoading={isMapLoading}
-            setIsMapLoading={setIsMapLoading}
-            initZoom={initZoom}
-            typesObject={typesObject}
-            loginToViewPrice={loginToViewPrice}
-            propertiesText={propertiesMapText}
-            otherCategories={otherCategories}
-          />
-        ) : (
-          // <Skeleton className="w-full h-full" />
-          <div className="flex w-full h-full items-center justify-center text-lg lg:text-3xl">
-            <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
-            {loadingText}
-          </div>
-        )}
+        <div className="sticky top-0 w-full">
+          {homesGeoJson ? (
+            <MapComponent
+              coordinates={coordinates}
+              existingBounds={bounds}
+              setBounds={setBounds}
+              homesGeoJson={homesGeoJson}
+              isMapLoading={isMapLoading}
+              setIsMapLoading={setIsMapLoading}
+              initZoom={initZoom}
+              typesObject={typesObject}
+              loginToViewPrice={loginToViewPrice}
+              propertiesText={propertiesMapText}
+              otherCategories={otherCategories}
+            />
+          ) : (
+            // <Skeleton className="w-full h-full" />
+            <div className="flex w-full h-full items-center justify-center text-lg lg:text-3xl">
+              <ReloadIcon className="mr-2 h-4 w-4 lg:h-8 lg:w-8 animate-spin" />
+              {loadingText}
+            </div>
+          )}
+        </div>
       </section>
-      <section className={`hidden lg:flex flex-col w-full h-full lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900`}>
-        <h1 className="flex shadow-lg py-4 text-xl xl:text-2xl justify-center items-center w-full">
+      <section
+        className={`hidden lg:flex flex-col w-full lg:w-1/2 lg:h-full bg-zinc-100 dark:bg-zinc-900 overflow-y-auto`}
+      >
+        <h1 className="sticky top-0 text-center z-[80] shadow-lg py-4 text-xl xl:text-2xl justify-center items-center w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-80 h-8" />
           ) : (

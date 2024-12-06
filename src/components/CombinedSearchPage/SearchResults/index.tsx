@@ -42,7 +42,7 @@ export default function SearchResults({
 
   return (
     <>
-      <div className="flex flex-col h-full justify-between items-start w-full overflow-y-auto px-4">
+      <div className="flex flex-col h-full justify-between items-start w-full px-4">
         {homes && homes.length > 0 ? (
           <div className="w-full grid gap-8 px-4 p-8 pt-0 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
             {visibleHomes.map((home, index) => {
