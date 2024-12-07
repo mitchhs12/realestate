@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 import Stripe from "@/app/[locale]/stripe";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { QueryContext } from "@/context/QueryContext";
 import { ChangeSpecificSub } from "@/app/[locale]/stripeServer";
 import { useRouter } from "next/navigation";
+import { StripeServer } from "@/app/[locale]/stripeServer";
+import { v4 as uuidv4 } from "uuid";
 
 interface Tier {
   title: string;
@@ -28,6 +30,7 @@ interface Tier {
 }
 
 interface Props {
+  isCheckout: boolean;
   redirectUrl: string;
   starter: Tier;
   pro: Tier;
@@ -52,6 +55,7 @@ interface Props {
 }
 
 export default function PricingTable({
+  isCheckout,
   redirectUrl,
   starter,
   pro,
@@ -79,6 +83,7 @@ export default function PricingTable({
   const [selected, setSelected] = useState<string>("");
   const [yearly, setYearly] = useState(true);
   const router = useRouter();
+  const uuidRef = useRef(uuidv4());
 
   const tier1 = isSeller ? "starter" : "free";
   const tier2 = isSeller ? "pro" : "basic";
@@ -133,7 +138,27 @@ export default function PricingTable({
       if (!user?.id) {
         openSignUpModal();
       } else {
-        setIsOpen(true);
+        if (isCheckout && defaultCurrency) {
+          console.log(selected);
+          const interval = yearly ? "year" : "month";
+          StripeServer(
+            defaultCurrency.symbol.toLowerCase(),
+            defaultLanguage,
+            tierId,
+            interval,
+            uuidRef.current,
+            isCheckout,
+            redirectUrl
+          ).then((data) => {
+            if (!data.error) {
+              router.push(data.url as string);
+            } else {
+              console.log(data.error);
+            }
+          });
+        } else {
+          setIsOpen(true);
+        }
       }
     } else if (userSubscriptionId) {
       const billingConfirm = await ChangeSpecificSub(isSeller, tierId, yearly, defaultLanguage, redirectUrl);
@@ -300,6 +325,7 @@ export default function PricingTable({
         <DialogContent className="p-0 border-0 bg-none w-80 md:w-full" close={false}>
           {defaultCurrency && user && (
             <Stripe
+              uuid={uuidRef.current}
               defaultCurrency={defaultCurrency}
               planId={selected}
               interval={yearly ? "year" : "month"}

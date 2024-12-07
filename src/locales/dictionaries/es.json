@@ -768,6 +768,11 @@
         "subtitle": "¡Selecciona una de tus propiedades sin terminar para continuar!",
         "sell-new": "Vender una propiedad nueva"
       },
+      "properties-remaining": {
+        "first": "Propiedades restantes",
+        "monthly": "Propiedades adicionales que puedes listar el próximo mes",
+        "yearly": "Propiedades adicionales que puedes incluir en tu lista el próximo año"
+      },
       "view": "Ver propiedades sin terminar"
     },
     "capacity": {

@@ -10,6 +10,7 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { formatNumber } from "@/lib/utils";
 import { HomeType } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
+import { getNextPeriodCredits } from "@/lib/utils";
 
 interface Props {
   currentHome: HomeType | null;
@@ -29,6 +30,11 @@ interface Props {
   viewText: string;
   unfinishedHomes?: HomeType[];
   setModalOpen?: (value: boolean) => void;
+  propertiesRemaining: {
+    sub: string;
+    year: string;
+    month: string;
+  };
 }
 
 export default function SellFlowPage({
@@ -48,8 +54,9 @@ export default function SellFlowPage({
   viewText,
   unfinishedHomes,
   setModalOpen,
+  propertiesRemaining,
 }: Props) {
-  const { numerals } = useContext(LocaleContext);
+  const { numerals, user } = useContext(LocaleContext);
 
   const getTotalSteps = (step1: number, step2: number) => {
     const totalStep = stepsFlattened.length - 3 - step1 - step2;
@@ -81,10 +88,19 @@ export default function SellFlowPage({
     <div className="flex flex-col relative h-full justify-start md:justify-center items-center gap-y-20 md:gap-y-0 md:flex-row w-full">
       <div className="flex flex-col h-full w-full gap-6 justify-start items-center">
         <div className="flex flex-col md:flex-row w-full h-full justify-start items-center">
-          <div className="flex w-1/2 items-center md:items-center justify-center py-3 text-center">
-            <h1 className="flex text-center text-2xl xs:text-3xl md:text-md px-10">
-              {currentHome ? titleContinue : title}
-            </h1>
+          <div className="flex md:w-1/2 items-center md:items-center justify-center py-3 text-center">
+            <div className="flex flex-col gap-6 text-center px-10">
+              <h1 className="text-2xl xs:text-3xl">{currentHome ? titleContinue : title}</h1>
+              <div className="flex flex-col gap-1">
+                <h3 className="text-lg xs:text-xl">
+                  {propertiesRemaining.sub}: {user?.sellCredits}
+                </h3>
+                <h4 className="text-sm">
+                  {user && user.sellerSubIsYearly ? propertiesRemaining.year : propertiesRemaining.month}:{" "}
+                  {user && getNextPeriodCredits(user.sellerSubscription!, user.sellerSubIsYearly, true)}
+                </h4>
+              </div>
+            </div>
           </div>
           <div className="flex h-full justify-center items-center flex-col md:items-start gap-8 md:gap-20 w-1/2 md:mr-8 text-wrap">
             <div className="flex flex-col gap-y-12 justify-center w-[52vw] md:w-[40vw]">

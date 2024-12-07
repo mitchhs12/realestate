@@ -768,6 +768,11 @@
         "subtitle": "Kies een van jou onvoltooide eiendomme om voort te gaan!",
         "sell-new": "Verkoop 'n nuwe eiendom"
       },
+      "properties-remaining": {
+        "first": "Eiendomme wat oorbly",
+        "monthly": "Bykomende eiendomme wat jy volgende maand kan lys",
+        "yearly": "Bykomende eiendomme wat jy volgende jaar kan lys"
+      },
       "view": "Bekyk onvoltooide eiendomme"
     },
     "capacity": {

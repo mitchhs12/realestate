@@ -768,6 +768,11 @@
         "subtitle": "Sélectionnez l'une de vos propriétés inachevées pour continuer !",
         "sell-new": "Vendre un bien neuf"
       },
+      "properties-remaining": {
+        "first": "Propriétés restantes",
+        "monthly": "Propriétés supplémentaires que vous pouvez publier le mois prochain",
+        "yearly": "Propriétés supplémentaires que vous pouvez lister l'année prochaine"
+      },
       "view": "Voir les propriétés inachevées"
     },
     "capacity": {

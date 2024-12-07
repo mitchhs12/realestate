@@ -83,7 +83,7 @@ export default function Checkout({
             </div>
           </div>
           <div>
-            <PricingDialog redirectUrl={redirectUrl} sellersOnly={true} justPremium={true} />
+            <PricingDialog redirectUrl={redirectUrl} sellersOnly={true} justPremium={true} isCheckout={false} />
           </div>
         </div>
       </div>

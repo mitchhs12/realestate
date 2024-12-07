@@ -768,6 +768,11 @@
         "subtitle": "Pilih salah satu properti Anda yang belum selesai untuk melanjutkan!",
         "sell-new": "Jual properti baru"
       },
+      "properties-remaining": {
+        "first": "Properti yang tersisa",
+        "monthly": "Properti tambahan yang dapat Anda daftarkan bulan depan",
+        "yearly": "Properti tambahan yang dapat Anda daftarkan tahun depan"
+      },
       "view": "Lihat Properti yang Belum Selesai"
     },
     "capacity": {

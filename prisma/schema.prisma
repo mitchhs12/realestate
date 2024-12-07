@@ -24,7 +24,9 @@ model User {
   sessions      Session[]
   homes         Home[]
   buyerSubscription  String?    @default("free")
-  sellerSubscription String?    
+  buyerSubIsYearly Boolean?
+  sellerSubscription String?
+  sellerSubIsYearly Boolean?    
   buyerSubscriptionId String?
   sellerSubscriptionId String?
   contactCredits  Int           @default(0)

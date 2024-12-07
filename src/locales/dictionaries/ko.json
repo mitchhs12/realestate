@@ -768,6 +768,11 @@
         "subtitle": "계속하려면 미완성 부동산 중 하나를 선택하세요!",
         "sell-new": "새로운 부동산을 판매하다"
       },
+      "properties-remaining": {
+        "first": "남은 속성",
+        "monthly": "다음 달에 등록할 수 있는 추가 부동산",
+        "yearly": "내년에 등록할 수 있는 추가 부동산"
+      },
       "view": "미완성 부동산 보기"
     },
     "capacity": {

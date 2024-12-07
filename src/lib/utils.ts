@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { locales, CurrencyType } from "./validations";
+import { sellCredits, contactCredits } from "@/lib/validations";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -273,4 +274,10 @@ export const resizeImageToMinDimensions = async (
 
     reader.readAsDataURL(file);
   });
+};
+
+export const getNextPeriodCredits = (subscription: string, isYearly: boolean, isSell: boolean) => {
+  const intervalKey = isYearly ? "year" : "month";
+  const credits = isSell ? sellCredits : contactCredits;
+  return credits[intervalKey]?.[subscription as keyof (typeof sellCredits)[typeof intervalKey]] || 0;
 };

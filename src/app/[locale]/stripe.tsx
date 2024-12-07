@@ -12,6 +12,7 @@ import { LocaleContext } from "@/context/LocaleContext";
 import { StripeServer } from "./stripeServer";
 
 interface Props {
+  uuid: string;
   defaultCurrency: CurrencyType;
   planId: any; //starter pro premium business basic insight max;
   interval: "year" | "month";
@@ -19,7 +20,7 @@ interface Props {
   accountEmail: string | null;
 }
 
-export default function Stripe({ defaultCurrency, planId, interval }: Props) {
+export default function Stripe({ uuid, defaultCurrency, planId, interval }: Props) {
   const currency = defaultCurrency.symbol.toLowerCase();
 
   const stripePromise = loadStripe(
@@ -32,7 +33,7 @@ export default function Stripe({ defaultCurrency, planId, interval }: Props) {
 
   useEffect(() => {
     try {
-      StripeServer(currency, planId, interval).then((data) => {
+      StripeServer(currency, defaultLanguage, planId, interval, uuid).then((data) => {
         if (data.clientSecret) {
           setClientSecret(data.clientSecret);
         }

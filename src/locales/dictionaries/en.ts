@@ -768,6 +768,11 @@ export default {
         "subtitle": "Select one of your unfinished properties to continue!",
         "sell-new": "Sell a new property"
       },
+      "properties-remaining": {
+        "first": "Properties Remaining",
+        "monthly": "Additional properties you can list next month",
+        "yearly": "Additional properties you can list next year"
+      },
       "view": "View Unfinished Properties"
     },
     "capacity": {

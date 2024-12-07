@@ -768,6 +768,11 @@
         "subtitle": "Wählen Sie eine Ihrer unfertigen Immobilien aus, um fortzufahren!",
         "sell-new": "Eine neue Immobilie verkaufen"
       },
+      "properties-remaining": {
+        "first": "Verbleibende Eigenschaften",
+        "monthly": "Weitere Immobilien, die Sie nächsten Monat auflisten können",
+        "yearly": "Weitere Immobilien, die Sie nächstes Jahr auflisten können"
+      },
       "view": "Unfertige Immobilien anzeigen"
     },
     "capacity": {

@@ -768,6 +768,11 @@ export default {
         "subtitle": "続行するには、未完了のプロパティの 1 つを選択してください。",
         "sell-new": "新しい不動産を売る"
       },
+      "properties-remaining": {
+        "first": "残りのプロパティ",
+        "monthly": "来月掲載できる追加物件",
+        "yearly": "来年掲載できる追加物件"
+      },
       "view": "未完成の物件を見る"
     },
     "capacity": {

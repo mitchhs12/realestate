@@ -6,10 +6,12 @@ import { useContext } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 
 function PricingPageWrapper({
+  isCheckout,
   redirectUrl,
   sellersOnly,
   justPremium,
 }: {
+  isCheckout: boolean;
   redirectUrl: string;
   sellersOnly?: boolean;
   justPremium?: boolean;
@@ -424,6 +426,7 @@ function PricingPageWrapper({
 
   return (
     <PricingPageContent
+      isCheckout={isCheckout}
       redirectUrl={redirectUrl}
       sellerObject={sellerObject}
       buyerObject={buyerObject}
@@ -435,10 +438,12 @@ function PricingPageWrapper({
 }
 
 export default function PricingDialog({
+  isCheckout,
   redirectUrl,
   sellersOnly,
   justPremium,
 }: {
+  isCheckout: boolean;
   redirectUrl: string;
   sellersOnly?: boolean;
   justPremium?: boolean;
@@ -447,7 +452,12 @@ export default function PricingDialog({
 
   return (
     <I18nProviderClient locale={defaultLanguage}>
-      <PricingPageWrapper redirectUrl={redirectUrl} sellersOnly={sellersOnly} justPremium={justPremium} />
+      <PricingPageWrapper
+        isCheckout={isCheckout}
+        redirectUrl={redirectUrl}
+        sellersOnly={sellersOnly}
+        justPremium={justPremium}
+      />
     </I18nProviderClient>
   );
 }

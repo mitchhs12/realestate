@@ -51,15 +51,12 @@ export function Modal({
           </DialogTitle>
           <DialogDescription>{u("subtitle")}</DialogDescription>
         </DialogHeader>
-        <div className="p-2 sm:p-4 md:px-6 overflow-y-auto w-full grid grid-cols-1 xs:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center gap-2 md:gap-4 lg:gap-5 xl:gap-5">
+        <div className="p-2 sm:p-4 md:px-6 overflow-y-auto w-full grid grid-cols-1 xs:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 lg:gap-5 xl:gap-5">
           {unfinishedHomes.map((home: HomeType, index: number) => {
             const matchingTypes = findMatching(typesObject, home, "type");
 
             return (
-              <div
-                key={index}
-                className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg`}
-              >
+              <div key={index} className={`flex flex-col space-y-2 rounded-lg`}>
                 <ResizableCard
                   home={home}
                   finishSelling={mp("finishSelling")}

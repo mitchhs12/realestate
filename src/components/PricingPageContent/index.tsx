@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 interface Props {
+  isCheckout: boolean;
   sellerObject: any;
   buyerObject: any;
   billingText: {
@@ -31,6 +32,7 @@ interface Props {
 }
 
 export default function PricingPageContent({
+  isCheckout,
   sellerObject,
   buyerObject,
   billingText,
@@ -82,6 +84,7 @@ export default function PricingPageContent({
 
         {seller ? (
           <PricingTable
+            isCheckout={isCheckout}
             redirectUrl={redirectUrl}
             starter={sellerObject.starter}
             pro={sellerObject.pro}
@@ -103,6 +106,7 @@ export default function PricingPageContent({
           />
         ) : (
           <PricingTable
+            isCheckout={isCheckout}
             redirectUrl={redirectUrl}
             starter={buyerObject.free}
             pro={buyerObject.basic}

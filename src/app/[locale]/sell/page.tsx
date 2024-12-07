@@ -11,6 +11,8 @@ import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
 import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
 import PricingDialog from "@/components/PricingPageContent/Dialog";
+import { Dialog, DialogContent, DialogClose, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Sell Your Property",
@@ -35,9 +37,15 @@ export default async function Page({ params: { locale } }: any) {
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  if (!user.sellerSubscription) {
+  if (user.sellCredits === 0) {
     try {
-      return <PricingDialog redirectUrl={redirectUrl} />;
+      return (
+        <Dialog open={true}>
+          <DialogContent close={false} className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
+            <PricingDialog isCheckout={true} redirectUrl={redirectUrl} sellersOnly={true} />
+          </DialogContent>
+        </Dialog>
+      );
     } catch (error) {
       console.log("Failed to render PricingDialog component:", error);
       redirect("/pricing");
@@ -60,6 +68,12 @@ export default async function Page({ params: { locale } }: any) {
   const step3Sub = t("step-3-sub");
   const completed = t("completed");
   const viewText = t("view");
+
+  const propertiesRemaining = {
+    sub: t("properties-remaining.first"),
+    year: t("properties-remaining.yearly"),
+    month: t("properties-remaining.monthly"),
+  };
 
   const sellFlowText = {
     title,
@@ -84,6 +98,7 @@ export default async function Page({ params: { locale } }: any) {
       sellFlatIndex={sellFlatIndex}
       stepPercentage={array}
       sellFlowText={sellFlowText}
+      propertiesRemaining={propertiesRemaining}
     />
   );
 }

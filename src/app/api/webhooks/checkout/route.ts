@@ -45,18 +45,19 @@ export async function POST(req: Request, res: NextApiResponse) {
 
         if (accountId && plan && interval) {
           const intervalKey = interval as "year" | "month";
+          const isYearly = interval === "year" ? true : false;
           const amountToAddContact =
             contactCredits[intervalKey]?.[plan.name as keyof (typeof contactCredits)[typeof intervalKey]] || 0;
           const amountToAddSell =
             sellCredits[intervalKey]?.[plan.name as keyof (typeof sellCredits)[typeof intervalKey]] || 0;
 
           if (isSeller) {
-            // Update the home listing in the database to "premium"
             if (plan.name !== "business") {
               await prisma.user.update({
                 where: { id: accountId },
                 data: {
                   sellerSubscription: plan.name,
+                  sellerSubIsYearly: isYearly,
                   sellerSubscriptionId: subscriptionId,
                   contactCredits: { increment: amountToAddContact },
                   sellCredits: { increment: amountToAddSell },
@@ -67,6 +68,7 @@ export async function POST(req: Request, res: NextApiResponse) {
                 where: { id: accountId },
                 data: {
                   sellerSubscription: plan.name,
+                  sellerSubIsYearly: isYearly,
                   sellerSubscriptionId: subscriptionId,
                 },
               });
@@ -77,6 +79,7 @@ export async function POST(req: Request, res: NextApiResponse) {
                 where: { id: accountId },
                 data: {
                   buyerSubscription: plan.name,
+                  buyerSubIsYearly: isYearly,
                   buyerSubscriptionId: subscriptionId,
                   contactCredits: { increment: amountToAddContact },
                 },
@@ -86,13 +89,14 @@ export async function POST(req: Request, res: NextApiResponse) {
                 where: { id: accountId },
                 data: {
                   buyerSubscription: plan.name,
+                  buyerSubIsYearly: isYearly,
                   buyerSubscriptionId: subscriptionId,
                 },
               });
             }
           }
         } else {
-          console.error("Missing accountId in subscription metadata.");
+          console.error("Missing accountId, plan or interval:", accountId, plan, interval);
         }
         break;
       }
@@ -137,12 +141,12 @@ export async function POST(req: Request, res: NextApiResponse) {
           if (isSeller) {
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: null, sellerSubscriptionId: null }, // Revert to the default listing type
+              data: { sellerSubscription: null, sellerSubscriptionId: null, sellerSubIsYearly: null }, // Revert to the default listing type
             });
           } else {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: "free", buyerSubscriptionId: null }, // Revert to the default listing type
+              data: { buyerSubscription: "free", buyerSubscriptionId: null, buyerSubIsYearly: null }, // Revert to the default listing type
             });
           }
         } else {

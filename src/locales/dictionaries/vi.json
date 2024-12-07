@@ -768,6 +768,11 @@
         "subtitle": "Chọn một trong những bất động sản còn dang dở của bạn để tiếp tục!",
         "sell-new": "Bán một bất động sản mới"
       },
+      "properties-remaining": {
+        "first": "Thuộc tính còn lại",
+        "monthly": "Các bất động sản bổ sung bạn có thể niêm yết vào tháng tới",
+        "yearly": "Các bất động sản bổ sung bạn có thể niêm yết vào năm tới"
+      },
       "view": "Xem Bất động sản chưa hoàn thiện"
     },
     "capacity": {

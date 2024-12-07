@@ -156,6 +156,15 @@ export async function updateHome(
   let updatedHome;
 
   if (homeValues === null) {
+    // decrement sellCredits on the user
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        sellCredits: {
+          decrement: 1,
+        },
+      },
+    });
     // Create new home
     updatedHome = await prisma.home.create({
       data: {

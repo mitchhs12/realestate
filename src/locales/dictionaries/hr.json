@@ -768,6 +768,11 @@
         "subtitle": "Odaberite jednu od svojih nedovršenih nekretnina za nastavak!",
         "sell-new": "Prodajte novu nekretninu"
       },
+      "properties-remaining": {
+        "first": "Preostala svojstva",
+        "monthly": "Dodatne nekretnine možete navesti sljedeći mjesec",
+        "yearly": "Dodatne nekretnine koje možete navesti sljedeće godine"
+      },
       "view": "Pogledajte nedovršene nekretnine"
     },
     "capacity": {

@@ -768,6 +768,11 @@ export default {
         "subtitle": "Devam etmek için tamamlanmamış mülklerinizden birini seçin!",
         "sell-new": "Yeni bir mülk satmak"
       },
+      "properties-remaining": {
+        "first": "Kalan Özellikler",
+        "monthly": "Gelecek ay listeleyebileceğiniz ek mülkler",
+        "yearly": "Gelecek yıl listeleyebileceğiniz ek mülkler"
+      },
       "view": "Tamamlanmamış Özellikleri Görüntüle"
     },
     "capacity": {

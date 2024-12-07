@@ -13,6 +13,8 @@ declare module "next-auth" {
     customerId: string | null;
     buyerSubscription: string | null;
     sellerSubscription: string | null;
+    buyerSubIsYearly: boolean;
+    sellerSubIsYearly: boolean;
     buyerSubscriptionId: string | null;
     sellerSubscriptionId: string | null;
     contactCredits: number;

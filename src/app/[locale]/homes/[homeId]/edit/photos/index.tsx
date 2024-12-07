@@ -348,7 +348,7 @@ export default function Photos() {
                       <Button>{upgrade.upgradeButton}</Button>
                     </DialogTrigger>
                     <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
-                      <PricingDialog redirectUrl={redirectUrl} sellersOnly={true} />
+                      <PricingDialog redirectUrl={redirectUrl} sellersOnly={true} isCheckout={false} />
                     </DialogContent>
                   </Dialog>
                 </div>

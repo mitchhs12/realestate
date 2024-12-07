@@ -153,8 +153,12 @@ const getProducts = (isSeller: boolean) => {
 ///// CREATE A NEW SUBSCRIPTION /////
 export async function StripeServer(
   currency: string,
+  defaultLanguage: string,
   planId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max",
-  interval: "year" | "month"
+  interval: "year" | "month",
+  indemKey: string,
+  checkoutPage?: boolean,
+  redirectUrl?: string
 ) {
   try {
     const session = await auth();
@@ -194,6 +198,8 @@ export async function StripeServer(
       },
     };
 
+    console.log("planid", planId);
+
     const amount = interval === "year" ? map[planId]["yearly-total-price"] * 100 : map[planId].price * 100;
 
     if (!user || !user.id) {
@@ -219,34 +225,75 @@ export async function StripeServer(
       throw new Error("Customer ID was not written to the database!");
     }
 
-    // Create a new subscription
-    const subscription = await stripeClient.subscriptions.create({
-      customer: user.customerId,
-      items: [
-        {
-          price_data: {
-            currency: currency,
-            product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
-            unit_amount: amount, // Amount in cents
-            recurring: {
-              interval: interval,
+    if (checkoutPage) {
+      const sessionParams: Stripe.Checkout.SessionCreateParams = {
+        mode: "subscription",
+        customer: user.customerId,
+        line_items: [
+          {
+            price_data: {
+              currency: currency,
+              product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
+              unit_amount: amount,
+              recurring: {
+                interval: interval,
+              },
             },
+            quantity: 1,
           },
-          quantity: 1,
+        ],
+        allow_promotion_codes: true,
+        success_url: `${redirectUrl}`,
+        cancel_url:
+          process.env.NODE_ENV === "development"
+            ? `http://localhost:3000/pricing`
+            : `https://www.vivaideal.com/${defaultLanguage}/pricing`,
+        subscription_data: {
+          metadata: {
+            accountId: user.id,
+            userType: ["starter", "pro", "premium", "business"].includes(planId) ? "seller" : "buyer",
+          },
         },
-      ],
-      currency: currency,
-      payment_behavior: "default_incomplete",
-      payment_settings: { save_default_payment_method: "on_subscription" },
-      expand: ["latest_invoice.payment_intent"],
-      metadata: {
-        accountId: user.id,
-        userType:
-          planId === "starter" || planId === "pro" || planId === "premium" || planId === "business"
-            ? "seller"
-            : "buyer",
+      };
+
+      // To handle idempotency:
+      const sessionCheckout = await stripeClient.checkout.sessions.create(sessionParams, {
+        idempotencyKey: indemKey,
+      });
+
+      return { url: sessionCheckout.url };
+    }
+
+    // Create a new subscription (for embedding)
+    const subscription = await stripeClient.subscriptions.create(
+      {
+        customer: user.customerId,
+        items: [
+          {
+            price_data: {
+              currency: currency,
+              product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
+              unit_amount: amount, // Amount in cents
+              recurring: {
+                interval: interval,
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        currency: currency,
+        payment_behavior: "default_incomplete",
+        payment_settings: { save_default_payment_method: "on_subscription" },
+        expand: ["latest_invoice.payment_intent"],
+        metadata: {
+          accountId: user.id,
+          userType: ["starter", "pro", "premium", "business"].includes(planId) ? "seller" : "buyer",
+        },
       },
-    });
+      {
+        idempotencyKey: indemKey, // A unique key per request
+      }
+    );
     const latestInvoice = subscription.latest_invoice as Stripe.Invoice;
 
     const paymentIntent = latestInvoice.payment_intent as Stripe.PaymentIntent;

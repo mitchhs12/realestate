@@ -39,7 +39,7 @@ export default async function Page({ params: { locale, homeId } }: any) {
 
   if (!user.sellerSubscription) {
     try {
-      return <PricingDialog redirectUrl={redirectUrl} />;
+      return <PricingDialog isCheckout={true} redirectUrl={redirectUrl} />;
     } catch (error) {
       console.log("Failed to render PricingDialog component:", error);
       redirect("/pricing");
@@ -71,6 +71,12 @@ export default async function Page({ params: { locale, homeId } }: any) {
   const completed = t("completed");
   const view = t("view");
 
+  const propertiesRemaining = {
+    sub: t("properties-remaining.first"),
+    year: t("properties-remaining.yearly"),
+    month: t("properties-remaining.monthly"),
+  };
+
   return (
     <SellFlowPage
       currentHome={home}
@@ -88,6 +94,7 @@ export default async function Page({ params: { locale, homeId } }: any) {
       step3Sub={step3Sub}
       completed={completed}
       viewText={view}
+      propertiesRemaining={propertiesRemaining}
     />
   );
 }

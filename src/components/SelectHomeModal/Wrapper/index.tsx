@@ -27,6 +27,11 @@ interface Props {
   };
   unfinishedHomes: HomeType[];
   user: User;
+  propertiesRemaining: {
+    sub: string;
+    year: string;
+    month: string;
+  };
 }
 
 export default function LockedLogin({
@@ -38,6 +43,7 @@ export default function LockedLogin({
   locale,
   sellFlowText,
   unfinishedHomes,
+  propertiesRemaining,
 }: Props) {
   const [modalOpen, setModalOpen] = useState<boolean>(unfinishedHomes.length > 0 ? true : false);
 
@@ -73,6 +79,7 @@ export default function LockedLogin({
           viewText={sellFlowText.viewText}
           unfinishedHomes={unfinishedHomes}
           setModalOpen={setModalOpen}
+          propertiesRemaining={propertiesRemaining}
         />
       </div>
     </div>

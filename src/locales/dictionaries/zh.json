@@ -768,6 +768,11 @@
         "subtitle": "选择您的一处未完成的房产并继续！",
         "sell-new": "出售新房产"
       },
+      "properties-remaining": {
+        "first": "剩余房源",
+        "monthly": "下个月您可以列出的其他房产",
+        "yearly": "您明年可以列出的其他房产"
+      },
       "view": "查看未完成的属性"
     },
     "capacity": {

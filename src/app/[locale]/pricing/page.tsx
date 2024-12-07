@@ -454,6 +454,7 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   return (
     <div className="flex flex-col h-full w-full items-center">
       <PricingPageContent
+        isCheckout={true}
         sellerObject={sellerObject}
         buyerObject={buyerObject}
         billingText={billingText}

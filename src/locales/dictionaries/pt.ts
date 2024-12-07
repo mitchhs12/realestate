@@ -768,6 +768,11 @@ export default {
         "subtitle": "Selecione uma das suas propriedades inacabadas para continuar!",
         "sell-new": "Vender um imóvel novo"
       },
+      "properties-remaining": {
+        "first": "Propriedades restantes",
+        "monthly": "Propriedades adicionais que você pode listar no próximo mês",
+        "yearly": "Propriedades adicionais que você pode listar no próximo ano"
+      },
       "view": "Ver propriedades inacabadas"
     },
     "capacity": {
