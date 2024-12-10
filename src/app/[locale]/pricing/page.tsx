@@ -10,31 +10,39 @@ import { getScopedI18n } from "@/locales/server";
 
 export const revalidate = 30;
 
-const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/${lang}/pricing`;
-  return acc;
-}, {});
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}`;
+    }
+    return acc;
+  }, {});
+}
 
-export const metadata: Metadata = {
-  title: "Pricing",
-  description: "Get started and compare subscription plans on Viva Ideal.",
-  metadataBase: new URL("https://www.vivaideal.com/pricing"),
-  alternates: {
-    canonical: "/pricing",
-    languages: languageAlternates,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const languageAlternates = getLanguageAlternates(params.locale);
+  return {
+    title: "Pricing",
+    description: "Get started and compare subscription plans on Viva Ideal.",
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}/pricing`,
+      languages: languageAlternates,
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);

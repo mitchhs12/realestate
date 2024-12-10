@@ -6,21 +6,30 @@ import { Metadata } from "next";
 import HomePageContent from "@/components/HomePageContent";
 import { languages } from "@/lib/validations";
 
-const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/${lang}`;
-  return acc;
-}, {});
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}`;
+    }
+    return acc;
+  }, {});
+}
 
-export const metadata: Metadata = {
-  title: "Home",
-  description:
-    "Search and explore global properties on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
-  metadataBase: new URL("https://www.vivaideal.com"),
-  alternates: {
-    canonical: "/en",
-    languages: languageAlternates,
-  },
-};
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const languageAlternates = getLanguageAlternates(params.locale);
+
+  return {
+    title: "Home",
+    description:
+      "Search and explore global properties on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}`,
+      languages: languageAlternates,
+    },
+  };
+}
 
 export default function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);

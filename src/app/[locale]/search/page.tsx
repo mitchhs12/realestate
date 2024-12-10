@@ -5,34 +5,43 @@ import { getScopedI18n } from "@/locales/server";
 import { typesMap } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
 import { languages } from "@/lib/validations";
+import { LanguageType } from "@/lib/validations";
 
-const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/${lang}/search`;
-  return acc;
-}, {});
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}`;
+    }
+    return acc;
+  }, {});
+}
 
-export const metadata: Metadata = {
-  title: "Search for Properties",
-  description:
-    "Find your ideal home, apartment, or land on Viva Ideal. Search properties across Latin America and discover your dream property today.",
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const languageAlternates = getLanguageAlternates(params.locale);
+  return {
+    title: "Search for Properties",
+    description:
+      "Find your ideal home, apartment, or land on Viva Ideal. Search properties across Latin America and discover your dream property today.",
 
-  metadataBase: new URL("https://www.vivaideal.com/search"),
-  alternates: {
-    canonical: "/en",
-    languages: languageAlternates,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}/search`,
+      languages: languageAlternates,
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export default async function Page({ params }: { params: { locale: string; search: string } }) {
   setStaticParamsLocale(params.locale);

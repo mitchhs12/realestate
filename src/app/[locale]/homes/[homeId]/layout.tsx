@@ -6,13 +6,27 @@ import { findMatching } from "@/lib/utils";
 import { featuresMap, typesMap } from "@/lib/sellFlowData";
 import { Metadata } from "next";
 import { languages } from "@/lib/validations";
+import { LanguageType } from "@/lib/validations";
 
-export async function generateMetadata({ params }: { params: { homeId: string } }): Promise<Metadata> {
-  const home = await getHomeById(params.homeId);
-  const languageAlternates = languages.reduce((acc: any, lang) => {
-    acc[lang] = `/${lang}/homes`;
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}`;
+    }
     return acc;
   }, {});
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: LanguageType; homeId: string };
+}): Promise<Metadata> {
+  const languageAlternates = getLanguageAlternates(params.locale);
+
+  const home = await getHomeById(params.homeId);
+
   const homeTitle = home?.title || "Property Not Found";
   const homeType = home?.type?.[0] || "Unknown Type";
   const homeDescription = home?.description || "This property could not be found.";
@@ -24,7 +38,7 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
     description: homeDescription,
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `/en`,
+      canonical: `https://www.vivaideal.com/${params.locale}/homes/${params.homeId}`,
       languages: languageAlternates,
     },
     robots: {
@@ -41,7 +55,7 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
     openGraph: {
       title: homeTitle,
       description: homeDescription,
-      url: `https://www.vivaideal.com/homes/${params.homeId}`,
+      url: `https://www.vivaideal.com/${params.locale}/homes/${params.homeId}`,
       type: "website",
       images: [
         {

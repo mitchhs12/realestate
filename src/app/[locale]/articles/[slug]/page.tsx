@@ -7,15 +7,48 @@ import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
 import ChangeLanguageButton from "../ChangeLanguageButton";
+import { LanguageType, languages } from "@/lib/validations";
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}/articles`;
+    }
+    return acc;
+  }, {});
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: LanguageType; slug: string };
+}): Promise<Metadata> {
   const data = await getData(params.locale, params.slug);
+  const languageAlternates = getLanguageAlternates(params.locale);
 
   return {
     title: data.localizedTitle || "Article",
+    description: data.content ? data.content.value[0]?.children[0]?.text : "An interesting article.",
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}/articles${params.slug}`,
+      languages: languageAlternates,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
     openGraph: {
       title: data.localizedTitle || "Article", // Dynamic title
-      description: data.content ? data.content.value[0]?.children[0]?.text : "Read this article", // Use the first part of the content for description
+      description: data.content ? data.content.value[0]?.children[0]?.text : "An interesting article.", // Use the first part of the content for description
       url: `https://www.vivaideal.com/${params.locale}/articles/${params.slug}`, // Dynamic URL
       images: [
         {

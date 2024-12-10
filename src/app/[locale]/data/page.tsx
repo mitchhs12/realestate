@@ -10,31 +10,39 @@ import { Metadata } from "next";
 
 export const revalidate = 30;
 
-const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/${lang}/data`;
-  return acc;
-}, {});
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}/data`;
+    }
+    return acc;
+  }, {});
+}
 
-export const metadata: Metadata = {
-  title: "Data",
-  description: "Analyze and discover about global properties on Viva Ideal.",
-  metadataBase: new URL("https://www.vivaideal.com/data"),
-  alternates: {
-    canonical: "/en",
-    languages: languageAlternates,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const languageAlternates = getLanguageAlternates(params.locale);
+  return {
+    title: "Data",
+    description: "Analyze and discover about global properties on Viva Ideal.",
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}/data`,
+      languages: languageAlternates,
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export default function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);

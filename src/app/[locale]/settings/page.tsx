@@ -8,32 +8,40 @@ import { LanguageType } from "@/lib/validations";
 import { GetFullSubscription } from "../stripeServer";
 import { languages } from "@/lib/validations";
 
-const languageAlternates = languages.reduce((acc: any, lang) => {
-  acc[lang] = `/${lang}/search`;
-  return acc;
-}, {});
+// Function to generate language alternates excluding current locale
+function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `https://www.vivaideal.com/${lang}`;
+    }
+    return acc;
+  }, {});
+}
 
-export const metadata: Metadata = {
-  title: "Settings",
-  description: "Viva Ideal Account Settings",
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const languageAlternates = getLanguageAlternates(params.locale);
+  return {
+    title: "Settings",
+    description: "Viva Ideal Account Settings",
 
-  metadataBase: new URL("https://www.vivaideal.com/settings"),
-  alternates: {
-    canonical: "/en",
-    languages: languageAlternates,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}/settings`,
+      languages: languageAlternates,
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
