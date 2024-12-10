@@ -32,7 +32,7 @@ export async function generateMetadata({
     description: data.content ? data.content.value[0]?.children[0]?.text : "An interesting article.",
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}/articles${params.slug}`,
+      canonical: `https://www.vivaideal.com/${params.locale}/articles/${params.slug}`,
       languages: languageAlternates,
     },
     robots: {
