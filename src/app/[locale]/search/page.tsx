@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
   metadataBase: new URL("https://www.vivaideal.com/search"),
   alternates: {
-    canonical: "/search",
+    canonical: "/en",
     languages: languageAlternates,
   },
   robots: {

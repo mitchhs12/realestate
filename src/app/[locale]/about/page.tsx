@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description: "Viva Ideal's team, mission, and contact details.",
   metadataBase: new URL("https://www.vivaideal.com/about"),
   alternates: {
-    canonical: "/about",
+    canonical: "/en",
     languages: languageAlternates,
   },
   robots: {

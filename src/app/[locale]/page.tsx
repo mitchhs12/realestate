@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Search and explore global properties on Viva Ideal. Find your ideal home, apartment, or land in Latin America and beyond.",
   metadataBase: new URL("https://www.vivaideal.com"),
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: languageAlternates,
   },
 };

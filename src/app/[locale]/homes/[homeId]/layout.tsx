@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { homeId: string } 
     description: homeDescription,
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `/homes`,
+      canonical: `/en`,
       languages: languageAlternates,
     },
     robots: {

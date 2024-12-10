@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
   metadataBase: new URL("https://www.vivaideal.com/settings"),
   alternates: {
-    canonical: "/settings",
+    canonical: "/en",
     languages: languageAlternates,
   },
   robots: {
