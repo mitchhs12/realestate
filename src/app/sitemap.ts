@@ -1,19 +1,10 @@
 import type { MetadataRoute } from "next";
-import { languages } from "../lib/validations"; // Assuming this is an array like ['es', 'en', 'fr']
+import { languages, LanguageType } from "@/lib/validations"; // Assuming this is an array like ['es', 'en', 'fr']
 import { getAllArticleSlugs } from "@/lib/sanity";
 import { getAllHomeIds } from "./[locale]/search/actions";
+import { getLanguageAlternates } from "@/lib/utils";
 
 const baseUrl = "https://www.vivaideal.com";
-
-// Existing function to get language alternates excluding the current locale
-function getLanguageAlternates(currentLocale: string, route: string): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `${baseUrl}/${lang}${route}`;
-    }
-    return acc;
-  }, {});
-}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let routes = [
@@ -39,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const homeIds = await getAllHomeIds();
   routes = routes.concat(homeIds.map((id: number) => `/homes/${id}`));
 
-  const createAlternates = (currentLang: string, route: string) => {
+  const createAlternates = (currentLang: LanguageType, route?: string) => {
     return {
       languages: getLanguageAlternates(currentLang, route),
     };
@@ -51,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...languages.map((lang) => ({
       url: `${baseUrl}/${lang}`, // Base URL for each language
       lastModified: new Date(),
-      alternates: createAlternates(lang, ""),
+      alternates: createAlternates(lang),
     })),
 
     // URLs for each route in each language
