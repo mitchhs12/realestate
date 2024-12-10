@@ -5,25 +5,17 @@ import { getScopedI18n } from "@/locales/server";
 import { findMatching } from "@/lib/utils";
 import { featuresMap, typesMap } from "@/lib/sellFlowData";
 import { Metadata } from "next";
-import { languages } from "@/lib/validations";
-import { LanguageType } from "@/lib/validations";
 
-// Function to generate language alternates excluding current locale
-function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `https://www.vivaideal.com/${lang}`;
-    }
-    return acc;
-  }, {});
-}
+import { LanguageType } from "@/lib/validations";
+import { getLanguageAlternates } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: LanguageType; homeId: string };
 }): Promise<Metadata> {
-  const languageAlternates = getLanguageAlternates(params.locale);
+  const route = `/homes/${params.homeId}`;
+  const languageAlternates = getLanguageAlternates(params.locale, route);
 
   const home = await getHomeById(params.homeId);
 
@@ -38,7 +30,7 @@ export async function generateMetadata({
     description: homeDescription,
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}/homes/${params.homeId}`,
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
       languages: languageAlternates,
     },
     robots: {

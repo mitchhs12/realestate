@@ -9,14 +9,39 @@ import { getScopedI18n } from "@/locales/server";
 import { getUnfinishedHome } from "../actions";
 import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
-import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
 import PricingDialog from "@/components/PricingPageContent/Dialog";
+import { LanguageType } from "@/lib/validations";
+import { getLanguageAlternates } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Sell Property",
-  description:
-    "List your property for sale on Viva Ideal and reach buyers globally. Start selling your home, apartment, or land with ease and get discovered by potential buyers.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: LanguageType; homeId: any };
+}): Promise<Metadata> {
+  const route = `/sell/${params.homeId}`;
+  const languageAlternates = getLanguageAlternates(params.locale, route);
+  return {
+    title: `Sell Property ${params.homeId}`,
+    description: "Finish listing your property for sale on Viva Ideal and reach buyers globally.",
+
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
+      languages: languageAlternates,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+  };
+}
 
 export default async function Page({ params: { locale, homeId } }: any) {
   setStaticParamsLocale(locale);

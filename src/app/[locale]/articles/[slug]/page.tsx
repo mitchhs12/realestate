@@ -8,31 +8,23 @@ import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
 import ChangeLanguageButton from "../ChangeLanguageButton";
 import { LanguageType, languages } from "@/lib/validations";
-
-// Function to generate language alternates excluding current locale
-function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `https://www.vivaideal.com/${lang}/articles`;
-    }
-    return acc;
-  }, {});
-}
+import { getLanguageAlternates } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: LanguageType; slug: string };
 }): Promise<Metadata> {
+  const route = `/articles/${params.slug}`;
   const data = await getData(params.locale, params.slug);
-  const languageAlternates = getLanguageAlternates(params.locale);
+  const languageAlternates = getLanguageAlternates(params.locale, route);
 
   return {
     title: data.localizedTitle || "Article",
     description: data.content ? data.content.value[0]?.children[0]?.text : "An interesting article.",
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}/articles/${params.slug}`,
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
       languages: languageAlternates,
     },
     robots: {

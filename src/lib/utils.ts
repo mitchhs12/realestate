@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { locales, CurrencyType } from "./validations";
 import { sellCredits, contactCredits } from "@/lib/validations";
+import { languages, LanguageType } from "@/lib/validations";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -281,3 +282,14 @@ export const getNextPeriodCredits = (subscription: string, isYearly: boolean, is
   const credits = isSell ? sellCredits : contactCredits;
   return credits[intervalKey]?.[subscription as keyof (typeof sellCredits)[typeof intervalKey]] || 0;
 };
+
+// Function to generate language alternates excluding current locale
+export function getLanguageAlternates(currentLocale: LanguageType, route?: string): Record<string, string> {
+  const baseUrl = "https://www.vivaideal.com";
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = route ? `${baseUrl}/${lang}${route}` : `${baseUrl}/${lang}`;
+    }
+    return acc;
+  }, {});
+}

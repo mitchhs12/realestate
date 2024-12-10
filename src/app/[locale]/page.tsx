@@ -4,17 +4,8 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import HomePageContent from "@/components/HomePageContent";
-import { languages } from "@/lib/validations";
 
-// Function to generate language alternates excluding current locale
-function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `https://www.vivaideal.com/${lang}`;
-    }
-    return acc;
-  }, {});
-}
+import { getLanguageAlternates } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
   const languageAlternates = getLanguageAlternates(params.locale);

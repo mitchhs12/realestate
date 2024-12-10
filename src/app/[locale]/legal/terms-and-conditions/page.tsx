@@ -1,5 +1,32 @@
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
+import { Metadata } from "next";
+import { getLanguageAlternates } from "@/lib/utils";
+
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const route = "/legal/terms-and-conditions";
+  const languageAlternates = getLanguageAlternates(params.locale, route);
+  return {
+    title: "Terms and Conditions",
+    description: "Viva Ideal's Terms and Conditions.",
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
+      languages: languageAlternates,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+  };
+}
 
 export default function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);

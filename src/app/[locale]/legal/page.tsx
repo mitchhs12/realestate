@@ -3,27 +3,18 @@ import { LanguageType } from "@/lib/validations";
 import Image from "next/image";
 import LegalTitle from "./LegalTitle";
 import LegalContent from "./LegalContent";
-import { languages } from "@/lib/validations";
 import { Metadata } from "next";
-
-// Function to generate language alternates excluding current locale
-function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `https://www.vivaideal.com/${lang}`;
-    }
-    return acc;
-  }, {});
-}
+import { getLanguageAlternates } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
-  const languageAlternates = getLanguageAlternates(params.locale);
+  const route = "/legal";
+  const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
     title: "Legal",
     description: "Viva Ideal's legal information.",
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}/legal`,
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
       languages: languageAlternates,
     },
     robots: {

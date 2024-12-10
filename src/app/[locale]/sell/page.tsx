@@ -1,24 +1,42 @@
 import { Metadata } from "next";
-import SellFlowPage from "./SellFlowPage";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
-import { getPath } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
-import { getUnfinishedHome } from "./actions";
-import { headers } from "next/headers";
 import { setStaticParamsLocale } from "next-international/server";
 import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
 import PricingDialog from "@/components/PricingPageContent/Dialog";
-import { Dialog, DialogContent, DialogClose, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { getLanguageAlternates } from "@/lib/utils";
+import { LanguageType } from "@/lib/validations";
 
-export const metadata: Metadata = {
-  title: "Sell Your Property",
-  description:
-    "List your property for sale on Viva Ideal and reach buyers globally. Start selling your home, apartment, or land with ease and get discovered by potential buyers.",
-};
+export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+  const route = "/sell";
+  const languageAlternates = getLanguageAlternates(params.locale, route);
+  return {
+    title: "Sell Your Property",
+    description:
+      "List your property for sale on Viva Ideal and reach buyers globally. Start selling your home, apartment, or land with ease and get discovered by potential buyers.",
+
+    metadataBase: new URL("https://www.vivaideal.com"),
+    alternates: {
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
+      languages: languageAlternates,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+  };
+}
 
 export default async function Page({ params: { locale } }: any) {
   setStaticParamsLocale(locale);

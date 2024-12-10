@@ -4,21 +4,12 @@ import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
 import { typesMap } from "@/lib/sellFlowData";
 import { setStaticParamsLocale } from "next-international/server";
-import { languages } from "@/lib/validations";
+import { getLanguageAlternates } from "@/lib/utils";
 import { LanguageType } from "@/lib/validations";
 
-// Function to generate language alternates excluding current locale
-function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `https://www.vivaideal.com/${lang}`;
-    }
-    return acc;
-  }, {});
-}
-
 export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
-  const languageAlternates = getLanguageAlternates(params.locale);
+  const route = "/search";
+  const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
     title: "Search for Properties",
     description:
@@ -26,7 +17,7 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
 
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}/search`,
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
       languages: languageAlternates,
     },
     robots: {

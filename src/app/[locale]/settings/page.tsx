@@ -7,26 +7,18 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { GetFullSubscription } from "../stripeServer";
 import { languages } from "@/lib/validations";
-
-// Function to generate language alternates excluding current locale
-function getLanguageAlternates(currentLocale: LanguageType): Record<string, string> {
-  return languages.reduce((acc: Record<string, string>, lang) => {
-    if (lang !== currentLocale) {
-      acc[lang] = `https://www.vivaideal.com/${lang}`;
-    }
-    return acc;
-  }, {});
-}
+import { getLanguageAlternates } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
-  const languageAlternates = getLanguageAlternates(params.locale);
+  const route = "/settings";
+  const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
     title: "Settings",
     description: "Viva Ideal Account Settings",
 
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}/settings`,
+      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
       languages: languageAlternates,
     },
     robots: {
