@@ -3,8 +3,19 @@ import { languages } from "../lib/validations"; // Assuming this is an array lik
 import { getAllArticleSlugs } from "@/lib/sanity";
 import { getAllHomeIds } from "./[locale]/search/actions";
 
+const baseUrl = "https://www.vivaideal.com";
+
+// Existing function to get language alternates excluding the current locale
+function getLanguageAlternates(currentLocale: string, route: string): Record<string, string> {
+  return languages.reduce((acc: Record<string, string>, lang) => {
+    if (lang !== currentLocale) {
+      acc[lang] = `${baseUrl}/${lang}${route}`;
+    }
+    return acc;
+  }, {});
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const url = "https://www.vivaideal.com";
   let routes = [
     "/about",
     "/articles",
@@ -28,47 +39,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const homeIds = await getAllHomeIds();
   routes = routes.concat(homeIds.map((id: number) => `/homes/${id}`));
 
-  // Helper function to dynamically create alternates in the expected format
-  const createAlternates = (route: string) => {
+  const createAlternates = (currentLang: string, route: string) => {
     return {
-      languages: languages.reduce(
-        (acc, lang) => {
-          acc[lang] = `${url}/${lang}${route}`;
-          return acc;
-        },
-        {} as Record<string, string>
-      ),
+      languages: getLanguageAlternates(currentLang, route),
     };
   };
 
   // Create links for each language and route combination
   const links = [
-    // Non-localized URLs (without language suffix)
-    ...routes.map((route) => ({
-      url: `${url}${route}`, // Non-localized base URL
-      lastModified: new Date(),
-      alternates: createAlternates(route),
-    })),
-
     // Base URLs for each language
     ...languages.map((lang) => ({
-      url: `${url}/${lang}`, // Base URL for each language
+      url: `${baseUrl}/${lang}`, // Base URL for each language
       lastModified: new Date(),
-      alternates: createAlternates(""),
+      alternates: createAlternates(lang, ""),
     })),
 
     // URLs for each route in each language
     ...languages.flatMap((lang) => {
       return routes.map((route) => ({
-        url: `${url}/${lang}${route}`, // Language-specific URL for each route
+        url: `${baseUrl}/${lang}${route}`, // Language-specific URL for each route
         lastModified: new Date(),
-        alternates: createAlternates(route),
+        alternates: createAlternates(lang, route),
       }));
     }),
   ];
-  console.log("links", links[0]);
-
-  console.log("links", links[0].alternates);
 
   return links;
 }
