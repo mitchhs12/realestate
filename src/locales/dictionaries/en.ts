@@ -83,7 +83,7 @@ export default {
       "perks-yearly": [
         {
           "title": "View 20 Property Owners",
-          "subtitle": "View the owner contact details for 3 properties."
+          "subtitle": "View the owner contact details for 20 properties."
         },
         {
           "title": "Basic Support",
@@ -114,7 +114,7 @@ export default {
       "perks-yearly": [
         {
           "title": "View 100 Property Owners",
-          "subtitle": "View the owner contact details for 25 properties."
+          "subtitle": "View the owner contact details for 100 properties."
         },
         {
           "title": "Insight Support",
