@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Read and learn about global properties on Viva Ideal.",
   metadataBase: new URL("https://www.vivaideal.com/articles"),
   alternates: {
-    canonical: "/articles",
+    canonical: "/en",
     languages: languageAlternates,
   },
   robots: {
