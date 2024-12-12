@@ -4,12 +4,18 @@
     "page": "이 페이지를 가져오는 중에 오류가 발생했습니다!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "당신은 구매자이신가요? 판매자이신가요?",
+      "subtitle": "나중에 계정 설정에서 이를 변경할 수 있습니다."
+    },
+    "lockedLoginMessage": "가격을 보려면 로그인하세요.",
     "subText": {
       "six-months-free": "6개월 이상 무료",
       "per-month": "한 달에"
     },
     "monthly": "월간 간행물",
     "yearly": "연간: (6개월 이상 무료)",
+    "change-account": "계정 모드 변경 ↗",
     "current-plan": "현재 계획",
     "change-plan": "업그레이드 계획",
     "billed-annually": "연간 청구",
@@ -20,8 +26,8 @@
     "six-months-free": "(6개월 이상 무료 ↗)",
     "lowest-prices": "최저가 보장",
     "title": "계획 및 가격",
-    "buyers": "구매자",
-    "sellers": "판매자",
+    "buyer": "사는 사람",
+    "seller": "파는 사람",
     "free": {
       "title": "무료",
       "price": "0",
@@ -753,6 +759,7 @@
     "brochures": "브로셔"
   },
   "sell": {
+    "lockedLoginMessage": "부동산을 판매하려면 로그인하세요.",
     "sell-flow": {
       "title": "새로운 부동산을 판매하다",
       "title-continue": "리스트를 완성하세요",
@@ -1169,7 +1176,13 @@
       "updateSub": "구독 변경",
       "paymentMethods": "결제 방법 업데이트",
       "cancel": "구독 취소",
-      "view-subscriptions": "구독 계획 보기"
+      "view-subscriptions": "구독 계획 보기",
+      "account-type": "계정 유형",
+      "account-type-description": "귀하의 현재 계정 유형(구매자인지 판매자인지)",
+      "change-to-buyer": "구매자로 전환",
+      "change-to-seller": "판매자로 전환",
+      "buyer": "사는 사람",
+      "seller": "파는 사람"
     },
     "submit": "구하다"
   },

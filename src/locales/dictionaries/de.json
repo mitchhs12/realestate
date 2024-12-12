@@ -4,12 +4,18 @@
     "page": "Beim Abrufen dieser Seite ist ein Fehler aufgetreten!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Sind Sie Käufer oder Verkäufer?",
+      "subtitle": "Sie können dies später in Ihren Kontoeinstellungen ändern."
+    },
+    "lockedLoginMessage": "Bitte loggen Sie sich ein, um die Preise anzuzeigen.",
     "subText": {
       "six-months-free": "6+ Monate gratis",
       "per-month": "pro Monat"
     },
     "monthly": "Monatlich",
     "yearly": "Jährlich: (6+ Monate kostenlos)",
+    "change-account": "Kontomodus ändern ↗",
     "current-plan": "Aktueller Plan",
     "change-plan": "Upgrade-Plan",
     "billed-annually": "Jährliche Abrechnung",
@@ -20,8 +26,8 @@
     "six-months-free": "(6+ Monate gratis ↗)",
     "lowest-prices": "Tiefpreis-Garantie",
     "title": "Pläne und Preise",
-    "buyers": "Käufer",
-    "sellers": "Verkäufer",
+    "buyer": "Käufer",
+    "seller": "Verkäufer",
     "free": {
       "title": "Frei",
       "price": "0",
@@ -753,6 +759,7 @@
     "brochures": "Broschüren"
   },
   "sell": {
+    "lockedLoginMessage": "Bitte loggen Sie sich ein, um Immobilien zu verkaufen.",
     "sell-flow": {
       "title": "Eine neue Immobilie verkaufen",
       "title-continue": "Eintrag abschließen",
@@ -1169,7 +1176,13 @@
       "updateSub": "Abonnement ändern",
       "paymentMethods": "Zahlungsmethode aktualisieren",
       "cancel": "Abonnement kündigen",
-      "view-subscriptions": "Abonnements anzeigen"
+      "view-subscriptions": "Abonnements anzeigen",
+      "account-type": "Kontotyp",
+      "account-type-description": "Ihr aktueller Kontotyp (ob Sie Käufer oder Verkäufer sind).",
+      "change-to-buyer": "Zum Käufer wechseln",
+      "change-to-seller": "Zum Verkäufer wechseln",
+      "buyer": "Käufer",
+      "seller": "Verkäufer"
     },
     "submit": "Speichern"
   },

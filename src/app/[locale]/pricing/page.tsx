@@ -6,8 +6,9 @@ import PricingPageContent from "@/components/PricingPageContent";
 import { Metadata } from "next";
 import { getScopedI18n } from "@/locales/server";
 import { getLanguageAlternates } from "@/lib/utils";
-
-export const revalidate = 30;
+import LockedLogin from "@/components/LockedLogin";
+import getSession from "@/lib/getSession";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
   const route = "/pricing";
@@ -37,6 +38,9 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
 export default async function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
   setStaticParamsLocale(locale);
   const billing = await getScopedI18n("billing");
+  const customMessage = billing("lockedLoginMessage");
+  const session = await getSession();
+  const user = session?.user;
 
   const freeBilling = {
     title: billing("free.title"),
@@ -427,8 +431,13 @@ export default async function Page({ params: { locale } }: { params: { locale: L
   };
 
   const billingText = {
+    sellerModeSelection: {
+      title: billing("sellerModeSelection.title"),
+      subtitle: billing("sellerModeSelection.subtitle"),
+    },
     "most-popular": billing("most-popular"),
     subscribe: billing("subscribe"),
+    changeAccount: billing("change-account"),
     "current-plan": billing("current-plan"),
     "change-plan": billing("change-plan"),
     yearly: billing("yearly"),
@@ -440,8 +449,8 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     subText: { "six-months-free": billing("subText.six-months-free"), "per-month": billing("subText.per-month") },
     "lowest-prices": billing("lowest-prices"),
     title: billing("title"),
-    buyersText: billing("buyers"),
-    sellersText: billing("sellers"),
+    buyersText: billing("buyer"),
+    sellersText: billing("seller"),
   };
 
   const redirectUrl =
@@ -449,15 +458,24 @@ export default async function Page({ params: { locale } }: { params: { locale: L
       ? `http://localhost:3000/pricing`
       : `https://www.vivaideal.com/${locale}/pricing`;
 
-  return (
-    <div className="flex flex-col h-full w-full items-center">
-      <PricingPageContent
-        isCheckout={true}
-        sellerObject={sellerObject}
-        buyerObject={buyerObject}
-        billingText={billingText}
-        redirectUrl={redirectUrl}
-      />
-    </div>
-  );
+  if (!user) {
+    try {
+      return <LockedLogin locale={locale} customMessage={customMessage} />;
+    } catch (error) {
+      console.error("Failed to render LockedLogin component:", error);
+      redirect("/");
+    }
+  } else if (user && user.id) {
+    return (
+      <div className="flex flex-col h-full w-full items-center">
+        <PricingPageContent
+          isCheckout={true}
+          redirectUrl={redirectUrl}
+          sellerObject={sellerObject}
+          buyerObject={buyerObject}
+          billingText={billingText}
+        />
+      </div>
+    );
+  }
 }

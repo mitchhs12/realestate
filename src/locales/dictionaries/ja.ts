@@ -4,12 +4,18 @@ export default {
     "page": "このページの取得中に問題が発生しました。"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "あなたは買い手ですか、それとも売り手ですか?",
+      "subtitle": "後でアカウント設定で変更できます。"
+    },
+    "lockedLoginMessage": "価格を表示するにはログインしてください。",
     "subText": {
       "six-months-free": "6ヶ月以上無料",
       "per-month": "月額"
     },
     "monthly": "月次",
     "yearly": "年間: (6か月以上無料)",
+    "change-account": "アカウントモードを変更する↗",
     "current-plan": "現在の計画",
     "change-plan": "アップグレードプラン",
     "billed-annually": "年払い",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "（6か月以上無料↗）",
     "lowest-prices": "最低価格保証",
     "title": "プランと価格",
-    "buyers": "購入者",
-    "sellers": "販売者",
+    "buyer": "買い手",
+    "seller": "売り手",
     "free": {
       "title": "無料",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "パンフレット"
   },
   "sell": {
+    "lockedLoginMessage": "不動産を販売するにはログインしてください。",
     "sell-flow": {
       "title": "新しい不動産を売る",
       "title-continue": "リストを完了する",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "サブスクリプションの変更",
       "paymentMethods": "支払い方法の更新",
       "cancel": "サブスクリプションをキャンセル",
-      "view-subscriptions": "サブスクリプションプランを表示"
+      "view-subscriptions": "サブスクリプションプランを表示",
+      "account-type": "アカウントタイプ",
+      "account-type-description": "現在のアカウントの種類（購入者か販売者か）。",
+      "change-to-buyer": "購入者に切り替える",
+      "change-to-seller": "販売者に切り替える",
+      "buyer": "買い手",
+      "seller": "売り手"
     },
     "submit": "保存"
   },

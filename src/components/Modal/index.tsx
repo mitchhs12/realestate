@@ -11,7 +11,7 @@ import { useTheme } from "next-themes";
 import { useScopedI18n } from "@/locales/client";
 import { QueryContext } from "@/context/QueryContext";
 
-export function Modal() {
+export function Modal({ customMessage }: { customMessage?: string }) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState<string | null>(null);
@@ -67,7 +67,7 @@ export function Modal() {
   return (
     <Card className="mx-auto max-w-sm" onKeyDown={handleKeyPress}>
       <CardHeader>
-        <CardTitle className="text-2xl font-semibold">{t("title")}</CardTitle>
+        <CardTitle className="text-2xl font-semibold">{customMessage ? customMessage : t("title")}</CardTitle>
         <CardDescription>{t("subtitle")}</CardDescription>
       </CardHeader>
       <CardContent>

@@ -4,12 +4,18 @@ export default {
     "page": "Algo deu errado ao buscar esta página!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Você é um comprador ou um vendedor?",
+      "subtitle": "Você pode alterar isso mais tarde nas configurações da sua conta."
+    },
+    "lockedLoginMessage": "Faça login para ver os preços.",
     "subText": {
       "six-months-free": "6+ meses grátis",
       "per-month": "por mês"
     },
     "monthly": "Mensal",
     "yearly": "Anual: (6+ meses grátis)",
+    "change-account": "Alterar modo de conta ↗",
     "current-plan": "Plano atual",
     "change-plan": "Plano de atualização",
     "billed-annually": "Cobrado anualmente",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6+ meses grátis ↗)",
     "lowest-prices": "Preços mais baixos garantidos",
     "title": "Planos e Preços",
-    "buyers": "Compradores",
-    "sellers": "Vendedores",
+    "buyer": "Comprador",
+    "seller": "Vendedor",
     "free": {
       "title": "Livre",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "Brochuras"
   },
   "sell": {
+    "lockedLoginMessage": "Por favor, faça login para vender propriedades.",
     "sell-flow": {
       "title": "Vender um imóvel novo",
       "title-continue": "Conclua sua listagem",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "Alterar assinatura",
       "paymentMethods": "Atualizar método de pagamento",
       "cancel": "Cancelar assinatura",
-      "view-subscriptions": "Ver Planos de Assinatura"
+      "view-subscriptions": "Ver Planos de Assinatura",
+      "account-type": "Tipo de conta",
+      "account-type-description": "Seu tipo de conta atual (seja você um comprador ou um vendedor).",
+      "change-to-buyer": "Mudar para Comprador",
+      "change-to-seller": "Mudar para vendedor",
+      "buyer": "Comprador",
+      "seller": "Vendedor"
     },
     "submit": "Salvar"
   },

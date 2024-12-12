@@ -4,12 +4,18 @@
     "page": "获取此页面时出错！"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "您是買家還是買家？",
+      "subtitle": "您可以稍后在帐户设置中更改此设置。"
+    },
+    "lockedLoginMessage": "请登录查看价格。",
     "subText": {
       "six-months-free": "6 个月以上免费",
       "per-month": "每月"
     },
     "monthly": "每月",
     "yearly": "每年：（6 个月以上免费）",
+    "change-account": "更改账户模式 ↗",
     "current-plan": "当前计划",
     "change-plan": "升级计划",
     "billed-annually": "每年计费",
@@ -20,8 +26,8 @@
     "six-months-free": "（6 个月以上免费↗）",
     "lowest-prices": "最低价格保证",
     "title": "计划和定价",
-    "buyers": "买家",
-    "sellers": "卖家",
+    "buyer": "买方",
+    "seller": "卖方",
     "free": {
       "title": "自由的",
       "price": "0",
@@ -753,6 +759,7 @@
     "brochures": "宣传册"
   },
   "sell": {
+    "lockedLoginMessage": "请登录来出售房产。",
     "sell-flow": {
       "title": "出售新房产",
       "title-continue": "完成您的列表",
@@ -1169,7 +1176,13 @@
       "updateSub": "更改订阅",
       "paymentMethods": "更新付款方式",
       "cancel": "取消订阅",
-      "view-subscriptions": "查看订阅计划"
+      "view-subscriptions": "查看订阅计划",
+      "account-type": "帐户类型",
+      "account-type-description": "您当前的账户类型（您是买家还是卖家）。",
+      "change-to-buyer": "切换到买家",
+      "change-to-seller": "切换到卖家",
+      "buyer": "买方",
+      "seller": "卖方"
     },
     "submit": "节省"
   },

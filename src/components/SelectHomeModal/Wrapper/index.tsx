@@ -34,7 +34,7 @@ interface Props {
   };
 }
 
-export default function LockedLogin({
+export default function SelectHomeModal({
   user,
   currentHome,
   sellFlowIndices,

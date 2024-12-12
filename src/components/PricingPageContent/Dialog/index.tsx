@@ -8,12 +8,10 @@ import { LocaleContext } from "@/context/LocaleContext";
 function PricingPageWrapper({
   isCheckout,
   redirectUrl,
-  sellersOnly,
   justPremium,
 }: {
   isCheckout: boolean;
   redirectUrl: string;
-  sellersOnly?: boolean;
   justPremium?: boolean;
 }) {
   const billing = useScopedI18n("billing");
@@ -407,12 +405,17 @@ function PricingPageWrapper({
   };
 
   const billingText = {
+    sellerModeSelection: {
+      title: billing("sellerModeSelection.title"),
+      subtitle: billing("sellerModeSelection.subtitle"),
+    },
     "most-popular": billing("most-popular"),
     subscribe: billing("subscribe"),
     "current-plan": billing("current-plan"),
     "change-plan": billing("change-plan"),
     yearly: billing("yearly"),
     monthly: billing("monthly"),
+    changeAccount: billing("change-account"),
     "billed-annually": billing("billed-annually"),
     "view-monthly-billing": billing("view-monthly-billing"),
     "save-with-yearly": billing("save-with-yearly"),
@@ -420,8 +423,8 @@ function PricingPageWrapper({
     subText: { "six-months-free": billing("subText.six-months-free"), "per-month": billing("subText.per-month") },
     "lowest-prices": billing("lowest-prices"),
     title: billing("title"),
-    buyersText: billing("buyers"),
-    sellersText: billing("sellers"),
+    buyersText: billing("buyer"),
+    sellersText: billing("seller"),
   };
 
   return (
@@ -431,7 +434,6 @@ function PricingPageWrapper({
       sellerObject={sellerObject}
       buyerObject={buyerObject}
       billingText={billingText}
-      sellersOnly={sellersOnly}
       justPremium={justPremium}
     />
   );
@@ -440,24 +442,17 @@ function PricingPageWrapper({
 export default function PricingDialog({
   isCheckout,
   redirectUrl,
-  sellersOnly,
   justPremium,
 }: {
   isCheckout: boolean;
   redirectUrl: string;
-  sellersOnly?: boolean;
   justPremium?: boolean;
 }) {
   const { defaultLanguage } = useContext(LocaleContext);
 
   return (
     <I18nProviderClient locale={defaultLanguage}>
-      <PricingPageWrapper
-        isCheckout={isCheckout}
-        redirectUrl={redirectUrl}
-        sellersOnly={sellersOnly}
-        justPremium={justPremium}
-      />
+      <PricingPageWrapper isCheckout={isCheckout} redirectUrl={redirectUrl} justPremium={justPremium} />
     </I18nProviderClient>
   );
 }

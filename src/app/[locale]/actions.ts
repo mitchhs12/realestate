@@ -7,6 +7,28 @@ import { HomeType } from "@/lib/validations";
 import { s3Client } from "@/s3";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 
+export async function changeSellerMode(path: string, isSellerMode?: boolean): Promise<any> {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    throw new Error("User not found");
+  }
+
+  try {
+    const user = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        isSellerMode: isSellerMode === undefined ? null : isSellerMode,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error("Error changing seller mode:", error);
+    throw new Error("Failed to change seller mode.");
+  }
+}
+
 export async function getUserData(): Promise<any> {
   const session = await auth();
   const userId = session?.user?.id;

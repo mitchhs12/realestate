@@ -4,12 +4,18 @@ export default {
     "page": "Bu sayfaya ulaşırken bir sorun oluştu!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Alıcı mısınız yoksa satıcı mı?",
+      "subtitle": "Bunu daha sonra hesap ayarlarınızdan değiştirebilirsiniz."
+    },
+    "lockedLoginMessage": "Fiyatları görebilmek için lütfen giriş yapınız.",
     "subText": {
       "six-months-free": "6+ ay ücretsiz",
       "per-month": "ayda"
     },
     "monthly": "Aylık",
     "yearly": "Yıllık: (6+ ay ücretsiz)",
+    "change-account": "Hesap modunu değiştir ↗",
     "current-plan": "Güncel Plan",
     "change-plan": "Yükseltme Planı",
     "billed-annually": "Yıllık olarak faturalandırılır",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6+ ay ücretsiz ↗)",
     "lowest-prices": "En Düşük Fiyat Garantisi",
     "title": "Planlar ve Fiyatlandırma",
-    "buyers": "Alıcılar",
-    "sellers": "Satıcılar",
+    "buyer": "Alıcı",
+    "seller": "Satıcı",
     "free": {
       "title": "Özgür",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "Broşürler"
   },
   "sell": {
+    "lockedLoginMessage": "Emlak satışı yapabilmek için lütfen giriş yapınız.",
     "sell-flow": {
       "title": "Yeni bir mülk satmak",
       "title-continue": "Listelemenizi tamamlayın",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "Aboneliği Değiştir",
       "paymentMethods": "Ödeme Yöntemini Güncelle",
       "cancel": "Aboneliği İptal Et",
-      "view-subscriptions": "Abonelik Planlarını Görüntüle"
+      "view-subscriptions": "Abonelik Planlarını Görüntüle",
+      "account-type": "Hesap Türü",
+      "account-type-description": "Cari hesap türünüz (alıcı veya satıcı olmanız).",
+      "change-to-buyer": "Alıcıya Geç",
+      "change-to-seller": "Satıcıya Geç",
+      "buyer": "Alıcı",
+      "seller": "Satıcı"
     },
     "submit": "Kaydetmek"
   },

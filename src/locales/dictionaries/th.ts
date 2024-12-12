@@ -4,12 +4,18 @@ export default {
     "page": "มีบางอย่างผิดพลาดในการดึงหน้านี้!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "คุณเป็นผู้ซื้อหรือผู้ขาย?",
+      "subtitle": "คุณสามารถเปลี่ยนแปลงได้ภายหลังในการตั้งค่าบัญชีของคุณ"
+    },
+    "lockedLoginMessage": "กรุณาเข้าสู่ระบบเพื่อดูราคา",
     "subText": {
       "six-months-free": "ฟรี 6 เดือนขึ้นไป",
       "per-month": "ต่อเดือน"
     },
     "monthly": "รายเดือน",
     "yearly": "รายปี: (6 เดือนขึ้นไป ฟรี)",
+    "change-account": "เปลี่ยนโหมดบัญชี ↗",
     "current-plan": "แผนปัจจุบัน",
     "change-plan": "แผนอัพเกรด",
     "billed-annually": "เรียกเก็บเงินเป็นรายปี",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(ฟรี 6 เดือนขึ้นไป ↗)",
     "lowest-prices": "รับประกันราคาถูกที่สุด",
     "title": "แผนการและราคา",
-    "buyers": "ผู้ซื้อ",
-    "sellers": "ผู้ขาย",
+    "buyer": "ผู้ซื้อ",
+    "seller": "ผู้ขาย",
     "free": {
       "title": "ฟรี",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "โบรชัวร์"
   },
   "sell": {
+    "lockedLoginMessage": "กรุณาเข้าสู่ระบบเพื่อขายทรัพย์สิน",
     "sell-flow": {
       "title": "ขายอสังหาฯใหม่",
       "title-continue": "เสร็จสิ้นรายการของคุณ",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "เปลี่ยนแปลงการสมัคร",
       "paymentMethods": "อัปเดตวิธีการชำระเงิน",
       "cancel": "ยกเลิกการสมัครสมาชิก",
-      "view-subscriptions": "ดูแผนการสมัครสมาชิก"
+      "view-subscriptions": "ดูแผนการสมัครสมาชิก",
+      "account-type": "ประเภทบัญชี",
+      "account-type-description": "ประเภทบัญชีปัจจุบันของคุณ (ไม่ว่าคุณจะเป็นผู้ซื้อหรือผู้ขาย)",
+      "change-to-buyer": "สลับไปยังผู้ซื้อ",
+      "change-to-seller": "สลับไปยังผู้ขาย",
+      "buyer": "ผู้ซื้อ",
+      "seller": "ผู้ขาย"
     },
     "submit": "บันทึก"
   },

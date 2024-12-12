@@ -4,12 +4,18 @@
     "page": "Nešto nije u redu prilikom dohvaćanja ove stranice!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Jeste li kupac ili prodavač?",
+      "subtitle": "To možete kasnije promijeniti u postavkama računa."
+    },
+    "lockedLoginMessage": "Molimo prijavite se kako biste vidjeli cijene.",
     "subText": {
       "six-months-free": "6+ mjeseci besplatno",
       "per-month": "mjesečno"
     },
     "monthly": "Mjesečno",
     "yearly": "Godišnje: (6+ mjeseci besplatno)",
+    "change-account": "Promjena načina računa ↗",
     "current-plan": "Trenutni plan",
     "change-plan": "Plan nadogradnje",
     "billed-annually": "Naplaćuje se godišnje",
@@ -20,8 +26,8 @@
     "six-months-free": "(6+ mjeseci besplatno ↗)",
     "lowest-prices": "Zajamčeno najniže cijene",
     "title": "Planovi i cijene",
-    "buyers": "Kupci",
-    "sellers": "Prodavači",
+    "buyer": "Kupac",
+    "seller": "Prodavač",
     "free": {
       "title": "Besplatno",
       "price": "0",
@@ -753,6 +759,7 @@
     "brochures": "Brošure"
   },
   "sell": {
+    "lockedLoginMessage": "Molimo prijavite se za prodaju nekretnina.",
     "sell-flow": {
       "title": "Prodajte novu nekretninu",
       "title-continue": "Završite svoj unos",
@@ -1169,7 +1176,13 @@
       "updateSub": "Promjena pretplate",
       "paymentMethods": "Ažurirajte način plaćanja",
       "cancel": "Otkaži pretplatu",
-      "view-subscriptions": "Pogledajte planove pretplate"
+      "view-subscriptions": "Pogledajte planove pretplate",
+      "account-type": "Vrsta računa",
+      "account-type-description": "Vaš trenutni tip računa (bilo da ste kupac ili prodavač).",
+      "change-to-buyer": "Prebacite se na Kupca",
+      "change-to-seller": "Prijeđi na prodavača",
+      "buyer": "Kupac",
+      "seller": "Prodavač"
     },
     "submit": "Uštedjeti"
   },

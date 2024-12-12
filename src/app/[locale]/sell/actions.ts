@@ -39,11 +39,6 @@ const validateHome = (homeData: any) => {
   if (homeData.photos.length < 5) {
     ("You need at least 5 photos");
   }
-  if (homeData.listingType === "standard") {
-    if (homeData.photos.length > 10) {
-      return { success: false, error: "You can only upload up to 10 photos with a standard listing" };
-    }
-  }
   return { success: true, error: "" };
 };
 
@@ -199,7 +194,6 @@ export async function updateHome(
 
       // Wait for all promises to resolve
       const results = await Promise.all(promises);
-      console.log("results", results);
       updatedHome = results[results.length - 1]; // Always get the last result
     } else {
       const { id, ...homeData } = homeSchema.parse(homeValues);

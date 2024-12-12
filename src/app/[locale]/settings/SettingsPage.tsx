@@ -21,8 +21,11 @@ import { languageToFlagMap } from "@/lib/validations";
 import Link from "next/link";
 import { StripeBilling } from "../stripeServer";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Stripe } from "stripe";
+import { Icons } from "@/components/Icons/icons";
+import { changeSellerMode } from "@/app/[locale]/actions";
+import { useTheme } from "next-themes";
 
 interface Props {
   user: User;
@@ -45,6 +48,12 @@ interface Props {
     sellCredits: string;
     sellCreditsDesc: string;
     subscriptions: string;
+    accountType: string;
+    accountTypeDescription: string;
+    changeToBuyer: string;
+    changeToSeller: string;
+    buyer: string;
+    seller: string;
   };
 }
 
@@ -61,6 +70,7 @@ export default function SettingsPage({
 }: Props) {
   const session = useSession();
   const changeLocale = useChangeLocale();
+  const { resolvedTheme: theme } = useTheme();
   const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } = useContext(LocaleContext);
   const router = useRouter();
   const [sellerCancelLoading, setSellerCancelLoading] = useState<boolean>(false);
@@ -69,6 +79,9 @@ export default function SettingsPage({
   const [buyerCancelLoading, setBuyerCancelLoading] = useState<boolean>(false);
   const [buyerPaymentLoading, setBuyerPaymentLoading] = useState<boolean>(false);
   const [buyerSubscriptionLoading, setBuyerSubscriptionLoading] = useState<boolean>(false);
+  const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(null);
+  const [changeSellerButtonDisabled, setChangeSellerButtonDisabled] = useState<boolean>(false);
+  const pathname = usePathname();
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -78,6 +91,29 @@ export default function SettingsPage({
       language: user.language || defaultLanguage,
     },
   });
+
+  useEffect(() => {
+    const updateSellerMode = async () => {
+      if (!handleChangeSeller) return;
+      setChangeSellerButtonDisabled(true);
+
+      try {
+        if (handleChangeSeller === "seller") {
+          await changeSellerMode(pathname, true);
+        } else if (handleChangeSeller === "buyer") {
+          await changeSellerMode(pathname, false);
+        }
+      } catch (error) {
+        console.error("Error updating seller mode:", error);
+        alert("Failed to update mode. Please try again later.");
+      } finally {
+        setChangeSellerButtonDisabled(false);
+        router.refresh();
+      }
+    };
+
+    updateSellerMode();
+  }, [handleChangeSeller]);
 
   async function onSubmit(data: UpdateSettingsValues) {
     try {
@@ -182,23 +218,56 @@ export default function SettingsPage({
               </form>
             </Form>
           </div>
-          <div className="flex flex-col w-full h-full gap-3">
-            <h2 className="flex text-lg lg:text-2xl font-semibold">{billingText.title}</h2>
+          <div className="flex flex-col w-full h-full gap-12">
             <div className="flex flex-col gap-3">
+              <h2 className="flex text-lg lg:text-2xl font-semibold">{billingText.title}</h2>
               <div className="flex flex-col">
-                <span className="flex items-center text-lg">
-                  {billingText.contactCredits} | {user.contactCredits}
-                </span>
-                <span className="text-sm">{billingText.contactCreditsDesc}</span>
+                <div className="flex gap-3 items-center">
+                  <div className="flex flex-col">
+                    <div className="flex items-center text-lg">
+                      {billingText.accountType} |&nbsp;
+                      <span className="text-primary font-bold">
+                        {user.isSellerMode ? billingText.seller : billingText.buyer}
+                      </span>
+                    </div>
+                    <span className="text-sm">{billingText.accountTypeDescription}</span>
+                  </div>
+                  <Button
+                    variant={"default"}
+                    size={"lg"}
+                    className="flex gap-3 items-center"
+                    disabled={changeSellerButtonDisabled}
+                    onClick={() => {
+                      setHandleChangeSeller(user.isSellerMode ? "buyer" : "seller");
+                    }}
+                  >
+                    {changeSellerButtonDisabled ? (
+                      <ReloadIcon className="animate-spin w-5 h-5" />
+                    ) : user.isSellerMode ? (
+                      <Icons.buyer_icon width={"30"} height={"30"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
+                    ) : (
+                      <Icons.seller_icon width={"30"} height={"30"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
+                    )}
+                    <span>{user.isSellerMode ? billingText.changeToBuyer : billingText.changeToSeller}</span>
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="flex items-center text-lg">
-                  {billingText.sellCredits} | {user.sellCredits}
-                </span>
-                <span className="text-sm">{billingText.sellCreditsDesc}</span>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col">
+                  <span className="flex items-center text-lg">
+                    {billingText.contactCredits} | {user.contactCredits}
+                  </span>
+                  <span className="text-sm">{billingText.contactCreditsDesc}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="flex items-center text-lg">
+                    {billingText.sellCredits} | {user.sellCredits}
+                  </span>
+                  <span className="text-sm">{billingText.sellCreditsDesc}</span>
+                </div>
               </div>
             </div>
-            <div className="flex flex-col gap-12">
+            {!user.isSellerMode ? (
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
                   <h3 className="font-semibold">
@@ -278,6 +347,7 @@ export default function SettingsPage({
                   </div>
                 )}
               </div>
+            ) : (
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
                   <h3 className="font-semibold">
@@ -289,7 +359,7 @@ export default function SettingsPage({
                     </span>
                   </h3>
                 </div>
-                {sellerSubscription && (
+                {sellerSubscription ? (
                   <div className="flex flex-col md:flex-row gap-6 items-start w-full justify-start">
                     <Button
                       className="bg-primary hover:bg-primary/90 w-full"
@@ -345,9 +415,19 @@ export default function SettingsPage({
                       )}
                     </Button>
                   </div>
+                ) : (
+                  <div className="flex gap-3 items-center">
+                    <Button
+                      onClick={() => {
+                        router.push("/pricing");
+                      }}
+                    >
+                      {billingText.subscriptions}
+                    </Button>
+                  </div>
                 )}
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

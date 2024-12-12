@@ -4,12 +4,18 @@ export default {
     "page": "Something went wrong fetching this page!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Are you a buyer or a seller?",
+      "subtitle": "You can change this later in your account settings."
+    },
+    "lockedLoginMessage": "Please log in to view prices.",
     "subText": {
       "six-months-free": "6+ months free",
       "per-month": "per month"
     },
     "monthly": "Monthly",
     "yearly": "Yearly: (6+ months free)",
+    "change-account": "Change account mode ↗",
     "current-plan": "Current Plan",
     "change-plan": "Upgrade Plan",
     "billed-annually": "Billed annually",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6+ months free ↗)",
     "lowest-prices": "Lowest Prices Guaranteed",
     "title": "Plans and Pricing",
-    "buyers": "Buyers",
-    "sellers": "Sellers",
+    "buyer": "Buyer",
+    "seller": "Seller",
     "free": {
       "title": "Free",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "Brochures"
   },
   "sell": {
+    "lockedLoginMessage": "Please log in to sell properties.",
     "sell-flow": {
       "title": "Sell a new property",
       "title-continue": "Finish your listing",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "Change Subscription",
       "paymentMethods": "Update Payment Method",
       "cancel": "Cancel Subscription",
-      "view-subscriptions": "View Subscription Plans"
+      "view-subscriptions": "View Subscription Plans",
+      "account-type": "Account Type",
+      "account-type-description": "Whether you are a buyer or a seller.",
+      "change-to-buyer": "Switch to Buyer",
+      "change-to-seller": "Switch to Seller",
+      "buyer": "Buyer",
+      "seller": "Seller"
     },
     "submit": "Save"
   },

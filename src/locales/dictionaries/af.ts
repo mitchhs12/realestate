@@ -4,12 +4,18 @@ export default {
     "page": "Iets het verkeerd geloop om hierdie bladsy te gaan haal!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Is jy 'n koper of 'n verkoper?",
+      "subtitle": "Jy kan dit later in jou rekeninginstellings verander."
+    },
+    "lockedLoginMessage": "Meld asseblief aan om pryse te sien.",
     "subText": {
       "six-months-free": "6+ maande gratis",
       "per-month": "per maand"
     },
     "monthly": "Maandeliks",
     "yearly": "Jaarliks: (6+ maande gratis)",
+    "change-account": "Verander rekeningmodus ↗",
     "current-plan": "Huidige Plan",
     "change-plan": "Gradeer plan op",
     "billed-annually": "Jaarliks ​​gefaktureer",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6+ maande gratis ↗)",
     "lowest-prices": "Laagste pryse gewaarborg",
     "title": "Planne en pryse",
-    "buyers": "Kopers",
-    "sellers": "Verkopers",
+    "buyer": "Koper",
+    "seller": "Verkoper",
     "free": {
       "title": "Gratis",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "Brosjures"
   },
   "sell": {
+    "lockedLoginMessage": "Meld asseblief aan om eiendomme te verkoop.",
     "sell-flow": {
       "title": "Verkoop 'n nuwe eiendom",
       "title-continue": "Voltooi jou lysinskrywing",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "Verander intekening",
       "paymentMethods": "Dateer betaalmetode op",
       "cancel": "Kanselleer intekening",
-      "view-subscriptions": "Bekyk intekeningplanne"
+      "view-subscriptions": "Bekyk intekeningplanne",
+      "account-type": "Rekening tipe",
+      "account-type-description": "Jou huidige rekeningtipe (of jy 'n koper of 'n verkoper is).",
+      "change-to-buyer": "Skakel oor na Koper",
+      "change-to-seller": "Skakel oor na Verkoper",
+      "buyer": "Koper",
+      "seller": "Verkoper"
     },
     "submit": "Stoor"
   },

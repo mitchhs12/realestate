@@ -63,6 +63,12 @@ export default async function Page({ params: { locale } }: { params: { locale: L
     sellCredits: t("billing.seller-credits"),
     sellCreditsDesc: t("billing.seller-credits-description"),
     subscriptions: t("billing.view-subscriptions"),
+    accountType: t("billing.account-type"),
+    accountTypeDescription: t("billing.account-type-description"),
+    changeToBuyer: t("billing.change-to-buyer"),
+    changeToSeller: t("billing.change-to-seller"),
+    buyer: t("billing.buyer"),
+    seller: t("billing.seller"),
   };
 
   const session = await getSession();

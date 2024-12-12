@@ -26,6 +26,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiSelect from "@/components/ui/multiselect";
 import { Input } from "@/components/ui/input";
+import { changeSellerMode } from "../actions";
 
 interface Props {
   user: User;
@@ -268,6 +269,20 @@ export default function AdminPage({ user }: Props) {
               {loading ? <ReloadIcon className="animate-spin w-6 h-6" /> : "Transfer"}
             </Button>
           )}
+        </div>
+        <div className="flex flex-col gap-3 w-full">
+          <h2 className="text-xl">Reset Account SellerMode</h2>
+          <Button
+            onClick={() => {
+              setLoading(true);
+              changeSellerMode().then(() => {
+                setLoading(false);
+              });
+            }}
+            disabled={loading}
+          >
+            {loading ? <ReloadIcon className="animate-spin w-6 h-6" /> : "Reset to 'null'"}
+          </Button>
         </div>
       </div>
     </main>

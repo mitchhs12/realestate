@@ -23,6 +23,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   homes         Home[]
+  isSellerMode   Boolean?        
   buyerSubscription  String?    @default("free")
   buyerSubIsYearly Boolean?
   sellerSubscription String?

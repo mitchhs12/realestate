@@ -4,12 +4,18 @@
     "page": "Une erreur s'est produite lors de la récupération de cette page !"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Etes-vous acheteur ou vendeur ?",
+      "subtitle": "Vous pouvez modifier cela ultérieurement dans les paramètres de votre compte."
+    },
+    "lockedLoginMessage": "Veuillez vous connecter pour voir les prix.",
     "subText": {
       "six-months-free": "6+ mois gratuits",
       "per-month": "par mois"
     },
     "monthly": "Mensuel",
     "yearly": "Annuel : (6 mois et plus gratuits)",
+    "change-account": "Changer de mode de compte ↗",
     "current-plan": "Plan actuel",
     "change-plan": "Plan de mise à niveau",
     "billed-annually": "Facturé annuellement",
@@ -20,8 +26,8 @@
     "six-months-free": "(6+ mois gratuits ↗)",
     "lowest-prices": "Prix les plus bas garantis",
     "title": "Plans et tarifs",
-    "buyers": "Acheteurs",
-    "sellers": "Vendeurs",
+    "buyer": "Acheteur",
+    "seller": "Vendeur",
     "free": {
       "title": "Gratuit",
       "price": "0",
@@ -753,6 +759,7 @@
     "brochures": "Brochures"
   },
   "sell": {
+    "lockedLoginMessage": "Veuillez vous connecter pour vendre des propriétés.",
     "sell-flow": {
       "title": "Vendre un bien neuf",
       "title-continue": "Terminez votre annonce",
@@ -1169,7 +1176,13 @@
       "updateSub": "Changer d'abonnement",
       "paymentMethods": "Mettre à jour le mode de paiement",
       "cancel": "Annuler l'abonnement",
-      "view-subscriptions": "Voir les formules d'abonnement"
+      "view-subscriptions": "Voir les formules d'abonnement",
+      "account-type": "Type de compte",
+      "account-type-description": "Votre type de compte actuel (que vous soyez acheteur ou vendeur).",
+      "change-to-buyer": "Passer à l'acheteur",
+      "change-to-seller": "Passer au vendeur",
+      "buyer": "Acheteur",
+      "seller": "Vendeur"
     },
     "submit": "Sauvegarder"
   },

@@ -41,6 +41,8 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
 export default async function Page({ params: { locale } }: any) {
   setStaticParamsLocale(locale);
   const session = await getSession();
+  const sell = await getScopedI18n("sell");
+  const customMessage = sell("lockedLoginMessage");
   const user = session?.user;
   const redirectUrl =
     process.env.NODE_ENV === "development"
@@ -49,7 +51,7 @@ export default async function Page({ params: { locale } }: any) {
 
   if (!user) {
     try {
-      return <LockedLogin locale={locale} />;
+      return <LockedLogin locale={locale} customMessage={customMessage} />;
     } catch (error) {
       console.error("Failed to render LockedLogin component:", error);
       redirect("/api/auth/signin?callbackUrl=/sell");
@@ -60,7 +62,7 @@ export default async function Page({ params: { locale } }: any) {
       return (
         <Dialog open={true}>
           <DialogContent close={false} className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
-            <PricingDialog isCheckout={true} redirectUrl={redirectUrl} sellersOnly={true} />
+            <PricingDialog isCheckout={true} redirectUrl={redirectUrl} />
           </DialogContent>
         </Dialog>
       );

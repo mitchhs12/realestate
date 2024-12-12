@@ -4,12 +4,18 @@ export default {
     "page": "Có lỗi xảy ra khi tải trang này!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Bạn là người mua hay người bán?",
+      "subtitle": "Bạn có thể thay đổi điều này sau trong phần cài đặt tài khoản."
+    },
+    "lockedLoginMessage": "Vui lòng đăng nhập để xem giá.",
     "subText": {
       "six-months-free": "6 tháng trở lên miễn phí",
       "per-month": "mỗi tháng"
     },
     "monthly": "Hàng tháng",
     "yearly": "Hàng năm: (6 tháng trở lên miễn phí)",
+    "change-account": "Thay đổi chế độ tài khoản ↗",
     "current-plan": "Kế hoạch hiện tại",
     "change-plan": "Kế hoạch nâng cấp",
     "billed-annually": "Được thanh toán hàng năm",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6 tháng miễn phí trở lên ↗)",
     "lowest-prices": "Giá thấp nhất được đảm bảo",
     "title": "Kế hoạch và giá cả",
-    "buyers": "Người mua",
-    "sellers": "Người bán",
+    "buyer": "Người mua",
+    "seller": "Người bán",
     "free": {
       "title": "Miễn phí",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "Tờ rơi"
   },
   "sell": {
+    "lockedLoginMessage": "Vui lòng đăng nhập để bán bất động sản.",
     "sell-flow": {
       "title": "Bán một bất động sản mới",
       "title-continue": "Hoàn thiện danh sách của bạn",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "Thay đổi đăng ký",
       "paymentMethods": "Cập nhật phương thức thanh toán",
       "cancel": "Hủy đăng ký",
-      "view-subscriptions": "Xem các gói đăng ký"
+      "view-subscriptions": "Xem các gói đăng ký",
+      "account-type": "Loại tài khoản",
+      "account-type-description": "Loại tài khoản hiện tại của bạn (bạn là người mua hay người bán).",
+      "change-to-buyer": "Chuyển sang Người mua",
+      "change-to-seller": "Chuyển sang Người bán",
+      "buyer": "Người mua",
+      "seller": "Người bán"
     },
     "submit": "Cứu"
   },

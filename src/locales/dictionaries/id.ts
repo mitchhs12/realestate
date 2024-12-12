@@ -4,12 +4,18 @@ export default {
     "page": "Terjadi kesalahan saat mengambil halaman ini!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "Apakah Anda seorang pembeli atau penjual?",
+      "subtitle": "Anda dapat mengubahnya nanti di pengaturan akun Anda."
+    },
+    "lockedLoginMessage": "Silakan masuk untuk melihat harga.",
     "subText": {
       "six-months-free": "6+ bulan gratis",
       "per-month": "per bulan"
     },
     "monthly": "Bulanan",
     "yearly": "Tahunan: (6+ bulan gratis)",
+    "change-account": "Ubah mode akun ↗",
     "current-plan": "Rencana Saat Ini",
     "change-plan": "Rencana Peningkatan",
     "billed-annually": "Ditagih setiap tahun",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6+ bulan gratis ↗)",
     "lowest-prices": "Harga Terendah Dijamin",
     "title": "Rencana dan Harga",
-    "buyers": "Pembeli",
-    "sellers": "Penjual",
+    "buyer": "Pembeli",
+    "seller": "Penjual",
     "free": {
       "title": "Bebas",
       "price": "angka 0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "Brosur"
   },
   "sell": {
+    "lockedLoginMessage": "Silakan masuk untuk menjual properti.",
     "sell-flow": {
       "title": "Jual properti baru",
       "title-continue": "Selesaikan daftar Anda",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "Ubah Langganan",
       "paymentMethods": "Perbarui Metode Pembayaran",
       "cancel": "Batalkan Langganan",
-      "view-subscriptions": "Lihat Paket Langganan"
+      "view-subscriptions": "Lihat Paket Langganan",
+      "account-type": "Jenis Akun",
+      "account-type-description": "Jenis akun Anda saat ini (apakah Anda pembeli atau penjual).",
+      "change-to-buyer": "Beralih ke Pembeli",
+      "change-to-seller": "Beralih ke Penjual",
+      "buyer": "Pembeli",
+      "seller": "Penjual"
     },
     "submit": "Menyimpan"
   },

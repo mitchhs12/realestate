@@ -13,8 +13,9 @@ declare module "next-auth" {
     customerId: string | null;
     buyerSubscription: string | null;
     sellerSubscription: string | null;
-    buyerSubIsYearly: boolean;
-    sellerSubIsYearly: boolean;
+    isSellerMode: boolean | undefined;
+    buyerSubIsYearly: boolean | null;
+    sellerSubIsYearly: boolean | null;
     buyerSubscriptionId: string | null;
     sellerSubscriptionId: string | null;
     contactCredits: number;

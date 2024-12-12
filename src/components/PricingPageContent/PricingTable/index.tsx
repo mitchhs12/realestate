@@ -11,6 +11,7 @@ import { ChangeSpecificSub } from "@/app/[locale]/stripeServer";
 import { useRouter } from "next/navigation";
 import { StripeServer } from "@/app/[locale]/stripeServer";
 import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
 
 interface Tier {
   title: string;
@@ -42,6 +43,7 @@ interface Props {
   updatePlanText: string;
   yearlyText: string;
   monthlyText: string;
+  changeAccount: string;
   billedAnnually: string;
   monthlyBilling: string;
   yearlyBilling: string;
@@ -67,6 +69,7 @@ export default function PricingTable({
   updatePlanText,
   yearlyText,
   monthlyText,
+  changeAccount,
   billedAnnually,
   monthlyBilling,
   yearlyBilling,
@@ -139,7 +142,6 @@ export default function PricingTable({
         openSignUpModal();
       } else {
         if (isCheckout && defaultCurrency) {
-          console.log(selected);
           const interval = yearly ? "year" : "month";
           StripeServer(
             defaultCurrency.symbol.toLowerCase(),
@@ -180,26 +182,32 @@ export default function PricingTable({
     <>
       <div className="flex flex-col h-full w-full">
         <div className="flex flex-col w-full h-full justify-start items-center text-center gap-12">
-          <div className="flex flex-col-reverse xs:flex-row items-center gap-3">
-            <Button
-              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100"
-              variant={"outline"}
-              disabled={!yearly}
-              onClick={() => {
-                setYearly(false);
-              }}
-            >
-              {monthlyText}
-            </Button>
-            <Button
-              className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100"
-              variant={"outline"}
-              disabled={yearly}
-              onClick={() => setYearly(true)}
-            >
-              {yearlyText}
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col-reverse xs:flex-row items-center gap-3">
+              <Button
+                className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100"
+                variant={"outline"}
+                disabled={!yearly}
+                onClick={() => {
+                  setYearly(false);
+                }}
+              >
+                {monthlyText}
+              </Button>
+              <Button
+                className="disabled:bg-primary disabled:text-white dark:disabled:text-black disabled:opacity-100"
+                variant={"outline"}
+                disabled={yearly}
+                onClick={() => setYearly(true)}
+              >
+                {yearlyText}
+              </Button>
+            </div>
+            <Button asChild variant={"link"} size={"sm"}>
+              <Link href={"/settings"}>{changeAccount} </Link>
             </Button>
           </div>
+
           {justPremium ? (
             <PriceCard
               id={tier3}

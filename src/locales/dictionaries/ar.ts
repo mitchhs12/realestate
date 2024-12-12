@@ -4,12 +4,18 @@ export default {
     "page": "لقد حدث خطأ أثناء جلب هذه الصفحة!"
   },
   "billing": {
+    "sellerModeSelection": {
+      "title": "هل أنت مشتري أم بائع؟",
+      "subtitle": "يمكنك تغيير ذلك لاحقًا في إعدادات حسابك."
+    },
+    "lockedLoginMessage": "يرجى تسجيل الدخول لعرض الأسعار.",
     "subText": {
       "six-months-free": "6+ أشهر مجانية",
       "per-month": "كل شهر"
     },
     "monthly": "شهريا",
     "yearly": "سنويًا: (6 أشهر أو أكثر مجانًا)",
+    "change-account": "تغيير وضع الحساب ↗",
     "current-plan": "الخطة الحالية",
     "change-plan": "خطة الترقية",
     "billed-annually": "يتم دفع الفاتورة سنويا",
@@ -20,8 +26,8 @@ export default {
     "six-months-free": "(6+ أشهر مجانية ↗)",
     "lowest-prices": "أدنى الأسعار مضمونة",
     "title": "الخطط والأسعار",
-    "buyers": "المشترين",
-    "sellers": "الباعة",
+    "buyer": "المشتري",
+    "seller": "بائع",
     "free": {
       "title": "حر",
       "price": "0",
@@ -753,6 +759,7 @@ export default {
     "brochures": "كتيبات"
   },
   "sell": {
+    "lockedLoginMessage": "يرجى تسجيل الدخول لبيع العقارات.",
     "sell-flow": {
       "title": "بيع عقار جديد",
       "title-continue": "إنهاء القائمة الخاصة بك",
@@ -1169,7 +1176,13 @@ export default {
       "updateSub": "تغيير الاشتراك",
       "paymentMethods": "تحديث طريقة الدفع",
       "cancel": "إلغاء الاشتراك",
-      "view-subscriptions": "عرض خطط الاشتراك"
+      "view-subscriptions": "عرض خطط الاشتراك",
+      "account-type": "نوع الحساب",
+      "account-type-description": "نوع حسابك الحالي (سواء كنت مشتريًا أو بائعًا).",
+      "change-to-buyer": "التبديل إلى المشتري",
+      "change-to-seller": "التبديل إلى البائع",
+      "buyer": "المشتري",
+      "seller": "بائع"
     },
     "submit": "يحفظ"
   },

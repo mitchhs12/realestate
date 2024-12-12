@@ -666,7 +666,7 @@ export default function HomeText({
           )}
           <Dialog open={openBillingModal} onOpenChange={setOpenBillingModal}>
             <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
-              <PricingDialog redirectUrl={redirectUrl} isCheckout={false} />
+              {user && <PricingDialog redirectUrl={redirectUrl} isCheckout={false} />}
             </DialogContent>
           </Dialog>
         </div>

@@ -62,7 +62,7 @@ export default async function Page({ params: { locale, homeId } }: any) {
     }
   }
 
-  if (!user.sellerSubscription) {
+  if (!user.sellerSubscription && user.role !== "admin") {
     try {
       return <PricingDialog isCheckout={true} redirectUrl={redirectUrl} />;
     } catch (error) {

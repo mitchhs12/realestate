@@ -338,4 +338,90 @@ export const Icons = {
       <path d="M8 7h6" />
     </svg>
   ),
+
+  buyer_icon: ({ width = "40", height = "40", color = "#FFFFFF", strokeWidth = 4 }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" width={width} height={height}>
+      <defs>
+        <style>
+          {`
+        .cls-1, .cls-2 {
+          fill: none;
+          stroke: ${color};
+          stroke-width: ${strokeWidth};
+        }
+        .cls-1 {
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .cls-2 {
+          stroke-miterlimit: 10;
+        }
+      `}
+        </style>
+      </defs>
+      <g id="TRAZOS">
+        <path
+          className="cls-1"
+          d="M35.23,69.9l5.16-18.44c.08-.31,0,.17,0-.16l2.2.62,1.33.37L31.32,27.36,30,28l-22,13.64L7.56,42l3.85,1.08c-.17.28-.14-.12,0,.25L6.24,61.74"
+        />
+        <line className="cls-1" x1="6.18" y1="61.73" x2="34.65" y2="69.73" />
+        <path
+          className="cls-2"
+          d="M53.67,45a9.93,9.93,0,0,1-9.34-5.92,10.36,10.36,0,0,1,19-8.15c1.52,3.55.08,7.8-2.35,10.63"
+        />
+        <line className="cls-1" x1="64.22" y1="69.02" x2="53.89" y2="44.91" />
+        <line className="cls-1" x1="68.67" y1="69.52" x2="64.22" y2="69.02" />
+        <line className="cls-1" x1="71.37" y1="65.03" x2="68.81" y2="69.3" />
+        <line className="cls-1" x1="69.74" y1="61.17" x2="71.32" y2="64.85" />
+        <line className="cls-1" x1="66.12" y1="59.65" x2="69.52" y2="61.04" />
+        <line className="cls-1" x1="67.42" y1="55.51" x2="66.18" y2="59.49" />
+        <line className="cls-1" x1="63.26" y1="53.44" x2="67.42" y2="55.51" />
+        <line className="cls-1" x1="64.35" y1="50.11" x2="63.26" y2="53.44" />
+        <line className="cls-1" x1="60.73" y1="41.68" x2="64.23" y2="49.83" />
+        <circle className="cls-1" cx="52.98" cy="32.44" r="0.31" transform="translate(-8.5 23.49) rotate(-23.2)" />
+        <path
+          className="cls-1"
+          d="M25.37,30.68a11.73,11.73,0,0,1-.3-2.66c0-7.15,6.25-12.95,14-12.95,6.59,0,12.12,4.24,13.58,9.93"
+        />
+        <path className="cls-1" d="M49.24,37.75A14.42,14.42,0,0,1,39,41.88a16,16,0,0,1-7.67-2.47" />
+      </g>
+    </svg>
+  ),
+  seller_icon: ({ width = "40", height = "40", color = "#FFFFFF", strokeWidth = 4 }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" height={height} width={width}>
+      <defs>
+        <style>
+          {`
+        .cls-1, .cls-2, .cls-3 {
+          fill: none;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .cls-1, .cls-2 {
+          stroke: ${color};
+        }
+        .cls-1 {
+          stroke-width: ${strokeWidth};
+        }
+        .cls-2, .cls-3 {
+          stroke-width: ${strokeWidth * (2.5 / 3)};
+        }
+        .cls-3 {
+          stroke: ${color};
+        }
+      `}
+        </style>
+      </defs>
+      <g id="TRAZOS">
+        <path
+          className="cls-1"
+          d="M59,43l0-2.35c0-.45.12.23,0-.23H64.1L37.56,10.87l-1.48,1.38L11.6,39.58l-.57.69h5.6c-.11.46-.23-.11.12.34V68.07"
+        />
+        <line className="cls-1" x1="16.78" y1="68.07" x2="33.67" y2="68.07" />
+        <ellipse className="cls-2" cx="50.65" cy="59.27" rx="12.5" ry="12.86" />
+        <path className="cls-3" d="M55.65,54.12h-7.5a2.58,2.58,0,0,0,0,5.15h5a2.57,2.57,0,0,1,0,5.14h-7.5" />
+        <path className="cls-3" d="M50.65,67V51.55" />
+      </g>
+    </svg>
+  ),
 };

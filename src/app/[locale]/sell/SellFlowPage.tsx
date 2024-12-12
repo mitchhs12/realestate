@@ -97,7 +97,7 @@ export default function SellFlowPage({
                 </h3>
                 <h4 className="text-sm">
                   {user && user.sellerSubIsYearly ? propertiesRemaining.year : propertiesRemaining.month}:{" "}
-                  {user && getNextPeriodCredits(user.sellerSubscription!, user.sellerSubIsYearly, true)}
+                  {user && getNextPeriodCredits(user.sellerSubscription!, user.sellerSubIsYearly!, true)}
                 </h4>
               </div>
             </div>
