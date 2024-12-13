@@ -8,6 +8,7 @@ import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
 import { locales } from "@/lib/validations";
 import { updatePhone } from "@/app/[locale]/settings/actions";
+import { revalidate } from "../about/page";
 
 interface ResponseObj {
   success: boolean;
@@ -45,6 +46,8 @@ const validateHome = (homeData: any) => {
 export async function getUnfinishedHome(homeId: string, url?: string) {
   const session = await auth();
   const userId = session?.user?.id;
+
+  console.log("this is before function", homeId);
 
   if (!userId) {
     console.log("User not found");

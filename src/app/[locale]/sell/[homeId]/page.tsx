@@ -4,10 +4,8 @@ import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
-import { getPath } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
-import { getUnfinishedHome } from "../actions";
-import { headers } from "next/headers";
+
 import { setStaticParamsLocale } from "next-international/server";
 import PricingDialog from "@/components/PricingPageContent/Dialog";
 import { LanguageType } from "@/lib/validations";
@@ -42,10 +40,12 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function Page(props: any) {
+export default async function Page(props: { params: Promise<{ locale: LanguageType; homeId: string }> }) {
   const params = await props.params;
 
   const { locale, homeId } = params;
+
+  console.log("this is home id", homeId);
 
   setStaticParamsLocale(locale);
   const session = await getSession();

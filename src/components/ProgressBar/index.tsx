@@ -41,8 +41,8 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     isMyPhone,
   } = useContext(SellContext);
 
-  currentHome?.id && router.prefetch(nextStep);
-  currentHome?.id && router.prefetch(prevStep);
+  // currentHome?.id !== undefined && router.prefetch(nextStep);
+  // currentHome?.id && router.prefetch(prevStep);
   // console.log("currentHome", JSON.stringify(currentHome));
   // console.log("newHome", JSON.stringify(newHome));
 
