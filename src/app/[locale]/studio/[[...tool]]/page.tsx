@@ -30,13 +30,15 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 
-export default async function StudioPage() {
-  // const params = await props.params;
+export default async function StudioPage(props: { params: Promise<{ locale: string }> }) {
+  const params = await props.params;
+  const validLocales = ["en", "es", "fr"];
 
-  // const {
-  //   locale
-  // } = params;
-
-  // setStaticParamsLocale(locale);
+  let { locale } = params;
+  if (!validLocales.includes(locale)) {
+    // Fallback or redirect to a default locale
+    locale = "en";
+  }
+  setStaticParamsLocale(locale);
   return <NextStudio config={config} />;
 }
