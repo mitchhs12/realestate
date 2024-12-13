@@ -204,7 +204,7 @@ export async function updateHome(
     }
   }
 
-  revalidatePath(currentPage); // Revalidate the path if necessary
+  revalidatePath("/"); // Revalidate the path if necessary
 
   return updatedHome;
 }

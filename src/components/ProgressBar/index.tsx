@@ -8,6 +8,7 @@ import { sellSteps, stepsFlattened } from "@/lib/sellFlowData";
 import { updateHome, sellHome } from "@/app/[locale]/sell/actions";
 import { useCurrentLocale } from "@/locales/client";
 import { getStepData } from "@/lib/sellFlowData";
+import { useSession } from "next-auth/react";
 
 interface Props {
   cont: string;
@@ -22,6 +23,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
   const router = useRouter();
   const localePathname = usePathname();
   const currentLocale = useCurrentLocale();
+  const session = useSession();
   const pathname = localePathname.replace(`/${currentLocale}`, "");
   const {
     nextStep,
@@ -103,7 +105,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     } else if (currentHome && newHome && JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       // console.log("running log 3");
       console.log(JSON.stringify(newHome, null, 2));
-      const _newHome = await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
+      await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
       // console.log("running log 4");
@@ -117,21 +119,21 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
         }
       } else {
         // console.log("INCREMENTING FLOW STEP");
+        let _newHome;
         if (newHome) {
-          const _newHome = await updateHome(newHome, pathname, true);
-          setNewHome(_newHome);
-          router.push(nextStep);
+          _newHome = await updateHome(newHome, pathname, true);
         } else {
           // newHome is null because we are navigating to the end page without making any changes
           // the only time this should run is if we are up to the last page the user is up too and they click next, newHome is null or the two are the same.
-          const _newHome = await updateHome(currentHome, pathname, true);
-          setNewHome(_newHome);
-          router.push(nextStep);
+          _newHome = await updateHome(currentHome, pathname, true);
         }
+        setNewHome(_newHome);
+        router.push(nextStep);
       }
     } else {
       router.push(nextStep);
     }
+    session.update();
   }
 
   async function handlePrev() {
