@@ -6,9 +6,7 @@ export const author = defineType({
   name: "author",
   type: "document",
   title: "Author",
-  options: {
-    languageFilter: false,
-  },
+
   fields: [
     defineField({
       name: "name",
