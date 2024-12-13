@@ -61,7 +61,6 @@ export async function getUnfinishedHome(homeId: string, url?: string) {
       createdAt: "asc",
     },
   });
-  url && revalidatePath(url); // Revalidate the path if necessary
 
   return homes;
 }
