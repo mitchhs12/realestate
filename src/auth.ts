@@ -81,6 +81,7 @@ const providers: Provider[] = [
           to: email,
           subject,
           html: htmlContent,
+          text: "Hi there, please click the link to sign in: " + url,
         }),
       }).then((res) => {
         if (!res.ok) {
