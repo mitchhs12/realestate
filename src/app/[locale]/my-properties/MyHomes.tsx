@@ -163,10 +163,7 @@ export default function MyHomes({
           const matchingTypes = findMatching(typesObject, home, "type");
 
           return (
-            <div
-              key={index}
-              className={`flex flex-col h-full w-full space-y-2 shadow-lg dark:shadow-white/10 rounded-lg`}
-            >
+            <div key={index} className={`flex flex-col h-full w-full space-y-2 rounded-lg`}>
               <ResizableCard
                 home={home}
                 finishSelling={finishSelling}
