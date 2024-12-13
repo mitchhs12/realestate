@@ -100,17 +100,20 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     } else if (prevStep === "" && !currentHome) {
       // console.log("running log 2");
       // we are on the first page of the sell flow and we need to create a new home
-      const _newHome = await updateHome(newHome, pathname, true);
+      const _newHome = await updateHome(newHome, true);
+      session.update();
       router.push(`/sell/${_newHome.id}/step1`);
     } else if (currentHome && newHome && JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       // console.log("running log 3");
       console.log(JSON.stringify(newHome, null, 2));
-      await updateHome(newHome, pathname, shouldIncrementFlowStep(), isMyPhone);
+      await updateHome(newHome, shouldIncrementFlowStep(), isMyPhone);
+      session.update();
       router.push(nextStep);
     } else if (shouldIncrementFlowStep()) {
       // console.log("running log 4");
       if (sellFlowFlatIndex === stepsFlattened.length - 1) {
         const result = await sellHome(currentLocale, `${currentHome!.id}`);
+        session.update();
         if (result.error) {
           alert(result.error);
           setNextLoading(false);
@@ -121,26 +124,27 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
         // console.log("INCREMENTING FLOW STEP");
         let _newHome;
         if (newHome) {
-          _newHome = await updateHome(newHome, pathname, true);
+          _newHome = await updateHome(newHome, true);
         } else {
           // newHome is null because we are navigating to the end page without making any changes
           // the only time this should run is if we are up to the last page the user is up too and they click next, newHome is null or the two are the same.
-          _newHome = await updateHome(currentHome, pathname, true);
+          _newHome = await updateHome(currentHome, true);
         }
+        session.update();
         setNewHome(_newHome);
         router.push(nextStep);
       }
     } else {
       router.push(nextStep);
     }
-    session.update();
   }
 
   async function handlePrev() {
     if (JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
       setPrevLoading(true);
-      await updateHome(newHome, pathname, false);
+      await updateHome(newHome, false);
     }
+    session.update();
     router.push(prevStep);
   }
 

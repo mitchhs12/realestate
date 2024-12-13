@@ -139,7 +139,6 @@ export async function sellHome(currentLocale: string, homeId: string): Promise<R
 
 export async function updateHome(
   homeValues: HomeType | null,
-  currentPage: string,
   shouldIncreaseListingFlowStep: boolean,
   isMyPhone = false
 ): Promise<HomeType> {

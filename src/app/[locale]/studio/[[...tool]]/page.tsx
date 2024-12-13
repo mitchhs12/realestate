@@ -34,8 +34,6 @@ export const viewport: Viewport = {
 export default async function StudioPage({ params }: { params: { locale?: string } }) {
   const locale = params.locale ?? defaultLanguage;
 
-  console.log("this is the locale", locale);
-
   // This is crucial: it tells next-international the current locale
   setStaticParamsLocale(locale);
   return <NextStudio config={config} />;
