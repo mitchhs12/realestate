@@ -344,7 +344,7 @@ export default function Photos() {
                   <div className="text-red-500">{t("maximum")}</div>
                   <div>{upgrade.upgradePlan}</div>
                   <Dialog>
-                    <DialogTrigger>
+                    <DialogTrigger asChild>
                       <Button>{upgrade.upgradeButton}</Button>
                     </DialogTrigger>
                     <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">

@@ -1,7 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import ReactQuill from "react-quill";
 import "@/app/[locale]/quill.css"; // Import Quill styles
+import ReactQuill from "react-quill-new";
 import { HomeContext } from "@/context/HomeContext";
 import { useScopedI18n } from "@/locales/client";
 import { Button } from "@/components/ui/button";

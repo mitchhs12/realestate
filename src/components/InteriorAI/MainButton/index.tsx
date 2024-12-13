@@ -48,7 +48,7 @@ export default function InteriorAI({ imageUrl }: Props) {
   return (
     <>
       <Dialog open={modalOpen} onOpenChange={handleOpen}>
-        <DialogTrigger>
+        <DialogTrigger asChild>
           <Button
             disabled={sessionLoading}
             variant="default"

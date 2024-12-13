@@ -1,5 +1,7 @@
 import { useContext, useRef, useState } from "react";
-import ReactQuill from "react-quill";
+import "@/app/[locale]/quill.css"; // Import Quill styles
+import ReactQuill from "react-quill-new";
+
 import { LocaleContext } from "@/context/LocaleContext";
 import { HomeContext } from "@/context/HomeContext";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
@@ -14,7 +16,7 @@ export default function DescriptionDialog() {
 
   return (
     <Dialog open={isDescriptionModalOpen} onOpenChange={setDescriptionModalOpen}>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <div className="text-base hover:cursor-pointer border-2 p-2 border-primary animate-pulse rounded-md bg-primary/10">
           <ReactQuill
             ref={quillRef}

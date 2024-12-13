@@ -43,8 +43,9 @@ import { typeIcons } from "../Icons/typeIcons";
 import { useTheme } from "next-themes";
 import { featureIcons } from "../Icons/featureIcons";
 import BuyNowButton from "@/components/BuyNowButton";
-import ReactQuill from "react-quill";
 import "@/app/[locale]/quill.css"; // Import Quill styles
+import ReactQuill from "react-quill-new";
+
 import TypeDialog from "./TypeDialog";
 import DescriptionDialog from "./DescriptionDialog";
 import PriceDialog from "./PriceDialog";
@@ -150,7 +151,7 @@ export default function HomeText({
   const [editLoading, setEditLoading] = useState<boolean>(false);
   const [openBillingModal, setOpenBillingModal] = useState<boolean>(false);
 
-  const quillRef = useRef<ReactQuill | null>(null);
+  const quillRef = useRef<any>(null);
   const [quillDimensions, setQuillDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {

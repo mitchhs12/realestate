@@ -13,6 +13,7 @@ import { getStaticParams } from "@/locales/server";
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import Script from "next/script"; // Import Script component
+import "@/app/[locale]/quill.css"; // Import Quill styles
 
 export const metadata: Metadata = {
   title: {

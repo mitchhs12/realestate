@@ -1,9 +1,8 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
-import { Textarea } from "@/components/ui/textarea";
 import { HomeType } from "@/lib/validations";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quill-new";
 import "@/app/[locale]/quill.css"; // Import Quill styles
 
 interface Props {
