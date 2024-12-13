@@ -10,9 +10,8 @@
 import React from "react";
 import { setStaticParamsLocale } from "next-international/server";
 import { NextStudio } from "next-sanity/studio";
-import config from "../../../../../sanity.config";
+import config from "@/../sanity.config";
 import { Metadata, Viewport } from "next";
-import { defaultLanguage, LanguageType } from "@/lib/validations";
 
 export const dynamic = "force-static";
 
@@ -31,12 +30,11 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 
-export default async function StudioPage(props: { params: Promise<{ locale: LanguageType }> }) {
+export default async function StudioPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
 
-  const locale = params.locale ?? defaultLanguage;
+  const { locale } = params;
 
-  // This is crucial: it tells next-international the current locale
   setStaticParamsLocale(locale);
   return <NextStudio config={config} />;
 }

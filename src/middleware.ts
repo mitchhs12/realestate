@@ -10,7 +10,6 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewrite",
   resolveLocaleFromRequest: (request: NextRequest) => {
     const url = new URL(request.url);
-
     const pathSegments = url.pathname.split("/");
 
     // Assuming the locale is the first path segment
@@ -35,5 +34,5 @@ export async function middleware(request: NextRequest) {
 
 // Configuration for matching routes
 export const config = {
-  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|[^/]+/studio).*)"],
 };
