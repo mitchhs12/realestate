@@ -75,15 +75,18 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
     translation: t(`options.${index}` as keyof typeof t),
   }));
 
-  const listingTypeObject = Array.from({ length: 3 }, (_, index) => ({
+  const listingTypeObject = Array.from({ length: 2 }, (_, index) => ({
     id: listingType[index],
     translation: r(`listingType.${index}` as keyof typeof r),
   }));
 
   const matchingTypes = findMatching(typesObject, unfinishedHome, "type");
   const matchingFeatures = findMatching(featuresObject, unfinishedHome, "features");
+  const matchingListingType = unfinishedHome?.listingType
+    ? findMatchingItem(listingTypeObject, unfinishedHome?.listingType)
+    : listingTypeObject[0];
 
-  const matchingListingType = findMatchingItem(listingTypeObject, unfinishedHome?.listingType);
+  console.log("listingType", matchingListingType);
 
   return (
     <Review
