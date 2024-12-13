@@ -4,9 +4,11 @@ import { LanguageType } from "@/lib/validations";
 
 import DataTitle from "@/components/DataPageContent/Title";
 import DataPageContent from "@/components/DataPageContent";
+import getSession from "@/lib/getSession";
 
 import { getLanguageAlternates } from "@/lib/utils";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const revalidate = 30;
 
@@ -39,11 +41,21 @@ export async function generateMetadata(props: { params: Promise<{ locale: Langua
 export default async function Page(props: { params: Promise<{ locale: LanguageType }> }) {
   const params = await props.params;
 
-  const {
-    locale
-  } = params;
+  const { locale } = params;
 
   setStaticParamsLocale(locale);
+  const session = await getSession();
+  const user = session?.user;
+  if (!user) {
+    redirect("/api/auth/signin?callbackUrl=/admin");
+  }
+  if (user.role !== "admin") {
+    return (
+      <main className="mx-auto my-10">
+        <p className="text-center">You are not authorized to view this page</p>
+      </main>
+    );
+  }
 
   return (
     <div className="flex flex-col h-full w-full items-center">
