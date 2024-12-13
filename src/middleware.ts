@@ -34,5 +34,5 @@ export async function middleware(request: NextRequest) {
 
 // Configuration for matching routes
 export const config = {
-  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+  matcher: ["/((?!api|static|studio|.*\\..*|_next|favicon.ico|robots.txt).*)"],
 };
