@@ -32,8 +32,7 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
     }
   }
 
-  const url = getPath(await headers());
-  const unfinishedHome = await getUnfinishedHome(homeId, url);
+  const unfinishedHome = await getUnfinishedHome(homeId);
   const { array, innerIndex, outerIndex } = await getStepData("capacity");
   const sellFlatIndex = await getSellFlowIndex("capacity");
   const t = await getScopedI18n("sell.capacity");

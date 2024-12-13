@@ -31,8 +31,7 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  const url = getPath(await headers());
-  const unfinishedHome = await getUnfinishedHome(homeId, url);
+  const unfinishedHome = await getUnfinishedHome(homeId);
   const { array, innerIndex, outerIndex } = await getStepData("type");
   const sellFlatIndex = await getSellFlowIndex("type");
   const t = await getScopedI18n("sell.type");

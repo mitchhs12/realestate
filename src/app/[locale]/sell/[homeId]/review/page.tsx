@@ -19,6 +19,8 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
 
   const { locale, homeId } = params;
 
+  console.log("homeId in review", homeId);
+
   setStaticParamsLocale(locale);
 
   const session = await getSession();
@@ -31,8 +33,7 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  const url = getPath(await headers());
-  const unfinishedHome = await getUnfinishedHome(homeId, url);
+  const unfinishedHome = await getUnfinishedHome(homeId);
   const { array, innerIndex, outerIndex } = await getStepData("review");
   const sellFlatIndex = await getSellFlowIndex("review");
   const r = await getScopedI18n("sell.review");

@@ -110,7 +110,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     } else if (shouldIncrementFlowStep()) {
       // console.log("running log 4");
       if (sellFlowFlatIndex === stepsFlattened.length - 1) {
-        const result = await sellHome(currentLocale, `${currentHome!.id}`, pathname);
+        const result = await sellHome(currentLocale, `${currentHome!.id}`);
         if (result.error) {
           alert(result.error);
           setNextLoading(false);

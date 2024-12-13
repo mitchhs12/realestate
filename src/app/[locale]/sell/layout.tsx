@@ -8,8 +8,6 @@ type Props = {
   params: Promise<{ locale: LanguageType }>;
 };
 export default async function SellFlowLayout(props: Props) {
-  const params = await props.params;
-
   const { children } = props;
 
   const t = await getScopedI18n("sell.progress");

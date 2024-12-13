@@ -34,8 +34,7 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
 
   console.log("this is homeId before function thing", homeId);
 
-  const url = getPath(await headers());
-  const unfinishedHome = await getUnfinishedHome(homeId, url);
+  const unfinishedHome = await getUnfinishedHome(homeId);
   const { array, innerIndex, outerIndex } = await getStepData("checkout");
   const sellFlatIndex = await getSellFlowIndex("checkout");
   const t = await getScopedI18n("sell.checkout");

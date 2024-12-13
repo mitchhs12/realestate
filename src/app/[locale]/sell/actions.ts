@@ -43,7 +43,7 @@ const validateHome = (homeData: any) => {
   return { success: true, error: "" };
 };
 
-export async function getUnfinishedHome(homeId: string, url?: string) {
+export async function getUnfinishedHome(homeId: string) {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -102,13 +102,13 @@ export async function getHomes() {
   return homes;
 }
 
-export async function sellHome(currentLocale: string, homeId: string, url: string): Promise<ResponseObj> {
+export async function sellHome(currentLocale: string, homeId: string): Promise<ResponseObj> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
     throw new Error("User not found");
   }
-  const home = await getUnfinishedHome(homeId, url);
+  const home = await getUnfinishedHome(homeId);
   const result = validateHome(home);
 
   if (result.success === false) {

@@ -45,8 +45,6 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
 
   const { locale, homeId } = params;
 
-  console.log("this is home id", homeId);
-
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;

@@ -32,8 +32,7 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
     }
   }
 
-  const url = getPath(await headers());
-  const unfinishedHome = await getUnfinishedHome(homeId, url);
+  const unfinishedHome = await getUnfinishedHome(homeId);
 
   const [stepData, sellFlatIndex, s, t] = await Promise.all([
     getStepData("location"),

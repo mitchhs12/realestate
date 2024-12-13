@@ -1,7 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { ReloadIcon, CrossCircledIcon, CheckCircledIcon } from "@radix-ui/react-icons";
 import { Badge } from "@/components/ui/badge";
@@ -15,7 +15,7 @@ import { typeIcons } from "@/components/Icons/typeIcons";
 import { featureIcons } from "@/components/Icons/featureIcons";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quill-new";
 import "@/app/[locale]/quill.css"; // Import Quill styles for displaying content
 
 interface Props {
