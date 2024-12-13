@@ -3,7 +3,8 @@ import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: LanguageType }> }): Promise<Metadata> {
+  const params = await props.params;
   const route = "/legal/privacy-policy";
   const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
@@ -28,7 +29,13 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
   };
 }
 
-export default function Page({ params: { locale } }: { params: { locale: LanguageType } }) {
+export default async function Page(props: { params: Promise<{ locale: LanguageType }> }) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setStaticParamsLocale(locale);
 
   return (

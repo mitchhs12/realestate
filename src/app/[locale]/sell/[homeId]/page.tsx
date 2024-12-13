@@ -13,11 +13,10 @@ import PricingDialog from "@/components/PricingPageContent/Dialog";
 import { LanguageType } from "@/lib/validations";
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: LanguageType; homeId: any };
+export async function generateMetadata(props: {
+  params: Promise<{ locale: LanguageType; homeId: any }>;
 }): Promise<Metadata> {
+  const params = await props.params;
   const route = `/sell/${params.homeId}`;
   const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
@@ -43,7 +42,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params: { locale, homeId } }: any) {
+export default async function Page(props: any) {
+  const params = await props.params;
+
+  const { locale, homeId } = params;
+
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;

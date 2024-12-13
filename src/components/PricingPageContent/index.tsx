@@ -63,11 +63,11 @@ export default function PricingPageContent({
       try {
         if (handleChangeSeller === "seller") {
           setSellerModeLoading(true);
-          await changeSellerMode(pathname, true);
+          await changeSellerMode(true);
           setSellerModeLoading(false);
         } else if (handleChangeSeller === "buyer") {
           setBuyerModeLoading(true);
-          await changeSellerMode(pathname, false);
+          await changeSellerMode(false);
           setBuyerModeLoading(false);
         }
       } catch (error) {

@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   title: "Specific List",
 };
 
-export default async function Page({ params }: { params: { locale: string; listId: number } }) {
+export default async function Page(props: { params: Promise<{ locale: string; listId: number }> }) {
+  const params = await props.params;
   setStaticParamsLocale(params.locale);
 
   const session = await getSession();

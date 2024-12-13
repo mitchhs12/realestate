@@ -7,7 +7,8 @@ import { getScopedI18n } from "@/locales/server";
 import SmallMapWrapper from "@/components/SmallMap/SmallMapWrapper";
 import { setStaticParamsLocale } from "next-international/server";
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page(props: { params: Promise<{ locale: string }> }) {
+  const params = await props.params;
   setStaticParamsLocale(params.locale);
   const [h] = await Promise.all([getScopedI18n("homes")]);
 

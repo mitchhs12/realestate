@@ -14,7 +14,11 @@ export const metadata: Metadata = {
   title: "Location",
 };
 
-export default async function Page({ params: { locale, homeId } }: { params: { locale: string; homeId: string } }) {
+export default async function Page(props: { params: Promise<{ locale: string; homeId: string }> }) {
+  const params = await props.params;
+
+  const { locale, homeId } = params;
+
   setStaticParamsLocale(locale);
 
   const session = await getSession();
@@ -28,7 +32,7 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
     }
   }
 
-  const url = getPath(headers());
+  const url = getPath(await headers());
   const unfinishedHome = await getUnfinishedHome(homeId, url);
 
   const [stepData, sellFlatIndex, s, t] = await Promise.all([

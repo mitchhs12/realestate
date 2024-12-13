@@ -37,7 +37,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+export default async function Page(props: { params: Promise<{ locale: string }> }) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;

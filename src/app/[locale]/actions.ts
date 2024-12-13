@@ -7,7 +7,7 @@ import { HomeType } from "@/lib/validations";
 import { s3Client } from "@/s3";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 
-export async function changeSellerMode(path: string, isSellerMode?: boolean): Promise<any> {
+export async function changeSellerMode(isSellerMode?: boolean): Promise<any> {
   const session = await auth();
   const userId = session?.user?.id;
 

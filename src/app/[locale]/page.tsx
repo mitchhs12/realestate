@@ -7,7 +7,8 @@ import HomePageContent from "@/components/HomePageContent";
 
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: LanguageType }> }): Promise<Metadata> {
+  const params = await props.params;
   const languageAlternates = getLanguageAlternates(params.locale);
 
   return {
@@ -22,7 +23,11 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
   };
 }
 
-export default function Home({ params: { locale } }: { params: { locale: LanguageType } }) {
+export default async function Home(props: { params: Promise<{ locale: LanguageType }> }) {
+  const params = await props.params;
+
+  const { locale } = params;
+
   setStaticParamsLocale(locale);
 
   return (

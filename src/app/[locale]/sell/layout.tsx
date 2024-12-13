@@ -5,10 +5,13 @@ import { getScopedI18n } from "@/locales/server";
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: LanguageType };
+  params: Promise<{ locale: LanguageType }>;
 };
+export default async function SellFlowLayout(props: Props) {
+  const params = await props.params;
 
-export default async function SellFlowLayout({ children, params: { locale } }: Readonly<Props>) {
+  const { children } = props;
+
   const t = await getScopedI18n("sell.progress");
   const cont = t("continue");
   const start = t("start");

@@ -38,10 +38,14 @@ export function generateStaticParams() {
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: LanguageType };
+  params: Promise<{ locale: LanguageType }>;
 };
 
-export default function RootLayout({ children, params }: Props) {
+export default async function RootLayout(props: Props) {
+  const params = await props.params;
+
+  const { children } = props;
+
   const { direction: dir } = new Locale(params.locale).textInfo;
 
   return (

@@ -9,8 +9,8 @@ import { headers } from "next/headers";
 import { GetSubscription } from "@/app/[locale]/stripeServer";
 import { contactCredits, sellCredits } from "@/lib/validations";
 
-export async function POST(req: Request, res: NextApiResponse) {
-  const sig = headers().get("stripe-signature");
+export async function POST(req: Request) {
+  const sig = (await headers()).get("stripe-signature");
 
   if (!sig) {
     console.error("No stripe-signature header value was provided.");

@@ -1,7 +1,7 @@
 "use client";
 
 import { useScopedI18n } from "@/locales/client";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, type JSX } from "react";
 import { ExponentialSlider } from "@/components/ui/exponentialSlider"; // Import your new ExponentialSlider component
 import { QueryContext } from "@/context/QueryContext";
 import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";

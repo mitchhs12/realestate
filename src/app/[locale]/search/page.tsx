@@ -7,7 +7,8 @@ import { setStaticParamsLocale } from "next-international/server";
 import { getLanguageAlternates } from "@/lib/utils";
 import { LanguageType } from "@/lib/validations";
 
-export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: LanguageType }> }): Promise<Metadata> {
+  const params = await props.params;
   const route = "/search";
   const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
   };
 }
 
-export default async function Page({ params }: { params: { locale: string; search: string } }) {
+export default async function Page(props: { params: Promise<{ locale: string; search: string }> }) {
+  const params = await props.params;
   setStaticParamsLocale(params.locale);
 
   let initZoom: number = 4;

@@ -8,11 +8,12 @@ import { getSingleHome } from "../actions";
 import { LanguageType } from "@/lib/validations";
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: LanguageType; search: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ locale: LanguageType; search: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const route = `/search/${params.search}`;
   const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
@@ -38,7 +39,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { locale: string; search: string } }) {
+export default async function Page(props: { params: Promise<{ locale: string; search: string }> }) {
+  const params = await props.params;
   setStaticParamsLocale(params.locale);
   const AWS_LOCATION_SERVICE_ENDPOINT = process.env.AWS_LOCATION_SERVICE_ENDPOINT;
   const INDEX_NAME = process.env.AWS_LOCATION_INDEX_NAME;

@@ -99,9 +99,9 @@ export default function SettingsPage({
 
       try {
         if (handleChangeSeller === "seller") {
-          await changeSellerMode(pathname, true);
+          await changeSellerMode(true);
         } else if (handleChangeSeller === "buyer") {
-          await changeSellerMode(pathname, false);
+          await changeSellerMode(false);
         }
       } catch (error) {
         console.error("Error updating seller mode:", error);
@@ -118,7 +118,7 @@ export default function SettingsPage({
   async function onSubmit(data: UpdateSettingsValues) {
     try {
       await updateSettings(data);
-      const newCurrency = currencyData?.prices.find((currency) => currency.symbol === data.currency);
+      const newCurrency = currencyData?.prices.find((currency: any) => currency.symbol === data.currency);
       if (newCurrency) {
         setDefaultCurrency({
           symbol: data.currency,
@@ -156,7 +156,7 @@ export default function SettingsPage({
                   <FormField
                     control={form.control}
                     name="name"
-                    render={({ field }) => (
+                    render={({ field }: any) => (
                       <FormItem>
                         <FormLabel>{name.title}</FormLabel>
                         <FormControl>
@@ -170,7 +170,7 @@ export default function SettingsPage({
                   <FormField
                     control={form.control}
                     name="language"
-                    render={({ field }) => (
+                    render={({ field }: any) => (
                       <FormItem>
                         <FormLabel>{language.title}</FormLabel>
                         <FormControl>
@@ -190,7 +190,7 @@ export default function SettingsPage({
                   <FormField
                     control={form.control}
                     name="currency"
-                    render={({ field }) => (
+                    render={({ field }: any) => (
                       <FormItem>
                         <FormLabel>{currency.title}</FormLabel>
                         <FormControl>

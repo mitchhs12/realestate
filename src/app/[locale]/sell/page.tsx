@@ -4,14 +4,20 @@ import getSession from "@/lib/getSession";
 import LockedLogin from "@/components/LockedLogin";
 import { getStepData, getSellFlowIndex } from "@/lib/sellFlowData";
 import { getScopedI18n } from "@/locales/server";
-import { setStaticParamsLocale } from "next-international/server";
 import SelectHomeWrapper from "@/components/SelectHomeModal/Wrapper";
 import PricingDialog from "@/components/PricingPageContent/Dialog";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getLanguageAlternates } from "@/lib/utils";
-import { LanguageType } from "@/lib/validations";
+import { HomeType, LanguageType } from "@/lib/validations";
+import { setStaticParamsLocale } from "next-international/server";
 
-export async function generateMetadata({ params }: { params: { locale: LanguageType } }): Promise<Metadata> {
+export const dynamic = "force-dynamic";
+
+type Params = Promise<{ locale: LanguageType }>;
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+  const params = await props.params;
+
   const route = "/sell";
   const languageAlternates = getLanguageAlternates(params.locale, route);
   return {
@@ -38,8 +44,15 @@ export async function generateMetadata({ params }: { params: { locale: LanguageT
   };
 }
 
-export default async function Page({ params: { locale } }: any) {
+export default async function Sell(props: { params: Params }) {
+  const params = await props.params;
+  const locale = params.locale;
+  console.log("sell - locale:", locale);
+
+  // Set the locale early in metadata generation
   setStaticParamsLocale(locale);
+  console.log("sell - setStaticParamsLocale called with:", locale);
+
   const session = await getSession();
   const sell = await getScopedI18n("sell");
   const customMessage = sell("lockedLoginMessage");
@@ -72,7 +85,7 @@ export default async function Page({ params: { locale } }: any) {
     }
   }
 
-  const unfinishedHomes = user.homes.filter((home) => !home.isComplete);
+  const unfinishedHomes = user.homes.filter((home: HomeType) => !home.isComplete);
 
   const { array, innerIndex, outerIndex } = await getStepData("/sell");
   const sellFlatIndex = await getSellFlowIndex("/sell");

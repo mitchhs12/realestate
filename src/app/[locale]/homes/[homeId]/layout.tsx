@@ -9,15 +9,14 @@ import { Metadata } from "next";
 import { LanguageType } from "@/lib/validations";
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: LanguageType; homeId: string };
-}): Promise<Metadata> {
-  const route = `/homes/${params.homeId}`;
-  const languageAlternates = getLanguageAlternates(params.locale, route);
+type Params = Promise<{ homeId: string; locale: LanguageType }>;
 
-  const home = await getHomeById(params.homeId);
+export async function generateMetadata({ params }: { params: Params }) {
+  const { homeId, locale } = await params;
+  const route = `/homes/${homeId}`;
+  const languageAlternates = getLanguageAlternates(locale, route);
+
+  const home = await getHomeById(homeId);
 
   const homeTitle = home?.title || "Property Not Found";
   const homeType = home?.type?.[0] || "Unknown Type";
@@ -30,7 +29,7 @@ export async function generateMetadata({
     description: homeDescription,
     metadataBase: new URL("https://www.vivaideal.com"),
     alternates: {
-      canonical: `https://www.vivaideal.com/${params.locale}${route}`,
+      canonical: `https://www.vivaideal.com/${locale}${route}`,
       languages: languageAlternates,
     },
     robots: {
@@ -47,7 +46,7 @@ export async function generateMetadata({
     openGraph: {
       title: homeTitle,
       description: homeDescription,
-      url: `https://www.vivaideal.com/${params.locale}/homes/${params.homeId}`,
+      url: `https://www.vivaideal.com/${locale}/homes/${homeId}`,
       type: "website",
       images: [
         {
@@ -63,10 +62,14 @@ export async function generateMetadata({
 
 type Props = {
   children: React.ReactNode;
-  params: { homeId: string; locale: string };
+  params: Params;
 };
 
-export default async function HomeLayout({ children, params: { homeId, locale } }: Readonly<Props>) {
+export default async function Layout(props: Readonly<Props>) {
+  const { homeId, locale } = await props.params;
+
+  const { children } = props;
+
   const [home, f, t, e] = await Promise.all([
     getHomeById(homeId),
     getScopedI18n("sell.features"),

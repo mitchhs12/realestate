@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 
 export type IconProps = React.HTMLAttributes<SVGElement> & {
   width?: number;

@@ -14,7 +14,11 @@ export const metadata: Metadata = {
   title: "Title",
 };
 
-export default async function Page({ params: { locale, homeId } }: { params: { locale: string; homeId: string } }) {
+export default async function Page(props: { params: Promise<{ locale: string; homeId: string }> }) {
+  const params = await props.params;
+
+  const { locale, homeId } = params;
+
   setStaticParamsLocale(locale);
   const session = await getSession();
   const user = session?.user;
@@ -26,7 +30,7 @@ export default async function Page({ params: { locale, homeId } }: { params: { l
       redirect("/api/auth/signin?callbackUrl=/sell");
     }
   }
-  const url = getPath(headers());
+  const url = getPath(await headers());
   const unfinishedHome = await getUnfinishedHome(homeId, url);
   const { array, innerIndex, outerIndex } = await getStepData("title");
   const sellFlatIndex = await getSellFlowIndex("title");
