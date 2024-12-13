@@ -27,6 +27,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import MultiSelect from "@/components/ui/multiselect";
 import { Input } from "@/components/ui/input";
 import { changeSellerMode } from "../actions";
+import { useSession } from "next-auth/react";
 
 interface Props {
   user: User;
@@ -44,6 +45,7 @@ export default function AdminPage({ user }: Props) {
   const [duration, setDuration] = useState<any>(null);
   const [repeatingDuration, setRepeatingDuration] = useState<number | undefined>(undefined);
   const { toast } = useToast();
+  const session = useSession();
 
   useEffect(() => {
     setLoading(true);
@@ -277,6 +279,7 @@ export default function AdminPage({ user }: Props) {
               setLoading(true);
               changeSellerMode().then(() => {
                 setLoading(false);
+                session.update();
               });
             }}
             disabled={loading}

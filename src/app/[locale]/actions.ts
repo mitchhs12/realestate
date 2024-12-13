@@ -15,18 +15,14 @@ export async function changeSellerMode(isSellerMode?: boolean): Promise<any> {
     throw new Error("User not found");
   }
 
-  try {
-    const user = await prisma.user.update({
-      where: { id: userId },
-      data: {
-        isSellerMode: isSellerMode === undefined ? null : isSellerMode,
-      },
-    });
-    return user;
-  } catch (error) {
-    console.error("Error changing seller mode:", error);
-    throw new Error("Failed to change seller mode.");
-  }
+  await prisma.user.update({
+    where: { id: userId },
+    data: {
+      isSellerMode: isSellerMode === undefined ? null : isSellerMode,
+    },
+  });
+
+  revalidatePath("/");
 }
 
 export async function getUserData(): Promise<any> {

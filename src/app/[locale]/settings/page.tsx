@@ -6,7 +6,6 @@ import { getScopedI18n } from "@/locales/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { GetFullSubscription } from "../stripeServer";
-import { languages } from "@/lib/validations";
 import { getLanguageAlternates } from "@/lib/utils";
 
 export async function generateMetadata(props: { params: Promise<{ locale: LanguageType }> }): Promise<Metadata> {

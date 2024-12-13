@@ -8,7 +8,8 @@ import { useState, useContext, useEffect } from "react";
 import { changeSellerMode } from "@/app/[locale]/actions";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Icons } from "@/components/Icons/icons";
-import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import { useSession } from "next-auth/react";
 
 interface Props {
   isCheckout: boolean;
@@ -53,7 +54,8 @@ export default function PricingPageContent({
   const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(null);
   const [buyerModeLoading, setBuyerModeLoading] = useState(false);
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
-  const pathname = usePathname();
+  const { resolvedTheme: theme } = useTheme();
+  const session = useSession();
 
   useEffect(() => {
     const updateSellerMode = async () => {
@@ -77,6 +79,7 @@ export default function PricingPageContent({
         setSellerModeLoading(false);
         setBuyerModeLoading(false);
         setButtonsDisabled(false);
+        session.update();
       }
     };
 
@@ -88,19 +91,19 @@ export default function PricingPageContent({
       return (
         <div className="flex flex-col gap-5 pt-12 justify-center items-center">
           <div className="flex flex-col w-full">
-            <h3 className="text-center text-3xl">{billingText.sellerModeSelection.title}</h3>
+            <h3 className="text-center text-xl sm:text-3xl">{billingText.sellerModeSelection.title}</h3>
           </div>
-          <div className="flex w-full justify-center gap-3">
+          <div className="flex flex-col sm:flex-row w-full items-center justify-center gap-3">
             <Button
               onClick={() => {
                 setHandleChangeSeller("buyer");
               }}
-              className="h-20 rounded-md px-8"
+              className="h-20 rounded-md px-8 w-[275px]"
               disabled={buttonsDisabled}
               variant={"default"}
             >
               <div className="flex items-center gap-3 text-2xl">
-                <Icons.buyer_icon width={"50"} height={"50"} />
+                <Icons.buyer_icon width={"50"} height={"50"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
                 {buyerModeLoading ? <ReloadIcon className="animate-spin w-5 h-5" /> : billingText["buyersText"]}
               </div>
             </Button>
@@ -108,13 +111,13 @@ export default function PricingPageContent({
               onClick={() => {
                 setHandleChangeSeller("seller");
               }}
-              className="h-20 rounded-md px-8"
+              className="h-20 rounded-md px-8 w-[275px]"
               disabled={buttonsDisabled}
               variant={"default"}
               size={"lg"}
             >
               <div className="flex items-center gap-3 text-2xl">
-                <Icons.seller_icon width={"50"} height={"50"} />
+                <Icons.seller_icon width={"50"} height={"50"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
                 {sellerModeLoading ? <ReloadIcon className="animate-spin w-5 h-5" /> : billingText["sellersText"]}
               </div>
             </Button>

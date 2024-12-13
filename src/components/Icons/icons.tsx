@@ -339,7 +339,7 @@ export const Icons = {
     </svg>
   ),
 
-  buyer_icon: ({ width = "40", height = "40", color = "#FFFFFF", strokeWidth = 4 }) => (
+  buyer_icon: ({ width = "40", height = "40", color = "#000000", strokeWidth = 4 }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" width={width} height={height}>
       <defs>
         <style>
@@ -387,7 +387,7 @@ export const Icons = {
       </g>
     </svg>
   ),
-  seller_icon: ({ width = "40", height = "40", color = "#FFFFFF", strokeWidth = 4 }) => (
+  seller_icon: ({ width = "40", height = "40", color = "#000000", strokeWidth = 4 }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" height={height} width={width}>
       <defs>
         <style>

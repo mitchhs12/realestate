@@ -13,15 +13,10 @@ import { locales, languages } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { useContext, useEffect, useState } from "react";
 import { getFullLanguageName } from "@/lib/utils";
-import { FlagComponent } from "@/components/ui/phone-input";
 import { useChangeLocale } from "@/locales/client";
-import { Country } from "react-phone-number-input";
-import lookup from "country-code-lookup";
-import { languageToFlagMap } from "@/lib/validations";
-import Link from "next/link";
 import { StripeBilling } from "../stripeServer";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Stripe } from "stripe";
 import { Icons } from "@/components/Icons/icons";
 import { changeSellerMode } from "@/app/[locale]/actions";
@@ -81,7 +76,6 @@ export default function SettingsPage({
   const [buyerSubscriptionLoading, setBuyerSubscriptionLoading] = useState<boolean>(false);
   const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(null);
   const [changeSellerButtonDisabled, setChangeSellerButtonDisabled] = useState<boolean>(false);
-  const pathname = usePathname();
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -108,7 +102,7 @@ export default function SettingsPage({
         alert("Failed to update mode. Please try again later.");
       } finally {
         setChangeSellerButtonDisabled(false);
-        router.refresh();
+        session.update();
       }
     };
 

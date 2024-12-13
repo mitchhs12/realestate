@@ -1,12 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { client, urlFor } from "@/lib/sanity";
-import { getFullLanguageName } from "@/lib/utils";
-import { ArticleType } from "@/lib/validations";
+import { urlFor } from "@/lib/sanity";
+
 import { getScopedI18n } from "@/locales/server";
 import Image from "next/image";
-import { useState } from "react";
 import Brochure from "@/components/Brochure";
 import {
   Dialog,
@@ -17,7 +12,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import fr from "@/locales/dictionaries/fr";
 
 export default async function AboutPageContent({ locale, data }: { locale: string; data: any }) {
   const t = await getScopedI18n("about");
