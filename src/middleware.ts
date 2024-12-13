@@ -10,6 +10,7 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewrite",
   resolveLocaleFromRequest: (request: NextRequest) => {
     const url = new URL(request.url);
+
     const pathSegments = url.pathname.split("/");
 
     // Assuming the locale is the first path segment

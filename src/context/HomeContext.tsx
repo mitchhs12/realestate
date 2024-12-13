@@ -253,7 +253,6 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
   };
 
   useEffect(() => {
-    console.log("running this nigger");
     if (haveContactInfo && homeOwnerName && homeOwnerEmail && homeOwnerPhone) {
       console.log("name", homeOwnerName);
       setRevealContact(true);
