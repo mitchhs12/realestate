@@ -9,10 +9,11 @@ export default function Clients() {
     `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/ecuaraices.png`,
     `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/inmoga.png`,
     `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/ehf.png`,
+    `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/clients/maria-inmobiliaria.png`,
   ];
 
   return (
-    <div className="grid justify-center items-center grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-3">
+    <div className="grid justify-center items-center grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-y-12 gap-6">
       {images.map((image, index) => (
         <div key={index} className="relative justify-center items-center w-auto h-[152px]">
           <Image
