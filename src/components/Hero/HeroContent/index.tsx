@@ -11,7 +11,7 @@ export default async function HeroContent() {
 
   return (
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
-      <div className="flex flex-col items-center justify-between pt-8 pb-14 h-full w-full max-w-8xl px-4 md:px-6">
+      <div className="flex flex-col items-center justify-between pt-8 pb-10 h-full w-full max-w-8xl px-4 md:px-6">
         <div className="flex gap-4">
           <div className="flex justify-center items-center w-[40px] h-full">
             <LeftLeaf className="text-[#4F4F4F] dark:text-white" />
