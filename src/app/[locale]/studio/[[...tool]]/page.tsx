@@ -36,6 +36,6 @@ export default async function StudioPage(props: { params: Promise<{ locale: stri
 
   const { locale } = params;
 
-  setStaticParamsLocale(locale);
+  setStaticParamsLocale("en");
   return <NextStudio config={config} />;
 }
