@@ -31,7 +31,9 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 
-export default async function StudioPage({ params }: { params: { locale: LanguageType } }) {
+export default async function StudioPage(props: { params: Promise<{ locale: LanguageType }> }) {
+  const params = await props.params;
+
   const locale = params.locale ?? defaultLanguage;
 
   // This is crucial: it tells next-international the current locale
