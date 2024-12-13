@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { poppins } from "@/app/[locale]/fonts";
-import "@/app/[locale]/globals.css";
+import { poppins } from "./fonts";
+import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";

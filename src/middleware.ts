@@ -28,11 +28,12 @@ const I18nMiddleware = createI18nMiddleware({
 // Combined middleware function
 export async function middleware(request: NextRequest) {
   // Internationalization logic
+
   const response = I18nMiddleware(request);
   return response;
 }
 
 // Configuration for matching routes
 export const config = {
-  matcher: ["/((?!api|static|studio|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
 };

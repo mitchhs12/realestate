@@ -32,6 +32,7 @@ export const viewport: Viewport = {
 
 export default async function StudioPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
+  console.log("params", params);
 
   const { locale } = params;
 
