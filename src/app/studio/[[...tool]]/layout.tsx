@@ -9,7 +9,7 @@ type Props = {
   params: Promise<{ locale: LanguageType }>;
 };
 
-export default function Layout(props: Props) {
+export default async function Layout(props: Props) {
   const { children } = props;
 
   return (
