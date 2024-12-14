@@ -29,11 +29,14 @@ const I18nMiddleware = createI18nMiddleware({
 export async function middleware(request: NextRequest) {
   // Internationalization logic
   const url = new URL(request.url);
-  const pathSegments = url.pathname.split("/").filter(Boolean);
+  const { pathname } = url;
+
+  const segments = pathname.split("/").filter(Boolean);
 
   // If someone visits `/studio` without locale, rewrite to `/${defaultLanguage}/studio`
-  if (pathSegments[0] === "studio") {
-    url.pathname = `/${defaultLanguage}/studio/${pathSegments.slice(1).join("/")}`;
+  if (!segments[0] || segments[0] === "studio") {
+    // e.g. defaultLanguage = 'en'
+    url.pathname = `/en${pathname}`;
     return NextResponse.rewrite(url);
   }
   const response = I18nMiddleware(request);
