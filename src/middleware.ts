@@ -33,9 +33,8 @@ export async function middleware(request: NextRequest) {
 
   if (segments.length === 1 && segments[0] === "studio") {
     // If user hits /studio, redirect
-    const url = request.nextUrl.clone();
     url.pathname = "/en/studio";
-    return NextResponse.rewrite(url);
+    return NextResponse.redirect(url);
   }
 
   const response = I18nMiddleware(request);
