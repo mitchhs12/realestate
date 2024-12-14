@@ -33,12 +33,11 @@ export async function middleware(request: NextRequest) {
 
   const segments = pathname.split("/").filter(Boolean);
 
-  // If someone visits `/studio` without locale, rewrite to `/${defaultLanguage}/studio`
-  if (!segments[0] || segments[0] === "studio") {
-    // e.g. defaultLanguage = 'en'
-    url.pathname = `/en${pathname}`;
-    return NextResponse.rewrite(url);
+  if (segments.length === 1 && segments[0] === "studio") {
+    // If user hits /studio, redirect
+    return NextResponse.redirect(`/${defaultLanguage}/studio`);
   }
+
   const response = I18nMiddleware(request);
   return response;
 }
