@@ -15,12 +15,10 @@ const I18nMiddleware = createI18nMiddleware({
     // Assuming the locale is the first path segment
     const locale = pathSegments[1] as LanguageType;
 
-    // Check if the locale is valid
     if (languages.includes(locale)) {
       return locale;
     }
 
-    // If locale isn't valid, fallback to the defaultLocale
     return defaultLanguage;
   },
 });
@@ -35,7 +33,9 @@ export async function middleware(request: NextRequest) {
 
   if (segments.length === 1 && segments[0] === "studio") {
     // If user hits /studio, redirect
-    return NextResponse.redirect(`www.vivaideal.com/${defaultLanguage}/studio`);
+    const url = request.nextUrl.clone();
+    url.pathname = "/en/studio";
+    return NextResponse.rewrite(url);
   }
 
   const response = I18nMiddleware(request);
