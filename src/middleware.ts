@@ -25,23 +25,11 @@ const I18nMiddleware = createI18nMiddleware({
 
 // Combined middleware function
 export async function middleware(request: NextRequest) {
-  // Internationalization logic
-  const url = new URL(request.url);
-  const { pathname } = url;
-
-  const segments = pathname.split("/").filter(Boolean);
-
-  if (segments.length === 1 && segments[0] === "studio") {
-    // If user hits /studio, redirect
-    url.pathname = "/en/studio";
-    return NextResponse.redirect(url);
-  }
-
   const response = I18nMiddleware(request);
   return response;
 }
 
 // Configuration for matching routes
 export const config = {
-  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+  matcher: ["/((?!api|studio|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
 };

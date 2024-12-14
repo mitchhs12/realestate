@@ -23,7 +23,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: Langua
   };
 }
 
-export default async function Home(props: { params: Promise<{ locale: LanguageType }> }) {
+export default async function Page(props: { params: Promise<{ locale: LanguageType }> }) {
   const params = await props.params;
 
   const { locale } = params;
