@@ -6,7 +6,7 @@ import "@/app/[locale]/quill.css"; // Import Quill styles
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: LanguageType };
+  params: Promise<{ locale: LanguageType }>;
 };
 
 export default function Layout(props: Props) {
