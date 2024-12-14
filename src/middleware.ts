@@ -35,7 +35,7 @@ export async function middleware(request: NextRequest) {
 
   if (segments.length === 1 && segments[0] === "studio") {
     // If user hits /studio, redirect
-    return NextResponse.redirect(`/${defaultLanguage}/studio`);
+    return NextResponse.redirect(`www.vivaideal.com/${defaultLanguage}/studio`);
   }
 
   const response = I18nMiddleware(request);
