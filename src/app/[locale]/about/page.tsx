@@ -84,14 +84,14 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
   const brochures = { title: t("brochures.title"), sub: t("brochures.sub") };
 
   return (
-    <div className="flex flex-col h-full items-center p-6 gap-12 py-8 w-full">
-      <div className="flex flex-col items-center gap-2 pt-4 justify-center text-center">
+    <div className="flex flex-col h-full items-center p-6 gap-16 py-8 w-full">
+      <div className="flex flex-col items-center gap-2 pt-8 justify-center text-center">
         <h3
-          className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
+          className={`${urbanist.className} tracking-widest font-medium text-xl sm:text-2xl text-[#0C7A33] dark:text-primary`}
         >
           {t("main.sub")}
         </h3>
-        <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+        <h2 className="flex items-center gap-4 sm:text-4xl text-5xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
           {t("main.title")}
         </h2>
       </div>

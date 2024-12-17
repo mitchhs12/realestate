@@ -41,7 +41,7 @@ export default function AboutPageContent({
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <div className="flex flex-col justify-start items-center w-full h-full gap-20">
-        <div className="flex flex-col md:flex-row gap-8 w-full">
+        <div className="flex flex-col md:flex-row gap-16 pb-8 w-full">
           <div className="flex flex-col gap-3 w-full">
             <div
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
@@ -88,7 +88,7 @@ export default function AboutPageContent({
             </h2>
           </div>
         </div>
-        <div className="flex flex-col gap-8 w-full">
+        <div className="flex flex-col gap-20 pb-8 w-full">
           <div className="flex w-full flex-col gap-3 items-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
@@ -163,7 +163,7 @@ export default function AboutPageContent({
             })}
           </div>
         </div>
-        <div className="flex flex-col gap-8 w-full items-center text-center">
+        <div className="flex flex-col gap-20 pb-8 w-full items-center text-center">
           <div className="flex w-full flex-col gap-3 items-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
@@ -227,7 +227,7 @@ export default function AboutPageContent({
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-8 w-full items-center text-center">
+        <div className="flex flex-col gap-16 pb-8 w-full items-center text-center">
           <div className="flex w-full flex-col gap-3 items-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
