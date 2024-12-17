@@ -629,6 +629,8 @@ export default {
         "title": "理想万岁",
         "home": "家",
         "about": "关于",
+        "explore": "探索",
+        "pricing": "价格",
         "articles": "文章",
         "data": "数据"
       }

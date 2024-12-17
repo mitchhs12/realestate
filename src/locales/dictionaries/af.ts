@@ -629,6 +629,8 @@ export default {
         "title": "Viva Ideaal",
         "home": "Tuis",
         "about": "Oor",
+        "explore": "Verken",
+        "pricing": "Pryse",
         "articles": "Artikels",
         "data": "Data"
       }

@@ -379,7 +379,7 @@ export default function Header({
                             <Map width={"22"} height={"22"} />
                             <ChevronLeft width={"22"} height={"22"} />
                           </div>
-                          <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                          <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
                             {map}
                           </h1>
                         </div>

@@ -629,6 +629,8 @@ export default {
         "title": "Hidup Ideal",
         "home": "Rumah",
         "about": "Tentang",
+        "explore": "Mengeksplorasi",
+        "pricing": "Harga",
         "articles": "Artikel",
         "data": "Data"
       }

@@ -629,6 +629,8 @@ export default {
         "title": "فيفا ايديال",
         "home": "بيت",
         "about": "عن",
+        "explore": "يستكشف",
+        "pricing": "التسعير",
         "articles": "المقالات",
         "data": "بيانات"
       }

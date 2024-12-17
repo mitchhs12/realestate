@@ -629,6 +629,8 @@ export default {
         "title": "Viva Ideal",
         "home": "Dom",
         "about": "Oko",
+        "explore": "Istražiti",
+        "pricing": "Cijene",
         "articles": "Članci",
         "data": "Podaci"
       }

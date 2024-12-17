@@ -8,15 +8,17 @@ export default async function Footer() {
   return (
     <div className="flex flex-col items-center gap-6 w-full">
       <div className="flex flex-col justify-center gap-4 items-center max-w-8xl">
-        <div className="flex text-sm gap-6 justify-center">
+        <div className="grid grid-cols-3 xs:grid-cols-6 text-xs xs:text-sm gap-6 iteems-center text-center justify-center">
           <Link href={"/"}>{scopedT("pages.home")}</Link>
-          {/* <Link href={"/about"}>{scopedT("pages.about")}</Link> */}
+          <Link href={"/about"}>{scopedT("pages.about")}</Link>
+          <Link href={"/explore"}>{scopedT("pages.explore")}</Link>
           <Link href={"/articles"}>{scopedT("pages.articles")}</Link>
+          <Link href={"/pricing"}>{scopedT("pages.pricing")}</Link>
           <Link href={"/data"}>{scopedT("pages.data")}</Link>
         </div>
-        <div className="flex flex-col sm:flex-row text-xs xs:text-sm sm:gap-6 justify-center items-center text-center">
+        <div className="flex flex-col xs:flex-row text-xs xs:text-sm xs:gap-6 justify-center items-center text-center">
           <Link href={"/legal"}>{scopedT("legal.title")}</Link>
-          <div className="flex flex-col sm:flex-row sm:gap-6 justify-center">
+          <div className="flex flex-col xs:flex-row xs:gap-6 justify-center">
             <Link href={"/legal/terms-and-conditions"}>{scopedT("legal.terms")}</Link>
             <Link href={"/legal/privacy-policy"}>{scopedT("legal.privacy")}</Link>
           </div>

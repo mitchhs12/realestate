@@ -629,6 +629,8 @@ export default {
         "title": "Pages",
         "home": "Home",
         "about": "About",
+        "explore": "Explore",
+        "pricing": "Pricing",
         "articles": "Articles",
         "data": "Data"
       }

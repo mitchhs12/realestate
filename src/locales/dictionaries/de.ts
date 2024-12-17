@@ -629,6 +629,8 @@ export default {
         "title": "Viva Ideal",
         "home": "Heim",
         "about": "Um",
+        "explore": "Erkunden",
+        "pricing": "Preise",
         "articles": "Artikel",
         "data": "Daten"
       }

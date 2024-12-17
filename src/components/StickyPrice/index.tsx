@@ -49,10 +49,15 @@ export default function StickyPrice({
   const { home, editMode, homeOwnerEmail, homeOwnerName, homeOwnerPhone, fetchingContactInfo, handleGetContactInfo } =
     useContext(HomeContext);
   const { defaultCurrency, currencyData, sessionLoading, user } = useContext(LocaleContext);
-  const { openLogInModal, isModalOpen, revealPrice, setRevealPrice } = useContext(QueryContext);
+  const { openLogInModal, isModalOpen, revealPrice, setRevealPrice, revealContact } = useContext(QueryContext);
   const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const handleContactButton = () => {
+    handleGetContactInfo();
+    setContactModalOpen(true);
+  };
 
   return (
     <>
@@ -142,8 +147,7 @@ export default function StickyPrice({
                 className={`flex ${user ? "w-full" : "w-1/2"} px-4 justify-center gap-2 text-center`}
                 variant={"default"}
                 onClick={() => {
-                  handleGetContactInfo();
-                  setContactModalOpen(true);
+                  user ? handleContactButton() : openLogInModal();
                 }}
               >
                 <div className="flex justify-center">

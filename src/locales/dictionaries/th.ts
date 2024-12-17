@@ -629,6 +629,8 @@ export default {
         "title": "วีว่าไอเดียล",
         "home": "บ้าน",
         "about": "เกี่ยวกับ",
+        "explore": "สำรวจ",
+        "pricing": "การกำหนดราคา",
         "articles": "บทความ",
         "data": "ข้อมูล"
       }

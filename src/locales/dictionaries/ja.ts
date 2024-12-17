@@ -629,6 +629,8 @@ export default {
         "title": "ヴィヴァ・アイディアル",
         "home": "家",
         "about": "について",
+        "explore": "探検する",
+        "pricing": "価格",
         "articles": "記事",
         "data": "データ"
       }

@@ -629,6 +629,8 @@ export default {
         "title": "Yaşasın İdeal",
         "home": "Ev",
         "about": "Hakkında",
+        "explore": "Keşfetmek",
+        "pricing": "Fiyatlandırma",
         "articles": "Makaleler",
         "data": "Veri"
       }

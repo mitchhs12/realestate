@@ -629,6 +629,8 @@ export default {
         "title": "비바 아이디얼",
         "home": "집",
         "about": "에 대한",
+        "explore": "탐구하다",
+        "pricing": "가격",
         "articles": "조항",
         "data": "데이터"
       }

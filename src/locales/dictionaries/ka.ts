@@ -629,6 +629,8 @@ export default {
         "title": "ვივა იდეალური",
         "home": "მთავარი",
         "about": "შესახებ",
+        "explore": "გამოიკვლიეთ",
+        "pricing": "ფასი",
         "articles": "სტატიები",
         "data": "მონაცემები"
       }

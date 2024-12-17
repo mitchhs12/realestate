@@ -629,6 +629,8 @@ export default {
         "title": "Viva lý tưởng",
         "home": "Trang chủ",
         "about": "Về",
+        "explore": "Khám phá",
+        "pricing": "Giá cả",
         "articles": "Bài viết",
         "data": "Dữ liệu"
       }
