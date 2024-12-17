@@ -8,7 +8,7 @@ export default async function AboutLayout({
   return (
     <>
       <div className="flex flex-col items-center w-full">
-        <main className="flex-grow w-full h-full min-h-screen-minus-header-svh">{children}</main>
+        <main className="flex-grow w-full h-full min-h-screen-minus-header-svh max-w-8xl">{children}</main>
         <footer className="flex justify-center items-center p-6 w-full bg-muted">
           <Footer />
         </footer>

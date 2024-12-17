@@ -19,6 +19,11 @@ export const author = defineType({
       title: "Enter your job title (as you would like it to appear on the site).",
     }),
     defineField({
+      name: "email",
+      type: "string",
+      title: "Enter your email (this will be how people can contact you).",
+    }),
+    defineField({
       name: "bio",
       type: "text",
       title: "Write a short bio (100 words max).",

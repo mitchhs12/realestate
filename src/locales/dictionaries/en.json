@@ -523,74 +523,44 @@
     "title": "Pricing"
   },
   "about": {
-    "title": "About Us",
+    "main": { "title": "Our Story", "sub": "A GREAT JOURNEY" },
+    "team": { "title": "Our Team", "sub": "A TEAM WHO CARES" },
+    "contact": "Contact",
+    "values": {
+      "title": "Our Values",
+      "content": { "0": "Trust", "1": "Transparency", "2": "Accessibility", "3": "Affordability" }
+    },
     "content": {
-      "h1": "Welcome to Viva Ideal: Your Gateway to Global Real Estate",
-      "p1": {
-        "title": "Connecting You with International Properties, Worldwide",
-        "content": "At Viva Ideal, our mission is to be the #1 platform for those around the world looking to buy property overseas. We are dedicated to helping people navigate the complexities of purchasing real estate in foreign countries and making cross-border property ownership seamless and accessible for all."
-      },
-      "p2": {
-        "title": "Your Trusted Partner in the Transactional Process",
-        "content": "We understand that buying property abroad involves navigating unfamiliar legal and regulatory landscapes. Viva Ideal stands out by offering hands-on guidance through every step of the transactional process, thanks to our in-depth knowledge of local laws in each country we operate in. With our expertise, you can be confident in each stage of your property purchase, from legal compliance to financial transactions, as well as understanding the local property market."
-      },
-      "p3": {
-        "title": "Designed for the Modern Buyer",
-        "content": "Our platform caters especially to digital nomads, remote workers, and global-minded individuals seeking property opportunities that fit a flexible, location-independent lifestyle. Whether you're looking to invest, relocate, or find a new base for working remotely, Viva Ideal connects you with properties tailored to your unique needs and lifestyle preferences."
-      },
-      "p4": {
-        "title": "What Makes Viva Ideal Different?",
-        "content": "Our platform goes beyond property listings with a focus on:",
-        "b1": {
-          "title": "Localized Expertise",
-          "content": "Detailed insights into the legal, financial, and cultural nuances of buying in each region, so you can navigate the process with confidence."
-        },
-        "b2": {
-          "title": "Comprehensive Support",
-          "content": "Assistance at every step of the transaction, ensuring a secure and smooth process no matter where you are."
-        },
-        "b3": {
-          "title": "Global Network",
-          "content": "Access to trusted real estate professionals, legal advisors, and local experts who understand the challenges and opportunities of international property ownership."
-        },
-        "b4": {
-          "title": "Market Trends",
-          "content": "Up-to-date information on emerging markets and investment opportunities tailored to a global audience."
-        },
-        "b5": {
-          "title": "Community Highlights",
-          "content": "Detailed profiles of neighborhoods, lifestyle, and local attractions in each region, allowing you to find the perfect location for your next property."
-        }
-      },
-      "p5": {
-        "title": "Starting in Latin America, Expanding Worldwide",
-        "content": "Our journey begins with a focus on the vibrant, high-growth markets of Latin America—an ideal region for affordable and attractive property investments. Over time, we plan to expand our reach to Asia and Europe, creating a truly global platform that meets the needs of international buyers everywhere."
-      },
-      "p6": {
-        "title": "Join the Future of Global Real Estate",
-        "content": "As remote work transforms how we live and invest, Viva Ideal is here to support you in finding your ideal property anywhere in the world. Welcome to Viva Ideal, where international property ownership begins."
-      }
+      "0": "Our journey began with a simple idea",
+      "1": "What if finding a home abroad could be as easy as buying one nearby?",
+      "2": "From breaking language barriers to navigating foreign laws and currencies, we saw a chance to simplify the process and make international home-buying accessible.",
+      "3": "I’m Mitchell, founder of Viva Ideal, but this isn’t just my story—it’s a shared vision of a passionate team.",
+      "4": "Together, we’re building more than a platform; we’re creating a community that connects people to homes, cultures, and opportunities beyond borders, driven by our commitment to making this dream a reality.",
+      "h1": "Welcome to Viva Ideal: Your Gateway to Global Real Estate"
     },
     "mission": {
       "title": "Our Mission",
       "content": "To ensure everyone has the opportunity to live in a beautiful, safe, and affordable home, empowering them to build a secure future and a better life."
     },
-    "why": {
-      "title": "Our Why",
-      "content": "We believe that everyone has the right to a safe and affordable place to live."
-    },
     "how": {
       "title": "Our How",
-      "content": "The best way to make this possible is by reducing friction and connecting people from diverse cultural backgrounds; enabling them to explore what it is like to live in places outside of their immediate cultural sphere and familiar surroundings."
+      "content": "By reducing friction and connecting people from diverse cultural backgrounds; enabling exploration beyond familiar surroundings."
     },
     "latam": {
       "title": "Why Latin America",
+      "sub": "A CONTINENT FULL OF ADVANTAGES",
       "content": {
-        "1": "Latin America is more than a destination—it’s a home waiting to be discovered. With its vibrant cultures, breathtaking landscapes, and warm, welcoming communities, this region has a way of making you feel like you belong. For remote workers and dreamers alike, it offers something rare: the chance to live beautifully and affordably, without compromising on quality of life. Here, your income stretches further, turning aspirations into reality while immersing you in a rich and diverse world.",
-        "2": "What makes Latin America truly special is its connection to people and opportunity. The region’s alignment with U.S. time zones makes collaboration seamless, while the rise of remote work is driving local growth and empowering communities. It’s a place where adventure meets possibility—a place to build not just a life, but a life worth living. At Viva Ideal, we believe Latin America is where dreams and reality come together, and we’re here to help you find your perfect place within it."
+        "1": {
+          "title": "Remote Work Boom",
+          "body": "Rising global remote work boosts productivity and opportunities."
+        },
+        "2": { "title": "Income Savings", "body": "Lower living costs in Latin America attract remote workers." },
+        "3": { "title": "US Time Zones", "body": "Alignment with US time zones simplifies remote collaboration." },
+        "4": { "title": "Living Cost Edge", "body": "Affordable living draws high-income professionals." },
+        "5": { "title": "Economic Upswing", "body": "Remote worker influx drives local wealth and economic growth." }
       }
     },
-    "brochures": "Brochures"
+    "brochures": { "title": "Brochures", "sub": "DISCOVER MORE ABOUT US!" }
   },
   "sell": {
     "lockedLoginMessage": "Please log in to sell properties.",

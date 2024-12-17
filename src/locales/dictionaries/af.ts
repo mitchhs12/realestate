@@ -689,74 +689,70 @@ export default {
     "title": "Pryse"
   },
   "about": {
-    "title": "Oor",
-    "content": {
-      "h1": "Welkom by Viva Ideal: Jou poort na Global Real Estate",
-      "p1": {
-        "title": "Verbind jou met internasionale eiendomme, wêreldwyd",
-        "content": "By Viva Ideal is ons missie om die #1 platform te wees vir diegene regoor die wêreld wat eiendom oorsee wil koop. Ons is toegewyd om mense te help om die kompleksiteit van die aankoop van eiendom in die buiteland te navigeer en om oorgrens eiendomsbesit naatloos en toeganklik vir almal te maak."
-      },
-      "p2": {
-        "title": "Jou vertroude vennoot in die transaksieproses",
-        "content": "Ons verstaan ​​dat die koop van eiendom in die buiteland behels die navigasie van onbekende wetlike en regulatoriese landskappe. Viva Ideal staan ​​uit deur praktiese leiding deur elke stap van die transaksieproses te bied, danksy ons diepgaande kennis van plaaslike wette in elke land waarin ons bedrywig is. Met ons kundigheid kan jy vol vertroue wees in elke stadium van jou eiendomsaankoop , van wetlike nakoming tot finansiële transaksies, asook begrip van die plaaslike eiendomsmark."
-      },
-      "p3": {
-        "title": "Ontwerp vir die moderne koper",
-        "content": "Ons platform maak veral voorsiening vir digitale nomades, afgeleë werkers en individue wat wêreldwyd gesind is wat eiendomsgeleenthede soek wat pas by 'n buigsame, liggingonafhanklike leefstyl. Of jy nou wil belê, hervestig, of 'n nuwe basis vind om op afstand te werk, Viva Ideal verbind jou met eiendomme wat aangepas is vir jou unieke behoeftes en leefstylvoorkeure."
-      },
-      "p4": {
-        "title": "Wat maak Viva Ideaal anders?",
-        "content": "Ons platform gaan verder as eiendomslys met die fokus op:",
-        "b1": {
-          "title": "Gelokaliseerde Kundigheid",
-          "content": "Gedetailleerde insigte in die wetlike, finansiële en kulturele nuanses van koop in elke streek, sodat jy die proses met selfvertroue kan navigeer."
-        },
-        "b2": {
-          "title": "Omvattende ondersteuning",
-          "content": "Bystand by elke stap van die transaksie, om 'n veilige en gladde proses te verseker, maak nie saak waar jy is nie."
-        },
-        "b3": {
-          "title": "Wêreldwye netwerk",
-          "content": "Toegang tot betroubare eiendomskundiges, regsadviseurs en plaaslike kundiges wat die uitdagings en geleenthede van internasionale eiendomsbesit verstaan."
-        },
-        "b4": {
-          "title": "Marktendense",
-          "content": "Opgedateerde inligting oor ontluikende markte en beleggingsgeleenthede wat aangepas is vir 'n globale gehoor."
-        },
-        "b5": {
-          "title": "Gemeenskapshoogtepunte",
-          "content": "Gedetailleerde profiele van woonbuurte, leefstyl en plaaslike besienswaardighede in elke streek, sodat jy die perfekte ligging vir jou volgende eiendom kan vind."
-        }
-      },
-      "p5": {
-        "title": "Begin in Latyns-Amerika, brei wêreldwyd uit",
-        "content": "Ons reis begin met 'n fokus op die lewendige, hoëgroeimarkte van Latyns-Amerika—'n ideale streek vir bekostigbare en aantreklike eiendomsbeleggings. Met verloop van tyd beplan ons om ons bereik na Asië en Europa uit te brei, wat 'n werklik globale platform skep wat oral in die behoeftes van internasionale kopers voorsien."
-      },
-      "p6": {
-        "title": "Sluit aan by die toekoms van globale vaste eiendom",
-        "content": "Aangesien afgeleë werk hoe ons leef en belê verander, is Viva Ideal hier om jou te ondersteun om jou ideale eiendom op enige plek in die wêreld te vind. Welkom by Viva Ideal, waar internasionale eiendomsbesit begin."
+    "main": {
+      "title": "Ons Storie",
+      "sub": "'N GROOT REIS"
+    },
+    "team": {
+      "title": "Ons span",
+      "sub": "'N SPAN WAT OMGEEE"
+    },
+    "contact": "Kontak",
+    "values": {
+      "title": "Ons Waardes",
+      "content": {
+        "0": "Vertrou",
+        "1": "Deursigtigheid",
+        "2": "Toeganklikheid",
+        "3": "Bekostigbaarheid"
       }
+    },
+    "content": {
+      "0": "Wat as dit net so maklik kan wees om 'n huis in die buiteland te vind soos om een ​​naby te koop?",
+      "1": "Van die breek van taalgrense tot die navigasie van buitelandse wette en geldeenhede, ons het 'n kans gesien om die proses te vereenvoudig en internasionale huiskoop toeganklik te maak.",
+      "2": "Hallo, ek is Mitchell, stigter van Viva Ideal. Dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span. Saam bou ons meer as 'n platform; ons skep 'n gemeenskap wat mense verbind met huise, kulture en geleenthede buite grense, gedryf deur ons toewyding om hierdie droom 'n werklikheid te maak.",
+      "3": "Hallo, ek is Mitchell, stigter van Viva Ideal. Dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span. Saam bou ons meer as 'n platform; ons skep 'n gemeenskap wat mense verbind met huise, kulture en geleenthede buite grense, gedryf deur ons toewyding om hierdie droom 'n werklikheid te maak.",
+      "4": "Dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span.",
+      "h1": "Welkom by Viva Ideal: Jou poort na Global Real Estate"
     },
     "mission": {
       "title": "Ons Missie",
       "content": "Om te verseker dat almal die geleentheid het om in 'n pragtige, veilige en bekostigbare huis te woon, wat hulle bemagtig om 'n veilige toekoms en 'n beter lewe te bou."
     },
-    "why": {
-      "title": "Ons Hoekom",
-      "content": "Ons glo dat almal die reg het op 'n veilige en bekostigbare woonplek."
-    },
     "how": {
       "title": "Ons Hoe",
-      "content": "Die beste manier om dit moontlik te maak, is deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat hulle in staat stel om te verken hoe dit is om op plekke buite hul onmiddellike kulturele sfeer en bekende omgewing te woon."
+      "content": "Deur wrywing te verminder en mense van uiteenlopende kulturele agtergronde te verbind; wat verkenning buite die bekende omgewing moontlik maak."
     },
     "latam": {
       "title": "Hoekom Latyns-Amerika",
+      "sub": "'N KONTINENT VOL VOORDELE",
       "content": {
-        "1": "Latyns-Amerika is meer as 'n bestemming - dit is 'n huis wat wag om ontdek te word. Met sy lewendige kulture, asemrowende landskappe en warm, verwelkomende gemeenskappe, het hierdie streek 'n manier om jou te laat voel jy behoort. Vir afgeleë werkers en dromers bied dit iets skaars: die kans om pragtig en bekostigbaar te leef, sonder om in te boet op lewenskwaliteit. Hier strek jou inkomste verder en verander aspirasies in werklikheid terwyl jy jou in 'n ryk en diverse wêreld dompel.",
-        "2": "Wat Latyns-Amerika werklik spesiaal maak, is sy verbintenis met mense en geleenthede. Die streek se belyning met Amerikaanse tydsones maak samewerking naatloos, terwyl die opkoms van afgeleë werk plaaslike groei aandryf en gemeenskappe bemagtig. Dit is 'n plek waar avontuur moontlikhede ontmoet - 'n plek om nie net 'n lewe te bou nie, maar 'n lewe wat die moeite werd is om te leef. By Viva Ideal glo ons dat Latyns-Amerika is waar drome en werklikheid bymekaar kom, en ons is hier om jou te help om jou perfekte plek daarin te vind."
+        "1": {
+          "title": "Remote Work Boom",
+          "body": "Toenemende wêreldwye afgeleë werk verhoog produktiwiteit en geleenthede."
+        },
+        "2": {
+          "title": "Inkomste Spaar",
+          "body": "Laer lewenskoste in Latyns-Amerika lok afgeleë werkers."
+        },
+        "3": {
+          "title": "Amerikaanse Tydsones",
+          "body": "Belyning met Amerikaanse tydsones vereenvoudig afgeleë samewerking."
+        },
+        "4": {
+          "title": "Lewenskosterand",
+          "body": "Bekostigbare lewe lok hoë-inkomste professionele mense."
+        },
+        "5": {
+          "title": "Ekonomiese Opswaai",
+          "body": "Afgeleë werkersinstroming dryf plaaslike welvaart en ekonomiese groei aan."
+        }
       }
     },
-    "brochures": "Brosjures"
+    "brochures": {
+      "title": "Brosjures",
+      "sub": "ONTDEK MEER OOR ONS!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Meld asseblief aan om eiendomme te verkoop.",

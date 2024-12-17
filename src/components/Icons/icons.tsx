@@ -388,39 +388,37 @@ export const Icons = {
     </svg>
   ),
   seller_icon: ({ width = "40", height = "40", color = "#000000", strokeWidth = 4 }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" height={height} width={width}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" width={width} height={height}>
       <defs>
         <style>
           {`
-        .cls-1, .cls-2, .cls-3 {
-          fill: none;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-        }
-        .cls-1, .cls-2 {
-          stroke: ${color};
-        }
-        .cls-1 {
-          stroke-width: ${strokeWidth};
-        }
-        .cls-2, .cls-3 {
-          stroke-width: ${strokeWidth * (2.5 / 3)};
-        }
-        .cls-3 {
-          stroke: ${color};
-        }
-      `}
+          .cls-1, .cls-2 {
+            fill: none;
+            stroke: ${color};
+          }
+          .cls-1 {
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+          .cls-2 {
+            stroke-width: 2.8px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+        `}
         </style>
       </defs>
       <g id="TRAZOS">
-        <path
-          className="cls-1"
-          d="M59,43l0-2.35c0-.45.12.23,0-.23H64.1L37.56,10.87l-1.48,1.38L11.6,39.58l-.57.69h5.6c-.11.46-.23-.11.12.34V68.07"
-        />
-        <line className="cls-1" x1="16.78" y1="68.07" x2="33.67" y2="68.07" />
-        <ellipse className="cls-2" cx="50.65" cy="59.27" rx="12.5" ry="12.86" />
-        <path className="cls-3" d="M55.65,54.12h-7.5a2.58,2.58,0,0,0,0,5.15h5a2.57,2.57,0,0,1,0,5.14h-7.5" />
-        <path className="cls-3" d="M50.65,67V51.55" />
+        <path className="cls-1" d="M39.11,17.05,35.48,13,34,14.34,10.17,41l-.55.67h5.46c-.11.45-.22-.11.11.34V68.74" />
+        <path className="cls-1" d="M56.55,68.74,56.33,42c0-.45.11.22,0-.23h5L56.16,36" />
+        <line className="cls-1" x1="15.22" y1="68.74" x2="56.55" y2="68.74" />
+        <path className="cls-2" d="M44.23,40.64H32.54a4,4,0,0,0,0,8h7.79a4,4,0,0,1,0,8H28.64" />
+        <path className="cls-2" d="M36.43,60.69V36.63" />
+        <polyline className="cls-1" points="45.54 16.73 67.65 14.37 69.06 29.8 47.78 32.08" />
+        <line className="cls-1" x1="39.05" y1="25.22" x2="46.94" y2="32.17" />
+        <line className="cls-1" x1="45.54" y1="16.73" x2="39.05" y2="25.22" />
+        <circle className="cls-1" cx="47.17" cy="24.32" r="0.31" transform="translate(-5.77 20.55) rotate(-23.2)" />
       </g>
     </svg>
   ),

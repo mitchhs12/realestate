@@ -689,74 +689,70 @@
     "title": "Precios"
   },
   "about": {
-    "title": "Sobre Nosotros",
-    "content": {
-      "h1": "Bienvenido a Viva Ideal: su puerta de entrada al mercado inmobiliario global",
-      "p1": {
-        "title": "Conectándote con propiedades internacionales, en todo el mundo",
-        "content": "En Viva Ideal, nuestra misión es ser la plataforma número uno para quienes buscan comprar propiedades en el extranjero en todo el mundo. Nos dedicamos a ayudar a las personas a sortear las complejidades de la compra de bienes raíces en países extranjeros y a hacer que la propiedad transfronteriza sea sencilla y accesible para todos."
-      },
-      "p2": {
-        "title": "Su socio de confianza en el proceso transaccional",
-        "content": "Entendemos que comprar una propiedad en el extranjero implica navegar por entornos legales y regulatorios desconocidos. Viva Ideal se destaca por ofrecer una guía práctica en cada paso del proceso transaccional, gracias a nuestro profundo conocimiento de las leyes locales en cada país en el que operamos. Con nuestra experiencia, puede estar seguro en cada etapa de la compra de su propiedad, desde el cumplimiento legal hasta las transacciones financieras, además de comprender el mercado inmobiliario local."
-      },
-      "p3": {
-        "title": "Diseñado para el comprador moderno",
-        "content": "Nuestra plataforma está dirigida especialmente a nómadas digitales, trabajadores remotos y personas con mentalidad global que buscan oportunidades inmobiliarias que se adapten a un estilo de vida flexible e independiente de la ubicación. Ya sea que esté buscando invertir, mudarse o encontrar una nueva base para trabajar de forma remota, Viva Ideal lo conecta con propiedades adaptadas a sus necesidades y preferencias de estilo de vida únicas."
-      },
-      "p4": {
-        "title": "¿Qué hace que Viva Ideal sea diferente?",
-        "content": "Nuestra plataforma va más allá de los listados de propiedades y se centra en:",
-        "b1": {
-          "title": "Experiencia localizada",
-          "content": "Información detallada sobre los matices legales, financieros y culturales de la compra en cada región, para que pueda navegar por el proceso con confianza."
-        },
-        "b2": {
-          "title": "Soporte integral",
-          "content": "Asistencia en cada paso de la transacción, garantizando un proceso seguro y fluido sin importar dónde se encuentre."
-        },
-        "b3": {
-          "title": "Red global",
-          "content": "Acceso a profesionales inmobiliarios confiables, asesores legales y expertos locales que entienden los desafíos y oportunidades de la propiedad inmobiliaria internacional."
-        },
-        "b4": {
-          "title": "Tendencias del mercado",
-          "content": "Información actualizada sobre mercados emergentes y oportunidades de inversión adaptadas a una audiencia global."
-        },
-        "b5": {
-          "title": "Aspectos destacados de la comunidad",
-          "content": "Perfiles detallados de vecindarios, estilo de vida y atracciones locales en cada región, lo que le permitirá encontrar la ubicación perfecta para su próxima propiedad."
-        }
-      },
-      "p5": {
-        "title": "Empezando en América Latina, expandiéndonos a nivel mundial",
-        "content": "Nuestro viaje comienza con un enfoque en los mercados dinámicos y de alto crecimiento de América Latina, una región ideal para inversiones inmobiliarias asequibles y atractivas. Con el tiempo, planeamos expandir nuestro alcance a Asia y Europa, creando una plataforma verdaderamente global que satisfaga las necesidades de los compradores internacionales en todas partes."
-      },
-      "p6": {
-        "title": "Únase al futuro del mercado inmobiliario global",
-        "content": "A medida que el trabajo remoto transforma la forma en que vivimos e invertimos, Viva Ideal está aquí para ayudarlo a encontrar su propiedad ideal en cualquier parte del mundo. Bienvenido a Viva Ideal, donde comienza la propiedad inmobiliaria internacional."
+    "main": {
+      "title": "Nuestra historia",
+      "sub": "Un gran viaje"
+    },
+    "team": {
+      "title": "Nuestro equipo",
+      "sub": "UN EQUIPO QUE SE PREOCUPA"
+    },
+    "contact": "Contacto",
+    "values": {
+      "title": "Nuestros valores",
+      "content": {
+        "0": "Confianza",
+        "1": "Transparencia",
+        "2": "Accesibilidad",
+        "3": "Asequibilidad"
       }
+    },
+    "content": {
+      "0": "¿Qué pasaría si encontrar una casa en el extranjero pudiera ser tan fácil como comprar una cercana?",
+      "1": "Desde romper barreras lingüísticas hasta navegar entre leyes y monedas extranjeras, vimos la oportunidad de simplificar el proceso y hacer accesible la compra de una vivienda a nivel internacional.",
+      "2": "Hola, soy Mitchell, fundador de Viva Ideal. Esta no es solo mi historia: es la visión compartida de un equipo apasionado. Juntos, estamos construyendo más que una plataforma: estamos creando una comunidad que conecta a las personas con hogares, culturas y oportunidades más allá de las fronteras, impulsados por nuestro compromiso de hacer realidad este sueño.",
+      "3": "Hola, soy Mitchell, fundador de Viva Ideal. Esta no es solo mi historia: es la visión compartida de un equipo apasionado. Juntos, estamos construyendo más que una plataforma: estamos creando una comunidad que conecta a las personas con hogares, culturas y oportunidades más allá de las fronteras, impulsados por nuestro compromiso de hacer realidad este sueño.",
+      "4": "Esta no es sólo mi historia: es la visión compartida de un equipo apasionado.",
+      "h1": "Bienvenido a Viva Ideal: su puerta de entrada al mercado inmobiliario global"
     },
     "mission": {
       "title": "Nuestra misión",
       "content": "Garantizar que todos tengan la oportunidad de vivir en un hogar hermoso, seguro y asequible, capacitándolos para construir un futuro seguro y una vida mejor."
     },
-    "why": {
-      "title": "Nuestro por qué",
-      "content": "Creemos que todos tienen derecho a un lugar seguro y asequible para vivir."
-    },
     "how": {
       "title": "Nuestro Cómo",
-      "content": "La mejor manera de hacer esto posible es reducir la fricción y conectar a personas de diversos orígenes culturales, permitiéndoles explorar cómo es vivir en lugares fuera de su esfera cultural inmediata y su entorno familiar."
+      "content": "Al reducir la fricción y conectar a personas de diversos orígenes culturales, lo que permite la exploración más allá de los entornos familiares."
     },
     "latam": {
       "title": "¿Por qué América Latina?",
+      "sub": "UN CONTINENTE LLENO DE VENTAJAS",
       "content": {
-        "1": "América Latina es más que un destino: es un hogar que espera ser descubierto. Con sus culturas vibrantes, paisajes impresionantes y comunidades cálidas y acogedoras, esta región tiene una manera de hacerte sentir parte de ella. Tanto para los trabajadores remotos como para los soñadores, ofrece algo poco común: la oportunidad de vivir bellamente y a un precio asequible, sin comprometer la calidad de vida. Aquí, tus ingresos rinden más, convirtiendo tus aspiraciones en realidad mientras te sumerges en un mundo rico y diverso.",
-        "2": "Lo que hace que América Latina sea verdaderamente especial es su conexión con la gente y las oportunidades. La alineación de la región con las zonas horarias de EE. UU. hace que la colaboración sea fluida, mientras que el aumento del trabajo remoto está impulsando el crecimiento local y empoderando a las comunidades. Es un lugar donde la aventura se encuentra con la posibilidad, un lugar para construir no solo una vida, sino una vida que valga la pena vivir. En Viva Ideal, creemos que América Latina es donde los sueños y la realidad se unen, y estamos aquí para ayudarte a encontrar tu lugar perfecto en ella."
+        "1": {
+          "title": "Auge del trabajo remoto",
+          "body": "El aumento del trabajo remoto a nivel mundial impulsa la productividad y las oportunidades."
+        },
+        "2": {
+          "title": "Ahorro de ingresos",
+          "body": "Los menores costos de vida en América Latina atraen a trabajadores remotos."
+        },
+        "3": {
+          "title": "Zonas horarias de EE.UU.",
+          "body": "La alineación con las zonas horarias de EE. UU. simplifica la colaboración remota."
+        },
+        "4": {
+          "title": "Ventaja en el costo de vida",
+          "body": "La vida asequible atrae a profesionales con ingresos altos."
+        },
+        "5": {
+          "title": "Repunte económico",
+          "body": "La afluencia de trabajadores remotos impulsa la riqueza local y el crecimiento económico."
+        }
       }
     },
-    "brochures": "Folletos"
+    "brochures": {
+      "title": "Folletos",
+      "sub": "¡DESCUBRE MÁS SOBRE NOSOTROS!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Por favor inicie sesión para vender propiedades.",

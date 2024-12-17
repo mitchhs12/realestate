@@ -689,74 +689,70 @@ export default {
     "title": "Harga"
   },
   "about": {
-    "title": "Tentang",
-    "content": {
-      "h1": "Selamat datang di Viva Ideal: Gerbang Anda Menuju Real Estat Global",
-      "p1": {
-        "title": "Menghubungkan Anda dengan Properti Internasional di Seluruh Dunia",
-        "content": "Di Viva Ideal, misi kami adalah menjadi platform #1 bagi mereka di seluruh dunia yang ingin membeli properti di luar negeri. Kami berdedikasi untuk membantu orang-orang mengatasi kerumitan pembelian real estat di negara asing dan menjadikan kepemilikan properti lintas batas menjadi mudah dan dapat diakses oleh semua orang."
-      },
-      "p2": {
-        "title": "Mitra Tepercaya Anda dalam Proses Transaksi",
-        "content": "Kami memahami bahwa membeli properti di luar negeri melibatkan pemahaman terhadap lanskap hukum dan peraturan yang tidak dikenal. Viva Ideal menonjol dengan menawarkan panduan langsung melalui setiap langkah proses transaksi, berkat pengetahuan mendalam kami tentang hukum setempat di setiap negara tempat kami beroperasi. Dengan keahlian kami, Anda dapat merasa yakin pada setiap tahap pembelian properti Anda, mulai dari kepatuhan hukum hingga transaksi keuangan, serta memahami pasar properti setempat."
-      },
-      "p3": {
-        "title": "Dirancang untuk Pembeli Modern",
-        "content": "Platform kami ditujukan terutama untuk para pekerja lepas digital, pekerja jarak jauh, dan individu yang berpikiran global yang mencari peluang properti yang sesuai dengan gaya hidup yang fleksibel dan tidak bergantung pada lokasi. Baik Anda ingin berinvestasi, pindah, atau mencari tempat baru untuk bekerja jarak jauh, Viva Ideal menghubungkan Anda dengan properti yang disesuaikan dengan kebutuhan unik dan preferensi gaya hidup Anda."
-      },
-      "p4": {
-        "title": "Apa yang Membuat Viva Ideal Berbeda?",
-        "content": "Platform kami melampaui sekadar daftar properti dengan fokus pada:",
-        "b1": {
-          "title": "Keahlian Lokal",
-          "content": "Wawasan terperinci tentang nuansa hukum, keuangan, dan budaya pembelian di setiap wilayah, sehingga Anda dapat menavigasi prosesnya dengan percaya diri."
-        },
-        "b2": {
-          "title": "Dukungan Komprehensif",
-          "content": "Bantuan di setiap langkah transaksi, memastikan proses aman dan lancar di mana pun Anda berada."
-        },
-        "b3": {
-          "title": "Jaringan Global",
-          "content": "Akses ke profesional real estat tepercaya, penasihat hukum, dan pakar lokal yang memahami tantangan dan peluang kepemilikan properti internasional."
-        },
-        "b4": {
-          "title": "Tren Pasar",
-          "content": "Informasi terkini tentang pasar negara berkembang dan peluang investasi yang disesuaikan untuk audiens global."
-        },
-        "b5": {
-          "title": "Sorotan Komunitas",
-          "content": "Profil terperinci mengenai lingkungan sekitar, gaya hidup, dan objek wisata lokal di setiap wilayah, memudahkan Anda menemukan lokasi yang tepat untuk properti Anda berikutnya."
-        }
-      },
-      "p5": {
-        "title": "Dimulai di Amerika Latin, Berkembang ke Seluruh Dunia",
-        "content": "Perjalanan kami dimulai dengan fokus pada pasar Amerika Latin yang dinamis dan bertumbuh pesat—wilayah ideal untuk investasi properti yang terjangkau dan menarik. Seiring berjalannya waktu, kami berencana untuk memperluas jangkauan kami ke Asia dan Eropa, menciptakan platform global sejati yang memenuhi kebutuhan pembeli internasional di mana pun."
-      },
-      "p6": {
-        "title": "Bergabunglah dengan Masa Depan Real Estat Global",
-        "content": "Karena bekerja jarak jauh mengubah cara kita hidup dan berinvestasi, Viva Ideal hadir untuk mendukung Anda dalam menemukan properti idaman di mana pun di dunia. Selamat datang di Viva Ideal, tempat dimulainya kepemilikan properti internasional."
+    "main": {
+      "title": "Cerita Kami",
+      "sub": "PERJALANAN YANG HEBAT"
+    },
+    "team": {
+      "title": "Tim Kami",
+      "sub": "TIM YANG PEDULI"
+    },
+    "contact": "Kontak",
+    "values": {
+      "title": "Nilai-nilai Kami",
+      "content": {
+        "0": "Memercayai",
+        "1": "Transparansi",
+        "2": "Aksesibilitas",
+        "3": "Keterjangkauan"
       }
+    },
+    "content": {
+      "0": "Bagaimana jika mencari rumah di luar negeri semudah membeli rumah di dekat sini?",
+      "1": "Dari mengatasi kendala bahasa hingga memahami hukum dan mata uang asing, kami melihat peluang untuk menyederhanakan proses dan membuat pembelian rumah internasional menjadi mudah diakses.",
+      "2": "Hai, saya Mitchell, pendiri Viva Ideal. Ini bukan sekadar kisah saya—ini adalah visi bersama dari tim yang penuh semangat. Bersama-sama, kita membangun lebih dari sekadar platform; kita menciptakan komunitas yang menghubungkan orang-orang dengan rumah, budaya, dan peluang lintas batas, didorong oleh komitmen kita untuk mewujudkan mimpi ini.",
+      "3": "Hai, saya Mitchell, pendiri Viva Ideal. Ini bukan sekadar kisah saya—ini adalah visi bersama dari tim yang penuh semangat. Bersama-sama, kita membangun lebih dari sekadar platform; kita menciptakan komunitas yang menghubungkan orang-orang dengan rumah, budaya, dan peluang lintas batas, didorong oleh komitmen kita untuk mewujudkan mimpi ini.",
+      "4": "Ini bukan sekadar kisah saya—ini adalah visi bersama dari sebuah tim yang penuh semangat.",
+      "h1": "Selamat datang di Viva Ideal: Gerbang Anda Menuju Real Estat Global"
     },
     "mission": {
       "title": "Misi Kami",
       "content": "Untuk memastikan setiap orang memiliki kesempatan untuk tinggal di rumah yang indah, aman, dan terjangkau, memberdayakan mereka untuk membangun masa depan yang aman dan kehidupan yang lebih baik."
     },
-    "why": {
-      "title": "Mengapa Kami",
-      "content": "Kami percaya bahwa setiap orang berhak atas tempat tinggal yang aman dan terjangkau."
-    },
     "how": {
       "title": "Bagaimana Kami",
-      "content": "Cara terbaik untuk mewujudkan hal ini adalah dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan mereka mengeksplorasi bagaimana rasanya tinggal di tempat-tempat di luar lingkup budaya langsung dan lingkungan yang mereka kenal."
+      "content": "Dengan mengurangi gesekan dan menghubungkan orang-orang dari latar belakang budaya yang beragam; memungkinkan eksplorasi di luar lingkungan yang sudah dikenal."
     },
     "latam": {
       "title": "Mengapa Amerika Latin",
+      "sub": "BENUA YANG PENUH DENGAN KELEBIHAN",
       "content": {
-        "1": "Amerika Latin lebih dari sekadar destinasi—ini adalah rumah yang menunggu untuk dijelajahi. Dengan budaya yang semarak, pemandangan yang menakjubkan, dan masyarakat yang hangat dan ramah, kawasan ini memiliki cara untuk membuat Anda merasa diterima. Bagi para pekerja jarak jauh dan para pemimpi, kawasan ini menawarkan sesuatu yang langka: kesempatan untuk hidup dengan indah dan terjangkau, tanpa mengorbankan kualitas hidup. Di sini, penghasilan Anda akan meningkat lebih jauh, mengubah aspirasi menjadi kenyataan sekaligus membenamkan Anda dalam dunia yang kaya dan beragam.",
-        "2": "Yang membuat Amerika Latin benar-benar istimewa adalah hubungannya dengan orang-orang dan peluang. Kesesuaian wilayah ini dengan zona waktu AS membuat kolaborasi menjadi lancar, sementara maraknya kerja jarak jauh mendorong pertumbuhan lokal dan memberdayakan masyarakat. Ini adalah tempat di mana petualangan bertemu dengan kemungkinan—tempat untuk membangun bukan hanya kehidupan, tetapi kehidupan yang layak dijalani. Di Viva Ideal, kami percaya bahwa Amerika Latin adalah tempat mimpi dan kenyataan bersatu, dan kami di sini untuk membantu Anda menemukan tempat yang sempurna di dalamnya."
+        "1": {
+          "title": "Ledakan Kerja Jarak Jauh",
+          "body": "Meningkatnya pekerjaan jarak jauh global meningkatkan produktivitas dan peluang."
+        },
+        "2": {
+          "title": "Tabungan Pendapatan",
+          "body": "Biaya hidup yang lebih rendah di Amerika Latin menarik pekerja jarak jauh."
+        },
+        "3": {
+          "title": "Zona Waktu AS",
+          "body": "Penyelarasan dengan zona waktu AS menyederhanakan kolaborasi jarak jauh."
+        },
+        "4": {
+          "title": "Keunggulan Biaya Hidup",
+          "body": "Hidup yang terjangkau menarik para profesional berpenghasilan tinggi."
+        },
+        "5": {
+          "title": "Kemajuan Ekonomi",
+          "body": "Masuknya pekerja jarak jauh mendorong kekayaan lokal dan pertumbuhan ekonomi."
+        }
       }
     },
-    "brochures": "Brosur"
+    "brochures": {
+      "title": "Brosur",
+      "sub": "TEMUKAN LEBIH BANYAK TENTANG KAMI!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Silakan masuk untuk menjual properti.",

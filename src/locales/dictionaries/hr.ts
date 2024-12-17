@@ -689,74 +689,70 @@ export default {
     "title": "Cijene"
   },
   "about": {
-    "title": "Oko",
-    "content": {
-      "h1": "Dobrodošli u Viva Ideal: Vaš pristup globalnim nekretninama",
-      "p1": {
-        "title": "Povezujemo vas s International Properties, širom svijeta",
-        "content": "U Viva Ideal, naša misija je biti platforma broj 1 za one širom svijeta koji žele kupiti nekretninu u inozemstvu. Posvećeni smo pomaganju ljudima u snalaženju u složenosti kupnje nekretnina u stranim zemljama i omogućavamo prekogranično vlasništvo nad nekretninama neometanim i dostupnim svima."
-      },
-      "p2": {
-        "title": "Vaš partner od povjerenja u procesu transakcije",
-        "content": "Razumijemo da kupnja nekretnine u inozemstvu uključuje snalaženje u nepoznatim pravnim i regulatornim okvirima. Viva Ideal se ističe nudeći praktično vodstvo kroz svaki korak procesa transakcije, zahvaljujući našem detaljnom poznavanju lokalnih zakona u svakoj zemlji u kojoj poslujemo. Uz našu stručnost, možete biti sigurni u svakoj fazi vaše kupnje nekretnine , od usklađenosti s zakonima do financijskih transakcija, kao i razumijevanja lokalnog tržišta nekretnina."
-      },
-      "p3": {
-        "title": "Dizajnirano za modernog kupca",
-        "content": "Naša platforma posebno je namijenjena digitalnim nomadima, udaljenim radnicima i globalno orijentiranim pojedincima koji traže nekretnine koje odgovaraju fleksibilnom životnom stilu neovisnom o lokaciji. Bilo da želite ulagati, preseliti se ili pronaći novu bazu za rad na daljinu, Viva Ideal vas povezuje s nekretninama prilagođenim vašim jedinstvenim potrebama i životnim preferencijama."
-      },
-      "p4": {
-        "title": "Što Vivu Ideal čini drugačijom?",
-        "content": "Naša platforma ide dalje od popisa nekretnina s fokusom na:",
-        "b1": {
-          "title": "Lokalizirana stručnost",
-          "content": "Detaljan uvid u pravne, financijske i kulturne nijanse kupnje u svakoj regiji, tako da možete s povjerenjem upravljati postupkom."
-        },
-        "b2": {
-          "title": "Sveobuhvatna podrška",
-          "content": "Pomoć u svakom koraku transakcije, osiguravanje sigurnog i glatkog procesa bez obzira gdje se nalazite."
-        },
-        "b3": {
-          "title": "Globalna mreža",
-          "content": "Pristup pouzdanim stručnjacima za nekretnine, pravnim savjetnicima i lokalnim stručnjacima koji razumiju izazove i prilike međunarodnog vlasništva nad nekretninama."
-        },
-        "b4": {
-          "title": "Tržišni trendovi",
-          "content": "Ažurirane informacije o tržištima u razvoju i mogućnostima ulaganja prilagođene globalnoj publici."
-        },
-        "b5": {
-          "title": "Zajednica Highlights",
-          "content": "Detaljni profili četvrti, načina života i lokalnih atrakcija u svakoj regiji, omogućujući vam da pronađete savršenu lokaciju za svoju sljedeću nekretninu."
-        }
-      },
-      "p5": {
-        "title": "Počinje u Latinskoj Americi, širi se diljem svijeta",
-        "content": "Naše putovanje počinje s fokusom na živahna tržišta Latinske Amerike s velikim rastom—idealna regija za pristupačna i atraktivna ulaganja u nekretnine. S vremenom planiramo proširiti svoj doseg na Aziju i Europu, stvarajući istinski globalnu platformu koja zadovoljava potrebe međunarodnih kupaca posvuda."
-      },
-      "p6": {
-        "title": "Pridružite se budućnosti globalnih nekretnina",
-        "content": "Dok rad na daljinu mijenja način na koji živimo i ulažemo, Viva Ideal je tu da vam pomogne u pronalaženju vaše idealne nekretnine bilo gdje u svijetu. Dobrodošli u Viva Ideal, gdje počinje međunarodno vlasništvo nad nekretninama."
+    "main": {
+      "title": "Naša priča",
+      "sub": "VELIKO PUTOVANJE"
+    },
+    "team": {
+      "title": "Naš tim",
+      "sub": "TIM KOME JE STALO"
+    },
+    "contact": "Kontakt",
+    "values": {
+      "title": "Naše vrijednosti",
+      "content": {
+        "0": "Povjerenje",
+        "1": "Transparentnost",
+        "2": "Pristupačnost",
+        "3": "Priuštivost"
       }
+    },
+    "content": {
+      "0": "Što ako bi pronalaženje kuće u inozemstvu moglo biti jednostavno kao kupnja kuće u blizini?",
+      "1": "Od razbijanja jezičnih barijera do upravljanja stranim zakonima i valutama, vidjeli smo priliku da pojednostavimo proces i učinimo međunarodnu kupnju stanova dostupnim.",
+      "2": "Bok, ja sam Mitchell, osnivač Viva Ideal. Ovo nije samo moja priča - to je zajednička vizija strastvenog tima. Zajedno gradimo više od platforme; stvaramo zajednicu koja povezuje ljude s domovima, kulturama i mogućnostima izvan granica, vođeni našom predanošću da ovaj san postane stvarnost.",
+      "3": "Bok, ja sam Mitchell, osnivač Viva Ideal. Ovo nije samo moja priča - to je zajednička vizija strastvenog tima. Zajedno gradimo više od platforme; stvaramo zajednicu koja povezuje ljude s domovima, kulturama i mogućnostima izvan granica, vođeni našom predanošću da ovaj san postane stvarnost.",
+      "4": "Ovo nije samo moja priča - to je zajednička vizija strastvenog tima.",
+      "h1": "Dobrodošli u Viva Ideal: Vaš pristup globalnim nekretninama"
     },
     "mission": {
       "title": "Naša misija",
       "content": "Osigurati da svi imaju priliku živjeti u lijepom, sigurnom i pristupačnom domu, osnažujući ih da izgrade sigurnu budućnost i bolji život."
     },
-    "why": {
-      "title": "Naš zašto",
-      "content": "Vjerujemo da svatko ima pravo na sigurno i pristupačno mjesto za život."
-    },
     "how": {
       "title": "Naš Kako",
-      "content": "Najbolji način da se to učini je smanjenje trvenja i povezivanje ljudi iz različitih kulturnih sredina; omogućujući im da istraže kako je to živjeti na mjestima izvan njihove neposredne kulturne sfere i poznatog okruženja."
+      "content": "Smanjenjem trvenja i povezivanjem ljudi iz različitih kulturnih sredina; omogućujući istraživanje izvan poznatog okruženja."
     },
     "latam": {
       "title": "Zašto Latinska Amerika",
+      "sub": "KONTINENT PUN PREDNOSTI",
       "content": {
-        "1": "Latinska Amerika je više od odredišta - to je dom koji čeka da bude otkriven. Sa svojim živopisnim kulturama, krajolicima koji oduzimaju dah i toplim, gostoljubivim zajednicama, ova regija ima način da se osjećate kao da pripadate. Radnicima na daljinu i sanjarima nudi nešto rijetko: priliku da žive lijepo i pristupačno, bez ugrožavanja kvalitete života. Ovdje se vaš prihod proteže dalje, pretvarajući težnje u stvarnost dok vas uranja u bogat i raznolik svijet.",
-        "2": "Ono što Latinsku Ameriku čini uistinu posebnom je njezina povezanost s ljudima i prilikama. Usklađenost regije s vremenskim zonama SAD-a čini suradnju besprijekornom, dok porast rada na daljinu potiče lokalni rast i osnažuje zajednice. To je mjesto gdje se avantura susreće s mogućnostima - mjesto za izgradnju ne samo života, već života vrijednog življenja. Mi u Viva Ideal vjerujemo da je Latinska Amerika mjesto gdje se spajaju snovi i stvarnost, a mi smo tu da vam pomognemo pronaći svoje savršeno mjesto u njoj."
+        "1": {
+          "title": "Rad na daljinu",
+          "body": "Sve veći globalni rad na daljinu povećava produktivnost i mogućnosti."
+        },
+        "2": {
+          "title": "Ušteda prihoda",
+          "body": "Niži troškovi života u Latinskoj Americi privlače radnike na daljinu."
+        },
+        "3": {
+          "title": "Vremenske zone SAD-a",
+          "body": "Usklađivanje s vremenskim zonama SAD-a pojednostavljuje daljinsku suradnju."
+        },
+        "4": {
+          "title": "Granica troškova života",
+          "body": "Pristupačan život privlači stručnjake s visokim primanjima."
+        },
+        "5": {
+          "title": "Ekonomski uspon",
+          "body": "Priljev radnika na daljinu potiče lokalno bogatstvo i gospodarski rast."
+        }
       }
     },
-    "brochures": "Brošure"
+    "brochures": {
+      "title": "Brošure",
+      "sub": "OTKRIJTE VIŠE O NAMA!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Molimo prijavite se za prodaju nekretnina.",

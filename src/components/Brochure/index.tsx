@@ -16,7 +16,7 @@ export default function Brochure() {
   };
 
   return (
-    <div className="flex flex-row gap-20">
+    <div className="flex justify-between gap-6 sm:gap-20">
       <div className="flex flex-col gap-3">
         <div
           onClick={() => handleImageClick("en")}

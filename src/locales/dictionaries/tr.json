@@ -689,74 +689,70 @@
     "title": "Fiyatlandırma"
   },
   "about": {
-    "title": "Hakkında",
-    "content": {
-      "h1": "Viva Ideal'e Hoş Geldiniz: Küresel Gayrimenkule Açılan Kapınız",
-      "p1": {
-        "title": "Sizi Dünya Çapında Uluslararası Emlaklarla Buluşturuyoruz",
-        "content": "Viva Ideal'de misyonumuz, yurtdışında mülk satın almak isteyen dünyanın dört bir yanındaki kişiler için 1 numaralı platform olmaktır. İnsanların yabancı ülkelerde gayrimenkul satın almanın karmaşıklıklarını aşmalarına yardımcı olmaya ve sınır ötesi mülk sahipliğini herkes için sorunsuz ve erişilebilir hale getirmeye adadık kendimizi."
-      },
-      "p2": {
-        "title": "İşlemsel Süreçte Güvenilir Ortağınız",
-        "content": "Yurt dışında mülk satın almanın, alışılmadık yasal ve düzenleyici ortamlarda gezinmeyi gerektirdiğini anlıyoruz. Viva Ideal, faaliyet gösterdiğimiz her ülkedeki yerel yasalara ilişkin derinlemesine bilgimiz sayesinde, işlem sürecinin her adımında uygulamalı rehberlik sunarak öne çıkıyor. Uzmanlığımızla, yasal uyumluluktan finansal işlemlere kadar mülk satın alma işleminizin her aşamasında kendinize güvenebilir ve yerel mülk pazarını anlayabilirsiniz."
-      },
-      "p3": {
-        "title": "Modern Alıcılar İçin Tasarlandı",
-        "content": "Platformumuz özellikle dijital göçebelere, uzaktan çalışanlara ve esnek, konumdan bağımsız bir yaşam tarzına uygun mülk fırsatları arayan küresel düşünceli bireylere hitap ediyor. Yatırım yapmak, taşınmak veya uzaktan çalışmak için yeni bir üs bulmak istiyorsanız, Viva Ideal sizi benzersiz ihtiyaçlarınıza ve yaşam tarzı tercihlerinize göre uyarlanmış mülklerle buluşturuyor."
-      },
-      "p4": {
-        "title": "Viva Ideal'i Farklı Kılan Nedir?",
-        "content": "Platformumuz, emlak listelemelerinin ötesine geçerek şu konulara odaklanıyor:",
-        "b1": {
-          "title": "Yerelleştirilmiş Uzmanlık",
-          "content": "Her bölgedeki satın alma işlemlerinin yasal, finansal ve kültürel ayrıntılarına ilişkin ayrıntılı bilgiler, böylece süreci güvenle yönetebilirsiniz."
-        },
-        "b2": {
-          "title": "Kapsamlı Destek",
-          "content": "İşlemin her aşamasında size yardımcı oluyoruz, nerede olursanız olun güvenli ve sorunsuz bir süreç geçirmenizi sağlıyoruz."
-        },
-        "b3": {
-          "title": "Küresel Ağ",
-          "content": "Uluslararası gayrimenkul sahipliğinin zorluklarını ve fırsatlarını anlayan güvenilir gayrimenkul profesyonellerine, hukuk danışmanlarına ve yerel uzmanlara erişim."
-        },
-        "b4": {
-          "title": "Piyasa Trendleri",
-          "content": "Küresel bir kitleye yönelik, gelişmekte olan piyasalar ve yatırım fırsatları hakkında güncel bilgiler."
-        },
-        "b5": {
-          "title": "Topluluk Öne Çıkanlar",
-          "content": "Her bölgedeki mahallelerin, yaşam tarzlarının ve yerel cazibe merkezlerinin ayrıntılı profilleri, bir sonraki mülkünüz için mükemmel konumu bulmanıza olanak tanır."
-        }
-      },
-      "p5": {
-        "title": "Latin Amerika'da Başlayıp Dünya Çapında Genişliyoruz",
-        "content": "Yolculuğumuz, uygun fiyatlı ve cazip gayrimenkul yatırımları için ideal bir bölge olan Latin Amerika'nın canlı, yüksek büyüme pazarlarına odaklanarak başlıyor. Zamanla, erişimimizi Asya ve Avrupa'ya genişleterek, her yerdeki uluslararası alıcıların ihtiyaçlarını karşılayan gerçek anlamda küresel bir platform yaratmayı planlıyoruz."
-      },
-      "p6": {
-        "title": "Küresel Gayrimenkulün Geleceğine Katılın",
-        "content": "Uzaktan çalışma, yaşam ve yatırım şeklimizi değiştirirken, Viva Ideal dünyanın herhangi bir yerinde ideal mülkünüzü bulmanızda size destek olmak için burada. Uluslararası mülk sahipliğinin başladığı Viva Ideal'e hoş geldiniz."
+    "main": {
+      "title": "Hikayemiz",
+      "sub": "BÜYÜK BİR YOLCULUK"
+    },
+    "team": {
+      "title": "Ekibimiz",
+      "sub": "ÖNEMSEYEN BİR EKİP"
+    },
+    "contact": "Temas etmek",
+    "values": {
+      "title": "Değerlerimiz",
+      "content": {
+        "0": "Güven",
+        "1": "Şeffaflık",
+        "2": "Erişilebilirlik",
+        "3": "Uygunluk"
       }
+    },
+    "content": {
+      "0": "Peki ya yurtdışında bir ev bulmak, yakınlarda bir ev satın almak kadar kolay olsaydı?",
+      "1": "Dil engellerini aşmaktan yabancı yasalar ve para birimleri arasında geçiş yapmaya kadar, süreci basitleştirme ve uluslararası ev satın almayı erişilebilir kılma fırsatı gördük.",
+      "2": "Merhaba, ben Viva Ideal'in kurucusu Mitchell. Bu sadece benim hikayem değil; tutkulu bir ekibin ortak vizyonu. Birlikte, bir platformdan daha fazlasını inşa ediyoruz; insanları evlere, kültürlere ve sınırların ötesindeki fırsatlara bağlayan bir topluluk yaratıyoruz; bu rüyayı gerçeğe dönüştürme taahhüdümüzle hareket ediyoruz.",
+      "3": "Merhaba, ben Viva Ideal'in kurucusu Mitchell. Bu sadece benim hikayem değil; tutkulu bir ekibin ortak vizyonu. Birlikte, bir platformdan daha fazlasını inşa ediyoruz; insanları evlere, kültürlere ve sınırların ötesindeki fırsatlara bağlayan bir topluluk yaratıyoruz; bu rüyayı gerçeğe dönüştürme taahhüdümüzle hareket ediyoruz.",
+      "4": "Bu sadece benim hikayem değil; tutkulu bir ekibin ortak vizyonu.",
+      "h1": "Viva Ideal'e Hoş Geldiniz: Küresel Gayrimenkule Açılan Kapınız"
     },
     "mission": {
       "title": "Misyonumuz",
       "content": "Herkesin güzel, güvenli ve uygun fiyatlı bir evde yaşama fırsatına sahip olmasını sağlayarak, güvenli bir gelecek ve daha iyi bir yaşam inşa etmelerine olanak sağlamak."
     },
-    "why": {
-      "title": "Nedenimiz",
-      "content": "Herkesin güvenli ve uygun fiyatlı bir yaşam alanına sahip olma hakkı olduğuna inanıyoruz."
-    },
     "how": {
       "title": "Bizim Nasıl",
-      "content": "Bunu mümkün kılmanın en iyi yolu, sürtüşmeleri azaltmak ve farklı kültürel geçmişlere sahip insanları birbirine bağlamaktır; böylece onların kendi kültürel çevrelerinin ve aşina oldukları çevrelerinin dışındaki yerlerde yaşamanın nasıl bir şey olduğunu keşfetmelerini sağlamaktır."
+      "content": "Sürtüşmeleri azaltarak ve farklı kültürel geçmişlere sahip insanları birbirine bağlayarak; bilindik çevrelerin ötesinde keşiflere olanak sağlamak."
     },
     "latam": {
       "title": "Neden Latin Amerika",
+      "sub": "AVANTAJLARLA DOLU BİR KITA",
       "content": {
-        "1": "Latin Amerika bir varış noktasından daha fazlasıdır; keşfedilmeyi bekleyen bir yuvadır. Canlı kültürleri, nefes kesici manzaraları ve sıcak, misafirperver topluluklarıyla bu bölge, kendinizi ait hissetmenizi sağlamanın bir yolunu bulur. Uzaktan çalışanlar ve hayalperestler için nadir bir şey sunar: Yaşam kalitesinden ödün vermeden güzel ve uygun fiyatlı bir şekilde yaşama şansı. Burada, geliriniz daha da artar, sizi zengin ve çeşitli bir dünyaya daldırırken özlemlerinizi gerçeğe dönüştürür.",
-        "2": "Latin Amerika'yı gerçekten özel kılan şey, insanlara ve fırsatlara olan bağlantısıdır. Bölgenin ABD saat dilimleriyle uyumu, iş birliğini sorunsuz hale getirirken, uzaktan çalışmanın yükselişi yerel büyümeyi teşvik ediyor ve toplulukları güçlendiriyor. Maceranın olasılıklarla buluştuğu bir yer; sadece bir hayat değil, yaşamaya değer bir hayat inşa etmek için bir yer. Viva Ideal'de, Latin Amerika'nın hayallerin ve gerçekliğin bir araya geldiği yer olduğuna inanıyoruz ve sizin için mükemmel yeri bulmanıza yardımcı olmak için buradayız."
+        "1": {
+          "title": "Uzaktan Çalışma Patlaması",
+          "body": "Küresel ölçekte artan uzaktan çalışma, üretkenliği ve fırsatları artırıyor."
+        },
+        "2": {
+          "title": "Gelir Tasarrufları",
+          "body": "Latin Amerika'da düşük yaşam maliyetleri uzaktan çalışanları cezbediyor."
+        },
+        "3": {
+          "title": "ABD Saat Dilimleri",
+          "body": "ABD saat dilimleriyle uyum, uzaktan işbirliğini kolaylaştırır."
+        },
+        "4": {
+          "title": "Yaşam Maliyeti Avantajı",
+          "body": "Uygun fiyatlı yaşam, yüksek gelirli profesyonelleri cezbediyor."
+        },
+        "5": {
+          "title": "Ekonomik Yükseliş",
+          "body": "Uzaktan çalışan akını yerel refahı ve ekonomik büyümeyi artırıyor."
+        }
       }
     },
-    "brochures": "Broşürler"
+    "brochures": {
+      "title": "Broşürler",
+      "sub": "BİZİ DAHA FAZLA KEŞFEDİN!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Emlak satışı yapabilmek için lütfen giriş yapınız.",

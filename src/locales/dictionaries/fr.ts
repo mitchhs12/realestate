@@ -689,74 +689,70 @@ export default {
     "title": "Tarifs"
   },
   "about": {
-    "title": "À propos",
-    "content": {
-      "h1": "Bienvenue chez Viva Ideal : votre passerelle vers l'immobilier mondial",
-      "p1": {
-        "title": "Vous connecter avec des propriétés internationales, dans le monde entier",
-        "content": "Chez Viva Ideal, notre mission est d'être la plateforme n°1 pour ceux qui souhaitent acheter des biens immobiliers à l'étranger. Nous nous engageons à aider les gens à s'y retrouver dans les complexités de l'achat de biens immobiliers dans des pays étrangers et à rendre la propriété immobilière transfrontalière transparente et accessible à tous."
-      },
-      "p2": {
-        "title": "Votre partenaire de confiance dans le processus transactionnel",
-        "content": "Nous comprenons que l'achat d'un bien immobilier à l'étranger implique de naviguer dans des environnements juridiques et réglementaires inconnus. Viva Ideal se distingue en offrant des conseils pratiques à chaque étape du processus transactionnel, grâce à notre connaissance approfondie des lois locales de chaque pays dans lequel nous opérons. Grâce à notre expertise, vous pouvez être sûr à chaque étape de votre achat immobilier, de la conformité juridique aux transactions financières, ainsi que de la compréhension du marché immobilier local."
-      },
-      "p3": {
-        "title": "Conçu pour l'acheteur moderne",
-        "content": "Notre plateforme s'adresse en particulier aux nomades numériques, aux travailleurs à distance et aux personnes tournées vers le monde qui recherchent des opportunités immobilières adaptées à un style de vie flexible et indépendant de l'emplacement. Que vous cherchiez à investir, à déménager ou à trouver une nouvelle base pour travailler à distance, Viva Ideal vous met en relation avec des propriétés adaptées à vos besoins uniques et à vos préférences de style de vie."
-      },
-      "p4": {
-        "title": "Qu'est-ce qui rend Viva Ideal différent ?",
-        "content": "Notre plateforme va au-delà des annonces immobilières en se concentrant sur :",
-        "b1": {
-          "title": "Expertise localisée",
-          "content": "Des informations détaillées sur les nuances juridiques, financières et culturelles de l’achat dans chaque région, afin que vous puissiez naviguer dans le processus en toute confiance."
-        },
-        "b2": {
-          "title": "Assistance complète",
-          "content": "Une assistance à chaque étape de la transaction, assurant un processus sécurisé et fluide où que vous soyez."
-        },
-        "b3": {
-          "title": "Réseau mondial",
-          "content": "Accès à des professionnels de l’immobilier, des conseillers juridiques et des experts locaux de confiance qui comprennent les défis et les opportunités de la propriété immobilière internationale."
-        },
-        "b4": {
-          "title": "Tendances du marché",
-          "content": "Informations actualisées sur les marchés émergents et les opportunités d’investissement adaptées à un public mondial."
-        },
-        "b5": {
-          "title": "Faits saillants de la communauté",
-          "content": "Profils détaillés des quartiers, du style de vie et des attractions locales dans chaque région, vous permettant de trouver l'emplacement idéal pour votre prochaine propriété."
-        }
-      },
-      "p5": {
-        "title": "Début en Amérique latine, expansion dans le monde entier",
-        "content": "Notre parcours commence par une attention particulière portée aux marchés dynamiques et à forte croissance d’Amérique latine, une région idéale pour des investissements immobiliers abordables et attractifs. Au fil du temps, nous prévoyons d’étendre notre présence à l’Asie et à l’Europe, créant ainsi une plateforme véritablement mondiale qui répond aux besoins des acheteurs internationaux du monde entier."
-      },
-      "p6": {
-        "title": "Rejoignez le futur de l'immobilier mondial",
-        "content": "Alors que le télétravail transforme notre façon de vivre et d'investir, Viva Ideal est là pour vous aider à trouver votre propriété idéale partout dans le monde. Bienvenue chez Viva Ideal, où commence l'accession à la propriété internationale."
+    "main": {
+      "title": "Notre histoire",
+      "sub": "UN GRAND VOYAGE"
+    },
+    "team": {
+      "title": "Notre équipe",
+      "sub": "UNE ÉQUIPE QUI S'EN SOUCIE"
+    },
+    "contact": "Contact",
+    "values": {
+      "title": "Nos valeurs",
+      "content": {
+        "0": "Confiance",
+        "1": "Transparence",
+        "2": "Accessibilité",
+        "3": "Abordabilité"
       }
+    },
+    "content": {
+      "0": "Et si trouver une maison à l’étranger pouvait être aussi simple que d’en acheter une à proximité ?",
+      "1": "Qu'il s'agisse de briser les barrières linguistiques ou de s'orienter dans les lois et les devises étrangères, nous avons vu une opportunité de simplifier le processus et de rendre l'achat d'une maison à l'international accessible.",
+      "2": "Bonjour, je m’appelle Mitchell et je suis le fondateur de Viva Ideal. Ce n’est pas seulement mon histoire, c’est la vision partagée d’une équipe passionnée. Ensemble, nous construisons plus qu’une plateforme ; nous créons une communauté qui relie les gens à des foyers, des cultures et des opportunités au-delà des frontières, motivés par notre engagement à faire de ce rêve une réalité.",
+      "3": "Bonjour, je m’appelle Mitchell et je suis le fondateur de Viva Ideal. Ce n’est pas seulement mon histoire, c’est la vision partagée d’une équipe passionnée. Ensemble, nous construisons plus qu’une plateforme ; nous créons une communauté qui relie les gens à des foyers, des cultures et des opportunités au-delà des frontières, motivés par notre engagement à faire de ce rêve une réalité.",
+      "4": "Ce n’est pas seulement mon histoire, c’est la vision partagée d’une équipe passionnée.",
+      "h1": "Bienvenue chez Viva Ideal : votre passerelle vers l'immobilier mondial"
     },
     "mission": {
       "title": "Notre mission",
       "content": "Garantir à chacun la possibilité de vivre dans une maison belle, sûre et abordable, leur permettant ainsi de construire un avenir sûr et une vie meilleure."
     },
-    "why": {
-      "title": "Notre Pourquoi",
-      "content": "Nous croyons que chacun a droit à un endroit sûr et abordable où vivre."
-    },
     "how": {
       "title": "Notre Comment",
-      "content": "La meilleure façon d’y parvenir est de réduire les frictions et de connecter des personnes d’horizons culturels divers, en leur permettant d’explorer ce que c’est que de vivre dans des lieux extérieurs à leur sphère culturelle immédiate et à leur environnement familier."
+      "content": "En réduisant les frictions et en connectant des personnes d’horizons culturels divers, permettant l’exploration au-delà d’un environnement familier."
     },
     "latam": {
       "title": "Pourquoi l’Amérique latine",
+      "sub": "UN CONTINENT PLEIN D'AVANTAGES",
       "content": {
-        "1": "L’Amérique latine est bien plus qu’une destination : c’est un pays qui attend d’être découvert. Avec ses cultures dynamiques, ses paysages à couper le souffle et ses communautés chaleureuses et accueillantes, cette région a le don de vous faire sentir chez vous. Pour les travailleurs à distance comme pour les rêveurs, elle offre quelque chose de rare : la chance de vivre magnifiquement et à moindre coût, sans compromettre la qualité de vie. Ici, vos revenus s’étendent plus loin, transformant vos aspirations en réalité tout en vous immergeant dans un monde riche et diversifié.",
-        "2": "Ce qui rend l’Amérique latine si spéciale, c’est son lien avec les gens et les opportunités. L’alignement de la région sur les fuseaux horaires des États-Unis facilite la collaboration, tandis que l’essor du travail à distance stimule la croissance locale et renforce les communautés. C’est un endroit où l’aventure rencontre les possibilités, un endroit où construire non seulement une vie, mais une vie qui vaut la peine d’être vécue. Chez Viva Ideal, nous pensons que l’Amérique latine est le lieu où les rêves et la réalité se rencontrent, et nous sommes là pour vous aider à trouver votre place idéale en son sein."
+        "1": {
+          "title": "L’essor du travail à distance",
+          "body": "L’augmentation du travail à distance à l’échelle mondiale augmente la productivité et les opportunités."
+        },
+        "2": {
+          "title": "Revenu Épargne",
+          "body": "Le coût de la vie moins élevé en Amérique latine attire les travailleurs à distance."
+        },
+        "3": {
+          "title": "Fuseaux horaires des États-Unis",
+          "body": "L'alignement avec les fuseaux horaires américains simplifie la collaboration à distance."
+        },
+        "4": {
+          "title": "Coût de la vie avantageux",
+          "body": "Un niveau de vie abordable attire les professionnels à revenus élevés."
+        },
+        "5": {
+          "title": "Reprise économique",
+          "body": "L’afflux de travailleurs à distance stimule la richesse locale et la croissance économique."
+        }
       }
     },
-    "brochures": "Brochures"
+    "brochures": {
+      "title": "Brochures",
+      "sub": "DÉCOUVREZ-EN PLUS SUR NOUS!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Veuillez vous connecter pour vendre des propriétés.",

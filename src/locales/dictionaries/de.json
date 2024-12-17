@@ -689,74 +689,70 @@
     "title": "Preise"
   },
   "about": {
-    "title": "Um",
-    "content": {
-      "h1": "Willkommen bei Viva Ideal: Ihr Tor zum globalen Immobilienmarkt",
-      "p1": {
-        "title": "Wir verbinden Sie mit internationalen Immobilien weltweit",
-        "content": "Bei Viva Ideal ist es unsere Mission, die Plattform Nr. 1 für diejenigen auf der ganzen Welt zu sein, die Immobilien im Ausland kaufen möchten. Wir sind bestrebt, Menschen dabei zu helfen, die Komplexität des Immobilienkaufs im Ausland zu bewältigen und grenzüberschreitenden Immobilienbesitz für alle nahtlos und zugänglich zu machen."
-      },
-      "p2": {
-        "title": "Ihr zuverlässiger Partner im Transaktionsprozess",
-        "content": "Wir wissen, dass der Kauf einer Immobilie im Ausland mit unbekannten rechtlichen und regulatorischen Rahmenbedingungen verbunden ist. Viva Ideal zeichnet sich durch praktische Beratung bei jedem Schritt des Transaktionsprozesses aus, dank unserer umfassenden Kenntnis der lokalen Gesetze in jedem Land, in dem wir tätig sind. Dank unserer Expertise können Sie in jeder Phase Ihres Immobilienkaufs sicher sein, von der Einhaltung gesetzlicher Vorschriften bis hin zu Finanztransaktionen, und wir verstehen den lokalen Immobilienmarkt."
-      },
-      "p3": {
-        "title": "Entwickelt für den modernen Käufer",
-        "content": "Unsere Plattform richtet sich insbesondere an digitale Nomaden, Remote-Arbeiter und global denkende Menschen, die nach Immobilien suchen, die zu einem flexiblen, ortsunabhängigen Lebensstil passen. Egal, ob Sie investieren, umziehen oder einen neuen Standort für die Remote-Arbeit suchen möchten, Viva Ideal verbindet Sie mit Immobilien, die auf Ihre individuellen Bedürfnisse und Lebensstilpräferenzen zugeschnitten sind."
-      },
-      "p4": {
-        "title": "Was macht Viva Ideal anders?",
-        "content": "Unsere Plattform geht über Immobilienanzeigen hinaus und konzentriert sich auf:",
-        "b1": {
-          "title": "Lokale Expertise",
-          "content": "Detaillierte Einblicke in die rechtlichen, finanziellen und kulturellen Nuancen des Kaufs in jeder Region, damit Sie den Prozess sicher steuern können."
-        },
-        "b2": {
-          "title": "Umfassende Unterstützung",
-          "content": "Unterstützung bei jedem Schritt der Transaktion, um einen sicheren und reibungslosen Ablauf zu gewährleisten, egal wo Sie sich befinden."
-        },
-        "b3": {
-          "title": "Globales Netzwerk",
-          "content": "Zugang zu vertrauenswürdigen Immobilienfachleuten, Rechtsberatern und lokalen Experten, die die Herausforderungen und Chancen des internationalen Immobilienbesitzes verstehen."
-        },
-        "b4": {
-          "title": "Markttrends",
-          "content": "Aktuelle Informationen zu Schwellenmärkten und Anlagemöglichkeiten, zugeschnitten auf ein globales Publikum."
-        },
-        "b5": {
-          "title": "Community-Highlights",
-          "content": "Detaillierte Profile der Stadtteile, des Lebensstils und der örtlichen Sehenswürdigkeiten in jeder Region ermöglichen Ihnen, den perfekten Standort für Ihre nächste Immobilie zu finden."
-        }
-      },
-      "p5": {
-        "title": "Beginn in Lateinamerika, weltweite Expansion",
-        "content": "Unsere Reise beginnt mit einem Fokus auf die dynamischen, wachstumsstarken Märkte Lateinamerikas – eine ideale Region für erschwingliche und attraktive Immobilieninvestitionen. Im Laufe der Zeit planen wir, unsere Reichweite auf Asien und Europa auszudehnen und so eine wirklich globale Plattform zu schaffen, die den Bedürfnissen internationaler Käufer überall gerecht wird."
-      },
-      "p6": {
-        "title": "Werden Sie Teil der Zukunft des globalen Immobilienmarkts",
-        "content": "Da die Fernarbeit unsere Lebens- und Investitionsgewohnheiten verändert, unterstützt Sie Viva Ideal dabei, Ihre Traumimmobilie überall auf der Welt zu finden. Willkommen bei Viva Ideal, wo der internationale Immobilienbesitz beginnt."
+    "main": {
+      "title": "Unsere Geschichte",
+      "sub": "Eine tolle Reise"
+    },
+    "team": {
+      "title": "Unser Team",
+      "sub": "EIN TEAM, DAS SICH KÜMMERT"
+    },
+    "contact": "Kontakt",
+    "values": {
+      "title": "Unsere Werte",
+      "content": {
+        "0": "Vertrauen",
+        "1": "Transparenz",
+        "2": "Zugänglichkeit",
+        "3": "Erschwinglichkeit"
       }
+    },
+    "content": {
+      "0": "Was wäre, wenn es so einfach wäre, im Ausland ein Zuhause zu finden, wie in der Nähe eines zu kaufen?",
+      "1": "Vom Überwinden von Sprachbarrieren bis hin zum Umgang mit ausländischen Gesetzen und Währungen sahen wir eine Chance, den Prozess zu vereinfachen und den internationalen Hauskauf zugänglich zu machen.",
+      "2": "Hallo, ich bin Mitchell, Gründer von Viva Ideal. Dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams. Gemeinsam bauen wir mehr als nur eine Plattform auf; wir schaffen eine Community, die Menschen mit Häusern, Kulturen und Möglichkeiten jenseits von Grenzen verbindet, angetrieben von unserem Engagement, diesen Traum Wirklichkeit werden zu lassen.",
+      "3": "Hallo, ich bin Mitchell, Gründer von Viva Ideal. Dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams. Gemeinsam bauen wir mehr als nur eine Plattform auf; wir schaffen eine Community, die Menschen mit Häusern, Kulturen und Möglichkeiten jenseits von Grenzen verbindet, angetrieben von unserem Engagement, diesen Traum Wirklichkeit werden zu lassen.",
+      "4": "Dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams.",
+      "h1": "Willkommen bei Viva Ideal: Ihr Tor zum globalen Immobilienmarkt"
     },
     "mission": {
       "title": "Unsere Mission",
       "content": "Damit jeder die Möglichkeit hat, in einem schönen, sicheren und erschwinglichen Zuhause zu leben und sich so eine sichere Zukunft und ein besseres Leben aufzubauen."
     },
-    "why": {
-      "title": "Unser Warum",
-      "content": "Wir glauben, dass jeder das Recht auf einen sicheren und bezahlbaren Wohnort hat."
-    },
     "how": {
       "title": "Unser Wie",
-      "content": "Der beste Weg, dies zu erreichen, besteht darin, Reibungspunkte abzubauen und Menschen mit unterschiedlichem kulturellen Hintergrund zusammenzubringen. Dadurch können sie erfahren, wie es ist, an Orten außerhalb ihres unmittelbaren kulturellen Umfelds und ihrer vertrauten Umgebung zu leben."
+      "content": "Indem wir Reibungspunkte abbauen und Menschen mit unterschiedlichem kulturellen Hintergrund zusammenbringen, ermöglichen wir Erkundungen jenseits der vertrauten Umgebung."
     },
     "latam": {
       "title": "Warum Lateinamerika",
+      "sub": "Ein Kontinent voller Vorteile",
       "content": {
-        "1": "Lateinamerika ist mehr als ein Reiseziel – es ist eine Heimat, die darauf wartet, entdeckt zu werden. Mit seinen lebendigen Kulturen, atemberaubenden Landschaften und warmherzigen, einladenden Gemeinschaften vermittelt diese Region jedem das Gefühl, dazuzugehören. Für Fernarbeiter und Träumer gleichermaßen bietet sie etwas Seltenes: die Chance, schön und erschwinglich zu leben, ohne Kompromisse bei der Lebensqualität einzugehen. Hier reicht Ihr Einkommen weiter, sodass Ihre Träume Wirklichkeit werden und Sie in eine reiche und vielfältige Welt eintauchen können.",
-        "2": "Was Lateinamerika wirklich besonders macht, ist seine Verbindung zu Menschen und Chancen. Die Ausrichtung der Region auf die Zeitzonen der USA ermöglicht eine nahtlose Zusammenarbeit, während der Anstieg der Fernarbeit das lokale Wachstum vorantreibt und Gemeinschaften stärkt. Es ist ein Ort, an dem Abenteuer auf Möglichkeiten trifft – ein Ort, an dem man sich nicht nur ein Leben aufbauen kann, sondern ein Leben, das lebenswert ist. Wir bei Viva Ideal glauben, dass in Lateinamerika Träume und Realität zusammenkommen, und wir sind hier, um Ihnen zu helfen, Ihren perfekten Platz darin zu finden."
+        "1": {
+          "title": "Boom der Fernarbeit",
+          "body": "Die zunehmende globale Fernarbeit steigert die Produktivität und die Chancen."
+        },
+        "2": {
+          "title": "Einkommenseinsparungen",
+          "body": "Niedrigere Lebenshaltungskosten in Lateinamerika ziehen Telearbeiter an."
+        },
+        "3": {
+          "title": "Zeitzonen in den USA",
+          "body": "Die Anpassung an die Zeitzonen der USA vereinfacht die Remote-Zusammenarbeit."
+        },
+        "4": {
+          "title": "Lebenshaltungskostengrenze",
+          "body": "Bezahlbares Wohnen zieht Berufstätige mit hohem Einkommen an."
+        },
+        "5": {
+          "title": "Wirtschaftlicher Aufschwung",
+          "body": "Der Zustrom von Telearbeitern fördert den lokalen Wohlstand und das Wirtschaftswachstum."
+        }
       }
     },
-    "brochures": "Broschüren"
+    "brochures": {
+      "title": "Broschüren",
+      "sub": "ERFAHREN SIE MEHR ÜBER UNS!"
+    }
   },
   "sell": {
     "lockedLoginMessage": "Bitte loggen Sie sich ein, um Immobilien zu verkaufen.",
