@@ -163,7 +163,7 @@ export default function AboutPageContent({
             })}
           </div>
         </div>
-        <div className="flex flex-col gap-20 pb-8 w-full items-center text-center">
+        <div className="flex flex-col gap-12 pb-8 w-full items-center text-center">
           <div className="flex w-full flex-col gap-3 items-center">
             <h3
               className={`${urbanist.className} tracking-widest font-medium text-lg sm:text-xl text-[#0C7A33] dark:text-primary`}
