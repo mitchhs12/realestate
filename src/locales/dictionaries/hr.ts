@@ -710,11 +710,11 @@ export default {
       }
     },
     "content": {
-      "0": "Što ako bi pronalaženje kuće u inozemstvu moglo biti jednostavno kao kupnja kuće u blizini?",
-      "1": "Od razbijanja jezičnih barijera do upravljanja stranim zakonima i valutama, vidjeli smo priliku da pojednostavimo proces i učinimo međunarodnu kupnju stanova dostupnim.",
-      "2": "Bok, ja sam Mitchell, osnivač Viva Ideal. Ovo nije samo moja priča - to je zajednička vizija strastvenog tima. Zajedno gradimo više od platforme; stvaramo zajednicu koja povezuje ljude s domovima, kulturama i mogućnostima izvan granica, vođeni našom predanošću da ovaj san postane stvarnost.",
-      "3": "Bok, ja sam Mitchell, osnivač Viva Ideal. Ovo nije samo moja priča - to je zajednička vizija strastvenog tima. Zajedno gradimo više od platforme; stvaramo zajednicu koja povezuje ljude s domovima, kulturama i mogućnostima izvan granica, vođeni našom predanošću da ovaj san postane stvarnost.",
-      "4": "Ovo nije samo moja priča - to je zajednička vizija strastvenog tima.",
+      "0": "Naše putovanje počelo je jednostavnom idejom",
+      "1": "Što ako bi pronalaženje kuće u inozemstvu moglo biti jednostavno kao kupnja kuće u blizini?",
+      "2": "Od razbijanja jezičnih barijera do upravljanja stranim zakonima i valutama, vidjeli smo priliku da pojednostavimo proces i učinimo međunarodnu kupnju stanova dostupnim.",
+      "3": "Ja sam Mitchell, osnivač Viva Ideal, ali ovo nije samo moja priča – to je zajednička vizija strastvenog tima.",
+      "4": "Zajedno gradimo više od platforme; stvaramo zajednicu koja povezuje ljude s domovima, kulturama i mogućnostima izvan granica, vođeni našom predanošću da ovaj san postane stvarnost.",
       "h1": "Dobrodošli u Viva Ideal: Vaš pristup globalnim nekretninama"
     },
     "mission": {

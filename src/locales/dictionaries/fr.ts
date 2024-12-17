@@ -710,11 +710,11 @@ export default {
       }
     },
     "content": {
-      "0": "Et si trouver une maison à l’étranger pouvait être aussi simple que d’en acheter une à proximité ?",
-      "1": "Qu'il s'agisse de briser les barrières linguistiques ou de s'orienter dans les lois et les devises étrangères, nous avons vu une opportunité de simplifier le processus et de rendre l'achat d'une maison à l'international accessible.",
-      "2": "Bonjour, je m’appelle Mitchell et je suis le fondateur de Viva Ideal. Ce n’est pas seulement mon histoire, c’est la vision partagée d’une équipe passionnée. Ensemble, nous construisons plus qu’une plateforme ; nous créons une communauté qui relie les gens à des foyers, des cultures et des opportunités au-delà des frontières, motivés par notre engagement à faire de ce rêve une réalité.",
-      "3": "Bonjour, je m’appelle Mitchell et je suis le fondateur de Viva Ideal. Ce n’est pas seulement mon histoire, c’est la vision partagée d’une équipe passionnée. Ensemble, nous construisons plus qu’une plateforme ; nous créons une communauté qui relie les gens à des foyers, des cultures et des opportunités au-delà des frontières, motivés par notre engagement à faire de ce rêve une réalité.",
-      "4": "Ce n’est pas seulement mon histoire, c’est la vision partagée d’une équipe passionnée.",
+      "0": "Notre voyage a commencé avec une idée simple",
+      "1": "Et si trouver une maison à l’étranger pouvait être aussi simple que d’en acheter une à proximité ?",
+      "2": "Qu'il s'agisse de briser les barrières linguistiques ou de s'orienter dans les lois et les devises étrangères, nous avons vu une opportunité de simplifier le processus et de rendre l'achat d'une maison à l'international accessible.",
+      "3": "Je suis Mitchell, fondateur de Viva Ideal, mais ce n’est pas seulement mon histoire : c’est la vision partagée d’une équipe passionnée.",
+      "4": "Ensemble, nous construisons plus qu’une plateforme ; nous créons une communauté qui relie les gens à des foyers, des cultures et des opportunités au-delà des frontières, motivés par notre engagement à faire de ce rêve une réalité.",
       "h1": "Bienvenue chez Viva Ideal : votre passerelle vers l'immobilier mondial"
     },
     "mission": {

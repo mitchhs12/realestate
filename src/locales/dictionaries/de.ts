@@ -710,11 +710,11 @@ export default {
       }
     },
     "content": {
-      "0": "Was wäre, wenn es so einfach wäre, im Ausland ein Zuhause zu finden, wie in der Nähe eines zu kaufen?",
-      "1": "Vom Überwinden von Sprachbarrieren bis hin zum Umgang mit ausländischen Gesetzen und Währungen sahen wir eine Chance, den Prozess zu vereinfachen und den internationalen Hauskauf zugänglich zu machen.",
-      "2": "Hallo, ich bin Mitchell, Gründer von Viva Ideal. Dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams. Gemeinsam bauen wir mehr als nur eine Plattform auf; wir schaffen eine Community, die Menschen mit Häusern, Kulturen und Möglichkeiten jenseits von Grenzen verbindet, angetrieben von unserem Engagement, diesen Traum Wirklichkeit werden zu lassen.",
-      "3": "Hallo, ich bin Mitchell, Gründer von Viva Ideal. Dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams. Gemeinsam bauen wir mehr als nur eine Plattform auf; wir schaffen eine Community, die Menschen mit Häusern, Kulturen und Möglichkeiten jenseits von Grenzen verbindet, angetrieben von unserem Engagement, diesen Traum Wirklichkeit werden zu lassen.",
-      "4": "Dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams.",
+      "0": "Unsere Reise begann mit einer einfachen Idee",
+      "1": "Was wäre, wenn es so einfach wäre, im Ausland ein Zuhause zu finden, wie in der Nähe eines zu kaufen?",
+      "2": "Vom Überwinden von Sprachbarrieren bis hin zum Umgang mit ausländischen Gesetzen und Währungen sahen wir eine Chance, den Prozess zu vereinfachen und den internationalen Hauskauf zugänglich zu machen.",
+      "3": "Ich bin Mitchell, Gründer von Viva Ideal, aber dies ist nicht nur meine Geschichte – es ist die gemeinsame Vision eines leidenschaftlichen Teams.",
+      "4": "Gemeinsam bauen wir mehr als nur eine Plattform auf: Wir schaffen eine Community, die Menschen über Grenzen hinweg Heimat, Kulturen und Möglichkeiten bietet, angetrieben von unserem Engagement, diesen Traum Wirklichkeit werden zu lassen.",
       "h1": "Willkommen bei Viva Ideal: Ihr Tor zum globalen Immobilienmarkt"
     },
     "mission": {

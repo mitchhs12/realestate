@@ -710,11 +710,11 @@ export default {
       }
     },
     "content": {
-      "0": "Wat as dit net so maklik kan wees om 'n huis in die buiteland te vind soos om een ​​naby te koop?",
-      "1": "Van die breek van taalgrense tot die navigasie van buitelandse wette en geldeenhede, ons het 'n kans gesien om die proses te vereenvoudig en internasionale huiskoop toeganklik te maak.",
-      "2": "Hallo, ek is Mitchell, stigter van Viva Ideal. Dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span. Saam bou ons meer as 'n platform; ons skep 'n gemeenskap wat mense verbind met huise, kulture en geleenthede buite grense, gedryf deur ons toewyding om hierdie droom 'n werklikheid te maak.",
-      "3": "Hallo, ek is Mitchell, stigter van Viva Ideal. Dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span. Saam bou ons meer as 'n platform; ons skep 'n gemeenskap wat mense verbind met huise, kulture en geleenthede buite grense, gedryf deur ons toewyding om hierdie droom 'n werklikheid te maak.",
-      "4": "Dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span.",
+      "0": "Ons reis het begin met 'n eenvoudige idee",
+      "1": "Wat as dit net so maklik kan wees om 'n huis in die buiteland te vind soos om een ​​naby te koop?",
+      "2": "Van die breek van taalgrense tot die navigasie van buitelandse wette en geldeenhede, ons het 'n kans gesien om die proses te vereenvoudig en internasionale huiskoop toeganklik te maak.",
+      "3": "Ek is Mitchell, stigter van Viva Ideal, maar dit is nie net my storie nie - dit is 'n gedeelde visie van 'n passievolle span.",
+      "4": "Saam bou ons meer as 'n platform; ons skep 'n gemeenskap wat mense verbind met huise, kulture en geleenthede buite grense, gedryf deur ons toewyding om hierdie droom 'n werklikheid te maak.",
       "h1": "Welkom by Viva Ideal: Jou poort na Global Real Estate"
     },
     "mission": {
