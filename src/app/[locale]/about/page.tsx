@@ -53,7 +53,12 @@ export const revalidate = 30;
 
 export default async function Page(props: { params: Promise<{ locale: LanguageType }> }) {
   const params = await props.params;
+  const { locale } = params;
+
+  setStaticParamsLocale(locale);
+
   const t = await getScopedI18n("about");
+  const data = await getData();
 
   const team = { title: t("team.title"), sub: t("team.sub") };
   const latam = {
@@ -77,11 +82,6 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
     affordability: t("values.content.3"),
   };
   const brochures = { title: t("brochures.title"), sub: t("brochures.sub") };
-
-  const { locale } = params;
-
-  setStaticParamsLocale(locale);
-  const data = await getData();
 
   return (
     <div className="flex flex-col h-full items-center p-6 gap-12 py-8 w-full">
