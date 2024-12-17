@@ -117,7 +117,7 @@ export default function Header({
       <header
         className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "shadow-lg dark:shadow-white/5 justify-between"
-        } items-center min-h-[86px] p-5 z-[40] md:px-6 bg-background`}
+        } items-center min-h-[86px] p-4 z-[40] md:px-6 bg-background`}
       >
         <div className="flex flex-col gap-4 w-full h-full justify-center">
           <div className="flex justify-between">

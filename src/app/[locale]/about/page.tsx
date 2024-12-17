@@ -84,7 +84,7 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
   const brochures = { title: t("brochures.title"), sub: t("brochures.sub") };
 
   return (
-    <div className="flex flex-col h-full items-center p-6 gap-16 py-8 w-full">
+    <div className="flex flex-col h-full items-center p-4 md:p-8 gap-16 py-6 w-full">
       <div className="flex flex-col items-center gap-2 pt-8 justify-center text-center">
         <h3
           className={`${urbanist.className} tracking-widest font-medium text-xl sm:text-2xl text-[#0C7A33] dark:text-primary`}
