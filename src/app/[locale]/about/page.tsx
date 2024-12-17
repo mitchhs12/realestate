@@ -3,7 +3,6 @@ import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import Image from "next/image";
 import { client } from "@/lib/sanity";
-import AboutTitle from "@/components/AboutPage/Title";
 import AboutPageContent from "@/components/AboutPage";
 import { getLanguageAlternates } from "@/lib/utils";
 import { getScopedI18n } from "@/locales/server";
