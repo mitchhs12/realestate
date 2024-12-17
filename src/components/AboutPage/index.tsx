@@ -107,7 +107,7 @@ export default function AboutPageContent({
                     <div className="flex flex-col items-center justify-start gap-3 h-full">
                       <div
                         key={person.name} // Add a unique key here
-                        className="relative items-center justify-start h-[150px] w-[150px] transition-transform ease-in-out duration-200 hover:scale-110 hover:cursor-pointer"
+                        className="relative items-center justify-start h-[140px] w-[140px]  transition-transform ease-in-out duration-200 hover:scale-110 hover:cursor-pointer"
                       >
                         <Image
                           src={urlFor(person.image_url).url()}
