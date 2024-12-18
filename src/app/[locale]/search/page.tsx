@@ -58,6 +58,7 @@ export default async function Page(props: { params: Promise<{ locale: string; se
   const otherCategories = t("otherCategories");
   const loadingText = t("loading");
   const premiumText = p("title");
+  const zoomText = t("zoom");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -84,6 +85,7 @@ export default async function Page(props: { params: Promise<{ locale: string; se
       otherCategories={otherCategories}
       loadingText={loadingText}
       premiumText={premiumText}
+      zoomText={zoomText}
     />
   );
 }

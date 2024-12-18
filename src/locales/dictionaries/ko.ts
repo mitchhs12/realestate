@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "확대해서 보세요",
     "properties": "지도 영역의 속성입니다.",
     "property": "지도 영역의 부동산입니다.",
     "results": "결과",

@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "სანახავად მასშტაბირება",
     "properties": "თვისებები რუკაზე.",
     "property": "ქონება რუკაზე.",
     "results": "შედეგები",

@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "Zoem in om te sien",
     "properties": "eiendomme in kaartgebied.",
     "property": "eiendom in kaartgebied.",
     "results": "Resultate",

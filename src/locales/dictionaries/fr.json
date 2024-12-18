@@ -1019,6 +1019,7 @@
     }
   },
   "search": {
+    "zoom": "Zoomez pour voir",
     "properties": "propriétés dans la zone cartographique.",
     "property": "propriété dans la zone de la carte.",
     "results": "Résultats",

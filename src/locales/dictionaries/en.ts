@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "Zoom in to view",
     "properties": "properties in map area.",
     "property": "property in map area.",
     "results": "Results",

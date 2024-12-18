@@ -1019,6 +1019,7 @@
     }
   },
   "search": {
+    "zoom": "Phóng to để xem",
     "properties": "các thuộc tính trong khu vực bản đồ.",
     "property": "bất động sản trong khu vực bản đồ.",
     "results": "Kết quả",

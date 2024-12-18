@@ -31,6 +31,7 @@ interface Props {
   otherCategories: string;
   loadingText: string;
   premiumText: string;
+  zoomText: string;
 }
 
 export default function CombinedSearchPage({
@@ -49,6 +50,7 @@ export default function CombinedSearchPage({
   otherCategories,
   loadingText,
   premiumText,
+  zoomText,
 }: Props) {
   const {
     selectedTypes,
@@ -161,6 +163,7 @@ export default function CombinedSearchPage({
             loginToViewPrice={loginToViewPrice}
             propertiesText={propertiesMapText}
             otherCategories={otherCategories}
+            zoomText={zoomText}
           />
         ) : (
           // <Skeleton className="w-full h-full" />

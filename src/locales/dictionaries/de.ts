@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "Zum Anzeigen heranzoomen",
     "properties": "Eigenschaften im Kartenbereich.",
     "property": "Grundstück im Kartenbereich.",
     "results": "Ergebnisse",

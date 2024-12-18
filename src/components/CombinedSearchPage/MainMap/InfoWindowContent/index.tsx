@@ -14,6 +14,7 @@ import lookup from "country-code-lookup";
 import { findMatching } from "@/lib/utils";
 
 type InfowindowContentProps = {
+  zoomText: string;
   features: Feature<Point>[];
   otherCategories: string;
   typesObject: { id: string; name: string; translation: string }[];
@@ -23,7 +24,15 @@ type InfowindowContentProps = {
 };
 
 const InfoWindowContent = memo(
-  ({ features, otherCategories, typesObject, user, defaultCurrency, loginToViewPrice }: InfowindowContentProps) => {
+  ({
+    zoomText,
+    features,
+    otherCategories,
+    typesObject,
+    user,
+    defaultCurrency,
+    loginToViewPrice,
+  }: InfowindowContentProps) => {
     const [hovering, setHovering] = useState(false);
 
     const typeCount = useMemo(() => {
@@ -138,7 +147,7 @@ const InfoWindowContent = memo(
     } else {
       return (
         <div className={`text-sm flex flex-col p-3 gap-1`}>
-          <h4 className="text-lg font-normal">Zoom to view</h4>
+          <h4 className="text-lg font-normal">{zoomText}</h4>
           <ul>
             {typeCount &&
               Object.entries(typeCount)

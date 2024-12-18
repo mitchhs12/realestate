@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "Perbesar untuk melihat",
     "properties": "properti di area peta.",
     "property": "properti di area peta.",
     "results": "Hasil",

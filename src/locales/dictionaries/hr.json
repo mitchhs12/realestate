@@ -1019,6 +1019,7 @@
     }
   },
   "search": {
+    "zoom": "Povećajte za prikaz",
     "properties": "svojstva u području karte.",
     "property": "nekretnina u području karte.",
     "results": "Rezultati",

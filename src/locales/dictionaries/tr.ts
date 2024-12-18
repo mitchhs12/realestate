@@ -1019,6 +1019,7 @@ export default {
     }
   },
   "search": {
+    "zoom": "Yakınlaştırıp görüntüleyin",
     "properties": "Harita alanındaki özellikler.",
     "property": "Harita alanında mülk.",
     "results": "Sonuçlar",

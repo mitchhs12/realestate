@@ -1019,6 +1019,7 @@
     }
   },
   "search": {
+    "zoom": "放大查看",
     "properties": "地图区域中的属性。",
     "property": "地图区域中的财产。",
     "results": "结果",

@@ -40,6 +40,7 @@ interface Props {
   loginToViewPrice: string;
   propertiesText: string;
   otherCategories: string;
+  zoomText: string;
 }
 
 export default function MapComponent({
@@ -54,6 +55,7 @@ export default function MapComponent({
   loginToViewPrice,
   propertiesText,
   otherCategories,
+  zoomText,
 }: Props) {
   const MAP_CONFIGS: MapConfig[] = [
     {
@@ -170,6 +172,7 @@ export default function MapComponent({
                 anchor={infowindowData.anchor}
               >
                 <InfoWindowContent
+                  zoomText={zoomText}
                   features={infowindowData.features}
                   otherCategories={otherCategories}
                   typesObject={typesObject}
