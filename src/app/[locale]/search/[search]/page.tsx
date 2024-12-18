@@ -8,11 +8,9 @@ import { getSingleHome } from "../actions";
 import { LanguageType } from "@/lib/validations";
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ locale: LanguageType; search: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: LanguageType; search: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const route = `/search/${params.search}`;
   const languageAlternates = getLanguageAlternates(params.locale, route);
@@ -127,6 +125,7 @@ export default async function Page(props: { params: Promise<{ locale: string; se
   const otherCategories = t("otherCategories");
   const loadingText = t("loading");
   const premiumText = p("title");
+  const zoomText = t("zoom");
 
   const typesObject = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -154,6 +153,7 @@ export default async function Page(props: { params: Promise<{ locale: string; se
         otherCategories={otherCategories}
         loadingText={loadingText}
         premiumText={premiumText}
+        zoomText={zoomText}
       />
     );
   }
