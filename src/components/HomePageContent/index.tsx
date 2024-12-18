@@ -10,6 +10,8 @@ import Image from "next/image";
 import LatestArticles from "@/components/LatestArticles";
 import { ChevronRight } from "lucide-react";
 import { LanguageType } from "@/lib/validations";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function HomePageContent(props: { locale: LanguageType }) {
   const locale = props.locale;
@@ -217,7 +219,7 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
         </div>
       </section>
       <section className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-col w-full md:flex-row gap-12 pb-4 md:pb-12 px-8 md:px-6 justify-start h-full max-w-8xl">
+        <div className="flex flex-col w-full md:flex-row gap-12 pb-12 py-8 md:pb-20 px-8 md:px-6 justify-start h-full max-w-8xl">
           <div className="flex flex-col md:w-1/2 gap-10 md:gap-20">
             <div>
               <div className="flex gap-1 items-center">
@@ -238,18 +240,36 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
               </div>
             </div>
             <div className="flex flex-col gap-3 w-full sm:flex-row justify-between">
-              <div className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary">
-                <div className="text-sm md:text-md lg:text-lg ">{t("about.faq")}</div>{" "}
-                <ChevronRight className="bg-primary rounded-full text-white" />
-              </div>
-              <div className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary">
-                <div className="text-sm md:text-md lg:text-lg ">{t("about.contact")}</div>{" "}
-                <ChevronRight className="bg-primary rounded-full text-white" />
-              </div>
-              <div className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary">
-                <div className="text-sm md:text-md lg:text-lg ">{t("about.our-team")}</div>{" "}
-                <ChevronRight className="bg-primary rounded-full text-white" />
-              </div>
+              <Button
+                asChild
+                variant={"link"}
+                className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary"
+              >
+                <Link href="/about">
+                  <div className="text-sm md:text-md lg:text-lg ">{t("about.faq")}</div>
+                  <ChevronRight className="bg-primary rounded-full text-white" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant={"link"}
+                className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary"
+              >
+                <Link href="/about">
+                  <div className="text-sm md:text-md lg:text-lg ">{t("about.contact")}</div>
+                  <ChevronRight className="bg-primary rounded-full text-white" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant={"link"}
+                className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary"
+              >
+                <Link href="/about">
+                  <div className="text-sm md:text-md lg:text-lg ">{t("about.our-team")}</div>
+                  <ChevronRight className="bg-primary rounded-full text-white" />
+                </Link>
+              </Button>
             </div>
           </div>
           <div className="hidden relative h-[400px] md:flex md:w-1/2 bg-white/70 dark:bg-[#021007]/70 shadow-xl rounded-3xl dark:shadow-white">

@@ -10,7 +10,6 @@ import { ArticleWithAuthor, LanguageType } from "@/lib/validations";
 import ChangeLanguageButton from "@/app/[locale]/articles/ChangeLanguageButton";
 
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
 
 async function getData(props: { locale: LanguageType }) {
   const locale = props.locale;
@@ -65,7 +64,10 @@ export default async function LatestArticles(props: { locale: LanguageType }) {
             ${index >= 3 && "lg:hidden"}
           `}
           >
-            <div className="relative shadow-2xl dark:shadow-white rounded-xl h-[250px]">
+            <Link
+              href={`/articles/${article.currentSlug}`}
+              className="relative shadow-2xl dark:shadow-white rounded-xl h-[250px]"
+            >
               <Image
                 src={urlFor(article.thumbnailImage).url()}
                 alt="image"
@@ -77,36 +79,35 @@ export default async function LatestArticles(props: { locale: LanguageType }) {
                   "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
                 }
               />
-            </div>
+            </Link>
 
             <div className="flex flex-col w-full flex-grow">
               {article.localizedTitle ? (
-                <Button asChild variant={"link"} className="flex flex-col w-full h-auto flex-grow p-0">
-                  <Link href={`/articles/${article.currentSlug}`}>
-                    <div className="flex flex-col flex-grow gap-6 justify-between w-full">
-                      <div className="flex h-auto flex-grow gap-3 items-center text-primary">
-                        <h3 className="flex text-sm sm:text-md md:text-lg font-bold text-wrap text-start">
-                          {article.localizedTitle
-                            ? article.localizedTitle
-                            : `${articleUnavailable} ${getFullLanguageName(locale)}`}
-                        </h3>
-                        <div>
-                          <ChevronRight className="rounded-full text-white bg-primary" />
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 text-primary">
-                        <Image
-                          src={urlFor(article.author.image).url()}
-                          alt={article.author.name}
-                          width={30}
-                          height={30}
-                          className="rounded-full"
-                        />
-                        <span className="truncate">{article.author.name}</span>
-                      </div>
-                    </div>
-                  </Link>
-                </Button>
+                <div className="flex flex-col w-full h-auto flex-grow gap-6 justify-between">
+                  <Button
+                    asChild
+                    variant={"link"}
+                    className="flex p-0 h-auto flex-grow gap-3 items-center text-primary"
+                  >
+                    <Link href={`/articles/${article.currentSlug}`}>
+                      <h3 className="flex text-sm sm:text-md md:text-lg font-bold text-wrap text-start">
+                        {article.localizedTitle
+                          ? article.localizedTitle
+                          : `${articleUnavailable} ${getFullLanguageName(locale)}`}
+                      </h3>
+                    </Link>
+                  </Button>
+                  <div className="flex items-center gap-3 text-primary">
+                    <Image
+                      src={urlFor(article.author.image).url()}
+                      alt={article.author.name}
+                      width={30}
+                      height={30}
+                      className="rounded-full"
+                    />
+                    <span className="text-sm sm:text-md truncate">{article.author.name}</span>
+                  </div>
+                </div>
               ) : (
                 <div className="flex mb-1 w-full">
                   <ChangeLanguageButton changeLanguageText={changeLanguage} />
