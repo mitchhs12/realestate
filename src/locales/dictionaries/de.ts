@@ -396,6 +396,14 @@ export default {
     }
   },
   "home": {
+    "about": {
+      "sub": "ÜBER UNS",
+      "title": "Sie sind in guten Händen",
+      "body": "Wir bei Viva Ideal glauben, dass jeder das Recht auf einen sicheren, erschwinglichen Wohnort hat. Wir sind stolz darauf, die erste wirklich internationale Immobilienplattform zu sein, die auf die Bedürfnisse ausländischer Käufer zugeschnitten ist.",
+      "faq": "Häufig gestellte Fragen",
+      "our-team": "Unser Team",
+      "contact": "Kontaktieren Sie uns"
+    },
     "roomTypes": {
       "title": "Zimmertypen",
       "options": {
@@ -642,6 +650,11 @@ export default {
     "images": "Bilder"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Neueste Artikel und Blogs",
+      "sub": "Was ist im Trend",
+      "viewAll": "Alle"
+    },
     "articleUnavailable": "Artikel nicht verfügbar in",
     "changeLanguage": "Sprache ändern!",
     "unavailableWarning": "Dieser Artikel ist in Ihrer Sprache nicht verfügbar!",

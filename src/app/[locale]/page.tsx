@@ -35,7 +35,7 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
       <main className="w-full">
         <Hero />
       </main>
-      <HomePageContent />
+      <HomePageContent locale={locale} />
       <footer className="flex justify-center items-center p-6 w-full bg-zinc-50 dark:bg-zinc-950">
         <Footer />
       </footer>

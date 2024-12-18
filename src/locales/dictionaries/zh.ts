@@ -396,6 +396,14 @@ export default {
     }
   },
   "home": {
+    "about": {
+      "sub": "关于我们",
+      "title": "你得到了很好的照顾",
+      "body": "在 Viva Ideal，我们相信每个人都有权拥有一个安全、负担得起的住所。我们很自豪能成为第一个真正国际化的房地产平台，旨在满足外国买家的需求。",
+      "faq": "常问问题",
+      "our-team": "我们的团队",
+      "contact": "联系我们"
+    },
     "roomTypes": {
       "title": "客房类型",
       "options": {
@@ -642,6 +650,11 @@ export default {
     "images": "图片"
   },
   "articles": {
+    "latestArticles": {
+      "title": "最新文章和博客",
+      "sub": "热点话题",
+      "viewAll": "查看全部"
+    },
     "articleUnavailable": "文章不可用",
     "changeLanguage": "更改语言！",
     "unavailableWarning": "此文章不提供您所用语言的版本！",

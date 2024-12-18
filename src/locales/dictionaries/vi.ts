@@ -396,6 +396,14 @@ export default {
     }
   },
   "home": {
+    "about": {
+      "sub": "VỀ CHÚNG TÔI",
+      "title": "Bạn đang ở trong tay tốt",
+      "body": "Tại Viva Ideal, chúng tôi tin rằng mọi người đều có quyền có một nơi an toàn, giá cả phải chăng để sống. Chúng tôi tự hào là nền tảng bất động sản quốc tế thực sự đầu tiên, được thiết kế để đáp ứng nhu cầu của người mua nước ngoài.",
+      "faq": "Câu hỏi thường gặp",
+      "our-team": "Đội ngũ của chúng tôi",
+      "contact": "Liên hệ với chúng tôi"
+    },
     "roomTypes": {
       "title": "Loại phòng",
       "options": {
@@ -642,6 +650,11 @@ export default {
     "images": "Hình ảnh"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Bài viết và blog mới nhất",
+      "sub": "XU HƯỚNG ĐANG DIỄN RA",
+      "viewAll": "Xem tất cả"
+    },
     "articleUnavailable": "Bài viết không có sẵn trong",
     "changeLanguage": "Thay đổi ngôn ngữ!",
     "unavailableWarning": "Bài viết này không có sẵn bằng ngôn ngữ của bạn!",

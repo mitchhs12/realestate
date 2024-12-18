@@ -396,6 +396,14 @@ export default {
     }
   },
   "home": {
+    "about": {
+      "sub": "ABOUT US",
+      "title": "You're in good hands",
+      "body": "At Viva Ideal, we believe everyone has the right to a safe, affordable place to live. We’re proud to be the first truly international real-estate platform, designed to meet the needs of foreign buyers.",
+      "faq": "FAQ",
+      "our-team": "Our team",
+      "contact": "Contact us"
+    },
     "roomTypes": {
       "title": "Room Types",
       "options": {
@@ -642,6 +650,11 @@ export default {
     "images": "Images"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Latest Articles and Blogs",
+      "sub": "WHAT'S TRENDING",
+      "viewAll": "View All"
+    },
     "articleUnavailable": "Article unavailable in",
     "changeLanguage": "Change language!",
     "unavailableWarning": "This article is not available in your language!",

@@ -396,6 +396,14 @@
     }
   },
   "home": {
+    "about": {
+      "sub": "TENTANG KAMI",
+      "title": "Anda berada di tangan yang baik",
+      "body": "Di Viva Ideal, kami percaya bahwa setiap orang berhak atas tempat tinggal yang aman dan terjangkau. Kami bangga menjadi platform real estat internasional pertama yang dirancang untuk memenuhi kebutuhan pembeli asing.",
+      "faq": "Tanya Jawab Umum",
+      "our-team": "Tim kami",
+      "contact": "Hubungi kami"
+    },
     "roomTypes": {
       "title": "Tipe Kamar",
       "options": {
@@ -642,6 +650,11 @@
     "images": "Gambar"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Artikel dan Blog Terbaru",
+      "sub": "APA YANG SEDANG TREN",
+      "viewAll": "Lihat Semua"
+    },
     "articleUnavailable": "Artikel tidak tersedia di",
     "changeLanguage": "Ubah bahasa!",
     "unavailableWarning": "Artikel ini tidak tersedia dalam bahasa Anda!",

@@ -385,6 +385,15 @@ export type ArticleType = {
   _createdAt: string;
 };
 
+export type ArticleWithAuthor = {
+  localizedTitle: string;
+  thumbnailDescription: string;
+  currentSlug: string;
+  thumbnailImage: any;
+  _createdAt: string;
+  author: { name: string; image: string };
+};
+
 export type FullArticle = {
   localizedTitle: string;
   titleImage: any;

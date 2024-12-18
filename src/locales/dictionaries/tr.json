@@ -396,6 +396,14 @@
     }
   },
   "home": {
+    "about": {
+      "sub": "HAKKIMIZDA",
+      "title": "İyi ellerdesiniz",
+      "body": "Viva Ideal'de, herkesin güvenli ve uygun fiyatlı bir yaşam alanına sahip olma hakkı olduğuna inanıyoruz. Yabancı alıcıların ihtiyaçlarını karşılamak üzere tasarlanmış, ilk gerçek uluslararası gayrimenkul platformu olmaktan gurur duyuyoruz.",
+      "faq": "SSS",
+      "our-team": "Ekibimiz",
+      "contact": "Bize Ulaşın"
+    },
     "roomTypes": {
       "title": "Oda Tipleri",
       "options": {
@@ -642,6 +650,11 @@
     "images": "Görüntüler"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Son Makaleler ve Bloglar",
+      "sub": "TREND OLANLAR",
+      "viewAll": "Tümünü Görüntüle"
+    },
     "articleUnavailable": "Makale şurada mevcut değil:",
     "changeLanguage": "Dili değiştir!",
     "unavailableWarning": "Bu makale dilinizde mevcut değil!",

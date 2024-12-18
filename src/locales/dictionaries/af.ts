@@ -396,6 +396,14 @@ export default {
     }
   },
   "home": {
+    "about": {
+      "sub": "OOR ONS",
+      "title": "Jy is in goeie hande",
+      "body": "By Viva Ideal glo ons almal het die reg op 'n veilige, bekostigbare blyplek. Ons is trots daarop om die eerste werklik internasionale eiendomsplatform te wees wat ontwerp is om aan die behoeftes van buitelandse kopers te voldoen.",
+      "faq": "Gereelde vrae",
+      "our-team": "Ons span",
+      "contact": "Kontak ons"
+    },
     "roomTypes": {
       "title": "Kamer tipes",
       "options": {
@@ -642,6 +650,11 @@ export default {
     "images": "Beelde"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Jongste artikels en blogs",
+      "sub": "WAT IS NEEND",
+      "viewAll": "Bekyk alles"
+    },
     "articleUnavailable": "Artikel nie beskikbaar in",
     "changeLanguage": "Verander taal!",
     "unavailableWarning": "Hierdie artikel is nie in jou taal beskikbaar nie!",

@@ -396,6 +396,14 @@
     }
   },
   "home": {
+    "about": {
+      "sub": "SOBRE NOSOTROS",
+      "title": "Estás en buenas manos",
+      "body": "En Viva Ideal, creemos que todos tienen derecho a un lugar seguro y asequible donde vivir. Estamos orgullosos de ser la primera plataforma inmobiliaria verdaderamente internacional, diseñada para satisfacer las necesidades de los compradores extranjeros.",
+      "faq": "Preguntas frecuentes",
+      "our-team": "Nuestro equipo",
+      "contact": "Contáctenos"
+    },
     "roomTypes": {
       "title": "Tipos de habitaciones",
       "options": {
@@ -642,6 +650,11 @@
     "images": "Imágenes"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Últimos artículos y blogs",
+      "sub": "¿QUÉ ESTÁ DE MODA?",
+      "viewAll": "Ver todo"
+    },
     "articleUnavailable": "Artículo no disponible en",
     "changeLanguage": "¡Cambiar idioma!",
     "unavailableWarning": "¡Este artículo no está disponible en tu idioma!",

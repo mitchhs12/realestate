@@ -396,6 +396,14 @@
     }
   },
   "home": {
+    "about": {
+      "sub": "회사 소개",
+      "title": "당신은 좋은 손에 있습니다",
+      "body": "Viva Ideal에서 우리는 모든 사람이 안전하고 저렴한 거주지에 대한 권리가 있다고 믿습니다. 우리는 외국인 구매자의 요구를 충족하도록 설계된 최초의 진정한 국제 부동산 플랫폼이 되어 자랑스럽게 생각합니다.",
+      "faq": "자주 묻는 질문",
+      "our-team": "우리 팀",
+      "contact": "문의하기"
+    },
     "roomTypes": {
       "title": "객실 유형",
       "options": {
@@ -642,6 +650,11 @@
     "images": "이미지"
   },
   "articles": {
+    "latestArticles": {
+      "title": "최신 기사 및 블로그",
+      "sub": "트렌드는 무엇인가",
+      "viewAll": "모두 보기"
+    },
     "articleUnavailable": "다음 언어로 기사를 사용할 수 없습니다.",
     "changeLanguage": "언어를 변경하세요!",
     "unavailableWarning": "이 기사는 귀하의 언어로 제공되지 않습니다!",

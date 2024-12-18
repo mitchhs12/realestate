@@ -5,8 +5,14 @@ import { locationImageIds } from "@/lib/validations";
 import { typesMap } from "@/lib/sellFlowData";
 import { urbanist } from "@/app/[locale]/fonts";
 import Clients from "@/components/Clients";
+import Logo from "@/components/ui/logo";
+import Image from "next/image";
+import LatestArticles from "@/components/LatestArticles";
+import { ChevronRight } from "lucide-react";
+import { LanguageType } from "@/lib/validations";
 
-export default async function HomePageContent() {
+export default async function HomePageContent(props: { locale: LanguageType }) {
+  const locale = props.locale;
   const [t, type, p, premium] = await Promise.all([
     getScopedI18n("home"),
     getScopedI18n("sell.type"),
@@ -201,6 +207,75 @@ export default async function HomePageContent() {
             loginToViewPrice={loginToViewPrice}
             premiumText={premium("title")}
           />
+        </div>
+      </section>
+      <section className="flex flex-col justify-center items-center w-full h-full">
+        <div className="flex gap-6 pb-4 md:pb-12 px-4 md:px-6 justify-start h-full w-full max-w-8xl">
+          <div className="flex flex-col items-center gap-2 py-12 justify-center text-center">
+            <LatestArticles locale={locale} />
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-col justify-center items-center w-full h-full">
+        <div className="flex flex-col w-full md:flex-row gap-12 pb-4 md:pb-12 px-8 md:px-6 justify-start h-full max-w-8xl">
+          <div className="flex flex-col md:w-1/2 gap-10 md:gap-20">
+            <div>
+              <div className="flex gap-1 items-center">
+                <div className="-ml-5">
+                  <Logo width={"100"} height={"100"} />
+                </div>
+                <h4 className={`tracking-widest font-medium text-sm text-[#0C7A33] dark:test-primary`}>
+                  {t("about.sub")}
+                </h4>
+              </div>
+              <div className="flex flex-col gap-5">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-[#4F4F4F] dark:text-white">
+                  {t("about.title")}
+                </h3>
+                <div className="text-sm md:text-md lg:text-lg font-medium text-[#505050] dark:text-white">
+                  {t("about.body")}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 w-full sm:flex-row justify-between">
+              <div className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary">
+                <div className="text-sm md:text-md lg:text-lg ">{t("about.faq")}</div>{" "}
+                <ChevronRight className="bg-primary rounded-full text-white" />
+              </div>
+              <div className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary">
+                <div className="text-sm md:text-md lg:text-lg ">{t("about.contact")}</div>{" "}
+                <ChevronRight className="bg-primary rounded-full text-white" />
+              </div>
+              <div className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary">
+                <div className="text-sm md:text-md lg:text-lg ">{t("about.our-team")}</div>{" "}
+                <ChevronRight className="bg-primary rounded-full text-white" />
+              </div>
+            </div>
+          </div>
+          <div className="hidden relative h-[400px] md:flex md:w-1/2 bg-white/70 dark:bg-[#021007]/70 shadow-xl rounded-3xl dark:shadow-white">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/keys.webp`}
+              alt="keys"
+              fill={true}
+              style={{ objectFit: "cover" }}
+              loading={"eager"}
+              quality={70}
+              priority={true}
+              placeholder="blur"
+              blurDataURL={
+                "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUW+ylBgADBQErtZO4YAAAAABJRU5ErkJggg=="
+              }
+              sizes="(max-width: 400px) 400px,
+                (max-width: 510px) 510px,
+                (max-width: 768px) 768px, 
+                (max-width: 1024px) 1024px, 
+                (max-width: 1280px) 1280px, 
+                (max-width: 1536px) 1536px,
+                (max-width: 1920px) 1920px,
+                100vw"
+              className="rounded-3xl"
+            />
+          </div>
         </div>
       </section>
     </div>

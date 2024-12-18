@@ -396,6 +396,14 @@
     }
   },
   "home": {
+    "about": {
+      "sub": "私たちについて",
+      "title": "あなたは大丈夫",
+      "body": "Viva Ideal では、誰もが安全で手頃な住居に住む権利があると信じています。私たちは、外国人購入者のニーズを満たすように設計された、初の真に国際的な不動産プラットフォームであることを誇りに思っています。",
+      "faq": "よくある質問",
+      "our-team": "私たちのチーム",
+      "contact": "お問い合わせ"
+    },
     "roomTypes": {
       "title": "客室タイプ",
       "options": {
@@ -642,6 +650,11 @@
     "images": "画像"
   },
   "articles": {
+    "latestArticles": {
+      "title": "最新の記事とブログ",
+      "sub": "トレンドは何か",
+      "viewAll": "すべて表示"
+    },
     "articleUnavailable": "記事は利用できません",
     "changeLanguage": "言語を変更してください!",
     "unavailableWarning": "この記事はあなたの言語ではご利用いただけません。",

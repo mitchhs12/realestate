@@ -396,6 +396,14 @@ export default {
     }
   },
   "home": {
+    "about": {
+      "sub": "O NAMA",
+      "title": "U dobrim ste rukama",
+      "body": "U Viva Ideal vjerujemo da svatko ima pravo na sigurno, pristupačno mjesto za život. Ponosni smo što smo prva istinski međunarodna platforma za nekretnine, dizajnirana da zadovolji potrebe stranih kupaca.",
+      "faq": "FAQ",
+      "our-team": "Naš tim",
+      "contact": "Kontaktirajte nas"
+    },
     "roomTypes": {
       "title": "Vrste soba",
       "options": {
@@ -642,6 +650,11 @@ export default {
     "images": "Slike"
   },
   "articles": {
+    "latestArticles": {
+      "title": "Najnoviji članci i blogovi",
+      "sub": "ŠTO JE U TRENDU",
+      "viewAll": "Pogledaj sve"
+    },
     "articleUnavailable": "Članak nije dostupan u",
     "changeLanguage": "Promijeni jezik!",
     "unavailableWarning": "Ovaj članak nije dostupan na vašem jeziku!",

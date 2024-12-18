@@ -10,11 +10,9 @@ import ChangeLanguageButton from "../ChangeLanguageButton";
 import { LanguageType, languages } from "@/lib/validations";
 import { getLanguageAlternates } from "@/lib/utils";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ locale: LanguageType; slug: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: LanguageType; slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const route = `/articles/${params.slug}`;
   const data = await getData(params.locale, params.slug);
