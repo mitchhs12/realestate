@@ -157,14 +157,20 @@ def bulk_send_emails(sender_key):
     sender_title = sender_info['title']
     sender_signature = sender_info['signature'] 
     sender_email = sender_info['email']
-    subject_template = """Hola {name}, ¡Puedo ayudarte a llegar a compradores internacionales!"""
+    subject_template = """Hola {name}, ¡Únete a nuestra comunidad y lleva tus propiedades al mundo!"""
     body_template = """
-    ¡Hola {name} 😁🎄!<br><br>
-    Soy {sender_name}, {sender_title} en Viva Ideal 🏡. Quiero invitarte a formar parte de nuestra comunidad exclusiva, donde conectamos tus propiedades de América Latina con compradores en Estados Unidos, Canadá y Europa.<br><br>
-    Mi objetivo es ofrecerte la mejor visibilidad a precios accesibles, ayudando a que tus propiedades lleguen a un público global en +15 idiomas diferentes y 25+ tipos de cambio 🌎.<br><br>
-    Además, por los próximos 5 días, estamos ofreciendo a las primeras 7 personas que se suscriban a algún plan la oportunidad de grabar contenido, sin costo adicional (para propiedades que cumplan con ciertos estándares).<br><br>
-    Te adjunto un brochure con todos los detalles sobre nosotros.<br><br>
-    Si te gustaría conversar o coordinar una reunión virtual, estaré encantada de ayudarte 😊
+    Saludos Cordiales {name},<br><br>
+    Mi nombre es {sender_name} y soy {sender_title} en Viva Ideal, una startup dedicada a conectar propiedades en todo el mundo. Nuestro objetivo es ayudarte a ampliar las fronteras de tu negocio, haciendo que tus propiedades lleguen a una audiencia global de manera efectiva y accesible.<br><br>
+    Imagina esto: si alguien en Canadá sueña con vivir en Colombia y disfrutar de las mejores playas del mundo, nosotros hacemos posible que ese sueño se convierta en realidad, y queremos que tú formes parte de esta misión. Pero lo más importante, que nos dejes formar parte de tu futuro.<br><br>
+    Te invitamos a unirte a nuestra comunidad exclusiva, donde podrás:
+    <ul>
+        <li>Promocionar tus propiedades a nivel internacional en +15 idiomas.</li>
+        <li>Acceder a herramientas innovadoras para alcanzar nuevos mercados.</li>
+        <li>Beneficiarte de +25 tipos de cambio para facilitar las transacciones.</li>
+    </ul>    
+    Además, como parte de nuestra oferta de fin de año, los próximos 5 días ofreceremos a las primeras 7 personas que se suscriban a cualquiera de nuestros planes, la posibilidad de grabar contenido profesional para sus propiedades (aplican condiciones).<br><br>
+    Te adjuntamos un brochure con más información sobre nuestros servicios y beneficios. Si deseas coordinar una reunión virtual para conocer más detalles, estaremos encantados de conversar contigo. Escríbenos al correo ({sender_email}) y comencemos a trabajar juntos.<br><br>
+    Cordialmente,
     {sender_signature}
     """
     hubspot_bcc = "47448944@bcc.hubspot.com"  # Replace with your actual HubSpot BCC address
@@ -185,7 +191,7 @@ def bulk_send_emails(sender_key):
                 recipient_email = row['CORREO']
                 
                 # Personalize the email body
-                body = body_template.format(name=name, sender_name=sender_name, sender_title=sender_title, sender_signature=sender_signature)
+                body = body_template.format(name=name, sender_name=sender_name, sender_title=sender_title, sender_signature=sender_signature, sender_email=sender_email)
                 subject = subject_template.format(name=name)
                 # Create and send the email
                 print(f"Processing row {row_number}: Sending email to {recipient_email} ({name})...")

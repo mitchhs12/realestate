@@ -206,12 +206,20 @@ export default function AboutPageContent({
               {latam.content.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`flex justify-center items-center px-4 py-8 ${
-                    idx % 2 === 0
-                      ? "md:justify-end md:pl-16 md:pr-4 md:text-left"
-                      : "md:justify-start md:pr-16 md:pl-4 md:text-right"
+                  className={`relative flex items-center px-4 py-8 ${
+                    idx % 2 === 0 ? "md:justify-end md:pl-20 md:text-left" : "md:justify-start md:pr-20 md:text-right"
                   }`}
                 >
+                  {/* Green Dot */}
+                  <div
+                    className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 rounded-full bg-primary"
+                    style={{
+                      width: "40px", // Adjust size as needed
+                      height: "40px",
+                    }}
+                  ></div>
+
+                  {/* Text Block */}
                   <div className="w-full md:w-1/2 bg-card p-4 rounded-lg shadow-lg">
                     <h3
                       className={`${urbanist.className} tracking-widest font-bold text-lg md:text-2xl text-[#4F4F4F] dark:text-white`}
