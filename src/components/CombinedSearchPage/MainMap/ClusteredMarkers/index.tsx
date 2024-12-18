@@ -7,15 +7,15 @@ import { Feature, FeatureCollection, GeoJsonProperties, Point } from "geojson";
 import { typeIcons } from "@/components/Icons/typeIcons";
 import { findMatching } from "@/lib/utils";
 
+type InfoWindowData = {
+  anchor: google.maps.marker.AdvancedMarkerElement;
+  features: Feature<Point, GeoJsonProperties>[];
+} | null;
+
 type ClusteredMarkersProps = {
   geojson: FeatureCollection<Point>;
   setNumClusters: (n: number) => void;
-  setInfowindowData: (
-    data: {
-      anchor: google.maps.marker.AdvancedMarkerElement;
-      features: Feature<Point>[];
-    } | null
-  ) => void;
+  setInfowindowData: React.Dispatch<React.SetStateAction<InfoWindowData | null>>;
   theme?: string;
   typesObject: { id: string; name: string; translation: string }[];
 };
@@ -39,22 +39,30 @@ export const ClusteredMarkers = ({
     setNumClusters(clusters.length);
   }, [setNumClusters, clusters.length]);
 
-  const handleClusterClick = useCallback(
-    (marker: google.maps.marker.AdvancedMarkerElement, clusterId: number) => {
-      const leaves = getLeaves(clusterId);
-      setInfowindowData({ anchor: marker, features: leaves });
-    },
-    [getLeaves, setInfowindowData]
-  );
-
   const handleMarkerClick = useCallback(
     (marker: google.maps.marker.AdvancedMarkerElement, featureId: string) => {
-      const feature = clusters.find((feat) => feat.id === featureId) as Feature<Point>;
-      console.log("running this now :)");
-
-      setInfowindowData({ anchor: marker, features: [feature] });
+      setInfowindowData((prev: InfoWindowData) => {
+        if (prev?.anchor === marker) {
+          return prev; // Do nothing if clicking the same marker
+        }
+        const feature = clusters.find((feat) => feat.id === featureId) as Feature<Point, GeoJsonProperties>;
+        return { anchor: marker, features: [feature] };
+      });
     },
     [clusters, setInfowindowData]
+  );
+
+  const handleClusterClick = useCallback(
+    (marker: google.maps.marker.AdvancedMarkerElement, clusterId: number) => {
+      setInfowindowData((prev: InfoWindowData) => {
+        if (prev?.anchor === marker) {
+          return prev; // Do nothing if clicking the same cluster
+        }
+        const leaves = getLeaves(clusterId);
+        return { anchor: marker, features: leaves };
+      });
+    },
+    [getLeaves, setInfowindowData]
   );
 
   return (

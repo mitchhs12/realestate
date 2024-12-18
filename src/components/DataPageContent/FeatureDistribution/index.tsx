@@ -59,7 +59,6 @@ export default function PropertyDistribution() {
           })
           .filter((item) => item.count > 0); // Filter out items with count of 0
         setPropertyDistribution(formattedData); // Directly setting the data here
-        console.log(formattedData);
       } catch (error) {
         console.error("Failed to fetch property distribution:", error);
       }

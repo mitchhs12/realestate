@@ -102,10 +102,7 @@ const InfoWindowContent = memo(
                 className={`flex flex-col justify-between ${props.listingType === "premium" && "text-white dark:text-black"}`}
               >
                 {(() => {
-                  console.log(typesObject);
-                  console.log(props.type);
                   const matchingTypes = findMatching(typesObject, props, "type");
-                  console.log(matchingTypes);
                   return (
                     <span className={`font-medium text-sm`}>
                       {matchingTypes[0].translation}
@@ -140,7 +137,8 @@ const InfoWindowContent = memo(
       );
     } else {
       return (
-        <div className={`text-sm flex flex-col pb-3 pl-3`}>
+        <div className={`text-sm flex flex-col p-3 gap-1`}>
+          <h4 className="text-lg font-normal">Zoom to view</h4>
           <ul>
             {typeCount &&
               Object.entries(typeCount)

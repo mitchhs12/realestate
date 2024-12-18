@@ -8,7 +8,7 @@ import darkMap from "./map-styles/dark-map";
 import lightMap from "./map-styles/light-map";
 import { CoordinatesType, BoundsType, TypeObject } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
-import { Feature, Point } from "geojson";
+import { Feature, GeoJsonProperties, Point } from "geojson";
 import { ClusteredMarkers } from "@/components/CombinedSearchPage/MainMap/ClusteredMarkers";
 import { QueryContext } from "@/context/QueryContext";
 import { LocaleContext } from "@/context/LocaleContext";
@@ -104,12 +104,19 @@ export default function MapComponent({
     setBoundsTimeout(timeoutId);
   };
 
-  const [infowindowData, setInfowindowData] = useState<{
+  type InfoWindowData = {
     anchor: google.maps.marker.AdvancedMarkerElement;
-    features: Feature<Point>[];
-  } | null>(null);
+    features: Feature<Point, GeoJsonProperties>[];
+  } | null;
 
-  const hamdleInfoWindowClose = useCallback(() => setInfowindowData(null), [setInfowindowData]);
+  const [infowindowData, setInfowindowData] = useState<InfoWindowData>(null);
+
+  const handleInfoWindowClose = useCallback(() => {
+    setInfowindowData((prev) => {
+      if (prev === null) return prev; // Prevent clearing if already updating
+      return null;
+    });
+  }, [setInfowindowData]);
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -133,6 +140,7 @@ export default function MapComponent({
           <Map
             clickableIcons={false}
             gestureHandling={"greedy"}
+            onClick={() => setInfowindowData(null)} // Close InfoWindow on map click
             onBoundsChanged={handleBoundsChanged}
             defaultCenter={defaultCenter}
             defaultZoom={initZoom ? initZoom : 16}
@@ -157,10 +165,8 @@ export default function MapComponent({
 
             {infowindowData && defaultCurrency && (
               <InfoWindow
-                //@ts-ignore
-                headerDisabled={infowindowData.features.length === 1 ? true : false}
+                headerDisabled={true}
                 headerContent={`${new Intl.NumberFormat().format(infowindowData.features.length)} ${propertiesText}`}
-                onClose={hamdleInfoWindowClose}
                 anchor={infowindowData.anchor}
               >
                 <InfoWindowContent

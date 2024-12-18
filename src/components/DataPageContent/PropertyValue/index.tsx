@@ -64,7 +64,6 @@ export default function PropertyValue() {
           highest: item.highest,
         }));
         setChartData(formattedData);
-        console.log("formated", formattedData);
       } catch (error) {
         console.error("Failed to fetch property values:", error);
       }

@@ -19,8 +19,6 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
 
   const { locale, homeId } = params;
 
-  console.log("homeId in review", homeId);
-
   setStaticParamsLocale(locale);
 
   const session = await getSession();
@@ -85,8 +83,6 @@ export default async function Page(props: { params: Promise<{ locale: string; ho
   const matchingListingType = unfinishedHome?.listingType
     ? findMatchingItem(listingTypeObject, unfinishedHome?.listingType)
     : listingTypeObject[0];
-
-  console.log("listingType", matchingListingType);
 
   return (
     <Review
