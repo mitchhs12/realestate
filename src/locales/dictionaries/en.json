@@ -812,7 +812,7 @@
     }
   },
   "search": {
-    "zoom": "Zoom in to view",
+    "zoom": "Zoom to view",
     "properties": "properties in map area.",
     "property": "property in map area.",
     "results": "Results",
