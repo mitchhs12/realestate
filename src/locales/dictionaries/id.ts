@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "Ubah bahasa!",
     "unavailableWarning": "Artikel ini tidak tersedia dalam bahasa Anda!",
     "readMore": "Baca selengkapnya",
-    "title": "Artikel",
+    "main": {
+      "title": "Blog dan artikel",
+      "sub": "APA YANG SEDANG TREN"
+    },
     "reading": "menit untuk membaca.",
     "titleError": "Tidak dapat memperoleh judul.",
     "readingTimeError": "Tidak dapat menghitung waktu membaca.",

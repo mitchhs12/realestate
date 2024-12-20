@@ -3,8 +3,9 @@ import { setStaticParamsLocale } from "next-international/server";
 import { LanguageType } from "@/lib/validations";
 import { Metadata } from "next";
 import { getLanguageAlternates } from "@/lib/utils";
-import ArticlesTitle from "@/components/ArticlesPage/Title";
 import ArticlesPageContent from "@/components/ArticlesPage";
+import { getScopedI18n } from "@/locales/server";
+import { urbanist } from "@/app/[locale]/fonts";
 
 export async function generateMetadata(props: { params: Promise<{ locale: LanguageType }> }): Promise<Metadata> {
   const params = await props.params;
@@ -39,28 +40,19 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
   const { locale } = params;
 
   setStaticParamsLocale(locale);
+  const t = await getScopedI18n("about");
 
   return (
-    <div className="flex flex-col h-full w-full items-center">
-      <div className="relative h-[20vh] flex w-full">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/banners/banner4.webp`}
-          alt="background"
-          fill={true}
-          style={{ objectFit: "cover" }}
-          quality={70}
-          priority={true}
-          sizes="(max-width: 400px) 400px,
-        (max-width: 510px) 510px,
-        (max-width: 768px) 768px, 
-        (max-width: 1024px) 1024px, 
-        (max-width: 1280px) 1280px, 
-        (max-width: 1536px) 1536px,
-        (max-width: 1920px) 1920px,
-        100vw"
-          className="-z-10 opacity-30 dark:opacity-20"
-        />
-        <ArticlesTitle locale={locale} />
+    <div className="flex flex-col h-full items-center p-4 md:p-8 gap-16 py-6 w-full">
+      <div className="flex flex-col items-center gap-2 pt-8 justify-center text-center">
+        <h2
+          className={`${urbanist.className} tracking-widest font-medium text-xl sm:text-2xl text-[#0C7A33] dark:text-primary`}
+        >
+          {t("main.sub")}
+        </h2>
+        <h1 className="flex items-center gap-4 sm:text-4xl text-5xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
+          {t("main.title")}
+        </h1>
       </div>
 
       <ArticlesPageContent locale={locale} />

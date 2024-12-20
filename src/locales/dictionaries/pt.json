@@ -659,7 +659,10 @@
     "changeLanguage": "Alterar idioma!",
     "unavailableWarning": "Este artigo não está disponível no seu idioma!",
     "readMore": "Ler mais",
-    "title": "Artigos",
+    "main": {
+      "title": "Blogs e artigos",
+      "sub": "O QUE É TENDÊNCIA"
+    },
     "reading": "minutos para ler.",
     "titleError": "Não foi possível obter o título.",
     "readingTimeError": "Não é possível calcular o tempo de leitura.",

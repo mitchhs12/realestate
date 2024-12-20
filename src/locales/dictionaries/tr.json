@@ -659,7 +659,10 @@
     "changeLanguage": "Dili değiştir!",
     "unavailableWarning": "Bu makale dilinizde mevcut değil!",
     "readMore": "Devamını oku",
-    "title": "Makaleler",
+    "main": {
+      "title": "Bloglar ve makaleler",
+      "sub": "TREND OLANLAR"
+    },
     "reading": "okumak için dakikalar.",
     "titleError": "Başlık alınamadı.",
     "readingTimeError": "Okuma süresi hesaplanamadı.",

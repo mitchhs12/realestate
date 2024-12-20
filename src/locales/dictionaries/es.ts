@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "¡Cambiar idioma!",
     "unavailableWarning": "¡Este artículo no está disponible en tu idioma!",
     "readMore": "Leer más",
-    "title": "Artículos",
+    "main": {
+      "title": "Blogs y artículos",
+      "sub": "¿QUÉ ESTÁ DE MODA?"
+    },
     "reading": "Minutos para leer.",
     "titleError": "No se puede obtener el título.",
     "readingTimeError": "No se puede calcular el tiempo de lectura.",

@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "Thay đổi ngôn ngữ!",
     "unavailableWarning": "Bài viết này không có sẵn bằng ngôn ngữ của bạn!",
     "readMore": "Đọc thêm",
-    "title": "Bài viết",
+    "main": {
+      "title": "Blog và bài viết",
+      "sub": "XU HƯỚNG ĐANG DIỄN RA"
+    },
     "reading": "phút để đọc.",
     "titleError": "Không thể có được tiêu đề.",
     "readingTimeError": "Không thể tính toán thời gian đọc.",

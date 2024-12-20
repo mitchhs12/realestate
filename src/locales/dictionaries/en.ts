@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "Change language!",
     "unavailableWarning": "This article is not available in your language!",
     "readMore": "Read More",
-    "title": "Articles",
+    "main": {
+      "title": "Blogs and articles",
+      "sub": "WHAT'S TRENDING"
+    },
     "reading": "minutes to read.",
     "titleError": "Unable to get title.",
     "readingTimeError": "Unable to calculate reading time.",
@@ -1019,7 +1022,7 @@ export default {
     }
   },
   "search": {
-    "zoom": "Zoom in to view",
+    "zoom": "Zoom to view",
     "properties": "properties in map area.",
     "property": "property in map area.",
     "results": "Results",

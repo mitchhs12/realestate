@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "Promijeni jezik!",
     "unavailableWarning": "Ovaj članak nije dostupan na vašem jeziku!",
     "readMore": "Pročitajte više",
-    "title": "Članci",
+    "main": {
+      "title": "Blogovi i članci",
+      "sub": "ŠTO JE U TRENDU"
+    },
     "reading": "minuta za čitanje.",
     "titleError": "Nije moguće dobiti naslov.",
     "readingTimeError": "Nije moguće izračunati vrijeme čitanja.",

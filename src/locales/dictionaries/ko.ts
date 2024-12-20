@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "언어를 변경하세요!",
     "unavailableWarning": "이 기사는 귀하의 언어로 제공되지 않습니다!",
     "readMore": "더 읽기",
-    "title": "조항",
+    "main": {
+      "title": "블로그와 기사",
+      "sub": "트렌드는 무엇인가"
+    },
     "reading": "읽는 데 몇 분이 걸립니다.",
     "titleError": "제목을 가져올 수 없습니다.",
     "readingTimeError": "독서 시간을 계산할 수 없습니다.",

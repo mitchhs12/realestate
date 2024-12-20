@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "更改语言！",
     "unavailableWarning": "此文章不提供您所用语言的版本！",
     "readMore": "阅读更多",
-    "title": "文章",
+    "main": {
+      "title": "博客和文章",
+      "sub": "热点话题"
+    },
     "reading": "分钟阅读。",
     "titleError": "无法獲得軸权。",
     "readingTimeError": "无法计算阅读时间。",

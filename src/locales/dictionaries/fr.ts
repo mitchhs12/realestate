@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "Changer de langue !",
     "unavailableWarning": "Cet article n'est pas disponible dans votre langue !",
     "readMore": "En savoir plus",
-    "title": "Articles",
+    "main": {
+      "title": "Blogs et articles",
+      "sub": "QUOI DE NEUF?"
+    },
     "reading": "minutes pour lire.",
     "titleError": "Impossible d'obtenir le titre.",
     "readingTimeError": "Impossible de calculer le temps de lecture.",

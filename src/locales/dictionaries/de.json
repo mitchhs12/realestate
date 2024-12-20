@@ -659,7 +659,10 @@
     "changeLanguage": "Sprache ändern!",
     "unavailableWarning": "Dieser Artikel ist in Ihrer Sprache nicht verfügbar!",
     "readMore": "Mehr lesen",
-    "title": "Artikel",
+    "main": {
+      "title": "Blogs und Artikel",
+      "sub": "Was ist im Trend"
+    },
     "reading": "Minuten zum Lesen.",
     "titleError": "Titel konnte nicht abgerufen werden.",
     "readingTimeError": "Die Lesezeit kann nicht berechnet werden.",

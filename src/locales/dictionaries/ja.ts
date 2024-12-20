@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "言語を変更してください!",
     "unavailableWarning": "この記事はあなたの言語ではご利用いただけません。",
     "readMore": "続きを読む",
-    "title": "記事",
+    "main": {
+      "title": "ブログと記事",
+      "sub": "トレンドは何か"
+    },
     "reading": "読むのに数分かかります。",
     "titleError": "タイトルを取得できません。",
     "readingTimeError": "読書時間を計算できません。",

@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "تغيير اللغة!",
     "unavailableWarning": "هذه المقالة غير متوفرة بلغتك!",
     "readMore": "اقرأ المزيد",
-    "title": "المقالات",
+    "main": {
+      "title": "المدونات والمقالات",
+      "sub": "ما هو الشائع"
+    },
     "reading": "دقائق للقراءة.",
     "titleError": "غير قادر على الحصول على العنوان.",
     "readingTimeError": "غير قادر على حساب وقت القراءة.",

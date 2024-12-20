@@ -659,7 +659,10 @@ export default {
     "changeLanguage": "Verander taal!",
     "unavailableWarning": "Hierdie artikel is nie in jou taal beskikbaar nie!",
     "readMore": "Lees meer",
-    "title": "Artikels",
+    "main": {
+      "title": "Blogs en artikels",
+      "sub": "WAT IS NEEND"
+    },
     "reading": "minute om te lees.",
     "titleError": "Kan nie titel kry nie.",
     "readingTimeError": "Kan nie leestyd bereken nie.",
