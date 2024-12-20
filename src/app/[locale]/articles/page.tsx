@@ -40,7 +40,7 @@ export default async function Page(props: { params: Promise<{ locale: LanguageTy
   const { locale } = params;
 
   setStaticParamsLocale(locale);
-  const t = await getScopedI18n("about");
+  const t = await getScopedI18n("articles");
 
   return (
     <div className="flex flex-col h-full items-center p-4 md:p-8 gap-16 py-6 w-full">
