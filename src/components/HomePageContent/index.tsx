@@ -278,7 +278,7 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
               alt="keys"
               fill={true}
               style={{ objectFit: "cover" }}
-              loading={"eager"}
+              loading={"lazy"}
               quality={70}
               priority={true}
               placeholder="blur"
