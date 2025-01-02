@@ -3,7 +3,7 @@ import { getScopedI18n } from "@/locales/server";
 
 export default async function ArticlesTitle({ locale }: { locale: string }) {
   const t = await getScopedI18n("articles");
-  const title = t("title");
+  const title = t("main.title");
 
   return (
     <div className="absolute inset-0 flex flex-col w-full justify-center items-center">
