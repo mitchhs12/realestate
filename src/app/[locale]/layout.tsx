@@ -52,7 +52,10 @@ export default async function RootLayout(props: Props) {
     <html lang={params.locale} dir={dir} suppressHydrationWarning={true}>
       <head>
         {/* Google Analytics Script */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-QWTRWYKPDF" />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-QWTRWYKPDF"
+        />
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -64,7 +67,11 @@ export default async function RootLayout(props: Props) {
       </head>
       <body className={`${poppins.className} h-full`}>
         <SessionProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem={true}
+          >
             <LocaleContextProvider lang={params.locale}>
               <MainLayout>{children}</MainLayout>
               <Toaster />

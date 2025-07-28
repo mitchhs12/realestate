@@ -12,7 +12,12 @@ import { FlagComponent } from "@/components/ui/phone-input";
 import { Country } from "react-phone-number-input";
 import { Button } from "@/components/ui/button";
 import { getCountryNameForLocale } from "@/lib/utils";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Eye, EyeOff } from "lucide-react";
 import { changeHomeVisibility } from "@/app/[locale]/my-properties/actions";
 import { usePathname } from "next/navigation";
@@ -45,11 +50,13 @@ export default function ResizableCard({
 }: Props) {
   const [titleUnderlined, setTitleUnderlined] = useState(false);
   const [lang, setLang] = useState("");
-  const { user, defaultLanguage, defaultCurrency, sessionLoading } = useContext(LocaleContext);
+  const { user, defaultLanguage, defaultCurrency, sessionLoading } =
+    useContext(LocaleContext);
   const [visibilityChanging, setVisibilityChanging] = useState(false);
   const path = usePathname();
   const isSell = path.includes("/sell");
-  const isMyProperties = path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
+  const isMyProperties =
+    path === "/my-properties" || path === `/${defaultLanguage}/my-properties`;
   const [currentType, setCurrentType] = useState<TypeObject | null>(types[0]);
   const { resolvedTheme: theme } = useTheme();
 
@@ -67,9 +74,15 @@ export default function ResizableCard({
       : home?.country;
 
   return !home || isLoading ? (
-    <div className={`flex flex-col h-full w-full justify-start overflow-hidden`}>
+    <div
+      className={`flex flex-col h-full w-full justify-start overflow-hidden`}
+    >
       <Skeleton
-        className={`rounded-2xl h-[250px] shadow-lg w-full ${home?.listingType === "premium" ? "border-2 border-amber-500 shadow-yellow-500/40 dark:shadow-yellow-500/40" : "dark:shadow-white/20"}`}
+        className={`rounded-2xl h-[250px] shadow-lg w-full ${
+          home?.listingType === "premium"
+            ? "border-2 border-amber-500 shadow-yellow-500/40 dark:shadow-yellow-500/40"
+            : "dark:shadow-white/20"
+        }`}
       />
       <div className="h-[144px] flex flex-col justify-center items-start w-full gap-5 pl-4 px-2">
         <Skeleton className="h-5 sm:h-5 lg:h-6 w-32" />
@@ -89,25 +102,45 @@ export default function ResizableCard({
     >
       {home.listingType === "premium" && (
         // comment style={{ paddingTop: "12px" }} above and add style={{ marginTop:'-12' }} below
-        <div className="absolute" style={{ top: "0", left: "-12px", zIndex: 30, marginTop: "-12px" }}>
-          <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
+        <div
+          className="absolute"
+          style={{ top: "0", left: "-12px", zIndex: 30, marginTop: "-12px" }}
+        >
+          <Link
+            href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`}
+            target={"_blank"}
+          >
             <svg height="84" width="84">
               <g transform="rotate(-90, 42, 42)">
-                <polygon points="0 0, 0 12, 12 12" fill={`${"rgb(180 83 9)"}`} />
+                <polygon
+                  points="0 0, 0 12, 12 12"
+                  fill={`${"rgb(180 83 9)"}`}
+                />
                 <polygon
                   points="0 0, 84 84, 84 48, 36 0"
-                  fill={theme === "dark" ? "rgb(251 191 36)" : "rgb(252 211 77)"}
+                  fill={
+                    theme === "dark" ? "rgb(251 191 36)" : "rgb(252 211 77)"
+                  }
                 />
-                <polygon points="72 72, 72 84, 84 84" fill={`${"rgb(180 83 9)"}`} />
+                <polygon
+                  points="72 72, 72 84, 84 84"
+                  fill={`${"rgb(180 83 9)"}`}
+                />
               </g>
             </svg>
-            <span className="leftCornerRibbonText text-white font-bold">{premiumText}</span>
+            <span className="leftCornerRibbonText text-white font-bold">
+              {premiumText}
+            </span>
           </Link>
         </div>
       )}
       <div className={`flex flex-col w-full h-full overflow-hidden`}>
         <div
-          className={`rounded-2xl overflow-hidden shadow-lg border ${home.listingType === "premium" ? "border-2 border-amber-500 shadow-amber-500/50" : "dark:shadow-white/20"}`}
+          className={`rounded-2xl overflow-hidden shadow-lg border ${
+            home.listingType === "premium"
+              ? "border-2 border-amber-500 shadow-amber-500/50"
+              : "dark:shadow-white/20"
+          }`}
         >
           <ResizableCarousel
             photos={home.photos}
@@ -117,12 +150,19 @@ export default function ResizableCard({
             link={true}
           />
         </div>
-        <Link href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`} target={"_blank"}>
-          <div className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}>
+        <Link
+          href={home.isComplete ? `/homes/${home.id}` : `/sell/${home.id}`}
+          target={"_blank"}
+        >
+          <div
+            className={`flex flex-col justify-center items-start w-full pt-2 gap-2 px-4 relative`}
+          >
             <h3
-              className={`text-md ${home.isComplete && "pl-11"} pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${!home.isComplete && "text-red-500"} ${
-                titleUnderlined && "underline"
-              }`}
+              className={`text-md ${
+                home.isComplete && "pl-11"
+              } pt-2.5 md:text-lg w-full font-semibold overflow-hidden whitespace-nowrap text-ellipsis text-start ${
+                !home.isComplete && "text-red-500"
+              } ${titleUnderlined && "underline"}`}
             >
               {home.isComplete
                 ? types.length > 1
@@ -141,10 +181,12 @@ export default function ResizableCard({
                   />
                 </div>
                 <div lang={lang} className="flex flex-col w-full">
-                  <text className="text-sm w-full overflow-hidden whitespace-nowrap text-ellipsis">
+                  <span className="text-sm w-full overflow-hidden whitespace-nowrap text-ellipsis">
                     {home.municipality}
-                  </text>
-                  <text className="text-xs w-full overflow-hidden whitespace-nowrap text-ellipsis">{countryName}</text>
+                  </span>
+                  <span className="text-xs w-full overflow-hidden whitespace-nowrap text-ellipsis">
+                    {countryName}
+                  </span>
                 </div>
               </div>
             ) : (
@@ -203,10 +245,20 @@ export default function ResizableCard({
           disabled={visibilityChanging}
           className="absolute bottom-2 right-2"
         >
-          {!visibilityChanging ? home.isActive ? <Eye /> : <EyeOff /> : <ReloadIcon className="animate-spin w-5 h-5" />}
+          {!visibilityChanging ? (
+            home.isActive ? (
+              <Eye />
+            ) : (
+              <EyeOff />
+            )
+          ) : (
+            <ReloadIcon className="animate-spin w-5 h-5" />
+          )}
         </Button>
       )}
-      {(isMyProperties || isSell) && user?.id === home.ownerId && <DeleteButton homeId={home.id} />}
+      {(isMyProperties || isSell) && user?.id === home.ownerId && (
+        <DeleteButton homeId={home.id} />
+      )}
     </div>
   );
 }

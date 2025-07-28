@@ -226,7 +226,9 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
                 <div className="-ml-5">
                   <Logo width={"100"} height={"100"} />
                 </div>
-                <h4 className={`tracking-widest font-medium text-sm text-[#0C7A33] dark:test-primary`}>
+                <h4
+                  className={`tracking-widest font-medium text-sm text-[#0C7A33] dark:test-primary`}
+                >
                   {t("about.sub")}
                 </h4>
               </div>
@@ -246,7 +248,9 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
                 className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary"
               >
                 <Link href="/about">
-                  <div className="text-sm md:text-md lg:text-lg ">{t("about.faq")}</div>
+                  <div className="text-sm md:text-md lg:text-lg ">
+                    {t("about.faq")}
+                  </div>
                   <ChevronRight className="bg-primary rounded-full text-white" />
                 </Link>
               </Button>
@@ -256,7 +260,9 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
                 className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary"
               >
                 <Link href="/about">
-                  <div className="text-sm md:text-md lg:text-lg ">{t("about.contact")}</div>
+                  <div className="text-sm md:text-md lg:text-lg ">
+                    {t("about.contact")}
+                  </div>
                   <ChevronRight className="bg-primary rounded-full text-white" />
                 </Link>
               </Button>
@@ -266,7 +272,9 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
                 className="flex gap-3 w-full md:w-fit justify-between sm:justify-center items-center font-semibold text-primary"
               >
                 <Link href="/about">
-                  <div className="text-sm md:text-md lg:text-lg ">{t("about.our-team")}</div>
+                  <div className="text-sm md:text-md lg:text-lg ">
+                    {t("about.our-team")}
+                  </div>
                   <ChevronRight className="bg-primary rounded-full text-white" />
                 </Link>
               </Button>
@@ -278,7 +286,6 @@ export default async function HomePageContent(props: { locale: LanguageType }) {
               alt="keys"
               fill={true}
               style={{ objectFit: "cover" }}
-              loading={"lazy"}
               quality={70}
               priority={true}
               placeholder="blur"

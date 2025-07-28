@@ -89,7 +89,8 @@ export default function Header({
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const { currentHome, openLogInModal, openSignUpModal } = useContext(QueryContext);
+  const { currentHome, openLogInModal, openSignUpModal } =
+    useContext(QueryContext);
   const { defaultLanguage, user, sessionLoading } = useContext(LocaleContext);
   const isRootPage = pathname === "/" || pathname === `/${defaultLanguage}`;
   const isAboutPage = pathname.includes("/about");
@@ -127,7 +128,9 @@ export default function Header({
                   <Button
                     size={"largeIcon"}
                     variant="outline"
-                    className={`flex ${isRootPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
+                    className={`flex ${
+                      isRootPage && "bg-secondary"
+                    } h-12 text-[#2dac5c] hover:text-primary/80 group`}
                     onClick={() => {
                       isRootPage ? router.refresh() : router.push("/");
                     }}
@@ -145,25 +148,41 @@ export default function Header({
                   </Button>
                 </div>
                 <div className={`flex lg:hidden`}>
-                  <DropdownMenu open={dropDownOpen} onOpenChange={setDropDownOpen} modal={false}>
-                    <DropdownMenuTrigger>
+                  <DropdownMenu
+                    open={dropDownOpen}
+                    onOpenChange={setDropDownOpen}
+                    modal={false}
+                  >
+                    <DropdownMenuTrigger asChild>
                       <Button
                         size={"largeIcon"}
                         variant={"outline"}
-                        className={`flex ${isRootPage && "lg:bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 group`}
+                        className={`flex ${
+                          isRootPage && "lg:bg-secondary"
+                        } h-12 text-[#2dac5c] hover:text-primary/80 group`}
                       >
                         <div className="flex px-1 justify-center items-center gap-1">
                           <div className="flex justify-center items-center">
-                            {!isStudioPage && <Logo width={"40"} height={"40"} />}
+                            {!isStudioPage && (
+                              <Logo width={"40"} height={"40"} />
+                            )}
                           </div>
-                          <h1 className={`xs:inline items-center text-lg font-medium align-middle`}>{menu}</h1>
+                          <h1
+                            className={`xs:inline items-center text-lg font-medium align-middle`}
+                          >
+                            {menu}
+                          </h1>
                           {/* <div className="flex xs:hidden">
                         <Menu width={20} height={20} strokeWidth={2} className="flex" />
                       </div> */}
                         </div>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent side={"bottom"} align={"start"} className="text-[#2dac5c]">
+                    <DropdownMenuContent
+                      side={"bottom"}
+                      align={"start"}
+                      className="text-[#2dac5c]"
+                    >
                       <Link
                         href={"/"}
                         passHref
@@ -171,7 +190,9 @@ export default function Header({
                           setDropDownOpen(false);
                         }}
                       >
-                        <DropdownMenuLabel className={`flex items-center text-[#2dac5c] gap-1`}>
+                        <DropdownMenuLabel
+                          className={`flex items-center text-[#2dac5c] gap-1`}
+                        >
                           <Logo width={"40"} height={"40"} />
                           Viva Ideal
                         </DropdownMenuLabel>
@@ -179,14 +200,14 @@ export default function Header({
                       </Link>
                       {isRootPage ? (
                         <DropdownMenuGroup className="flex flex-col gap-3 py-2">
-                          <Link href={"/about"} passHref>
+                          {/* <Link href={"/about"} passHref>
                             <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                               <div className="pl-[7px]">
                                 <Contact />
                               </div>
                               <div className="w-full">{about}</div>
                             </DropdownMenuItem>
-                          </Link>
+                          </Link> */}
                           <Link href={"/search"} passHref scroll={true}>
                             <DropdownMenuItem className="flex gap-[12.5px] items-center font-medium">
                               <div className="pl-[7px]">
@@ -204,7 +225,10 @@ export default function Header({
                             </DropdownMenuItem>
                           </Link>
                           {/* <Link href={"/data"} passHref> */}
-                          <DropdownMenuItem disabled={true} className="flex gap-[12.5px] items-center font-medium">
+                          <DropdownMenuItem
+                            disabled={true}
+                            className="flex gap-[12.5px] items-center font-medium"
+                          >
                             <div className="pl-[7px]">
                               <ChartColumn />
                             </div>
@@ -221,15 +245,24 @@ export default function Header({
                           </Link>
                         </DropdownMenuGroup>
                       ) : (
-                        <DropdownMenuRadioGroup value={getCurrentPage()} className="flex flex-col gap-3 py-2">
-                          <Link href={"/about"} passHref>
-                            <DropdownMenuRadioItem value={"about"} className="flex gap-3 items-center font-medium">
+                        <DropdownMenuRadioGroup
+                          value={getCurrentPage()}
+                          className="flex flex-col gap-3 py-2"
+                        >
+                          {/* <Link href={"/about"} passHref>
+                            <DropdownMenuRadioItem
+                              value={"about"}
+                              className="flex gap-3 items-center font-medium"
+                            >
                               <Contact />
                               <span>{about}</span>
                             </DropdownMenuRadioItem>
-                          </Link>
+                          </Link> */}
                           <Link href={"/articles"} passHref>
-                            <DropdownMenuRadioItem value={"articles"} className="flex gap-3 items-center font-medium">
+                            <DropdownMenuRadioItem
+                              value={"articles"}
+                              className="flex gap-3 items-center font-medium"
+                            >
                               <BookText />
                               <span>{articles}</span>
                             </DropdownMenuRadioItem>
@@ -245,13 +278,19 @@ export default function Header({
                           </DropdownMenuRadioItem>
                           {/* </Link> */}
                           <Link href={"/search"} passHref scroll={true}>
-                            <DropdownMenuRadioItem value={"search"} className="flex gap-3 items-center font-medium">
+                            <DropdownMenuRadioItem
+                              value={"search"}
+                              className="flex gap-3 items-center font-medium"
+                            >
                               <Compass />
                               <span>{explore}</span>
                             </DropdownMenuRadioItem>
                           </Link>
                           <Link href={"/pricing"} passHref>
-                            <DropdownMenuRadioItem value={"pricing"} className="flex gap-3 items-center font-medium">
+                            <DropdownMenuRadioItem
+                              value={"pricing"}
+                              className="flex gap-3 items-center font-medium"
+                            >
                               <Tags />
                               <span>{pricing}</span>
                             </DropdownMenuRadioItem>
@@ -262,12 +301,14 @@ export default function Header({
                   </DropdownMenu>
                 </div>
 
-                {!isHomesPage && (
+                {/* {!isHomesPage && (
                   <Button
                     asChild
                     size={"largeIcon"}
                     variant="outline"
-                    className={`hidden lg:flex ${isAboutPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                    className={`hidden lg:flex ${
+                      isAboutPage && "bg-secondary"
+                    } h-12 text-[#2dac5c] hover:text-primary/80 `}
                     disabled={true}
                   >
                     <Link href="/about">
@@ -275,26 +316,32 @@ export default function Header({
                         <div className="flex justify-center items-center">
                           <Contact width={"22"} height={"22"} />
                         </div>
-                        <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                        <h1
+                          className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}
+                        >
                           {about}
                         </h1>
                       </div>
                     </Link>
                   </Button>
-                )}
+                )} */}
 
                 {!isHomesPage && (
                   <Button
                     size={"largeIcon"}
                     variant="outline"
-                    className={`hidden lg:flex ${isSearchPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
+                    className={`hidden lg:flex ${
+                      isSearchPage && "bg-secondary"
+                    } h-12 text-[#2dac5c] hover:text-primary/80 hover:cursor-pointer group`}
                   >
                     <Link href="/search">
                       <div className="flex px-2 justify-center text-center items-center gap-2">
                         <div className="flex justify-center items-center">
                           <Compass width={"22"} height={"22"} strokeWidth={2} />
                         </div>
-                        <h1 className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}>
+                        <h1
+                          className={`${poppins.className} hidden xs:flex md:text-inline align-middle font-medium`}
+                        >
                           {explore}
                         </h1>
                       </div>
@@ -307,7 +354,9 @@ export default function Header({
                     asChild
                     size={"largeIcon"}
                     variant="outline"
-                    className={`hidden lg:flex ${isArticlesPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                    className={`hidden lg:flex ${
+                      isArticlesPage && "bg-secondary"
+                    } h-12 text-[#2dac5c] hover:text-primary/80 `}
                     disabled={true}
                   >
                     <Link href="/articles">
@@ -315,7 +364,9 @@ export default function Header({
                         <div className="flex justify-center items-center">
                           <BookText width={"22"} height={"22"} />
                         </div>
-                        <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                        <h1
+                          className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}
+                        >
                           {articles}
                         </h1>
                       </div>
@@ -348,7 +399,9 @@ export default function Header({
                     asChild
                     size={"largeIcon"}
                     variant="outline"
-                    className={`hidden lg:flex ${isPricingPage && "bg-secondary"} h-12 text-[#2dac5c] hover:text-primary/80 `}
+                    className={`hidden lg:flex ${
+                      isPricingPage && "bg-secondary"
+                    } h-12 text-[#2dac5c] hover:text-primary/80 `}
                     disabled={true}
                   >
                     <Link href="/pricing">
@@ -356,7 +409,9 @@ export default function Header({
                         <div className="flex justify-center items-center">
                           <Tags width={"22"} height={"22"} />
                         </div>
-                        <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                        <h1
+                          className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}
+                        >
                           {pricing}
                         </h1>
                       </div>
@@ -379,7 +434,9 @@ export default function Header({
                             <Map width={"22"} height={"22"} />
                             <ChevronLeft width={"22"} height={"22"} />
                           </div>
-                          <h1 className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}>
+                          <h1
+                            className={`${poppins.className} hidden sm:flex md:text-inline align-middle font-medium`}
+                          >
                             {map}
                           </h1>
                         </div>
@@ -392,7 +449,9 @@ export default function Header({
 
             {!isSellPage && (
               <div
-                className={`flex ${!isSearchPage && "flex-grow md:flex-grow-0"} gap-3 md:gap-4 lg:gap-5 justify-end`}
+                className={`flex ${
+                  !isSearchPage && "flex-grow md:flex-grow-0"
+                } gap-3 md:gap-4 lg:gap-5 justify-end`}
               >
                 <Button
                   disabled={sessionLoading}
@@ -402,11 +461,18 @@ export default function Header({
                   }}
                 >
                   <HousePlus width={22} height={22} strokeWidth={2} />
-                  <span className="hidden xs:flex md:hidden lg:inline xl:hidden">{sellButtonSmall}</span>
-                  <span className="hidden md:inline lg:hidden xl:inline">{sellButtonBig}</span>
+                  <span className="hidden xs:flex md:hidden lg:inline xl:hidden">
+                    {sellButtonSmall}
+                  </span>
+                  <span className="hidden md:inline lg:hidden xl:inline">
+                    {sellButtonBig}
+                  </span>
                 </Button>
                 <div className={`justify-between gap-3 items-center`}>
-                  <ProfileButton openSignUpModal={openSignUpModal} openLogInModal={openLogInModal} />
+                  <ProfileButton
+                    openSignUpModal={openSignUpModal}
+                    openLogInModal={openLogInModal}
+                  />
                 </div>
               </div>
             )}

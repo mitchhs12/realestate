@@ -17,17 +17,23 @@ export default async function HeroContent() {
             <LeftLeaf className="text-[#4F4F4F] dark:text-white" />
           </div>
           <div className="flex flex-col justify-center items-center text-center gap-1">
-            <text
+            <span
               className={`${urbanist.className} text-[#4F4F4F] dark:text-white text-md sm:text-lg text-nowrap font-bold`}
             >
               {scopedT("laurel")}
-            </text>
+            </span>
             <div className="flex gap-3 justify-center pb-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={24} className="text-[#4F4F4F] fill-[#4F4F4F] dark:fill-white dark:text-white" />
+                <Star
+                  key={i}
+                  size={24}
+                  className="text-[#4F4F4F] fill-[#4F4F4F] dark:fill-white dark:text-white"
+                />
               ))}
             </div>
-            <text className="text-[#4F4F4F] dark:text-white text-sm sm:text-md font-semibold">{scopedT("year")}</text>
+            <span className="text-[#4F4F4F] dark:text-white text-sm sm:text-md font-semibold">
+              {scopedT("year")}
+            </span>
           </div>
           <div className="flex justify-center items-center w-[40px] h-full">
             <RightLeaf className="text-[#4F4F4F] dark:text-white" />

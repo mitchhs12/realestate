@@ -103,6 +103,7 @@ export const providerMap = providers.map((provider) => {
 });
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.AUTH_SECRET,
   theme: {
     logo: "/Logo.png",
     colorScheme: "auto",
@@ -113,9 +114,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Return basic user information synchronously first
       session.user.role = user.role;
       session.user.buyerSubscription = user.buyerSubscription as string | null;
-      session.user.sellerSubscription = user.sellerSubscription as string | null;
-      session.user.sellerSubscriptionId = user.sellerSubscriptionId as string | null;
-      session.user.buyerSubscriptionId = user.buyerSubscriptionId as string | null;
+      session.user.sellerSubscription = user.sellerSubscription as
+        | string
+        | null;
+      session.user.sellerSubscriptionId = user.sellerSubscriptionId as
+        | string
+        | null;
+      session.user.buyerSubscriptionId = user.buyerSubscriptionId as
+        | string
+        | null;
       session.user.contactCredits = user.contactCredits;
       session.user.sellCredits = user.sellCredits;
       session.user.phoneNumber = user.phoneNumber as string | null;
@@ -170,9 +177,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       name: "next-auth.pkce.code_verifier",
       options: {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: "lax",
         path: "/",
-        secure: true,
+        secure: process.env.NODE_ENV === "production",
       },
     },
   },

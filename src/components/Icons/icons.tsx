@@ -2,9 +2,15 @@ type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
   google: (props: IconProps) => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="white" />
-      <g clip-path="url(#clip0_710_6217)">
+      <g clipPath="url(#clip0_710_6217)">
         <path
           d="M29.6 20.2273C29.6 19.5182 29.5364 18.8364 29.4182 18.1818H20V22.05H25.3818C25.15 23.3 24.4455 24.3591 23.3864 25.0682V27.5773H26.6182C28.5091 25.8364 29.6 23.2727 29.6 20.2273Z"
           fill="#4285F4"
@@ -25,9 +31,15 @@ export const Icons = {
     </svg>
   ),
   google_dark: (props: IconProps) => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="#131314" />
-      <g clip-path="url(#clip0_710_6219)">
+      <g clipPath="url(#clip0_710_6219)">
         <path
           d="M29.6 20.2273C29.6 19.5182 29.5364 18.8364 29.4182 18.1818H20V22.05H25.3818C25.15 23.3 24.4455 24.3591 23.3864 25.0682V27.5773H26.6182C28.5091 25.8364 29.6 23.2727 29.6 20.2273Z"
           fill="#4285F4"
@@ -49,17 +61,24 @@ export const Icons = {
   ),
   facebook: (props: IconProps) => (
     <svg
-      clip-rule="evenodd"
+      clipRule="evenodd"
       fillRule="evenodd"
       width="38"
       height="38"
-      image-rendering="optimizeQuality"
-      shape-rendering="geometricPrecision"
-      text-rendering="geometricPrecision"
+      imageRendering="optimizeQuality"
+      shapeRendering="geometricPrecision"
+      textRendering="geometricPrecision"
       viewBox="6702.77 18309.17 6561.66 6561.660000000007"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="9983.6" x2="9983.6" y1="18249.39" y2="25150.62">
+      <linearGradient
+        id="a"
+        gradientUnits="userSpaceOnUse"
+        x1="9983.6"
+        x2="9983.6"
+        y1="18249.39"
+        y2="25150.62"
+      >
         <stop offset="0" stopColor="#00b2ff" />
         <stop offset="1" stopColor="#006aff" />
       </linearGradient>
@@ -76,13 +95,13 @@ export const Icons = {
   ),
   facebook_dark: (props: IconProps) => (
     <svg
-      clip-rule="evenodd"
+      clipRule="evenodd"
       fillRule="evenodd"
       width="38"
       height="38"
-      image-rendering="optimizeQuality"
-      shape-rendering="geometricPrecision"
-      text-rendering="geometricPrecision"
+      imageRendering="optimizeQuality"
+      shapeRendering="geometricPrecision"
+      textRendering="geometricPrecision"
       viewBox="6702.77 18309.17 6561.66 6561.660000000007"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -98,12 +117,22 @@ export const Icons = {
     </svg>
   ),
   apple: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 814 1000">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      viewBox="0 0 814 1000"
+    >
       <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z" />
     </svg>
   ),
   apple_dark: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 814 1000">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      viewBox="0 0 814 1000"
+    >
       <path
         fill="#fff"
         d="M824.66636 779.30363c-15.12299 34.93724-33.02368 67.09674-53.7638 96.66374-28.27076 40.3074-51.4182 68.2078-69.25717 83.7012-27.65347 25.4313-57.2822 38.4556-89.00964 39.1963-22.77708 0-50.24539-6.4813-82.21973-19.629-32.07926-13.0861-61.55985-19.5673-88.51583-19.5673-28.27075 0-58.59083 6.4812-91.02193 19.5673-32.48053 13.1477-58.64639 19.9994-78.65196 20.6784-30.42501 1.29623-60.75123-12.0985-91.02193-40.2457-19.32039-16.8514-43.48632-45.7394-72.43607-86.6641-31.060778-43.7024-56.597041-94.37983-76.602609-152.15586C10.740416 658.44309 0 598.01283 0 539.50845c0-67.01648 14.481044-124.8172 43.486336-173.25401C66.28194 327.34823 96.60818 296.6578 134.5638 274.1276c37.95566-22.53016 78.96676-34.01129 123.1321-34.74585 24.16591 0 55.85633 7.47508 95.23784 22.166 39.27042 14.74029 64.48571 22.21538 75.54091 22.21538 8.26518 0 36.27668-8.7405 83.7629-26.16587 44.90607-16.16001 82.80614-22.85118 113.85458-20.21546 84.13326 6.78992 147.34122 39.95559 189.37699 99.70686-75.24463 45.59122-112.46573 109.4473-111.72502 191.36456.67899 63.8067 23.82643 116.90384 69.31888 159.06309 20.61664 19.56727 43.64066 34.69027 69.2571 45.4307-5.55531 16.11062-11.41933 31.54225-17.65372 46.35662zM631.70926 20.0057c0 50.01141-18.27108 96.70693-54.6897 139.92782-43.94932 51.38118-97.10817 81.07162-154.75459 76.38659-.73454-5.99983-1.16045-12.31444-1.16045-18.95003 0-48.01091 20.9006-99.39207 58.01678-141.40314 18.53027-21.27094 42.09746-38.95744 70.67685-53.0663C578.3158 9.00229 605.2903 1.31621 630.65988 0c.74076 6.68575 1.04938 13.37191 1.04938 20.00505z"
@@ -111,7 +140,13 @@ export const Icons = {
     </svg>
   ),
   sell_home: (props: IconProps) => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M11.0639 7.63177V11.1393H7.51713V13.028H11.0639V16.5356H13.0048V13.028H16.5516V11.1393H13.0048V7.63177H11.0639Z"
         fill="currentColor"
@@ -123,7 +158,12 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  buy_guide: ({ width = "100", height = "100", color = "#000000", color2 = "#FFFFFF" }) => (
+  buy_guide: ({
+    width = "100",
+    height = "100",
+    color = "#000000",
+    color2 = "#FFFFFF",
+  }) => (
     <svg width={width} height={height} viewBox="0 0 1049 1049">
       <path
         fill={color}
@@ -177,7 +217,12 @@ export const Icons = {
       />
     </svg>
   ),
-  buy_guide_dark: ({ width = "100", height = "100", color = "#FFFFFF", color2 = "#000000" }) => (
+  buy_guide_dark: ({
+    width = "100",
+    height = "100",
+    color = "#FFFFFF",
+    color2 = "#000000",
+  }) => (
     <svg width={width} height={height} viewBox="0 0 1049 1049">
       <path
         fill={color}
@@ -231,7 +276,12 @@ export const Icons = {
       />
     </svg>
   ),
-  sell_guide: ({ width = "100", height = "100", color = "#000000", color2 = "#FFFFFF" }) => (
+  sell_guide: ({
+    width = "100",
+    height = "100",
+    color = "#000000",
+    color2 = "#FFFFFF",
+  }) => (
     <svg width={width} height={height} viewBox="50 50 924 924">
       <path
         fill={color}
@@ -271,7 +321,12 @@ export const Icons = {
       />
     </svg>
   ),
-  sell_guide_dark: ({ width = "100", height = "100", color = "#FFFFFF", color2 = "#000000" }) => (
+  sell_guide_dark: ({
+    width = "100",
+    height = "100",
+    color = "#FFFFFF",
+    color2 = "#000000",
+  }) => (
     <svg width={width} height={height} viewBox="50 50 924 924">
       <path
         fill={color}
@@ -312,7 +367,13 @@ export const Icons = {
     </svg>
   ),
   image_icon: (props: IconProps) => (
-    <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M2.5 1H12.5C13.3284 1 14 1.67157 14 2.5V12.5C14 13.3284 13.3284 14 12.5 14H2.5C1.67157 14 1 13.3284 1 12.5V2.5C1 1.67157 1.67157 1 2.5 1ZM2.5 2C2.22386 2 2 2.22386 2 2.5V8.3636L3.6818 6.6818C3.76809 6.59551 3.88572 6.54797 4.00774 6.55007C4.12975 6.55216 4.24568 6.60372 4.32895 6.69293L7.87355 10.4901L10.6818 7.6818C10.8575 7.50607 11.1425 7.50607 11.3182 7.6818L13 9.3636V2.5C13 2.22386 12.7761 2 12.5 2H2.5ZM2 12.5V9.6364L3.98887 7.64753L7.5311 11.4421L8.94113 13H2.5C2.22386 13 2 12.7761 2 12.5ZM12.5 13H10.155L8.48336 11.153L11 8.6364L13 10.6364V12.5C13 12.7761 12.7761 13 12.5 13ZM6.64922 5.5C6.64922 5.03013 7.03013 4.64922 7.5 4.64922C7.96987 4.64922 8.35078 5.03013 8.35078 5.5C8.35078 5.96987 7.96987 6.35078 7.5 6.35078C7.03013 6.35078 6.64922 5.96987 6.64922 5.5ZM7.5 3.74922C6.53307 3.74922 5.74922 4.53307 5.74922 5.5C5.74922 6.46693 6.53307 7.25078 7.5 7.25078C8.46693 7.25078 9.25078 6.46693 9.25078 5.5C9.25078 4.53307 8.46693 3.74922 7.5 3.74922Z"
         fill="currentColor"
@@ -339,8 +400,18 @@ export const Icons = {
     </svg>
   ),
 
-  buyer_icon: ({ width = "40", height = "40", color = "#000000", strokeWidth = 4 }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" width={width} height={height}>
+  buyer_icon: ({
+    width = "40",
+    height = "40",
+    color = "#000000",
+    strokeWidth = 4,
+  }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 76 83"
+      width={width}
+      height={height}
+    >
       <defs>
         <style>
           {`
@@ -378,17 +449,36 @@ export const Icons = {
         <line className="cls-1" x1="63.26" y1="53.44" x2="67.42" y2="55.51" />
         <line className="cls-1" x1="64.35" y1="50.11" x2="63.26" y2="53.44" />
         <line className="cls-1" x1="60.73" y1="41.68" x2="64.23" y2="49.83" />
-        <circle className="cls-1" cx="52.98" cy="32.44" r="0.31" transform="translate(-8.5 23.49) rotate(-23.2)" />
+        <circle
+          className="cls-1"
+          cx="52.98"
+          cy="32.44"
+          r="0.31"
+          transform="translate(-8.5 23.49) rotate(-23.2)"
+        />
         <path
           className="cls-1"
           d="M25.37,30.68a11.73,11.73,0,0,1-.3-2.66c0-7.15,6.25-12.95,14-12.95,6.59,0,12.12,4.24,13.58,9.93"
         />
-        <path className="cls-1" d="M49.24,37.75A14.42,14.42,0,0,1,39,41.88a16,16,0,0,1-7.67-2.47" />
+        <path
+          className="cls-1"
+          d="M49.24,37.75A14.42,14.42,0,0,1,39,41.88a16,16,0,0,1-7.67-2.47"
+        />
       </g>
     </svg>
   ),
-  seller_icon: ({ width = "40", height = "40", color = "#000000", strokeWidth = 4 }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 83" width={width} height={height}>
+  seller_icon: ({
+    width = "40",
+    height = "40",
+    color = "#000000",
+    strokeWidth = 4,
+  }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 76 83"
+      width={width}
+      height={height}
+    >
       <defs>
         <style>
           {`
@@ -410,15 +500,33 @@ export const Icons = {
         </style>
       </defs>
       <g id="TRAZOS">
-        <path className="cls-1" d="M39.11,17.05,35.48,13,34,14.34,10.17,41l-.55.67h5.46c-.11.45-.22-.11.11.34V68.74" />
-        <path className="cls-1" d="M56.55,68.74,56.33,42c0-.45.11.22,0-.23h5L56.16,36" />
+        <path
+          className="cls-1"
+          d="M39.11,17.05,35.48,13,34,14.34,10.17,41l-.55.67h5.46c-.11.45-.22-.11.11.34V68.74"
+        />
+        <path
+          className="cls-1"
+          d="M56.55,68.74,56.33,42c0-.45.11.22,0-.23h5L56.16,36"
+        />
         <line className="cls-1" x1="15.22" y1="68.74" x2="56.55" y2="68.74" />
-        <path className="cls-2" d="M44.23,40.64H32.54a4,4,0,0,0,0,8h7.79a4,4,0,0,1,0,8H28.64" />
+        <path
+          className="cls-2"
+          d="M44.23,40.64H32.54a4,4,0,0,0,0,8h7.79a4,4,0,0,1,0,8H28.64"
+        />
         <path className="cls-2" d="M36.43,60.69V36.63" />
-        <polyline className="cls-1" points="45.54 16.73 67.65 14.37 69.06 29.8 47.78 32.08" />
+        <polyline
+          className="cls-1"
+          points="45.54 16.73 67.65 14.37 69.06 29.8 47.78 32.08"
+        />
         <line className="cls-1" x1="39.05" y1="25.22" x2="46.94" y2="32.17" />
         <line className="cls-1" x1="45.54" y1="16.73" x2="39.05" y2="25.22" />
-        <circle className="cls-1" cx="47.17" cy="24.32" r="0.31" transform="translate(-5.77 20.55) rotate(-23.2)" />
+        <circle
+          className="cls-1"
+          cx="47.17"
+          cy="24.32"
+          r="0.31"
+          transform="translate(-5.77 20.55) rotate(-23.2)"
+        />
       </g>
     </svg>
   ),
