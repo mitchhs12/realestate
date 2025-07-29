@@ -237,6 +237,9 @@ importers:
       pdfjs-dist:
         specifier: ^5.4.54
         version: 5.4.54
+      prismjs:
+        specifier: ^1.30.0
+        version: 1.30.0
       quill:
         specifier: ^2.0.3
         version: 2.0.3
@@ -7598,6 +7601,10 @@ packages:
 
   prismjs@1.27.0:
     resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
+    engines: {node: '>=6'}
+
+  prismjs@1.30.0:
+    resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
     engines: {node: '>=6'}
 
   process-nextick-args@2.0.1:
@@ -17657,6 +17664,8 @@ snapshots:
       - magicast
 
   prismjs@1.27.0: {}
+
+  prismjs@1.30.0: {}
 
   process-nextick-args@2.0.1: {}
 
