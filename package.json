@@ -135,7 +135,8 @@
     "overrides": {
       "@types/react": "19.0.1",
       "@types/react-dom": "19.0.2",
-      "path-to-regexp": "6.3.0"
+      "path-to-regexp": "6.3.0",
+      "undici":"^5.29.0"
     }
   }
 }
