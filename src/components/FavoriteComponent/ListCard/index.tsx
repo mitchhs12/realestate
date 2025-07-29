@@ -172,7 +172,7 @@ export default function ListCard({ list, homeToBeFavorited, translations }: Prop
               <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
                 <AlertDialogTrigger asChild>
                   <Button
-                    className="flex-grow"
+                    className="grow"
                     disabled={isDeleting || isLoading}
                     variant={"destructive"}
                     size={"icon"}

@@ -22,7 +22,7 @@ const MultiSelect = ({ className, items, selectedItems, onChange, position = "po
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <button className="flex items-center justify-between w-full h-9 px-3 py-2 text-sm rounded-md border border-input bg-transparent shadow-sm focus:outline-none">
+        <button className="flex items-center justify-between w-full h-9 px-3 py-2 text-sm rounded-md border border-input bg-transparent shadow-xs focus:outline-hidden">
           {selectedItems.length > 0 ? `Selected: ${selectedItems.length}` : "Select Items"}
           <ChevronDownIcon className="ml-2 h-4 w-4 opacity-50" />
         </button>

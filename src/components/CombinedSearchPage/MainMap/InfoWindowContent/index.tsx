@@ -56,7 +56,7 @@ const InfoWindowContent = memo(
         <>
           <div className="flex flex-col justify-center items-center w-full min-w-[220px] text-sm">
             <Carousel
-              className={`h-full w-full overflow-auto ${props.listingType === "premium" && "bg-gradient-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
+              className={`h-full w-full overflow-auto ${props.listingType === "premium" && "bg-linear-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
             >
               <CarouselContent className="ml-0">
                 {props.photos.map((photo: string, index) => (
@@ -97,7 +97,7 @@ const InfoWindowContent = memo(
           </div>
           <Link href={`/homes/${props.id}`} target={"_blank"}>
             <div
-              className={`flex items-center gap-3 py-2 px-3 ${props.listingType === "premium" && "bg-gradient-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
+              className={`flex items-center gap-3 py-2 px-3 ${props.listingType === "premium" && "bg-linear-to-r from-amber-400 dark:from-amber-500 via-yellow-400 dark:via-yellow-500 to-amber-400 dark:to-amber-500"}`}
             >
               {props.country && (
                 <FlagComponent
@@ -128,7 +128,7 @@ const InfoWindowContent = memo(
                         originalPrice={props.price}
                         currency={defaultCurrency!}
                         reveal={user ? true : false}
-                        blurAmount="blur-sm"
+                        blurAmount="blur-xs"
                         className={`text-lg hover:cursor-pointer font-light`}
                       />
                     </TooltipTrigger>

@@ -43,7 +43,7 @@ export default function CheckoutCard({
           <CardTitle className="flex justify-center items-center text-bold">{title}</CardTitle>
           <CardDescription className="flex justify-center items-center text-light">{description}</CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-4 flex-grow">
+        <CardContent className="grid gap-4 grow">
           {perks.map((perk, index) => (
             <div key={index} className="flex items-start gap-4">
               <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary" />

@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
-import { PluginAPI } from "tailwindcss/types/config";
 
 const config = {
   darkMode: "class",
@@ -116,7 +115,7 @@ const config = {
   plugins: [
     require("tailwindcss-animate"),
     require("@tailwindcss/typography"),
-    plugin(({ addUtilities }: PluginAPI) => {
+    plugin(({ addUtilities }) => {
       addUtilities({
         ".filter-white": {
           filter: "brightness(0) invert(1)",

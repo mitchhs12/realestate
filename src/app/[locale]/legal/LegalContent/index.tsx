@@ -10,7 +10,9 @@ export default async function LegalContent() {
   return (
     <div className="flex flex-col gap-y-12 px-4 md:px-6 justify-start items-center">
       <div className="flex flex-col gap-3 w-full">
-        <h3 className="text-semibold text-2xl text-center sm:text-start">{l("documents")}</h3>
+        <h3 className="text-semibold text-2xl text-center sm:text-start">
+          {l("documents")}
+        </h3>
         <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-between gap-4">
           <Button asChild variant={"outline"} className="w-full max-w-[80%]">
             <Link href="/legal/terms-and-conditions">
@@ -18,7 +20,9 @@ export default async function LegalContent() {
                 <div className="flex justify-center items-center">
                   <Handshake size={18} strokeWidth={1.8} />
                 </div>
-                <h2 className="flex justify-center items-center">{t("terms")}</h2>
+                <h2 className="flex justify-center items-center">
+                  {t("terms")}
+                </h2>
               </div>
             </Link>
           </Button>
@@ -28,7 +32,9 @@ export default async function LegalContent() {
                 <div className="flex justify-center items-center">
                   <Lock size={18} strokeWidth={2} />
                 </div>
-                <h2 className="flex justify-center items-center">{t("privacy")}</h2>
+                <h2 className="flex justify-center items-center">
+                  {t("privacy")}
+                </h2>
               </div>
             </Link>
           </Button>

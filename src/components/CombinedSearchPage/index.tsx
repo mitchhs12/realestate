@@ -214,7 +214,7 @@ export default function CombinedSearchPage({
       <section
         className={`hidden lg:flex flex-col w-1/2 bg-zinc-100 dark:bg-zinc-900 gap-4`}
       >
-        <h1 className="sticky top-[152px] text-center z-[30] bg-zinc-100 dark:bg-zinc-900 shadow-lg py-4 text-xl xl:text-2xl justify-center items-center w-full">
+        <h1 className="sticky top-[152px] text-center z-30 bg-zinc-100 dark:bg-zinc-900 shadow-lg py-4 text-xl xl:text-2xl justify-center items-center w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-96 h-8 mx-auto" />
           ) : (

@@ -23,7 +23,7 @@ const CustomPhoneInput: React.FC<CustomPhoneInputProps> = ({ className, ...props
       {...props}
       onChange={handlePhoneChange}
       className={cn(
-        "custom-phone-input flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm shadow-secondary transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        "custom-phone-input flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs shadow-secondary transition-colors placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
     />

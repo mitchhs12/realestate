@@ -20,7 +20,9 @@ export default function BackButton({ listText }: { listText: string }) {
               <Heart width={"22"} height={"22"} />
               <ChevronLeft width={"22"} height={"22"} />
             </div>
-            <h1 className={`flex text-inline align-middle font-medium`}>{listText}</h1>
+            <h1 className={`flex text-inline align-middle font-medium`}>
+              {listText}
+            </h1>
           </div>
         </div>
       </Link>

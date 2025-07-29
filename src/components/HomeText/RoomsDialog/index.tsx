@@ -32,22 +32,22 @@ export default function RoomsDialog({
             <div className="flex flex-col w-full gap-3 pl-1">
               <div className="flex gap-3 items-center">
                 <BedDouble size={18} strokeWidth={1.5} />
-                <span className="w-[1rem]">{formatNumber(home.bedrooms, numerals)}</span>
+                <span className="w-4">{formatNumber(home.bedrooms, numerals)}</span>
                 <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
               </div>
               <div className="flex gap-3 items-center">
                 <Bath size={18} strokeWidth={1.5} />
-                <span className="w-[1rem]">{formatNumber(home.bathrooms, numerals)}</span>
+                <span className="w-4">{formatNumber(home.bathrooms, numerals)}</span>
                 <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
               </div>
               <div className="flex gap-3 items-center">
                 <Sofa size={18} strokeWidth={1.5} />
-                <span className="w-[1rem]">{formatNumber(home.livingrooms, numerals)}</span>
+                <span className="w-4">{formatNumber(home.livingrooms, numerals)}</span>
                 <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
               </div>
               <div className="flex gap-3 items-center">
                 <CookingPot size={18} strokeWidth={1.5} />
-                <span className="w-[1rem]">{formatNumber(home.kitchens, numerals)}</span>
+                <span className="w-4">{formatNumber(home.kitchens, numerals)}</span>
                 <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
               </div>
             </div>

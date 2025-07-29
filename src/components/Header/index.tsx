@@ -118,7 +118,7 @@ export default function Header({
       <header
         className={`sticky top-0 ${isStudioPage ? "hidden" : "flex"} ${
           isSellPage ? "justify-end" : "shadow-lg dark:shadow-white/5"
-        } items-center p-4 z-[40] md:px-6 bg-background`}
+        } items-center p-4 z-40 md:px-6 bg-background`}
       >
         <div className="flex flex-col gap-6 w-full">
           <div className="flex justify-between">
@@ -450,7 +450,7 @@ export default function Header({
             {!isSellPage && (
               <div
                 className={`flex ${
-                  !isSearchPage && "flex-grow md:flex-grow-0"
+                  !isSearchPage && "grow md:grow-0"
                 } gap-3 md:gap-4 lg:gap-5 justify-end`}
               >
                 <Button

@@ -2,7 +2,13 @@
 
 import { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
 import {
   Filter,
   House,
@@ -56,7 +62,16 @@ export default function FiltersDialog() {
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const [isRoomsOpen, setIsRoomsOpen] = useState(false);
-  const { filters, categories, features, rooms, apply, reset, selectAll, deselectAll } = headerValues;
+  const {
+    filters,
+    categories,
+    features,
+    rooms,
+    apply,
+    reset,
+    selectAll,
+    deselectAll,
+  } = headerValues;
   const pathname = usePathname();
 
   const toggleFeatures = () => {
@@ -85,7 +100,7 @@ export default function FiltersDialog() {
     <>
       <Button
         variant={"secondary"}
-        className="h-12 pl-5 justify-center items-center text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
+        className="h-12 pl-5 justify-center items-center text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-xs shadow-secondary"
         disabled={!isReady}
         onClick={(e) => {
           e.preventDefault();
@@ -93,9 +108,16 @@ export default function FiltersDialog() {
         }}
       >
         <div
-          className={`flex items-center text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
+          className={`flex items-center text-gray-600 dark:text-gray-400 ${
+            originalFilters !== newFilters && "text-primary"
+          }`}
         >
-          <Settings2 className="items-center" width={20} height={20} strokeWidth={1.5} />
+          <Settings2
+            className="items-center"
+            width={20}
+            height={20}
+            strokeWidth={1.5}
+          />
         </div>
       </Button>
 
@@ -120,7 +142,9 @@ export default function FiltersDialog() {
                     minValue={1}
                     maxValue={initialMaxPrice}
                     exponent={2}
-                    onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
+                    onFormattedPricesChange={(newValue) =>
+                      setConvertedPriceRange(newValue)
+                    }
                     newCurrencySymbol={defaultCurrency.symbol}
                     newCurrencyUsdPrice={defaultCurrency.usdPrice}
                   />
@@ -134,78 +158,137 @@ export default function FiltersDialog() {
                 </div>
               </div>
               <div className="flex flex-col gap-4 p-1 overflow-auto justify-start">
-                <div className={`flex flex-col gap-2 ${isCategoriesOpen && "overflow-y-auto"}`}>
+                <div
+                  className={`flex flex-col gap-2 ${
+                    isCategoriesOpen && "overflow-y-auto"
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <House width={20} height={20} strokeWidth={1.25} />
                       {categories}{" "}
-                      {selectedTypes.length > 0 && <span className="text-[#16A34A]">({selectedTypes.length})</span>}
+                      {selectedTypes.length > 0 && (
+                        <span className="text-[#16A34A]">
+                          ({selectedTypes.length})
+                        </span>
+                      )}
                     </div>
-                    <Button variant={"outline"} size={"icon"} onClick={toggleCategories}>
+                    <Button
+                      variant={"outline"}
+                      size={"icon"}
+                      onClick={toggleCategories}
+                    >
                       {isCategoriesOpen ? <ChevronUp /> : <ChevronDown />}
                     </Button>
                   </div>
                   {isCategoriesOpen && (
                     <div className="flex flex-col p-1 overflow-y-auto">
                       <I18nProviderClient locale={defaultLanguage}>
-                        <Button className="flex text-sm w-full" variant={"outline"} onClick={handleAllTypes}>
+                        <Button
+                          className="flex text-sm w-full"
+                          variant={"outline"}
+                          onClick={handleAllTypes}
+                        >
                           {allSelectedTypes ? deselectAll : selectAll}
                         </Button>
                         <div className="flex flex-col overflow-y-auto">
-                          <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
+                          <Categories
+                            selectedTypes={selectedTypes}
+                            setSelectedTypes={setSelectedTypes}
+                          />
                         </div>
                       </I18nProviderClient>
                     </div>
                   )}
                 </div>
 
-                <div className={`flex flex-col gap-2 ${isFeaturesOpen && "overflow-y-auto"}`}>
+                <div
+                  className={`flex flex-col gap-2 ${
+                    isFeaturesOpen && "overflow-y-auto"
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Sparkles width={20} height={20} strokeWidth={1.25} />
                       {features}{" "}
                       {selectedFeatures.length > 0 && (
-                        <span className="text-[#16A34A]">({selectedFeatures.length})</span>
+                        <span className="text-[#16A34A]">
+                          ({selectedFeatures.length})
+                        </span>
                       )}
                     </div>
-                    <Button variant={"outline"} size={"icon"} onClick={toggleFeatures}>
+                    <Button
+                      variant={"outline"}
+                      size={"icon"}
+                      onClick={toggleFeatures}
+                    >
                       {isFeaturesOpen ? <ChevronUp /> : <ChevronDown />}
                     </Button>
                   </div>
                   {isFeaturesOpen && (
                     <div className="flex flex-col p-1 overflow-y-auto">
                       <I18nProviderClient locale={defaultLanguage}>
-                        <Button className="flex text-sm w-full" variant={"outline"} onClick={handleAllFeatures}>
+                        <Button
+                          className="flex text-sm w-full"
+                          variant={"outline"}
+                          onClick={handleAllFeatures}
+                        >
                           {allSelectedFeatures ? deselectAll : selectAll}
                         </Button>
                         <div className="flex flex-col overflow-y-auto">
-                          <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
+                          <Features
+                            selectedFeatures={selectedFeatures}
+                            setSelectedFeatures={setSelectedFeatures}
+                          />
                         </div>
                       </I18nProviderClient>
                     </div>
                   )}
                 </div>
 
-                <div className={`flex flex-col gap-2 ${isRoomsOpen && "overflow-y-auto"}`}>
+                <div
+                  className={`flex flex-col gap-2 ${
+                    isRoomsOpen && "overflow-y-auto"
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <DoorOpen width={20} height={20} strokeWidth={1.25} />
                       {rooms}
-                      {(selectedRooms.bedrooms[0] !== 0 || selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
-                        <BedDouble size={18} strokeWidth={1.25} color={"#16A34A"} />
+                      {(selectedRooms.bedrooms[0] !== 0 ||
+                        selectedRooms.bedrooms[1] !==
+                          selectedRooms.maxRooms) && (
+                        <BedDouble
+                          size={18}
+                          strokeWidth={1.25}
+                          color={"#16A34A"}
+                        />
                       )}
-                      {(selectedRooms.bathrooms[0] !== 0 || selectedRooms.bathrooms[1] !== selectedRooms.maxRooms) && (
+                      {(selectedRooms.bathrooms[0] !== 0 ||
+                        selectedRooms.bathrooms[1] !==
+                          selectedRooms.maxRooms) && (
                         <Bath size={18} strokeWidth={1.25} color={"#16A34A"} />
                       )}
                       {(selectedRooms.livingrooms[0] !== 0 ||
-                        selectedRooms.livingrooms[1] !== selectedRooms.maxRooms) && (
+                        selectedRooms.livingrooms[1] !==
+                          selectedRooms.maxRooms) && (
                         <Sofa size={18} strokeWidth={1.25} color={"#16A34A"} />
                       )}
-                      {(selectedRooms.kitchens[0] !== 0 || selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
-                        <CookingPot size={18} strokeWidth={1.25} color={"#16A34A"} />
+                      {(selectedRooms.kitchens[0] !== 0 ||
+                        selectedRooms.kitchens[1] !==
+                          selectedRooms.maxRooms) && (
+                        <CookingPot
+                          size={18}
+                          strokeWidth={1.25}
+                          color={"#16A34A"}
+                        />
                       )}
                     </div>
-                    <Button variant={"outline"} size={"icon"} onClick={toggleRooms}>
+                    <Button
+                      variant={"outline"}
+                      size={"icon"}
+                      onClick={toggleRooms}
+                    >
                       {isRoomsOpen ? <ChevronUp /> : <ChevronDown />}
                     </Button>
                   </div>
@@ -213,7 +296,10 @@ export default function FiltersDialog() {
                     <div className="flex flex-col p-1 overflow-y-auto">
                       <I18nProviderClient locale={defaultLanguage}>
                         <div className="flex flex-col overflow-y-auto">
-                          <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
+                          <Rooms
+                            selectedRooms={selectedRooms}
+                            setSelectedRooms={setSelectedRooms}
+                          />
                         </div>
                       </I18nProviderClient>
                     </div>
@@ -239,7 +325,10 @@ export default function FiltersDialog() {
                     })
                   }
                   onClick={() => {
-                    if (pathname !== "/" && pathname !== `/${defaultLanguage}`) {
+                    if (
+                      pathname !== "/" &&
+                      pathname !== `/${defaultLanguage}`
+                    ) {
                       setIsFiltering(true);
                     } else {
                       setNewFilters(

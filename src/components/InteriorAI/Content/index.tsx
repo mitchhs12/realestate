@@ -375,7 +375,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
         </div>
         <div className="flex flex-col w-full gap-6 items-center justify-start">
           <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-8 p-8 justify-items-center max-w-8xl">
-            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-1 xl:order-none">
+            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-1 xl:order-0">
               {originalImage && !uploadNew ? (
                 <div>
                   <Image
@@ -443,7 +443,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                 </div>
               )}
             </div>
-            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-2 xl:order-none">
+            <div className="relative w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-2 xl:order-0">
               {status === "pending" ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Skeleton className="absolute inset-0 w-full h-full" />
@@ -475,7 +475,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
               )}
             </div>
 
-            <div className="flex flex-col gap-2 w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] order-4 xl:order-none rounded-xl overflow-hidden">
+            <div className="flex flex-col gap-2 w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] order-4 xl:order-0 rounded-xl overflow-hidden">
               <h1 className="text-center text-lg">
                 {t("images-expire-warning")}
               </h1>
@@ -569,7 +569,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
               )}
             </div>
 
-            <div className="w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-3 xl:order-none">
+            <div className="w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] rounded-xl shadow-lg dark:shadow-white/10 overflow-hidden order-3 xl:order-0">
               {status === "pending" ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Skeleton className="absolute inset-0 w-full h-full" />

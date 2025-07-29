@@ -4,7 +4,13 @@ import Image from "next/image";
 import ResizableCarousel from "@/components/ResizableCarousel";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect, useContext } from "react";
-import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { HomeContext } from "@/context/HomeContext";
 import { LocaleContext } from "@/context/LocaleContext";
 import InteriorAI from "@/components/InteriorAI/MainButton";
@@ -85,7 +91,9 @@ export default function HomePhotos({ showAllPhotos }: Props) {
                   q.stopPropagation();
                   openModal(index);
                 }}
-                className={`relative ${index === 0 ? "row-span-2 col-span-2" : ""} h-full w-full`}
+                className={`relative ${
+                  index === 0 ? "row-span-2 col-span-2" : ""
+                } h-full w-full`}
               >
                 <Image
                   src={photo}
@@ -100,7 +108,9 @@ export default function HomePhotos({ showAllPhotos }: Props) {
               <InteriorAI imageUrl={home.photos[0]} />
             </div>
             <div className="absolute top-1 left-[49%] -translate-x-1/2">
-              {user && user.id !== home.ownerId && <FavoriteComponent user={user} home={home} large={true} />}
+              {user && user.id !== home.ownerId && (
+                <FavoriteComponent user={user} home={home} large={true} />
+              )}
             </div>
           </div>
           {home.photos.length > 0 && (
@@ -134,7 +144,10 @@ export default function HomePhotos({ showAllPhotos }: Props) {
 
       {/* Modal for showing all photos */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-[90vw] sm:max-w-3xl rounded-md p-4" onOpenAutoFocus={(e) => e.preventDefault()}>
+        <DialogContent
+          className="max-w-[90vw] sm:max-w-3xl rounded-md p-4"
+          onOpenAutoFocus={(e) => e.preventDefault()}
+        >
           <DialogHeader>
             <DialogTitle>All Photos</DialogTitle>
             <DialogClose asChild></DialogClose>
@@ -158,7 +171,9 @@ export default function HomePhotos({ showAllPhotos }: Props) {
                   alt={`${home.title} photo ${index}`}
                   width={700}
                   height={700}
-                  sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                  sizes={
+                    "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"
+                  }
                 />
               </div>
             ))}

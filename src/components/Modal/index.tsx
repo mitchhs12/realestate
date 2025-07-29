@@ -133,7 +133,7 @@ export function Modal({ customMessage }: { customMessage?: string }) {
                     <Icons.google_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">
+                <div className="flex grow">
                   {isLoading === "google" ? g("loading") : t("google")}
                 </div>
               </div>
@@ -154,7 +154,7 @@ export function Modal({ customMessage }: { customMessage?: string }) {
                     <Icons.apple_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">
+                <div className="flex grow">
                   {isLoading === "apple" ? g("loading") : t("apple")}
                 </div>
               </div>
@@ -175,7 +175,7 @@ export function Modal({ customMessage }: { customMessage?: string }) {
                     <Icons.facebook_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">
+                <div className="flex grow">
                   {isLoading === "facebook" ? g("loading") : t("facebook")}{" "}
                 </div>
               </div>

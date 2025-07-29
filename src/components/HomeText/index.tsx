@@ -410,7 +410,7 @@ export default function HomeText({
                 <div className="flex flex-col w-full gap-3 pl-1">
                   <div className="flex gap-3 items-center">
                     <BedDouble size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">
+                    <span className="w-4">
                       {formatNumber(home.bedrooms, numerals)}
                     </span>{" "}
                     <span>
@@ -421,7 +421,7 @@ export default function HomeText({
                   </div>
                   <div className="flex gap-3 items-center">
                     <Bath size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">
+                    <span className="w-4">
                       {formatNumber(home.bathrooms, numerals)}
                     </span>
                     <span>
@@ -432,7 +432,7 @@ export default function HomeText({
                   </div>
                   <div className="flex gap-3 items-center">
                     <Sofa size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">
+                    <span className="w-4">
                       {formatNumber(home.livingrooms, numerals)}
                     </span>
                     <span>
@@ -443,7 +443,7 @@ export default function HomeText({
                   </div>
                   <div className="flex gap-3 items-center">
                     <CookingPot size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">
+                    <span className="w-4">
                       {formatNumber(home.kitchens, numerals)}
                     </span>
                     <span>
@@ -665,7 +665,7 @@ export default function HomeText({
                   </span>
                   <div
                     className={`${
-                      !revealContact ? "blur-sm select-none" : "select-text"
+                      !revealContact ? "blur-xs select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
                     <div className="text-start">{homeOwnerName}</div>
@@ -694,7 +694,7 @@ export default function HomeText({
                   </span>
                   <div
                     className={`${
-                      !revealContact ? "blur-sm select-none" : "select-text"
+                      !revealContact ? "blur-xs select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
                     <div className="justify-start truncate">
@@ -725,7 +725,7 @@ export default function HomeText({
                   </span>
                   <div
                     className={`${
-                      !revealContact ? "blur-sm select-none" : "select-text"
+                      !revealContact ? "blur-xs select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
                     <div className="justify-start">{homeOwnerPhone}</div>

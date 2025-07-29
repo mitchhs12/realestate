@@ -22,7 +22,7 @@ export default async function SellFlowLayout(props: Props) {
     <>
       <SellContextProvider>
         <div className="flex flex-col h-screen-minus-header-dvh w-full">
-          <main className="flex-grow overflow-auto h-full">{children}</main>
+          <main className="grow overflow-auto h-full">{children}</main>
           <ProgressBar cont={cont} start={start} back={back} next={next} finish={finish} loading={loading} />
         </div>
       </SellContextProvider>

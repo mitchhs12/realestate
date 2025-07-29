@@ -99,7 +99,7 @@ export default function PriceCard({
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
       {sessionLoading ? (
-        <Skeleton className="flex flex-grow w-[30vw] h-[60vh]" />
+        <Skeleton className="flex grow w-[30vw] h-[60vh]" />
       ) : (
         defaultCurrency && (
           <Card
@@ -112,7 +112,7 @@ export default function PriceCard({
                 {title}
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col gap-4 flex-grow px-3">
+            <CardContent className="flex flex-col gap-4 grow px-3">
               <div className="flex justify-center gap-2 text-4xl font-medium items-center">
                 {formatPrice(
                   defaultCurrency.symbol,

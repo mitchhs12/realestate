@@ -81,13 +81,13 @@ export default async function LatestArticles(props: { locale: LanguageType }) {
               />
             </Link>
 
-            <div className="flex flex-col w-full flex-grow">
+            <div className="flex flex-col w-full grow">
               {article.localizedTitle ? (
-                <div className="flex flex-col w-full h-auto flex-grow gap-6 justify-between">
+                <div className="flex flex-col w-full h-auto grow gap-6 justify-between">
                   <Button
                     asChild
                     variant={"link"}
-                    className="flex p-0 h-auto flex-grow gap-3 items-center text-primary"
+                    className="flex p-0 h-auto grow gap-3 items-center text-primary"
                   >
                     <Link href={`/articles/${article.currentSlug}`}>
                       <h3 className="flex text-sm sm:text-md md:text-lg font-bold text-wrap text-start">

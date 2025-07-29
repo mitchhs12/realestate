@@ -88,7 +88,7 @@ export default function StickyPrice({
                   priceUsd={home.priceUsd}
                   currency={defaultCurrency}
                   reveal={user ? true : false}
-                  blurAmount="blur-sm"
+                  blurAmount="blur-xs"
                   className="mb-0"
                 />
               </span>
@@ -105,7 +105,7 @@ export default function StickyPrice({
                     priceUsd={home.priceUsd}
                     currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
                     reveal={user ? true : false}
-                    blurAmount="blur-sm"
+                    blurAmount="blur-xs"
                     className="mb-0"
                   />
                 ) : (

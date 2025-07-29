@@ -28,7 +28,7 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const { name, email, count } = payload[0].payload;
     return (
-      <div className="bg-card p-2 border rounded shadow">
+      <div className="bg-card p-2 border rounded shadow-sm">
         <p className="count">{`${count} properties`}</p>
         <p className="label">{`Name: ${name}`}</p>
         <p className="intro">{`Email: ${email}`}</p>

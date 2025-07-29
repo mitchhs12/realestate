@@ -48,7 +48,7 @@ export default function Description() {
             value={description}
             theme={"snow"}
             placeholder={t("placeholder")}
-            className={`flex flex-col h-full max-w-8xl w-full overflow-auto text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
+            className={`flex flex-col h-full max-w-8xl w-full overflow-auto text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring ${
               description.length === 3000 && "border-red-500"
             }`}
             onChange={(value: string) => {

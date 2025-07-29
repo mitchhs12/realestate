@@ -10,7 +10,14 @@ import {
   DialogDescription,
   VisuallyHidden,
 } from "@/components/ui/dialog";
-import { House, Sparkles, DollarSign, DoorOpen, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  House,
+  Sparkles,
+  DollarSign,
+  DoorOpen,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { Slider } from "@/components/ui/currencySlider";
 import { QueryContext } from "@/context/QueryContext";
 import Features from "@/components/Filters/Features";
@@ -30,7 +37,12 @@ interface Props {
   text: string;
 }
 
-export default function FiltersDialog({ isSmallMap, placeholder, placeholderShort, text }: Props) {
+export default function FiltersDialog({
+  isSmallMap,
+  placeholder,
+  placeholderShort,
+  text,
+}: Props) {
   const {
     headerValues,
     setConvertedPriceRange,
@@ -58,7 +70,17 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const [isRoomsOpen, setIsRoomsOpen] = useState(false);
-  const { categories, features, rooms, apply, reset, selectAll, deselectAll, search, filters } = headerValues;
+  const {
+    categories,
+    features,
+    rooms,
+    apply,
+    reset,
+    selectAll,
+    deselectAll,
+    search,
+    filters,
+  } = headerValues;
   const pathname = usePathname();
 
   const toggleFeatures = () => {
@@ -112,7 +134,9 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                   minValue={1}
                   maxValue={initialMaxPrice}
                   exponent={2}
-                  onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
+                  onFormattedPricesChange={(newValue) =>
+                    setConvertedPriceRange(newValue)
+                  }
                   newCurrencySymbol={defaultCurrency?.symbol}
                   newCurrencyUsdPrice={defaultCurrency?.usdPrice}
                 />
@@ -126,76 +150,135 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
               </div>
             </div>
             <div className="flex flex-col gap-4 p-1 overflow-y-auto justify-start">
-              <div className={`flex flex-col gap-2 ${isCategoriesOpen && "overflow-y-auto"}`}>
+              <div
+                className={`flex flex-col gap-2 ${
+                  isCategoriesOpen && "overflow-y-auto"
+                }`}
+              >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <House width={20} height={20} strokeWidth={1.25} />
                     {categories}{" "}
-                    {selectedTypes.length > 0 && <span className="text-[#16A34A]">({selectedTypes.length})</span>}
+                    {selectedTypes.length > 0 && (
+                      <span className="text-[#16A34A]">
+                        ({selectedTypes.length})
+                      </span>
+                    )}
                   </div>
-                  <Button variant={"outline"} size={"icon"} onClick={toggleCategories}>
+                  <Button
+                    variant={"outline"}
+                    size={"icon"}
+                    onClick={toggleCategories}
+                  >
                     {isCategoriesOpen ? <ChevronUp /> : <ChevronDown />}
                   </Button>
                 </div>
                 {isCategoriesOpen && (
                   <div className="flex flex-col p-1 overflow-y-auto">
                     <I18nProviderClient locale={defaultLanguage}>
-                      <Button className="flex text-sm w-full" variant={"outline"} onClick={handleAllTypes}>
+                      <Button
+                        className="flex text-sm w-full"
+                        variant={"outline"}
+                        onClick={handleAllTypes}
+                      >
                         {allSelectedTypes ? deselectAll : selectAll}
                       </Button>
                       <div className="flex flex-col overflow-y-auto">
-                        <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
+                        <Categories
+                          selectedTypes={selectedTypes}
+                          setSelectedTypes={setSelectedTypes}
+                        />
                       </div>
                     </I18nProviderClient>
                   </div>
                 )}
               </div>
 
-              <div className={`flex flex-col gap-2 ${isFeaturesOpen && "overflow-y-auto"}`}>
+              <div
+                className={`flex flex-col gap-2 ${
+                  isFeaturesOpen && "overflow-y-auto"
+                }`}
+              >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Sparkles width={20} height={20} strokeWidth={1.25} />
                     {features}{" "}
-                    {selectedFeatures.length > 0 && <span className="text-[#16A34A]">({selectedFeatures.length})</span>}
+                    {selectedFeatures.length > 0 && (
+                      <span className="text-[#16A34A]">
+                        ({selectedFeatures.length})
+                      </span>
+                    )}
                   </div>
-                  <Button variant={"outline"} size={"icon"} onClick={toggleFeatures}>
+                  <Button
+                    variant={"outline"}
+                    size={"icon"}
+                    onClick={toggleFeatures}
+                  >
                     {isFeaturesOpen ? <ChevronUp /> : <ChevronDown />}
                   </Button>
                 </div>
                 {isFeaturesOpen && (
                   <div className="flex flex-col p-1 overflow-y-auto">
                     <I18nProviderClient locale={defaultLanguage}>
-                      <Button className="flex text-sm w-full" variant={"outline"} onClick={handleAllFeatures}>
+                      <Button
+                        className="flex text-sm w-full"
+                        variant={"outline"}
+                        onClick={handleAllFeatures}
+                      >
                         {allSelectedFeatures ? deselectAll : selectAll}
                       </Button>
                       <div className="flex flex-col overflow-y-auto">
-                        <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
+                        <Features
+                          selectedFeatures={selectedFeatures}
+                          setSelectedFeatures={setSelectedFeatures}
+                        />
                       </div>
                     </I18nProviderClient>
                   </div>
                 )}
               </div>
 
-              <div className={`flex flex-col gap-2 ${isRoomsOpen && "overflow-y-auto"}`}>
+              <div
+                className={`flex flex-col gap-2 ${
+                  isRoomsOpen && "overflow-y-auto"
+                }`}
+              >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <DoorOpen width={20} height={20} strokeWidth={1.25} />
                     {rooms}
-                    {(selectedRooms.bedrooms[0] !== 0 || selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
-                      <BedDouble size={18} strokeWidth={1.25} color={"#16A34A"} />
+                    {(selectedRooms.bedrooms[0] !== 0 ||
+                      selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
+                      <BedDouble
+                        size={18}
+                        strokeWidth={1.25}
+                        color={"#16A34A"}
+                      />
                     )}
-                    {(selectedRooms.bathrooms[0] !== 0 || selectedRooms.bathrooms[1] !== selectedRooms.maxRooms) && (
+                    {(selectedRooms.bathrooms[0] !== 0 ||
+                      selectedRooms.bathrooms[1] !==
+                        selectedRooms.maxRooms) && (
                       <Bath size={18} strokeWidth={1.25} color={"#16A34A"} />
                     )}
                     {(selectedRooms.livingrooms[0] !== 0 ||
-                      selectedRooms.livingrooms[1] !== selectedRooms.maxRooms) && (
+                      selectedRooms.livingrooms[1] !==
+                        selectedRooms.maxRooms) && (
                       <Sofa size={18} strokeWidth={1.25} color={"#16A34A"} />
                     )}
-                    {(selectedRooms.kitchens[0] !== 0 || selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
-                      <CookingPot size={18} strokeWidth={1.25} color={"#16A34A"} />
+                    {(selectedRooms.kitchens[0] !== 0 ||
+                      selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
+                      <CookingPot
+                        size={18}
+                        strokeWidth={1.25}
+                        color={"#16A34A"}
+                      />
                     )}
                   </div>
-                  <Button variant={"outline"} size={"icon"} onClick={toggleRooms}>
+                  <Button
+                    variant={"outline"}
+                    size={"icon"}
+                    onClick={toggleRooms}
+                  >
                     {isRoomsOpen ? <ChevronUp /> : <ChevronDown />}
                   </Button>
                 </div>
@@ -203,7 +286,10 @@ export default function FiltersDialog({ isSmallMap, placeholder, placeholderShor
                   <div className="flex flex-col p-1 overflow-y-auto">
                     <I18nProviderClient locale={defaultLanguage}>
                       <div className="flex flex-col overflow-y-auto">
-                        <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
+                        <Rooms
+                          selectedRooms={selectedRooms}
+                          setSelectedRooms={setSelectedRooms}
+                        />
                       </div>
                     </I18nProviderClient>
                   </div>

@@ -88,12 +88,14 @@ export default function Filters() {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
-          className="h-12 pl-5 justify-center items-center text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-sm shadow-secondary"
+          className="h-12 pl-5 justify-center items-center text-md border-r-0 border rounded-l-full font-normal rounded-r-none shadow-xs shadow-secondary"
           variant={"secondary"}
           disabled={!isReady}
         >
           <div
-            className={`flex items-center gap-2 text-gray-600 dark:text-gray-400 ${originalFilters !== newFilters && "text-primary"}`}
+            className={`flex items-center gap-2 text-gray-600 dark:text-gray-400 ${
+              originalFilters !== newFilters && "text-primary"
+            }`}
           >
             <Settings2 width={20} height={20} strokeWidth={1.5} />
             <span className="items-center">{filters}</span>
@@ -120,7 +122,9 @@ export default function Filters() {
                 minValue={1}
                 maxValue={initialMaxPrice}
                 exponent={2}
-                onFormattedPricesChange={(newValue) => setConvertedPriceRange(newValue)}
+                onFormattedPricesChange={(newValue) =>
+                  setConvertedPriceRange(newValue)
+                }
                 newCurrencySymbol={defaultCurrency.symbol}
                 newCurrencyUsdPrice={defaultCurrency.usdPrice}
               />
@@ -139,19 +143,28 @@ export default function Filters() {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex items-center gap-2 h-12">
               <House width={20} height={20} strokeWidth={1.25} />
-              {categories} {selectedTypes.length > 0 && `(${selectedTypes.length})`}
+              {categories}{" "}
+              {selectedTypes.length > 0 && `(${selectedTypes.length})`}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={defaultLanguage}>
                   <DropdownMenuLabel className="flex items-center justify-center pb-3">
-                    {categoriesSub} {selectedTypes.length > 0 && `(${selectedTypes.length})`}
+                    {categoriesSub}{" "}
+                    {selectedTypes.length > 0 && `(${selectedTypes.length})`}
                   </DropdownMenuLabel>
                   <div className="overflow-y-auto">
-                    <Categories selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
+                    <Categories
+                      selectedTypes={selectedTypes}
+                      setSelectedTypes={setSelectedTypes}
+                    />
                   </div>
                 </I18nProviderClient>
-                <Button variant={"outline"} size={"default"} onClick={handleAllTypes}>
+                <Button
+                  variant={"outline"}
+                  size={"default"}
+                  onClick={handleAllTypes}
+                >
                   {allSelectedTypes ? deselectAll : selectAll}
                 </Button>
               </DropdownMenuSubContent>
@@ -162,19 +175,29 @@ export default function Filters() {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="flex justify-center items-center gap-2 h-12">
               <Sparkles width={20} height={20} strokeWidth={1.25} />
-              {features} {selectedFeatures.length > 0 && `(${selectedFeatures.length})`}
+              {features}{" "}
+              {selectedFeatures.length > 0 && `(${selectedFeatures.length})`}
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="flex flex-col p-2 max-h-80">
                 <I18nProviderClient locale={defaultLanguage}>
                   <DropdownMenuLabel className="flex justify-center items-center pb-3">
-                    {featuresSub} {selectedFeatures.length > 0 && `(${selectedFeatures.length})`}
+                    {featuresSub}{" "}
+                    {selectedFeatures.length > 0 &&
+                      `(${selectedFeatures.length})`}
                   </DropdownMenuLabel>
                   <div className="overflow-y-auto">
-                    <Features selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
+                    <Features
+                      selectedFeatures={selectedFeatures}
+                      setSelectedFeatures={setSelectedFeatures}
+                    />
                   </div>
                 </I18nProviderClient>
-                <Button variant={"outline"} size={"default"} onClick={handleAllFeatures}>
+                <Button
+                  variant={"outline"}
+                  size={"default"}
+                  onClick={handleAllFeatures}
+                >
                   {allSelectedFeatures ? deselectAll : selectAll}
                 </Button>
               </DropdownMenuSubContent>
@@ -186,16 +209,20 @@ export default function Filters() {
             <DropdownMenuSubTrigger className="flex justify-center items-center gap-2 h-12">
               <DoorOpen width={20} height={20} strokeWidth={1.25} />
               {rooms}
-              {(selectedRooms.bedrooms[0] !== 0 || selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
+              {(selectedRooms.bedrooms[0] !== 0 ||
+                selectedRooms.bedrooms[1] !== selectedRooms.maxRooms) && (
                 <BedDouble size={18} strokeWidth={1} />
               )}
-              {(selectedRooms.bathrooms[0] !== 0 || selectedRooms.bathrooms[1] !== selectedRooms.maxRooms) && (
+              {(selectedRooms.bathrooms[0] !== 0 ||
+                selectedRooms.bathrooms[1] !== selectedRooms.maxRooms) && (
                 <Bath size={18} strokeWidth={1} />
               )}
-              {(selectedRooms.livingrooms[0] !== 0 || selectedRooms.livingrooms[1] !== selectedRooms.maxRooms) && (
+              {(selectedRooms.livingrooms[0] !== 0 ||
+                selectedRooms.livingrooms[1] !== selectedRooms.maxRooms) && (
                 <Sofa size={18} strokeWidth={1} />
               )}
-              {(selectedRooms.kitchens[0] !== 0 || selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
+              {(selectedRooms.kitchens[0] !== 0 ||
+                selectedRooms.kitchens[1] !== selectedRooms.maxRooms) && (
                 <CookingPot size={18} strokeWidth={1} />
               )}
             </DropdownMenuSubTrigger>
@@ -206,7 +233,10 @@ export default function Filters() {
                     {roomsSub}
                   </DropdownMenuLabel>
                   <div className="flex w-full h-full">
-                    <Rooms selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
+                    <Rooms
+                      selectedRooms={selectedRooms}
+                      setSelectedRooms={setSelectedRooms}
+                    />
                   </div>
                 </I18nProviderClient>
               </DropdownMenuSubContent>

@@ -115,7 +115,7 @@ export default async function Layout(props: Readonly<Props>) {
         originalMatchingFeatures={matchingFeatures}
       >
         <div className="flex flex-col h-screen-minus-header-dvh w-full">
-          <main className="flex-grow overflow-auto h-full">{children}</main>
+          <main className="grow overflow-auto h-full">{children}</main>
         </div>
       </HomeContextProvider>
     </>

@@ -45,7 +45,7 @@ export default function ContactDialog({
                   <span className="text-start text-xs md:text-sm">{contactNameText}</span>
                   <div
                     className={`${
-                      !revealContact ? "blur-sm select-none" : "select-text"
+                      !revealContact ? "blur-xs select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
                     <div className="text-start">{home.contactName}</div>
@@ -59,7 +59,7 @@ export default function ContactDialog({
                   <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
                   <div
                     className={`${
-                      !revealContact ? "blur-sm select-none" : "select-text"
+                      !revealContact ? "blur-xs select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
                     <div className="justify-start truncate">{home.contactEmail}</div>
@@ -73,7 +73,7 @@ export default function ContactDialog({
                   <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
                   <div
                     className={`${
-                      !revealContact ? "blur-sm select-none" : "select-text"
+                      !revealContact ? "blur-xs select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
                     <div className="justify-start">{home.contactPhone}</div>

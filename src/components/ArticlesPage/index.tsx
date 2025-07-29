@@ -56,7 +56,7 @@ export default async function ArticlesPageContent({ locale }: { locale: string }
                   ? article.localizedTitle
                   : `${articleUnavailable} ${getFullLanguageName(locale)}`}
               </h3>
-              <div className="items-start flex-grow line-clamp-3 text-sm text-gray-600 dark:text-gray-300 pose">
+              <div className="items-start grow line-clamp-3 text-sm text-gray-600 dark:text-gray-300 pose">
                 {article.thumbnailDescription ? article.thumbnailDescription : unavailableWarning}
               </div>
               <div className="flex items-end w-full">

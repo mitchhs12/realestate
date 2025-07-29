@@ -83,7 +83,7 @@ export default function ChatClient() {
 
       <div className="flex gap-2">
         <textarea
-          className="flex-1 border rounded-md p-2 text-sm resize-none focus:outline-none"
+          className="flex-1 border rounded-md p-2 text-sm resize-none focus:outline-hidden"
           rows={1}
           placeholder="Ask about properties..."
           value={input}

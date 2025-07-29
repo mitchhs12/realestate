@@ -176,8 +176,8 @@ export default function ResizableCard({
                   <FlagComponent
                     country={lookup.byIso(home.country)?.iso2 as Country}
                     countryName={home.country}
-                    height={"h-[1.3125rem]"}
-                    width={"w-[2rem]"}
+                    height={"h-5.25"}
+                    width={"w-8"}
                   />
                 </div>
                 <div lang={lang} className="flex flex-col w-full">
@@ -206,7 +206,7 @@ export default function ResizableCard({
                         originalCurrencySymbol={home.currency!}
                         currency={defaultCurrency}
                         reveal={user ? true : false}
-                        blurAmount="blur-sm"
+                        blurAmount="blur-xs"
                         className="text-sm md:text-md lg:text-lg mb-2"
                       />
                     </TooltipTrigger>
