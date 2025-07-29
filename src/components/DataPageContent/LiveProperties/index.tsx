@@ -1,14 +1,33 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+} from "recharts";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
 import { getLiveProperties } from "@/app/[locale]/data/actions";
 
-export const description = "An interactive line chart showing currently active properties per date";
+export const description =
+  "An interactive line chart showing currently active properties per date";
 
 const chartConfig = {
   properties: {
@@ -18,7 +37,9 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function LiveProperties() {
-  const [chartData, setChartData] = useState<{ date: string; count: number }[]>([]);
+  const [chartData, setChartData] = useState<{ date: string; count: number }[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,24 +62,36 @@ export default function LiveProperties() {
     fetchData();
   }, []);
 
-  const total = useMemo(() => (chartData.length > 0 ? chartData[chartData.length - 1].count : 0), [chartData]);
+  const total = useMemo(
+    () => (chartData.length > 0 ? chartData[chartData.length - 1].count : 0),
+    [chartData]
+  );
 
   return (
     <Card className="flex flex-col w-full h-full">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
           <CardTitle>Live Properties</CardTitle>
-          <CardDescription>All properties that are currently active on Viva Ideal</CardDescription>
+          <CardDescription>
+            All properties that are currently active on Viva Ideal
+          </CardDescription>
         </div>
         <div className="flex">
           <div className="flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left sm:border-l sm:border-t-0 sm:px-8 sm:py-6">
-            <span className="text-xs text-muted-foreground">Total Properties</span>
-            <span className="text-lg font-bold leading-none sm:text-3xl">{total.toLocaleString()}</span>
+            <span className="text-xs text-muted-foreground">
+              Total Properties
+            </span>
+            <span className="text-lg font-bold leading-none sm:text-3xl">
+              {total.toLocaleString()}
+            </span>
           </div>
         </div>
       </CardHeader>
       <CardContent className="sm:p-6 h-full">
-        <ChartContainer config={chartConfig} className="aspect-auto h-full w-full">
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-full w-full"
+        >
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData} className="">
               <CartesianGrid strokeDasharray="3 3" />
@@ -89,7 +122,7 @@ export default function LiveProperties() {
                   <ChartTooltipContent
                     className="w-[150px]"
                     nameKey="properties"
-                    labelFormatter={(value) => {
+                    labelFormatter={(value: any) => {
                       return new Date(value).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",

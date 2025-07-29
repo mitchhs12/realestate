@@ -1,14 +1,33 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+} from "recharts";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
 import { getUsersCreated } from "@/app/[locale]/data/actions";
 
-export const description = "An interactive line chart showing property creation dates";
+export const description =
+  "An interactive line chart showing property creation dates";
 
 const chartConfig = {
   properties: {
@@ -18,7 +37,9 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function UserAccountsCreated() {
-  const [chartData, setChartData] = useState<{ date: string; count: number }[]>([]);
+  const [chartData, setChartData] = useState<{ date: string; count: number }[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +62,10 @@ export default function UserAccountsCreated() {
     fetchData();
   }, []);
 
-  const total = useMemo(() => (chartData.length > 0 ? chartData[chartData.length - 1].count : 0), [chartData]);
+  const total = useMemo(
+    () => (chartData.length > 0 ? chartData[chartData.length - 1].count : 0),
+    [chartData]
+  );
 
   return (
     <Card className="flex flex-col w-full h-full">
@@ -53,12 +77,17 @@ export default function UserAccountsCreated() {
         <div className="flex">
           <div className="flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left sm:border-l sm:border-t-0 sm:px-8 sm:py-6">
             <span className="text-xs text-muted-foreground">Total Users</span>
-            <span className="text-lg font-bold leading-none sm:text-3xl">{total.toLocaleString()}</span>
+            <span className="text-lg font-bold leading-none sm:text-3xl">
+              {total.toLocaleString()}
+            </span>
           </div>
         </div>
       </CardHeader>
       <CardContent className="sm:p-6 h-full">
-        <ChartContainer config={chartConfig} className="aspect-auto h-full w-full">
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-full w-full"
+        >
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData} className="">
               <CartesianGrid strokeDasharray="3 3" />
@@ -89,7 +118,7 @@ export default function UserAccountsCreated() {
                   <ChartTooltipContent
                     className="w-[150px]"
                     nameKey="properties"
-                    labelFormatter={(value) => {
+                    labelFormatter={(value: any) => {
                       return new Date(value).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",

@@ -14,7 +14,10 @@ export async function POST(req: Request) {
 
   if (!sig) {
     console.error("No stripe-signature header value was provided.");
-    return NextResponse.json({ error: "Missing stripe-signature header" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing stripe-signature header" },
+      { status: 400 }
+    );
   }
 
   let event: Stripe.Event;
@@ -27,29 +30,36 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(
       rawBody,
       sig,
-      process.env.STRIPE_TEST_WEBHOOK_SECRET || (process.env.STRIPE_WEBHOOK_SECRET as string) // The webhook secret from the Stripe dashboard
+      process.env.STRIPE_TEST_WEBHOOK_SECRET ||
+        (process.env.STRIPE_WEBHOOK_SECRET as string) // The webhook secret from the Stripe dashboard
     );
 
     // Handle the event based on its type
     switch (event.type) {
       // When a checkout session completes (e.g., a subscription is purchased)
       case "invoice.paid": {
-        const currentLineItemPlan = event.data.object.lines.data[0].plan;
-        const interval = currentLineItemPlan?.interval;
-        const session = event.data.object.subscription_details;
-        const metadata = session?.metadata;
+        const invoice = event.data.object as any;
+        const subscriptionId = invoice.subscription as string;
+        const subscription = await stripe.subscriptions.retrieve(
+          subscriptionId
+        );
+        const interval = subscription.items.data[0].plan.interval;
+        const metadata = subscription.metadata;
         const accountId = metadata?.accountId;
         const isSeller = metadata?.userType === "seller" ? true : false;
-        const subscriptionId = event.data.object.subscription as string;
         const plan = await GetSubscription(subscriptionId);
 
         if (accountId && plan && interval) {
           const intervalKey = interval as "year" | "month";
           const isYearly = interval === "year" ? true : false;
           const amountToAddContact =
-            contactCredits[intervalKey]?.[plan.name as keyof (typeof contactCredits)[typeof intervalKey]] || 0;
+            contactCredits[intervalKey]?.[
+              plan.name as keyof (typeof contactCredits)[typeof intervalKey]
+            ] || 0;
           const amountToAddSell =
-            sellCredits[intervalKey]?.[plan.name as keyof (typeof sellCredits)[typeof intervalKey]] || 0;
+            sellCredits[intervalKey]?.[
+              plan.name as keyof (typeof sellCredits)[typeof intervalKey]
+            ] || 0;
 
           if (isSeller) {
             if (plan.name !== "business") {
@@ -96,7 +106,12 @@ export async function POST(req: Request) {
             }
           }
         } else {
-          console.error("Missing accountId, plan or interval:", accountId, plan, interval);
+          console.error(
+            "Missing accountId, plan or interval:",
+            accountId,
+            plan,
+            interval
+          );
         }
         break;
       }
@@ -135,18 +150,27 @@ export async function POST(req: Request) {
       }
       case "customer.subscription.deleted": {
         const accountId = event.data.object.metadata.accountId;
-        const isSeller = event.data.object.metadata.userType === "seller" ? true : false;
+        const isSeller =
+          event.data.object.metadata.userType === "seller" ? true : false;
 
         if (accountId) {
           if (isSeller) {
             await prisma.user.update({
               where: { id: accountId },
-              data: { sellerSubscription: null, sellerSubscriptionId: null, sellerSubIsYearly: null }, // Revert to the default listing type
+              data: {
+                sellerSubscription: null,
+                sellerSubscriptionId: null,
+                sellerSubIsYearly: null,
+              }, // Revert to the default listing type
             });
           } else {
             await prisma.user.update({
               where: { id: accountId },
-              data: { buyerSubscription: "free", buyerSubscriptionId: null, buyerSubIsYearly: null }, // Revert to the default listing type
+              data: {
+                buyerSubscription: "free",
+                buyerSubscriptionId: null,
+                buyerSubIsYearly: null,
+              }, // Revert to the default listing type
             });
           }
         } else {
@@ -161,6 +185,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ received: true });
   } catch (err) {
     console.error(`Webhook signature verification failed: ${err}`);
-    return NextResponse.json({ error: `Webhook Error: ${err}` }, { status: 400 });
+    return NextResponse.json(
+      { error: `Webhook Error: ${err}` },
+      { status: 400 }
+    );
   }
 }

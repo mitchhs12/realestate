@@ -1,10 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import { Pool } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 
 const prismaClientSingleton = () => {
-  const neon = new Pool({ connectionString: process.env.POSTGRES_PRISMA_URL });
-  const adapter = new PrismaNeon(neon);
+  const adapter = new PrismaNeon({
+    connectionString: process.env.POSTGRES_PRISMA_URL,
+  });
   // return new PrismaClient({ adapter, log: ["query"] });
   return new PrismaClient({ adapter });
 };

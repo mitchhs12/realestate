@@ -14,14 +14,16 @@ const getConfigId = (isSeller: boolean) => {
         ? "bpc_1QOWTWLWTS7QT7kvbV10yCSt"
         : "bpc_1QOWTMLWTS7QT7kvlo9TCLo8"
       : isSeller // production
-        ? "bpc_1QPYLoLWTS7QT7kvGK14M0Mp"
-        : "bpc_1QPYLfLWTS7QT7kvkC4hlzM5";
+      ? "bpc_1QPYLoLWTS7QT7kvGK14M0Mp"
+      : "bpc_1QPYLfLWTS7QT7kvkC4hlzM5";
   return configId;
 };
 
 export async function GetPortalConfig(isSeller: boolean) {
   const configId = getConfigId(isSeller);
-  const config = await stripeClient.billingPortal.configurations.retrieve(configId);
+  const config = await stripeClient.billingPortal.configurations.retrieve(
+    configId
+  );
   return config;
 }
 
@@ -33,43 +35,127 @@ export async function ListPortalConfigs() {
 const yearlyMap =
   process.env.NODE_ENV === "development"
     ? {
-        starter: { product: "prod_RGLO3eC3u8UV4g", price: "price_1QNoi8LWTS7QT7kvotVt79Dz" },
-        pro: { product: "prod_RGLPk0aTA0eQNj", price: "price_1QNoivLWTS7QT7kvNEui4mph" },
-        premium: { product: "prod_RGLQnQkrHVRdNI", price: "price_1QNok7LWTS7QT7kvj5U9uJFJ" },
-        business: { product: "prod_RGLR20Cw48qjAm", price: "price_1QNokoLWTS7QT7kv29YQoZZp" },
-        basic: { product: "prod_RGLSfdHUPIXMQr", price: "price_1QNolVLWTS7QT7kvT07gQnTL" },
-        insight: { product: "prod_RGLTYBAcedO7yK", price: "price_1QNomALWTS7QT7kvFASwmVkt" },
-        max: { product: "prod_RGLTynXTLL7rso", price: "price_1QNomnLWTS7QT7kvVZHsgVfy" },
+        starter: {
+          product: "prod_RGLO3eC3u8UV4g",
+          price: "price_1QNoi8LWTS7QT7kvotVt79Dz",
+        },
+        pro: {
+          product: "prod_RGLPk0aTA0eQNj",
+          price: "price_1QNoivLWTS7QT7kvNEui4mph",
+        },
+        premium: {
+          product: "prod_RGLQnQkrHVRdNI",
+          price: "price_1QNok7LWTS7QT7kvj5U9uJFJ",
+        },
+        business: {
+          product: "prod_RGLR20Cw48qjAm",
+          price: "price_1QNokoLWTS7QT7kv29YQoZZp",
+        },
+        basic: {
+          product: "prod_RGLSfdHUPIXMQr",
+          price: "price_1QNolVLWTS7QT7kvT07gQnTL",
+        },
+        insight: {
+          product: "prod_RGLTYBAcedO7yK",
+          price: "price_1QNomALWTS7QT7kvFASwmVkt",
+        },
+        max: {
+          product: "prod_RGLTynXTLL7rso",
+          price: "price_1QNomnLWTS7QT7kvVZHsgVfy",
+        },
       }
     : {
-        starter: { product: "prod_RGMIA7FN39OnjS", price: "price_1QNpZYLWTS7QT7kvTX5Jjf1w" },
-        pro: { product: "prod_RGMIeSAl2jBW8z", price: "price_1QNpZcLWTS7QT7kvEnELu2Y2" },
-        premium: { product: "prod_RGMIFuNf3D7QdR", price: "price_1QNpZfLWTS7QT7kvzdCN4gy4" },
-        business: { product: "prod_RGMIX0vF11i8A6", price: "price_1QNpZiLWTS7QT7kvJXgiwS6E" },
-        basic: { product: "prod_RGMIP1K2ZfnGdk", price: "price_1QNpZlLWTS7QT7kv0admI1it" },
-        insight: { product: "prod_RGMIRrkMd42hHK", price: "price_1QNpZoLWTS7QT7kvzQwYsv2Z" },
-        max: { product: "prod_RGMIugLIn0BoMo", price: "price_1QNpZqLWTS7QT7kv5yrECVUP" },
+        starter: {
+          product: "prod_RGMIA7FN39OnjS",
+          price: "price_1QNpZYLWTS7QT7kvTX5Jjf1w",
+        },
+        pro: {
+          product: "prod_RGMIeSAl2jBW8z",
+          price: "price_1QNpZcLWTS7QT7kvEnELu2Y2",
+        },
+        premium: {
+          product: "prod_RGMIFuNf3D7QdR",
+          price: "price_1QNpZfLWTS7QT7kvzdCN4gy4",
+        },
+        business: {
+          product: "prod_RGMIX0vF11i8A6",
+          price: "price_1QNpZiLWTS7QT7kvJXgiwS6E",
+        },
+        basic: {
+          product: "prod_RGMIP1K2ZfnGdk",
+          price: "price_1QNpZlLWTS7QT7kv0admI1it",
+        },
+        insight: {
+          product: "prod_RGMIRrkMd42hHK",
+          price: "price_1QNpZoLWTS7QT7kvzQwYsv2Z",
+        },
+        max: {
+          product: "prod_RGMIugLIn0BoMo",
+          price: "price_1QNpZqLWTS7QT7kv5yrECVUP",
+        },
       };
 
 const monthlyMap =
   process.env.NODE_ENV === "development"
     ? {
-        starter: { product: "prod_RGLNV8JyUl0O08", price: "price_1QNogdLWTS7QT7kvj8ws4wOT" },
-        pro: { product: "prod_RGLPUgIDaZDALY", price: "price_1QNoiZLWTS7QT7kvU3H3SPk1" },
-        premium: { product: "prod_RGLQXLsK3K4DPO", price: "price_1QNojRLWTS7QT7kvut8gqGuW" },
-        business: { product: "prod_RGLRJjGAvhr2Vk", price: "price_1QNokQLWTS7QT7kvqozDq7zm" },
-        basic: { product: "prod_RGLS9MYuC36eCc", price: "price_1QNolBLWTS7QT7kvByIiq8bf" },
-        insight: { product: "prod_RGLSF2ZUemii2K", price: "price_1QNolsLWTS7QT7kv1luL10xj" },
-        max: { product: "prod_RGLTf9kzcyw8jd", price: "price_1QNomSLWTS7QT7kvJyZJjNtt" },
+        starter: {
+          product: "prod_RGLNV8JyUl0O08",
+          price: "price_1QNogdLWTS7QT7kvj8ws4wOT",
+        },
+        pro: {
+          product: "prod_RGLPUgIDaZDALY",
+          price: "price_1QNoiZLWTS7QT7kvU3H3SPk1",
+        },
+        premium: {
+          product: "prod_RGLQXLsK3K4DPO",
+          price: "price_1QNojRLWTS7QT7kvut8gqGuW",
+        },
+        business: {
+          product: "prod_RGLRJjGAvhr2Vk",
+          price: "price_1QNokQLWTS7QT7kvqozDq7zm",
+        },
+        basic: {
+          product: "prod_RGLS9MYuC36eCc",
+          price: "price_1QNolBLWTS7QT7kvByIiq8bf",
+        },
+        insight: {
+          product: "prod_RGLSF2ZUemii2K",
+          price: "price_1QNolsLWTS7QT7kv1luL10xj",
+        },
+        max: {
+          product: "prod_RGLTf9kzcyw8jd",
+          price: "price_1QNomSLWTS7QT7kvJyZJjNtt",
+        },
       }
     : {
-        starter: { product: "prod_RGMIOS7SjcNKeZ", price: "price_1QNpZVLWTS7QT7kvbJLUVrWe" },
-        pro: { product: "prod_RGMICT7LjP9h7z", price: "price_1QNpZaLWTS7QT7kvMmKy3cVC" },
-        premium: { product: "prod_RGMIOK2OMNhwsB", price: "price_1QNpZdLWTS7QT7kvjeMCkgrA" },
-        business: { product: "prod_RGMIs9MVCZTJRI", price: "price_1QNpZgLWTS7QT7kvIPA5XggW" },
-        basic: { product: "prod_RGMIvCVmIzDLtd", price: "price_1QNpZkLWTS7QT7kvjEfi8SUj" },
-        insight: { product: "prod_RGMIkIaWmFbKHU", price: "price_1QNpZnLWTS7QT7kvysvU1hDO" },
-        max: { product: "prod_RGMIYRPt3GkORH", price: "price_1QNpZpLWTS7QT7kvDSYhRatb" },
+        starter: {
+          product: "prod_RGMIOS7SjcNKeZ",
+          price: "price_1QNpZVLWTS7QT7kvbJLUVrWe",
+        },
+        pro: {
+          product: "prod_RGMICT7LjP9h7z",
+          price: "price_1QNpZaLWTS7QT7kvMmKy3cVC",
+        },
+        premium: {
+          product: "prod_RGMIOK2OMNhwsB",
+          price: "price_1QNpZdLWTS7QT7kvjeMCkgrA",
+        },
+        business: {
+          product: "prod_RGMIs9MVCZTJRI",
+          price: "price_1QNpZgLWTS7QT7kvIPA5XggW",
+        },
+        basic: {
+          product: "prod_RGMIvCVmIzDLtd",
+          price: "price_1QNpZkLWTS7QT7kvjEfi8SUj",
+        },
+        insight: {
+          product: "prod_RGMIkIaWmFbKHU",
+          price: "price_1QNpZnLWTS7QT7kvysvU1hDO",
+        },
+        max: {
+          product: "prod_RGMIYRPt3GkORH",
+          price: "price_1QNpZpLWTS7QT7kvDSYhRatb",
+        },
       };
 
 const productIdMap = {
@@ -114,12 +200,27 @@ const getProducts = (isSeller: boolean) => {
           prices: [yearlyMap.pro.price],
           product: yearlyMap.pro.product,
         },
-        { prices: [yearlyMap.premium.price], product: yearlyMap.premium.product },
-        { prices: [yearlyMap.business.price], product: yearlyMap.business.product },
-        { prices: [monthlyMap.starter.price], product: monthlyMap.starter.product },
+        {
+          prices: [yearlyMap.premium.price],
+          product: yearlyMap.premium.product,
+        },
+        {
+          prices: [yearlyMap.business.price],
+          product: yearlyMap.business.product,
+        },
+        {
+          prices: [monthlyMap.starter.price],
+          product: monthlyMap.starter.product,
+        },
         { prices: [monthlyMap.pro.price], product: monthlyMap.pro.product },
-        { prices: [monthlyMap.premium.price], product: monthlyMap.premium.product },
-        { prices: [monthlyMap.business.price], product: monthlyMap.business.product },
+        {
+          prices: [monthlyMap.premium.price],
+          product: monthlyMap.premium.product,
+        },
+        {
+          prices: [monthlyMap.business.price],
+          product: monthlyMap.business.product,
+        },
       ]
     : [
         {
@@ -154,7 +255,14 @@ const getProducts = (isSeller: boolean) => {
 export async function StripeServer(
   currency: string,
   defaultLanguage: string,
-  planId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max",
+  planId:
+    | "starter"
+    | "pro"
+    | "premium"
+    | "business"
+    | "basic"
+    | "insight"
+    | "max",
   interval: "year" | "month",
   indemKey: string,
   checkoutPage?: boolean,
@@ -200,7 +308,10 @@ export async function StripeServer(
 
     console.log("planid", planId);
 
-    const amount = interval === "year" ? map[planId]["yearly-total-price"] * 100 : map[planId].price * 100;
+    const amount =
+      interval === "year"
+        ? map[planId]["yearly-total-price"] * 100
+        : map[planId].price * 100;
 
     if (!user || !user.id) {
       throw new Error("User not found");
@@ -233,7 +344,10 @@ export async function StripeServer(
           {
             price_data: {
               currency: currency,
-              product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
+              product:
+                interval === "year"
+                  ? yearlyMap[planId]["product"]
+                  : monthlyMap[planId]["product"],
               unit_amount: amount,
               recurring: {
                 interval: interval,
@@ -251,15 +365,20 @@ export async function StripeServer(
         subscription_data: {
           metadata: {
             accountId: user.id,
-            userType: ["starter", "pro", "premium", "business"].includes(planId) ? "seller" : "buyer",
+            userType: ["starter", "pro", "premium", "business"].includes(planId)
+              ? "seller"
+              : "buyer",
           },
         },
       };
 
       // To handle idempotency:
-      const sessionCheckout = await stripeClient.checkout.sessions.create(sessionParams, {
-        idempotencyKey: indemKey,
-      });
+      const sessionCheckout = await stripeClient.checkout.sessions.create(
+        sessionParams,
+        {
+          idempotencyKey: indemKey,
+        }
+      );
 
       return { url: sessionCheckout.url };
     }
@@ -272,7 +391,10 @@ export async function StripeServer(
           {
             price_data: {
               currency: currency,
-              product: interval === "year" ? yearlyMap[planId]["product"] : monthlyMap[planId]["product"],
+              product:
+                interval === "year"
+                  ? yearlyMap[planId]["product"]
+                  : monthlyMap[planId]["product"],
               unit_amount: amount, // Amount in cents
               recurring: {
                 interval: interval,
@@ -287,18 +409,32 @@ export async function StripeServer(
         expand: ["latest_invoice.payment_intent"],
         metadata: {
           accountId: user.id,
-          userType: ["starter", "pro", "premium", "business"].includes(planId) ? "seller" : "buyer",
+          userType: ["starter", "pro", "premium", "business"].includes(planId)
+            ? "seller"
+            : "buyer",
         },
       },
       {
         idempotencyKey: indemKey, // A unique key per request
       }
     );
-    const latestInvoice = subscription.latest_invoice as Stripe.Invoice;
+    const latestInvoice = subscription.latest_invoice as Stripe.Invoice & {
+      payment_intent: Stripe.PaymentIntent;
+    };
+
+    if (typeof latestInvoice.payment_intent === "string") {
+      throw new Error(
+        "Expected payment_intent to be an object, but it was a string."
+      );
+    }
 
     const paymentIntent = latestInvoice.payment_intent as Stripe.PaymentIntent;
 
     const clientSecret = paymentIntent.client_secret;
+
+    if (!clientSecret) {
+      throw new Error("Client secret not found in PaymentIntent.");
+    }
 
     return {
       subscriptionId: subscription.id,
@@ -312,7 +448,11 @@ export async function StripeServer(
 
 ///// ACCOUNT SETTINGS BILLING FLOW /////
 
-export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flowType: string) {
+export async function StripeBilling(
+  isSeller: boolean,
+  defaultLanguage: any,
+  flowType: string
+) {
   const session = await auth();
   if (!session || !session.user) {
     throw new Error("Unauthorized");
@@ -342,7 +482,9 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       },
     },
     subscription_cancel: {
-      subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
+      subscription: isSeller
+        ? user.sellerSubscriptionId
+        : user.buyerSubscriptionId,
       retention: {
         type: "coupon_offer",
         coupon_offer: { coupon: couponCode as string },
@@ -362,7 +504,9 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
       },
     },
     subscription_update: {
-      subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
+      subscription: isSeller
+        ? user.sellerSubscriptionId
+        : user.buyerSubscriptionId,
     },
   };
 
@@ -380,7 +524,12 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
           : `https://www.vivaideal.com/${defaultLanguage}/settings`,
       locale: defaultLanguage,
       configuration: configuration,
-      flow_data: flowType === "cancel" ? cancel : flowType === "subUpdate" ? subUpdate : updatePayment,
+      flow_data:
+        flowType === "cancel"
+          ? cancel
+          : flowType === "subUpdate"
+          ? subUpdate
+          : updatePayment,
     });
     return { success: true, url: stripeSession.url };
   } catch (error: any) {
@@ -393,7 +542,14 @@ export async function StripeBilling(isSeller: boolean, defaultLanguage: any, flo
 
 export async function ChangeSpecificSub(
   isSeller: boolean,
-  newPlanId: "starter" | "pro" | "premium" | "business" | "basic" | "insight" | "max",
+  newPlanId:
+    | "starter"
+    | "pro"
+    | "premium"
+    | "business"
+    | "basic"
+    | "insight"
+    | "max",
   isYearly: boolean,
   defaultLanguage: any,
   redirectUrl: string
@@ -431,11 +587,13 @@ export async function ChangeSpecificSub(
               ? yearlyMap[newPlanId!]["price"]
               : monthlyMap[newPlanId!]["price"]
             : isYearly
-              ? yearlyMap[newPlanId!]["price"]
-              : monthlyMap[newPlanId!]["price"],
+            ? yearlyMap[newPlanId!]["price"]
+            : monthlyMap[newPlanId!]["price"],
         },
       ],
-      subscription: isSeller ? user.sellerSubscriptionId : user.buyerSubscriptionId,
+      subscription: isSeller
+        ? user.sellerSubscriptionId
+        : user.buyerSubscriptionId,
     },
   };
 
@@ -499,7 +657,9 @@ export async function CreatePortalConfig(isSeller: boolean) {
     },
     login_page: { enabled: false },
     business_profile: {
-      headline: isSeller ? "Viva Ideal Seller Billing" : "Viva Ideal Buyer Billing",
+      headline: isSeller
+        ? "Viva Ideal Seller Billing"
+        : "Viva Ideal Buyer Billing",
       privacy_policy_url: "https://www.vivaideal.com/privacy-policy",
       terms_of_service_url: "https://www.vivaideal.com/terms-and-conditions",
     },
@@ -511,50 +671,55 @@ export async function CreatePortalConfig(isSeller: boolean) {
 
 export async function UpdatePortalConfig(isSeller: boolean) {
   const configId = getConfigId(isSeller);
-  const newConfig = await stripeClient.billingPortal.configurations.update(configId, {
-    features: {
-      customer_update: {
-        allowed_updates: ["email", "tax_id"],
-        enabled: true,
-      },
-      invoice_history: {
-        enabled: true,
-      },
-      payment_method_update: {
-        enabled: true,
-      },
-      subscription_cancel: {
-        enabled: true,
-        cancellation_reason: {
+  const newConfig = await stripeClient.billingPortal.configurations.update(
+    configId,
+    {
+      features: {
+        customer_update: {
+          allowed_updates: ["email", "tax_id"],
           enabled: true,
-          options: [
-            "customer_service",
-            "low_quality",
-            "missing_features",
-            "other",
-            "switched_service",
-            "too_complex",
-            "too_expensive",
-            "unused",
-          ],
         },
-        mode: "at_period_end",
-        proration_behavior: "none",
+        invoice_history: {
+          enabled: true,
+        },
+        payment_method_update: {
+          enabled: true,
+        },
+        subscription_cancel: {
+          enabled: true,
+          cancellation_reason: {
+            enabled: true,
+            options: [
+              "customer_service",
+              "low_quality",
+              "missing_features",
+              "other",
+              "switched_service",
+              "too_complex",
+              "too_expensive",
+              "unused",
+            ],
+          },
+          mode: "at_period_end",
+          proration_behavior: "none",
+        },
+        subscription_update: {
+          enabled: true,
+          default_allowed_updates: ["price"],
+          products: getProducts(isSeller),
+          proration_behavior: "always_invoice",
+        },
       },
-      subscription_update: {
-        enabled: true,
-        default_allowed_updates: ["price"],
-        products: getProducts(isSeller),
-        proration_behavior: "always_invoice",
+      login_page: { enabled: false },
+      business_profile: {
+        headline: isSeller
+          ? "Viva Ideal Seller Billing"
+          : "Viva Ideal Buyer Billing",
+        privacy_policy_url: "https://www.vivaideal.com/privacy-policy",
+        terms_of_service_url: "https://www.vivaideal.com/terms-and-conditions",
       },
-    },
-    login_page: { enabled: false },
-    business_profile: {
-      headline: isSeller ? "Viva Ideal Seller Billing" : "Viva Ideal Buyer Billing",
-      privacy_policy_url: "https://www.vivaideal.com/privacy-policy",
-      terms_of_service_url: "https://www.vivaideal.com/terms-and-conditions",
-    },
-  });
+    }
+  );
   return newConfig;
 }
 
@@ -573,15 +738,22 @@ export async function CreateCoupon(
   return coupon.id;
 }
 
-export async function GetUserCurrentSubscriptionProductId(subscriptionId: string) {
-  const subscription = await stripeClient.subscriptions.retrieve(subscriptionId);
+export async function GetUserCurrentSubscriptionProductId(
+  subscriptionId: string
+) {
+  const subscription = await stripeClient.subscriptions.retrieve(
+    subscriptionId
+  );
 
   const productId = subscription.items.data[0].plan.product;
 
   return productId;
 }
 
-export async function GetSubscription(subscriptionId?: string, isSeller?: boolean): Promise<any> {
+export async function GetSubscription(
+  subscriptionId?: string,
+  isSeller?: boolean
+): Promise<any> {
   let subId: string | undefined = subscriptionId;
 
   if (isSeller) {
@@ -603,7 +775,11 @@ export async function GetSubscription(subscriptionId?: string, isSeller?: boolea
   return productIdMap[productId as keyof typeof productIdMap];
 }
 
-export async function GetFullSubscription(subscriptionId: string): Promise<Stripe.Subscription> {
-  const subscription = await stripeClient.subscriptions.retrieve(subscriptionId);
+export async function GetFullSubscription(
+  subscriptionId: string
+): Promise<Stripe.Subscription> {
+  const subscription = await stripeClient.subscriptions.retrieve(
+    subscriptionId
+  );
   return subscription;
 }
