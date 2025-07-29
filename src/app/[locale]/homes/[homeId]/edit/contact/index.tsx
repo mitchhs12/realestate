@@ -13,14 +13,22 @@ import { useScopedI18n } from "@/locales/client";
 import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { getPhoneLocale } from "@/lib/utils";
+import { HomeType } from "@/lib/validations";
 
 export default function Contact() {
-  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
+  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } =
+    useContext(HomeContext);
   const { user, defaultLanguage } = useContext(LocaleContext);
 
-  const [propertyOwnerName, setPropertyOwnerName] = useState<string>(editedHome.contactName!);
-  const [propertyOwnerEmail, setPropertyOwnerEmail] = useState<string>(editedHome.contactEmail!);
-  const [propertyOwnerPhone, setPropertyOwnerPhone] = useState<string>(editedHome.contactPhone!);
+  const [propertyOwnerName, setPropertyOwnerName] = useState<string>(
+    editedHome.contactName!
+  );
+  const [propertyOwnerEmail, setPropertyOwnerEmail] = useState<string>(
+    editedHome.contactEmail!
+  );
+  const [propertyOwnerPhone, setPropertyOwnerPhone] = useState<string>(
+    editedHome.contactPhone!
+  );
   const [saveDisabled, setSaveDisabled] = useState(true);
   const [phoneLabels, setPhoneLabels] = useState<any>(null);
 
@@ -55,7 +63,13 @@ export default function Contact() {
     } else {
       setSaveDisabled(true);
     }
-  }, [propertyOwnerName, propertyOwnerEmail, propertyOwnerPhone]);
+  }, [
+    propertyOwnerName,
+    propertyOwnerEmail,
+    propertyOwnerPhone,
+    editedHome,
+    setEditedHome,
+  ]);
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -71,7 +85,9 @@ export default function Contact() {
         <div className="flex h-full w-2/3 justify-center gap-8">
           <div className="flex flex-col items-start gap-6 md:gap-12 w-full">
             <div className="flex flex-col md:flex-row items-center gap-3 w-full">
-              <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">{t("name")}</h2>
+              <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">
+                {t("name")}
+              </h2>
               <div className="flex w-full">
                 <Input
                   value={propertyOwnerName}
@@ -113,8 +129,17 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <Button className="flex" variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+        <Button
+          className="flex"
+          variant={"default"}
+          onClick={handleSaveEdits}
+          disabled={saveDisabled || saveLoading}
+        >
+          {saveLoading ? (
+            <ReloadIcon className="w-6 h-6 animate-spin" />
+          ) : (
+            h("save")
+          )}
         </Button>
       </div>
     </div>

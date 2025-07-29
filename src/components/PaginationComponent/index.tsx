@@ -17,18 +17,22 @@ interface Props {
   setVisibleHomes: any;
 }
 
-export default function PaginationComponent({ homes, ITEMS_PER_PAGE, setVisibleHomes }: Props) {
+export default function PaginationComponent({
+  homes,
+  ITEMS_PER_PAGE,
+  setVisibleHomes,
+}: Props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    console.log("homes changed!");
     setCurrentPage(1);
-    setVisibleHomes(homes.slice(0, ITEMS_PER_PAGE));
-  }, [homes]);
-
-  useEffect(() => {
-    setVisibleHomes(homes.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE));
-  }, [currentPage]);
+    setVisibleHomes(
+      homes.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+      )
+    );
+  }, [homes, currentPage, ITEMS_PER_PAGE, setVisibleHomes]);
 
   const totalPages = Math.ceil(homes.length / ITEMS_PER_PAGE);
 
@@ -58,7 +62,11 @@ export default function PaginationComponent({ homes, ITEMS_PER_PAGE, setVisibleH
 
         {/* First Page */}
         <PaginationItem>
-          <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(1)} isActive={currentPage === 1}>
+          <PaginationLink
+            className="cursor-pointer"
+            onClick={() => setCurrentPage(1)}
+            isActive={currentPage === 1}
+          >
             1
           </PaginationLink>
         </PaginationItem>
@@ -67,7 +75,10 @@ export default function PaginationComponent({ homes, ITEMS_PER_PAGE, setVisibleH
         {currentPage > 3 && totalPages > 5 && <PaginationEllipsis />}
         {totalPages > 5 && currentPage > 2 && (
           <PaginationItem>
-            <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(currentPage - 1)}>
+            <PaginationLink
+              className="cursor-pointer"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
               {currentPage - 1}
             </PaginationLink>
           </PaginationItem>
@@ -85,13 +96,18 @@ export default function PaginationComponent({ homes, ITEMS_PER_PAGE, setVisibleH
         {/* Next Page or Last Page */}
         {totalPages > 5 && currentPage < totalPages - 1 && (
           <PaginationItem>
-            <PaginationLink className="cursor-pointer" onClick={() => setCurrentPage(currentPage + 1)}>
+            <PaginationLink
+              className="cursor-pointer"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
               {currentPage + 1}
             </PaginationLink>
           </PaginationItem>
         )}
 
-        {totalPages > 5 && currentPage < totalPages - 2 && <PaginationEllipsis />}
+        {totalPages > 5 && currentPage < totalPages - 2 && (
+          <PaginationEllipsis />
+        )}
 
         {/* Last Page */}
         {totalPages > 1 && (
@@ -108,7 +124,11 @@ export default function PaginationComponent({ homes, ITEMS_PER_PAGE, setVisibleH
 
         {/* Next Button */}
         <PaginationItem>
-          <PaginationNext disabled={currentPage === totalPages} className="cursor-pointer" onClick={handleNextPage} />
+          <PaginationNext
+            disabled={currentPage === totalPages}
+            className="cursor-pointer"
+            onClick={handleNextPage}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

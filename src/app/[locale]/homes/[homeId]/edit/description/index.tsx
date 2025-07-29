@@ -8,16 +8,19 @@ import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
 export default function Description() {
-  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
+  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } =
+    useContext(HomeContext);
   const [saveDisabled, setSaveDisabled] = useState(true);
-  const [description, setDescription] = useState<string>(editedHome?.description ? editedHome?.description : "");
+  const [description, setDescription] = useState<string>(
+    editedHome?.description ? editedHome?.description : ""
+  );
 
   const t = useScopedI18n("sell.description");
   const h = useScopedI18n("homes");
 
   useEffect(() => {
     setSaveDisabled(description.length === 0);
-  }, []);
+  }, [description.length]);
 
   useEffect(() => {
     if (editedHome && description.length > 0 && description.length < 3000) {
@@ -26,7 +29,7 @@ export default function Description() {
     } else {
       setSaveDisabled(true);
     }
-  }, [description]);
+  }, [description, editedHome, setEditedHome]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -45,7 +48,9 @@ export default function Description() {
             value={description}
             theme={"snow"}
             placeholder={t("placeholder")}
-            className={`flex flex-col h-full max-w-8xl w-full overflow-auto text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${description.length === 3000 && "border-red-500"}`}
+            className={`flex flex-col h-full max-w-8xl w-full overflow-auto text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
+              description.length === 3000 && "border-red-500"
+            }`}
             onChange={(value: string) => {
               if (value.length <= 3000) {
                 setDescription(value);
@@ -62,7 +67,9 @@ export default function Description() {
             formats={["header", "font", "bold", "italic", "underline", "list"]}
           />
           <div className="flex justify-center text-sm min-h-12">
-            {description.length === 3000 && <span className="text-red-500">{t("warning")}</span>}
+            {description.length === 3000 && (
+              <span className="text-red-500">{t("warning")}</span>
+            )}
           </div>
         </div>
         <Button
@@ -71,7 +78,11 @@ export default function Description() {
           onClick={handleSaveEdits}
           disabled={saveDisabled || saveLoading}
         >
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+          {saveLoading ? (
+            <ReloadIcon className="w-6 h-6 animate-spin" />
+          ) : (
+            h("save")
+          )}
         </Button>
       </div>
     </div>

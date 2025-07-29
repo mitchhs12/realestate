@@ -26,13 +26,24 @@ export default function MultiTypeButton({
   disabled?: boolean | null;
   width?: number;
   height?: number;
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "none" | null | undefined;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link"
+    | "none"
+    | null
+    | undefined;
   premium?: boolean;
 }) {
   const [index, setIndex] = useState(0);
   const { resolvedTheme: theme } = useTheme();
 
-  const IconComponent = currentType ? typeIcons[currentType?.id as keyof typeof typeIcons] : null; // Get the corresponding icon
+  const IconComponent = currentType
+    ? typeIcons[currentType?.id as keyof typeof typeIcons]
+    : null; // Get the corresponding icon
 
   useEffect(() => {
     if (types.length > 0) {
@@ -40,14 +51,22 @@ export default function MultiTypeButton({
     } else {
       setCurrentType(null);
     }
-  }, [types]);
+  }, [types, setCurrentType]);
 
   return (
     IconComponent && (
       <Button
         variant={variant ? variant : types.length > 1 ? "outline" : "ghost"}
         // sets disabled to true if it is null
-        disabled={disabled === true ? (types.length > 1 ? false : true) : disabled === false ? false : true}
+        disabled={
+          disabled === true
+            ? types.length > 1
+              ? false
+              : true
+            : disabled === false
+            ? false
+            : true
+        }
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
@@ -56,10 +75,22 @@ export default function MultiTypeButton({
           setCurrentType(types[newIndex]);
         }}
         size={"icon"}
-        className={className ? `${className}` : "absolute top-3 left-3.5 disabled:opacity-100"}
+        className={
+          className
+            ? `${className}`
+            : "absolute top-3 left-3.5 disabled:opacity-100"
+        }
       >
         <IconComponent
-          color={color ? color : premium ? "#F59E0B" : theme === "dark" ? "white" : "black"}
+          color={
+            color
+              ? color
+              : premium
+              ? "#F59E0B"
+              : theme === "dark"
+              ? "white"
+              : "black"
+          }
           width={width ? width : 40}
           height={height ? height : 40}
         />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useScopedI18n } from "@/locales/client";
-import { useEffect, useState, useContext, type JSX } from "react";
+import { useEffect, useState, useContext, type JSX, useMemo } from "react";
 import { ExponentialSlider } from "@/components/ui/exponentialSlider"; // Import your new ExponentialSlider component
 import { QueryContext } from "@/context/QueryContext";
 import { BedDouble, CookingPot, Bath, Sofa } from "lucide-react";
@@ -46,37 +46,43 @@ interface Props {
 export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
   const t = useScopedI18n("sell.rooms");
 
-  const initialRoomsObj: RoomsObject = {
-    bedrooms: {
-      id: "bedrooms",
-      image: <BedDouble size={20} strokeWidth={1.25} />,
-      translation: t("bedrooms"),
-      range: selectedRooms.bedrooms,
-    },
-    bathrooms: {
-      id: "bathrooms",
-      image: <Bath size={20} strokeWidth={1.25} />,
-      translation: t("bathrooms"),
-      range: selectedRooms.bathrooms,
-    },
-    livingrooms: {
-      id: "livingrooms",
-      image: <Sofa size={20} strokeWidth={1.25} />,
-      translation: t("living-rooms"),
-      range: selectedRooms.livingrooms,
-    },
-    kitchens: {
-      id: "kitchens",
-      image: <CookingPot size={20} strokeWidth={1.25} />,
-      translation: t("kitchens"),
-      range: selectedRooms.kitchens,
-    },
-  };
+  const initialRoomsObj: RoomsObject = useMemo(
+    () => ({
+      bedrooms: {
+        id: "bedrooms",
+        image: <BedDouble size={20} strokeWidth={1.25} />,
+        translation: t("bedrooms"),
+        range: selectedRooms.bedrooms,
+      },
+      bathrooms: {
+        id: "bathrooms",
+        image: <Bath size={20} strokeWidth={1.25} />,
+        translation: t("bathrooms"),
+        range: selectedRooms.bathrooms,
+      },
+      livingrooms: {
+        id: "livingrooms",
+        image: <Sofa size={20} strokeWidth={1.25} />,
+        translation: t("living-rooms"),
+        range: selectedRooms.livingrooms,
+      },
+      kitchens: {
+        id: "kitchens",
+        image: <CookingPot size={20} strokeWidth={1.25} />,
+        translation: t("kitchens"),
+        range: selectedRooms.kitchens,
+      },
+    }),
+    [t, selectedRooms]
+  );
 
   const [roomsObject, setRoomsObject] = useState<RoomsObject>(initialRoomsObj);
 
   const handleRoomsChanged = (roomId: keyof RoomsObject, range: number[]) => {
-    const updatedRoomsObj = { ...roomsObject, [roomId]: { ...roomsObject[roomId], range } };
+    const updatedRoomsObj = {
+      ...roomsObject,
+      [roomId]: { ...roomsObject[roomId], range },
+    };
     setRoomsObject(updatedRoomsObj);
 
     const updatedSelectedRooms = {
@@ -92,7 +98,7 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
 
   useEffect(() => {
     setRoomsObject(initialRoomsObj);
-  }, [selectedRooms, t]);
+  }, [selectedRooms, t, initialRoomsObj]);
 
   return (
     <div className="flex flex-col gap-1 w-full">
@@ -100,19 +106,27 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
         <div className="flex flex-col items-start text-sm gap-3 h-full">
           <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.bedrooms.image}</div>
-            <div className="flex text-nowrap">{roomsObject.bedrooms.translation}</div>
+            <div className="flex text-nowrap">
+              {roomsObject.bedrooms.translation}
+            </div>
           </div>
           <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.bathrooms.image}</div>
-            <div className="flex text-nowrap">{roomsObject.bathrooms.translation}</div>
+            <div className="flex text-nowrap">
+              {roomsObject.bathrooms.translation}
+            </div>
           </div>
           <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.livingrooms.image}</div>
-            <div className="flex text-nowrap">{roomsObject.livingrooms.translation}</div>
+            <div className="flex text-nowrap">
+              {roomsObject.livingrooms.translation}
+            </div>
           </div>
           <div className="flex gap-2 h-12 items-center">
             <div>{roomsObject.kitchens.image}</div>
-            <div className="flex text-nowrap">{roomsObject.kitchens.translation}</div>
+            <div className="flex text-nowrap">
+              {roomsObject.kitchens.translation}
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center text-sm gap-3 h-full w-full">
@@ -122,7 +136,10 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
               maxValue={selectedRooms.maxRooms}
               exponent={1.5} // Set the exponent value, adjust as needed
               onValuesChange={(range: number[]) =>
-                handleRoomsChanged(roomsObject.bedrooms.id as keyof RoomsObject, range)
+                handleRoomsChanged(
+                  roomsObject.bedrooms.id as keyof RoomsObject,
+                  range
+                )
               }
               value={roomsObject.bedrooms.range}
             />
@@ -133,7 +150,10 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
               maxValue={selectedRooms.maxRooms}
               exponent={1.5} // Set the exponent value, adjust as needed
               onValuesChange={(range: number[]) =>
-                handleRoomsChanged(roomsObject.bathrooms.id as keyof RoomsObject, range)
+                handleRoomsChanged(
+                  roomsObject.bathrooms.id as keyof RoomsObject,
+                  range
+                )
               }
               value={roomsObject.bathrooms.range}
             />
@@ -144,7 +164,10 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
               maxValue={selectedRooms.maxRooms}
               exponent={1.5} // Set the exponent value, adjust as needed
               onValuesChange={(range: number[]) =>
-                handleRoomsChanged(roomsObject.livingrooms.id as keyof RoomsObject, range)
+                handleRoomsChanged(
+                  roomsObject.livingrooms.id as keyof RoomsObject,
+                  range
+                )
               }
               value={roomsObject.livingrooms.range}
             />
@@ -155,7 +178,10 @@ export default function Rooms({ selectedRooms, setSelectedRooms }: Props) {
               maxValue={selectedRooms.maxRooms}
               exponent={1.5} // Set the exponent value, adjust as needed
               onValuesChange={(range: number[]) =>
-                handleRoomsChanged(roomsObject.kitchens.id as keyof RoomsObject, range)
+                handleRoomsChanged(
+                  roomsObject.kitchens.id as keyof RoomsObject,
+                  range
+                )
               }
               value={roomsObject.kitchens.range}
             />

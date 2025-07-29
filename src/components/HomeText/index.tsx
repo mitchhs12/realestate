@@ -115,8 +115,15 @@ export default function HomeText({
   edit,
   save,
 }: Props) {
-  const { setCurrentHome, setQuery, openLogInModal, revealPrice, setRevealPrice, revealContact, isModalOpen } =
-    useContext(QueryContext);
+  const {
+    setCurrentHome,
+    setQuery,
+    openLogInModal,
+    revealPrice,
+    setRevealPrice,
+    revealContact,
+    isModalOpen,
+  } = useContext(QueryContext);
   const {
     home,
     matchingTypes,
@@ -142,8 +149,14 @@ export default function HomeText({
     redirectUrl,
   } = useContext(HomeContext);
 
-  const { defaultCurrency, currencyData, numerals, sessionLoading, sessionUnauthenticated, user } =
-    useContext(LocaleContext);
+  const {
+    defaultCurrency,
+    currencyData,
+    numerals,
+    sessionLoading,
+    sessionUnauthenticated,
+    user,
+  } = useContext(LocaleContext);
   const [feet, setFeet] = useState(false);
   const [sqSize, setSqSize] = useState(home.areaSqm);
   const [copiedField, setCopiedField] = useState<string | null>(null);
@@ -152,7 +165,10 @@ export default function HomeText({
   const [openBillingModal, setOpenBillingModal] = useState<boolean>(false);
 
   const quillRef = useRef<any>(null);
-  const [quillDimensions, setQuillDimensions] = useState({ width: 0, height: 0 });
+  const [quillDimensions, setQuillDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
     // If the Quill editor is loaded, capture its width and height
@@ -171,18 +187,20 @@ export default function HomeText({
   useEffect(() => {
     const ftConversion = 10.76391042;
     setSqSize(!feet ? home.areaSqm : Math.round(home.areaSqm * ftConversion));
-  }, [feet]);
+  }, [feet, home.areaSqm]);
 
   useEffect(() => {
     if (home && home.address) {
       setCurrentHome(home);
       setQuery(home.address);
     }
-  }, [home]);
+  }, [home, setCurrentHome, setQuery]);
 
   const IconComponent = typeIcons[currentType.id as keyof typeof typeIcons]; // Get the corresponding icon
 
-  const originalCurrencyRate = currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ?? null;
+  const originalCurrencyRate =
+    currencyData?.prices.find((c) => home.currency === c.symbol)?.usdPrice ??
+    null;
 
   return (
     <div className="flex flex-col w-full h-full justify-center px-6 py-3">
@@ -240,14 +258,24 @@ export default function HomeText({
                       }}
                     >
                       <div className="flex">
-                        <IconComponent color={theme === "dark" ? "white" : "black"} width={42} height={42} />
+                        <IconComponent
+                          color={theme === "dark" ? "white" : "black"}
+                          width={42}
+                          height={42}
+                        />
                       </div>
-                      <h3 className="flex w-full text-3xl font-normal">{currentType.translation}</h3>
+                      <h3 className="flex w-full text-3xl font-normal">
+                        {currentType.translation}
+                      </h3>
                     </Button>
                   </div>
                 ))}
               <div className="flex flex-col sm:flex-row text-center sm:text-start gap-2 flex-wrap justify-center sm:justify-start text-2xl lg:text-2xl">
-                <div>{translatedMunicipality ? translatedMunicipality : home.municipality}</div>
+                <div>
+                  {translatedMunicipality
+                    ? translatedMunicipality
+                    : home.municipality}
+                </div>
                 <div className="flex items-center gap-3">
                   <span className="hidden sm:flex text-gray-300"> |</span>
                   {countryName}
@@ -284,7 +312,10 @@ export default function HomeText({
                   {translationLoading || descriptionLoading ? (
                     <Skeleton
                       className="w-full"
-                      style={{ width: `${quillDimensions.width}px`, height: `${quillDimensions.height}px` }}
+                      style={{
+                        width: `${quillDimensions.width}px`,
+                        height: `${quillDimensions.height}px`,
+                      }}
                     />
                   ) : (
                     <ReactQuill
@@ -310,28 +341,34 @@ export default function HomeText({
               />
             ) : (
               <div className="flex flex-col gap-6">
-                {currentType.id !== "warehouse" && currentType.id !== "land" && (
-                  <div className="flex flex-col gap-3">
-                    <div className="text-lg sm:text-xl">{capacityTitle}</div>
-                    <div className="flex items-center gap-3 pl-1">
-                      <Users size={20} strokeWidth={1.5} />
-                      <div className="flex items-center gap-1">
-                        <span>{formatNumber(home.capacity, numerals)}</span>
-                        {home.capacity === 0 ? capacityText.single : capacityText.plural}
+                {currentType.id !== "warehouse" &&
+                  currentType.id !== "land" && (
+                    <div className="flex flex-col gap-3">
+                      <div className="text-lg sm:text-xl">{capacityTitle}</div>
+                      <div className="flex items-center gap-3 pl-1">
+                        <Users size={20} strokeWidth={1.5} />
+                        <div className="flex items-center gap-1">
+                          <span>{formatNumber(home.capacity, numerals)}</span>
+                          {home.capacity === 0
+                            ? capacityText.single
+                            : capacityText.plural}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-5">
-                    <div className="flex items-center text-lg sm:text-xl">{sizeTitle}</div>
+                    <div className="flex items-center text-lg sm:text-xl">
+                      {sizeTitle}
+                    </div>
                   </div>
                   <div className="flex gap-3 items-center pl-1">
                     <div className="flex">
                       <LandPlot size={20} strokeWidth={1.25} />
                     </div>
                     <div className="flex flex-col">
-                      {formatNumber(sqSize, numerals)} {feet ? units.ft : units.m}
+                      {formatNumber(sqSize, numerals)}{" "}
+                      {feet ? units.ft : units.m}
                     </div>
                   </div>
                   <div className="flex items-center">
@@ -348,7 +385,11 @@ export default function HomeText({
                         setFeet(!feet);
                       }}
                     >
-                      {feet ? <Ruler size={18} strokeWidth={1.25} /> : <Footprints size={18} strokeWidth={1.25} />}
+                      {feet ? (
+                        <Ruler size={18} strokeWidth={1.25} />
+                      ) : (
+                        <Footprints size={18} strokeWidth={1.25} />
+                      )}
                       {feet ? units.m : units.ft}
                     </Button>
                   </div>
@@ -369,23 +410,47 @@ export default function HomeText({
                 <div className="flex flex-col w-full gap-3 pl-1">
                   <div className="flex gap-3 items-center">
                     <BedDouble size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">{formatNumber(home.bedrooms, numerals)}</span>{" "}
-                    <span>{home.bedrooms !== 1 ? bedroomsText.plural : bedroomsText.single}</span>
+                    <span className="w-[1rem]">
+                      {formatNumber(home.bedrooms, numerals)}
+                    </span>{" "}
+                    <span>
+                      {home.bedrooms !== 1
+                        ? bedroomsText.plural
+                        : bedroomsText.single}
+                    </span>
                   </div>
                   <div className="flex gap-3 items-center">
                     <Bath size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">{formatNumber(home.bathrooms, numerals)}</span>
-                    <span>{home.bathrooms !== 1 ? bathroomsText.plural : bathroomsText.single}</span>
+                    <span className="w-[1rem]">
+                      {formatNumber(home.bathrooms, numerals)}
+                    </span>
+                    <span>
+                      {home.bathrooms !== 1
+                        ? bathroomsText.plural
+                        : bathroomsText.single}
+                    </span>
                   </div>
                   <div className="flex gap-3 items-center">
                     <Sofa size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">{formatNumber(home.livingrooms, numerals)}</span>
-                    <span>{home.livingrooms !== 1 ? livingroomsText.plural : livingroomsText.single}</span>
+                    <span className="w-[1rem]">
+                      {formatNumber(home.livingrooms, numerals)}
+                    </span>
+                    <span>
+                      {home.livingrooms !== 1
+                        ? livingroomsText.plural
+                        : livingroomsText.single}
+                    </span>
                   </div>
                   <div className="flex gap-3 items-center">
                     <CookingPot size={18} strokeWidth={1.5} />
-                    <span className="w-[1rem]">{formatNumber(home.kitchens, numerals)}</span>
-                    <span>{home.kitchens !== 1 ? kitchensText.plural : kitchensText.single}</span>
+                    <span className="w-[1rem]">
+                      {formatNumber(home.kitchens, numerals)}
+                    </span>
+                    <span>
+                      {home.kitchens !== 1
+                        ? kitchensText.plural
+                        : kitchensText.single}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -397,15 +462,22 @@ export default function HomeText({
                 <div className="text-lg sm:text-xl mb-3">{featuresTitle}</div>
                 <div className="gap-3 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 text-sm sm:text-lg">
                   {matchingFeatures.map((feature, index) => {
-                    const FeatureIcon = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
+                    const FeatureIcon =
+                      featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
 
                     return (
                       FeatureIcon && (
                         <div key={index} className="flex items-center gap-2">
                           <div className="flex">
-                            <FeatureIcon color={theme === "dark" ? "#FFFFFF" : "#000000"} width={25} height={25} />
+                            <FeatureIcon
+                              color={theme === "dark" ? "#FFFFFF" : "#000000"}
+                              width={25}
+                              height={25}
+                            />
                           </div>
-                          <div className="flex text-xs sm:text-sm">{feature.translation}</div>
+                          <div className="flex text-xs sm:text-sm">
+                            {feature.translation}
+                          </div>
                         </div>
                       )
                     );
@@ -461,7 +533,9 @@ export default function HomeText({
           ) : (
             <Card className="w-full max-w-xs shadow-lg">
               <CardHeader>
-                <CardTitle className="text-sm md:text-base lg:text-lg">{priceTitle}</CardTitle>
+                <CardTitle className="text-sm md:text-base lg:text-lg">
+                  {priceTitle}
+                </CardTitle>
               </CardHeader>
 
               <CardContent className="flex flex-col gap-4">
@@ -491,7 +565,10 @@ export default function HomeText({
                   ) : originalCurrencyRate && home.currency ? (
                     <BrokenPrice
                       priceUsd={home.priceUsd}
-                      currency={{ symbol: home.currency, usdPrice: originalCurrencyRate }}
+                      currency={{
+                        symbol: home.currency,
+                        usdPrice: originalCurrencyRate,
+                      }}
                       reveal={user ? true : false}
                       originalPrice={home.price}
                       originalCurrencySymbol={home.currency}
@@ -504,7 +581,9 @@ export default function HomeText({
                 </div>
                 <div className="flex flex-col items-center w-full gap-3">
                   <div className="flex items-center justify-center gap-2 w-full">
-                    <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">{negotiable}</span>
+                    <span className="flex text-start font-medium text-xs md:text-sm lg:text-xl">
+                      {negotiable}
+                    </span>
                     <span className="flex text-center w-auto h-auto">
                       {home.priceNegotiable ? (
                         <span className="flex w-auto h-auto">
@@ -538,7 +617,9 @@ export default function HomeText({
                     <div className="flex items-center justify-center mt-4">
                       <Button
                         onClick={() => {
-                          user ? setRevealPrice(!revealPrice) : openLogInModal();
+                          user
+                            ? setRevealPrice(!revealPrice)
+                            : openLogInModal();
                         }}
                         variant={"default"}
                         className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
@@ -573,11 +654,15 @@ export default function HomeText({
           ) : (
             <Card className="w-full max-w-xs shadow-lg">
               <CardHeader>
-                <CardTitle className="text-sm md:text-base lg:text-lg">{contactTitle}</CardTitle>
+                <CardTitle className="text-sm md:text-base lg:text-lg">
+                  {contactTitle}
+                </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-5">
                 <div className="flex flex-col items-start">
-                  <span className="text-start text-xs md:text-sm">{contactNameText}</span>
+                  <span className="text-start text-xs md:text-sm">
+                    {contactNameText}
+                  </span>
                   <div
                     className={`${
                       !revealContact ? "blur-sm select-none" : "select-text"
@@ -585,39 +670,59 @@ export default function HomeText({
                   >
                     <div className="text-start">{homeOwnerName}</div>
                     <Button
-                      onClick={() => homeOwnerName && handleCopy(homeOwnerName, "name", setCopiedField)}
+                      onClick={() =>
+                        homeOwnerName &&
+                        handleCopy(homeOwnerName, "name", setCopiedField)
+                      }
                       variant="outline"
                       size="icon"
                       className="flex text-xs gap-2 p-2"
                       disabled={!revealContact}
                     >
-                      {copiedField === "name" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                      {copiedField === "name" ? (
+                        <CheckIcon className="w-5 h-5" />
+                      ) : (
+                        <CopyIcon className="w-5 h-5" />
+                      )}
                     </Button>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-start">
-                  <span className="text-start text-xs md:text-sm">{contactEmailText}</span>
+                  <span className="text-start text-xs md:text-sm">
+                    {contactEmailText}
+                  </span>
                   <div
                     className={`${
                       !revealContact ? "blur-sm select-none" : "select-text"
                     } flex items-center justify-between text-xs md:text-sm lg:text-base lg:text-start font-medium w-full gap-x-2`}
                   >
-                    <div className="justify-start truncate">{homeOwnerEmail}</div>
+                    <div className="justify-start truncate">
+                      {homeOwnerEmail}
+                    </div>
                     <Button
-                      onClick={() => homeOwnerEmail && handleCopy(homeOwnerEmail, "email", setCopiedField)}
+                      onClick={() =>
+                        homeOwnerEmail &&
+                        handleCopy(homeOwnerEmail, "email", setCopiedField)
+                      }
                       variant="outline"
                       size="icon"
                       className="flex text-xs gap-2 p-2"
                       disabled={!revealContact}
                     >
-                      {copiedField === "email" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                      {copiedField === "email" ? (
+                        <CheckIcon className="w-5 h-5" />
+                      ) : (
+                        <CopyIcon className="w-5 h-5" />
+                      )}
                     </Button>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-start">
-                  <span className="text-start text-xs md:text-sm">{contactPhoneText}</span>
+                  <span className="text-start text-xs md:text-sm">
+                    {contactPhoneText}
+                  </span>
                   <div
                     className={`${
                       !revealContact ? "blur-sm select-none" : "select-text"
@@ -625,13 +730,20 @@ export default function HomeText({
                   >
                     <div className="justify-start">{homeOwnerPhone}</div>
                     <Button
-                      onClick={() => homeOwnerPhone && handleCopy(homeOwnerPhone, "phone", setCopiedField)}
+                      onClick={() =>
+                        homeOwnerPhone &&
+                        handleCopy(homeOwnerPhone, "phone", setCopiedField)
+                      }
                       variant="outline"
                       className="flex text-xs gap-2 p-2"
                       size="icon"
                       disabled={!revealContact}
                     >
-                      {copiedField === "phone" ? <CheckIcon className="w-5 h-5" /> : <CopyIcon className="w-5 h-5" />}
+                      {copiedField === "phone" ? (
+                        <CheckIcon className="w-5 h-5" />
+                      ) : (
+                        <CopyIcon className="w-5 h-5" />
+                      )}
                     </Button>
                   </div>
                 </div>
@@ -639,7 +751,11 @@ export default function HomeText({
                 <div className="flex items-center justify-center mt-4">
                   <Button
                     onClick={() => {
-                      !billingError ? (user ? handleGetContactInfo() : openLogInModal()) : setOpenBillingModal(true);
+                      !billingError
+                        ? user
+                          ? handleGetContactInfo()
+                          : openLogInModal()
+                        : setOpenBillingModal(true);
                     }}
                     variant="default"
                     className="flex justify-center max-w-md text-center h-full w-[300px]" // Adjust the width as needed
@@ -667,7 +783,9 @@ export default function HomeText({
           )}
           <Dialog open={openBillingModal} onOpenChange={setOpenBillingModal}>
             <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
-              {user && <PricingDialog redirectUrl={redirectUrl} isCheckout={false} />}
+              {user && (
+                <PricingDialog redirectUrl={redirectUrl} isCheckout={false} />
+              )}
             </DialogContent>
           </Dialog>
         </div>

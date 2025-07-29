@@ -67,8 +67,12 @@ export default function Contact({
   const [propertyOwnerEmail, setPropertyOwnerEmail] = useState<string>(
     currentHome?.contactEmail ? currentHome.contactEmail : user.email || ""
   );
-  const [propertyOwnerPhone, setPropertyOwnerPhone] = useState<string | undefined>(
-    currentHome?.contactPhone ? currentHome.contactPhone : user.phoneNumber || ""
+  const [propertyOwnerPhone, setPropertyOwnerPhone] = useState<
+    string | undefined
+  >(
+    currentHome?.contactPhone
+      ? currentHome.contactPhone
+      : user.phoneNumber || ""
   );
 
   useEffect(() => {
@@ -90,7 +94,14 @@ export default function Contact({
     } else {
       setNextDisabled(true);
     }
-  }, [propertyOwnerName, propertyOwnerEmail, propertyOwnerPhone]);
+  }, [
+    propertyOwnerName,
+    propertyOwnerEmail,
+    propertyOwnerPhone,
+    currentHome,
+    setNewHome,
+    setNextDisabled,
+  ]);
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -104,7 +115,22 @@ export default function Contact({
     } else {
       setNextDisabled(true);
     }
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    propertyOwnerPhone,
+    propertyOwnerEmail,
+    propertyOwnerName,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNextDisabled,
+  ]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -120,7 +146,9 @@ export default function Contact({
         <div className="flex h-full w-2/3 justify-center pt-12 gap-8">
           <div className="flex flex-col items-start gap-6 md:gap-12 w-full">
             <div className="flex flex-col md:flex-row items-center gap-3 w-full">
-              <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">{name_text}</h2>
+              <h2 className="flex font-medium text-right w-full md:w-2/12 justify-start md:justify-end">
+                {name_text}
+              </h2>
               <div className="flex w-full">
                 <Input
                   value={propertyOwnerName}
@@ -159,9 +187,14 @@ export default function Contact({
               </div>
               {user?.phoneNumber !== propertyOwnerPhone && (
                 <div className="flex flex-row justify-center md:justify-end items-center gap-2 w-full pt-3">
-                  <h2 className="flex font-light text-sm xs:text-base text-right text-nowrap">{mobile_check}</h2>
+                  <h2 className="flex font-light text-sm xs:text-base text-right text-nowrap">
+                    {mobile_check}
+                  </h2>
                   <div className="flex items-center">
-                    <Switch checked={isMyPhone} onCheckedChange={() => setIsMyPhone(!isMyPhone)} />
+                    <Switch
+                      checked={isMyPhone}
+                      onCheckedChange={() => setIsMyPhone(!isMyPhone)}
+                    />
                   </div>
                 </div>
               )}

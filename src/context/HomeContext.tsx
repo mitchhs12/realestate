@@ -1,20 +1,30 @@
 "use client";
 
-import React, { createContext, useState, ReactNode, useEffect, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useContext,
+} from "react";
 import { HomeType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
 import { QueryContext } from "@/context/QueryContext";
 import { languagesRequiringClientSideTranslation } from "@/lib/validations";
 import lookup from "country-code-lookup";
 import { findMatching, getCountryNameForLocale } from "@/lib/utils";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { saveHome } from "@/app/[locale]/homes/actions";
 
 interface HomeContextProps {
   home: HomeType;
   matchingTypes: { id: string; name: string; translation: string }[];
   currentType: { id: string; name: string; translation: string };
-  setCurrentType: (value: { id: string; name: string; translation: string }) => void;
+  setCurrentType: (value: {
+    id: string;
+    name: string;
+    translation: string;
+  }) => void;
   matchingFeatures: { id: string; name: string; translation: string }[];
   translatedMunicipality: string | null;
   setTranslatedMunicipality: (value: string | null) => void;
@@ -178,9 +188,15 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
   const [home, setHome] = useState(originalHome);
   const [matchingTypes, setMatchingTypes] = useState(originalMatchingTypes);
   const [currentType, setCurrentType] = useState(matchingTypes[0]);
-  const [matchingFeatures, setMatchingFeatures] = useState(originalMatchingFeatures);
-  const [translatedMunicipality, setTranslatedMunicipality] = useState<string | null>(null);
-  const [translatedDescription, setTranslatedDescription] = useState<string | null>(null);
+  const [matchingFeatures, setMatchingFeatures] = useState(
+    originalMatchingFeatures
+  );
+  const [translatedMunicipality, setTranslatedMunicipality] = useState<
+    string | null
+  >(null);
+  const [translatedDescription, setTranslatedDescription] = useState<
+    string | null
+  >(null);
   const [translatedTitle, setTranslatedTitle] = useState<string | null>(null);
   const [translationLoading, setTranslationLoading] = useState<boolean>(false);
   const { defaultLanguage } = useContext(LocaleContext);
@@ -188,16 +204,23 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
   const [titleLoading, setTitleLoading] = useState<boolean>(false);
   const [originalDescription, setOriginalDescription] = useState<boolean>(true);
   const [originalTitle, setOriginalTitle] = useState<boolean>(true);
-  const [description, setDescription] = useState<string | null>(home.description);
+  const [description, setDescription] = useState<string | null>(
+    home.description
+  );
   const [title, setTitle] = useState<string | null>(home.title);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [saveLoading, setSaveLoading] = useState<boolean>(false);
   const [editedHome, setEditedHome] = useState<any>(home);
-  const [homeOwnerName, setHomeOwnerName] = useState<string>("Mitchell Spencer");
-  const [homeOwnerEmail, setHomeOwnerEmail] = useState<string>("mitchell@vivaideal.com");
+  const [homeOwnerName, setHomeOwnerName] =
+    useState<string>("Mitchell Spencer");
+  const [homeOwnerEmail, setHomeOwnerEmail] = useState<string>(
+    "mitchell@vivaideal.com"
+  );
   const [haveContactInfo, setHaveContactInfo] = useState<boolean>(false);
-  const [homeOwnerPhone, setHomeOwnerPhone] = useState<string>("+51 958 751 401");
-  const [fetchingContactInfo, setFetchingContactInfo] = useState<boolean>(false);
+  const [homeOwnerPhone, setHomeOwnerPhone] =
+    useState<string>("+51 958 751 401");
+  const [fetchingContactInfo, setFetchingContactInfo] =
+    useState<boolean>(false);
   const [billingError, setBillingError] = useState<boolean>(false);
   const [contactInfoError, setContactInfoError] = useState<string | null>(null);
   const pathname = usePathname();
@@ -257,16 +280,25 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
       console.log("name", homeOwnerName);
       setRevealContact(true);
     }
-  }, [haveContactInfo, homeOwnerName, homeOwnerEmail, homeOwnerPhone]);
+  }, [
+    haveContactInfo,
+    homeOwnerName,
+    homeOwnerEmail,
+    homeOwnerPhone,
+    setRevealContact,
+  ]);
 
   useEffect(() => {
-    translatedDescription !== home.description && setDescription(translatedDescription);
+    translatedDescription !== home.description &&
+      setDescription(translatedDescription);
     setOriginalDescription(false);
-  }, [translatedDescription]);
+  }, [translatedDescription, home.description]);
 
   useEffect(() => {
-    originalDescription ? setDescription(home.description) : setDescription(translatedDescription);
-  }, [originalDescription]);
+    originalDescription
+      ? setDescription(home.description)
+      : setDescription(translatedDescription);
+  }, [originalDescription, home.description, translatedDescription]);
 
   // Title functions
   const handleTitleConvert = () => {
@@ -280,11 +312,11 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
   useEffect(() => {
     translatedTitle !== home.title && setTitle(translatedTitle);
     setOriginalTitle(false);
-  }, [translatedTitle]);
+  }, [translatedTitle, home.title]);
 
   useEffect(() => {
     originalTitle ? setTitle(home.title) : setTitle(translatedTitle);
-  }, [originalTitle]);
+  }, [originalTitle, home.title, translatedTitle]);
 
   const handleSaveEdits = async () => {
     setSaveLoading(true);
@@ -318,7 +350,9 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
       console.log("Error translating text:", responseData.error);
       return;
     }
-    isTitle ? setTranslatedTitle(responseData.text) : setTranslatedDescription(responseData.text);
+    isTitle
+      ? setTranslatedTitle(responseData.text)
+      : setTranslatedDescription(responseData.text);
     isTitle ? setTitleLoading(false) : setDescriptionLoading(false);
   };
 
@@ -355,7 +389,7 @@ const HomeContextProvider: React.FC<HomeProviderProps> = ({
       setOriginalDescription(true);
       setOriginalTitle(true);
     }
-  }, [home]);
+  }, [home, defaultLanguage]);
 
   return (
     <HomeContext.Provider

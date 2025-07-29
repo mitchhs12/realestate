@@ -47,7 +47,18 @@ export default function Type({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+  ]);
 
   useEffect(() => {
     if (currentHome && selection.length > 0) {
@@ -58,7 +69,7 @@ export default function Type({
       console.log("NEXT IS NOW DISBALED");
       setNextDisabled(true);
     }
-  }, [selection]);
+  }, [selection, currentHome, setNewHome, setNextDisabled]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -82,7 +93,8 @@ export default function Type({
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
               {options.map((type, index) => {
-                const IconComponent = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
+                const IconComponent =
+                  typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
                 return (
                   <ToggleGroupItem
                     variant={"outline"}
@@ -93,10 +105,16 @@ export default function Type({
                     <div className="flex w-full justify-center gap-2 items-center text-center text-xs sm:text-sm md:text-md lg:text-lg">
                       {IconComponent && (
                         <div className="flex w-1/3 justify-center items-center">
-                          <IconComponent color={theme === "dark" ? "#FFFFFF" : "#000000"} width={55} height={55} />
+                          <IconComponent
+                            color={theme === "dark" ? "#FFFFFF" : "#000000"}
+                            width={55}
+                            height={55}
+                          />
                         </div>
                       )}
-                      <div className="flex w-2/3 justify-start text-start">{type.translation}</div>
+                      <div className="flex w-2/3 justify-start text-start">
+                        {type.translation}
+                      </div>
                     </div>
                   </ToggleGroupItem>
                 );

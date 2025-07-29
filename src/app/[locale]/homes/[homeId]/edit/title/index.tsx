@@ -15,20 +15,28 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 // }
 
 export default function Title() {
-  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
-  const [title, setTitle] = useState<string>(editedHome?.title ? editedHome?.title : "");
+  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } =
+    useContext(HomeContext);
+  const [title, setTitle] = useState<string>(
+    editedHome?.title ? editedHome?.title : ""
+  );
   const [saveDisabled, setSaveDisabled] = useState(true);
   const t = useScopedI18n("sell.title");
   const h = useScopedI18n("homes");
 
   useEffect(() => {
-    if (editedHome && title.length > 0 && title.length <= 32 && title !== editedHome.title) {
+    if (
+      editedHome &&
+      title.length > 0 &&
+      title.length <= 32 &&
+      title !== editedHome.title
+    ) {
       setEditedHome({ ...editedHome, title: title });
       setSaveDisabled(false);
     } else {
       setSaveDisabled(true);
     }
-  }, [title]);
+  }, [title, editedHome, setEditedHome]);
 
   const handleChange = (e: any) => {
     const newValue = e.target.value;
@@ -55,18 +63,34 @@ export default function Title() {
                 type="text"
                 value={title}
                 placeholder="Enter your property title..."
-                className={`w-full text-center resize-y overflow-y-auto ${title.length === 32 && "border-red-500"}`}
+                className={`w-full text-center resize-y overflow-y-auto ${
+                  title.length === 32 && "border-red-500"
+                }`}
                 onChange={handleChange}
               />
             </div>
             {/* Set a min-height to reserve space for the warning */}
             <div className="flex h-6 justify-center text-sm">
-              <span className={`${title.length === 32 ? "visible text-red-500" : "invisible"}`}>{t("warning")}</span>
+              <span
+                className={`${
+                  title.length === 32 ? "visible text-red-500" : "invisible"
+                }`}
+              >
+                {t("warning")}
+              </span>
             </div>
           </div>
         </div>
-        <Button variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+        <Button
+          variant={"default"}
+          onClick={handleSaveEdits}
+          disabled={saveDisabled || saveLoading}
+        >
+          {saveLoading ? (
+            <ReloadIcon className="w-6 h-6 animate-spin" />
+          ) : (
+            h("save")
+          )}
         </Button>
       </div>
     </div>

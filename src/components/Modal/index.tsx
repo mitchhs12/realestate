@@ -1,6 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "next-auth/react";
@@ -25,14 +31,14 @@ export function Modal({ customMessage }: { customMessage?: string }) {
     if (isLogin !== isLoginOpen) {
       setIsLogin(isLoginOpen);
     }
-  }, [isLoginOpen]);
+  }, [isLoginOpen, isLogin]);
 
   useEffect(() => {
     // Update the parent `handleLogin` state only if it differs
     if (setIsLoginOpen && isLogin && isLoginOpen !== isLogin) {
       setIsLoginOpen(isLogin);
     }
-  }, [isLogin]);
+  }, [isLogin, isLoginOpen, setIsLoginOpen]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -67,7 +73,9 @@ export function Modal({ customMessage }: { customMessage?: string }) {
   return (
     <Card className="mx-auto max-w-sm" onKeyDown={handleKeyPress}>
       <CardHeader>
-        <CardTitle className="text-2xl font-semibold">{customMessage ? customMessage : t("title")}</CardTitle>
+        <CardTitle className="text-2xl font-semibold">
+          {customMessage ? customMessage : t("title")}
+        </CardTitle>
         <CardDescription>{t("subtitle")}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -85,7 +93,12 @@ export function Modal({ customMessage }: { customMessage?: string }) {
             />
             {emailError && <p className="text-red-600">{emailError}</p>}
           </div>
-          <Button type="submit" className="w-full" onClick={handleEmailSignIn} disabled={isLoading !== null}>
+          <Button
+            type="submit"
+            className="w-full"
+            onClick={handleEmailSignIn}
+            disabled={isLoading !== null}
+          >
             {isLoading === "email" ? (
               <div className="flex items-center justify-center">
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
@@ -120,7 +133,9 @@ export function Modal({ customMessage }: { customMessage?: string }) {
                     <Icons.google_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">{isLoading === "google" ? g("loading") : t("google")}</div>
+                <div className="flex flex-grow">
+                  {isLoading === "google" ? g("loading") : t("google")}
+                </div>
               </div>
             </Button>
             <Button
@@ -139,7 +154,9 @@ export function Modal({ customMessage }: { customMessage?: string }) {
                     <Icons.apple_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">{isLoading === "apple" ? g("loading") : t("apple")}</div>
+                <div className="flex flex-grow">
+                  {isLoading === "apple" ? g("loading") : t("apple")}
+                </div>
               </div>
             </Button>
             <Button
@@ -158,7 +175,9 @@ export function Modal({ customMessage }: { customMessage?: string }) {
                     <Icons.facebook_dark />
                   )}
                 </div>
-                <div className="flex flex-grow">{isLoading === "facebook" ? g("loading") : t("facebook")} </div>
+                <div className="flex flex-grow">
+                  {isLoading === "facebook" ? g("loading") : t("facebook")}{" "}
+                </div>
               </div>
             </Button>
           </div>

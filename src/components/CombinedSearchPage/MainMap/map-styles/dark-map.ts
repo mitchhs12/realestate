@@ -1,4 +1,4 @@
-export default [
+const darkMapStyles = [
   {
     featureType: "all",
     elementType: "geometry.fill",
@@ -135,3 +135,5 @@ export default [
     ],
   },
 ];
+
+export default darkMapStyles;

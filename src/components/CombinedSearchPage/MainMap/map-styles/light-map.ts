@@ -1,1 +1,3 @@
-export default [];
+const lightMapStyles: any[] = [];
+
+export default lightMapStyles;

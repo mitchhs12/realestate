@@ -10,7 +10,10 @@ interface SellContextProps {
   prevStep: string;
   setPrevStep: (value: string) => void;
   sellFlowIndices: object;
-  setSellFlowIndices: (value: { outerIndex: number; innerIndex: number }) => void;
+  setSellFlowIndices: (value: {
+    outerIndex: number;
+    innerIndex: number;
+  }) => void;
   sellFlowFlatIndex: number;
   setSellFlowFlatIndex: (value: number) => void;
   stepPercentage: number[];
@@ -62,8 +65,13 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children }) => {
   const [prevStep, setPrevStep] = useState("");
   const [nextStep, setNextStep] = useState("");
   const [sellFlowFlatIndex, setSellFlowFlatIndex] = useState(-1);
-  const [sellFlowIndices, setSellFlowIndices] = useState({ outerIndex: -1, innerIndex: -1 });
-  const [stepPercentage, setStepPercentage] = useState(() => Array(sellSteps.length).fill(0));
+  const [sellFlowIndices, setSellFlowIndices] = useState({
+    outerIndex: -1,
+    innerIndex: -1,
+  });
+  const [stepPercentage, setStepPercentage] = useState(() =>
+    Array(sellSteps.length).fill(0)
+  );
   const [currentHome, setCurrentHome] = useState<HomeType | null>(null);
   const [newHome, setNewHome] = useState<HomeType | null>(null);
   const [nextLoading, setNextLoading] = useState(false);
@@ -88,7 +96,7 @@ const SellContextProvider: React.FC<SellProviderProps> = ({ children }) => {
           : `/sell/${currentHome?.id}/${stepsFlattened[sellFlowFlatIndex - 1]}`
         : ""
     );
-  }, [sellFlowFlatIndex]);
+  }, [sellFlowFlatIndex, currentHome?.id, sellFlowIndices]);
 
   return (
     <SellContext.Provider

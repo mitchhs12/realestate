@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
 export default function Type() {
-  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
+  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } =
+    useContext(HomeContext);
   const [selection, setSelection] = useState<string[]>(editedHome?.type || []);
   const [saveDisabled, setSaveDisabled] = useState(true);
   const t = useScopedI18n("sell.type");
@@ -29,7 +30,7 @@ export default function Type() {
     } else {
       setSaveDisabled(true);
     }
-  }, [selection]);
+  }, [selection, editedHome, setEditedHome]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-t-20">
@@ -53,7 +54,8 @@ export default function Type() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8 items-center justify-center">
               {options.map((type, index) => {
-                const IconComponent = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
+                const IconComponent =
+                  typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
                 return (
                   <ToggleGroupItem
                     variant={"outline"}
@@ -67,7 +69,9 @@ export default function Type() {
                           <IconComponent color="gray" width={40} height={40} />
                         </div>
                       )}
-                      <div className="flex w-2/3 justify-start text-start">{type.translation}</div>
+                      <div className="flex w-2/3 justify-start text-start">
+                        {type.translation}
+                      </div>
                     </div>
                   </ToggleGroupItem>
                 );
@@ -82,7 +86,11 @@ export default function Type() {
         onClick={handleSaveEdits}
         disabled={saveDisabled || saveLoading}
       >
-        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+        {saveLoading ? (
+          <ReloadIcon className="w-6 h-6 animate-spin" />
+        ) : (
+          h("save")
+        )}
       </Button>
     </div>
   );

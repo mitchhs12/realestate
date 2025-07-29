@@ -78,7 +78,8 @@ export default function PricingTable({
   isSeller,
   justPremium,
 }: Props) {
-  const { sessionLoading, defaultCurrency, user, defaultLanguage } = useContext(LocaleContext);
+  const { sessionLoading, defaultCurrency, user, defaultLanguage } =
+    useContext(LocaleContext);
   const { openSignUpModal } = useContext(QueryContext);
   const [isOpen, setIsOpen] = useState(false);
   const [currentPlan, setCurrentPlan] = useState<string | null>(null);
@@ -92,8 +93,12 @@ export default function PricingTable({
   const tier2 = isSeller ? "pro" : "basic";
   const tier3 = isSeller ? "premium" : "insight";
   const tier4 = isSeller ? "business" : "max";
-  const userSubscription = isSeller ? user?.sellerSubscription : user?.buyerSubscription;
-  const userSubscriptionId = isSeller ? user?.sellerSubscriptionId : user?.buyerSubscriptionId;
+  const userSubscription = isSeller
+    ? user?.sellerSubscription
+    : user?.buyerSubscription;
+  const userSubscriptionId = isSeller
+    ? user?.sellerSubscriptionId
+    : user?.buyerSubscriptionId;
 
   useEffect(() => {
     if (user && isSeller) {
@@ -163,7 +168,13 @@ export default function PricingTable({
         }
       }
     } else if (userSubscriptionId) {
-      const billingConfirm = await ChangeSpecificSub(isSeller, tierId, yearly, defaultLanguage, redirectUrl);
+      const billingConfirm = await ChangeSpecificSub(
+        isSeller,
+        tierId,
+        yearly,
+        defaultLanguage,
+        redirectUrl
+      );
       router.push(billingConfirm);
     }
   };
@@ -176,7 +187,7 @@ export default function PricingTable({
         setSelected("");
       }
     }
-  }, [isOpen]);
+  }, [isOpen, userSubscription]);
 
   return (
     <>
@@ -211,7 +222,9 @@ export default function PricingTable({
           {justPremium ? (
             <PriceCard
               id={tier3}
-              perks={yearly ? premium["yearly-perks"] : premium["monthly-perks"]}
+              perks={
+                yearly ? premium["yearly-perks"] : premium["monthly-perks"]
+              }
               title={premium.title}
               button={yearly ? premium.yearlyPrice : premium.price}
               annualPrice={premium.totalYearlyPrice}
@@ -236,7 +249,9 @@ export default function PricingTable({
             >
               <PriceCard
                 id={tier1}
-                perks={yearly ? starter["yearly-perks"] : starter["monthly-perks"]}
+                perks={
+                  yearly ? starter["yearly-perks"] : starter["monthly-perks"]
+                }
                 title={starter.title}
                 button={yearly ? starter.yearlyPrice : starter.price}
                 annualPrice={starter.totalYearlyPrice}
@@ -284,7 +299,9 @@ export default function PricingTable({
                 )}
                 <PriceCard
                   id={tier3}
-                  perks={yearly ? premium["yearly-perks"] : premium["monthly-perks"]}
+                  perks={
+                    yearly ? premium["yearly-perks"] : premium["monthly-perks"]
+                  }
                   title={premium.title}
                   button={yearly ? premium.yearlyPrice : premium.price}
                   annualPrice={premium.totalYearlyPrice}
@@ -306,7 +323,9 @@ export default function PricingTable({
               </div>
               <PriceCard
                 id={tier4}
-                perks={yearly ? business["yearly-perks"] : business["monthly-perks"]}
+                perks={
+                  yearly ? business["yearly-perks"] : business["monthly-perks"]
+                }
                 title={business.title}
                 button={yearly ? business.yearlyPrice : business.price}
                 annualPrice={business.totalYearlyPrice}
@@ -330,7 +349,10 @@ export default function PricingTable({
         </div>
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="p-0 border-0 bg-none w-80 md:w-full" close={false}>
+        <DialogContent
+          className="p-0 border-0 bg-none w-80 md:w-full"
+          close={false}
+        >
           {defaultCurrency && user && (
             <Stripe
               uuid={uuidRef.current}

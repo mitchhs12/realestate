@@ -34,7 +34,9 @@ export default function Title({
     setNewHome,
     setNextDisabled,
   } = useContext(SellContext);
-  const [title, setTitle] = useState<string>(currentHome?.title ? currentHome?.title : "");
+  const [title, setTitle] = useState<string>(
+    currentHome?.title ? currentHome?.title : ""
+  );
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -48,7 +50,20 @@ export default function Title({
     } else {
       setNextDisabled(true);
     }
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    title.length,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNextDisabled,
+  ]);
 
   useEffect(() => {
     if (currentHome && title.length > 0 && title.length <= 32) {
@@ -57,7 +72,7 @@ export default function Title({
     } else {
       setNextDisabled(true);
     }
-  }, [title]);
+  }, [title, currentHome, setNewHome, setNextDisabled]);
 
   const handleChange = (e: any) => {
     const newValue = e.target.value;
@@ -89,7 +104,9 @@ export default function Title({
               />
             </div>
             <div className="flex h-3/4 justify-center text-sm">
-              {title.length === 32 && <span className="text-red-500">{warning}</span>}
+              {title.length === 32 && (
+                <span className="text-red-500">{warning}</span>
+              )}
             </div>
           </div>
         </div>

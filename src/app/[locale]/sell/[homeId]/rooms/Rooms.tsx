@@ -54,7 +54,18 @@ export default function Rooms({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+  ]);
 
   useEffect(() => {
     if (currentHome) {
@@ -66,7 +77,7 @@ export default function Rooms({
         kitchens: kitchens,
       });
     }
-  }, [bedrooms, bathrooms, livingrooms, kitchens]);
+  }, [bedrooms, bathrooms, livingrooms, kitchens, currentHome, setNewHome]);
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -81,30 +92,54 @@ export default function Rooms({
           <div className="flex h-full w-full justify-center">
             <div className="flex flex-col h-full justify-center items-center w-[80vw] md:w-[60vw] xl:w-[40vw] text-lg md:text-xl xl:text-2xl">
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">{bedrooms_text}</div>
+                <div className="flex w-full h-full items-center justify-start">
+                  {bedrooms_text}
+                </div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={bedrooms} setState={setBedrooms} numerals={numerals} />
+                  <CounterComponent
+                    state={bedrooms}
+                    setState={setBedrooms}
+                    numerals={numerals}
+                  />
                 </div>
               </div>
               <Separator />
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">{bathrooms_text}</div>
+                <div className="flex w-full h-full items-center justify-start">
+                  {bathrooms_text}
+                </div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={bathrooms} setState={setBathrooms} numerals={numerals} />
+                  <CounterComponent
+                    state={bathrooms}
+                    setState={setBathrooms}
+                    numerals={numerals}
+                  />
                 </div>
               </div>
               <Separator />
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">{livingrooms_text}</div>
+                <div className="flex w-full h-full items-center justify-start">
+                  {livingrooms_text}
+                </div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={livingrooms} setState={setLivingrooms} numerals={numerals} />
+                  <CounterComponent
+                    state={livingrooms}
+                    setState={setLivingrooms}
+                    numerals={numerals}
+                  />
                 </div>
               </div>
               <Separator />
               <div className="flex h-full w-full justify-center items-center">
-                <div className="flex w-full h-full items-center justify-start">{kitchens_text}</div>
+                <div className="flex w-full h-full items-center justify-start">
+                  {kitchens_text}
+                </div>
                 <div className="flex w-full h-full items-center justify-end gap-4 md:gap-8">
-                  <CounterComponent state={kitchens} setState={setKitchens} numerals={numerals} />
+                  <CounterComponent
+                    state={kitchens}
+                    setState={setKitchens}
+                    numerals={numerals}
+                  />
                 </div>
               </div>
             </div>

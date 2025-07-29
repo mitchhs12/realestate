@@ -62,13 +62,22 @@ export default function Checkout({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
-
-  useEffect(() => {
     if (currentHome && currentHome.listingType) {
       setNextDisabled(false);
     }
-  }, [currentHome]);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNextDisabled,
+  ]);
 
   return (
     <>
@@ -83,7 +92,11 @@ export default function Checkout({
             </div>
           </div>
           <div>
-            <PricingDialog redirectUrl={redirectUrl} justPremium={true} isCheckout={false} />
+            <PricingDialog
+              redirectUrl={redirectUrl}
+              justPremium={true}
+              isCheckout={false}
+            />
           </div>
         </div>
       </div>

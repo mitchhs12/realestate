@@ -50,13 +50,18 @@ export default function Location({
     setPrevLoading,
   } = useContext(SellContext);
 
-  const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
+  const [searchResult, setSearchResult] = useState<SearchResult>({
+    text: "",
+    placeId: "",
+  });
   const [currentCoords, setCurrentCoords] = useState(
     currentHome?.latitude && currentHome?.longitude
       ? { lat: currentHome.latitude, long: currentHome.longitude }
       : { lat: 0, long: 0 }
   );
-  const [isExactLocation, setIsExactLocation] = useState(currentHome?.exactLocation || false);
+  const [isExactLocation, setIsExactLocation] = useState(
+    currentHome?.exactLocation || false
+  );
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -84,7 +89,18 @@ export default function Location({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+  ]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -100,7 +116,9 @@ export default function Location({
             <SearchBox
               placeholderShort={placeholderShort}
               isSmallMap={true}
-              setSearchResult={(text, placeId) => setSearchResult({ text: text, placeId: placeId })}
+              setSearchResult={(text, placeId) =>
+                setSearchResult({ text: text, placeId: placeId })
+              }
               placeholder={placeholder}
               text={text}
             />

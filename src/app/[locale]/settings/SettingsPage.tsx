@@ -6,7 +6,15 @@ import { useForm } from "react-hook-form";
 import { User } from "next-auth";
 import { UpdateSettingsValues, updateSettingsSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormField, FormControl, FormItem, FormLabel, FormDescription, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormField,
+  FormControl,
+  FormItem,
+  FormLabel,
+  FormDescription,
+  FormMessage,
+} from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { locales, languages } from "@/lib/validations";
@@ -66,16 +74,25 @@ export default function SettingsPage({
   const session = useSession();
   const changeLocale = useChangeLocale();
   const { resolvedTheme: theme } = useTheme();
-  const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } = useContext(LocaleContext);
+  const { defaultCurrency, defaultLanguage, setDefaultCurrency, currencyData } =
+    useContext(LocaleContext);
   const router = useRouter();
-  const [sellerCancelLoading, setSellerCancelLoading] = useState<boolean>(false);
-  const [sellerPaymentLoading, setSellerPaymentLoading] = useState<boolean>(false);
-  const [sellerSubscriptionLoading, setSellerSubscriptionLoading] = useState<boolean>(false);
+  const [sellerCancelLoading, setSellerCancelLoading] =
+    useState<boolean>(false);
+  const [sellerPaymentLoading, setSellerPaymentLoading] =
+    useState<boolean>(false);
+  const [sellerSubscriptionLoading, setSellerSubscriptionLoading] =
+    useState<boolean>(false);
   const [buyerCancelLoading, setBuyerCancelLoading] = useState<boolean>(false);
-  const [buyerPaymentLoading, setBuyerPaymentLoading] = useState<boolean>(false);
-  const [buyerSubscriptionLoading, setBuyerSubscriptionLoading] = useState<boolean>(false);
-  const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(null);
-  const [changeSellerButtonDisabled, setChangeSellerButtonDisabled] = useState<boolean>(false);
+  const [buyerPaymentLoading, setBuyerPaymentLoading] =
+    useState<boolean>(false);
+  const [buyerSubscriptionLoading, setBuyerSubscriptionLoading] =
+    useState<boolean>(false);
+  const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(
+    null
+  );
+  const [changeSellerButtonDisabled, setChangeSellerButtonDisabled] =
+    useState<boolean>(false);
 
   const form = useForm<UpdateSettingsValues>({
     resolver: zodResolver(updateSettingsSchema),
@@ -107,12 +124,14 @@ export default function SettingsPage({
     };
 
     updateSellerMode();
-  }, [handleChangeSeller]);
+  }, [handleChangeSeller, session]);
 
   async function onSubmit(data: UpdateSettingsValues) {
     try {
       await updateSettings(data);
-      const newCurrency = currencyData?.prices.find((currency: any) => currency.symbol === data.currency);
+      const newCurrency = currencyData?.prices.find(
+        (currency: any) => currency.symbol === data.currency
+      );
       if (newCurrency) {
         setDefaultCurrency({
           symbol: data.currency,
@@ -129,7 +148,10 @@ export default function SettingsPage({
     }
   }
 
-  async function getBillingUrl(isSeller: boolean, type: "subUpdate" | "updatePayment" | "cancel") {
+  async function getBillingUrl(
+    isSeller: boolean,
+    type: "subUpdate" | "updatePayment" | "cancel"
+  ) {
     const result = await StripeBilling(isSeller, defaultLanguage, type);
 
     if (result.url) {
@@ -140,12 +162,19 @@ export default function SettingsPage({
   return (
     <main className="flex flex-col px-10 py-10 w-full items-center">
       <div className="flex flex-col max-w-7xl w-full items-center mx-8">
-        <h1 className="flex text-xl lg:text-3xl w-full space-y-8 font-bold">{title}</h1>
+        <h1 className="flex text-xl lg:text-3xl w-full space-y-8 font-bold">
+          {title}
+        </h1>
         <div className="flex flex-col w-full h-full py-10 gap-16">
           <div className="flex flex-col w-full h-full gap-3">
-            <h2 className="flex text-lg lg:text-2xl font-semibold">{"Account"}</h2>
+            <h2 className="flex text-lg lg:text-2xl font-semibold">
+              {"Account"}
+            </h2>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full gap-8">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex flex-col w-full gap-8"
+              >
                 <div className="justify-start space-y-8">
                   <FormField
                     control={form.control}
@@ -190,7 +219,10 @@ export default function SettingsPage({
                         <FormControl>
                           <select className="block w-full mt-1" {...field}>
                             {locales.map((config) => (
-                              <option key={`${config.locale}${config.currency}`} value={config.currency}>
+                              <option
+                                key={`${config.locale}${config.currency}`}
+                                value={config.currency}
+                              >
                                 {config.currency}{" "}
                                 {/* <FlagComponent country={languageToFlagMap[lang] as Country} countryName={lang as string} /> */}
                               </option>
@@ -214,17 +246,23 @@ export default function SettingsPage({
           </div>
           <div className="flex flex-col w-full h-full gap-12">
             <div className="flex flex-col gap-3">
-              <h2 className="flex text-lg lg:text-2xl font-semibold">{billingText.title}</h2>
+              <h2 className="flex text-lg lg:text-2xl font-semibold">
+                {billingText.title}
+              </h2>
               <div className="flex flex-col">
                 <div className="flex gap-3 items-center">
                   <div className="flex flex-col">
                     <div className="flex items-center text-lg">
                       {billingText.accountType} |&nbsp;
                       <span className="text-primary font-bold">
-                        {user.isSellerMode ? billingText.seller : billingText.buyer}
+                        {user.isSellerMode
+                          ? billingText.seller
+                          : billingText.buyer}
                       </span>
                     </div>
-                    <span className="text-sm">{billingText.accountTypeDescription}</span>
+                    <span className="text-sm">
+                      {billingText.accountTypeDescription}
+                    </span>
                   </div>
                   <Button
                     variant={"default"}
@@ -232,17 +270,31 @@ export default function SettingsPage({
                     className="flex gap-3 items-center"
                     disabled={changeSellerButtonDisabled}
                     onClick={() => {
-                      setHandleChangeSeller(user.isSellerMode ? "buyer" : "seller");
+                      setHandleChangeSeller(
+                        user.isSellerMode ? "buyer" : "seller"
+                      );
                     }}
                   >
                     {changeSellerButtonDisabled ? (
                       <ReloadIcon className="animate-spin w-5 h-5" />
                     ) : user.isSellerMode ? (
-                      <Icons.buyer_icon width={"30"} height={"30"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
+                      <Icons.buyer_icon
+                        width={"30"}
+                        height={"30"}
+                        color={theme === "dark" ? "#000000" : "#FFFFFF"}
+                      />
                     ) : (
-                      <Icons.seller_icon width={"30"} height={"30"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
+                      <Icons.seller_icon
+                        width={"30"}
+                        height={"30"}
+                        color={theme === "dark" ? "#000000" : "#FFFFFF"}
+                      />
                     )}
-                    <span>{user.isSellerMode ? billingText.changeToBuyer : billingText.changeToSeller}</span>
+                    <span>
+                      {user.isSellerMode
+                        ? billingText.changeToBuyer
+                        : billingText.changeToSeller}
+                    </span>
                   </Button>
                 </div>
               </div>
@@ -251,7 +303,9 @@ export default function SettingsPage({
                   <span className="flex items-center text-lg">
                     {billingText.contactCredits} | {user.contactCredits}
                   </span>
-                  <span className="text-sm">{billingText.contactCreditsDesc}</span>
+                  <span className="text-sm">
+                    {billingText.contactCreditsDesc}
+                  </span>
                 </div>
                 <div className="flex flex-col">
                   <span className="flex items-center text-lg">
@@ -266,9 +320,14 @@ export default function SettingsPage({
                 <div className="flex gap-3 items-center">
                   <h3 className="font-semibold">
                     {billingText.buyerSubscription} |{" "}
-                    <span className={`font-semibold ${user.buyerSubscription ? "text-primary" : "text-red-500"}`}>
+                    <span
+                      className={`font-semibold ${
+                        user.buyerSubscription ? "text-primary" : "text-red-500"
+                      }`}
+                    >
                       {user.buyerSubscription
-                        ? user.buyerSubscription.charAt(0).toUpperCase() + user.buyerSubscription.slice(1)
+                        ? user.buyerSubscription.charAt(0).toUpperCase() +
+                          user.buyerSubscription.slice(1)
                         : "Unsubscribed"}
                     </span>
                   </h3>
@@ -310,7 +369,11 @@ export default function SettingsPage({
                     <Button
                       className="w-full"
                       variant={"destructive"}
-                      disabled={buyerCancelLoading || buyerSubscription.cancel_at ? true : false}
+                      disabled={
+                        buyerCancelLoading || buyerSubscription.cancel_at
+                          ? true
+                          : false
+                      }
                       onClick={() => {
                         setBuyerCancelLoading(true);
                         getBillingUrl(false, "cancel");
@@ -319,7 +382,9 @@ export default function SettingsPage({
                       {!buyerCancelLoading ? (
                         <span className="w-full">
                           {buyerSubscription.cancel_at
-                            ? `Subscription Ends ${new Date(buyerSubscription.cancel_at * 1000).toLocaleString()}`
+                            ? `Subscription Ends ${new Date(
+                                buyerSubscription.cancel_at * 1000
+                              ).toLocaleString()}`
                             : billingText.cancel}
                         </span>
                       ) : (
@@ -346,9 +411,16 @@ export default function SettingsPage({
                 <div className="flex gap-3 items-center">
                   <h3 className="font-semibold">
                     {billingText.sellerSubscription} |{" "}
-                    <span className={`font-semibold ${user.sellerSubscription ? "text-primary" : "text-red-500"}`}>
+                    <span
+                      className={`font-semibold ${
+                        user.sellerSubscription
+                          ? "text-primary"
+                          : "text-red-500"
+                      }`}
+                    >
                       {user.sellerSubscription
-                        ? user.sellerSubscription.charAt(0).toUpperCase() + user.sellerSubscription.slice(1)
+                        ? user.sellerSubscription.charAt(0).toUpperCase() +
+                          user.sellerSubscription.slice(1)
                         : "Unsubscribed"}
                     </span>
                   </h3>
@@ -394,12 +466,18 @@ export default function SettingsPage({
                         setSellerCancelLoading(true);
                         getBillingUrl(true, "cancel");
                       }}
-                      disabled={sellerCancelLoading || sellerSubscription.cancel_at ? true : false}
+                      disabled={
+                        sellerCancelLoading || sellerSubscription.cancel_at
+                          ? true
+                          : false
+                      }
                     >
                       {!sellerCancelLoading ? (
                         <span className="w-full">
                           {sellerSubscription.cancel_at
-                            ? `Subscription Ends ${new Date(sellerSubscription.cancel_at * 1000).toLocaleString()}`
+                            ? `Subscription Ends ${new Date(
+                                sellerSubscription.cancel_at * 1000
+                              ).toLocaleString()}`
                             : billingText.cancel}
                         </span>
                       ) : (

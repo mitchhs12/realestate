@@ -5,11 +5,21 @@ import { ChevronLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import CountUpClock from "@/components/CountUpClock";
-import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import { CompareSlider } from "@/components/ReactCompareSlider";
-import { roomTypesMap, roomStylesMap, propertyStylesMap, typesMap } from "@/lib/sellFlowData";
+import {
+  roomTypesMap,
+  roomStylesMap,
+  propertyStylesMap,
+  typesMap,
+} from "@/lib/sellFlowData";
 import { ChevronUp } from "lucide-react";
 import {
   Select,
@@ -50,7 +60,9 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
   const [originalImage, setOriginalImage] = useState<string>(
     imageUrl
       ? imageUrl
-      : `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+      : `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${
+          theme === "dark" ? "dark4" : "light4"
+        }.jpg`
   );
   const [uploadedImage, setUploadedImage] = useState<null | string>(null);
   const [uploadNew, setUploadNew] = useState<boolean>(imageUrl ? false : true);
@@ -70,7 +82,10 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
 
   const sortByCreation = (input: any[]) => {
     return input.sort((a, b) => {
-      return new Date(b[Object.keys(b)[0]].createdAt).getTime() - new Date(a[Object.keys(a)[0]].createdAt).getTime();
+      return (
+        new Date(b[Object.keys(b)[0]].createdAt).getTime() -
+        new Date(a[Object.keys(a)[0]].createdAt).getTime()
+      );
     });
   };
 
@@ -79,7 +94,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
       setOriginalImage(uploadedImage);
       console.log("originalImage", originalImage);
     }
-  }, [uploadedImage]);
+  }, [uploadedImage, originalImage]);
 
   const propertyTypes = Array.from({ length: 17 }, (_, index) => ({
     id: typesMap[index].id,
@@ -132,7 +147,9 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
   useEffect(() => {
     const getPreviouslyGenerated = async () => {
       try {
-        const response = await fetch("/api/redis/previousGenerations/" + user!.id);
+        const response = await fetch(
+          "/api/redis/previousGenerations/" + user!.id
+        );
         const predictions = await response.json();
 
         console.log(predictions);
@@ -149,7 +166,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
       setFetchingPrevious(false);
     };
     getPreviouslyGenerated();
-  }, []);
+  }, [user, error]);
 
   useEffect(() => {
     const fetchPrediction = async () => {
@@ -176,7 +193,10 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
               setHistoricalImage(result.prediction.originalImg);
               setGeneratedImage(result.prediction.generatedImg);
               const newPreviousGenerations = previousGenerations;
-              setPreviousGenerations([{ [newPredictionId!]: result.prediction }, ...newPreviousGenerations]);
+              setPreviousGenerations([
+                { [newPredictionId!]: result.prediction },
+                ...newPreviousGenerations,
+              ]);
 
               setStatus("succeeded");
               break;
@@ -193,7 +213,7 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
     };
 
     fetchPrediction();
-  }, [newPredictionId]);
+  }, [newPredictionId, previousGenerations, status, user]);
 
   useEffect(() => {
     if (!isRoom) {
@@ -203,19 +223,23 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
       setType(null);
       setStyle(null);
     }
-  }, [!isRoom]);
+  }, [isRoom]);
 
   return (
     <>
       <DialogHeader className="items-center">
         <DialogTitle className="text-lg lg:text-xl">{t("title")}</DialogTitle>
-        <DialogDescription className="text-md lg:text-lg">{t("subtitle")}</DialogDescription>
+        <DialogDescription className="text-md lg:text-lg">
+          {t("subtitle")}
+        </DialogDescription>
       </DialogHeader>
       <div className="flex flex-col justify-start w-full h-full overflow-y-auto gap-6">
         <div className="flex justify-center items-start w-full">
           <div className="flex flex-col justify-start items-center gap-3 w-[600px] h-full px-4">
             <div className="flex w-full gap-3">
-              <div className="flex text-nowrap items-center gap-3">{t("redesign")}</div>
+              <div className="flex text-nowrap items-center gap-3">
+                {t("redesign")}
+              </div>
               <Button
                 className="flex items-center gap-3 w-full justify-center text-md"
                 variant={"outline"}
@@ -223,21 +247,40 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                 onClick={() => setIsRoom(!isRoom)}
               >
                 {isRoom ? (
-                  <RoomIcon color={theme === "dark" ? "white" : "black"} width={30} height={30} />
+                  <RoomIcon
+                    color={theme === "dark" ? "white" : "black"}
+                    width={30}
+                    height={30}
+                  />
                 ) : (
-                  <HomeIcon color={theme === "dark" ? "white" : "black"} width={30} height={30} />
+                  <HomeIcon
+                    color={theme === "dark" ? "white" : "black"}
+                    width={30}
+                    height={30}
+                  />
                 )}
                 {isRoom ? t("isRoomButton.room") : t("isRoomButton.property")}
               </Button>
             </div>
             <div className="flex w-full gap-3 items-center justify-between">
-              <Select key={isRoom ? "room" : "property"} onValueChange={setType}>
+              <Select
+                key={isRoom ? "room" : "property"}
+                onValueChange={setType}
+              >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder={isRoom ? t("kind-room-placeholder") : t("kind-property-placeholder")} />
+                  <SelectValue
+                    placeholder={
+                      isRoom
+                        ? t("kind-room-placeholder")
+                        : t("kind-property-placeholder")
+                    }
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>{isRoom ? t("room-kind-title") : t("property-kind-title")}</SelectLabel>
+                    <SelectLabel>
+                      {isRoom ? t("room-kind-title") : t("property-kind-title")}
+                    </SelectLabel>
                     {isRoom
                       ? roomTypes.map((room) => (
                           <SelectItem key={room.id} value={room.name}>
@@ -254,13 +297,26 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
               </Select>
             </div>
             <div className="flex w-full gap-3 items-center justify-between">
-              <Select key={isRoom ? "room" : "property"} onValueChange={setStyle}>
+              <Select
+                key={isRoom ? "room" : "property"}
+                onValueChange={setStyle}
+              >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder={isRoom ? t("style-room-placeholder") : t("style-property-placeholder")} />
+                  <SelectValue
+                    placeholder={
+                      isRoom
+                        ? t("style-room-placeholder")
+                        : t("style-property-placeholder")
+                    }
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>{isRoom ? t("room-style-title") : t("property-style-title")}</SelectLabel>
+                    <SelectLabel>
+                      {isRoom
+                        ? t("room-style-title")
+                        : t("property-style-title")}
+                    </SelectLabel>
                     {isRoom
                       ? roomStyles.map((roomStyle) => (
                           <SelectItem key={roomStyle.id} value={roomStyle.name}>
@@ -268,7 +324,10 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                           </SelectItem>
                         ))
                       : propertyStyles.map((propertyStyle) => (
-                          <SelectItem key={propertyStyle.id} value={propertyStyle.name}>
+                          <SelectItem
+                            key={propertyStyle.id}
+                            value={propertyStyle.name}
+                          >
                             {propertyStyle.translation}
                           </SelectItem>
                         ))}
@@ -281,9 +340,16 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                 variant="default"
                 className={`flex justify-center items-center gap-3 text-md`}
                 onClick={() => {
-                  status === "subscribe" ? setOpenPricing(true) : callRedesign();
+                  status === "subscribe"
+                    ? setOpenPricing(true)
+                    : callRedesign();
                 }}
-                disabled={status === "pending" || !type || !style || (!imageUrl && !uploadedImage)}
+                disabled={
+                  status === "pending" ||
+                  !type ||
+                  !style ||
+                  (!imageUrl && !uploadedImage)
+                }
               >
                 {status === "pending" ? (
                   <span className="flex justify-center items-center gap-3">
@@ -301,7 +367,9 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                   </span>
                 )}
               </Button>
-              {status === "subscribe" && <h3 className="text-center">{t("subscribe-warning")}</h3>}
+              {status === "subscribe" && (
+                <h3 className="text-center">{t("subscribe-warning")}</h3>
+              )}
             </div>
           </div>
         </div>
@@ -315,7 +383,9 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                     alt="Original Image"
                     className="object-cover object-center"
                     fill={true}
-                    sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                    sizes={
+                      "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"
+                    }
                   />
                   <div className="absolute top-0 left-0">
                     <Button
@@ -388,33 +458,45 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                   <Image
                     src={
                       generatedImage ||
-                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                      `${
+                        process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL
+                      }/home/placeholder/${
+                        theme === "dark" ? "dark4" : "light4"
+                      }.jpg`
                     }
                     alt="Generated Image"
                     className="object-cover object-center"
                     fill={true}
-                    sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                    sizes={
+                      "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"
+                    }
                   />
                 )
               )}
             </div>
 
             <div className="flex flex-col gap-2 w-full h-[375px] xl:h-[400px] 2xl:h-[450px] max-w-[700px] order-4 xl:order-none rounded-xl overflow-hidden">
-              <h1 className="text-center text-lg">{t("images-expire-warning")}</h1>
+              <h1 className="text-center text-lg">
+                {t("images-expire-warning")}
+              </h1>
               {fetchingPrevious ? (
                 <div className="relative flex w-full h-full">
                   <Skeleton className="absolute inset-0 w-full h-full" />
                   <div className="flex justify-center items-center w-full">
                     <div className="flex items-center gap-3 text-sm sm:text-medium">
                       <ReloadIcon className="animate-spin w-6 h-6" />
-                      <p className="text-start">{t("fetching-previous-generations")}</p>
+                      <p className="text-start">
+                        {t("fetching-previous-generations")}
+                      </p>
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="flex w-full pb-6 justify-start items-start overflow-y-auto">
                   {previousError ? (
-                    <h3 className="text-center text-red-500">{previousError}</h3>
+                    <h3 className="text-center text-red-500">
+                      {previousError}
+                    </h3>
                   ) : previousGenerations.length > 0 ? (
                     <div className="flex flex-col gap-3 w-full items-start justify-start">
                       {previousGenerations.map((generation, index) => (
@@ -425,30 +507,52 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                           variant={"outline"}
                           onClick={() => {
                             setUploadNew(false);
-                            setOriginalImage(generation[Object.keys(generation)[0]].originalImg);
-                            setHistoricalImage(generation[Object.keys(generation)[0]].originalImg);
-                            setGeneratedImage(generation[Object.keys(generation)[0]].generatedImg);
+                            setOriginalImage(
+                              generation[Object.keys(generation)[0]].originalImg
+                            );
+                            setHistoricalImage(
+                              generation[Object.keys(generation)[0]].originalImg
+                            );
+                            setGeneratedImage(
+                              generation[Object.keys(generation)[0]]
+                                .generatedImg
+                            );
                           }}
                         >
                           <div className="flex flex-col sm:flex-row w-full h-full sm:gap-5">
                             <div className="relative w-full h-[200px]">
                               <Image
-                                src={generation[Object.keys(generation)[0]].generatedImg}
+                                src={
+                                  generation[Object.keys(generation)[0]]
+                                    .generatedImg
+                                }
                                 alt="Generated Image"
                                 className="object-cover object-center"
                                 fill={true}
-                                sizes={"(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"}
+                                sizes={
+                                  "(max-width: 400px) 400px, (max-width: 510px) 510px, (max-width: 768px) 768px"
+                                }
                               />
                             </div>
                             <div className="flex flex-col py-4 gap-5 items-center justify-center text-center sm:text-start w-1/2">
                               <div className="flex flex-col gap-2 text-center items-center">
                                 <div className="text-md">{t("created")}</div>
-                                <div>{new Date(generation[Object.keys(generation)[0]].createdAt).toLocaleString()}</div>
+                                <div>
+                                  {new Date(
+                                    generation[
+                                      Object.keys(generation)[0]
+                                    ].createdAt
+                                  ).toLocaleString()}
+                                </div>
                               </div>
                               <div className="flex flex-col gap-2 text-center items-center">
                                 <div className="text-md">{t("completed")}</div>
                                 <div>
-                                  {new Date(generation[Object.keys(generation)[0]].completedAt).toLocaleString()}
+                                  {new Date(
+                                    generation[
+                                      Object.keys(generation)[0]
+                                    ].completedAt
+                                  ).toLocaleString()}
                                 </div>
                               </div>
                             </div>
@@ -481,11 +585,19 @@ export default function AIContent({ imageUrl, setOpenPricing }: Props) {
                     original={
                       historicalImage ||
                       imageUrl ||
-                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                      `${
+                        process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL
+                      }/home/placeholder/${
+                        theme === "dark" ? "dark4" : "light4"
+                      }.jpg`
                     }
                     restored={
                       generatedImage ||
-                      `${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL}/home/placeholder/${theme === "dark" ? "dark4" : "light4"}.jpg`
+                      `${
+                        process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL
+                      }/home/placeholder/${
+                        theme === "dark" ? "dark4" : "light4"
+                      }.jpg`
                     }
                   />
                 )

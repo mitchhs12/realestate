@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { Form, FormItem, FormField, FormControl } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -58,7 +58,8 @@ function SortableItem({
   onDelete: (id: string) => void;
   isLoading: boolean;
 }) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -103,11 +104,14 @@ function SortableItem({
 }
 
 export default function Photos() {
-  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
+  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } =
+    useContext(HomeContext);
   const [isUploading, setIsUploading] = useState(true);
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>({});
+  const [photoLoading, setPhotoLoading] = useState<{ [key: string]: boolean }>(
+    {}
+  );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [saveDisabled, setSaveDisabled] = useState(true);
   const { user, defaultLanguage } = useContext(LocaleContext);
@@ -130,10 +134,10 @@ export default function Photos() {
     user?.sellerSubscription === "starter"
       ? 5
       : user?.sellerSubscription === "pro"
-        ? 15
-        : user?.sellerSubscription === "premium"
-          ? 30
-          : 50;
+      ? 15
+      : user?.sellerSubscription === "premium"
+      ? 30
+      : 50;
 
   const photoRestrictions = {
     starter: restrictionStarter,
@@ -155,43 +159,10 @@ export default function Photos() {
     process.env.NODE_ENV === "development"
       ? `http://localhost:3000/${defaultLanguage}${pathname}`
       : `https://www.vivaideal.com/${defaultLanguage}${pathname}`;
-  const sellerSubscription = user?.sellerSubscription as keyof typeof photoRestrictions;
+  const sellerSubscription =
+    user?.sellerSubscription as keyof typeof photoRestrictions;
 
-  useEffect(() => {
-    retrievePhotos().then(() => setIsUploading(false));
-  }, []);
-
-  useEffect(() => {
-    setErrorMessage(null);
-    if (editedHome && uploadedImageUrls.length >= 5) {
-      setSaveDisabled(false);
-      setEditedHome({ ...editedHome, photos: uploadedImageUrls });
-    } else {
-      setSaveDisabled(true);
-    }
-  }, [uploadedImageUrls]);
-
-  const handleDelete = async (url: string) => {
-    setPhotoLoading((prev) => ({ ...prev, [url]: true })); // Set loading for this photo
-    const urlParts = url.split("/");
-    const photoKey = urlParts[urlParts.length - 1]; // Extract the photo key from the URL
-    const homeId = editedHome?.id;
-
-    if (!homeId) {
-      console.error("Home ID not found");
-      return;
-    }
-
-    try {
-      await deletePhoto(homeId, photoKey); // Call the delete function from your actions
-      setUploadedImageUrls((prevUrls) => prevUrls.filter((existingUrl) => existingUrl !== url)); // Update state
-    } catch (error) {
-      console.error("Error deleting photo from S3:", error);
-    }
-    setPhotoLoading((prev) => ({ ...prev, [url]: false })); // Set loading for this photo
-  };
-
-  const retrievePhotos = async () => {
+  const retrievePhotos = useCallback(async () => {
     if (editedHome) {
       const photoUrls = await getPhotoUrls(editedHome.id);
       if (photoUrls) {
@@ -208,6 +179,42 @@ export default function Photos() {
         setUploadedImageUrls([]);
       }
     }
+  }, [editedHome]);
+
+  useEffect(() => {
+    retrievePhotos().then(() => setIsUploading(false));
+  }, [retrievePhotos]);
+
+  useEffect(() => {
+    setErrorMessage(null);
+    if (editedHome && uploadedImageUrls.length >= 5) {
+      setSaveDisabled(false);
+      setEditedHome({ ...editedHome, photos: uploadedImageUrls });
+    } else {
+      setSaveDisabled(true);
+    }
+  }, [uploadedImageUrls, editedHome, setEditedHome]);
+
+  const handleDelete = async (url: string) => {
+    setPhotoLoading((prev) => ({ ...prev, [url]: true })); // Set loading for this photo
+    const urlParts = url.split("/");
+    const photoKey = urlParts[urlParts.length - 1]; // Extract the photo key from the URL
+    const homeId = editedHome?.id;
+
+    if (!homeId) {
+      console.error("Home ID not found");
+      return;
+    }
+
+    try {
+      await deletePhoto(homeId, photoKey); // Call the delete function from your actions
+      setUploadedImageUrls((prevUrls) =>
+        prevUrls.filter((existingUrl) => existingUrl !== url)
+      ); // Update state
+    } catch (error) {
+      console.error("Error deleting photo from S3:", error);
+    }
+    setPhotoLoading((prev) => ({ ...prev, [url]: false })); // Set loading for this photo
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -217,7 +224,9 @@ export default function Photos() {
     },
   });
 
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setIsUploading(true);
     setErrorMessage(null);
 
@@ -256,7 +265,12 @@ export default function Photos() {
 
     try {
       const uploadPromises = validImageFiles.map(async (file) => {
-        const resizedFile = await resizeImageToMinDimensions(file, 600, t("tooShort"), t("tooNarrow"));
+        const resizedFile = await resizeImageToMinDimensions(
+          file,
+          600,
+          t("tooShort"),
+          t("tooNarrow")
+        );
 
         const options = {
           maxSizeMB: 1,
@@ -265,7 +279,11 @@ export default function Photos() {
         };
 
         const compressedFile = await imageCompression(resizedFile, options);
-        const webpFile = new File([compressedFile], file.name.replace(/\.[^/.]+$/, ".webp"), { type: "image/webp" });
+        const webpFile = new File(
+          [compressedFile],
+          file.name.replace(/\.[^/.]+$/, ".webp"),
+          { type: "image/webp" }
+        );
 
         const formData = new FormData();
         formData.append("file", webpFile);
@@ -348,7 +366,10 @@ export default function Photos() {
                       <Button>{upgrade.upgradeButton}</Button>
                     </DialogTrigger>
                     <DialogContent className="flex flex-col py-1 px-0 w-[90%] max-w-8xl h-[90%] overflow-y-auto">
-                      <PricingDialog redirectUrl={redirectUrl} isCheckout={false} />
+                      <PricingDialog
+                        redirectUrl={redirectUrl}
+                        isCheckout={false}
+                      />
                     </DialogContent>
                   </Dialog>
                 </div>
@@ -360,7 +381,9 @@ export default function Photos() {
           <div className="flex justify-center text-center text-red-500 text-xs md:text-base lg:text-lg">
             {errorMessage}
           </div>
-          <div className={`flex flex-col w-full h-full max-w-7xl items-center justify-start gap-3`}>
+          <div
+            className={`flex flex-col w-full h-full max-w-7xl items-center justify-start gap-3`}
+          >
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 pb-8 w-full">
               <DndContext
                 sensors={sensors}
@@ -369,7 +392,10 @@ export default function Photos() {
                 onDragEnd={handleDragEnd}
                 onDragCancel={handleDragCancel}
               >
-                <SortableContext items={uploadedImageUrls} strategy={rectSortingStrategy}>
+                <SortableContext
+                  items={uploadedImageUrls}
+                  strategy={rectSortingStrategy}
+                >
                   {uploadedImageUrls.map((url, index) => (
                     <SortableItem
                       key={url}
@@ -389,7 +415,12 @@ export default function Photos() {
                 >
                   {activeId && (
                     <div className="relative flex w-full h-full shadow-2xl dark:shadow-white/15 items-center justify-center">
-                      <Image src={activeId} alt={`Dragged ${activeId}`} fill={true} className="object-cover" />
+                      <Image
+                        src={activeId}
+                        alt={`Dragged ${activeId}`}
+                        fill={true}
+                        className="object-cover"
+                      />
                     </div>
                   )}
                 </DragOverlay>
@@ -410,7 +441,11 @@ export default function Photos() {
                                 } border-2`}
                               >
                                 <div className="absolute flex justify-center items-center w-full h-full">
-                                  {isUploading ? <ReloadIcon className="animate-spin w-6 h-6" /> : <Icons.image_icon />}
+                                  {isUploading ? (
+                                    <ReloadIcon className="animate-spin w-6 h-6" />
+                                  ) : (
+                                    <Icons.image_icon />
+                                  )}
                                 </div>
                                 <input
                                   className={`relative flex w-full h-full opacity-0 ${
@@ -438,7 +473,11 @@ export default function Photos() {
               className="bottom-4 sticky"
               disabled={saveDisabled || saveLoading}
             >
-              {saveLoading ? <ReloadIcon className="animate-spin w-6 h-6" /> : h("save")}
+              {saveLoading ? (
+                <ReloadIcon className="animate-spin w-6 h-6" />
+              ) : (
+                h("save")
+              )}
             </Button>
           </div>
         </div>

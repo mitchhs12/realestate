@@ -2,7 +2,10 @@
 
 import SearchResults from "@/components/CombinedSearchPage/SearchResults";
 import MapComponent from "@/components/CombinedSearchPage/MainMap";
-import { getSearchResults, getAllHomesFiltered } from "@/app/[locale]/search/actions";
+import {
+  getSearchResults,
+  getAllHomesFiltered,
+} from "@/app/[locale]/search/actions";
 import FloatingDrawerButton from "@/components/CombinedSearchPage/FloatingButtons/FloatingDrawerButton";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "@/context/QueryContext";
@@ -10,7 +13,12 @@ import { CoordinatesType, BoundsType, HomeType } from "@/lib/validations";
 import { HomesGeoJson } from "@/lib/validations";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatNumber } from "@/lib/utils";
-import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerTitle,
+} from "@/components/ui/drawer";
 import { LocaleContext } from "@/context/LocaleContext";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import PaginationComponent from "../PaginationComponent";
@@ -70,16 +78,23 @@ export default function CombinedSearchPage({
   const [isOpen, setIsOpen] = useState(homes[0] !== null ? true : false);
 
   const ITEMS_PER_PAGE = 12;
-  const [visibleHomes, setVisibleHomes] = useState(homes.slice((1 - 1) * ITEMS_PER_PAGE, 1 * ITEMS_PER_PAGE));
+  const [visibleHomes, setVisibleHomes] = useState(
+    homes.slice((1 - 1) * ITEMS_PER_PAGE, 1 * ITEMS_PER_PAGE)
+  );
 
   // INITIAL GET ALL HOMES ON FIRST RENDER
   useEffect(() => {
     if (defaultCurrency) {
-      getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((allHomes) => {
+      getAllHomesFiltered(
+        defaultCurrency,
+        selectedTypes,
+        selectedFeatures,
+        convertedPriceRange
+      ).then((allHomes) => {
         setHomesGeoJson(allHomes);
       });
     }
-  }, []);
+  }, [defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange]);
 
   // SEARCH COMPONENT
   useEffect(() => {
@@ -106,16 +121,37 @@ export default function CombinedSearchPage({
         );
       });
     }
-  }, [isFiltering, bounds]);
+  }, [
+    isFiltering,
+    bounds,
+    convertedPriceRange,
+    defaultCurrency,
+    selectedFeatures,
+    selectedRooms,
+    selectedTypes,
+    setIsFiltering,
+    setNewFilters,
+  ]);
 
   // GETS THE FILTERED HOMES FOR THE MAP
   useEffect(() => {
     if (isFiltering && defaultCurrency) {
-      getAllHomesFiltered(defaultCurrency, selectedTypes, selectedFeatures, convertedPriceRange).then((fixedHomes) => {
+      getAllHomesFiltered(
+        defaultCurrency,
+        selectedTypes,
+        selectedFeatures,
+        convertedPriceRange
+      ).then((fixedHomes) => {
         setHomesGeoJson(fixedHomes);
       });
     }
-  }, [isFiltering]);
+  }, [
+    isFiltering,
+    convertedPriceRange,
+    defaultCurrency,
+    selectedFeatures,
+    selectedTypes,
+  ]);
 
   // Lock background scrolling when drawer is open
   useEffect(() => {
@@ -149,7 +185,9 @@ export default function CombinedSearchPage({
 
   return (
     <div className="relative flex w-full">
-      <section className={`flex w-full lg:w-1/2 sticky top-[152px] h-screen-minus-header-double-svh`}>
+      <section
+        className={`flex w-full lg:w-1/2 sticky top-[152px] h-screen-minus-header-double-svh`}
+      >
         {homesGeoJson ? (
           <MapComponent
             coordinates={coordinates}
@@ -173,12 +211,16 @@ export default function CombinedSearchPage({
           </div>
         )}
       </section>
-      <section className={`hidden lg:flex flex-col w-1/2 bg-zinc-100 dark:bg-zinc-900 gap-4`}>
+      <section
+        className={`hidden lg:flex flex-col w-1/2 bg-zinc-100 dark:bg-zinc-900 gap-4`}
+      >
         <h1 className="sticky top-[152px] text-center z-[30] bg-zinc-100 dark:bg-zinc-900 shadow-lg py-4 text-xl xl:text-2xl justify-center items-center w-full">
           {isSearchLoading ? (
             <Skeleton className="rounded-lg w-96 h-8 mx-auto" />
           ) : (
-            `${formatNumber(homes.length, numerals)} ${homes.length === 1 ? propertyText : propertiesText} `
+            `${formatNumber(homes.length, numerals)} ${
+              homes.length === 1 ? propertyText : propertiesText
+            } `
           )}
         </h1>
         <div className="flex flex-col">
@@ -194,7 +236,11 @@ export default function CombinedSearchPage({
             premiumText={premiumText}
           />
           <div className="py-2">
-            <PaginationComponent homes={homes} ITEMS_PER_PAGE={ITEMS_PER_PAGE} setVisibleHomes={setVisibleHomes} />
+            <PaginationComponent
+              homes={homes}
+              ITEMS_PER_PAGE={ITEMS_PER_PAGE}
+              setVisibleHomes={setVisibleHomes}
+            />
           </div>
         </div>
       </section>
@@ -209,12 +255,16 @@ export default function CombinedSearchPage({
           }}
         >
           <DrawerContent className="max-h-[calc(100dvh-152px)] overflow-hidden gap-y-2 pt-4">
-            <DrawerTitle className="flex justify-center">{resultsText}</DrawerTitle>
+            <DrawerTitle className="flex justify-center">
+              {resultsText}
+            </DrawerTitle>
             <DrawerDescription className="flex justify-center w-full">
               {isSearchLoading ? (
                 <Skeleton className="w-48 h-5" />
               ) : (
-                `${formatNumber(homes.length, numerals)} ${homes.length === 1 ? propertyText : propertiesText}`
+                `${formatNumber(homes.length, numerals)} ${
+                  homes.length === 1 ? propertyText : propertiesText
+                }`
               )}
             </DrawerDescription>
             <div className="relative overflow-y-auto flex-1">
@@ -230,7 +280,11 @@ export default function CombinedSearchPage({
                 premiumText={premiumText}
               />
               <div className="py-6">
-                <PaginationComponent homes={homes} ITEMS_PER_PAGE={ITEMS_PER_PAGE} setVisibleHomes={setVisibleHomes} />
+                <PaginationComponent
+                  homes={homes}
+                  ITEMS_PER_PAGE={ITEMS_PER_PAGE}
+                  setVisibleHomes={setVisibleHomes}
+                />
               </div>
             </div>
           </DrawerContent>

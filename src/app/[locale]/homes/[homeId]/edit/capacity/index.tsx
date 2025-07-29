@@ -17,13 +17,18 @@ export default function Capacity() {
   const ftConversion = 10.76391042;
 
   const { numerals } = useContext(LocaleContext);
-  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } = useContext(HomeContext);
+  const { editedHome, setEditedHome, saveLoading, handleSaveEdits } =
+    useContext(HomeContext);
 
   const [sqSize, setSqSize] = useState<number>(editedHome?.areaSqm);
   const [saveDisabled, setSaveDisabled] = useState(true);
-  const [sqLabel, setSqLabel] = useState<string>(formatNumber(editedHome?.areaSqm, numerals));
+  const [sqLabel, setSqLabel] = useState<string>(
+    formatNumber(editedHome?.areaSqm, numerals)
+  );
   const [metresOn, setMetresOn] = useState(true);
-  const [humanCapacity, setHumanCapacity] = useState<number>(editedHome?.capacity ?? 0);
+  const [humanCapacity, setHumanCapacity] = useState<number>(
+    editedHome?.capacity ?? 0
+  );
   const t = useScopedI18n("sell.capacity");
   const h = useScopedI18n("homes");
 
@@ -38,9 +43,15 @@ export default function Capacity() {
     } else if (sqSize === 0) {
       setSaveDisabled(true);
     }
-  }, [sqSize, humanCapacity]);
+  }, [sqSize, humanCapacity, editedHome, setEditedHome]);
 
-  const handleSqSizeChange = ({ value, number }: { value: string; number: number }) => {
+  const handleSqSizeChange = ({
+    value,
+    number,
+  }: {
+    value: string;
+    number: number;
+  }) => {
     if (metresOn) {
       setSqLabel(value);
       setSqSize(number);
@@ -73,7 +84,9 @@ export default function Capacity() {
                     value={sqLabel}
                     locales={numerals}
                     onNumberFormat={(e: any) => handleSqSizeChange(e.detail)}
-                    placeholder={metresOn ? t("m-placeholder") : t("ft-placeholder")}
+                    placeholder={
+                      metresOn ? t("m-placeholder") : t("ft-placeholder")
+                    }
                   />
                 </div>
               </div>
@@ -84,14 +97,23 @@ export default function Capacity() {
                   size={"default"}
                   onClick={() => {
                     if (metresOn) {
-                      setSqLabel(formatNumber(Math.round(sqSize * ftConversion), numerals));
+                      setSqLabel(
+                        formatNumber(
+                          Math.round(sqSize * ftConversion),
+                          numerals
+                        )
+                      );
                     } else {
                       setSqLabel(formatNumber(Math.round(sqSize), numerals));
                     }
                     setMetresOn(!metresOn);
                   }}
                 >
-                  {metresOn ? <Footprints size={18} strokeWidth={1.25} /> : <Ruler size={18} strokeWidth={1.25} />}
+                  {metresOn ? (
+                    <Footprints size={18} strokeWidth={1.25} />
+                  ) : (
+                    <Ruler size={18} strokeWidth={1.25} />
+                  )}
                   {metresOn ? t("change-to-feet") : t("change-to-metres")}
                 </Button>
               </div>
@@ -108,13 +130,26 @@ export default function Capacity() {
             <div className="flex flex-col h-full w-full justify-center text-sm md:text-md lg:text-lg xl:text-xl items-center gap-4 md:gap-8">
               <h3 className="flex ">{t("capacity")}</h3>
               <div className="flex justify-center items-center gap-4 md:gap-8">
-                <CounterComponent state={humanCapacity} setState={setHumanCapacity} numerals={numerals} />
+                <CounterComponent
+                  state={humanCapacity}
+                  setState={setHumanCapacity}
+                  numerals={numerals}
+                />
               </div>
             </div>
           </div>
         </div>
-        <Button className="flex" variant={"default"} onClick={handleSaveEdits} disabled={saveDisabled || saveLoading}>
-          {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+        <Button
+          className="flex"
+          variant={"default"}
+          onClick={handleSaveEdits}
+          disabled={saveDisabled || saveLoading}
+        >
+          {saveLoading ? (
+            <ReloadIcon className="w-6 h-6 animate-spin" />
+          ) : (
+            h("save")
+          )}
         </Button>
       </div>
     </div>

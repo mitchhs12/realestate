@@ -1,5 +1,11 @@
 /* eslint-disable complexity */
-import { forwardRef, useContext, useEffect, useImperativeHandle, useRef } from "react";
+import {
+  forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
 
 import type { Ref } from "react";
 import { GoogleMapsContext, latLngEquals } from "@vis.gl/react-google-maps";
@@ -55,19 +61,20 @@ function useCircle(props: CircleProps) {
   useEffect(() => {
     if (!center) return;
     if (!latLngEquals(center, circle.getCenter())) circle.setCenter(center);
-  }, [center]);
+  }, [center, circle]);
 
   useEffect(() => {
     if (radius === undefined || radius === null) return;
     if (radius !== circle.getRadius()) circle.setRadius(radius);
-  }, [radius]);
+  }, [radius, circle]);
 
   const map = useContext(GoogleMapsContext)?.map;
 
   // create circle instance and add to the map once the map is available
   useEffect(() => {
     if (!map) {
-      if (map === undefined) console.error("<Circle> has to be inside a Map component.");
+      if (map === undefined)
+        console.error("<Circle> has to be inside a Map component.");
 
       return;
     }
@@ -77,7 +84,7 @@ function useCircle(props: CircleProps) {
     return () => {
       circle.setMap(null);
     };
-  }, [map]);
+  }, [map, circle]);
 
   // attach and re-attach event-handlers when any of the properties change
   useEffect(() => {
@@ -118,7 +125,10 @@ function useCircle(props: CircleProps) {
 /**
  * Component to render a circle on a map
  */
-export const Circle = forwardRef(function Circle(props: CircleProps, ref: CircleRef) {
+export const Circle = forwardRef(function Circle(
+  props: CircleProps,
+  ref: CircleRef
+) {
   const circle = useCircle(props);
 
   useImperativeHandle(ref, () => circle);

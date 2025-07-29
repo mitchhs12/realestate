@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useState, ReactNode, useEffect, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useContext,
+} from "react";
 import { usePathname } from "next/navigation";
 import { HomeType } from "@/lib/validations";
 import { UpdateSession, useSession } from "next-auth/react";
@@ -154,7 +160,10 @@ interface SelectedRooms {
   maxRooms: number;
 }
 
-const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerValues }) => {
+const QueryContextProvider: React.FC<QueryProviderProps> = ({
+  children,
+  headerValues,
+}) => {
   const { defaultLanguage } = useContext(LocaleContext);
   const [query, setQuery] = useState("");
   const [clickedLocation, setClickedLocation] = useState<boolean>(false);
@@ -252,7 +261,7 @@ const QueryContextProvider: React.FC<QueryProviderProps> = ({ children, headerVa
     if (pathname === "/" || pathname === `/${defaultLanguage}`) {
       setQuery("");
     }
-  }, [pathname]);
+  }, [pathname, defaultLanguage]);
 
   return (
     <QueryContext.Provider

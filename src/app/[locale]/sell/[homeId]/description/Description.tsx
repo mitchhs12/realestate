@@ -36,7 +36,9 @@ export default function Description({
     setPrevLoading,
     setNextDisabled,
   } = useContext(SellContext);
-  const [description, setDescription] = useState<string>(currentHome?.description ? currentHome?.description : "");
+  const [description, setDescription] = useState<string>(
+    currentHome?.description ? currentHome?.description : ""
+  );
 
   useEffect(() => {
     setCurrentHome(currentHome);
@@ -46,7 +48,20 @@ export default function Description({
     setNextLoading(false);
     setPrevLoading(false);
     setNextDisabled(description.length === 0);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    description.length,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNextDisabled,
+  ]);
 
   useEffect(() => {
     if (currentHome && description.length > 0 && description.length < 3000) {
@@ -55,7 +70,7 @@ export default function Description({
     } else {
       setNextDisabled(true);
     }
-  }, [description]);
+  }, [description, currentHome, setNewHome, setNextDisabled]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20">
@@ -74,7 +89,9 @@ export default function Description({
             value={description}
             theme={"snow"}
             placeholder={placeholder}
-            className={`flex flex-col h-full min-h-[250px] max-w-8xl w-full overflow-auto shadow-lg dark:shadow-white text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${description.length === 3000 && "border-red-500"}`}
+            className={`flex flex-col h-full min-h-[250px] max-w-8xl w-full overflow-auto shadow-lg dark:shadow-white text-sm rounded-t-xl placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
+              description.length === 3000 && "border-red-500"
+            }`}
             onChange={(value: string) => {
               if (value.length <= 3000) {
                 setDescription(value);
@@ -91,7 +108,9 @@ export default function Description({
             formats={["header", "font", "bold", "italic", "underline", "list"]}
           />
           <div className="flex justify-center text-sm min-h-12">
-            {description.length === 3000 && <span className="text-red-500">{warning}</span>}
+            {description.length === 3000 && (
+              <span className="text-red-500">{warning}</span>
+            )}
           </div>
         </div>
       </div>

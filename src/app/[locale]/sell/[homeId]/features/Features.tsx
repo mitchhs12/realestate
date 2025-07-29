@@ -36,7 +36,9 @@ export default function Type({
     setNextDisabled,
   } = useContext(SellContext);
 
-  const [selection, setSelection] = useState<string[]>(currentHome?.features ? currentHome?.features : []);
+  const [selection, setSelection] = useState<string[]>(
+    currentHome?.features ? currentHome?.features : []
+  );
 
   const { resolvedTheme: theme } = useTheme();
 
@@ -50,7 +52,20 @@ export default function Type({
     }
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    selection.length,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNextDisabled,
+  ]);
 
   useEffect(() => {
     if (currentHome && selection.length > 0) {
@@ -59,7 +74,7 @@ export default function Type({
     } else if (selection.length === 0) {
       setNextDisabled(true);
     }
-  }, [selection]);
+  }, [selection, currentHome, setNewHome, setNextDisabled]);
 
   const handleValueChange = (value: string[]) => {
     if (value.includes("None")) {
@@ -81,10 +96,16 @@ export default function Type({
           </div>
         </div>
         <div className="w-full h-full justify-center items-center px-4 sm:px-8 overflow-auto">
-          <ToggleGroup type="multiple" value={selection} defaultValue={selection} onValueChange={handleValueChange}>
+          <ToggleGroup
+            type="multiple"
+            value={selection}
+            defaultValue={selection}
+            onValueChange={handleValueChange}
+          >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:gap-8 items-center justify-center pb-4">
               {options.map((feature, index) => {
-                const IconComponent = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
+                const IconComponent =
+                  featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
                 return (
                   <ToggleGroupItem
                     variant={"outline"}
@@ -95,7 +116,11 @@ export default function Type({
                     <div className="flex lg:w-1/2 justify-start lg:justify-center items-center">
                       {IconComponent && (
                         <div className="flex justify-center items-center">
-                          <IconComponent color={theme === "dark" ? "#FFFFFF" : "#000000"} width={55} height={55} />
+                          <IconComponent
+                            color={theme === "dark" ? "#FFFFFF" : "#000000"}
+                            width={55}
+                            height={55}
+                          />
                         </div>
                       )}
                     </div>

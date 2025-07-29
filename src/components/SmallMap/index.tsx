@@ -1,6 +1,12 @@
 "use client";
 import { useEffect, useCallback, useState, useContext } from "react";
-import { APIProvider, Map, Marker, MapCameraChangedEvent, MapCameraProps } from "@vis.gl/react-google-maps";
+import {
+  APIProvider,
+  Map,
+  Marker,
+  MapCameraChangedEvent,
+  MapCameraProps,
+} from "@vis.gl/react-google-maps";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import darkMap from "@/components/CombinedSearchPage/MainMap/map-styles/dark-map";
@@ -65,7 +71,10 @@ export default function MapComponent({
 
   const { resolvedTheme: theme } = useTheme();
   const [isMapLoading, setIsMapLoading] = useState(true);
-  const [cameraPos, setCameraPos] = useState<CoordinatesType>({ lat: 0, long: 0 });
+  const [cameraPos, setCameraPos] = useState<CoordinatesType>({
+    lat: 0,
+    long: 0,
+  });
   const [newZoom, setNewZoom] = useState(disabled ? 16 : 17);
 
   const INITIAL_CAMERA = {
@@ -73,44 +82,51 @@ export default function MapComponent({
     zoom: newZoom,
   };
 
-  const [cameraProps, setCameraProps] = useState<MapCameraProps>(INITIAL_CAMERA);
+  const [cameraProps, setCameraProps] =
+    useState<MapCameraProps>(INITIAL_CAMERA);
 
   useEffect(() => {
-    setCameraProps({ center: { lat: coordinates.lat, lng: coordinates.long }, zoom: newZoom });
-  }, [coordinates]);
-
-  const getAddress = async (lat: number, lng: number, usePin: boolean) => {
-    const result = await fetch("/api/getAddress", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        longLatArray: [lng, lat],
-      }),
+    setCameraProps({
+      center: { lat: coordinates.lat, lng: coordinates.long },
+      zoom: newZoom,
     });
-    const data = await result.json();
-    console.log("new pin to be set", usePin);
-    currentHome &&
-      setNewHome &&
-      setNewHome({
-        ...currentHome,
-        address: data.results?.Label,
-        municipality: data.results?.Municipality,
-        subRegion: data.results?.SubRegion,
-        region: data.results?.Region,
-        country: data.results?.Country, // ISO 3166 Alpha 3 Code
-        longitude: data.location[0],
-        latitude: data.location[1],
-        exactLocation: usePin,
+  }, [coordinates, newZoom]);
+
+  const getAddress = useCallback(
+    async (lat: number, lng: number, usePin: boolean) => {
+      const result = await fetch("/api/getAddress", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          longLatArray: [lng, lat],
+        }),
       });
-    if (setNextLoading && setPrevLoading) {
-      setNextLoading(false);
-      setPrevLoading(false);
-    } else if (setSaveDisabled) {
-      setSaveDisabled(false);
-    }
-  };
+      const data = await result.json();
+      console.log("new pin to be set", usePin);
+      currentHome &&
+        setNewHome &&
+        setNewHome({
+          ...currentHome,
+          address: data.results?.Label,
+          municipality: data.results?.Municipality,
+          subRegion: data.results?.SubRegion,
+          region: data.results?.Region,
+          country: data.results?.Country, // ISO 3166 Alpha 3 Code
+          longitude: data.location[0],
+          latitude: data.location[1],
+          exactLocation: usePin,
+        });
+      if (setNextLoading && setPrevLoading) {
+        setNextLoading(false);
+        setPrevLoading(false);
+      } else if (setSaveDisabled) {
+        setSaveDisabled(false);
+      }
+    },
+    [currentHome, setNewHome, setNextLoading, setPrevLoading, setSaveDisabled]
+  );
 
   const setLoading = () => {
     if (setNextLoading && setPrevLoading) {
@@ -131,16 +147,36 @@ export default function MapComponent({
     };
   };
 
-  const debouncedGetAddress = useCallback(debounce(getAddress, 200), []);
+  const debouncedGetAddress = useCallback(
+    (...args: [number, number, boolean]) => {
+      const debounced = debounce(getAddress, 200);
+      debounced(...args);
+    },
+    [getAddress]
+  );
 
   const handleCameraChanged = useCallback(
     (ev: MapCameraChangedEvent) => {
-      setLoading();
+      if (setNextLoading && setPrevLoading) {
+        setNextLoading(true);
+        setPrevLoading(true);
+      } else if (setSaveDisabled) {
+        setSaveDisabled(true);
+      }
       setCameraPos({ lat: ev.detail.center.lat, long: ev.detail.center.lng });
-      setCameraProps({ center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng }, zoom: ev.detail.zoom });
+      setCameraProps({
+        center: { lat: ev.detail.center.lat, lng: ev.detail.center.lng },
+        zoom: ev.detail.zoom,
+      });
       debouncedGetAddress(ev.detail.center.lat, ev.detail.center.lng, usePin);
     },
-    [debouncedGetAddress]
+    [
+      debouncedGetAddress,
+      usePin,
+      setNextLoading,
+      setPrevLoading,
+      setSaveDisabled,
+    ]
   );
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -154,7 +190,11 @@ export default function MapComponent({
   };
 
   return (
-    <div className={`flex flex-col w-full items-center justify-center ${editMode && "hover:cursor-pointer"}`}>
+    <div
+      className={`flex flex-col w-full items-center justify-center ${
+        editMode && "hover:cursor-pointer"
+      }`}
+    >
       <APIProvider apiKey={apiKey} onLoad={mapLoaded}>
         {isMapLoading ? (
           <div className="flex items-center justify-center text-lg lg:text-3xl">
@@ -163,7 +203,9 @@ export default function MapComponent({
           </div>
         ) : (
           <div
-            className={`rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15 ${editMode && "hover:cursor-pointer"}`}
+            className={`rounded-lg overflow-hidden h-full w-full shadow-lg dark:shadow-white/15 ${
+              editMode && "hover:cursor-pointer"
+            }`}
           >
             <Map
               clickableIcons={false}
@@ -179,8 +221,14 @@ export default function MapComponent({
               backgroundColor={theme === "dark" ? "black" : "white"}
               {...cameraProps}
               disableDefaultUI={true}
-              mapId={theme === "dark" ? MAP_CONFIGS[1].mapId : MAP_CONFIGS[0].mapId}
-              mapTypeId={theme === "dark" ? MAP_CONFIGS[1].mapTypeId : MAP_CONFIGS[0].mapTypeId}
+              mapId={
+                theme === "dark" ? MAP_CONFIGS[1].mapId : MAP_CONFIGS[0].mapId
+              }
+              mapTypeId={
+                theme === "dark"
+                  ? MAP_CONFIGS[1].mapTypeId
+                  : MAP_CONFIGS[0].mapTypeId
+              }
               reuseMaps={true}
               onCameraChanged={handleCameraChanged}
             >

@@ -19,7 +19,14 @@ interface Props {
   finish: string;
 }
 
-export default function ProgressBar({ cont, start, back, next, finish, loading }: Props) {
+export default function ProgressBar({
+  cont,
+  start,
+  back,
+  next,
+  finish,
+  loading,
+}: Props) {
   const router = useRouter();
   const localePathname = usePathname();
   const currentLocale = useCurrentLocale();
@@ -96,14 +103,22 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
     if (prevStep === "" && currentHome) {
       // console.log("running log 1");
       // we are on the first page of the sell flow so we are redirected to where we are up too
-      router.push(`/sell/${currentHome.id}/${stepsFlattened[checkStepPositionForNextNavigation()]}`);
+      router.push(
+        `/sell/${currentHome.id}/${
+          stepsFlattened[checkStepPositionForNextNavigation()]
+        }`
+      );
     } else if (prevStep === "" && !currentHome) {
       // console.log("running log 2");
       // we are on the first page of the sell flow and we need to create a new home
       const _newHome = await updateHome(newHome, true);
       session.update();
       router.push(`/sell/${_newHome.id}/step1`);
-    } else if (currentHome && newHome && JSON.stringify(currentHome) !== JSON.stringify(newHome)) {
+    } else if (
+      currentHome &&
+      newHome &&
+      JSON.stringify(currentHome) !== JSON.stringify(newHome)
+    ) {
       // console.log("running log 3");
       console.log(JSON.stringify(newHome, null, 2));
       await updateHome(newHome, shouldIncrementFlowStep(), isMyPhone);
@@ -152,7 +167,9 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
 
   let currentArrayProgress: number[] = Array(sellSteps.length).fill(0);
   if (prevStep === "" && currentHome) {
-    const { array } = getStepData(stepsFlattened[checkStepPositionForNextNavigation()]);
+    const { array } = getStepData(
+      stepsFlattened[checkStepPositionForNextNavigation()]
+    );
     currentArrayProgress = array;
   }
 
@@ -163,7 +180,7 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
       }, 150); // 1 second delay between each animation
       return () => clearTimeout(timer);
     }
-  }, [currentAnimationStep, sellSteps.length]);
+  }, [currentAnimationStep]);
 
   return (
     <div className="flex flex-col justify-start gap-6 items-center w-full h-[100px]">
@@ -178,8 +195,8 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
                 prevStep === "" && currentHome
                   ? currentArrayProgress[idx]
                   : idx <= currentAnimationStep
-                    ? stepPercentage[idx]
-                    : 0
+                  ? stepPercentage[idx]
+                  : 0
               }
             />
           </div>
@@ -192,7 +209,9 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
               variant="default"
               size="lg"
               onClick={handleNext}
-              disabled={nextLoading || prevLoading || nextButtonDisabled || nextDisabled}
+              disabled={
+                nextLoading || prevLoading || nextButtonDisabled || nextDisabled
+              }
             >
               {!nextLoading
                 ? prevStep !== ""
@@ -200,15 +219,20 @@ export default function ProgressBar({ cont, start, back, next, finish, loading }
                     ? finish
                     : next
                   : currentHome
-                    ? cont
-                    : start
+                  ? cont
+                  : start
                 : loading}
             </Button>
           </div>
         )}
         {prevStep !== "" && (
           <div className="flex justify-start">
-            <Button variant="outline" size="lg" onClick={handlePrev} disabled={prevLoading || nextLoading}>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={handlePrev}
+              disabled={prevLoading || nextLoading}
+            >
               {!prevLoading ? back : loading}
             </Button>
           </div>

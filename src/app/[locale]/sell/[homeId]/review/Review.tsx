@@ -3,7 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { SellContext } from "@/context/SellContext";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { ReloadIcon, CrossCircledIcon, CheckCircledIcon } from "@radix-ui/react-icons";
+import {
+  ReloadIcon,
+  CrossCircledIcon,
+  CheckCircledIcon,
+} from "@radix-ui/react-icons";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { formatPrice } from "@/lib/utils";
@@ -95,7 +99,19 @@ export default function Review({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNewHome,
+  ]);
 
   const title = currentHome?.title || "";
   const description = currentHome?.description || "";
@@ -123,7 +139,7 @@ export default function Review({
   useEffect(() => {
     const ftConversion = 10.76391042;
     setSqSize(!feet ? areaSqm : Math.round(areaSqm * ftConversion));
-  }, [feet]);
+  }, [feet, areaSqm]);
 
   const handleImageLoad = (index: number) => {
     setLoadingStates((prevStates) => {
@@ -147,7 +163,9 @@ export default function Review({
         <div className="flex flex-col w-full h-full md:flex-row justify-center py-8 px-6 gap-8 lg:p-4">
           <Card className="w-full h-auto flex flex-col p-2 px-0 xs:p-4 sm:p-6">
             <CardHeader className="gap-4 md:gap-8">
-              <CardTitle className="text-md md:text-2xl font-bold">{title}</CardTitle>
+              <CardTitle className="text-md md:text-2xl font-bold">
+                {title}
+              </CardTitle>
               <ReactQuill
                 theme={"snow"}
                 readOnly={true}
@@ -189,7 +207,9 @@ export default function Review({
                         <div className="flex flex-col w-full">
                           <div className="flex justify-center w-full text-lg py-4">
                             <strong>{listing_text}</strong>
-                            <span className="ml-2">{matchingListingType?.translation}</span>
+                            <span className="ml-2">
+                              {matchingListingType?.translation}
+                            </span>
                           </div>
                           <Separator />
                         </div>
@@ -207,7 +227,9 @@ export default function Review({
                             <div className="flex flex-row justify-between lg:justify-center items-center gap-3 text-center lg:w-full w-[180px]">
                               <div className="flex gap-3 items-center">
                                 <Bath className="w-6 h-6" />
-                                <strong className="justify-start">{bathrooms_text}</strong>
+                                <strong className="justify-start">
+                                  {bathrooms_text}
+                                </strong>
                               </div>
                               <span>{formatNumber(bathrooms, numerals)}</span>
                             </div>
@@ -234,13 +256,18 @@ export default function Review({
                         <div className="flex flex-col xs:flex-row w-full text-end text-sm md:text-md lg:text-lg gap-y-4">
                           <div className="flex justify-start w-full xs:w-1/2">
                             <strong>{capacity_text}</strong>
-                            <span className="ml-2">{formatNumber(capacity, numerals)}</span>
+                            <span className="ml-2">
+                              {formatNumber(capacity, numerals)}
+                            </span>
                           </div>
                           <div className="flex flex-col w-full xs:w-1/2">
                             <div className="flex items-center xs:justify-end w-full">
-                              <strong className="flex justify-start">{area_text}</strong>
+                              <strong className="flex justify-start">
+                                {area_text}
+                              </strong>
                               <span className="flex items-center ml-2">
-                                {formatNumber(sqSize, numerals)} {!feet ? m_text : ft_text}
+                                {formatNumber(sqSize, numerals)}{" "}
+                                {!feet ? m_text : ft_text}
                               </span>
                             </div>
                             <div className="flex items-center xs:justify-end">
@@ -264,12 +291,22 @@ export default function Review({
                             </p>
                             <ul className="list-disc list-inside">
                               {matchingTypes.map((type, index) => {
-                                const TypeIcon = typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
+                                const TypeIcon =
+                                  typeIcons[type.id as keyof typeof typeIcons]; // Get the corresponding icon
                                 return (
-                                  <li key={index} className="flex w-full items-center gap-3 mb-4">
+                                  <li
+                                    key={index}
+                                    className="flex w-full items-center gap-3 mb-4"
+                                  >
                                     {TypeIcon && (
                                       <div className="flex justify-center items-center">
-                                        <TypeIcon color={theme === "dark" ? "white" : "black"} width={32} height={32} />
+                                        <TypeIcon
+                                          color={
+                                            theme === "dark" ? "white" : "black"
+                                          }
+                                          width={32}
+                                          height={32}
+                                        />
                                       </div>
                                     )}
                                     {type.translation}
@@ -285,13 +322,21 @@ export default function Review({
                             </p>
                             <ul className="list-disc list-inside">
                               {matchingFeatures.map((feature, index) => {
-                                const FeatureIcon = featureIcons[feature.id as keyof typeof featureIcons]; // Get the corresponding icon
+                                const FeatureIcon =
+                                  featureIcons[
+                                    feature.id as keyof typeof featureIcons
+                                  ]; // Get the corresponding icon
                                 return (
-                                  <li key={index} className="flex w-full items-center gap-3 mb-4">
+                                  <li
+                                    key={index}
+                                    className="flex w-full items-center gap-3 mb-4"
+                                  >
                                     {FeatureIcon && (
                                       <div className="flex justify-center items-center">
                                         <FeatureIcon
-                                          color={theme === "dark" ? "white" : "black"}
+                                          color={
+                                            theme === "dark" ? "white" : "black"
+                                          }
                                           width={32}
                                           height={32}
                                         />
@@ -325,15 +370,21 @@ export default function Review({
                     </div>
                     <div className="flex flex-col text-center xs:text-start gap-2 text-md lg:text-lg">
                       <div className="flex flex-col xs:gap-3 xs:flex-row">
-                        <strong className="xs:text-end xs:w-1/2">{contactName_text}</strong>{" "}
+                        <strong className="xs:text-end xs:w-1/2">
+                          {contactName_text}
+                        </strong>{" "}
                         <span className="xs:w-1/2">{contactName}</span>
                       </div>
                       <div className="flex flex-col xs:gap-3 xs:flex-row">
-                        <strong className="xs:text-end xs:w-1/2">{contactEmail_text}</strong>{" "}
+                        <strong className="xs:text-end xs:w-1/2">
+                          {contactEmail_text}
+                        </strong>{" "}
                         <span className="xs:w-1/2">{contactEmail}</span>
                       </div>
                       <div className="flex flex-col xs:gap-3 xs:flex-row">
-                        <strong className="xs:text-end xs:w-1/2">{contactPhone_text}</strong>{" "}
+                        <strong className="xs:text-end xs:w-1/2">
+                          {contactPhone_text}
+                        </strong>{" "}
                         <span className="xs:w-1/2">{contactPhone}</span>
                       </div>
                     </div>

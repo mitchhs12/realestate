@@ -1,7 +1,12 @@
 "use client";
 
 import React, { createContext, useState, ReactNode, useEffect } from "react";
-import { CurrencyType, HomeType, LanguageType, numeralMap } from "@/lib/validations";
+import {
+  CurrencyType,
+  HomeType,
+  LanguageType,
+  numeralMap,
+} from "@/lib/validations";
 import { useSession } from "next-auth/react";
 import { getCurrency } from "@/lib/utils";
 import { useChangeLocale } from "@/locales/client";
@@ -11,7 +16,10 @@ interface LocaleContextProps {
   defaultCurrency: CurrencyType | null;
   setDefaultCurrency: (value: CurrencyType) => void;
   defaultLanguage: LanguageType;
-  currencyData: { prices: CurrencyType[]; defaultCurrency: CurrencyType } | null;
+  currencyData: {
+    prices: CurrencyType[];
+    defaultCurrency: CurrencyType;
+  } | null;
   numerals: string;
   setNumerals: (value: string) => void;
   user?: User;
@@ -38,7 +46,10 @@ interface LocaleProviderProps {
   lang: LanguageType;
 }
 
-const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }: LocaleProviderProps) => {
+const LocaleContextProvider: React.FC<LocaleProviderProps> = ({
+  children,
+  lang,
+}: LocaleProviderProps) => {
   const session = useSession();
 
   const changeLocale = useChangeLocale();
@@ -47,14 +58,17 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
     usdPrice: 1,
     decimalsLimit: 2,
   });
-  const [currencyData, setCurrencyData] = useState<{ prices: CurrencyType[]; defaultCurrency: CurrencyType } | null>(
-    null
-  );
+  const [currencyData, setCurrencyData] = useState<{
+    prices: CurrencyType[];
+    defaultCurrency: CurrencyType;
+  } | null>(null);
 
   const [numerals, setNumerals] = useState<string>(numeralMap[lang]);
   const [user, setUser] = useState<User | undefined>(session.data?.user);
   const [sessionLoading, setSessionLoading] = useState(true);
-  const [sessionUnauthenticated, setSessionUnauthenticated] = useState(session.status === "unauthenticated");
+  const [sessionUnauthenticated, setSessionUnauthenticated] = useState(
+    session.status === "unauthenticated"
+  );
   const defaultLanguage = lang;
 
   useEffect(() => {
@@ -90,13 +104,16 @@ const LocaleContextProvider: React.FC<LocaleProviderProps> = ({ children, lang }
         currencyData &&
         userData.currency !== currencyData.defaultCurrency.symbol
       ) {
-        const newDefaultCurrency = getCurrency(currencyData.prices, userData.currency);
+        const newDefaultCurrency = getCurrency(
+          currencyData.prices,
+          userData.currency
+        );
         if (newDefaultCurrency !== defaultCurrency) {
           setDefaultCurrency(newDefaultCurrency);
         }
       }
     }
-  }, [session.data, currencyData]);
+  }, [session.data, currencyData, changeLocale, defaultCurrency, lang]);
 
   return (
     <LocaleContext.Provider

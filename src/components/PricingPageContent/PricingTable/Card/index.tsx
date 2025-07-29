@@ -1,7 +1,14 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useCallback } from "react";
 import { LocaleContext } from "@/context/LocaleContext";
 
 import { Skeleton } from "@/components/ui/skeleton";
@@ -63,13 +70,7 @@ export default function PriceCard({
 }: Props) {
   const { sessionLoading, defaultCurrency } = useContext(LocaleContext);
 
-  useEffect(() => {
-    if (!sessionLoading && currentPlan) {
-      isButtonDisabled();
-    }
-  }, [currentPlan, sessionLoading, isSeller]);
-
-  const isButtonDisabled = () => {
+  const isButtonDisabled = useCallback(() => {
     const sellIndex: Record<SellerSubscriptionTier, number> = {
       starter: 1,
       pro: 2,
@@ -83,9 +84,17 @@ export default function PriceCard({
       max: 4,
     };
     const index = isSeller ? sellIndex : buyIndex;
-    const bool = index[id as keyof typeof index] <= index[currentPlan as keyof typeof index];
+    const bool =
+      index[id as keyof typeof index] <=
+      index[currentPlan as keyof typeof index];
     return bool;
-  };
+  }, [currentPlan, id, isSeller]);
+
+  useEffect(() => {
+    if (!sessionLoading && currentPlan) {
+      isButtonDisabled();
+    }
+  }, [currentPlan, sessionLoading, isSeller, isButtonDisabled]);
 
   return (
     <div className={`flex w-full h-full justify-center items-center`}>
@@ -94,14 +103,22 @@ export default function PriceCard({
       ) : (
         defaultCurrency && (
           <Card
-            className={`flex flex-col w-full h-full border-2 rounded-lg ${isButtonDisabled() && "border-none shadow-none opacity-70"} ${selected === id ? "border-primary" : ""}`}
+            className={`flex flex-col w-full h-full border-2 rounded-lg ${
+              isButtonDisabled() && "border-none shadow-none opacity-70"
+            } ${selected === id ? "border-primary" : ""}`}
           >
             <CardHeader>
-              <CardTitle className="flex justify-center items-center text-bold text-2xl">{title}</CardTitle>
+              <CardTitle className="flex justify-center items-center text-bold text-2xl">
+                {title}
+              </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4 flex-grow px-3">
               <div className="flex justify-center gap-2 text-4xl font-medium items-center">
-                {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * button, 0)}
+                {formatPrice(
+                  defaultCurrency.symbol,
+                  defaultCurrency.usdPrice * button,
+                  0
+                )}
                 {yearly && (
                   <div className="flex flex-col text-xs text-start">
                     <p>{subText["six-months-free"]}</p>
@@ -111,7 +128,12 @@ export default function PriceCard({
               </div>
               {yearly && (
                 <p className="text-sm">
-                  {billedAnnually} {formatPrice(defaultCurrency.symbol, defaultCurrency.usdPrice * annualPrice, 0)}
+                  {billedAnnually}{" "}
+                  {formatPrice(
+                    defaultCurrency.symbol,
+                    defaultCurrency.usdPrice * annualPrice,
+                    0
+                  )}
                 </p>
               )}
 
@@ -139,8 +161,12 @@ export default function PriceCard({
                       <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary" />
                     </div>
                     <div className="flex flex-col justify-start gap-1 text-start">
-                      <p className="flex justify-start text-md font-medium leading-none">{perk.title}</p>
-                      <p className="flex justify-start text-sm text-muted-foreground">{perk.subtitle}</p>
+                      <p className="flex justify-start text-md font-medium leading-none">
+                        {perk.title}
+                      </p>
+                      <p className="flex justify-start text-sm text-muted-foreground">
+                        {perk.subtitle}
+                      </p>
                     </div>
                   </div>
                 ))}

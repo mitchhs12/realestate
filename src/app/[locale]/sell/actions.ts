@@ -8,7 +8,6 @@ import { ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/s3";
 import { locales } from "@/lib/validations";
 import { updatePhone } from "@/app/[locale]/settings/actions";
-import { revalidate } from "../about/page";
 
 interface ResponseObj {
   success: boolean;
@@ -17,10 +16,16 @@ interface ResponseObj {
 
 const validateHome = (homeData: any) => {
   if (homeData.title && homeData.title.length > 32) {
-    return { success: false, error: "Title cannot be longer than 32 characters long" };
+    return {
+      success: false,
+      error: "Title cannot be longer than 32 characters long",
+    };
   }
   if (homeData.description && homeData.description.length > 3000) {
-    return { success: false, error: "Description cannot be longer than 3000 characters long" };
+    return {
+      success: false,
+      error: "Description cannot be longer than 3000 characters long",
+    };
   }
   if (homeData.areaSqm === 0) {
     return { success: false, error: "Area cannot be 0" };
@@ -102,7 +107,10 @@ export async function getHomes() {
   return homes;
 }
 
-export async function sellHome(currentLocale: string, homeId: string): Promise<ResponseObj> {
+export async function sellHome(
+  currentLocale: string,
+  homeId: string
+): Promise<ResponseObj> {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -177,7 +185,11 @@ export async function updateHome(
       const promises: Promise<any>[] = [];
 
       // Check for updating phone number and add the promise to the array
-      if (homeValues.contactPhone && session.user.phoneNumber !== homeValues?.contactPhone && isMyPhone) {
+      if (
+        homeValues.contactPhone &&
+        session.user.phoneNumber !== homeValues?.contactPhone &&
+        isMyPhone
+      ) {
         promises.push(updatePhone({ phoneNumber: homeValues.contactPhone }));
       }
 

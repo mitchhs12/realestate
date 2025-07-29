@@ -6,12 +6,18 @@ import { useContext, useEffect } from "react";
 import { QueryContext } from "@/context/QueryContext";
 import { I18nProviderClient } from "@/locales/client";
 
-export default function LockedLogin({ locale, customMessage }: { locale: string; customMessage?: string }) {
+export default function LockedLogin({
+  locale,
+  customMessage,
+}: {
+  locale: string;
+  customMessage?: string;
+}) {
   const { lockModal } = useContext(QueryContext);
 
   useEffect(() => {
     lockModal();
-  }, []);
+  }, [lockModal]);
 
   return (
     <div className="flex relative z-100">

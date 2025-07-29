@@ -15,10 +15,16 @@ interface SearchResult {
 }
 
 export default function Location() {
-  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } = useContext(HomeContext);
-  const [searchResult, setSearchResult] = useState<SearchResult>({ text: "", placeId: "" });
+  const { editedHome, setEditedHome, handleSaveEdits, saveLoading } =
+    useContext(HomeContext);
+  const [searchResult, setSearchResult] = useState<SearchResult>({
+    text: "",
+    placeId: "",
+  });
   const [saveDisabled, setSaveDisabled] = useState(true);
-  const [isExactLocation, setIsExactLocation] = useState(editedHome?.exactLocation ? true : false);
+  const [isExactLocation, setIsExactLocation] = useState(
+    editedHome?.exactLocation ? true : false
+  );
 
   const [currentCoords, setCurrentCoords] = useState(
     editedHome?.latitude && editedHome?.longitude
@@ -48,7 +54,7 @@ export default function Location() {
     } else {
       setSaveDisabled(true);
     }
-  }, [currentCoords, isExactLocation]);
+  }, [currentCoords, isExactLocation, editedHome, setEditedHome]);
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -83,7 +89,9 @@ export default function Location() {
             <SearchBox
               placeholderShort={s("placeholder-short")}
               isSmallMap={true}
-              setSearchResult={(text, placeId) => setSearchResult({ text: text, placeId: placeId })}
+              setSearchResult={(text, placeId) =>
+                setSearchResult({ text: text, placeId: placeId })
+              }
               placeholder={s("placeholder")}
               text={s("search-button")}
             />
@@ -129,7 +137,11 @@ export default function Location() {
         onClick={handleSaveEdits}
         disabled={saveDisabled || saveLoading}
       >
-        {saveLoading ? <ReloadIcon className="w-6 h-6 animate-spin" /> : h("save")}
+        {saveLoading ? (
+          <ReloadIcon className="w-6 h-6 animate-spin" />
+        ) : (
+          h("save")
+        )}
       </Button>
     </div>
   );

@@ -51,7 +51,9 @@ export default function PricingPageContent({
 }: Props) {
   const { user } = useContext(LocaleContext);
   const [sellerModeLoading, setSellerModeLoading] = useState(false);
-  const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(null);
+  const [handleChangeSeller, setHandleChangeSeller] = useState<string | null>(
+    null
+  );
   const [buyerModeLoading, setBuyerModeLoading] = useState(false);
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
   const { resolvedTheme: theme } = useTheme();
@@ -84,14 +86,16 @@ export default function PricingPageContent({
     };
 
     updateSellerMode();
-  }, [handleChangeSeller]);
+  }, [handleChangeSeller, session]);
 
   if (user) {
     if (user.isSellerMode === null) {
       return (
         <div className="flex flex-col gap-5 pt-12 justify-center items-center">
           <div className="flex flex-col w-full">
-            <h3 className="text-center text-xl sm:text-3xl">{billingText.sellerModeSelection.title}</h3>
+            <h3 className="text-center text-xl sm:text-3xl">
+              {billingText.sellerModeSelection.title}
+            </h3>
           </div>
           <div className="flex flex-col sm:flex-row w-full items-center justify-center gap-3">
             <Button
@@ -103,8 +107,16 @@ export default function PricingPageContent({
               variant={"default"}
             >
               <div className="flex items-center gap-3 text-2xl">
-                <Icons.buyer_icon width={"50"} height={"50"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
-                {buyerModeLoading ? <ReloadIcon className="animate-spin w-5 h-5" /> : billingText["buyersText"]}
+                <Icons.buyer_icon
+                  width={"50"}
+                  height={"50"}
+                  color={theme === "dark" ? "#000000" : "#FFFFFF"}
+                />
+                {buyerModeLoading ? (
+                  <ReloadIcon className="animate-spin w-5 h-5" />
+                ) : (
+                  billingText["buyersText"]
+                )}
               </div>
             </Button>
             <Button
@@ -117,13 +129,23 @@ export default function PricingPageContent({
               size={"lg"}
             >
               <div className="flex items-center gap-3 text-2xl">
-                <Icons.seller_icon width={"50"} height={"50"} color={theme === "dark" ? "#000000" : "#FFFFFF"} />
-                {sellerModeLoading ? <ReloadIcon className="animate-spin w-5 h-5" /> : billingText["sellersText"]}
+                <Icons.seller_icon
+                  width={"50"}
+                  height={"50"}
+                  color={theme === "dark" ? "#000000" : "#FFFFFF"}
+                />
+                {sellerModeLoading ? (
+                  <ReloadIcon className="animate-spin w-5 h-5" />
+                ) : (
+                  billingText["sellersText"]
+                )}
               </div>
             </Button>
           </div>
           <div className="flex flex-col w-full">
-            <h4 className="text-center">{billingText.sellerModeSelection.subtitle}</h4>
+            <h4 className="text-center">
+              {billingText.sellerModeSelection.subtitle}
+            </h4>
           </div>
         </div>
       );
@@ -139,7 +161,10 @@ export default function PricingPageContent({
                   {billingText["lowest-prices"]}
                 </h3>
                 <h2 className="flex items-center gap-4 sm:text-3xl text-4xl font-semibold tracking-wider text-[#4F4F4F] dark:text-white">
-                  {user.isSellerMode ? billingText.sellersText : billingText.buyersText} {billingText.title}
+                  {user.isSellerMode
+                    ? billingText.sellersText
+                    : billingText.buyersText}{" "}
+                  {billingText.title}
                 </h2>
               </div>
             )}

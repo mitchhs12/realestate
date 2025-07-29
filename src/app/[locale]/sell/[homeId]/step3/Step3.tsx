@@ -44,7 +44,20 @@ export default function Step3({
     setNextLoading(false);
     setPrevLoading(false);
     setNextDisabled(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+    setNewHome,
+    setNextDisabled,
+  ]);
 
   return (
     <div className="flex flex-col h-full w-full items-center gap-y-20 md:gap-y-0 md:flex-row">

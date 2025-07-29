@@ -20,11 +20,17 @@ interface Props {
   accountEmail: string | null;
 }
 
-export default function Stripe({ uuid, defaultCurrency, planId, interval }: Props) {
+export default function Stripe({
+  uuid,
+  defaultCurrency,
+  planId,
+  interval,
+}: Props) {
   const currency = defaultCurrency.symbol.toLowerCase();
 
   const stripePromise = loadStripe(
-    process.env.NEXT_PUBLIC_STRIPE_TEST_PUBLISHABLE_KEY || (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
+    process.env.NEXT_PUBLIC_STRIPE_TEST_PUBLISHABLE_KEY ||
+      (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
   );
 
   const { resolvedTheme: theme } = useTheme();
@@ -33,15 +39,17 @@ export default function Stripe({ uuid, defaultCurrency, planId, interval }: Prop
 
   useEffect(() => {
     try {
-      StripeServer(currency, defaultLanguage, planId, interval, uuid).then((data) => {
-        if (data.clientSecret) {
-          setClientSecret(data.clientSecret);
+      StripeServer(currency, defaultLanguage, planId, interval, uuid).then(
+        (data) => {
+          if (data.clientSecret) {
+            setClientSecret(data.clientSecret);
+          }
         }
-      });
+      );
     } catch (e) {
       console.log("Error in StripeServer", e);
     }
-  }, []);
+  }, [currency, defaultLanguage, planId, interval, uuid]);
 
   const appearance = {
     variables: {

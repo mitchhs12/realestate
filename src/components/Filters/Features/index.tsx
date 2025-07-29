@@ -19,7 +19,10 @@ interface Props {
   setSelectedFeatures: (selectedIds: string[]) => void;
 }
 
-export default function Categories({ selectedFeatures, setSelectedFeatures }: Props) {
+export default function Categories({
+  selectedFeatures,
+  setSelectedFeatures,
+}: Props) {
   const t = useScopedI18n("sell.features");
   const [featuresObject, setFeaturesObject] = useState<FeaturesObject[]>([]);
   const { resolvedTheme: theme } = useTheme();
@@ -35,7 +38,7 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
 
       setFeaturesObject(newFeaturesObject);
     }
-  }, [t]);
+  }, [t, selectedFeatures]);
 
   const handleCheckedChange = (index: number) => {
     const updatedFeaturesObject = featuresObject.map((feature, idx) =>
@@ -45,21 +48,12 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
     setFeaturesObject(updatedFeaturesObject);
 
     // Update the selected types
-    const selectedIds = updatedFeaturesObject.filter((feature) => feature.checked).map((feature) => feature.name);
+    const selectedIds = updatedFeaturesObject
+      .filter((feature) => feature.checked)
+      .map((feature) => feature.name);
 
     setSelectedFeatures(selectedIds);
   };
-
-  useEffect(() => {
-    // resync selectedFeatures with the selectedFeatures in the parent component
-    const newFeaturesObject = Array.from({ length: 27 }, (_, index) => ({
-      id: featuresMap[index].id,
-      name: featuresMap[index].name,
-      translation: t(`options.${index}` as keyof typeof t),
-      checked: selectedFeatures.includes(featuresMap[index].name),
-    }));
-    setFeaturesObject(newFeaturesObject);
-  }, [selectedFeatures]);
 
   return (
     <>
@@ -74,8 +68,16 @@ export default function Categories({ selectedFeatures, setSelectedFeatures }: Pr
                 handleCheckedChange(index);
               }}
             >
-              {FeatureIcon && <FeatureIcon color={theme === "dark" ? "white" : "black"} width={36} height={36} />}
-              <div className="flex items-center text-sm gap-3 w-full">{feature.translation}</div>
+              {FeatureIcon && (
+                <FeatureIcon
+                  color={theme === "dark" ? "white" : "black"}
+                  width={36}
+                  height={36}
+                />
+              )}
+              <div className="flex items-center text-sm gap-3 w-full">
+                {feature.translation}
+              </div>
 
               <Checkbox
                 id={feature.name}

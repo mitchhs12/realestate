@@ -3,7 +3,10 @@
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useContext } from "react";
 import { SellContext } from "@/context/SellContext";
-import { stepsFlattened, stepLengthsWithoutStepPages } from "@/lib/sellFlowData";
+import {
+  stepsFlattened,
+  stepLengthsWithoutStepPages,
+} from "@/lib/sellFlowData";
 import { Checkbox } from "@/components/ui/checkbox";
 import { LanguageType } from "@/lib/validations";
 import { LocaleContext } from "@/context/LocaleContext";
@@ -80,7 +83,18 @@ export default function SellFlowPage({
     setStepPercentage(stepPercentage);
     setNextLoading(false);
     setPrevLoading(false);
-  }, []);
+  }, [
+    currentHome,
+    sellFlowIndices,
+    sellFlatIndex,
+    stepPercentage,
+    setCurrentHome,
+    setSellFlowIndices,
+    setSellFlowFlatIndex,
+    setStepPercentage,
+    setNextLoading,
+    setPrevLoading,
+  ]);
 
   const step = currentHome?.listingFlowStep;
 
@@ -90,14 +104,24 @@ export default function SellFlowPage({
         <div className="flex flex-col md:flex-row w-full h-full justify-start items-center">
           <div className="flex md:w-1/2 items-center md:items-center justify-center py-3 text-center">
             <div className="flex flex-col gap-6 text-center px-10">
-              <h1 className="text-2xl xs:text-3xl">{currentHome ? titleContinue : title}</h1>
+              <h1 className="text-2xl xs:text-3xl">
+                {currentHome ? titleContinue : title}
+              </h1>
               <div className="flex flex-col gap-1">
                 <h3 className="text-lg xs:text-xl">
                   {propertiesRemaining.sub}: {user?.sellCredits}
                 </h3>
                 <h4 className="text-sm">
-                  {user && user.sellerSubIsYearly ? propertiesRemaining.year : propertiesRemaining.month}:{" "}
-                  {user && getNextPeriodCredits(user.sellerSubscription!, user.sellerSubIsYearly!, true)}
+                  {user && user.sellerSubIsYearly
+                    ? propertiesRemaining.year
+                    : propertiesRemaining.month}
+                  :{" "}
+                  {user &&
+                    getNextPeriodCredits(
+                      user.sellerSubscription!,
+                      user.sellerSubIsYearly!,
+                      true
+                    )}
                 </h4>
               </div>
             </div>
@@ -112,12 +136,18 @@ export default function SellFlowPage({
                       {step > stepLengthsWithoutStepPages[0]
                         ? formatNumber(stepLengthsWithoutStepPages[0], numerals)
                         : formatNumber(step, numerals)}
-                      /{getTotalSteps(stepLengthsWithoutStepPages[1], stepLengthsWithoutStepPages[2])}
+                      /
+                      {getTotalSteps(
+                        stepLengthsWithoutStepPages[1],
+                        stepLengthsWithoutStepPages[2]
+                      )}
                       <span className="hidden 2xl:flex">{completed}</span>
                       <Checkbox
                         id="state"
                         disabled={true}
-                        checked={step > stepLengthsWithoutStepPages[0] ? true : false}
+                        checked={
+                          step > stepLengthsWithoutStepPages[0] ? true : false
+                        }
                       />
                     </label>
                   )}
@@ -132,18 +162,29 @@ export default function SellFlowPage({
                     <label className="hidden lg:flex items-center gap-3 text-sm">
                       {formatNumber(
                         Math.min(
-                          step - stepLengthsWithoutStepPages[0] - 1 > 0 ? step - stepLengthsWithoutStepPages[0] - 1 : 0,
+                          step - stepLengthsWithoutStepPages[0] - 1 > 0
+                            ? step - stepLengthsWithoutStepPages[0] - 1
+                            : 0,
                           stepLengthsWithoutStepPages[1]
                         ),
                         numerals
                       )}
-                      /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[2])}
+                      /
+                      {getTotalSteps(
+                        stepLengthsWithoutStepPages[0],
+                        stepLengthsWithoutStepPages[2]
+                      )}
                       <span className="hidden 2xl:flex">{completed}</span>
                       <Checkbox
                         id="state"
                         disabled={true}
                         checked={
-                          step > stepLengthsWithoutStepPages[0] + stepLengthsWithoutStepPages[1] + 1 ? true : false
+                          step >
+                          stepLengthsWithoutStepPages[0] +
+                            stepLengthsWithoutStepPages[1] +
+                            1
+                            ? true
+                            : false
                         }
                       />
                     </label>
@@ -157,13 +198,24 @@ export default function SellFlowPage({
                   {step3}
                   {step && (
                     <label className="hidden lg:flex text-md items-center gap-3 text-sm">
-                      {step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2 > 0
+                      {step -
+                        stepLengthsWithoutStepPages[0] -
+                        stepLengthsWithoutStepPages[1] -
+                        2 >
+                      0
                         ? formatNumber(
-                            step - stepLengthsWithoutStepPages[0] - stepLengthsWithoutStepPages[1] - 2,
+                            step -
+                              stepLengthsWithoutStepPages[0] -
+                              stepLengthsWithoutStepPages[1] -
+                              2,
                             numerals
                           )
                         : formatNumber(0, numerals)}
-                      /{getTotalSteps(stepLengthsWithoutStepPages[0], stepLengthsWithoutStepPages[1])}
+                      /
+                      {getTotalSteps(
+                        stepLengthsWithoutStepPages[0],
+                        stepLengthsWithoutStepPages[1]
+                      )}
                       <span className="hidden 2xl:flex">{completed}</span>
                       <Checkbox
                         id="state"

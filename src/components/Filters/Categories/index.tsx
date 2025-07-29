@@ -21,7 +21,9 @@ interface Props {
 
 export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
   const t = useScopedI18n("sell.type");
-  const [categoriesObject, setCategoriesObject] = useState<CategoriesObject[]>([]);
+  const [categoriesObject, setCategoriesObject] = useState<CategoriesObject[]>(
+    []
+  );
   const { resolvedTheme: theme } = useTheme();
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
 
       setCategoriesObject(newCategoriesObject);
     }
-  }, [t]);
+  }, [t, selectedTypes]);
 
   const handleCheckedChange = (index: number) => {
     const updatedCategoriesObject = categoriesObject.map((feature, idx) =>
@@ -45,21 +47,12 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
     setCategoriesObject(updatedCategoriesObject);
 
     // Update the selected types
-    const selectedIds = updatedCategoriesObject.filter((feature) => feature.checked).map((feature) => feature.name);
+    const selectedIds = updatedCategoriesObject
+      .filter((feature) => feature.checked)
+      .map((feature) => feature.name);
 
     setSelectedTypes(selectedIds);
   };
-
-  useEffect(() => {
-    // resync selectedFeatures with the selectedFeatures in the parent component
-    const newCategoriesObject = Array.from({ length: 17 }, (_, index) => ({
-      id: typesMap[index].id,
-      name: typesMap[index].name,
-      translation: t(`options.${index}` as keyof typeof t),
-      checked: selectedTypes.includes(typesMap[index].name),
-    }));
-    setCategoriesObject(newCategoriesObject);
-  }, [selectedTypes]);
 
   return (
     <>
@@ -73,10 +66,23 @@ export default function Categories({ selectedTypes, setSelectedTypes }: Props) {
               handleCheckedChange(index);
             }}
           >
-            {TypeIcon && <TypeIcon color={theme === "dark" ? "white" : "black"} width={36} height={36} />}
-            <div className="flex items-center text-sm gap-3 w-full">{type.translation}</div>
+            {TypeIcon && (
+              <TypeIcon
+                color={theme === "dark" ? "white" : "black"}
+                width={36}
+                height={36}
+              />
+            )}
+            <div className="flex items-center text-sm gap-3 w-full">
+              {type.translation}
+            </div>
 
-            <Checkbox id={type.name} className="h-4 w-4 cursor-pointer" key={type.name} checked={type.checked} />
+            <Checkbox
+              id={type.name}
+              className="h-4 w-4 cursor-pointer"
+              key={type.name}
+              checked={type.checked}
+            />
           </div>
         );
       })}
